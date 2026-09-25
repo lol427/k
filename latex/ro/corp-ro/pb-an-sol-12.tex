@@ -1349,57 +1349,80 @@ Deci $f(x) \ge 1$ pentru orice $x > 0$. În inegalitatea lui Young, egalitatea a
 \vspace{1mm}\hrule
 
 \prob{onm}{ONM.12}{}
-Fie $f : [0,4] \to \RR$ continuă, cu $f(x)^3 + 3f(x) \ge x$ pentru orice $x \in [0,4]$.
-Determinați valoarea minimă a integralei $\displaystyle\int_0^4 f(x)\,dx$.
-\sol Fie $g(y) = y^3 + 3y$. Cum $g'(y) = 3y^2 + 3 > 0$, funcția $g$ este \textbf{strict crescătoare} pe $\RR$, cu $g(0) = 0$ și $g(1) = 4$; deci $g : [0,1] \to [0,4]$ este o bijecție, cu inversa $g^{-1} : [0,4] \to [0,1]$.
+Calculați
+\[ \lim_{n\to\infty}\ n^{2}\int_{0}^{1}\left(\sqrt[n]{1+x^{n}+x^{2n}}-1\right)dx , \]
+admițând că $\displaystyle\sum_{k\ge1}\frac{1}{k^{2}}=\frac{\pi^{2}}{6}$.
+\sol Răspuns: limita este $\dfrac{\pi^{2}}{9}$.
 
-\emph{Minorarea.} Ipoteza se scrie $g(f(x)) \ge x = g\bigl(g^{-1}(x)\bigr)$; aplicând $g^{-1}$ (crescătoare), rezultă $f(x) \ge g^{-1}(x)$ pentru orice $x \in [0,4]$, deci
-\[
-\int_0^4 f(x)\,dx \;\ge\; \int_0^4 g^{-1}(x)\,dx.
-\]
+Integrandul tinde la $0$, iar factorul $n^{2}$ trebuie „consumat'' în două etape: un factor $n$ dispare prin liniarizarea radicalului, $\sqrt[n]{1+u+u^{2}}-1\approx\frac1n\ln(1+u+u^{2})$, iar celălalt prin substituția $t=x^{n}$ --- masa integralei stă lângă $x=1$, într-o fereastră de lățime $\frac1n$. Notăm $S_{N}=\sum_{k=1}^{N}\frac1{k^{2}}$ și $S=\lim S_{N}=\frac{\pi^{2}}{6}$.
 
-\emph{Calculul minorantului cu Young.} Cazul de egalitate din inegalitatea lui Young (Teorema 4.33), cu $a = 1$ și $b = g(1) = 4$, este exact identitatea „dreptunghiului'':
-\[
-\int_0^1 g(y)\,dy + \int_0^4 g^{-1}(x)\,dx = 1\cdot 4 = 4.
-\]
-Cum $\displaystyle\int_0^1 (y^3 + 3y)\,dy = \frac{1}{4} + \frac{3}{2} = \frac{7}{4}$, obținem $\displaystyle\int_0^4 g^{-1} = 4 - \frac{7}{4} = \frac{9}{4}$.
+\emph{Pasul 1: liniarizarea radicalului.} Fie $y_{n}(x)=\frac1n\ln\bigl(1+x^{n}+x^{2n}\bigr)\in\bigl[0,\frac{\ln3}{n}\bigr]$, astfel încât $\sqrt[n]{1+x^{n}+x^{2n}}-1=e^{y_{n}(x)}-1$. Din formula lui Taylor--Lagrange (Teorema 2.85), $e^{y}-1=y+\frac{y^{2}}{2}e^{\theta y}$ cu $\theta\in(0,1)$, deci
+\[ 0\ \le\ e^{y}-1-y\ \le\ \frac32\,y^{2}\qquad(0\le y\le\ln3) . \]
+Pe de altă parte, $\ln(1+v)\le v$ dă $\ln\bigl(1+x^{n}+x^{2n}\bigr)\le x^{n}+x^{2n}\le2x^{n}$, adică $n^{2}y_{n}(x)^{2}\le4x^{2n}$. Notând
+\[ A_{n}=n\int_{0}^{1}\ln\bigl(1+x^{n}+x^{2n}\bigr)dx=n^{2}\int_{0}^{1}y_{n}(x)\,dx , \]
+obținem, prin monotonia integralei (Teorema 4.17),
+\[ \begin{gathered} 0\ \le\ n^{2}\int_{0}^{1}\left(\sqrt[n]{1+x^{n}+x^{2n}}-1\right)dx-A_{n}\\ \le\ \frac32\int_{0}^{1}4x^{2n}\,dx=\frac{6}{2n+1}\ \longrightarrow\ 0 . \end{gathered} \]
+Rămâne de calculat $\lim A_{n}$.
 
-\emph{Atingerea minorantului.} Pentru $f = g^{-1}$ (continuă și care verifică ipoteza cu egalitate) minorantul este atins. Așadar $\displaystyle\min \int_0^4 f(x)\,dx = \frac{9}{4}$.
+\emph{Pasul 2: substituția $t=x^{n}$.} Fie $g:[0,1]\to\RR$, $g(t)=\frac{\ln(1+t+t^{2})}{t}$ pentru $t>0$ și $g(0)=1$. Funcția $g$ este continuă (în $0$: $g(t)=\frac{\ln(1+v)}{v}\,(1+t)\to1$, cu $v=t+t^{2}\to0$) și, din nou prin $\ln(1+v)\le v$, $0\le g(t)\le1+t\le2$. Cum $\ln\bigl(1+x^{n}+x^{2n}\bigr)=x^{n}g(x^{n})$, substituția $t=x^{n}$, $x=t^{1/n}$ dă
+\[ A_{n}=\int_{0}^{1}g(x^{n})\,x\cdot nx^{n-1}\,dx=\int_{0}^{1}g(t)\,t^{1/n}\,dt , \]
+cu integrand continuu pe $[0,1]$. Atunci
+\[ \begin{aligned} 0\le\int_{0}^{1}g(t)\,dt-A_{n}&=\int_{0}^{1}g(t)\bigl(1-t^{1/n}\bigr)dt\\ &\le2\int_{0}^{1}\bigl(1-t^{1/n}\bigr)dt=2\Bigl(1-\frac{n}{n+1}\Bigr)=\frac{2}{n+1}\to0 , \end{aligned} \]
+deci $\lim A_{n}=\int_{0}^{1}g(t)\,dt$.
 
-\emph{Ideea:} condiția $g(f(x)) \ge x$, cu $g$ strict crescătoare, se „inversează'' într-o minorare punctuală $f \ge g^{-1}$, iar aria de sub graficul lui $g^{-1}$ se citește imediat din Young, fără a calcula explicit $g^{-1}$.
+\emph{Pasul 3: calculul integralei prin serii finite.} Pentru $t\in[0,1)$,
+\[ \frac{d}{dt}\ln\bigl(1+t+t^{2}\bigr)=\frac{1+2t}{1+t+t^{2}}=\frac{(1+2t)(1-t)}{1-t^{3}}=\frac{1+t-2t^{2}}{1-t^{3}} , \]
+iar suma progresiei geometrice, $\frac{1}{1-t^{3}}=\sum_{j=0}^{N-1}t^{3j}+\frac{t^{3N}}{1-t^{3}}$, dă
+\[ \frac{1+2t}{1+t+t^{2}}=\sum_{j=0}^{N-1}\bigl(t^{3j}+t^{3j+1}-2t^{3j+2}\bigr)+t^{3N}\,\frac{1+2t}{1+t+t^{2}} , \]
+identitate valabilă și în $t=1$, prin continuitate. Integrând pe $[0,t]$:
+\[ \begin{gathered} \ln\bigl(1+t+t^{2}\bigr)=\sum_{j=0}^{N-1}\left(\frac{t^{3j+1}}{3j+1}+\frac{t^{3j+2}}{3j+2}-\frac{2t^{3j+3}}{3j+3}\right)+\rho_{N}(t),\\ \rho_{N}(t)=\int_{0}^{t}s^{3N}\,\frac{1+2s}{1+s+s^{2}}\,ds . \end{gathered} \]
+Restul nu mai are nicio singularitate: din $1+2s\le2(1+s+s^{2})$ rezultă $0\le\rho_{N}(t)\le\frac{2t^{3N+1}}{3N+1}$. Împărțim prin $t$ și integrăm pe $[0,1]$:
+\[ \begin{gathered} \int_{0}^{1}g(t)\,dt=\sum_{j=0}^{N-1}\left(\frac{1}{(3j+1)^{2}}+\frac{1}{(3j+2)^{2}}-\frac{2}{(3j+3)^{2}}\right)+\varepsilon_{N},\\ 0\le\varepsilon_{N}\le\frac{2}{(3N+1)^{2}} . \end{gathered} \]
+Suma finită se rescrie: toți $k\le3N$ apar cu $\frac1{k^{2}}$, cu excepția multiplilor lui $3$, care apar cu $-\frac{2}{k^{2}}$; deci ea este
+\[ S_{3N}-3\sum_{j=1}^{N}\frac{1}{(3j)^{2}}=S_{3N}-\frac13\,S_{N}\ \xrightarrow[N\to\infty]{}\ S-\frac S3=\frac{2S}{3} . \]
+Cum $\varepsilon_{N}\to0$, rezultă $\int_{0}^{1}g=\frac{2S}{3}=\frac{\pi^{2}}{9}$ și, cumulând pașii,
+\[ \boxed{\ \lim_{n\to\infty}\ n^{2}\int_{0}^{1}\left(\sqrt[n]{1+x^{n}+x^{2n}}-1\right)dx=\frac{\pi^{2}}{9}\ }\approx1{,}09662 . \]
+\emph{Observație 1 (de ce $1+t+t^{2}$).} Polinomul a fost ales pentru identitatea $1+t+t^{2}=\frac{1-t^{3}}{1-t}$: formal, $\ln(1+t+t^{2})=\ln(1-t^{3})-\ln(1-t)$, iar seriile $-\ln(1-t)=\sum_{k\ge1}\frac{t^{k}}{k}$ și $-\ln(1-t^{3})=\sum_{j\ge1}\frac{t^{3j}}{j}$ produc exact coeficienții de mai sus: $\frac1k$ pentru $3\nmid k$ și $\frac1k-\frac3k=-\frac2k$ pentru $3\mid k$. Am evitat însă logaritmii $\ln(1-t)$, singulari în $1$, lucrând direct cu derivata $\frac{1+2t}{1+t+t^{2}}$: restul $\rho_{N}$ rămâne mărginit uniform, iar totul se reduce la integrale Riemann obișnuite.
+
+\emph{Observație 2 (verificare numerică).} Expresia de sub limită valorează $1{,}02936$ la $n=10$; $1{,}08911$ la $n=100$; $1{,}09586$ la $n=1000$; $1{,}09655$ la $n=10\,000$ --- față de $\frac{\pi^{2}}{9}=1{,}09662\ldots$; convergența are ordinul $\frac1n$, în acord cu estimările de la Pașii 1--2.
 \vspace{1mm}\hrule
 
 
 
 \prob{onm}{ONM.13}{}
+Fie $\varphi:\mathbb{R}\to\mathbb{R}$ o funcție continuă și periodică, de perioadă $T>0$,
+fie $m=\min\varphi$, $M=\max\varphi$ și fie $a\in\mathbb{R}$. Definim
+$f:\mathbb{R}\to\mathbb{R}$ prin $f(x)=\varphi\bigl(\ln|x|\bigr)$ pentru $x\neq0$ și $f(0)=a$.
 \begin{parti}
-  \item Determinați funcțiile $f:\mathbb{R}\to\mathbb{R}$ care admit primitive și
-        satisfac $f(2x)=f(x)$ pentru orice $x\in\mathbb{R}$.
-  \item Fie $a\in\mathbb{R}$ și $g_a:\mathbb{R}\to\mathbb{R}$,
-        $g_a(x)=\sin\bigl(2\pi\log_2|x|\bigr)$ pentru $x\neq0$, $g_a(0)=a$.
-        Arătați că $g_a$ nu admite primitive, oricare ar fi $a$, deși pentru
-        $a\in[-1,1]$ are proprietatea lui Darboux.
+  \item Arătați că $f$ are proprietatea lui Darboux dacă și numai dacă $a\in[m,M]$.
+  \item Arătați că $f$ admite primitive dacă și numai dacă $\varphi$ este constantă și
+        $a$ este egal cu valoarea ei.
 \end{parti}
-\sol \textbf{(a)} Răspuns: exact funcțiile constante (care, evident, verifică relația și admit primitive).
+\sol Notăm $\lambda=e^{T}>1$. Totul decurge din două observații.
 
-Fie $f$ o soluție și $F$ o primitivă a sa. Funcția $u(x)=F(2x)-2F(x)$ este derivabilă pe $\mathbb{R}$, cu
-\[ u'(x)=2f(2x)-2f(x)=0 , \]
-deci $u$ este constantă pe $\mathbb{R}$ (corolarul teoremei lui Lagrange): $u(x)=u(0)=-F(0)$. Notând $G(x)=F(x)-F(0)$, relația $F(2x)=2F(x)-F(0)$ devine
-\[ G(2x)=2G(x)\qquad\text{pentru orice }x\in\mathbb{R},\qquad G(0)=0 . \]
-Prin inducție, $G(x)=2^{n}G\bigl(\frac{x}{2^{n}}\bigr)$ pentru orice $n\in\mathbb{N}$. Fie $x\neq0$. Atunci
-\[ \frac{G(x)}{x}=\frac{G\bigl(\frac{x}{2^{n}}\bigr)-G(0)}{\frac{x}{2^{n}}-0}\ \xrightarrow[n\to\infty]{}\ G'(0)=f(0) , \]
-căci $\frac{x}{2^{n}}\to0$, $\frac{x}{2^{n}}\neq0$, iar $G$ este derivabilă în $0$. Membrul stâng nu depinde de $n$, deci $G(x)=f(0)\,x$ pentru orice $x\neq0$, și la fel pentru $x=0$. Atunci $f(x)=G'(x)=f(0)$ pentru orice $x$: $f$ este constantă.
+\emph{(i) Invarianța la dilatare.} Pentru $x\neq0$, $\ln|\lambda x|=T+\ln|x|$, deci $f(\lambda x)=\varphi(\ln|x|+T)=f(x)$; pentru $x=0$ relația este evidentă. Așadar $f(\lambda x)=f(x)$ pentru orice $x\in\mathbb{R}$.
 
-\textbf{(b)} \emph{Relația funcțională.} Pentru $x\neq0$, $\log_2|2x|=1+\log_2|x|$, iar sinusul are perioada $2\pi$, deci $g_a(2x)=g_a(x)$; pentru $x=0$ relația este $g_a(0)=g_a(0)$. Așadar $g_a$ verifică relația de la (a), oricare ar fi $a$.
+\emph{(ii) Oscilația lângă $0$.} Fiind continuă și periodică, $\varphi$ are imaginea $\varphi(\mathbb{R})=\varphi([0,T])=[m,M]$ (Weierstrass și Darboux pe $[0,T]$), iar pe orice interval de lungime $T$ ia toate aceste valori. Fie $\delta>0$ și $s<\ln\delta-T$. Când $x$ parcurge $[e^{s},e^{s+T}]\subset(0,\delta)$, $\ln x$ parcurge $[s,s+T]$; la fel pentru $-x\in[-e^{s+T},-e^{s}]\subset(-\delta,0)$. Prin urmare
+\[ \begin{gathered} f\bigl((0,\delta)\bigr)=f\bigl((-\delta,0)\bigr)=[m,M]\quad\text{pentru orice }\delta>0,\\ f\bigl(\mathbb{R}\setminus\{0\}\bigr)=[m,M] . \end{gathered} \tag{$\ast$} \]
 
-\emph{Nu admite primitive.} $g_a$ nu este constantă: $g_a\bigl(2^{1/4}\bigr)=\sin\frac\pi2=1$ și $g_a(1)=\sin0=0$. Dacă $g_a$ ar admite primitive, punctul (a) ar da că $g_a$ este constantă, contradicție.
+\textbf{(a)} „$\Leftarrow$'': fie $a\in[m,M]$ și $I$ un interval nedegenerat. Dacă $0\notin I$, $f$ este continuă pe $I$ (compunere de funcții continue), deci $f(I)$ este interval. Dacă $0\in I$, atunci $I$ conține un interval $(0,\delta)$ sau $(-\delta,0)$, deci, din $(\ast)$, $[m,M]\subseteq f(I)\subseteq[m,M]\cup\{a\}=[m,M]$: $f(I)=[m,M]$, un interval.
 
-\emph{Are proprietatea lui Darboux pentru $a\in[-1,1]$.} Fie $I$ un interval nedegenerat. Dacă $0\notin I$, atunci $g_a$ este continuă pe $I$, deci $g_a(I)$ este interval. Dacă $0\in I$, atunci $I$ conține un interval de forma $[0,\delta)$ sau $(-\delta,0]$, cu $\delta>0$; alegem un întreg $k$ cu $2^{k+1}<\delta$. Când $|x|$ parcurge $[2^{k},2^{k+1}]$, $\log_2|x|$ parcurge $[k,k+1]$, deci $g_a$ ia toate valorile din $[-1,1]$. Astfel $[-1,1]\subseteq g_a(I)\subseteq[-1,1]$ (aici folosim $a\in[-1,1]$), adică $g_a(I)=[-1,1]$, un interval.\\[2pt]
-\emph{Observație 1 (unde se rupe analogia cu $\sin\frac1x$).} Funcția $\sin\frac1x$, prelungită cu $0$, admite primitive, iar $\sin(2\pi\log_2|x|)$ nu, deși ambele oscilează infinit de des lângă $0$ între $-1$ și $1$. Diferența este viteza oscilației: $\sin\frac1x$ oscilează atât de repede încât media ei pe $[0,x]$ tinde la $0$, pe când oscilația „pe scară logaritmică'' este invariantă la dilatarea $x\mapsto2x$, deci media pe $[0,x]$ nu se stabilizează. Concret, pentru $x>0$, cu $\omega=\frac{2\pi}{\ln2}$ și substituția $t=e^{s}$,
-\[ \frac1x\int_0^{x}\sin\bigl(2\pi\log_2t\bigr)\,dt=\frac{\sin(\omega\ln x)-\omega\cos(\omega\ln x)}{1+\omega^{2}} , \]
-funcție periodică și neconstantă de $\ln x$, fără limită când $x\searrow0$. Aceasta confirmă direct că integrala cu capăt variabil nu este derivabilă în $0$.
+„$\Rightarrow$'': presupunem $a\notin[m,M]$, de pildă $a>M$ (cazul $a<m$ este analog). Pe $I=[0,1]$, $f$ ia valoarea $a$ (în $0$) și valoarea $M$ (în $(0,1)$, din $(\ast)$), dar nicio valoare din intervalul $(M,a)$, căci $f(I)\subseteq[m,M]\cup\{a\}$. Deci $f(I)$ nu este interval și $f$ nu are proprietatea lui Darboux.
 
-\emph{Observație 2 (verificare numerică).} Pentru $x=1$, formula dă $-\frac{\omega}{1+\omega^{2}}\approx-0{,}10899$, iar pentru $x=\sqrt2$ dă $+0{,}10899$, în acord cu integrarea numerică directă.
+\textbf{(b)} „$\Leftarrow$'': dacă $\varphi\equiv c$ și $a=c$, atunci $f\equiv c$, cu primitiva $F(x)=cx$.
+
+„$\Rightarrow$'': fie $F$ o primitivă a lui $f$. Funcția $u(x)=F(\lambda x)-\lambda F(x)$ este derivabilă pe $\mathbb{R}$, iar din (i)
+\[ u'(x)=\lambda f(\lambda x)-\lambda f(x)=0 , \]
+deci $u$ este constantă (corolarul teoremei lui Lagrange): $u(x)=u(0)=(1-\lambda)F(0)$. Pentru $G(x)=F(x)-F(0)$ aceasta se scrie
+\[ G(\lambda x)=\lambda\,G(x)\quad\text{pentru orice }x\in\mathbb{R},\qquad G(0)=0 , \]
+iar prin inducție $G(x)=\lambda^{n}G\bigl(\frac{x}{\lambda^{n}}\bigr)$ pentru orice $n\in\mathbb{N}$. Fie $x\neq0$. Cum $\frac{x}{\lambda^{n}}\to0$, $\frac{x}{\lambda^{n}}\neq0$, iar $G$ este derivabilă în $0$ cu $G'(0)=f(0)=a$,
+\[ \frac{G(x)}{x}=\frac{G\bigl(\frac{x}{\lambda^{n}}\bigr)-G(0)}{\frac{x}{\lambda^{n}}-0}\ \xrightarrow[n\to\infty]{}\ a . \]
+Membrul stâng nu depinde de $n$, deci $G(x)=ax$ pentru orice $x$ (și pentru $x=0$). Atunci $f=G'\equiv a$ pe $\mathbb{R}$, iar $\varphi(s)=f(e^{s})=a$ pentru orice $s\in\mathbb{R}$: $\varphi$ este constantă, egală cu $a$.\\[2pt]
+\emph{Observație 1 (comparație cu $\sin\frac1x$).} Funcția $\sin\frac1x$, prelungită cu $0$ în origine, admite primitive, deși oscilează lângă $0$ la fel de „complet''. Diferența se vede pe media $\mu(x)=\frac1x\int_{0}^{x}f(t)\,dt$, $x>0$ (integrală Riemann: $f$ este mărginită și continuă pe $(0,x]$), care trebuie să tindă la $f(0)$ dacă $f$ admite primitive. Pentru $\sin\frac1x$, oscilațiile se accelerează în variabila $x$, iar media tinde la $0$. Aici, substituția $t=\lambda s$ și (i) dau
+\[ \mu(\lambda x)=\frac{1}{\lambda x}\int_{0}^{\lambda x}f(t)\,dt=\frac1x\int_{0}^{x}f(\lambda s)\,ds=\mu(x) , \]
+deci $\mu$ este o funcție periodică de $\ln x$: are limită în $0$ doar dacă este constantă, $\mu\equiv c$, adică $\int_{0}^{x}f=cx$, de unde, derivând, $f\equiv c$ pe $(0,\infty)$. Media se face pe scară logaritmică, unde oscilația nu se accelerează deloc --- și de aceea nicio alegere a lui $a$ nu salvează existența primitivelor.
+
+\emph{Observație 2 (Darboux fără primitive).} Pentru $\varphi(s)=\sin\frac{2\pi s}{\ln2}$ (perioada $T=\ln2$) obținem $f(x)=\sin\bigl(2\pi\log_{2}|x|\bigr)$, cu $[m,M]=[-1,1]$: pentru $a\in[-1,1]$ funcția are proprietatea lui Darboux, dar, din (b), nu admite primitive pentru niciun $a$. Este un exemplu explicit că reciproca teoremei „orice funcție care admite primitive are proprietatea lui Darboux'' este falsă.
 \vspace{1mm}\hrule
 
 \prob{onm}{ONM.14}{}
@@ -1714,3 +1737,128 @@ cea care permite pasul prin părți; pentru $f$ doar continuă, ONM.6 rămâne
 adevărată, dar termenul de ordinul al doilea poate să nu existe.
 \vspace{1mm}\hrule
 
+\prob{onm}{ONM.20}{}
+Fie $\mathcal{C}$ mulțimea funcțiilor $f:[0,1]\to\mathbb{R}$ de două ori derivabile, cu
+$|f''(x)|\le1$ pentru orice $x\in[0,1]$. Pentru $f\in\mathcal{C}$ notăm
+$I(f)=\displaystyle\int_0^1 f(x)\,dx$.
+\begin{parti}
+  \item Arătați că $\left|I(f)-\dfrac{f(0)+f(1)}{2}\right|\le\dfrac1{12}$ pentru orice
+        $f\in\mathcal{C}$ și determinați funcțiile pentru care are loc egalitatea.
+  \item Arătați că $\left|I(f)-f\!\left(\tfrac12\right)\right|\le\dfrac1{24}$ pentru orice
+        $f\in\mathcal{C}$ și determinați funcțiile pentru care are loc egalitatea.
+  \item Arătați că
+        $\left|I(f)-\dfrac{f(0)+4f\left(\frac12\right)+f(1)}{6}\right|<\dfrac1{18}$
+        pentru orice $f\in\mathcal{C}$.
+\end{parti}
+\sol Ipoteza nu spune că $f''$ este integrabilă, deci nu vom scrie erorile ca integrale ale lui $f''$. Ideea este alta: condiția $|f''|\le1$ spune exact că funcțiile
+\[ g_{+}(x)=\frac{x^{2}}{2}+f(x),\qquad g_{-}(x)=\frac{x^{2}}{2}-f(x) \]
+sunt \emph{convexe}. Într-adevăr, $g_{\pm}''=1\pm f''\ge0$, deci $g_{\pm}'$ sunt crescătoare (Lagrange), adică $g_{\pm}$ sunt convexe (Teorema 2.80). Pentru o funcție convexă derivabilă $g:[0,1]\to\mathbb{R}$ folosim două comparații elementare:
+
+\emph{(C) coarda.} Din definiția convexității, cu $x=(1-x)\cdot0+x\cdot1$, avem $g(x)\le(1-x)g(0)+xg(1)$; integrând, $\int_0^1g\le\frac{g(0)+g(1)}{2}$. Egalitatea cere ca diferența continuă și nenegativă dintre coardă și $g$ să aibă integrala $0$, deci să fie nulă (Teorema 4.20): $g$ este afină.
+
+\emph{(T) tangenta în $\frac12$.} Din Lagrange, $g(x)-g(\tfrac12)-g'(\tfrac12)(x-\tfrac12)=\bigl(g'(\xi)-g'(\tfrac12)\bigr)(x-\tfrac12)\ge0$, cu $\xi$ între $x$ și $\frac12$, căci $g'$ este crescătoare. Integrând și folosind $\int_0^1(x-\frac12)dx=0$: $\int_0^1g\ge g(\frac12)$, cu egalitate numai dacă $g$ coincide cu tangenta, adică este afină.
+
+Pentru $h(x)=\frac{x^{2}}{2}$ avem $\int_0^1h=\frac16$, $\frac{h(0)+h(1)}{2}=\frac14$, $h(\frac12)=\frac18$. Notăm $T(f)=\frac{f(0)+f(1)}{2}$ și $M(f)=f(\frac12)$.
+
+\noindent\textbf{(a)} Aplicăm (C) lui $g_{+}$ și $g_{-}$:
+\[ \frac16\pm I(f)\ \le\ \frac14\pm T(f)\quad\Longleftrightarrow\quad \pm\bigl(I(f)-T(f)\bigr)\le\frac1{12} , \]
+deci $|I(f)-T(f)|\le\frac1{12}$. Egalitatea $I-T=\frac1{12}$ are loc exact când $g_{+}$ este afină, adică $f(x)=-\frac{x^{2}}{2}+px+q$; egalitatea $I-T=-\frac1{12}$, exact când $g_{-}$ este afină, adică $f(x)=\frac{x^{2}}{2}+px+q$. Răspuns: egalitate pentru $f(x)=\pm\frac{x^{2}}{2}+px+q$, $p,q\in\mathbb{R}$ (funcții care aparțin, evident, lui $\mathcal{C}$).
+
+\noindent\textbf{(b)} Aplicăm (T) lui $g_{\pm}$:
+\[ \frac16\pm I(f)\ \ge\ \frac18\pm M(f)\quad\Longleftrightarrow\quad \mp\bigl(I(f)-M(f)\bigr)\le\frac16-\frac18=\frac1{24} , \]
+deci $|I(f)-M(f)|\le\frac1{24}$. Egalitatea $I-M=-\frac1{24}$ are loc exact pentru $f(x)=-\frac{x^{2}}{2}+px+q$, iar $I-M=\frac1{24}$ exact pentru $f(x)=\frac{x^{2}}{2}+px+q$. Răspuns: aceleași funcții, $f(x)=\pm\frac{x^{2}}{2}+px+q$ --- dar cu \emph{semnele erorilor inversate} față de (a).
+
+\noindent\textbf{(c)} Cuadratura lui Simpson este o medie ponderată a celor două:
+\[ \begin{gathered} S(f)=\frac{f(0)+4f\left(\frac12\right)+f(1)}{6}=\frac13\,T(f)+\frac23\,M(f),\\ I-S=\frac13\,(I-T)+\frac23\,(I-M) . \end{gathered} \]
+Din (a) și (b),
+\[ |I(f)-S(f)|\le\frac13\cdot\frac1{12}+\frac23\cdot\frac1{24}=\frac1{36}+\frac1{36}=\frac1{18} . \]
+Inegalitatea este strictă. Să presupunem că $I-S=\frac1{18}$ (cazul $-\frac1{18}$ se reduce la acesta înlocuind $f$ cu $-f\in\mathcal{C}$). Cum $I-T\le\frac1{12}$ și $I-M\le\frac1{24}$, suma ponderată atinge $\frac1{18}$ numai dacă $I-T=\frac1{12}$ \emph{și} $I-M=\frac1{24}$. Din (a), $f=-\frac{x^{2}}{2}+px+q$; din (b), $f=\frac{x^{2}}{2}+p'x+q'$. Scăzând, $x^{2}$ ar fi o funcție afină --- absurd. Deci $|I(f)-S(f)|<\frac1{18}$ pentru orice $f\in\mathcal{C}$.\\[2pt]
+\emph{Observație 1 (de ce Simpson este mai bun).} Funcțiile extremale din (a) și (b) coincid, dar erorile lor au semne opuse: pentru $f=\frac{x^{2}}{2}$, $I-T=-\frac1{12}$ și $I-M=\frac1{24}$, iar în combinația $\frac13(I-T)+\frac23(I-M)$ ele se anulează exact --- Simpson integrează exact polinoamele de grad cel mult $3$. Aceasta este originea ponderilor $1,4,1$.
+
+\emph{Observație 2 (constanta optimă).} Majorarea $\frac1{18}$ provine din inegalitatea triunghiului și nu este cea mai bună posibilă: se poate arăta (cu nucleul lui Peano al formulei lui Simpson) că marginea superioară exactă a lui $|I(f)-S(f)|$ pe $\mathcal{C}$ este $\frac1{81}\approx0{,}0123$, față de $\frac1{18}\approx0{,}0556$. Enunțul cere însă doar inegalitatea strictă, care rezultă elegant din incompatibilitatea cazurilor de egalitate.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.21}{}
+Fie $n\ge1$ un număr întreg și fie $\mathcal{K}$ mulțimea funcțiilor continue și concave
+$f:[0,1]\to[0,\infty)$ care nu sunt identic nule.
+\begin{parti}
+  \item Arătați că
+        $\displaystyle\int_0^1 x^{n}f(x)\,dx\le\frac{2}{n+2}\int_0^1 f(x)\,dx$
+        pentru orice $f\in\mathcal{K}$ și determinați cazul de egalitate.
+  \item Determinați cea mai mare constantă $c_n$ cu proprietatea că
+        $\displaystyle\int_0^1 x^{n}f(x)\,dx\ge c_n\int_0^1 f(x)\,dx$ pentru orice
+        $f\in\mathcal{K}$.
+\end{parti}
+\sol Răspuns: la (a), egalitate exact pentru $f(x)=kx$, $k>0$; la (b), $c_{n}=\dfrac{2}{(n+1)(n+2)}$, atinsă pentru $f(x)=1-x$.
+
+Rapoartele pentru funcțiile-test $x$, $1$, $1-x$ sunt $\frac{2}{n+2}$, $\frac{1}{n+1}$, respectiv $\frac{2}{(n+1)(n+2)}$: o funcție concavă și nenegativă „stă'' între cele două funcții liniare care se anulează la câte un capăt, iar acestea sunt extremalele. Metoda: comparăm $f$ cu funcția liniară extremală potrivită, astfel încât diferența să schimbe semnul exact acolo unde îl schimbă ponderea.
+
+\noindent\textbf{(a)} Fie $\lambda=\frac{2}{n+2}\in(0,1)$ și $x_{0}=\lambda^{1/n}\in(0,1)$, punctul în care $x^{n}-\lambda$ schimbă semnul. Fie $k=\frac{f(x_{0})}{x_{0}}\ge0$ și $h(x)=f(x)-kx$.
+
+\emph{Semnul lui $h$.} Pentru $0<x\le x_{0}$, scriem $x=(1-t)\cdot0+t\,x_{0}$ cu $t=\frac{x}{x_{0}}\in(0,1]$; din concavitate și $f(0)\ge0$, $f(x)\ge(1-t)f(0)+tf(x_{0})\ge t f(x_{0})=kx$. Pentru $x_{0}\le x\le1$, $x_{0}=(1-s)\cdot0+s\,x$ cu $s=\frac{x_{0}}{x}$, deci $f(x_{0})\ge s f(x)$, adică $f(x)\le kx$. Așadar $h\ge0$ pe $[0,x_{0}]$ și $h\le0$ pe $[x_{0},1]$, iar $(x^{n}-\lambda)\,h(x)\le0$ pe $[0,1]$.
+
+\emph{Integrarea.} Cum $\int_0^1(x^{n}-\lambda)\,x\,dx=\frac{1}{n+2}-\frac{\lambda}{2}=0$ (exact așa a fost ales $\lambda$),
+\[ \begin{aligned} \int_0^1(x^{n}-\lambda)f(x)\,dx&=\int_0^1(x^{n}-\lambda)\,h(x)\,dx+k\int_0^1(x^{n}-\lambda)\,x\,dx\\ &=\int_0^1(x^{n}-\lambda)\,h(x)\,dx\le0 , \end{aligned} \]
+adică $\int_0^1x^{n}f\le\frac{2}{n+2}\int_0^1f$.
+
+\emph{Egalitatea} cere ca funcția continuă și nepozitivă $(x^{n}-\lambda)h$ să aibă integrala $0$, deci să fie nulă (Teorema 4.20): $h(x)=0$ pentru $x\neq x_{0}$, deci, prin continuitate, $f(x)=kx$ pe $[0,1]$, cu $k>0$ fiindcă $f\not\equiv0$. Reciproc, $f(x)=kx$ dă $\int_0^1x^{n+1}k\,dx=\frac{k}{n+2}=\frac{2}{n+2}\cdot\frac k2$: egalitate.
+
+\noindent\textbf{(b)} Fie $\mu=\frac{2}{(n+1)(n+2)}\in(0,1)$ și $x_{1}=\mu^{1/n}\in(0,1)$. De data aceasta comparăm cu $1-x$: fie $\ell=\frac{f(x_{1})}{1-x_{1}}\ge0$ și $h(x)=f(x)-\ell(1-x)$.
+
+\emph{Semnul lui $h$.} Pentru $x_{1}\le x\le1$, $x=(1-t)x_{1}+t\cdot1$ cu $t=\frac{x-x_{1}}{1-x_{1}}$, deci $f(x)\ge(1-t)f(x_{1})+tf(1)\ge(1-t)f(x_{1})=\ell(1-x)$. Pentru $0\le x<x_{1}$, $x_{1}=(1-s)x+s\cdot1$ cu $1-s=\frac{1-x_{1}}{1-x}$, deci $f(x_{1})\ge(1-s)f(x)$, adică $f(x)\le\ell(1-x)$. Așadar $h\le0$ pe $[0,x_{1}]$, $h\ge0$ pe $[x_{1},1]$ și $(x^{n}-\mu)\,h(x)\ge0$ pe $[0,1]$.
+
+\emph{Integrarea.} Acum $\int_0^1(x^{n}-\mu)(1-x)\,dx=\frac{1}{(n+1)(n+2)}-\frac{\mu}{2}=0$, deci
+\[ \int_0^1(x^{n}-\mu)f(x)\,dx=\int_0^1(x^{n}-\mu)\,h(x)\,dx\ge0 , \]
+adică $\int_0^1x^{n}f\ge\mu\int_0^1f$ pentru orice $f\in\mathcal{K}$: constanta $\mu$ are proprietatea cerută.
+
+\emph{Optimalitatea.} Pentru $f(x)=1-x\in\mathcal{K}$ avem $\int_0^1x^{n}(1-x)\,dx=\frac{1}{n+1}-\frac{1}{n+2}=\frac{1}{(n+1)(n+2)}=\mu\int_0^1(1-x)\,dx$. Dacă o constantă $c>\mu$ ar avea proprietatea, am obține $\mu\cdot\frac12\ge c\cdot\frac12$, fals. Deci $c_{n}=\dfrac{2}{(n+1)(n+2)}$ (ca la (a), egalitatea are loc exact pentru $f(x)=\ell(1-x)$, $\ell>0$).\\[2pt]
+\emph{Observație 1 (de unde vin constantele).} Ambele inegalități au aceeași structură: ponderea $x^{n}-c$ schimbă semnul o singură dată, în $x_{c}=c^{1/n}$, iar $c$ se alege astfel încât ponderea să fie „ortogonală'' pe funcția extremală ($\int(x^{n}-c)x=0$, respectiv $\int(x^{n}-c)(1-x)=0$). Concavitatea asigură apoi că $f$ minus extremala scalată schimbă semnul tot o singură dată, în același punct --- este mecanismul din demonstrația inegalității lui Cebîșev, adaptat la funcții concave.
+
+\emph{Observație 2 (verificare).} Pentru $n=2$: $\frac{2}{n+2}=\frac12$ și $c_{2}=\frac16$, iar funcțiile-test $1$ și cortul $\min(2x,2-2x)$ dau rapoartele $\frac13$ și $\frac{7}{24}$, ambele în $\bigl[\frac16,\frac12\bigr]$; pentru $n=5$ intervalul este $\bigl[\frac1{21},\frac27\bigr]$, iar cortul dă $\frac{3}{32}$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.22}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție continuă și, pentru $\alpha>0$,
+$I(\alpha)=\displaystyle\int_0^1 f(x^{\alpha})\,dx$.
+\begin{parti}
+  \item Arătați că
+        \[ \lim_{t\to0}\frac{I(1+t)-I(1)}{t}=-\int_0^1 f(x)\,(1+\ln x)\,dx , \]
+        integrala din membrul drept (improprie în $0$) fiind convergentă.
+  \item Arătați că, dacă $I(\alpha)\le I(1)$ pentru orice $\alpha>0$, atunci
+        $\displaystyle\int_0^1 f(x)\ln x\,dx=-\int_0^1 f(x)\,dx$.
+  \item Arătați că funcția $f(x)=8x-9x^{2}$ verifică ipoteza de la punctul (b).
+\end{parti}
+\sol Fie $K=\max_{[0,1]}|f|$. Funcția $f$ este doar continuă, deci nu putem deriva $f(x^{\alpha})$ în raport cu $\alpha$; mutăm parametrul de pe $f$ pe o putere, prin substituția $y=x^{\alpha}$ (ca în ONM.16), iar singularitatea din $0$ o tratăm explicit, cu limite de integrale pe $[\varepsilon,1]$.
+
+\noindent\textbf{(a)} \emph{Pasul 1: convergența.} Pentru $\varepsilon\in(0,1)$, $\int_\varepsilon^1(-\ln y)\,dy=\bigl[y-y\ln y\bigr]_\varepsilon^1=1-\varepsilon+\varepsilon\ln\varepsilon\to1$. Funcția $\varepsilon\mapsto\int_\varepsilon^1(K+f(y))(-\ln y)\,dy$ este descrescătoare (integrand $\ge0$) și mărginită de $2K$, deci are limită când $\varepsilon\searrow0$; scăzând $K\int_\varepsilon^1(-\ln y)\,dy$, rezultă că $B=\int_0^1f(y)\ln y\,dy$ este convergentă, cu $|B|\le K$. Analog, primitiva $2\sqrt y\,\ln^{2}y-8\sqrt y\,\ln y+16\sqrt y$ dă
+\[ \int_\varepsilon^1\frac{\ln^{2}y}{\sqrt y}\,dy\ \le\ 16\qquad(0<\varepsilon<1) . \tag{1} \]
+
+\emph{Pasul 2: substituția.} Fie $\alpha>0$ și $\varepsilon\in(0,1)$. Substituția $y=x^{\alpha}$, $x=y^{1/\alpha}$, pe $[\varepsilon,1]$ dă
+\[ \int_\varepsilon^1f(x^{\alpha})\,dx=\frac1\alpha\int_{\varepsilon^{\alpha}}^1f(y)\,y^{\frac1\alpha-1}\,dy , \]
+iar membrul stâng diferă de $I(\alpha)$ cu cel mult $K\varepsilon$. Deci, pentru $\eta=\varepsilon^{\alpha}\searrow0$,
+\[ I(\alpha)=\frac1\alpha\lim_{\eta\searrow0}\int_\eta^1f(y)\,y^{\frac1\alpha-1}\,dy . \]
+
+\emph{Pasul 3: dezvoltarea în jurul lui $\alpha=1$.} Fie $0<|t|\le\frac13$ și $s=\frac{1}{1+t}-1=-\frac{t}{1+t}$, deci $|s|\le\frac12$ și $\frac1{1+t}=1+s$. Din Taylor--Lagrange (Teorema 2.85) pentru $e^{u}$, cu $u=s\ln y$:
+\[ y^{s}=1+s\ln y+r_{s}(y),\qquad r_{s}(y)=\frac{s^{2}\ln^{2}y}{2}\,e^{\theta s\ln y},\ \theta\in(0,1) . \]
+Pentru $y\in(0,1]$ și $|s|\le\frac12$, $e^{\theta s\ln y}=y^{\theta s}\le y^{-1/2}$, deci $|r_{s}(y)|\le\frac{s^{2}}{2}\cdot\frac{\ln^{2}y}{\sqrt y}$. Pe $[\eta,1]$:
+\[ \int_\eta^1f(y)\,y^{s}\,dy=\int_\eta^1f+s\int_\eta^1f(y)\ln y\,dy+\int_\eta^1f\,r_{s} . \]
+Când $\eta\searrow0$, membrul stâng (Pasul 2) și primii doi termeni din dreapta (Pasul 1) au limite, deci și ultimul termen are o limită $R(s)$, iar din (1), $|R(s)|\le K\frac{s^{2}}{2}\cdot16=8Ks^{2}$. Cu $A=\int_0^1f=I(1)$, Pasul 2 (cu $\alpha=1+t$, $\frac1\alpha=1+s$) dă
+\[ \begin{gathered} I(1+t)=(1+s)\bigl(A+sB+R(s)\bigr),\\ I(1+t)-I(1)=s(A+B)+s^{2}B+(1+s)R(s) . \end{gathered} \]
+Împărțim la $t$; cum $\frac st=-\frac{1}{1+t}$,
+\[ \frac{I(1+t)-I(1)}{t}=-\frac{A+B}{1+t}-\frac{1}{1+t}\bigl(sB+(1+s)R(s)\bigr) , \]
+iar $|sB+(1+s)R(s)|\le|s|K+12K s^{2}\to0$ când $t\to0$. Deci
+\[ \lim_{t\to0}\frac{I(1+t)-I(1)}{t}=-(A+B)=-\int_0^1f(x)\,(1+\ln x)\,dx . \]
+
+\noindent\textbf{(b)} Ipoteza spune că $\alpha=1$ este punct de maxim pentru $I$. Pentru $t>0$ câtul $\frac{I(1+t)-I(1)}{t}$ este $\le0$, iar pentru $t<0$ este $\ge0$; cum limita de la (a) există, ea este simultan $\le0$ și $\ge0$ (argumentul din teorema lui Fermat), deci este $0$:
+\[ \int_0^1f(x)\,(1+\ln x)\,dx=0\quad\Longleftrightarrow\quad\int_0^1f(x)\ln x\,dx=-\int_0^1f(x)\,dx . \]
+
+\noindent\textbf{(c)} Aici totul se calculează explicit:
+\[ I(\alpha)=\int_0^1\bigl(8x^{\alpha}-9x^{2\alpha}\bigr)dx=\frac{8}{\alpha+1}-\frac{9}{2\alpha+1},\qquad I(1)=4-3=1 , \]
+iar
+\[ \begin{aligned} I(1)-I(\alpha)&=\frac{(\alpha+1)(2\alpha+1)-8(2\alpha+1)+9(\alpha+1)}{(\alpha+1)(2\alpha+1)}\\ &=\frac{2\alpha^{2}-4\alpha+2}{(\alpha+1)(2\alpha+1)}=\frac{2(\alpha-1)^{2}}{(\alpha+1)(2\alpha+1)}\ \ge\ 0 \end{aligned} \]
+pentru orice $\alpha>0$. Deci $f$ verifică ipoteza de la (b), cu maximul $I(1)=1$ atins numai în $\alpha=1$. Verificăm și concluzia: din $\int_0^1x^{k}\ln x\,dx=-\frac{1}{(k+1)^{2}}$ (prin părți),
+\[ \int_0^1(8x-9x^{2})\ln x\,dx=-\frac84+\frac99=-1=-\int_0^1(8x-9x^{2})\,dx . \ \checkmark \]
+\emph{Observație 1 (reciproca este falsă).} Condiția de la (b) spune doar că $I'(1)=0$, nu că $1$ este punct de maxim: funcția $9x^{2}-8x$ (opusa celei de la (c)) verifică la fel relația $\int_0^1 f\ln x=-\int_0^1 f$, dar pentru ea $I(\alpha)=-1+\frac{2(\alpha-1)^{2}}{(\alpha+1)(2\alpha+1)}$, care are în $\alpha=1$ un \emph{minim}.
+
+\emph{Observație 2 (verificare numerică).} $I(0{,}5)=\frac56$, $I(1{,}5)=0{,}95$, $I(3)=\frac57$, toate sub $I(1)=1$; iar câtul simetric $\frac{I(1+t)-I(1-t)}{2t}$ este de ordinul $10^{-9}$ pentru $t=10^{-4}$, în acord cu $I'(1)=-(A+B)=-(1-1)=0$.
+\vspace{1mm}\hrule
