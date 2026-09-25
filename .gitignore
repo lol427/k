@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+!grafic_p12_nou.pdf

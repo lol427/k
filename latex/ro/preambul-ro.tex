@@ -1,0 +1,297 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF-8
+%% ============================================================
+%%  Analiță și Algebră pentru Olimpiadă — VOLUM COMPLET
+%%  Teorie + Probleme de Analiză + Probleme de Algebră
+%%  Compilare: xelatex (x3) pentru cuprins complet
+%% ============================================================
+\documentclass[11pt,a4paper]{report}
+
+%% ---- encoding (compatibil pdflatex si xelatex) ----
+\usepackage{iftex}
+\ifXeTeX
+  \usepackage{fontspec}
+  \setmainfont{Latin Modern Roman}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+\fi
+
+%% ---- limbă ----
+\usepackage[romanian]{babel}
+
+%% ---- matematică ----
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+%% ---- layout ----
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{caption}
+%% KDP: lets TeX loosen a line instead of pushing inline math into the margin
+\setlength{\emergencystretch}{3em}
+%% KDP: a heading never stays alone at the bottom of a page. Otherwise a breakable
+%% tcolorbox that cannot start under it is pushed to the next page and drawn over
+%% the running head (tcolorbox: "Using nobreak failed"). Same trick as needspace.sty.
+\makeatletter
+\newcommand{\needlines}[1]{\par\begingroup\dimen@=#1\baselineskip
+  \vskip\z@\@plus\dimen@ \penalty-100 \vskip\z@\@plus-\dimen@
+  \vskip\dimen@ \penalty9999 \vskip-\dimen@ \vskip\z@skip\endgroup}
+\makeatother
+\AtBeginDocument{%
+  \pretocmd{\section}{\needlines{9}}{}{\typeout{needlines: section not patched}}%
+  \pretocmd{\subsection}{\needlines{8}}{}{\typeout{needlines: subsection not patched}}%
+  \pretocmd{\subsubsection}{\needlines{6}}{}{\typeout{needlines: subsubsection not patched}}}
+\usepackage{geometry}
+%% Geometry identical to the printed books (VRAI LIVRES / interieurs_corriges).
+%% Values measured from the shipped PDFs:
+%%   - text block: 356.96pt = 4.9578in wide  => left = right = 2.2cm
+%%   - header: top margin 34.64pt + headheight 22pt => head rule at 56.64pt
+%%   - footer: page-number baseline 32.77pt above the bottom edge
+%% Do NOT change these without regenerating the covers: the spine width depends
+%% on the page count, and the page count depends on the text block.
+\geometry{paperwidth=6.69in,paperheight=9.45in,
+          left=2.2cm,right=2.2cm,top=34.64pt,bottom=32.77pt,
+          includehead,includefoot,headsep=8pt,footskip=16pt}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+
+%% ---- paleta cromatică unificată ----
+\definecolor{ink}{HTML}{1C2230}
+\definecolor{grey}{HTML}{6B7280}
+\definecolor{olm}{HTML}{2A9D8F}
+\definecolor{ojm}{HTML}{E76F51}
+\definecolor{onm}{HTML}{6A4C93}
+\definecolor{solcol}{HTML}{0B7A52}
+\definecolor{teoblue}{RGB}{25,55,105}
+\definecolor{obsgray}{RGB}{90,90,90}
+\definecolor{acc}{RGB}{80,40,10}
+
+%% ---- box-uri tehnice ----
+\newtcolorbox{teobox}[1]{%
+  enhanced,breakable,sharp corners,
+  colback=onm!6,colframe=onm,
+  colbacktitle=onm,coltitle=white,
+  borderline west={4pt}{0pt}{onm},
+  boxrule=0.4pt,left=10pt,top=4pt,bottom=4pt,
+  title={#1},fonttitle=\bfseries}
+\newtcolorbox{tehbox}[1]{%
+  enhanced,breakable,sharp corners,
+  colback=ojm!6,colframe=ojm,
+  colbacktitle=ojm,coltitle=white,
+  borderline west={4pt}{0pt}{ojm},
+  boxrule=0.4pt,left=10pt,top=4pt,bottom=4pt,
+  title={#1},fonttitle=\bfseries}
+
+%% ---- teoreme ----
+\theoremstyle{plain}
+\newtheorem{teorema}{Teoremă}[chapter]
+\newtheorem{propozitie}[teorema]{Propoziție}
+\newtheorem{lema}[teorema]{Lemă}
+\newtheorem{corolar}[teorema]{Corolar}
+\theoremstyle{definition}
+\newtheorem{definitie}[teorema]{Definiție}
+\newtheorem{exemplu}[teorema]{Exemplu}
+\newtheorem{aplicatie}[teorema]{Aplicație}
+\theoremstyle{remark}
+\newtheorem{observatie}[teorema]{Observație}
+% obs redefinit mai jos ca newenvironment
+
+%% ---- bare colorate pe teoreme ----
+\tcolorboxenvironment{teorema}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={4pt}{0pt}{onm},
+  colback=onm!5,left=10pt,right=4pt,top=3pt,bottom=3pt}
+\tcolorboxenvironment{propozitie}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={3.5pt}{0pt}{onm!75},
+  colback=onm!3,left=10pt,right=4pt,top=3pt,bottom=3pt}
+\tcolorboxenvironment{lema}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={3pt}{0pt}{onm!55},
+  colback=onm!2,left=10pt,right=4pt,top=3pt,bottom=3pt}
+\tcolorboxenvironment{corolar}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={2.5pt}{0pt}{onm!40},
+  colback=white,left=10pt,right=4pt,top=2pt,bottom=2pt}
+\tcolorboxenvironment{definitie}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={4pt}{0pt}{olm},
+  colback=olm!5,left=10pt,right=4pt,top=3pt,bottom=3pt}
+\tcolorboxenvironment{exemplu}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={3.5pt}{0pt}{ojm},
+  colback=ojm!4,left=10pt,right=4pt,top=3pt,bottom=3pt}
+\tcolorboxenvironment{aplicatie}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={3pt}{0pt}{ojm!80},
+  colback=ojm!3,left=10pt,right=4pt,top=3pt,bottom=3pt}
+\tcolorboxenvironment{observatie}{%
+  enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,
+  borderline west={2.5pt}{0pt}{grey},
+  colback=white,left=10pt,right=4pt,top=2pt,bottom=2pt}
+
+%% ---- macro-uri algebră ----
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\car}{car}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\newcommand{\cl}[1]{\widehat{#1}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rang}{rang}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\GL}{\mathrm{GL}}
+
+%% ---- macro-uri culegeri (titluri colorate) ----
+\newcommand{\capitolcurent}{Introducere}
+\newcommand{\sectiunealg}[2]{%
+  \clearpage\vspace*{6mm}%
+  \addcontentsline{toc}{section}{\textcolor{blue!60!black}{#1}}%
+  {\noindent\color{ink}\rule{\linewidth}{3pt}}\par\vspace{2mm}%
+  {\noindent\fontsize{34}{38}\selectfont\bfseries\color{ink}#1}\par\vspace{2mm}%
+  {\noindent\large\itshape\textcolor{grey}{#2}}\par\vspace{2mm}%
+  {\noindent\color{ink}\rule{\linewidth}{3pt}}\par\vspace{7mm}}
+\newcommand{\parteamare}[2]{%
+  \clearpage\vspace*{4mm}%
+  \addcontentsline{toc}{subsection}{#1}%
+  {\noindent\color{ink}\rule{\linewidth}{2.4pt}}\par\vspace{2mm}%
+  {\noindent\fontsize{30}{34}\selectfont\bfseries\color{ink}#1}\par\vspace{1.5mm}%
+  {\noindent\large\itshape\textcolor{grey}{#2}}\par\vspace{2mm}%
+  {\noindent\color{ink}\rule{\linewidth}{2.4pt}}\par\vspace{6mm}}
+\newcommand{\parteamareenunt}[1]{%
+  \vspace*{4mm}%
+  \addcontentsline{toc}{subsection}{#1}%
+  {\noindent\color{ink}\rule{\linewidth}{2.4pt}}\par\vspace{2mm}%
+  {\noindent\fontsize{30}{34}\selectfont\bfseries\color{ink}#1}\par\vspace{1.5mm}%
+  {\noindent\color{ink}\rule{\linewidth}{2.4pt}}\par\vspace{6mm}}
+\newcommand{\subsectiuneclasa}[3]{%
+  \clearpage\renewcommand{\capitolcurent}{#3}\vspace*{3mm}%
+  \addcontentsline{toc}{subsection}{\quad #1}%
+  {\noindent\color{ink}\rule{\linewidth}{1.6pt}}\par\vspace{2mm}%
+  {\noindent\Huge\bfseries\color{ink}#1}\par\vspace{1.5mm}%
+  {\noindent\large\itshape\textcolor{grey}{#2}}\par\vspace{2mm}%
+  {\noindent\color{ink}\rule{\linewidth}{1.6pt}}\par\vspace{5mm}}
+\newcommand{\sectiunemare}[2]{%
+  \vspace{4mm}%
+  {\noindent\color{ink}\rule{\linewidth}{1.2pt}}\par\vspace{1.5mm}%
+  {\noindent\huge\bfseries\color{ink}#1}\par\vspace{1mm}%
+  {\noindent\small\itshape\textcolor{grey}{#2}}\par\vspace{1.5mm}%
+  {\noindent\color{ink}\rule{\linewidth}{1.2pt}}\par\vspace{3mm}}
+\newcommand{\nivel}[3]{%
+  \vspace{5mm}%
+  \colorlet{lvl}{#1}%
+  {\noindent\color{#1}\rule{\linewidth}{2.2pt}}\par\vspace{1.5mm}%
+  {\noindent\LARGE\bfseries\color{#1}#2}\par\vspace{1mm}%
+  {\noindent\small\itshape\textcolor{grey}{#3}}\par\vspace{3mm}}
+\newcommand{\nivelE}[2]{%
+  \colorlet{lvl}{#1}%
+  \vspace{4mm}{\noindent\color{#1}\rule{\linewidth}{1.5pt}}\par\vspace{1mm}%
+  {\noindent\Large\bfseries\color{#1}#2}\par\vspace{2mm}}
+\newcommand{\prob}[3]{%
+  \vspace{3mm}%
+  {\noindent\color{#1}\rule{3pt}{\baselineskip}\hspace{4pt}%
+   \textbf{Problema #2}%
+   \ifx&#3&\else\ {\small\itshape\textcolor{grey}{--- #3}}\fi}\par\vspace{1mm}}
+\newcommand{\sol}{\par\vspace{2mm}{\noindent\small\textcolor{solcol}{\textbf{Soluție.}}\ }}
+\newenvironment{parti}{\begin{enumerate}[label=\textbf{(\alph*)},leftmargin=*,itemsep=2pt]}{\end{enumerate}}
+
+%% ---- titluri capitole armonizate ----
+\titleformat{\chapter}[block]
+  {\normalfont\huge\bfseries\color{ink}}{}
+  {0pt}{\vspace*{2mm}\noindent\textcolor{ink}{\rule{\linewidth}{2.4pt}}\vspace{2mm}\newline}
+  [\vspace{2mm}\noindent\textcolor{ink}{\rule{\linewidth}{2.4pt}}\vspace{5mm}]
+\titleformat{\section}[block]
+  {\normalfont\Large\bfseries\color{ink}}{}
+  {0pt}{\vspace*{1mm}\noindent\textcolor{ink}{\rule{\linewidth}{1.2pt}}\vspace{1.5mm}\newline}
+  [\vspace{1.5mm}\noindent\textcolor{ink}{\rule{\linewidth}{1.2pt}}\vspace{3mm}]
+\titleformat{\subsection}[hang]
+  {\normalfont\large\bfseries\color{ink}}{}
+  {0pt}{}[\vspace{1mm}\noindent\textcolor{grey}{\rule{\linewidth}{0.5pt}}\vspace{2mm}]
+
+%% ---- antet/subsol ----
+\setlength{\headheight}{22pt}
+\pagestyle{fancy}\fancyhf{}
+\lhead{\small\textcolor{grey}{\titluserie}}
+\rhead{\small\textcolor{grey}{\capitolcurent}}
+\cfoot{\small\textcolor{grey}{\thepage}}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{grey}\leaders\hrule height \headrulewidth\hfill}}
+
+
+%% ---- macro-uri suplimentare algebra (Stil B: clasa a XII-a) ----
+\colorlet{lvl}{olm}
+\newcommand{\Mn}{M_n(\mathbb{C})}
+\newcommand{\On}{O_n}
+\newcommand{\demo}{\par\vspace{1.6mm}\noindent\textit{\textcolor{solcol}{Demonstrație.}}\ \ignorespaces}
+\newcounter{cat}
+\newtheoremstyle{probstyle}
+  {8pt}{3pt}{\normalfont}{0pt}{\bfseries\large}{}{0.55em}
+  {{\color{lvl}\rule[-2.5pt]{3.2pt}{15pt}\hspace{0.55em}}\color{ink}\thmname{#1}\thmnumber{ #2}\thmnote{ \normalfont\small\textcolor{grey}{--- #3}}}
+\theoremstyle{probstyle}
+\newtheorem{problemaX}{Problema}
+\renewcommand{\theproblemaX}{\ifcase\value{cat}\or OLM\or OJM\or ONM\fi.\arabic{problemaX}}
+\newenvironment{problema}[1][]
+  {\par\vspace{2.5mm}{\color{grey!40}\hrule height 0.4pt}\vspace{0.5mm}\ifx\relax#1\relax\begin{problemaX}\else\begin{problemaX}[#1]\fi}
+  {\end{problemaX}}
+\newcommand{\theproblema}{\theproblemaX}
+\newtheorem*{obsX}{Observație}
+\newenvironment{obs}{\begin{obsX}\small\color{ink}}{\end{obsX}}
+\newtheorem*{lemat}{Lemă}
+\renewcommand{\proofname}{\textcolor{solcol}{Demonstrație}}
+\newenvironment{solutie}
+  {\par\vspace{1.6mm}\noindent\textit{\textcolor{solcol}{\textbf{Soluție.}}}\enspace\ignorespaces}
+  {\hfill\textcolor{solcol}{$\square$}\par\medskip}
+\setcounter{tocdepth}{2}
+\AtBeginDocument{\renewcommand{\proofname}{Demonstrație}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\setlength{\parskip}{2pt}
+\color{ink}
+
+%% ---- parametri de volum (se redefinesc in fisierul fiecarui volum) ----
+\newcommand{\titluserie}{Analiză pentru Olimpiadă}
+\newcommand{\numarvolum}{1}
+\newcommand{\titluvolum}{Analiză, clasa a XI-a}
+\newcommand{\subtitluvolum}{}
+\newcommand{\isbnvolum}{}
+\newcommand{\despreacestvolum}{}
+\newcommand{\celelaltevolume}{}
+
+%% ---- compatibilitate tex4ht (build-ul EPUB) ----
+%% tex4ht nu poate traduce \halign-ul din mediile *smallmatrix; la conversia in
+%% MathML le inlocuim cu variantele normale, care produc <mtable> corect.
+\ifdefined\HCode
+  \renewenvironment{psmallmatrix}{\begin{pmatrix}}{\end{pmatrix}}
+  \renewenvironment{bsmallmatrix}{\begin{bmatrix}}{\end{bmatrix}}
+  \renewenvironment{vsmallmatrix}{\begin{vmatrix}}{\end{vmatrix}}
+  \renewenvironment{smallmatrix}{\begin{matrix}}{\end{matrix}}
+\fi
+
+%% ---- trimiteri catre alt volum (capitolul Constructii e comun volumelor 3 si 4) ----
+%% \refv{eticheta}{numar}{volum}: daca eticheta e in volumul curent, \ref obisnuit; altfel numarul ei
+%% din volumul in care se afla, urmat de "din volumul N".
+\makeatletter
+\newcommand{\invol}[1]{\ifnum\numarvolum=#1\relax\else\ din volumul~#1\fi}
+\newcommand{\refv}[3]{\@ifundefined{r@#1}{#2\invol{#3}}{\ref{#1}}}
+\makeatother

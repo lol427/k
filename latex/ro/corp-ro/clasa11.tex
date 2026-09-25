@@ -1,0 +1,1211 @@
+\chapter{Clasa a XI-a}
+\section{Topologie pe $\mathbb{R}$}
+
+\emph{Notă:} secțiunea folosește limite de șiruri, criteriul lui Heine și continuitatea --- noțiuni de clasă, tratate riguros în secțiunile următoare; le folosim aici în accepțiunea standard.
+
+\subsection{Mulțimi dense}
+
+\begin{definitie}
+O mulțime $A\subseteq\mathbb{R}$ este \textbf{densă} în $\mathbb{R}$ dacă orice interval deschis nedegenerat conține puncte din $A$. Echivalent (prin alegerea de puncte în intervalele $\big(x-\frac1n,x+\frac1n\big)$): orice număr real e limita unui șir de elemente din $A$.
+\end{definitie}
+
+\begin{teorema}[Densitatea lui $\mathbb{Q}$ și a lui $\mathbb{R}\setminus\mathbb{Q}$]
+$\mathbb{Q}$ și $\mathbb{R}\setminus\mathbb{Q}$ sunt dense în $\mathbb{R}$.
+\end{teorema}
+\begin{proof}
+Fie $a<b$. Alegem $n\in\mathbb{N}^*$ cu $n>\frac{1}{b-a}$ (proprietatea lui Arhimede), deci $\frac1n<b-a$: pasul $\frac1n$ nu poate „sări'' peste intervalul $(a,b)$. Formal, $k=\lfloor na\rfloor+1$ dă $na<k\le na+1<nb$, deci $\frac kn\in(a,b)$ --- un rațional. Pentru iraționale: intervalul $(a-\sqrt2,\,b-\sqrt2)$ conține un rațional $q$, deci $q+\sqrt2\in(a,b)$ e irațional (rațional $+$ irațional $=$ irațional).
+\end{proof}
+
+\begin{teorema}[Principiul densității]
+Fie $A$ densă în $\mathbb{R}$ și $f,g:\mathbb{R}\to\mathbb{R}$ \emph{continue} cu $f(x)=g(x)$ pentru orice $x\in A$. Atunci $f=g$ pe tot $\mathbb{R}$.
+\end{teorema}
+\begin{proof}
+Fie $x\in\mathbb{R}$ și un șir $(a_n)\subset A$ cu $a_n\to x$ (densitate). Prin Heine și continuitate: $f(x)=\lim f(a_n)=\lim g(a_n)=g(x)$.
+\end{proof}
+
+\begin{obs}
+Acesta e mecanismul din spatele multor probleme de rigiditate: informația despre $f$ pe o mulțime densă (de pildă $\mathbb{Q}$) plus continuitatea determină $f$ complet --- exact pașii finali din ecuațiile funcționale de tip Cauchy (secțiunea de continuitate). Un exemplu important de mulțime densă, dincolo de $\mathbb{Q}$: complementara oricărei mulțimi cel mult numărabile --- vezi subsecțiunea următoare.
+\end{obs}
+
+\subsection{Mulțimi numărabile}
+
+\begin{definitie}
+O mulțime $A$ este \textbf{numărabilă} dacă elementele ei pot fi \emph{înșirate} într-un șir: $A=\{a_1,a_2,a_3,\dots\}$, fiecare element apărând (cel puțin o dată) pe listă. $A$ este \textbf{cel mult numărabilă} dacă e finită sau numărabilă. Intuiția: „numărabil'' $=$ poți face inventarul complet, element cu element, chiar dacă inventarul nu se termină niciodată.
+\end{definitie}
+
+\begin{propozitie}[$\mathbb{Z}$ și $\mathbb{Q}$ sunt numărabile]
+\emph{$\mathbb{Z}$:} se înșiră prin alternare, $0,\,1,\,-1,\,2,\,-2,\,3,\,-3,\dots$ --- fiecare întreg apare exact o dată.
+
+\emph{$\mathbb{Q}$:} scriem fiecare rațional ca $\frac pq$ cu $q\ge1$ și grupăm fracțiile după „mărimea'' $|p|+q$: grupa $1$ conține $\frac01$; grupa $2$: $\frac11,\frac{-1}{1}$; grupa $3$: $\frac21,\frac{-2}{1},\frac12,\frac{-1}{2}$; și așa mai departe. Fiecare grupă e \emph{finită} (pentru $|p|+q=n$ sunt cel mult $2n$ fracții), iar orice rațional cade într-o grupă --- deci listarea grupă după grupă înșiră tot $\mathbb{Q}$. Numerele care apar de mai multe ori (ex.\ $\frac12=\frac24$) se păstrează doar la prima apariție.
+\end{propozitie}
+
+\begin{obs}[Reguli de calcul cu numărabilitatea]
+(1) O submulțime a unei mulțimi cel mult numărabile e cel mult numărabilă (din lista mare ștergi ce nu-ți trebuie). (2) Reuniunea a două --- și chiar a unui șir de --- mulțimi cel mult numărabile e cel mult numărabilă: listele se împletesc, exact ca la $\mathbb{Z}$ sau ca gruparea de la $\mathbb{Q}$. (3) De aceea, la teorema despre discontinuitățile funcțiilor monotone (secțiunea de continuitate), injecția în $\mathbb{Q}$ încheie demonstrația: o mulțime care se scufundă în $\mathbb{Q}$ e cel mult numărabilă.
+\end{obs}
+
+\begin{lema}[Intervalele nu sunt numărabile; densitatea complementarei]
+Un interval nedegenerat nu este cel mult numărabil. În consecință, complementara unei mulțimi cel mult numărabile intersectează orice interval nedegenerat --- adică este \textbf{densă} în $\mathbb{R}$.
+\end{lema}
+\begin{proof}
+Fie $(a_n)_{n\ge1}$ un șir oarecare de numere reale și $(\alpha,\beta)$ un interval nedegenerat; arătăm că în $(\alpha,\beta)$ există un punct care nu apare în șir. Construim inductiv intervale închise nedegenerate $I_1\supseteq I_2\supseteq\dots$, cu $I_1\subset(\alpha,\beta)$ și $a_n\notin I_n$: împărțim la fiecare pas intervalul curent în trei subintervale închise egale și alegem unul care nu-l conține pe $a_{n+1}$ (punctul $a_{n+1}$ nu poate atinge toate trei). Cu $I_n=[p_n,q_n]$: șirul $(p_n)$ e crescător și majorat de $q_1$, deci convergent la un $x$; din $p_n\le q_m$ pentru orice $n,m$ rezultă $p_m\le x\le q_m$, adică $x\in I_m$ pentru orice $m$. Deci $x\neq a_m$ pentru toți $m$ și $x\in(\alpha,\beta)$: niciun șir nu poate epuiza intervalul. Consecința: dacă $N$ e cel mult numărabilă, $N$ nu poate conține un interval nedegenerat, deci orice astfel de interval conține puncte din afara lui $N$.
+\end{proof}
+
+\begin{obs}[Densă vs.\ numărabilă: două „mărimi'' diferite]
+$\mathbb{Q}$ este simultan \emph{densă} (are puncte în orice interval --- e „peste tot'') și \emph{numărabilă} (încape într-o listă --- e „mică''), în timp ce $\mathbb{R}\setminus\mathbb{Q}$ e densă și \emph{ne}numărabilă (altfel $\mathbb{R}=\mathbb{Q}\cup(\mathbb{R}\setminus\mathbb{Q})$ ar fi numărabil, contrazicând lema). Cele două noțiuni măsoară lucruri complet diferite: unde stau punctele, respectiv câte sunt. Perechea dens $+$ numărabil revine constant în fișă: la discontinuitățile funcțiilor monotone și la problema OJM 2024 (secțiunea de continuitate), și --- sub numele de „mulțime neglijabilă'' --- la criteriul lui Lebesgue (Partea a III-a), unde $\mathbb{Q}$ se dovedește nu doar numărabilă, ci și „fără grosime''.
+\end{obs}
+
+\subsection{Teorema lui Kronecker}
+
+Pentru $x\in\mathbb{R}$ notăm $\{x\}=x-\lfloor x\rfloor\in[0,1)$ \emph{partea fracționară}.
+
+\begin{teorema}[Kronecker]
+Fie $\alpha\in\mathbb{R}\setminus\mathbb{Q}$. Atunci mulțimea $\big\{\{n\alpha\}:n\in\mathbb{N}^*\big\}$ este densă în $[0,1]$. Echivalent: mulțimea $\{m+n\alpha:\ m\in\mathbb{Z},\ n\in\mathbb{N}^*\}$ este densă în $\mathbb{R}$.
+\end{teorema}
+\begin{proof}
+\emph{Pasul 1 (cutia lui Dirichlet).} Fie $N\in\mathbb{N}^*$. Împărțim $[0,1)$ în $N$ intervale de lungime $\frac1N$. Cele $N+1$ numere $\{0\cdot\alpha\},\{1\cdot\alpha\},\dots,\{N\alpha\}$ nu încap în $N$ cutii fără ca două să pice în aceeași: există $0\le p<q\le N$ cu
+\[
+\big|\{q\alpha\}-\{p\alpha\}\big|<\frac1N.
+\]
+Fie $r=q-p\in\{1,\dots,N\}$. Numărul $\{q\alpha\}-\{p\alpha\}=r\alpha-\big(\lfloor q\alpha\rfloor-\lfloor p\alpha\rfloor\big)$ diferă de $r\alpha$ printr-un întreg, deci $\beta:=\{r\alpha\}$ satisface $\beta<\frac1N$ sau $\beta>1-\frac1N$; în ambele cazuri, „pasul'' $\beta$ este la distanță $<\frac1N$ de un întreg, dar \emph{nu este} întreg ($\alpha$ irațional $\Rightarrow$ $r\alpha\notin\mathbb{Z}$).
+
+\emph{Pasul 2 (pași mici umplu intervalul).} Considerăm șirul $\{r\alpha\}$, $\{2r\alpha\}$, $\{3r\alpha\}$, \dots{} Fiecare termen se obține din precedentul adunând $\beta$ și, eventual, scăzând $1$ (la „înfășurare''): pașii consecutivi au lungimea $\min(\beta,1-\beta)<\frac1N$. Un șir care pornește din $[0,1)$ și avansează cu pași de lungime $<\frac1N$, fără să se oprească (termenii sunt distincți: $\{i r\alpha\}=\{j r\alpha\}$ ar face $(i-j)r\alpha\in\mathbb{Z}$, imposibil), vizitează orice subinterval al lui $[0,1)$ de lungime $\frac1N$: nu poate „sări'' peste el. Deci orice interval $\big(c-\frac1{2N},c+\frac1{2N}\big)\subseteq[0,1)$ conține un $\{n\alpha\}$. Cum $N$ era arbitrar, mulțimea e densă.
+\end{proof}
+
+\begin{obs}[Aplicații tipice]
+(1) $\{\sin n:\ n\in\mathbb{N}\}$ e densă în $[-1,1]$ (se scrie $n=2\pi\cdot\frac{n}{2\pi}$ și se folosește Kronecker pentru $\alpha=\frac{1}{2\pi}$, apoi continuitatea lui $\sin$ pe cercul unitate) --- în particular șirul $(\sin n)$ \emph{nu are limită}. (2) Problemele de tip „arătați că există $n$ cu primele cifre ale lui $2^n$ egale cu...'' se reduc la densitatea lui $\{n\lg2\}$, cu $\lg2$ irațional.
+\end{obs}
+
+\subsection{Funcții periodice și mulțimea perioadelor}
+
+\begin{propozitie}
+Fie $f:\mathbb{R}\to\mathbb{R}$ continuă și periodică (există $T>0$ cu $f(x+T)=f(x)$).
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item Dacă $f$ este neconstantă, atunci $f$ are o \textbf{cea mai mică perioadă} strict pozitivă.
+\item Dacă $f$ are limită finită la $+\infty$, atunci $f$ este constantă.
+\item Dacă $f$ admite două perioade $T_1,T_2>0$ cu raportul $T_1/T_2$ \emph{irațional}, atunci $f$ este constantă.
+\end{enumerate}
+\end{propozitie}
+\begin{proof}
+Observația de bază: mulțimea perioadelor (împreună cu $0$ și opusele) este închisă la sume și diferențe; iar dacă $f$ e continuă și are un șir de perioade $t_n\to0$, $t_n\neq 0$, atunci $f$ e constantă --- pentru orice $x$, numerele $\{k\,t_n:k\in\mathbb{Z}\}$ formează, când $n$ crește, o rețea tot mai fină, deci $x$ e limită de puncte de forma $k\,t_n$, unde $f$ ia valoarea $f(0)$; continuitatea dă $f(x)=f(0)$.
+
+\emph{1.} Fie $T_0\ge0$ infimumul perioadelor strict pozitive. Dacă $T_0=0$, există perioade oricât de mici și, prin cele de mai sus, $f$ e constantă, contradicție. Deci $T_0>0$. Dacă $T_0$ nu ar fi perioadă, ar exista perioade $T>T'$ în intervalul $(T_0,\,T_0+\varepsilon)$, pentru orice $\varepsilon>0$ (altfel intervalul ar conține cel mult o perioadă, iar $T_0$ n-ar mai fi infimum); atunci $T-T'$ e o perioadă cu $0<T-T'<\varepsilon$. Luând $\varepsilon<T_0$ obținem o perioadă mai mică decât $T_0$, contradicție. Așadar $T_0$ e perioadă și este cea mai mică perioadă strict pozitivă.
+\emph{2.} Pentru $x$ fixat, $f(x)=f(x+nT)\to\lim_{y\to\infty}f(y)=\ell$, deci $f\equiv\ell$.
+\emph{3.} Numerele $mT_1+nT_2$ ($m,n\in\mathbb{Z}$) sunt toate perioade (sau $0$); prin Kronecker aplicat lui $\alpha=T_1/T_2\notin\mathbb{Q}$, mulțimea $\{mT_1+nT_2\}$ e densă în $\mathbb{R}$, în particular conține perioade oricât de mici --- deci $f$ e constantă.
+\end{proof}
+
+\begin{obs}
+Punctul 3 e aplicația-vedetă a lui Kronecker la funcții: de pildă, o funcție continuă cu $f(x+1)=f(x)$ și $f(x+\sqrt2)=f(x)$ e neapărat constantă. Fără continuitate, afirmația pică (există exemple „sălbatice'').
+\end{obs}
+
+
+\section{Șiruri de numere reale}
+
+\subsection{Definiții fundamentale și mărginire}
+
+\begin{definitie}
+Șirul $(a_n)_{n\ge 1}$ are limita $\ell\in\mathbb{R}$ dacă
+$\forall\, \varepsilon>0,\ \exists\, N\in\mathbb{N}$ astfel încât $|a_n-\ell|<\varepsilon$ pentru orice $n\ge N$. Șirul are limita $+\infty$ dacă $\forall\, M>0,\ \exists\, N$ cu $a_n>M$ pentru $n\ge N$ (analog $-\infty$).
+\end{definitie}
+
+\begin{teorema}[Unicitatea limitei; mărginirea șirurilor convergente]
+Limita unui șir, dacă există, este unică. Orice șir convergent este mărginit.
+\end{teorema}
+
+\begin{teorema}[Weierstrass]
+Orice șir monoton și mărginit este convergent. Mai precis: dacă $(a_n)$ este crescător și mărginit superior, atunci $a_n \to \sup_n a_n$; dacă e crescător și nemărginit, $a_n\to+\infty$.
+\end{teorema}
+
+\begin{tehbox}{Schema standard pentru șiruri recurente}
+Pentru $x_{n+1}=f(x_n)$ cu $f$ continuă:
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item Se caută un interval invariant $I$ (adică $f(I)\subseteq I$) care conține $x_1$ --- de obicei prin inducție.
+\item Se studiază monotonia: semnul lui $f(x)-x$ pe $I$, sau (dacă $f$ e crescătoare) compararea $x_2$ cu $x_1$.
+\item Monoton + mărginit $\Rightarrow$ convergent (Weierstrass). Limita $\ell$ verifică $\ell=f(\ell)$ (trecere la limită în recurență, folosind continuitatea).
+\item Dacă $f$ este \emph{descrescătoare}, șirul nu e monoton, dar subșirurile $(x_{2n})$ și $(x_{2n+1})$ sunt monotone (căci $f\circ f$ e crescătoare); se arată că au aceeași limită.
+\end{enumerate}
+\end{tehbox}
+
+\subsection{Subșiruri, Bolzano--Weierstrass, șiruri Cauchy}
+
+\begin{teorema}
+Dacă $a_n\to\ell$, atunci orice subșir $a_{n_k}\to\ell$. Reciproc: dacă $(a_{2n})$ și $(a_{2n+1})$ converg la aceeași limită $\ell$, atunci $a_n\to\ell$.
+\end{teorema}
+
+\begin{lema}[Lema lui Cesàro / Bolzano--Weierstrass]
+Orice șir mărginit de numere reale conține un subșir convergent.
+\end{lema}
+
+\begin{definitie}
+$(a_n)$ este \textbf{șir Cauchy (fundamental)} dacă $\forall\varepsilon>0,\ \exists N$ astfel încât $|a_m-a_n|<\varepsilon$ pentru orice $m,n\ge N$.
+\end{definitie}
+
+\begin{teorema}[Criteriul lui Cauchy]
+Un șir de numere reale este convergent dacă și numai dacă este șir Cauchy.
+\end{teorema}
+
+\begin{obs}
+Utilizare tipică la olimpiadă: $|a_{n+1}-a_n|\le c\, q^n$ cu $q\in(0,1)$ implică $(a_n)$ Cauchy (prin sumă geometrică telescopică), deci convergent --- fără a cunoaște limita. Atenție: $a_{n+1}-a_n\to 0$ \emph{nu} este suficient (contraexemplu: $a_n=\sqrt{n}$ sau $a_n=H_n=1+\tfrac12+\dots+\tfrac1n$).
+\end{obs}
+
+\subsection{Puncte limită; limită superioară și inferioară}
+
+\begin{definitie}
+Pentru $(a_n)$ mărginit, $\displaystyle\limsup_{n\to\infty} a_n=\lim_{n\to\infty}\Big(\sup_{k\ge n} a_k\Big)$ și $\displaystyle\liminf_{n\to\infty} a_n=\lim_{n\to\infty}\Big(\inf_{k\ge n} a_k\Big)$; limitele există fiindcă șirul supremumurilor e descrescător și mărginit (respectiv, cel al infimumurilor, crescător). Convenție: pentru un șir nemărginit superior, $\limsup a_n=+\infty$; nemărginit inferior, $\liminf a_n=-\infty$.
+\end{definitie}
+
+\begin{propozitie}[Caracterizarea cu $\varepsilon$]
+Fie $(a_n)$ mărginit și $L\in\mathbb{R}$. Atunci $L=\limsup a_n$ dacă și numai dacă, pentru orice $\varepsilon>0$:
+(i) $a_n<L+\varepsilon$ \emph{de la un rang încolo}; și
+(ii) $a_n>L-\varepsilon$ \emph{pentru o infinitate de indici}.
+Dual, $\ell=\liminf a_n$ $\iff$ $a_n>\ell-\varepsilon$ de la un rang încolo și $a_n<\ell+\varepsilon$ pentru o infinitate de $n$.
+\end{propozitie}
+\begin{proof}
+Fie $s_n=\sup_{k\ge n}a_k\searrow L_0=\limsup a_n$.
+($\Rightarrow$) Dacă $L=L_0$: (i) există $N$ cu $s_N<L+\varepsilon$, deci $a_n\le s_N<L+\varepsilon$ pentru $n\ge N$. (ii) Pentru orice $N$, $s_N\ge L>L-\varepsilon$, deci, din definiția supremumului, există $k\ge N$ cu $a_k>L-\varepsilon$; cum $N$ e arbitrar, astfel de indici sunt o infinitate.
+($\Leftarrow$) Din (i): $s_n\le L+\varepsilon$ de la un rang încolo, deci $L_0\le L+\varepsilon$. Din (ii): pentru orice $n$ există $k\ge n$ cu $a_k>L-\varepsilon$, deci $s_n\ge L-\varepsilon$, adică $L_0\ge L-\varepsilon$. Cum $\varepsilon>0$ e arbitrar, $L_0=L$.
+\end{proof}
+
+\begin{definitie}
+$\ell\in\mathbb{R}$ este \textbf{punct limită} (valoare de aderență) al șirului $(a_n)$ dacă există un subșir $a_{n_k}\to\ell$. Notăm cu $A$ mulțimea punctelor limită.
+\end{definitie}
+
+\begin{propozitie}[Structura mulțimii punctelor limită]
+Fie $(a_n)$ mărginit, $m=\liminf a_n$, $M=\limsup a_n$. Atunci $A\neq\varnothing$, $A\subseteq[m,M]$, iar $m=\min A$ și $M=\max A$: limsup și liminf sunt \emph{cel mai mare}, respectiv \emph{cel mai mic} punct limită.
+\end{propozitie}
+\begin{proof}
+$A\neq\varnothing$ e Bolzano--Weierstrass. Dacă $a_{n_k}\to\ell$: pentru orice $\varepsilon>0$, de la un rang încolo $a_n<M+\varepsilon$ (caracterizarea cu $\varepsilon$), deci $\ell\le M+\varepsilon$; $\varepsilon$ arbitrar dă $\ell\le M$; analog $\ell\ge m$. Pentru $M\in A$: pentru fiecare $j$, din caracterizare există o infinitate de indici cu $a_n>M-\frac1j$ și, de la un rang încolo, $a_n<M+\frac1j$; alegem deci $n_j>n_{j-1}$ cu $M-\frac1j<a_{n_j}<M+\frac1j$ --- subșirul construit tinde la $M$. Analog $m\in A$.
+\end{proof}
+
+\begin{propozitie}
+$a_n\to\ell$ $\iff$ $\liminf a_n=\limsup a_n=\ell$.
+\end{propozitie}
+
+\begin{teorema}[Criteriul punctului limită unic]
+Un șir \textbf{mărginit} este convergent dacă și numai dacă are un \textbf{singur} punct limită; în acest caz limita e unicul punct limită.
+\end{teorema}
+\begin{proof}
+($\Rightarrow$) Orice subșir al unui șir convergent tinde la limită, deci $A=\{\ell\}$.
+($\Leftarrow$) Fie $A=\{\ell\}$ și, prin absurd, $a_n\not\to\ell$: există $\varepsilon_0>0$ și un subșir $(a_{n_k})$ cu $|a_{n_k}-\ell|\ge\varepsilon_0$. Acest subșir e mărginit, deci (Bolzano--Weierstrass) conține un sub-subșir convergent la un $\ell'$ cu $|\ell'-\ell|\ge\varepsilon_0$ --- un al doilea punct limită, contradicție.
+\end{proof}
+
+\begin{tehbox}{Metoda punctelor limită}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item Se verifică \textbf{mărginirea}: atunci $A\neq\varnothing$ și $A\subseteq[-M,M]$.
+\item Din relația care definește șirul se deduce o \textbf{proprietate de închidere} a lui $A$: „dacă $\lambda\in A$, atunci $T(\lambda)\in A$'' --- trecând la limită pe subșiruri, exact ca la recurențe.
+\item Se arată că proprietatea \textbf{forțează} $A=\{\ell\}$: de pildă, iterarea lui $T$ ar scoate punctele din compactul $[-M,M]$, sau $A$ ar trebui să fie un interval degenerat.
+\item Concluzia, din criteriul punctului limită unic.
+\end{enumerate}
+Avantajul metodei: nu cere nici monotonie, nici formulă explicită.
+\end{tehbox}
+
+\textbf{Exemplu.} \emph{Fie $(u_n)_{n\ge1}$ mărginit astfel încât $u_n+\dfrac{u_{2n}}{2}\to1$. Arătați că $(u_n)$ converge și determinați-i limita.}
+
+\emph{Soluție.} Fie $M>0$ cu $|u_n|\le M$; atunci $A\neq\varnothing$ și $A\subseteq[-M,M]$.
+\emph{Închiderea:} dacă $\lambda\in A$, cu $u_{n_k}\to\lambda$, din ipoteză $u_{2n_k}=2\big(1-u_{n_k}\big)+\varepsilon_k$ cu $\varepsilon_k\to0$, deci $u_{2n_k}\to2-2\lambda$, iar $(u_{2n_k})$ e subșir al lui $(u_n)$: așadar $T(\lambda)=2-2\lambda\in A$.
+\emph{Forțarea:} punctul fix al lui $T$ este $\frac23$, iar $T(\lambda)-\frac23=-2\big(\lambda-\frac23\big)$, deci $T^m(\lambda)-\frac23=(-2)^m\big(\lambda-\frac23\big)$. Dacă ar exista $\lambda_0\in A$, $\lambda_0\neq\frac23$, toate iteratele $T^m(\lambda_0)$ ar fi în $A\subseteq[-M,M]$, dar $|T^m(\lambda_0)|\to\infty$ --- contradicție. Deci $A=\{\frac23\}$ și $u_n\to\dfrac23$. $\blacksquare$
+
+\textbf{Exemplu.} \emph{Fie $(u_n)$ cu $u_{n+1}-u_n\to0$. Atunci mulțimea $A$ a punctelor limită e un interval; în particular, dacă $(u_n)$ e mărginit, $A=[\liminf u_n,\limsup u_n]$.}
+
+\emph{Soluție (cazul mărginit).} Fie $m=\liminf u_n$, $M=\limsup u_n$; știm $A\subseteq[m,M]$ și $m,M\in A$. Fie $\lambda\in(m,M)$; arătăm $\lambda\in A$. Fie $\varepsilon\in\big(0,\min(\lambda-m,M-\lambda)\big)$ și $N$ arbitrar, mărit astfel încât $|u_{n+1}-u_n|<\varepsilon$ pentru $n\ge N$. Din caracterizarea cu $\varepsilon$: $u_n<m+\varepsilon<\lambda$ pentru o infinitate de indici, și $u_n>\lambda$ tot pentru o infinitate. Alegem $p\ge N$ cu $u_p<\lambda$, apoi $q>p$ cu $u_q>\lambda$, și fie
+\[
+n=\max\{k:\ p\le k<q,\ u_k\le\lambda\}
+\]
+(mulțime nevidă --- îl conține pe $p$ --- și finită). Din maximalitate $u_{n+1}>\lambda$, deci
+\[
+\lambda<u_{n+1}<u_n+\varepsilon\le\lambda+\varepsilon
+\quad\Longrightarrow\quad
+|u_n-\lambda|<\varepsilon,\ \ n\ge N.
+\]
+Pentru orice $\varepsilon$ și orice rang, șirul revine la distanță $<\varepsilon$ de $\lambda$: construim inductiv un subșir $\to\lambda$, deci $\lambda\in A$. $\blacksquare$
+
+\emph{Corolar util:} mărginit + pași mici + $A$ finită (sau numărabilă) $\Rightarrow$ convergent (un interval cel mult numărabil e degenerat). \emph{Legătura cu recurențele:} dacă în plus $u_{n+1}=f(u_n)$ cu $f$ continuă, orice punct limită e punct fix ($u_{n_k+1}=f(u_{n_k})\to f(\lambda)$, dar și $u_{n_k+1}=u_{n_k}+(u_{n_k+1}-u_{n_k})\to\lambda$).
+
+\begin{teorema}[Inegalitățile fundamentale pentru $\liminf$ și $\limsup$]
+Pentru șiruri mărginite $(a_n),(b_n)$:
+\[
+\begin{aligned}
+\liminf a_n+\liminf b_n&\ \le\ \liminf\,(a_n+b_n)\ \le\ \liminf a_n+\limsup b_n\\
+&\ \le\ \limsup\,(a_n+b_n)\ \le\ \limsup a_n+\limsup b_n.
+\end{aligned}
+\]
+\end{teorema}
+\begin{proof}
+Notăm $\alpha=\liminf a_n$, $A=\limsup a_n$, $\beta=\liminf b_n$, $B=\limsup b_n$.
+
+\emph{Extremele.} Fie $\varepsilon>0$: de la un rang încolo $a_n<A+\varepsilon$ și $b_n<B+\varepsilon$ (caracterizarea cu $\varepsilon$), deci $a_n+b_n<A+B+2\varepsilon$, de unde $\limsup(a_n+b_n)\le A+B+2\varepsilon$, apoi $\le A+B$. Analog, cu minorări, $\liminf(a_n+b_n)\ge\alpha+\beta$.
+
+\emph{Mijlocul, partea stângă} ($\liminf(a_n+b_n)\le\alpha+B$): alegem un subșir $a_{n_k}\to\alpha$ (posibil: $\alpha=\min A_{\text{pcte}}$). Șirul $(b_{n_k})$ e mărginit, deci are un sub-subșir $b_{n_{k_j}}\to\beta'$, cu $\beta'\le B$ (punct limită al lui $(b_n)$). Atunci $a_{n_{k_j}}+b_{n_{k_j}}\to\alpha+\beta'$ e punct limită al sumei, deci $\liminf(a_n+b_n)\le\alpha+\beta'\le\alpha+B$.
+
+\emph{Mijlocul, partea dreaptă} ($\alpha+B\le\limsup(a_n+b_n)$): alegem $b_{n_k}\to B$ și extragem $a_{n_{k_j}}\to\alpha'\ge\alpha$; atunci $\alpha'+B$ e punct limită al sumei, deci $\limsup(a_n+b_n)\ge\alpha'+B\ge\alpha+B$.
+\end{proof}
+
+\begin{corolar}[Un șir converge $\Rightarrow$ egalitate]
+Dacă $a_n\to a$, atunci $\liminf(a_n+b_n)=a+\liminf b_n$ și $\limsup(a_n+b_n)=a+\limsup b_n$. (Aici $\alpha=A=a$ și lanțul se strânge.) Dacă în plus $a>0$ și $b_n\ge0$, la fel pentru produs: $\limsup(a_nb_n)=a\limsup b_n$.
+\end{corolar}
+
+\begin{obs}
+Extremele pot fi stricte: pentru $a_n=(-1)^n$, $b_n=(-1)^{n+1}$: $\liminf a_n+\liminf b_n=-2<0=\liminf(a_n+b_n)=\limsup(a_n+b_n)<2=\limsup a_n+\limsup b_n$. Greșeala clasică la concurs: „$\limsup(a_n+b_n)=\limsup a_n+\limsup b_n$'' --- adevărată doar cu $\le$, cu egalitate când unul dintre șiruri converge.
+\end{obs}
+
+\begin{teorema}[Rădăcină vs.\ raport]
+Pentru $a_n>0$:
+\[
+\liminf\frac{a_{n+1}}{a_n}\ \le\ \liminf\sqrt[n]{a_n}\ \le\ \limsup\sqrt[n]{a_n}\ \le\ \limsup\frac{a_{n+1}}{a_n}.
+\]
+\end{teorema}
+\begin{proof}
+Dreapta (stânga e analogă, mijlocul evident): fie $L=\limsup\frac{a_{n+1}}{a_n}<\infty$ (altfel nimic de arătat) și $\varepsilon>0$: există $N$ cu $\frac{a_{n+1}}{a_n}<L+\varepsilon$ pentru $n\ge N$. Telescopic, pentru $n>N$:
+\[
+a_n=a_N\cdot\frac{a_{N+1}}{a_N}\cdots\frac{a_n}{a_{n-1}}\le C\,(L+\varepsilon)^n,\qquad C=a_N(L+\varepsilon)^{-N},
+\]
+deci $\sqrt[n]{a_n}\le C^{1/n}(L+\varepsilon)\to L+\varepsilon$, de unde $\limsup\sqrt[n]{a_n}\le L+\varepsilon$, apoi $\le L$.
+\end{proof}
+
+\begin{corolar}
+Dacă $\frac{a_{n+1}}{a_n}\to\ell$, atunci $\sqrt[n]{a_n}\to\ell$ (criteriul radicalului, acum cu demonstrație). Reciproca e falsă: pentru $a_n=2^{(-1)^n}$, $\sqrt[n]{a_n}\to1$, dar raportul oscilează:
+\[
+\liminf\frac{a_{n+1}}{a_n}=\frac14\ <\ 1=\lim\sqrt[n]{a_n}\ <\ 4=\limsup\frac{a_{n+1}}{a_n}.
+\]
+Morala: criteriul rădăcinii e cel puțin la fel de puternic ca al raportului.
+\end{corolar}
+
+\subsection{Contracții și teorema de punct fix a lui Banach}
+
+\begin{definitie}
+$f:I\to\mathbb{R}$ este o \textbf{contracție} pe intervalul $I$ dacă există $q\in[0,1)$ astfel încât
+\[
+|f(x)-f(y)|\ \le\ q\,|x-y|,\qquad\forall\,x,y\in I.
+\]
+Criteriu practic (Lagrange): dacă $f$ e derivabilă pe $I$ și $|f'(x)|\le q<1$ pe $I$, atunci $f$ e contracție cu constanta $q$. Orice contracție este continuă.
+\end{definitie}
+
+\begin{teorema}[Banach, pe un interval închis]
+Fie $I$ un interval \textbf{închis} (de tip $[a,b]$, $[a,\infty)$ sau $\mathbb{R}$) și $f:I\to I$ o contracție de constantă $q<1$. Atunci:
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item $f$ are un \textbf{unic} punct fix $\ell\in I$ (adică $f(\ell)=\ell$);
+\item pentru \emph{orice} punct de pornire $x_1\in I$, șirul $x_{n+1}=f(x_n)$ converge la $\ell$, cu estimarea
+\[
+|x_n-\ell|\ \le\ q^{\,n-1}\,|x_1-\ell|
+\qquad\text{și}\qquad
+|x_n-\ell|\ \le\ \frac{q^{\,n-1}}{1-q}\,|x_2-x_1|.
+\]
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\emph{Unicitatea:} dacă $f(\ell)=\ell$ și $f(\ell')=\ell'$, atunci $|\ell-\ell'|=|f(\ell)-f(\ell')|\le q|\ell-\ell'|$, posibil doar dacă $\ell=\ell'$.
+
+\emph{Existența:} prin inducție, $|x_{n+1}-x_n|\le q^{\,n-1}|x_2-x_1|$. Atunci, pentru $m>n$, suma telescopică și seria geometrică dau
+\[
+|x_m-x_n|\le\sum_{k=n}^{m-1}|x_{k+1}-x_k|\le|x_2-x_1|\,\frac{q^{\,n-1}}{1-q},
+\]
+care tinde la $0$: șirul e Cauchy, deci convergent la un $\ell$, iar $\ell\in I$ pentru că $I$ e închis. Trecând la limită în $x_{n+1}=f(x_n)$ (continuitatea contracției): $\ell=f(\ell)$. Estimarea 1 iese iterând $|x_{n+1}-\ell|=|f(x_n)-f(\ell)|\le q|x_n-\ell|$; estimarea 2, din inegalitatea Cauchy de mai sus cu $m\to\infty$.
+\end{proof}
+
+\begin{obs}
+De ce contează: (1) dă convergența \emph{fără} monotonie --- utilă când $f$ nu e monotonă sau șirul oscilează; (2) dă \emph{viteza} (eroare geometrică), deci e instrumentul standard la probleme de tip „arătați că șirul converge și estimați $|x_n-\ell|$''; (3) condiția $f(I)\subseteq I$ cu $I$ închis este esențială și se verifică explicit la redactare.
+\end{obs}
+
+\begin{obs}[Ipotezele sunt esențiale]
+\emph{(a) „Închis'' nu se poate omite:} $f(x)=\frac x2$ pe $I=(0,1]$ e contracție cu $f(I)\subseteq I$, dar nu are punct fix în $I$ (candidatul $0$ a rămas în afara domeniului). \emph{(b) „$q<1$ uniform'' nu se poate slăbi la inegalitate strictă pe perechi:} $f(x)=x+\frac1x$ pe $[1,\infty)$ satisface $|f(x)-f(y)|<|x-y|$ pentru $x\neq y$ (căci $f'(t)=1-\frac1{t^2}\in[0,1)$), dar $f(x)>x$ peste tot, deci nu are punct fix. Pe mulțimi nemărginite, „aproape-contracția'' nu ajunge.
+\end{obs}
+
+\begin{teorema}[Contracții slabe pe compact]
+Fie $f:[a,b]\to[a,b]$ cu $|f(x)-f(y)|<|x-y|$ pentru orice $x\neq y$. Atunci $f$ are un unic punct fix $\ell$, iar pentru orice $x_0\in[a,b]$ șirul $x_{n+1}=f(x_n)$ converge la $\ell$.
+\end{teorema}
+\begin{proof}
+\emph{Existența:} $g(x)=|f(x)-x|$ e continuă pe compactul $[a,b]$, deci își atinge minimul într-un $c$ (Weierstrass). Dacă $g(c)>0$, adică $f(c)\neq c$, atunci
+\[
+g\big(f(c)\big)=|f(f(c))-f(c)|<|f(c)-c|=g(c),
+\]
+contrazicând minimalitatea; deci $f(c)=c$. \emph{Unicitatea:} două puncte fixe distincte ar da $|\ell-\ell'|<|\ell-\ell'|$.
+
+\emph{Convergența iteratelor:} $d_n=|x_n-\ell|$ satisface $d_{n+1}\le d_n$, deci $d_n\searrow d\ge0$. Presupunem $d>0$. Șirul $(x_n)$ e mărginit, deci un subșir $x_{n_k}\to y$ cu $|y-\ell|=d>0$, deci $y\neq\ell$. Din continuitate, $x_{n_k+1}=f(x_{n_k})\to f(y)$ și $|f(y)-\ell|=\lim d_{n_k+1}=d$. Dar $|f(y)-\ell|=|f(y)-f(\ell)|<|y-\ell|=d$ --- contradicție. Deci $d=0$.
+\end{proof}
+
+\begin{corolar}[Criteriul cu derivata]\label{cor:contractie-derivata}
+Fie $f:[a,b]\to[a,b]$ derivabilă, cu $|f'(x)|\le q<1$ pentru orice $x\in[a,b]$. Atunci $f$ este o contracție de raport $q$ pe $[a,b]$, deci are un unic punct fix $\ell$, iar pentru orice $x_0\in[a,b]$ șirul $x_{n+1}=f(x_n)$ converge la $\ell$.
+\end{corolar}
+\begin{proof}
+Din teorema lui Lagrange: $|f(x)-f(y)|=|f'(c)|\cdot|x-y|\le q|x-y|$ pentru orice $x,y\in[a,b]$. Deci $f$ e contracție și teorema lui Banach se aplică.
+\end{proof}
+
+\textbf{Exemplu.} \emph{Pentru orice $x_0\in\mathbb{R}$, șirul $x_{n+1}=\cos x_n$ converge la unica soluție a ecuației $\cos\ell=\ell$ ($\ell\approx0{,}739$).}
+
+\emph{Soluție.} Oricare ar fi $x_0$: $x_1=\cos x_0\in[-1,1]$, apoi $x_2=\cos x_1\in[\cos1,1]=:J$ (cosinusul e par și descrescător pe $[0,1]$). Intervalul închis $J$ e \emph{invariant}: pentru $x\in J\subset(0,1]$, $\cos x\in[\cos1,\cos(\cos1)]\subseteq J$. Pe $J$, $|(\cos)'(x)|=\sin x\le\sin1<1$, deci cosinusul e contracție pe $J$ de raport $q=\sin1\approx0{,}84$ (criteriul cu derivata). Din teorema lui Banach, $(x_n)_{n\ge2}\subset J$ converge la unicul punct fix din $J$; unicitatea pe tot $\mathbb{R}$ rezultă din faptul că $\cos x=x$ nu are soluții în afara lui $[-1,1]$, iar pe $[-1,1]$ funcția $\cos x-x$ e strict descrescătoare. $\blacksquare$
+
+\subsection{Recurențe liniare: ecuația caracteristică}
+
+\begin{teorema}
+Fie recurența $x_{n+2}=a\,x_{n+1}+b\,x_n$ ($a,b\in\mathbb{R}$, $b\neq0$), cu \textbf{ecuația caracteristică} $r^2=ar+b$, de rădăcini $r_1,r_2$. Termenul general este:
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item rădăcini reale distincte: \quad $x_n=C_1r_1^{\,n}+C_2r_2^{\,n}$;
+\item rădăcină dublă $r$: \quad $x_n=(C_1+C_2\,n)\,r^{\,n}$;
+\item rădăcini complexe $r_{1,2}=\rho(\cos\theta\pm i\sin\theta)$: \quad $x_n=\rho^{\,n}\big(C_1\cos n\theta+C_2\sin n\theta\big)$,
+\end{enumerate}
+cu $C_1,C_2$ determinate unic din $x_0,x_1$.
+\end{teorema}
+\begin{proof}
+\emph{Pasul 1 (formulele dau soluții).} Dacă $r$ e rădăcină a caracteristicii, înmulțind $r^2=ar+b$ cu $r^n$: $r^{n+2}=ar^{n+1}+br^n$, deci șirul $(r^n)$ verifică recurența; la fel orice combinație liniară (recurența e liniară). Pentru rădăcina dublă $r_0=\frac a2$ verificăm și $(n\,r_0^n)$:
+\[
+(n+2)r_0^{n+2}-a(n+1)r_0^{n+1}-b\,n\,r_0^{n}
+=r_0^{n}\Big[n\underbrace{(r_0^2-ar_0-b)}_{=0}+r_0\underbrace{(2r_0-a)}_{=0}\Big]=0.
+\]
+În cazul complex, $r=\rho(\cos\theta+i\sin\theta)$ dă, prin formula lui Moivre, $r^n=c_n+is_n$ cu $c_n=\rho^n\cos n\theta$, $s_n=\rho^n\sin n\theta$; egalitatea $r^{n+2}=ar^{n+1}+br^n$, separată pe părți reale și imaginare ($a,b$ reale), arată că $(c_n)$ și $(s_n)$ verifică fiecare recurența.
+
+\emph{Pasul 2 (potrivirea condițiilor inițiale).} Cazul 1: sistemul $C_1+C_2=x_0$, $C_1r_1+C_2r_2=x_1$ are determinantul $r_2-r_1\neq0$. Cazul 2: $C_1=x_0$ și $r_0(C_1+C_2)=x_1$ dau $C_2$ unic ($r_0\neq0$, căci $r_1r_2=-b\neq0$). Cazul 3: $C_1=x_0$ și $\rho(C_1\cos\theta+C_2\sin\theta)=x_1$ dau $C_2$ unic ($\rho\sin\theta\neq0$). Formula acoperă \emph{toate} soluțiile: recurența determină șirul complet din $(x_0,x_1)$, iar soluția construită are exact aceste valori inițiale.
+\end{proof}
+
+\begin{obs}
+Exemplul canonic: Fibonacci, $x_{n+2}=x_{n+1}+x_n$, cu $r_{1,2}=\frac{1\pm\sqrt5}{2}$, dă formula lui Binet
+$F_n=\frac{1}{\sqrt5}\big(\varphi^n-\psi^n\big)$, $\varphi=\frac{1+\sqrt5}2$, $\psi=\frac{1-\sqrt5}2$; cum $|\psi|<1$, imediat $\frac{F_{n+1}}{F_n}\to\varphi$.
+\end{obs}
+
+
+\subsection{Recurențe homografice}
+
+\begin{definitie}[recurență homografică]
+O recurență se numește \emph{homografică} (sau \emph{omografică}) dacă are forma
+\[
+a_{n+1}=\frac{\alpha\,a_n+\beta}{\gamma\,a_n+\delta},\qquad \gamma\neq0,\qquad \alpha\delta-\beta\gamma\neq0 .
+\]
+Condiția $\alpha\delta-\beta\gamma\neq0$ exclude cazul degenerat în care fracția e constantă; condiția $\gamma\neq0$ o deosebește de recurențele afine. Se presupune tacit că $\gamma a_n+\delta\neq0$ pentru orice $n$ (altfel șirul nu e definit).
+\end{definitie}
+
+\begin{definitie}[ecuația caracteristică]
+\emph{Punctele fixe} ale recurenței sunt soluțiile $\ell$ ale ecuației $\ell=\dfrac{\alpha\ell+\beta}{\gamma\ell+\delta}$, adică rădăcinile \textbf{ecuației caracteristice}
+\[
+\boxed{\ \gamma\,\ell^{2}+(\delta-\alpha)\,\ell-\beta=0\ }
+\]
+Ele sunt exact limitele posibile ale șirului: dacă $a_n\to\ell$ finit, atunci $\ell$ verifică această ecuație.
+\end{definitie}
+
+\begin{teorema}[rezolvarea în cazul rădăcinilor distincte]
+Fie $r_1\neq r_2$ rădăcinile ecuației caracteristice. Atunci șirul
+\[
+b_n=\frac{a_n-r_1}{a_n-r_2}
+\]
+este o \textbf{progresie geometrică}, de rație
+\[
+q=\frac{\alpha-\gamma r_1}{\alpha-\gamma r_2}.
+\]
+În consecință $b_n=b_1\,q^{\,n-1}$, iar termenul general se obține rezolvând în $a_n$:
+\[
+a_n=\frac{r_1-r_2\,b_n}{1-b_n},\qquad b_n=\frac{a_1-r_1}{a_1-r_2}\cdot q^{\,n-1}.
+\]
+\end{teorema}
+
+\begin{proof}
+Cum $r_1$ e punct fix, din ecuația caracteristică avem $\beta=\gamma r_1^2+(\delta-\alpha)r_1$, deci
+\[
+a_{n+1}-r_1=\frac{\alpha a_n+\beta-r_1(\gamma a_n+\delta)}{\gamma a_n+\delta}
+=\frac{(\alpha-\gamma r_1)(a_n-r_1)}{\gamma a_n+\delta},
+\]
+iar analog pentru $r_2$. Împărțind cele două relații, numitorul $\gamma a_n+\delta$ se simplifică și rămâne
+\[
+\frac{a_{n+1}-r_1}{a_{n+1}-r_2}=\underbrace{\frac{\alpha-\gamma r_1}{\alpha-\gamma r_2}}_{=q}\cdot\frac{a_n-r_1}{a_n-r_2}. \qedhere
+\]
+\end{proof}
+
+\begin{obs}[cazul rădăcinii duble]
+Dacă $r_1=r_2=r$, atunci nu $\frac{a_n-r_1}{a_n-r_2}$, ci $\dfrac{1}{a_n-r}$ este \textbf{progresie aritmetică}, de rație $\dfrac{\gamma}{\lambda}$, unde $\lambda=\alpha-\gamma r=\frac{\alpha+\delta}{2}$.
+\end{obs}
+
+\begin{teorema}[metoda matriceală]
+Asociem recurenței matricea
+\[
+M=\begin{pmatrix}\alpha & \beta\\ \gamma & \delta\end{pmatrix}.
+\]
+Scriind $a_n=\dfrac{x_n}{y_n}$, recurența devine \emph{liniară}:
+\[
+\begin{pmatrix}x_{n+1}\\ y_{n+1}\end{pmatrix}
+=M\begin{pmatrix}x_n\\ y_n\end{pmatrix}
+\qquad\Longrightarrow\qquad
+\begin{pmatrix}x_n\\ y_n\end{pmatrix}=M^{\,n-1}\begin{pmatrix}x_1\\ y_1\end{pmatrix},\qquad a_n=\frac{x_n}{y_n}.
+\]
+Așadar termenul general se obține \textbf{ridicând matricea la puterea $n$} (prin diagonalizare, Cayley--Hamilton sau forma Jordan).
+\end{teorema}
+
+\begin{obs}[cele două metode sunt aceeași metodă]
+Polinomul caracteristic al lui $M$ este $\lambda^2-(\alpha+\delta)\lambda+(\alpha\delta-\beta\gamma)=0$, iar vectorii proprii sunt exact $\binom{r_i}{1}$, cu $r_i$ punctele fixe: din $M\binom{r}{1}=\lambda\binom{r}{1}$ rezultă $\alpha r+\beta=\lambda r$ și $\gamma r+\delta=\lambda$, deci $\frac{\alpha r+\beta}{\gamma r+\delta}=r$. Mai mult, $\lambda_i=\gamma r_i+\delta$ și
+\[
+q=\frac{\alpha-\gamma r_1}{\alpha-\gamma r_2}=\frac{\lambda_2}{\lambda_1},
+\]
+(folosind $r_1+r_2=\frac{\alpha-\delta}{\gamma}$): \textbf{rația progresiei geometrice este raportul valorilor proprii}. De aici se citește imediat și limita: dacă $|\lambda_2|>|\lambda_1|$ atunci $|b_n|\to\infty$ și $a_n\to r_2$; dacă $|\lambda_2|<|\lambda_1|$, atunci $a_n\to r_1$.
+\end{obs}
+
+\begin{exemplu}
+Fie $a_1=3$ și $a_{n+1}=\dfrac{4a_n-2}{a_n+1}$. Aici $\alpha=4,\ \beta=-2,\ \gamma=1,\ \delta=1$.
+
+\emph{Ecuația caracteristică:} $\ell^2+(1-4)\ell+2=0$, adică $\ell^2-3\ell+2=0$, cu rădăcinile
+\[
+r_1=1,\qquad r_2=2 .
+\]
+
+\emph{Metoda progresiei geometrice.} Rația este $q=\dfrac{\alpha-\gamma r_1}{\alpha-\gamma r_2}=\dfrac{4-1}{4-2}=\dfrac32$, iar $b_1=\dfrac{a_1-1}{a_1-2}=2$. Deci
+\[
+b_n=\frac{a_n-1}{a_n-2}=2\Bigl(\frac32\Bigr)^{n-1},
+\]
+și, rezolvând în $a_n$,
+\[
+\boxed{\ a_n=\frac{4\cdot 3^{\,n-1}-2^{\,n-1}}{2\cdot 3^{\,n-1}-2^{\,n-1}}\ }
+\]
+(verificare: $a_1=3$, $a_2=\frac52$, $a_3=\frac{16}{7}$, $a_4=\frac{50}{23}$).
+
+\emph{Metoda matriceală.} $M=\begin{pmatrix}4&-2\\1&1\end{pmatrix}$ are polinomul caracteristic $\lambda^2-5\lambda+6$, deci valorile proprii $\lambda_1=2$, $\lambda_2=3$ --- iar $q=\lambda_2/\lambda_1=\frac32$, ca mai sus. Vectorii proprii sunt $\binom11$ (pentru $\lambda=2$) și $\binom21$ (pentru $\lambda=3$) --- adică exact $\binom{r_i}{1}$. Cu $a_1=\frac31$ descompunem $\binom31=-\binom11+2\binom21$, deci
+\[
+M^{\,n-1}\binom31=-2^{\,n-1}\binom11+2\cdot 3^{\,n-1}\binom21
+=\binom{4\cdot 3^{\,n-1}-2^{\,n-1}}{\,2\cdot 3^{\,n-1}-2^{\,n-1}},
+\]
+regăsind aceeași formulă.
+
+\emph{Limita:} cum $|\lambda_2|>|\lambda_1|$, avem $a_n\to r_2=2$ (se vede și direct: raportul tinde la $\frac{4\cdot 3^{n-1}}{2\cdot 3^{n-1}}=2$).
+\end{exemplu}
+
+\subsection{Criterii de convergență și comparație}
+
+\begin{teorema}[Criteriul cleștelui]
+Dacă $a_n\le b_n\le c_n$ de la un rang încolo și $a_n\to\ell$, $c_n\to\ell$, atunci $b_n\to\ell$.
+\end{teorema}
+
+\begin{teorema}[Criteriul majorării]
+Dacă $|a_n-\ell|\le b_n$ și $b_n\to 0$, atunci $a_n\to\ell$.
+\end{teorema}
+
+\begin{teorema}[Criteriul raportului pentru șiruri]
+Fie $a_n>0$. Dacă $\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=L<1$, atunci $a_n\to 0$. Dacă $L>1$, atunci $a_n\to+\infty$.
+\end{teorema}
+
+\begin{corolar}[Ordine de creștere]
+Pentru $a>1$, $k>0$:
+\[
+\ln n \ \ll\ n^k \ \ll\ a^n \ \ll\ n! \ \ll\ n^n,
+\]
+unde $u_n\ll v_n$ înseamnă $u_n/v_n\to 0$. De reținut și $\sqrt[n]{n}\to 1$, $\sqrt[n]{a}\to 1$ pentru $a>0$.
+\end{corolar}
+
+\subsection{Teorema Cesàro--Stolz și consecințe}
+
+\begin{teorema}[Cesàro--Stolz, cazul $\tfrac{\cdot}{\infty}$]
+Fie $(b_n)$ strict crescător cu $b_n\to+\infty$. Dacă
+\[
+\lim_{n\to\infty}\frac{a_{n+1}-a_n}{b_{n+1}-b_n}=\ell\in\overline{\mathbb{R}},
+\qquad\text{atunci}\qquad
+\lim_{n\to\infty}\frac{a_n}{b_n}=\ell.
+\]
+\end{teorema}
+
+\begin{teorema}[Cesàro--Stolz, cazul $\tfrac{0}{0}$]
+Dacă $a_n\to 0$, $(b_n)$ este strict descrescător cu $b_n\to 0$, și $\dfrac{a_{n+1}-a_n}{b_{n+1}-b_n}\to\ell$, atunci $\dfrac{a_n}{b_n}\to\ell$.
+\end{teorema}
+
+\begin{obs}
+Reciproca este falsă în general. Implicația merge doar de la raportul diferențelor către raportul termenilor.
+\end{obs}
+
+\begin{corolar}[Consecințe clasice]
+Fie $x_n\to\ell$ (eventual $\ell=\pm\infty$). Atunci:
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item (Media aritmetică) $\dfrac{x_1+x_2+\dots+x_n}{n}\to\ell$.
+\item (Media geometrică) Dacă $x_n>0$, $\sqrt[n]{x_1 x_2\cdots x_n}\to\ell$.
+\item (Criteriul radicalului) Dacă $x_n>0$ și $\dfrac{x_{n+1}}{x_n}\to\ell$, atunci $\sqrt[n]{x_n}\to\ell$.
+\end{enumerate}
+\end{corolar}
+
+\begin{obs}
+Aplicație imediată a punctului 3: $\displaystyle\sqrt[n]{n}\to 1$, $\displaystyle\frac{\sqrt[n]{n!}}{n}\to\frac{1}{e}$ (cu $x_n=n!/n^n$).
+\end{obs}
+
+\begin{obs}[Recurențe cu viteză de convergență]
+Pentru $x_{n+1}=f(x_n)\to\ell$ cu $f'(\ell)=0$, convergența e „rapidă''; pentru studiul asimptoticii unui șir care tinde \emph{lent} la $0$ (ex. $x_{n+1}=\sin x_n$), instrumentul standard este Cesàro--Stolz aplicat șirului $\dfrac{1/x_n^2}{n}$: se obține $x_n\sqrt{\dfrac n3}\to1$ pentru $x_{n+1}=\sin x_n$ (rezolvarea completă, în Partea a II-a).
+\end{obs}
+
+\subsection{Numărul $e$ și limite clasice}
+
+\begin{teorema}
+Șirul $e_n=\left(1+\frac1n\right)^n$ este strict crescător, $E_n=\left(1+\frac1n\right)^{n+1}$ strict descrescător, ambele converg la $e$, iar $e_n<e<E_n$ pentru orice $n$. De asemenea
+\[
+e=\lim_{n\to\infty}\left(1+\frac{1}{1!}+\frac{1}{2!}+\dots+\frac{1}{n!}\right),
+\qquad
+0<e-\sum_{k=0}^{n}\frac{1}{k!}<\frac{1}{n\cdot n!}.
+\]
+\end{teorema}
+
+\begin{corolar}
+$e$ este irațional. (Se folosește estimarea restului de mai sus: dacă $e=p/q$, se înmulțește cu $q!$ și se obține un întreg strict între $0$ și $1$.)
+\end{corolar}
+
+\begin{teorema}[Constanta lui Euler]
+Șirul $c_n=1+\frac12+\dots+\frac1n-\ln n$ este strict descrescător și mărginit inferior, deci convergent; limita sa este constanta $\gamma\approx 0{,}5772$. Notând $H_n=1+\frac12+\dots+\frac1n$, asta înseamnă exact $H_n-\ln n\to\gamma$; în particular $H_n\to\infty$ și $\dfrac{H_n}{\ln n}\to 1$.
+\end{teorema}
+\section{Limite de funcții și continuitate}
+
+\subsection{Limite de funcții}
+
+\begin{definitie}[Cauchy și Heine]
+Fie $f:D\to\mathbb{R}$ și $x_0$ punct de acumulare al lui $D$. Atunci $\lim_{x\to x_0}f(x)=\ell$ dacă: (Cauchy) $\forall\varepsilon>0\ \exists\delta>0$ astfel încât $x\in D$, $0<|x-x_0|<\delta \Rightarrow |f(x)-\ell|<\varepsilon$; echivalent (Heine) pentru \emph{orice} șir $x_n\to x_0$, $x_n\in D\setminus\{x_0\}$, avem $f(x_n)\to\ell$.
+\end{definitie}
+
+\begin{obs}
+Criteriul lui Heine este unealta principală pentru a demonstra că o limită \emph{nu} există: se aleg două șiruri care converg la $x_0$ dar dau valori diferite (ex. $\sin\frac{1}{x}$ în $0$).
+\end{obs}
+
+\begin{propozitie}
+$\lim_{x\to x_0} f(x)$ există $\iff$ limitele laterale $f(x_0-0)$ și $f(x_0+0)$ există și sunt egale (când $x_0$ e punct de acumulare bilateral).
+\end{propozitie}
+
+\begin{tehbox}{Limite fundamentale}
+\[
+\lim_{x\to 0}\frac{\sin x}{x}=1,\quad
+\lim_{x\to 0}\frac{\operatorname{tg} x}{x}=1,\quad
+\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac12,\quad
+\lim_{x\to 0}\frac{\arcsin x}{x}=1,
+\]
+\[
+\begin{gathered}
+\lim_{x\to 0}(1+x)^{1/x}=e,\qquad
+\lim_{x\to 0}\frac{\ln(1+x)}{x}=1,\\
+\lim_{x\to 0}\frac{a^x-1}{x}=\ln a,\qquad
+\lim_{x\to 0}\frac{(1+x)^r-1}{x}=r.
+\end{gathered}
+\]
+\end{tehbox}
+
+\subsection{Continuitate: definiții și proprietăți de bază}
+
+\begin{definitie}
+$f$ este continuă în $x_0\in D$ dacă $\forall\varepsilon>0\ \exists\delta>0$ astfel încât $|x-x_0|<\delta \Rightarrow |f(x)-f(x_0)|<\varepsilon$; echivalent, $f(x_n)\to f(x_0)$ pentru orice șir $x_n\to x_0$ din $D$.
+\end{definitie}
+
+\begin{propozitie}
+Suma, produsul, câtul (unde numitorul nu se anulează) și compunerea funcțiilor continue sunt continue. Funcțiile elementare sunt continue pe domeniul lor.
+\end{propozitie}
+
+\begin{definitie}[Tipuri de discontinuități]
+$x_0$ este punct de discontinuitate de \textbf{speța I} dacă limitele laterale există și sunt finite (dar $f$ nu e continuă în $x_0$); de \textbf{speța a II-a} în caz contrar.
+\end{definitie}
+
+\begin{teorema}[Funcțiile monotone au limite laterale]
+Fie $f$ crescătoare pe intervalul $I$ și $x_0$ interior lui $I$. Atunci limitele laterale există, sunt finite și
+\[
+f(x_0-0)=\sup_{x<x_0}f(x)\ \le\ f(x_0)\ \le\ \inf_{x>x_0}f(x)=f(x_0+0).
+\]
+(Analog pentru descrescătoare, cu inegalitățile inversate; la capetele intervalului există limita laterală dinspre interior.) În particular, o funcție monotonă are numai discontinuități de \textbf{speța I}, iar mărimea $s(x_0)=f(x_0+0)-f(x_0-0)\ge0$ se numește \textbf{saltul} în $x_0$.
+\end{teorema}
+\begin{proof}
+Fie $M=\sup\{f(x):x\in I,\ x<x_0\}$; mulțimea e nevidă și majorată de $f(x_0)$ (monotonie), deci $M$ există și $M\le f(x_0)$. Fie $\varepsilon>0$: din definiția supremumului există $x_1<x_0$ cu $f(x_1)>M-\varepsilon$. Pentru orice $x\in(x_1,x_0)$, monotonia dă
+\[
+M-\varepsilon<f(x_1)\le f(x)\le M,
+\]
+adică $|f(x)-M|<\varepsilon$ pe $(x_1,x_0)$. Deci $\lim_{x\nearrow x_0}f(x)=M$. Limita la dreapta e simetrică, cu infimum.
+\end{proof}
+
+\begin{teorema}[Numărabilitatea discontinuităților]
+O funcție monotonă pe un interval are cel mult o mulțime \textbf{numărabilă} de puncte de discontinuitate.
+\end{teorema}
+\begin{proof}
+Fie $f$ crescătoare. În fiecare punct de discontinuitate $x$, saltul e strict pozitiv, deci intervalul deschis $J_x=\big(f(x-0),\,f(x+0)\big)$ e nevid. Dacă $x<y$ sunt două discontinuități, luând $z\in(x,y)$ avem $f(x+0)\le f(z)\le f(y-0)$, deci $J_x$ și $J_y$ sunt \emph{disjuncte}. În fiecare $J_x$ alegem un număr rațional $q_x$; disjuncția face ca $x\mapsto q_x$ să fie injectivă. Așadar discontinuitățile se pun în corespondență injectivă cu o submulțime a lui $\mathbb{Q}$, care e numărabilă.
+\end{proof}
+
+\begin{obs}[Optimalitate]
+Rezultatul e optim: pentru orice mulțime cel mult numărabilă $\{d_1,d_2,\dots\}\subset\mathbb{R}$ există o funcție \emph{crescătoare} discontinuă exact în acele puncte, de pildă $f(x)=\sum_{n:\,d_n\le x}2^{-n}$ (suma are sens, seria fiind convergentă; saltul în $d_n$ e exact $2^{-n}$).
+\end{obs}
+
+\begin{obs}[Densitatea punctelor de continuitate]
+Consecință-cheie: punctele de \emph{continuitate} ale unei funcții monotone sunt \textbf{dense} --- discontinuitățile fiind cel mult numărabile, complementara lor taie orice interval nedegenerat (lema despre intervale și mulțimi numărabile, secțiunea „Topologie pe $\mathbb{R}$'').
+\end{obs}
+
+\textbf{Exemplu.} \emph{Fie $f,g:\mathbb{R}\to\mathbb{R}$, cu $f$ continuă. Presupunem că pentru orice numere reale $a<b<c$ există un șir $x_n\to b$ pentru care $\lim_{n\to\infty}g(x_n)$ există și}
+\[
+f(a)<\lim_{n\to\infty}g(x_n)<f(c).
+\]
+\emph{\textbf{a)} Dați un exemplu de astfel de funcții cu $g$ discontinuă în orice punct. \textbf{b)} Arătați că, dacă $g$ este monotonă, atunci $f=g$.}
+
+\smallskip
+\emph{a)} $f(x)=x$ și $g(x)=x$ pentru $x\in\mathbb{Q}$, $g(x)=x+1$ pentru $x\in\mathbb{R}\setminus\mathbb{Q}$. Pentru $a<b<c$ luăm un șir de \emph{raționale} $x_n\to b$: atunci $\lim g(x_n)=b\in(a,c)=(f(a),f(c))$. Funcția $g$ e discontinuă peste tot (vezi subsecțiunea despre funcții definite pe $\mathbb{Q}$ și $\mathbb{R}\setminus\mathbb{Q}$).
+
+\emph{b)} \emph{Pasul 1: $g=f$ în punctele de continuitate ale lui $g$.} Fie $b$ un punct de continuitate al lui $g$ și să presupunem $g(b)<f(b)$. Din continuitatea lui $f$ în $b$, există $a<b$ cu $f(a)>g(b)$. Dar pentru \emph{orice} șir $x_n\to b$, continuitatea lui $g$ în $b$ dă $\lim g(x_n)=g(b)<f(a)$ --- contrazice ipoteza (care cere un șir cu limita $>f(a)$). Cazul $g(b)>f(b)$ e simetric (se alege $c>b$ cu $f(c)<g(b)$). Deci $g(b)=f(b)$.
+
+\emph{Pasul 2: extinderea la orice punct, prin numărabilitate.} Fie $x\in\mathbb{R}$ arbitrar. Cum $g$ e monotonă, discontinuitățile ei sunt cel mult numărabile, deci punctele de continuitate sunt dense: pentru fiecare $n$ alegem puncte de continuitate $u_n\in\big(x-\tfrac1n,x\big)$ și $v_n\in\big(x,x+\tfrac1n\big)$. Atunci, folosind Pasul 1 și continuitatea lui $f$:
+\[
+\begin{gathered}
+g(x-0)=\lim_{n\to\infty}g(u_n)=\lim_{n\to\infty}f(u_n)=f(x),\\
+g(x+0)=\lim_{n\to\infty}g(v_n)=\lim_{n\to\infty}f(v_n)=f(x)
+\end{gathered}
+\]
+(limitele laterale ale lui $g$ există prin teorema de mai sus, deci pot fi calculate pe orice șiruri convenabile). Din monotonie, $g(x)$ e cuprins între $g(x-0)$ și $g(x+0)$, ambele egale cu $f(x)$, deci $g(x)=f(x)$. $\blacksquare$
+
+\smallskip
+\emph{Observații de redactare.} (1) Ipoteza dă direct $f(a)<f(c)$ pentru orice $a<c$ (există o valoare strict între ele), deci $f$ --- și odată cu ea $g$ --- este strict crescătoare. (2) Morala: teorema de numărabilitate nu se folosește „în sine'', ci prin \textbf{corolarul de densitate} --- informația valabilă doar în punctele de continuitate se transportă în \emph{orice} punct prin limite laterale. Acesta e șablonul-tip de utilizare la concurs.
+
+\subsection{Proprietatea lui Darboux și funcții continue pe compacte}
+
+\begin{definitie}
+$f:I\to\mathbb{R}$ are \textbf{proprietatea lui Darboux} dacă pentru orice $a<b$ din $I$ și orice $\lambda$ între $f(a)$ și $f(b)$ există $c\in(a,b)$ cu $f(c)=\lambda$. Echivalent: $f$ duce intervale în intervale.
+\end{definitie}
+
+\begin{teorema}[Cauchy--Bolzano / valorilor intermediare]
+Orice funcție continuă pe un interval are proprietatea lui Darboux. În particular, dacă $f$ e continuă pe $[a,b]$ și $f(a)f(b)<0$, atunci există $c\in(a,b)$ cu $f(c)=0$.
+\end{teorema}
+
+\begin{obs}[Anulare din semne]
+Dacă $g$ continuă pe $[a,b]$ ia atât valori $\ge0$ cât și $\le0$, atunci se anulează. Multe probleme se reduc la \emph{construirea} unei funcții auxiliare cu semne opuse la capete (sau cu sumă/medie nulă, care forțează ambele semne) --- vezi și secțiunea Construcții.
+\end{obs}
+
+\begin{obs}
+Reciproca este falsă: derivatele au proprietatea Darboux fără a fi neapărat continue (vezi Teorema~\ref{darbderiv}). Exemplu clasic: $f(x)=\sin\frac1x$ pentru $x\ne 0$, $f(0)=0$ are Darboux dar nu e continuă în $0$.
+\end{obs}
+
+\begin{teorema}[Weierstrass]
+O funcție continuă pe un interval compact $[a,b]$ este mărginită și își atinge marginile: există $u,v\in[a,b]$ cu $f(u)=\min f$, $f(v)=\max f$.
+\end{teorema}
+
+\begin{teorema}[Rezultate de structură foarte des folosite la ONM]
+Fie $f:I\to\mathbb{R}$, $I$ interval.
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item Dacă $f$ este continuă și injectivă, atunci $f$ este strict monotonă.
+\item Dacă $f$ este strict monotonă și are proprietatea lui Darboux, atunci $f$ este continuă.
+\item Dacă $f$ este continuă și strict monotonă, atunci $f^{-1}$ este continuă pe $f(I)$.
+\item Dacă $f:[a,b]\to[a,b]$ este continuă, atunci $f$ are cel puțin un punct fix. (Se aplică Cauchy--Bolzano funcției $g(x)=f(x)-x$.)
+\end{enumerate}
+\end{teorema}
+
+\begin{obs}[Puncte fixe și iterații]
+Dacă $f:[a,b]\to[a,b]$ e \emph{crescătoare}, atunci orice soluție a lui $f(f(x))=x$ este soluție a lui $f(x)=x$. Într-adevăr, dacă $f(x)>x$, aplicând $f$ (crescătoare) obținem $f(f(x))\ge f(x)>x$, contradicție; cazul $f(x)<x$ e simetric.
+Pentru funcții descrescătoare afirmația e falsă, chiar și pentru involuții ($f\circ f=\mathrm{id}$): $f(x)=a+b-x$ verifică $f(f(x))=x$ pentru orice $x\in[a,b]$, dar singurul ei punct fix este $\frac{a+b}2$.
+\end{obs}
+
+
+
+\begin{teorema}[Ecuația multiplicativă, cu demonstrație]
+Fie $f:(0,\infty)\to\mathbb{R}$ continuă, neidentic nulă, cu $f(xy)=f(x)f(y)$ pentru orice $x,y>0$. Atunci există $c\in\mathbb{R}$ cu $f(x)=x^c$.
+\end{teorema}
+\begin{proof}
+\emph{Pozitivitate:} $f(x)=f(\sqrt x\cdot\sqrt x)=f(\sqrt x)^2\ge0$; dacă $f(x_0)=0$ pentru vreun $x_0$, atunci $f(x)=f(x_0)f\big(\frac{x}{x_0}\big)=0$ pentru orice $x$ --- exclus. Deci $f>0$.
+\emph{Reducerea:} $g(t)=\ln f(e^t)$ e continuă și
+\[
+g(t+s)=\ln f(e^te^s)=\ln\big[f(e^t)f(e^s)\big]=g(t)+g(s),
+\]
+deci $g$ satisface ecuația aditivă cu continuitate: $g(t)=ct$. Rezultă $f(e^t)=e^{ct}$, adică $f(x)=x^c$.
+\end{proof}
+
+\begin{teorema}[Ecuația lui Jensen, cu demonstrație]
+Fie $f:\mathbb{R}\to\mathbb{R}$ continuă cu $f\big(\frac{x+y}{2}\big)=\frac{f(x)+f(y)}{2}$ pentru orice $x,y$. Atunci $f$ e afină: $f(x)=cx+f(0)$, cu $c=f(1)-f(0)$.
+\end{teorema}
+\begin{proof}
+$g(x)=f(x)-f(0)$ satisface aceeași ecuație și $g(0)=0$. Punând $y=0$: $g\big(\frac x2\big)=\frac{g(x)}2$. Atunci, pentru orice $x,y$:
+\[
+\frac{g(x+y)}{2}=g\Big(\frac{x+y}{2}\Big)=\frac{g(x)+g(y)}{2}
+\ \Longrightarrow\ g(x+y)=g(x)+g(y),
+\]
+deci $g$ e aditivă și continuă: $g(x)=cx$, adică $f(x)=cx+f(0)$; $x=1$ dă $c=f(1)-f(0)$. Reciproc, orice funcție afină verifică ecuația.
+\end{proof}
+
+\begin{teorema}[Injectivitate + Darboux; inversa păstrează Darboux]
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item Dacă $f:I\to\mathbb{R}$ este \textbf{injectivă} și are proprietatea lui Darboux, atunci $f$ este strict monotonă.
+\item Dacă $f:I\to J$ este \textbf{bijectivă} și are proprietatea lui Darboux, atunci $f^{-1}:J\to I$ are proprietatea lui Darboux (mai mult, $f^{-1}$ este chiar continuă).
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\emph{1.} Prin absurd: dacă $f$ nu e strict monotonă, există $x<y<z$ în $I$ astfel încât $f(y)$ nu e strict între $f(x)$ și $f(z)$ (un „vârf'' sau o „vale''). Să zicem $f(y)>\max\big(f(x),f(z)\big)$ (celălalt caz e simetric). Alegem $\lambda$ cu $\max\big(f(x),f(z)\big)<\lambda<f(y)$: prin Darboux pe $[x,y]$ există $u\in(x,y)$ cu $f(u)=\lambda$, și prin Darboux pe $[y,z]$ există $v\in(y,z)$ cu $f(v)=\lambda$. Dar $u\neq v$ --- contrazice injectivitatea.
+
+\emph{2.} Din punctul 1, $f$ e strict monotonă; atunci $f^{-1}:J\to I$ e strict monotonă și \emph{surjectivă} pe intervalul $I$. O funcție monotonă a cărei imagine e un interval nu poate avea salturi (un salt ar lăsa o „gaură'' în imagine, prin teorema limitelor laterale), deci $f^{-1}$ e continuă --- în particular are Darboux.
+\end{proof}
+
+\subsection{Funcții definite prin cazuri pe $\mathbb{Q}$ și $\mathbb{R}\setminus\mathbb{Q}$}
+
+Tip de problemă recurent la olimpiadă: o funcție „lipită'' din două ramuri,
+\[
+F(x)=\begin{cases} g(x), & x\in\mathbb{Q},\\ h(x), & x\in\mathbb{R}\setminus\mathbb{Q}.\end{cases}
+\]
+Instrumentul universal: \textbf{densitatea} lui $\mathbb{Q}$ și a lui $\mathbb{R}\setminus\mathbb{Q}$ în $\mathbb{R}$ --- orice punct e limită atât de raționale cât și de iraționale --- combinată cu criteriul lui Heine.
+
+\begin{teorema}[Limita unei funcții lipite]
+Dacă $g$ și $h$ au limite în $x_0$, atunci $F$ are limită în $x_0$ \textbf{dacă și numai dacă}
+\[
+\lim_{x\to x_0}g(x)=\lim_{x\to x_0}h(x),
+\]
+iar atunci limita lui $F$ este valoarea comună.
+\end{teorema}
+\begin{proof}
+($\Leftarrow$) Fie $L$ valoarea comună și $\varepsilon>0$. Există $\delta_1,\delta_2$ pentru $g$, respectiv $h$; cu $\delta=\min(\delta_1,\delta_2)$, pentru $0<|x-x_0|<\delta$ avem $|F(x)-L|<\varepsilon$ indiferent de ramura pe care cade $x$.
+
+($\Rightarrow$) Fie $L=\lim_{x\to x_0}F(x)$. Luăm un șir de \emph{raționale} $x_n\to x_0$, $x_n\neq x_0$ (densitate): Heine dă $F(x_n)=g(x_n)\to L$, deci $\lim g=L$ (limita lui $g$ există prin ipoteză, iar un șir particular o identifică). Cu un șir de iraționale, la fel $\lim h=L$.
+\end{proof}
+
+\begin{corolar}[Continuitatea funcției lipite]
+Dacă, în plus, $g$ și $h$ sunt continue în $x_0$, atunci $F$ este continuă în $x_0$ $\iff$ $g(x_0)=h(x_0)$: \emph{„$F$ e continuă exact acolo unde ramurile se ating''}. (Aici $L_g=g(x_0)$, $L_h=h(x_0)$, iar $F(x_0)$ coincide cu valoarea comună indiferent de natura lui $x_0$.)
+\end{corolar}
+
+\begin{obs}[Exemple standard]
+\emph{(a)} $F=x$ pe $\mathbb{Q}$, $0$ în rest: continuă exact în $0$. \emph{(b)} $F=x$ pe $\mathbb{Q}$, $1-x$ în rest: continuă exact în $\frac12$. \emph{(c)} Funcția lui Dirichlet ($1$ pe $\mathbb{Q}$, $0$ în rest): ramurile constante nu se ating nicăieri --- nicăieri continuă. \emph{(d)} Funcția $g$ din problema OJM 2024 de mai sus ($x$ pe $\mathbb{Q}$, $x+1$ în rest): discontinuă peste tot. La probleme de tip „determinați punctele de continuitate'', corolarul reduce totul la ecuația $g(x)=h(x)$. Teorema formalizează principiul densității (secțiunea „Topologie pe $\mathbb{R}$''): două funcții continue care coincid pe $\mathbb{Q}$ coincid peste tot.
+\end{obs}
+
+\begin{propozitie}[Derivabilitatea funcției lipite]
+Fie $f,g:I\to\mathbb{R}$ derivabile în $a\in I$ și
+\[
+h(x)=\begin{cases} f(x), & x\in I\cap\mathbb{Q},\\ g(x), & x\in I\setminus\mathbb{Q}.\end{cases}
+\]
+Atunci $h$ este derivabilă în $a$ \textbf{dacă și numai dacă} $f(a)=g(a)$ și $f'(a)=g'(a)$.
+\end{propozitie}
+\begin{proof}
+\emph{Necesitatea.} Dacă $h$ e derivabilă în $a$, e continuă în $a$; luând șiruri de raționale, respectiv iraționale, către $a$, continuitatea forțează $f(a)=h(a)=g(a)$ (indiferent dacă $a$ e rațional sau nu, ambele valori trebuie să coincidă cu $h(a)$). Apoi, raportul de variație $\frac{h(x)-h(a)}{x-a}$ calculat pe un șir de raționale $x_n\to a$ este $\frac{f(x_n)-f(a)}{x_n-a}\to f'(a)$, iar pe un șir de iraționale este $\frac{g(x_n)-g(a)}{x_n-a}\to g'(a)$; existența limitei globale (derivabilitatea lui $h$) forțează $f'(a)=g'(a)=h'(a)$.
+
+\emph{Suficiența.} Notăm $c=f(a)=g(a)=h(a)$ și $d=f'(a)=g'(a)$. Raportul $\frac{h(x)-h(a)}{x-a}$ coincide, pe fiecare ramură, cu raportul lui $f$ sau al lui $g$, iar ambele tind la $d$; prin teorema limitei funcției lipite (aplicată rapoartelor), limita globală există și este $d$. Deci $h'(a)=d$.
+\end{proof}
+
+\begin{obs}
+Morala: funcția lipită „moștenește'' regularitatea exact în punctele unde cele două ramuri se ating \emph{cu tot cu derivate}. De aici și exemplul clasic $h(x)=x^2$ pe $\mathbb{Q}$, $h(x)=0$ pe $\mathbb{R}\setminus\mathbb{Q}$: derivabilă doar în $0$ (unde $x^2$ și $0$ au aceeași valoare și aceeași derivată), discontinuă oriunde altundeva.
+\end{obs}
+
+\subsection{Continuitate uniformă}
+
+\begin{definitie}
+$f:D\to\mathbb{R}$ este \textbf{uniform continuă} pe $D$ dacă
+\[
+\forall\,\varepsilon>0\ \exists\,\delta>0:\quad x,y\in D,\ |x-y|<\delta\ \Rightarrow\ |f(x)-f(y)|<\varepsilon.
+\]
+Diferența față de continuitatea obișnuită: același $\delta$ funcționează \textbf{pentru toate} perechile de puncte, nu câte un $\delta$ pentru fiecare punct. Evident, uniform continuă $\Rightarrow$ continuă; reciproca e falsă: $f(x)=\frac1x$ pe $(0,1)$ e continuă dar nu uniform (punctele $\frac1n,\frac1{2n}$ sunt tot mai apropiate, dar imaginile diferă prin $n$).
+\end{definitie}
+
+\begin{teorema}[Cantor]
+O funcție continuă pe un interval \textbf{compact} $[a,b]$ este uniform continuă.
+\end{teorema}
+\begin{proof}[Idee de demonstrație]
+Prin absurd: există $\varepsilon_0>0$ și puncte $x_n,y_n\in[a,b]$ cu $|x_n-y_n|<\frac1n$ dar $|f(x_n)-f(y_n)|\ge\varepsilon_0$. Prin Bolzano--Weierstrass, un subșir $x_{n_k}\to c\in[a,b]$; cum $|x_{n_k}-y_{n_k}|\to0$, și $y_{n_k}\to c$. Continuitatea în $c$ dă $f(x_{n_k})-f(y_{n_k})\to f(c)-f(c)=0$, contrazicând $|f(x_{n_k})-f(y_{n_k})|\ge\varepsilon_0$.
+\end{proof}
+
+\begin{obs}
+Criterii utile: (1) $f$ lipschitziană ($|f(x)-f(y)|\le L|x-y|$, de pildă $|f'|$ mărginită, via Lagrange) $\Rightarrow$ uniform continuă; reciproca e falsă: $\sqrt x$ pe $[0,1]$ e uniform continuă (Cantor) dar nu lipschitziană lângă $0$. (2) $f$ continuă pe $[a,\infty)$ cu limită finită la $+\infty$ $\Rightarrow$ uniform continuă (se taie coada cu $\varepsilon$, iar pe compactul rămas se aplică Cantor).
+\end{obs}
+
+\begin{propozitie}[Criteriul cu șiruri]
+$f:D\to\mathbb{R}$ este uniform continuă $\iff$ pentru orice două șiruri $(x_n),(y_n)\subset D$ cu $x_n-y_n\to0$ avem $f(x_n)-f(y_n)\to0$.
+\end{propozitie}
+\begin{proof}
+($\Rightarrow$) Pentru $\varepsilon>0$ luăm $\delta$ din definiție: de la un rang încolo $|x_n-y_n|<\delta$, deci $|f(x_n)-f(y_n)|<\varepsilon$. ($\Leftarrow$) Prin contrapoziție: dacă $f$ nu e uniform continuă, există $\varepsilon_0>0$ astfel încât pentru fiecare $n$ găsim $x_n,y_n\in D$ cu $|x_n-y_n|<\frac1n$ dar $|f(x_n)-f(y_n)|\ge\varepsilon_0$ --- două șiruri care încalcă proprietatea.
+\end{proof}
+
+\begin{obs}[Prelungirea prin continuitate]
+Dacă $f$ e uniform continuă pe $(a,b)$, atunci pentru orice șir Cauchy $(x_n)\subset(a,b)$ șirul $(f(x_n))$ e tot Cauchy (din definiție, cu același $\delta$), deci convergent; amestecând două șiruri $x_n\searrow a$ într-unul singur se vede că limita nu depinde de șir, deci $\lim_{x\searrow a}f(x)$ \emph{există și e finită} (analog în $b$): $f$ se prelungește prin continuitate la $[a,b]$, în particular e \emph{mărginită}. Aplicație-fulger: $\sin\frac1x$ nu e uniform continuă pe $(0,1)$, fiindcă nu are limită în $0$.
+\end{obs}
+
+\textbf{Exemplu} (ONM 2026, etapa națională, clasa a XI-a, Problema 1a)\textbf{.} \emph{Fie $h:\mathbb{R}\to\mathbb{R}$ și, pentru fiecare $n\ge1$, funcțiile $f_n,g_n:\mathbb{R}\to\mathbb{R}$ astfel încât}
+\[
+f_n(x)<h(x)<g_n(x)\quad\forall x\in\mathbb{R},
+\qquad\text{și}\qquad
+\lim_{n\to\infty}\big(g_n(x)-f_n(x)\big)=0\quad\forall x\in\mathbb{R}.
+\]
+\emph{Dacă toate funcțiile $f_n$ și $g_n$ sunt continue, arătați că $h$ este continuă. (Punctul b: dacă toate sunt derivabile, rezultă că $h$ e derivabilă?)}
+
+\smallskip
+\emph{Soluție la a), cu continuitate uniformă.} Fie $x_0\in\mathbb{R}$ și $\varepsilon>0$. Din convergența \emph{în punctul} $x_0$, există un indice $k$ cu
+\[
+0<g_k(x_0)-f_k(x_0)<\frac\varepsilon3.
+\]
+Funcțiile $f_k$ și $g_k$ sunt continue pe compactul $K=[x_0-1,\,x_0+1]$, deci \textbf{uniform continue} pe $K$ (teorema lui Cantor). Există prin urmare un $\delta\in(0,1)$, \emph{același pentru ambele funcții}, astfel încât pentru $x,y\in K$ cu $|x-y|<\delta$:
+\[
+|f_k(x)-f_k(y)|<\frac\varepsilon3
+\qquad\text{și}\qquad
+|g_k(x)-g_k(y)|<\frac\varepsilon3.
+\]
+Fie acum $x$ cu $|x-x_0|<\delta$ (deci $x\in K$). Folosind încadrarea în $x$, apoi uniforma continuitate, apoi alegerea lui $k$ și din nou încadrarea în $x_0$:
+\[
+h(x)<g_k(x)<g_k(x_0)+\frac\varepsilon3<f_k(x_0)+\frac{2\varepsilon}3<h(x_0)+\frac{2\varepsilon}3,
+\]
+\[
+h(x)>f_k(x)>f_k(x_0)-\frac\varepsilon3>g_k(x_0)-\frac{2\varepsilon}3>h(x_0)-\frac{2\varepsilon}3.
+\]
+Deci $|h(x)-h(x_0)|<\varepsilon$ pentru $|x-x_0|<\delta$: $h$ e continuă în $x_0$, iar $x_0$ era arbitrar. $\square$
+
+\emph{Observație de redactare.} Ipoteza de convergență e doar \emph{punctuală} --- indicele $k$ depinde de $x_0$ ---, deci demonstrația dă continuitate, nu continuitate uniformă a lui $h$. Și nici nu ar putea: orice funcție continuă $h$ admite o astfel de încadrare (luați $f_n=h-\frac1n$, $g_n=h+\frac1n$), de pildă $h(x)=x^2$, care nu e uniform continuă pe $\mathbb{R}$. Rolul teoremei lui Cantor este de a produce \emph{un singur $\delta$} pentru ambele funcții și pentru toate perechile de puncte; soluția „oficială'' obține același efect luând $\delta=\min(\delta_1,\delta_2)$ din continuitatea punctuală în $x_0$ --- ambele redactări sunt complete.
+
+\smallskip
+\emph{Punctul b)} --- „dacă toate $f_n,g_n$ sunt derivabile, rezultă $h$ derivabilă?'' --- este o problemă de \emph{construcție} de contraexemplu și e tratat în secțiunea „Construcții: ce funcții să încerci'', unde se vede și \emph{cum se ghicește} răspunsul.
+
+\subsection{Asimptote}
+Verticale: $\lim_{x\to x_0^{\pm}} f(x)=\pm\infty$. Orizontale: $\lim_{x\to\pm\infty}f(x)=\ell$ finit. Oblice: $y=mx+n$ cu
+$m=\lim_{x\to\infty}\frac{f(x)}{x}$, $n=\lim_{x\to\infty}(f(x)-mx)$, ambele finite, $m \neq 0$.
+
+\section{Derivabilitate}
+
+\subsection{Definiție și proprietăți de bază}
+
+\begin{definitie}
+$f$ este derivabilă în $x_0$ dacă $\displaystyle f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}$ există și este finită. Derivatele laterale se definesc cu limite laterale. Puncte remarcabile: \textbf{punct unghiular} (derivate laterale finite, diferite), \textbf{punct de întoarcere} (derivate laterale infinite, de semne opuse).
+\end{definitie}
+
+\begin{teorema}
+Derivabilitatea în $x_0$ implică continuitatea în $x_0$. Reciproca este falsă ($|x|$ în $0$).
+\end{teorema}
+
+\begin{propozitie}[Reguli de calcul]
+$(fg)'=f'g+fg'$, $\left(\dfrac{f}{g}\right)'=\dfrac{f'g-fg'}{g^2}$, $(g\circ f)'(x)=g'(f(x))\, f'(x)$, iar dacă $f$ e bijectivă, derivabilă, cu $f'(x_0)\ne 0$:
+\[
+\left(f^{-1}\right)'(y_0)=\frac{1}{f'(x_0)},\qquad y_0=f(x_0).
+\]
+\end{propozitie}
+
+\begin{obs}[Limita derivatei]
+Dacă $f$ este continuă în $x_0$, derivabilă pe o vecinătate punctată a lui $x_0$, și $\lim_{x\to x_0}f'(x)=\ell$ există, atunci $f$ are derivată în $x_0$ egală cu $\ell$ (consecință a teoremei lui Lagrange). Atenție: dacă $\lim f'$ nu există, $f$ poate totuși fi derivabilă în $x_0$ --- exemplu $f(x)=x^2\sin\frac1x$, $f(0)=0$.
+\end{obs}
+
+\begin{tehbox}{Tabelul derivatelor uzuale}
+\[
+\renewcommand{\arraystretch}{1.7}
+\begin{array}{ll|ll}
+(x^{a})'=a\,x^{a-1} && (\sqrt{x}\,)'=\dfrac{1}{2\sqrt{x}} &\\[2pt]
+\left(\dfrac1x\right)'=-\dfrac{1}{x^{2}} && (a^{x})'=a^{x}\ln a\ \ (\text{deci }(e^{x})'=e^{x}) &\\[2pt]
+(\ln x)'=\dfrac1x && (\log_a x)'=\dfrac{1}{x\ln a} &\\[2pt]
+(\sin x)'=\cos x && (\cos x)'=-\sin x &\\[2pt]
+(\mathrm{tg}\,x)'=\dfrac{1}{\cos^{2}x}=1+\mathrm{tg}^{2}x && (\mathrm{ctg}\,x)'=-\dfrac{1}{\sin^{2}x} &\\[2pt]
+(\arcsin x)'=\dfrac{1}{\sqrt{1-x^{2}}} && (\arccos x)'=-\dfrac{1}{\sqrt{1-x^{2}}} &\\[2pt]
+(\mathrm{arctg}\,x)'=\dfrac{1}{1+x^{2}} && (\mathrm{arcctg}\,x)'=-\dfrac{1}{1+x^{2}} &\\[2pt]
+(\mathrm{sh}\,x)'=\mathrm{ch}\,x && (\mathrm{ch}\,x)'=\mathrm{sh}\,x &
+\end{array}
+\]
+Acesta e tabelul „în oglindă'' cu tabelul primitivelor din secțiunea Primitive --- de citit împreună.
+\end{tehbox}
+
+\begin{tehbox}{Tabelul derivatelor funcțiilor compuse}
+Cu $u=u(x)$ derivabilă, regula lanțului aplicată fiecărei linii de mai sus:
+\[
+\renewcommand{\arraystretch}{1.85}
+\begin{array}{ll}
+\big(u^{a}\big)'=a\,u^{a-1}\,u' & \big(\sqrt{u}\,\big)'=\dfrac{u'}{2\sqrt{u}} \\[2pt]
+\big(e^{u}\big)'=u'\,e^{u} & \big(a^{u}\big)'=u'\,a^{u}\ln a \\[2pt]
+\big(\ln u\big)'=\dfrac{u'}{u} & \big(\ln|u|\big)'=\dfrac{u'}{u} \\[2pt]
+\big(\sin u\big)'=u'\cos u & \big(\cos u\big)'=-u'\sin u \\[2pt]
+\big(\mathrm{tg}\,u\big)'=\dfrac{u'}{\cos^{2}u} & \big(\mathrm{ctg}\,u\big)'=-\dfrac{u'}{\sin^{2}u} \\[2pt]
+\big(\arcsin u\big)'=\dfrac{u'}{\sqrt{1-u^{2}}} & \big(\arccos u\big)'=-\dfrac{u'}{\sqrt{1-u^{2}}} \\[2pt]
+\big(\mathrm{arctg}\,u\big)'=\dfrac{u'}{1+u^{2}} & \big(\mathrm{arcctg}\,u\big)'=-\dfrac{u'}{1+u^{2}} \\[2pt]
+\multicolumn{2}{l}{\big(u^{v}\big)'=u^{v}\Big(v'\ln u+\dfrac{v\,u'}{u}\Big)\quad(u>0)}
+\end{array}
+\]
+Ultima linie (derivare logaritmică: bază și exponent variabile) este formula-cheie pentru expresii de tip $x^x$ sau $f(x)^{g(x)}$: se scrie $u^{v}=e^{v\ln u}$ și se derivează exponentul. Toate liniile sunt cazuri particulare ale regulii $(g\circ u)'=g'(u)\,u'$; tabelul le pune la îndemână gata compuse, pentru redactarea rapidă la concurs.
+\end{tehbox}
+
+
+\begin{definitie}[Clasele de regularitate $C^k$]
+Fie $f:I\to\mathbb{R}$ și $k\ge0$ întreg.
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+\item $f\in C^0(I)$ (sau $f$ \textbf{continuă} pe $I$) dacă $f$ e continuă în fiecare punct al lui $I$.
+\item $f\in C^1(I)$ dacă $f$ e derivabilă pe $I$ și $f'$ e continuă pe $I$ (derivată continuă).
+\item $f\in C^k(I)$ dacă $f$ e de $k$ ori derivabilă pe $I$ și $f^{(k)}$ e continuă.
+\item $f\in C^\infty(I)$ dacă $f\in C^k(I)$ pentru orice $k\ge0$ (funcție \emph{netedă} sau \emph{de clasă infinit derivabilă}).
+\end{itemize}
+Orice funcție elementară (polinoame, $e^x$, $\sin x$, $\cos x$, $\ln x$, $x^\alpha$) este de clasă $C^\infty$ pe domeniul ei natural. Incluziunile $C^\infty\subset\cdots\subset C^2\subset C^1\subset C^0$ sunt stricte (exemplele separatoare: $x|x|$ e $C^1$ dar nu $C^2$ în $0$, pentru că derivata ei este $2|x|$; la fel $x^3\sin\frac1x$, prelungită cu $0$ în $0$; atenție, $x^2\sin\frac1x$ \emph{nu} e $C^1$, derivata ei fiind discontinuă în $0$; $|x|$ e $C^0$ dar nu $C^1$ în $0$).
+\end{definitie}
+
+\subsection{Teoremele fundamentale}
+
+\begin{teorema}[Fermat]
+Dacă $x_0$ este punct de extrem local \emph{interior} domeniului și $f$ este derivabilă în $x_0$, atunci $f'(x_0)=0$.
+\end{teorema}
+
+\begin{teorema}[Rolle]
+Dacă $f$ este continuă pe $[a,b]$, derivabilă pe $(a,b)$ și $f(a)=f(b)$, atunci există $c\in(a,b)$ cu $f'(c)=0$.
+\end{teorema}
+
+\begin{corolar}[Șirul lui Rolle; separarea rădăcinilor]
+Între două rădăcini consecutive ale lui $f$ există cel puțin o rădăcină a lui $f'$. Dual: între două rădăcini consecutive ale lui $f'$, funcția $f$ are cel mult o rădăcină. Consecință utilă: dacă $f$ e de $n$ ori derivabilă și are $n+1$ rădăcini reale (cu multiplicități), atunci $f^{(n)}$ are cel puțin o rădăcină reală.
+\end{corolar}
+
+\begin{teorema}[Lagrange -- creșterilor finite]
+Dacă $f$ este continuă pe $[a,b]$ și derivabilă pe $(a,b)$, există $c\in(a,b)$ astfel încât
+\[
+f(b)-f(a)=f'(c)(b-a).
+\]
+\end{teorema}
+
+\begin{corolar}
+Fie $f$ derivabilă pe intervalul $I$. Atunci: $f'\ge 0$ pe $I$ $\iff$ $f$ crescătoare; $f'>0$ $\Rightarrow$ strict crescătoare (reciproca falsă: $x^3$); $f'\equiv 0$ $\iff$ $f$ constantă; dacă $f'=g'$ pe $I$, atunci $f-g$ e constantă. \textbf{Esențial ca domeniul să fie interval!}
+\end{corolar}
+
+\begin{obs}[Comportarea la infinit]
+Dacă $f$ e derivabilă pe $(a,\infty)$ și $\lim_{x\to\infty}f'(x)=\ell>0$, atunci $f(x)\to\infty$ (de la un rang, $f'>\frac\ell2$, iar Lagrange dă $f(x)\ge f(x_0)+\frac\ell2(x-x_0)$). Dacă $\lim_{x\to\infty}f(x)$ există finit \emph{și} $\lim_{x\to\infty}f'(x)$ există, atunci această din urmă limită este $0$ (altfel, prin cele de mai sus, $f\to\pm\infty$). Atenție: simpla existență a limitei lui $f$ \textbf{nu} implică $f'\to0$ (ex. $f(x)=\frac{\sin x^2}{x}$).
+\end{obs}
+
+\begin{teorema}[Cauchy -- creșterilor finite generalizată]
+Dacă $f,g$ sunt continue pe $[a,b]$, derivabile pe $(a,b)$ și $g'(x) \neq 0$ pe $(a,b)$, atunci există $c\in(a,b)$ cu
+\[
+\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(c)}{g'(c)}.
+\]
+\end{teorema}
+
+\begin{teorema}[Darboux pentru derivate]\label{darbderiv}
+Dacă $f$ este derivabilă pe intervalul $I$, atunci $f'$ are proprietatea lui Darboux pe $I$ (chiar dacă $f'$ nu e continuă). Consecință: $f'$ nu poate avea discontinuități de speța I; dacă $f'(x) \neq 0$ pe un interval, atunci $f'$ păstrează semn constant, deci $f$ e strict monotonă.
+\end{teorema}
+\begin{proof}
+Fie $a<b$ în $I$ și $\lambda$ strict între $f'(a)$ și $f'(b)$; presupunem $f'(a)<\lambda<f'(b)$ (celălalt caz e simetric). Funcția auxiliară
+\[
+g(x)=f(x)-\lambda x,\qquad g'(a)=f'(a)-\lambda<0,\quad g'(b)=f'(b)-\lambda>0,
+\]
+e continuă pe $[a,b]$ (fiind derivabilă), deci își atinge \emph{minimul} într-un $c\in[a,b]$ (Weierstrass). Minimul nu e în $a$: din $g'(a)=\lim_{x\searrow a}\frac{g(x)-g(a)}{x-a}<0$ există $x>a$ cu $g(x)<g(a)$. Simetric, din $g'(b)>0$, minimul nu e nici în $b$. Deci $c\in(a,b)$ e minim \emph{interior} și $g$ derivabilă în $c$: Fermat dă $g'(c)=0$, adică $f'(c)=\lambda$.
+\end{proof}
+\begin{obs}
+Combinat cu teorema despre bijecțiile Darboux (secțiunea 2): dacă $f'$ e \emph{bijectivă} pe un interval, atunci $f'$ e automat continuă și strict monotonă --- deși a priori despre $f'$ nu se știa decât că are Darboux.
+\end{obs}
+
+\begin{teorema}[L'Hôpital]
+Fie $x_0\in\overline{\mathbb{R}}$, $f,g$ derivabile pe o vecinătate punctată a lui $x_0$, $g'(x) \neq 0$ acolo. Dacă $f,g\to 0$ (sau $|g|\to\infty$) când $x\to x_0$ și $\dfrac{f'(x)}{g'(x)}\to\ell\in\overline{\mathbb{R}}$, atunci $\dfrac{f(x)}{g(x)}\to\ell$.
+\end{teorema}
+
+\begin{obs}
+Implicația e într-un singur sens; dacă $f'/g'$ nu are limită, nu se poate conchide nimic (ex. $\frac{x+\sin x}{x}$ la $\infty$). La olimpiadă se preferă adesea evitarea L'Hôpital în favoarea limitelor fundamentale sau a definiției derivatei.
+\end{obs}
+
+
+
+\subsection{Convexitate}
+
+\begin{definitie}
+$f:I\to\mathbb{R}$ este \textbf{convexă} dacă $f\big(\lambda x+(1-\lambda)y\big)\le \lambda f(x)+(1-\lambda)f(y)$ pentru orice $x,y\in I$, $\lambda\in[0,1]$. Strict convexă dacă inegalitatea e strictă pentru $x \neq y$, $\lambda\in(0,1)$. Concavă: inegalitatea inversă.
+\end{definitie}
+
+\begin{lema}[Lema pantelor (a celor trei coarde)]
+Dacă $f$ e convexă pe $I$ și $x<y<z$ sunt în $I$, atunci
+\[
+\frac{f(y)-f(x)}{y-x}\ \le\ \frac{f(z)-f(x)}{z-x}\ \le\ \frac{f(z)-f(y)}{z-y},
+\]
+cu inegalități stricte dacă $f$ e strict convexă. Reciproc, oricare dintre inegalitățile extreme, valabilă pentru orice triplet $x<y<z$, implică convexitatea. Formulare de reținut: \emph{panta coardei crește când coarda alunecă spre dreapta}.
+\end{lema}
+\begin{proof}
+Scriem $y=\lambda x+(1-\lambda)z$ cu $\lambda=\frac{z-y}{z-x}\in(0,1)$. Convexitatea dă
+$f(y)\le\frac{z-y}{z-x}f(x)+\frac{y-x}{z-x}f(z)$.
+Scăzând $f(x)$ din ambii membri și împărțind la $y-x>0$ iese prima inegalitate; scăzând în schimb $f(z)$ și împărțind la $y-z<0$ (sensul se inversează!) iese a doua. Pașii se parcurg invers pentru reciprocă.
+\end{proof}
+
+\begin{teorema}[Convexitatea implică continuitatea]
+O funcție convexă (sau concavă) pe un interval \textbf{deschis} $I$ este continuă pe $I$.
+\end{teorema}
+\begin{proof}
+Fie $x_0\in I$ și $a<x_0<b$ în $I$. Pentru $x\in(a,b)$, $x\ne x_0$, lema pantelor (aplicată tripletelor potrivite din $\{a,x,x_0,b\}$) încadrează panta coardei prin $x_0$ și $x$ între două \emph{constante}:
+\[
+m:=\frac{f(x_0)-f(a)}{x_0-a}\ \le\ \frac{f(x)-f(x_0)}{x-x_0}\ \le\ \frac{f(b)-f(x_0)}{b-x_0}=:M,
+\]
+deci $|f(x)-f(x_0)|\le\max(|m|,|M|)\cdot|x-x_0|$: $f$ e chiar lipschitziană local, în particular continuă. (La un capăt \emph{închis} afirmația pică: $f=0$ pe $[0,1)$, $f(1)=1$ e convexă pe $[0,1]$, dar discontinuă în $1$.)
+\end{proof}
+
+\begin{obs}
+Tot din lema pantelor: o funcție convexă pe un interval deschis are derivate \emph{laterale} în orice punct (pantele sunt monotone și mărginite, deci au limite), iar acestea sunt crescătoare --- versiunea „fără $f''$'' a echivalenței de mai jos.
+\end{obs}
+
+\begin{teorema}[Convexitatea și monotonia derivatei --- demonstrația echivalenței]
+Fie $f$ derivabilă pe intervalul $I$. Atunci $f$ e convexă pe $I$ $\iff$ $f'$ e crescătoare pe $I$.
+\end{teorema}
+\begin{proof}
+($\Rightarrow$) Fie $x<y$ în $I$ și $t\in(x,y)$. Lema pantelor pe tripleta $(x,t,y)$ dă
+\[
+\frac{f(t)-f(x)}{t-x}\ \le\ \frac{f(y)-f(x)}{y-x}\ \le\ \frac{f(y)-f(t)}{y-t}.
+\]
+Trecând $t\searrow x$ în prima inegalitate: $f'(x)\le\frac{f(y)-f(x)}{y-x}$; trecând $t\nearrow y$ în a doua: $\frac{f(y)-f(x)}{y-x}\le f'(y)$. Deci $f'(x)\le f'(y)$ (și, ca bonus, am redemonstrat inegalitatea tangentei).
+
+($\Leftarrow$) Fie $x<y$, $\lambda\in(0,1)$ și $u=\lambda x+(1-\lambda)y\in(x,y)$. Lagrange pe $[x,u]$ și $[u,y]$ dă $c_1\in(x,u)$, $c_2\in(u,y)$ cu
+\[
+\frac{f(u)-f(x)}{u-x}=f'(c_1)\ \le\ f'(c_2)=\frac{f(y)-f(u)}{y-u}
+\]
+($c_1<c_2$ și $f'$ crescătoare). Folosind $u-x=(1-\lambda)(y-x)$ și $y-u=\lambda(y-x)$, înmulțirea cu $\lambda(1-\lambda)(y-x)>0$ și regruparea dau exact $f(u)\le\lambda f(x)+(1-\lambda)f(y)$: definiția convexității.
+\end{proof}
+
+\begin{teorema}
+Pentru $f$ de două ori derivabilă pe $I$: $f$ convexă $\iff$ $f''\ge 0$ pe $I$. Pentru $f$ derivabilă: $f$ convexă $\iff$ $f'$ crescătoare $\iff$ graficul stă deasupra oricărei tangente:
+\[
+f(x)\ \ge\ f(a)+f'(a)(x-a),\qquad \forall\, x,a\in I.
+\]
+\end{teorema}
+
+\begin{teorema}[Inegalitatea lui Jensen]
+Dacă $f$ este convexă pe $I$, $x_1,\dots,x_n\in I$ și $\lambda_1,\dots,\lambda_n\ge 0$ cu $\sum\lambda_i=1$, atunci
+\[
+f\Big(\sum_{i=1}^n \lambda_i x_i\Big)\ \le\ \sum_{i=1}^n \lambda_i f(x_i).
+\]
+\end{teorema}
+
+\begin{obs}
+Metoda tangentei: pentru inegalități de forma $\sum f(x_i)\ge$ const.\ cu constrângerea $\sum x_i$ fixat, se încearcă $f(x)\ge f(s)+f'(s)(x-s)$ în punctul de egalitate $s$; funcționează chiar și când $f$ nu e convexă global, dacă inegalitatea tangentei se verifică direct pe domeniul relevant.
+\end{obs}
+
+\subsection{Studiul funcțiilor și puncte de extrem}
+
+\begin{propozitie}
+Fie $f$ derivabilă pe o vecinătate a lui $x_0$ cu $f'(x_0)=0$. Dacă $f'$ schimbă semnul din $+$ în $-$ în $x_0$, atunci $x_0$ e maxim local (și invers pentru minim). Dacă $f''(x_0)>0$, $x_0$ e minim local; $f''(x_0)<0$, maxim local; $f''(x_0)=0$ --- nedecis (se merge la semne sau derivate superioare).
+\end{propozitie}
+
+\begin{definitie}
+$x_0$ este \textbf{punct de inflexiune} dacă $f$ e continuă în $x_0$, are tangentă (eventual verticală) în $x_0$, și convexitatea își schimbă natura de o parte și de alta a lui $x_0$.
+\end{definitie}
+
+\subsection{Formula lui Taylor}
+
+Ideea: tangenta $f(x_0)+f'(x_0)(x-x_0)$ este cea mai bună aproximare \emph{de gradul 1} a lui $f$ lângă $x_0$. Formula lui Taylor generalizează: polinomul de grad $n$ construit din derivatele succesive aproximează $f$ cu o eroare neglijabilă față de $(x-x_0)^n$.
+
+\begin{teorema}[Taylor--Young]
+Dacă $f$ este de $n$ ori derivabilă în $x_0$, atunci există o funcție $\varepsilon$ cu $\lim_{h\to0}\varepsilon(h)=0$ astfel încât
+\[
+f(x_0+h)=f(x_0)+\frac{f'(x_0)}{1!}h+\frac{f''(x_0)}{2!}h^2+\dots+\frac{f^{(n)}(x_0)}{n!}h^n+h^n\,\varepsilon(h).
+\]
+Cu alte cuvinte: eroarea aproximării polinomiale, împărțită la $h^n$, tinde la $0$. Pentru $n=2$, demonstrația e la îndemână: se aplică de două ori regula lui L'Hôpital raportului $\dfrac{f(x_0+h)-f(x_0)-f'(x_0)h-\frac12f''(x_0)h^2}{h^2}$ (sau o dată L'Hôpital și apoi definiția derivatei secunde). În Partea a II-a, această scriere a restului va primi un nume și o notație standard.
+\end{teorema}
+
+\begin{teorema}[Taylor--Lagrange]
+Dacă $f$ este de $n+1$ ori derivabilă pe un interval care conține $x_0$ și $x_0+h$, există $c$ strict între ele astfel încât
+\[
+f(x_0+h)=\sum_{k=0}^{n}\frac{f^{(k)}(x_0)}{k!}h^k+\frac{f^{(n+1)}(c)}{(n+1)!}h^{n+1}.
+\]
+Pentru $n=0$ regăsim exact teorema lui Lagrange; forma generală se demonstrează la fel, prin Rolle aplicat unei funcții auxiliare. Utilitate: spre deosebire de Taylor--Young (care spune doar „eroarea e mică''), aici eroarea e \emph{explicită} și se poate majora. Exemplu: pentru $f(x)=e^x$, $x_0=0$, $h=1$ se obține $e-\sum_{k=0}^{n}\frac1{k!}=\frac{e^c}{(n+1)!}$ cu $0<c<1$, deci $0<e-\sum_{k=0}^{n}\frac1{k!}<\frac{3}{(n+1)!}$. Majorarea mai fină $\frac{1}{n\cdot n!}$ din secțiunea despre $e$ ($n\ge1$) nu vine din Taylor--Lagrange, ci din compararea restului cu o serie geometrică: $\sum_{k\ge n+1}\frac1{k!}<\frac1{(n+1)!}\big(1+\frac1{n+1}+\frac1{(n+1)^2}+\dots\big)=\frac1{(n+1)!}\cdot\frac{n+1}{n}=\frac{1}{n\cdot n!}$.
+\end{teorema}
+
+\begin{tehbox}{Dezvoltările standard în $0$ (de știut pe de rost)}
+Convenție de scriere: în fiecare formulă, $\varepsilon(x)$ desemnează o funcție (alta la fiecare apariție) cu $\varepsilon(x)\to0$ când $x\to0$; puterea care o înmulțește arată cât de mică e eroarea.
+\[
+\begin{gathered}
+e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots+\frac{x^n}{n!}+x^n\varepsilon(x)\\
+\frac{1}{1-x}=1+x+x^2+\dots+x^n+x^n\varepsilon(x)
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\sin x=x-\frac{x^3}{6}+\frac{x^5}{120}+x^6\varepsilon(x)
+\qquad
+\cos x=1-\frac{x^2}{2}+\frac{x^4}{24}+x^5\varepsilon(x)\\
+\operatorname{tg} x=x+\frac{x^3}{3}+\frac{2x^5}{15}+x^6\varepsilon(x)
+\end{gathered}
+\]
+\[
+\begin{gathered}
+\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\dots+(-1)^{n-1}\frac{x^n}{n}+x^n\varepsilon(x)\\
+(1+x)^{\alpha}=1+\alpha x+\frac{\alpha(\alpha-1)}{2}x^2+x^2\varepsilon(x)
+\end{gathered}
+\]
+Observație: limitele fundamentale din secțiunea de limite sunt exact primii termeni ai acestor dezvoltări ($\frac{\sin x}{x}\to1$, $\frac{1-\cos x}{x^2}\to\frac12$ etc.) --- Taylor le unifică și le duce la orice ordin.
+\end{tehbox}
+
+\section*{Ecuații diferențiale}
+
+\begin{definitie}
+O \textbf{ecuație diferențială de ordinul întâi} este o relație de forma $y'=F(x,y)$, unde necunoscuta este o funcție derivabilă $y=y(x)$ pe un interval, iar $y'=\dfrac{dy}{dx}$. O \textbf{soluție} este o funcție derivabilă care verifică relația în fiecare punct al intervalului. Cazul \textbf{liniar cu coeficienți constanți}: $y'=ay+b$, cu $a,b\in\mathbb{R}$.
+\end{definitie}
+
+\begin{teobox}{Soluțiile ecuației \ $y'=ay+b$, \ $a,b\in\mathbb{R}$}
+\textbf{Cazul $a=0$:} \quad $y'=b$, deci
+\[
+y(x)=bx+C,\qquad C\in\mathbb{R}.
+\]
+
+\textbf{Cazul $a \neq 0$:} \quad soluția generală este
+\[
+\boxed{\;y(x)=C\,e^{ax}-\frac{b}{a},\qquad C\in\mathbb{R}.\;}
+\]
+Pentru condiția inițială $y(x_0)=y_0$, soluția este unică:
+\[
+y(x)=\Big(y_0+\frac{b}{a}\Big)e^{a(x-x_0)}-\frac{b}{a}.
+\]
+\end{teobox}
+
+\begin{obs}
+Forma soluției se reține ușor: $-b/a$ este soluția staționară (echilibrul, rezolvând $ay+b=0$), iar substituția $z=y+\frac{b}{a}$ reduce ecuația la $z'=az$, cu soluția $z=Ce^{ax}$. Pentru $a<0$ toate soluțiile tind la echilibru când $x\to\infty$; pentru $a>0$ se depărtează de el.
+\end{obs}
+
+\begin{teorema}[Demonstrația cazului $a \neq 0$, prin funcție auxiliară]
+Fie $y$ o soluție oarecare a ecuației $y'=ay+b$ pe un interval $I$. Definim
+\[
+g(x)=e^{-ax}\left(y(x)+\frac{b}{a}\right).
+\]
+Derivând (regula produsului):
+\[
+g'(x)=-a\,e^{-ax}\left(y(x)+\frac{b}{a}\right)+e^{-ax}\,y'(x)
+=e^{-ax}\big(y'(x)-a\,y(x)-b\big)=0,
+\]
+deoarece $y$ verifică ecuația. Cum $g'\equiv 0$ pe \emph{intervalul} $I$, consecința teoremei lui Lagrange dă $g$ constantă: $g(x)=C$. Rezolvând,
+\[
+e^{-ax}\left(y(x)+\frac{b}{a}\right)=C
+\qquad\Longrightarrow\qquad
+y(x)=C\,e^{ax}-\frac{b}{a}.
+\]
+\textbf{Reciproc}, orice funcție de această formă este soluție:
+$y'=aCe^{ax}=a\big(y+\frac{b}{a}\big)=ay+b$. Deci mulțimea soluțiilor este exact
+$\big\{Ce^{ax}-\frac{b}{a}:\ C\in\mathbb{R}\big\}$. \qed
+\end{teorema}
+
+\begin{obs}
+De ce funcționează trucul: înmulțirea cu $e^{-ax}$ transformă membrul stâng într-o derivată de produs, $e^{-ax}(y'-ay)=\big(e^{-ax}y\big)'$ --- aceeași idee ca la problemele de olimpiadă unde se aplică Rolle funcției $e^{-\lambda x}f(x)$ pentru a găsi $c$ cu $f'(c)=\lambda f(c)$. Pasul „$g'=0\Rightarrow g$ constantă'' cere ca domeniul să fie \emph{interval} (capcana despre intervale din secțiunea de redactare de la început).
+\end{obs}
+
+
+
+\subsection{Ecuații diferențiale nonstandard: ce funcții să încerci}
+
+La concursuri și olimpiade apar frecvent ecuații care \emph{nu} sunt de niciun tip standard: derivata legată de valoarea funcției în \emph{alt} punct ($f(x-1)$, $f(1/x)$, $f(-x)$), de \emph{inversa} funcției, sau relații neliniare între $f$, $f'$, $f''$. Nu există algoritm --- dar există un dicționar de forme de încercat, dictat de \emph{structura} ecuației, și o strategie generală de reducere.
+
+\begin{tehbox}{Dicționarul: structura ecuației $\to$ familia de încercat}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item \textbf{Polinoame} --- când ecuația e algebrică în $f,f',f''$: compararea gradelor decide rapid (Reflexul 1 de mai sus).
+\item \textbf{Exponențiale $Ce^{\lambda x}$} --- când ecuația e \emph{liniară} și implică derivări sau \emph{translații} $f(x+c)$: derivarea și translația transformă $e^{\lambda x}$ în multipli ai lui însuși ($\lambda e^{\lambda x}$, respectiv $e^{\lambda c}e^{\lambda x}$), deci ecuația devine o ecuație \emph{numerică} în $\lambda$.
+\item \textbf{Puteri $x^a$ pe $(0,\infty)$} --- când structura e \emph{multiplicativă}: termeni $x\,f'(x)$, $x^2f''(x)$ (ecuații Euler), argumente $f(1/x)$, $f(x^2)$, sau inversa $f^{-1}$. Puterile transformă toate acestea în alte puteri.
+\item \textbf{$\dfrac{1}{ax+b}$} --- la ecuații de tip $y'=cy^2$ (și, în general, neliniarități polinomiale în $y$): semnalează și fenomenul de \emph{explozie în timp finit}.
+\item \textbf{$\sqrt x\,\cos(\omega\ln x)$, $\sqrt x\,\sin(\omega\ln x)$} --- puterile „complexe'': apar când încercarea $x^a$ duce la o ecuație de gradul 2 în $a$ fără rădăcini reale.
+\item \textbf{$\sin,\cos,\cosh,\sinh$ și separarea par/impar} --- la ecuații cu \emph{reflecție} $f(-x)$: reflecția păstrează paritatea, deci descompunerea în parte pară $+$ impară decuplează ecuația.
+\end{enumerate}
+\end{tehbox}
+
+\textbf{Exemplul 1.} \emph{Găsiți funcțiile $y$ de două ori derivabile, fără zerouri, cu $y\,y''=(y')^2$.}
+
+Împărțind la $y^2$ ($y\neq0$): $\dfrac{y''y-(y')^2}{y^2}=0$, adică $\Big(\dfrac{y'}{y}\Big)'=0$, deci $\dfrac{y'}{y}=\lambda$ constant, de unde $\big(ye^{-\lambda x}\big)'=0$ și $y=Ce^{\lambda x}$, $C\neq0$. Morala: rapoartele $y'/y$ (derivate logaritmice) liniarizează relațiile multiplicative.
+
+\medskip
+\textbf{Exemplul 2.} \emph{Arătați că există funcții neconstante cu $f'(x)=f(x-1)$ pentru orice $x\in\mathbb{R}$.}
+
+Structura: liniară + translație $\Rightarrow$ încercăm $f(x)=e^{\lambda x}$. Ecuația devine $\lambda e^{\lambda x}=e^{\lambda(x-1)}$, adică
+\[
+\lambda=e^{-\lambda}.
+\]
+Funcția $g(\lambda)=\lambda-e^{-\lambda}$ e strict crescătoare, cu $g(0)=-1<0<g(1)=1-\frac1e$: există un unic $\lambda_0\in(0,1)$ cu $\lambda_0=e^{-\lambda_0}$, și $f(x)=Ce^{\lambda_0x}$ satisface ecuația. 
+
+\medskip
+\textbf{Exemplul 3.} \emph{Arătați că există $f:(0,\infty)\to(0,\infty)$ bijectivă și derivabilă cu}
+\[
+f'(x)=f^{-1}(x),\qquad\forall x>0.
+\]
+
+Structura multiplicativă (inversa unei puteri e tot o putere) $\Rightarrow$ încercăm $f(x)=a\,x^{b}$, $a,b>0$. Atunci $f'(x)=ab\,x^{b-1}$ și $f^{-1}(x)=\big(\frac xa\big)^{1/b}=a^{-1/b}x^{1/b}$. Identificăm:
+\[
+b-1=\frac1b
+\quad\Longrightarrow\quad
+b^2-b-1=0
+\quad\Longrightarrow\quad
+b=\varphi=\frac{1+\sqrt5}{2}\ \ (\text{numărul de aur!}),
+\]
+\[
+ab=a^{-1/b}\ \Longrightarrow\ a^{1+\frac1b}=\frac1b\ \Longrightarrow\ a^{\frac{b+1}{b}}=\frac1b
+\ \overset{b+1=b^2}{\Longrightarrow}\ a^{b}=\frac1b\ \Longrightarrow\ a=\varphi^{-1/\varphi}.
+\]
+Deci $f(x)=\varphi^{-1/\varphi}\,x^{\varphi}$ e soluție (strict crescătoare, bijectivă pe $(0,\infty)$). Ecuația caracteristică a exponentului e chiar ecuația numărului de aur --- același $b^2=b+1$ ca la Fibonacci.
+
+\medskip
+\textbf{Exemplul 4.} \emph{Determinați funcțiile de două ori derivabile $f:\mathbb{R}\to\mathbb{R}$ cu}
+\[
+f''(x)=f(-x),\qquad\forall x\in\mathbb{R}.
+\]
+
+\emph{Iterăm} pentru a scăpa de reflecție: derivând de două ori și folosind ecuația în $-x$ (adică $f''(-x)=f(x)$):
+\[
+f^{(4)}(x)=\big(f(-x)\big)''=f''(-x)=f(x),
+\]
+deci $f^{(4)}=f$: soluțiile acestei ecuații standard sunt combinațiile lui $e^x,e^{-x},\cos x,\sin x$ --- echivalent, ale lui $\cosh x,\sinh x,\cos x,\sin x$ (baza adaptată parității!). \emph{Reimpunem} originalul pe $f=\alpha\cosh x+\beta\sinh x+\gamma\cos x+\delta\sin x$:
+\[
+\begin{gathered}
+f''(x)=\alpha\cosh x+\beta\sinh x-\gamma\cos x-\delta\sin x,\\
+f(-x)=\alpha\cosh x-\beta\sinh x+\gamma\cos x-\delta\sin x,
+\end{gathered}
+\]
+și identificarea (cele patru funcții sunt liniar independente) dă $\beta=-\beta$ și $\gamma=-\gamma$, adică $\beta=\gamma=0$:
+\[
+\boxed{\;f(x)=\alpha\cosh x+\delta\sin x,\qquad\alpha,\delta\in\mathbb{R}.\;}
+\]
+Verificare: $(\cosh)''=\cosh$ și $\cosh(-x)=\cosh x$ \checkmark; $(\sin)''=-\sin$ și $\sin(-x)=-\sin x$ \checkmark.
+
+
+
+
+

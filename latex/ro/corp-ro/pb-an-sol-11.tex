@@ -1,0 +1,1900 @@
+\subsectiuneclasa{Clasa a XI-a}{Șiruri, limite, continuitate, derivabilitate --- soluții complete.}{Soluții · Clasa a XI-a}
+\nivel{olm}{Nivelul OLM}{Faza locală --- o singură idee, bine aplicată.}
+\prob{olm}{OLM.1}{Clasică}
+\begin{parti}
+  \item Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție continuă cu proprietatea că $f(x+q)=f(x)$ pentru orice $x\in\mathbb{R}$ și orice $q\in\mathbb{Q}$. Demonstrați că $f$ este constantă.
+  \item Există funcții $f:\mathbb{R}\to\mathbb{R}$ neconstante, periodice cu perioade oricât de mici (adică pentru orice $\varepsilon>0$ există $0<p<\varepsilon$ cu $f(x+p)=f(x)$ pentru orice $x$)? Dacă în plus $f$ este continuă, mai este posibil?
+\end{parti}
+\sol (a) Punând $x=0$ obținem $f(q)=f(0)$ pentru orice $q\in\mathbb{Q}$: funcția este constantă pe $\mathbb{Q}$.
+
+Fie acum $x\in\mathbb{R}$ arbitrar. Prin densitatea lui $\mathbb{Q}$ în $\mathbb{R}$ (Teorema 2.2) există un șir de raționale $q_n\to x$, iar continuitatea lui $f$ în $x$ dă
+\[ f(x)=\lim_{n\to\infty}f(q_n)=f(0) . \]
+Deci $f\equiv f(0)$.
+
+(b) \textbf{Fără continuitate: DA.} Funcția lui Dirichlet
+\[
+f(x)=\begin{cases}1 & x\in\mathbb{Q},\\ 0 & x\notin\mathbb{Q}\end{cases}
+\]
+este neconstantă și are orice rațional $r>0$ ca perioadă: $f(x+r)=f(x)$ pentru orice $x$, deoarece $x\in\mathbb{Q}\iff x+r\in\mathbb{Q}$. Cum $\mathbb{Q}$ este dens, există perioade $r>0$ oricât de mici. Este exact exemplul care arată că la (a) continuitatea nu poate lipsi.
+
+\textbf{Cu continuitate: NU; $f$ este constantă.} Punctul (a) este cazul particular în care toate raționalele sunt perioade; argumentul general este același, cu un singur pas în plus. Fie $f$ continuă cu perioade $p_n\to0$, $p_n>0$. Fie $x,y\in\mathbb{R}$ și $\varepsilon>0$. Prin continuitate în $x$ există $\delta>0$ cu $|f(z)-f(x)|<\varepsilon$ pentru $|z-x|<\delta$. Alegem $n$ cu $p_n<\delta$. Luăm $k=\lfloor(y-x)/p_n\rceil$ (rotunjire la cel mai apropiat întreg); atunci $|y-kp_n-x|<p_n<\delta$. Prin periodicitate $f(y)=f(y-kp_n)$, deci $|f(y)-f(x)|<\varepsilon$. Cum $\varepsilon,y$ sunt arbitrare, $f$ este constantă.\\[2pt]
+\emph{Observație.} Mulțimea perioadelor unei funcții, completată cu $0$ și cu opusele lor, este un subgrup al lui $(\mathbb{R},+)$. Un subgrup al lui $\mathbb{R}$ fie este de forma $T\mathbb{Z}$, fie este dens (principiul densității, Teorema 2.3). Punctul (b) spune că, pentru o funcție continuă, neconstantă și periodică, doar primul caz este posibil: există o \emph{cea mai mică} perioadă pozitivă.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.2}{Clasică}
+Fie șirul $x_1=\sqrt{2}$, $x_{n+1}=\sqrt{2+x_n}$.
+\begin{parti}
+  \item Arătați că șirul este convergent și calculați limita sa.
+  \item Calculați $\displaystyle\lim_{n\to\infty}4^{\,n}\bigl(2-x_n\bigr)$.
+\end{parti}
+\sol (a) Prin inducție, $x_n<2$: avem $x_1=\sqrt2<2$, iar dacă $x_n<2$, atunci $x_{n+1}=\sqrt{2+x_n}<\sqrt4=2$.
+
+Monotonia: $x_{n+1}^2-x_n^2=2+x_n-x_n^2=(2-x_n)(1+x_n)>0$, iar termenii fiind pozitivi, $x_{n+1}>x_n$.
+
+Șirul este crescător și mărginit superior, deci convergent prin teorema lui Weierstrass (Teorema 2.11). Fie $\ell$ limita sa; trecând la limită în recurență (funcția $t\mapsto\sqrt{2+t}$ este continuă): $\ell=\sqrt{2+\ell}$, adică $\ell^2-\ell-2=0$, cu rădăcinile $2$ și $-1$. Cum $x_n>0$, rezultă $\ell=2$.
+
+(b) Răspuns: $\dfrac{\pi^{2}}{4}$. Punctul (a) spune doar că $2-x_n\to0$; pentru viteza cu care se întâmplă asta avem nevoie de o formulă pentru $x_n$. Ea vine din identitatea $2+2\cos\theta=4\cos^{2}\frac\theta2$.
+
+\emph{Formula trigonometrică.} Arătăm prin inducție că
+\[ x_n=2\cos\frac{\pi}{2^{\,n+1}}\qquad\text{pentru orice }n\ge1 . \]
+Pentru $n=1$: $2\cos\frac\pi4=\sqrt2=x_1$. Dacă $x_n=2\cos\theta_n$ cu $\theta_n=\frac{\pi}{2^{n+1}}\in\left(0,\frac\pi2\right)$, atunci
+\[ x_{n+1}=\sqrt{2+2\cos\theta_n}=\sqrt{4\cos^{2}\frac{\theta_n}{2}}=2\cos\frac{\theta_n}{2}=2\cos\frac{\pi}{2^{\,n+2}} , \]
+unde am folosit $\cos\frac{\theta_n}{2}>0$.
+
+\emph{Limita.} Cu $u_n=\dfrac{\pi}{2^{\,n+2}}=\dfrac{\theta_n}{2}\to0$,
+\[ 2-x_n=2\bigl(1-\cos\theta_n\bigr)=4\sin^{2}u_n , \qquad 4^{\,n}\bigl(2-x_n\bigr)=4^{\,n+1}\sin^{2}u_n=4^{\,n+1}u_n^{2}\left(\frac{\sin u_n}{u_n}\right)^{2} . \]
+Dar $4^{\,n+1}u_n^{2}=\dfrac{4^{\,n+1}\pi^{2}}{4^{\,n+2}}=\dfrac{\pi^{2}}{4}$, iar $\dfrac{\sin u_n}{u_n}\to1$ (limita fundamentală). Deci
+\[ \lim_{n\to\infty}4^{\,n}\bigl(2-x_n\bigr)=\frac{\pi^{2}}{4} . \]
+\emph{Observație.} Numeric, $4^{10}(2-x_{10})\approx2{,}467400616$, iar $\frac{\pi^{2}}{4}\approx2{,}467401100$. Radicalii suprapuși „ascund'' numărul $\pi$: formula de la (b) este, în esență, metoda lui Arhimede de aproximare a cercului prin poligoane regulate cu $2^{\,n}$ laturi.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.3}{}
+Fie $(x_n)_{n\ge0}$ un șir de numere reale cu $x_{n+2}=x_{n+1}-x_n$ pentru orice $n\ge0$. Arătați că șirul este periodic și exprimați $x_{2026}$ în funcție de $x_0$ și $x_1$.
+\sol Din recurență,
+\[ \begin{gathered} x_{n+3}=x_{n+2}-x_{n+1}=(x_{n+1}-x_n)-x_{n+1}=-x_n,\\ \text{deci}\qquad x_{n+6}=-x_{n+3}=x_n : \end{gathered} \]
+șirul este periodic cu perioada $6$, oricare ar fi valorile inițiale.
+
+Cum $2026=6\cdot337+4$, avem $x_{2026}=x_4$. Calculăm: $x_2=x_1-x_0$, $x_3=-x_0$, $x_4=x_3-x_2=-x_0-(x_1-x_0)=-x_1$. Deci $x_{2026}=-x_1$.\\[2pt]
+\emph{Observație.} Explicația structurală: rădăcinile ecuației caracteristice $r^2=r-1$ (Teorema 2.29) sunt $r=e^{\pm i\pi/3}$ --- numere de modul $1$ și de ordin $6$ pe cercul unitate; de aici perioada $6$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.4}{}
+Fie $n\ge1$ un număr natural. Arătați că ecuația
+\[ x^{2n+1}+x^{2n-1}+x=1 \]
+are exact o soluție reală și că aceasta se află în intervalul $(0,1)$.
+\sol Fie $f:\mathbb{R}\to\mathbb{R}$, $f(x)=x^{2n+1}+x^{2n-1}+x-1$; căutăm rădăcinile lui $f$.
+
+\emph{Cel mult o soluție.} Derivata este
+\[ f'(x)=(2n+1)\,x^{2n}+(2n-1)\,x^{2n-2}+1 . \]
+Exponenții $2n$ și $2n-2$ sunt \emph{pari}, deci $x^{2n}\ge0$ și $x^{2n-2}\ge0$ pentru orice $x$ real; cum și coeficienții $2n+1$, $2n-1$ sunt pozitivi (aici se folosește $n\ge1$),
+\[ f'(x)\ \ge\ 1\ >\ 0\qquad\text{pentru orice }x\in\mathbb{R} . \]
+Prin consecința teoremei lui Lagrange (2.71), $f$ este strict crescătoare pe $\mathbb{R}$, deci injectivă: ecuația $f(x)=0$ are cel mult o soluție.
+
+\emph{Cel puțin o soluție, în $(0,1)$.} $f$ este continuă (funcție polinomială), iar
+\[ f(0)=-1<0,\qquad f(1)=1+1+1-1=2>0 . \]
+Prin proprietatea valorilor intermediare (Cauchy--Bolzano, Teorema 2.53), $f$ se anulează într-un punct din $(0,1)$.
+
+Cele două afirmații împreună dau: ecuația are \emph{exact} o soluție reală, situată în $(0,1)$.\\[2pt]
+\emph{Observație 1 (unde se ascunde ipoteza).} Totul atârnă de faptul că exponenții din enunț, $2n+1$ și $2n-1$, sunt \emph{impari}: derivând, ei coboară la exponenți \emph{pari}, iar puterile pare sunt nenegative pe tot $\mathbb{R}$. Dacă un exponent ar fi par, semnul derivatei nu ar mai fi garantat și concluzia ar putea cădea --- de pildă $x^3-3x=1$ are trei rădăcini reale, iar derivata $3x^2-3$ se anulează în $\pm1$.
+
+\emph{Observație 2 (comportarea soluției).} Notând cu $x_n$ unica soluție, se poate arăta că $x_n\to1$ când $n\to\infty$. Într-adevăr, din ecuație $x_n=1-\bigl(x_n^{2n+1}+x_n^{2n-1}\bigr)\le1$. Dacă am avea $x_n\le1-\delta$ pentru o infinitate de indici (cu $\delta>0$ fixat), atunci pe acel subșir $x_n^{2n\pm1}\le(1-\delta)^{2n-1}\to0$, deci tot din ecuație $x_n\to1$ --- contradicție cu $x_n\le1-\delta$. Numeric: $x_1\approx0{,}453$, $x_2\approx0{,}637$, $x_{10}\approx0{,}871$, $x_{500}\approx0{,}994$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.5}{Clasică}
+Arătați că nu există nicio funcție derivabilă $f:\mathbb{R}\to\mathbb{R}$ cu $f'(x)=\operatorname{sgn}(x)$ pentru orice $x\in\mathbb{R}$ (unde $\operatorname{sgn}$ ia valorile $-1$, $0$, respectiv $1$, după cum argumentul este negativ, nul sau pozitiv).
+\sol Orice derivată are proprietatea lui Darboux (Teorema 2.74): imaginea oricărui interval printr-o derivată este un interval. Dar
+\[ \operatorname{sgn}\bigl([-1,1]\bigr)=\{-1,\,0,\,1\}, \]
+care nu este interval (conține $0$ și $1$, dar nu conține $\tfrac12$). Deci $\operatorname{sgn}$ nu poate fi derivata niciunei funcții definite pe $\mathbb{R}$.\\[2pt]
+\emph{Observație.} Pe $\mathbb{R}\setminus\{0\}$ situația se schimbă: $f(x)=|x|$ are $f'(x)=\operatorname{sgn}(x)$ acolo. Întreaga obstrucție este concentrată în origine.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.6}{}
+Arătați că ecuația
+\[ e^x=1+x+\frac{x^2}{2}+\frac{x^3}{6} \]
+are exact o soluție reală.
+\sol Fie $h(x)=e^x-1-x-\frac{x^2}2-\frac{x^3}6$; cum $h(0)=0$, punctul $x=0$ este soluție. Arătăm că este singura, studiind derivatele succesive:
+\[ h'(x)=e^x-1-x-\frac{x^2}2,\qquad h''(x)=e^x-1-x,\qquad h'''(x)=e^x-1 . \]
+$h'''<0$ pe $(-\infty,0)$ și $h'''>0$ pe $(0,\infty)$, deci $h''$ este strict descrescătoare pe $(-\infty,0]$ și strict crescătoare pe $[0,\infty)$; cum $h''(0)=0$, rezultă $h''(x)>0$ pentru orice $x\neq0$.
+
+Atunci $h'$ este crescătoare (consecința teoremei lui Lagrange 2.71, având $h''\ge0$). Dacă $h'$ nu ar fi \emph{strict} crescătoare, ar exista $a<b$ cu $h'(a)=h'(b)$, deci $h'$ constantă pe $[a,b]$ și $h''\equiv0$ pe $(a,b)$ --- imposibil, $h''$ anulându-se doar în $0$. Deci $h'$ e strict crescătoare și, cum $h'(0)=0$: $h'<0$ pe $(-\infty,0)$, $h'>0$ pe $(0,\infty)$.
+
+În fine, $h$ este strict descrescătoare pe $(-\infty,0]$ și strict crescătoare pe $[0,\infty)$, cu $h(0)=0$; deci $h(x)>0$ pentru orice $x\neq0$, iar unica soluție este $x=0$.\\[2pt]
+\emph{Observație.} Același raționament „în cascadă'' (derivăm până semnul devine evident, apoi urcăm înapoi) dă $e^x>1+x+\dots+\frac{x^n}{n!}$ pentru orice $x>0$ și orice $n$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.7}{}
+Arătați că ecuația
+\[ x^{4}-4x+1=0 \]
+are exact două soluții reale și că, notându-le $\alpha<\beta$, are loc $\alpha<1<\beta$.
+\sol Fie $f(x)=x^{4}-4x+1$. Derivata $f'(x)=4(x^{3}-1)$ se anulează \emph{doar} în $x=1$ ($t\mapsto t^{3}$ fiind strict crescătoare), cu $f'<0$ pe $(-\infty,1)$ și $f'>0$ pe $(1,\infty)$.
+
+\emph{Șirul lui Rolle} (Corolarul 2.70): semnele lui $f$ în punctul critic și „la capete'' decid numărul rădăcinilor. Prin consecința lui Lagrange (2.71), $f$ este strict descrescătoare pe $(-\infty,1]$ și strict crescătoare pe $[1,\infty)$, iar
+\[ \lim_{x\to-\infty}f(x)=+\infty,\qquad f(1)=1-4+1=-2<0,\qquad \lim_{x\to+\infty}f(x)=+\infty . \]
+Pe $(-\infty,1]$: $f$ coboară strict de la $+\infty$ la $-2$, deci (Cauchy--Bolzano 2.53, plus stricta monotonie pentru unicitate) are exact o rădăcină $\alpha<1$. Pe $[1,\infty)$: urcă strict de la $-2$ la $+\infty$, deci exact o rădăcină $\beta>1$. În total: \emph{exact două} soluții reale.
+
+\emph{Poziția, direct prin Rolle.} Independent de construcția de mai sus: dacă $\alpha<\beta$ sunt rădăcini ale lui $f$, teorema lui Rolle (Teorema 2.69) dă un $c\in(\alpha,\beta)$ cu $f'(c)=0$; dar singurul punct critic este $1$, deci $c=1$ și $\alpha<1<\beta$.\\[2pt]
+\emph{Observație.} Numeric, $\alpha\approx0{,}251$ și $\beta\approx1{,}493$. Metoda („șirul lui Rolle'') este algoritmică: rădăcinile derivatei împart axa în intervale de strictă monotonie, iar pe fiecare interval numărul rădăcinilor este $0$ sau $1$, decis de semnele de la capete.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.8}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ derivabilă, neidentic nulă, cu
+\[ \lim_{x\to-\infty}f(x)=\lim_{x\to+\infty}f(x)=0 . \]
+Arătați că există $c\in\mathbb{R}$ cu $f'(c)=0$.
+\sol Există $x_{0}$ cu $f(x_{0})\neq0$; putem presupune $f(x_{0})>0$ (altfel lucrăm cu $-f$, care are exact aceleași puncte critice).
+
+Din cele două limite, există $A>|x_{0}|$ astfel încât
+\[ |f(x)|<\frac{f(x_{0})}{2}\qquad\text{pentru }|x|\ge A . \]
+Funcția $f$ este continuă pe compactul $[-A,A]$, deci își atinge maximul (Weierstrass, Teorema 2.54) într-un punct $c\in[-A,A]$, cu
+\[ f(c)\ \ge\ f(x_{0})\ >\ \frac{f(x_{0})}{2}\ >\ f(\pm A) , \]
+deci $c\neq\pm A$: punctul $c$ este \emph{interior}. Mai mult, $c$ este maxim global pe tot $\mathbb{R}$: pentru $|x|\ge A$, $f(x)<\frac{f(x_0)}{2}<f(c)$. Fiind punct de extrem local interior al unei funcții derivabile, teorema lui Fermat (Teorema 2.68) dă
+\[ f'(c)=0 . \]
+\emph{Observație 1.} Geometric: „ce pleacă de la $0$ și se întoarce la $0$ are undeva un vârf''. Este ruda pe $\mathbb{R}$ a teoremei lui Rolle --- capetele finite sunt înlocuite de limitele la infinit.
+
+\emph{Observație 2.} Dacă $f$ ia și valori strict negative, același argument (pentru $-f$) produce și un punct de \emph{minim} interior --- deci cel puțin două zerouri ale derivatei.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.9}{Clasică}
+Fie $a_n=\dfrac{(n!)^{2}}{(2n)!}$, $n\ge1$.
+\begin{parti}
+  \item Calculați $\displaystyle\lim_{n\to\infty}a_n$ și $\displaystyle\lim_{n\to\infty}\binom{2n}{n}^{\!1/n}$.
+  \item Arătați că $\sqrt{3n+1}\ \le\ 4^{\,n}a_n\ \le\ 2\sqrt n$ pentru orice $n\ge1$.
+  \item Deduceți că $\displaystyle\lim_{n\to\infty}\frac{1}{4^{\,n}}\binom{2n}{n}=0$, dar $\displaystyle\lim_{n\to\infty}\frac{n}{4^{\,n}}\binom{2n}{n}=\infty$.
+\end{parti}
+\sol (a) Răspuns: $\lim a_n=0$ și $\lim\binom{2n}{n}^{1/n}=4$.
+
+\emph{Limita lui $a_n$, prima soluție (criteriul raportului).} Avem $a_{n}>0$ și
+\[ \frac{a_{n+1}}{a_{n}}=\frac{\bigl((n+1)!\bigr)^{2}}{(n!)^{2}}\cdot\frac{(2n)!}{(2n+2)!}=\frac{(n+1)^{2}}{(2n+1)(2n+2)}=\frac{n+1}{2(2n+1)}\ \longrightarrow\ \frac14\ <\ 1 . \]
+Prin criteriul raportului pentru șiruri (Teorema 2.37), un șir de termeni pozitivi al cărui raport tinde la o limită subunitară converge la $0$.
+
+\emph{Limita lui $a_n$, a doua soluție (criteriul majorării).} Observăm că $\dfrac1{a_{n}}=\dbinom{2n}{n}$ și
+\[ \binom{2n}{n}=\prod_{k=1}^{n}\frac{n+k}{k}\ \ge\ 2^{\,n}, \]
+căci fiecare factor $\frac{n+k}{k}=1+\frac nk\ge2$ pentru $k\le n$. Deci $0<a_{n}\le2^{-n}\to0$ și criteriul majorării (Teorema 2.36) încheie.
+
+\emph{Limita rădăcinii.} Cele două criterii dau aceeași concluzie, dar informații diferite: majorarea arată descreștere cel puțin ca $2^{-n}$, raportul sugerează rata reală $\frac14$. Confirmăm acest lucru. Fie $c_{n}=\dbinom{2n}{n}=\dfrac1{a_n}>0$. Din calculul de mai sus,
+\[ \frac{c_{n+1}}{c_{n}}=\frac{a_n}{a_{n+1}}=\frac{2(2n+1)}{n+1}\ \longrightarrow\ 4 . \]
+Prin Teorema 2.24 (rădăcina încadrată de raport),
+\[ \liminf\frac{c_{n+1}}{c_{n}}\ \le\ \liminf\ c_{n}^{1/n}\ \le\ \limsup\ c_{n}^{1/n}\ \le\ \limsup\frac{c_{n+1}}{c_{n}} , \]
+iar când raportul are limită, toate cele patru cantități coincid cu ea. Deci $\binom{2n}{n}^{1/n}\to4$, adică $a_n^{1/n}\to\frac14$. Reciproca nu este adevărată în general: rădăcina poate avea limită fără ca raportul să conveargă (Corolarul 2.25 dă un asemenea exemplu).
+
+(b) Fie $b_n=4^{\,n}a_n>0$. Din raportul calculat la (a),
+\[ \frac{b_{n+1}}{b_n}=4\cdot\frac{n+1}{2(2n+1)}=\frac{2n+2}{2n+1} . \]
+Pentru $n=1$: $b_1=4\cdot\frac12=2$, iar $\sqrt{3\cdot1+1}=2=2\sqrt1$, deci ambele inegalități au loc (chiar cu egalitate).
+
+\emph{Majorarea.} Presupunem $b_n\le2\sqrt n$. Atunci $b_{n+1}\le2\sqrt n\cdot\frac{2n+2}{2n+1}$, și rămâne de arătat că $\sqrt n\,(2n+2)\le\sqrt{n+1}\,(2n+1)$. Ridicând la pătrat și simplificând cu $n+1$, aceasta devine
+\[ 4n(n+1)\ \le\ (2n+1)^{2}\iff 4n^{2}+4n\ \le\ 4n^{2}+4n+1 , \]
+adevărat.
+
+\emph{Minorarea.} Presupunem $b_n\ge\sqrt{3n+1}$. Atunci $b_{n+1}\ge\sqrt{3n+1}\cdot\frac{2n+2}{2n+1}$, și rămâne de arătat că $(3n+1)(2n+2)^{2}\ge(3n+4)(2n+1)^{2}$. Dezvoltând,
+\[ 4(3n+1)(n+1)^{2}=12n^{3}+28n^{2}+20n+4,\qquad (3n+4)(2n+1)^{2}=12n^{3}+28n^{2}+19n+4 , \]
+iar diferența este $n\ge0$. Prin inducție, ambele inegalități au loc pentru orice $n\ge1$.
+
+(c) Avem $\dfrac{1}{4^{\,n}}\dbinom{2n}{n}=\dfrac1{b_n}$. Din (b),
+\[ 0<\frac1{b_n}\ \le\ \frac1{\sqrt{3n+1}}\ \longrightarrow\ 0,\qquad \frac{n}{b_n}\ \ge\ \frac{n}{2\sqrt n}=\frac{\sqrt n}{2}\ \longrightarrow\ \infty , \]
+deci, prin criteriul cleștelui (Teorema 2.35) și prin criteriul minorării, limitele sunt $0$, respectiv $\infty$.\\[2pt]
+\emph{Observație.} Punctul (a) arată că $\binom{2n}{n}$ crește \emph{esențial} ca $4^{n}$; punctul (b) precizează că pierderea față de $4^{n}$ este un factor de ordinul $\sqrt n$. Forma exactă este $\binom{2n}{n}\sim\dfrac{4^{n}}{\sqrt{\pi n}}$ (formula lui Stirling), adică $b_n\sim\sqrt{\pi n}$; constantele din (b) încadrează corect valoarea, căci $\sqrt3<\sqrt\pi<2$. Coeficientul central absoarbe deci o fracțiune de ordinul $\frac1{\sqrt{\pi n}}$ din suma $4^{n}$ a liniei sale din triunghiul lui Pascal.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.10}{}
+\begin{parti}
+  \item Calculați $\displaystyle\lim_{x\to\infty}\ x\left(\frac{\pi}{2}-\arctan x\right)$.
+  \item Arătați că $\displaystyle\lim_{n\to\infty}\ n\left(\frac{\pi}{2}-\arctan n\right)=1$, justificând trecerea de la limita de funcție la limita de șir.
+  \item Redemonstrați limita de la (b) direct, folosind Cesàro--Stolz în cazul $\dfrac00$.
+\end{parti}
+\sol (a) Forma este $\infty\cdot0$; o rescriem ca raport:
+\[ x\left(\frac\pi2-\arctan x\right)=\frac{\frac\pi2-\arctan x}{\frac1x} , \]
+în care, pentru $x\to\infty$, atât numărătorul cât și numitorul tind la $0$, iar numitorul are derivata nenulă. Prin regula lui L'Hôpital (Teorema 2.75),
+\[ \lim_{x\to\infty}\frac{\frac\pi2-\arctan x}{\frac1x}=\lim_{x\to\infty}\frac{-\frac{1}{1+x^{2}}}{-\frac{1}{x^{2}}}=\lim_{x\to\infty}\frac{x^{2}}{1+x^{2}}=1 . \]
+
+(b) Prin caracterizarea lui Heine a limitei (Teorema 2.45): dacă $\lim_{x\to\infty}g(x)=\ell$, atunci $g(x_{n})\to\ell$ pentru \emph{orice} șir $x_{n}\to\infty$. Aplicat șirului $x_{n}=n$:
+\[ \lim_{n\to\infty}n\left(\frac\pi2-\arctan n\right)=1 . \]
+
+(c) Fie $a_{n}=\dfrac\pi2-\arctan n\to0$ și $b_{n}=\dfrac1n\to0$, cu $(b_{n})$ strict descrescător. Sunt exact ipotezele lui Cesàro--Stolz, cazul $\frac00$ (Teorema 2.40). Raportul incrementelor:
+\[ \frac{a_{n+1}-a_{n}}{b_{n+1}-b_{n}}=\frac{\arctan n-\arctan(n+1)}{-\frac{1}{n(n+1)}}=n(n+1)\bigl(\arctan(n+1)-\arctan n\bigr) . \]
+Prin Lagrange (2.71) aplicat lui $\arctan$ pe $[n,n+1]$: $\arctan(n+1)-\arctan n=\dfrac{1}{1+\xi_{n}^{2}}$ cu $\xi_{n}\in(n,n+1)$, deci
+\[ \frac{n(n+1)}{1+(n+1)^{2}}\ \le\ \frac{a_{n+1}-a_{n}}{b_{n+1}-b_{n}}\ \le\ \frac{n(n+1)}{1+n^{2}} , \]
+și ambele margini tind la $1$ (cleștele, 2.35). Prin Teorema 2.35, $\frac{a_{n}}{b_{n}}\to1$ --- aceeași limită.\\[2pt]
+\emph{Observație.} Cele două drumuri sunt gemene: Cesàro--Stolz este „L'Hôpital pentru șiruri'', iar Heine (2.45) este puntea dintre lumea continuă și cea discretă. Rezultatul se citește și ca o dezvoltare: $\arctan n=\dfrac\pi2-\dfrac1n+r_{n}$, unde restul $r_{n}$ este, în modul, mai mic decât $\dfrac{1}{n^{3}}$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.11}{}
+Fie $x_{1}\ge0$ și
+\[ x_{n+1}=1+\frac{1}{1+x_{n}}\ ,\qquad n\ge1 . \]
+\begin{parti}
+  \item Arătați că șirul este convergent și calculați limita sa.
+  \item Arătați că $\bigl|x_{n}-\sqrt2\bigr|\ \le\ 4^{\,2-n}$ pentru orice $n\ge2$.
+\end{parti}
+\sol Fie $f(x)=1+\dfrac{1}{1+x}$.
+
+(a) \emph{Șirul intră imediat într-un interval stabil.} Pentru orice $x\ge0$: $\dfrac1{1+x}\in(0,1]$, deci $f(x)\in(1,2]$. În particular $x_{2}\in(1,2]\subset I:=[1,2]$, iar $f(I)\subseteq\left[\frac43,\frac32\right]\subset I$: intervalul închis $I$ este stabil.
+
+\emph{$f$ este o contracție pe $I$.} Pentru $x,y\in I$:
+\[ |f(x)-f(y)|=\left|\frac{1}{1+x}-\frac{1}{1+y}\right|=\frac{|x-y|}{(1+x)(1+y)}\ \le\ \frac{|x-y|}{2\cdot2}=\frac14\,|x-y| , \]
+deci $f$ este o contracție de constantă $\frac14<1$ pe intervalul închis $I$.
+
+Prin teorema lui Banach pe un interval închis (Teorema 2.27), $f$ are în $I$ un \emph{unic} punct fix $\ell$, iar șirul iterațiilor converge la $\ell$ pentru orice punct de pornire din $I$ --- în particular pentru $x_{2}$, deci pentru orice $x_{1}\ge0$. Punctul fix:
+\[ \ell=1+\frac{1}{1+\ell} \Longrightarrow \ell^{2}+\ell=\ell+2 \Longrightarrow \ell^{2}=2 \Longrightarrow \ell=\sqrt2 \]
+(rădăcina pozitivă, căci $\ell\in I$).
+
+(b) Pentru $n\ge2$, $x_{n}\in I$ și $\sqrt2\in I$, deci
+\[ \bigl|x_{n+1}-\sqrt2\bigr|=\bigl|f(x_{n})-f(\sqrt2)\bigr|\ \le\ \frac14\,\bigl|x_{n}-\sqrt2\bigr| . \]
+Prin inducție, $\bigl|x_{n}-\sqrt2\bigr|\le4^{-(n-2)}\bigl|x_{2}-\sqrt2\bigr|$, iar $\bigl|x_{2}-\sqrt2\bigr|\le\max\bigl(2-\sqrt2,\ \sqrt2-1\bigr)=2-\sqrt2<1$. Deci $\bigl|x_{n}-\sqrt2\bigr|\le4^{\,2-n}$.\\[2pt]
+
+
+\emph{Soluție alternativă (recurențe homografice).} Recurența se rescrie
+\[ x_{n+1}=1+\frac{1}{1+x_{n}}=\frac{x_{n}+2}{x_{n}+1} , \]
+adică este \emph{homografică} (Definiția 2.30), cu coeficienții
+\[ \alpha=1,\qquad \beta=2,\qquad \gamma=1,\qquad \delta=1 . \]
+Această structură permite rezolvarea \emph{exactă}, nu doar estimarea vitezei.
+
+\emph{Pasul 1: ecuația caracteristică.} Conform Definiției 2.31, punctele fixe ale transformării se obțin din
+\[ \gamma\,\ell^{2}+(\delta-\alpha)\,\ell-\beta=0 \Longleftrightarrow \ell^{2}+0\cdot\ell-2=0 \Longleftrightarrow \ell^{2}=2 , \]
+cu rădăcinile \emph{distincte}
+\[ r_{1}=\sqrt2,\qquad r_{2}=-\sqrt2 . \]
+Se regăsește astfel, dintr-o singură ecuație de gradul al doilea, candidatul la limită --- fără nicio discuție de monotonie sau mărginire.
+
+\emph{Pasul 2: liniarizarea.} Rădăcinile fiind distincte, Teorema 2.32 se aplică: șirul auxiliar
+\[ b_{n}=\frac{x_{n}-r_{1}}{x_{n}-r_{2}}=\frac{x_{n}-\sqrt2}{x_{n}+\sqrt2} \]
+este o \emph{progresie geometrică}, de rație
+\[ q=\frac{\alpha-\gamma r_{1}}{\alpha-\gamma r_{2}}=\frac{1-\sqrt2}{1+\sqrt2}=\bigl(1-\sqrt2\bigr)^{2}\cdot\frac{1}{\bigl(1+\sqrt2\bigr)\bigl(1-\sqrt2\bigr)}=-\bigl(3-2\sqrt2\bigr) . \]
+Așadar
+\[ b_{n}=b_{1}\,q^{\,n-1},\qquad |q|=3-2\sqrt2=\bigl(\sqrt2-1\bigr)^{2}\approx0{,}1716\ <\ 1 . \]
+(Numitorul $x_{n}+\sqrt2$ nu se anulează: din $x_{1}\ge0$ și din recurență rezultă imediat $x_{n}\ge1$ pentru $n\ge2$.)
+
+\emph{Pasul 3: formula închisă și concluzia.} Rezolvând $b_{n}=\dfrac{x_{n}-\sqrt2}{x_{n}+\sqrt2}$ în raport cu $x_{n}$:
+\[ x_{n}=\sqrt2\cdot\frac{1+b_{n}}{1-b_{n}} , \]
+de unde, prin scădere,
+\[ x_{n}-\sqrt2=\sqrt2\left(\frac{1+b_{n}}{1-b_{n}}-1\right)=\frac{2\sqrt2\,b_{n}}{1-b_{n}} . \tag{$\star$} \]
+Cum $|q|<1$, avem $b_{n}=b_{1}q^{\,n-1}\to0$, deci ($\star$) dă direct
+\[ x_{n}\ \longrightarrow\ \sqrt2 , \]
+ceea ce încheie punctul (a) --- \emph{fără} teorema de punct fix.
+
+Pentru (b), din $x_{1}\ge0$ rezultă $|b_{1}|=\left|\frac{x_{1}-\sqrt2}{x_{1}+\sqrt2}\right|\le1$, deci $|b_{n}|\le|q|^{\,n-1}$; pentru $n\ge2$ avem $|b_{n}|\le|q|<\frac15$, deci $|1-b_{n}|\ge1-|q|>\frac45$ și, din ($\star$),
+\[ \bigl|x_{n}-\sqrt2\bigr|\ \le\ \frac{2\sqrt2}{1-|q|}\;|q|^{\,n-1}\ <\ 4\cdot\bigl(3-2\sqrt2\bigr)^{n-1} . \]
+Cum $3-2\sqrt2\approx0{,}1716<\frac14$, această margine este \emph{strict mai bună} decât $4^{\,2-n}=4\cdot\left(\frac14\right)^{n-1}$, cerută în enunț.
+
+\emph{Pasul 4: varianta matriceală.} Aceeași concluzie se obține prin Teorema 2.33: se atașează matricea coeficienților
+\[ M=\begin{pmatrix}\alpha & \beta\\ \gamma & \delta\end{pmatrix}=\begin{pmatrix}1 & 2\\ 1 & 1\end{pmatrix} , \]
+se scrie $x_{n}=\dfrac{p_{n}}{q_{n}}$, iar vectorul $\begin{pmatrix}p_{n}\\ q_{n}\end{pmatrix}=M^{\,n-1}\begin{pmatrix}p_{1}\\ q_{1}\end{pmatrix}$. Polinomul caracteristic al lui $M$ este
+\[ \lambda^{2}-2\lambda-1=0,\qquad \lambda_{1,2}=1\pm\sqrt2 , \]
+cu vectori proprii $\begin{pmatrix}\pm\sqrt2\\ 1\end{pmatrix}$ --- exact punctele fixe $r_{1},r_{2}$. Descompunând vectorul inițial în baza proprie, componenta pe $\lambda_{1}$ domină, iar raportul $p_{n}/q_{n}$ tinde la panta vectorului propriu dominant, adică la $\sqrt2$. Rația progresiei de la Pasul 2 nu este altceva decât raportul valorilor proprii:
+\[ q=\frac{\lambda_{2}}{\lambda_{1}}=\frac{1-\sqrt2}{1+\sqrt2} . \]
+Cele două metode --- liniarizarea prin $b_{n}$ și diagonalizarea lui $M$ --- sunt, așadar, aceeași metodă privită din două unghiuri.\\[2pt]
+\emph{Observație 0 (ce câștigă metoda homografică).} Soluția prin contracție dă convergența și o margine, dar nu \emph{formula}. Metoda homografică dă forma închisă ($\star$) și, odată cu ea, rația \emph{exactă} a erorii: $|q|=(\sqrt2-1)^{2}\approx0{,}1716$, în loc de $\frac14$. Diferența se vede numeric: la $n=11$, eroarea reală este $1{,}07\cdot10^{-8}$, pe când marginea din enunț garantează doar $3{,}8\cdot10^{-6}$ --- de peste trei sute de ori mai slabă. Mai mult, ($\star$) arată că marginea $|q|^{\,n-1}$ este \emph{optimă}: eroarea chiar se comportă ca $2\sqrt2\,|b_{1}|\,|q|^{\,n-1}$.
+
+\emph{Observație 1 (2.27 față de 2.28).} Comparați cu Problema OLM.16: acolo funcția era o contracție \emph{slabă} ($|f(x)-f(y)|<|x-y|$, fără constantă subunitară), iar pe un domeniu necompact șirul diverge. Aici constanta strict subunitară schimbă totul: Teorema 2.27 funcționează pe \emph{orice} interval închis (chiar nemărginit) și oferă, pe deasupra, viteza geometrică de la (b). Ipoteza tare cumpără concluzia tare.
+
+\emph{Observație 2 (fracția continuă).} Limita se citește ca
+\[ \sqrt2=1+\cfrac{1}{2+\cfrac{1}{2+\cfrac{1}{2+\cdots}}}\ , \]
+dezvoltarea în fracție continuă a lui $\sqrt2$ (iterațiile lui $f$ produc exact trunchierile ei). Estimarea de la (b) spune că fiecare etaj al fracției micșorează eroarea de cel puțin $4$ ori, adică aduce aproximativ $\lg4\approx0{,}6$ zecimale exacte; rația exactă $|q|=(\sqrt2-1)^2$ dă, de fapt, $\lg\frac{1}{|q|}\approx0{,}77$ zecimale pe etaj.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.12}{Clasică}
+Calculați $\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}\sin\frac{k}{n^2}$.
+\sol \emph{O inegalitate elementară:} $0\le t-\sin t\le\dfrac{t^3}{6}$ pentru $t\ge0$. Într-adevăr, $g(t)=t-\sin t$ are $g(0)=0$ și $g'(t)=1-\cos t\ge0$, deci $g$ e crescătoare și $g\ge0$, adică $\sin t\le t$ pentru $t\ge0$. Folosind acum $0\le\sin u\le u$:
+\[ g'(t)=1-\cos t=2\sin^2\frac t2\ \le\ 2\left(\frac t2\right)^2=\frac{t^2}{2}, \]
+și integrând pe $[0,t]$: $g(t)\le\dfrac{t^3}{6}$.
+
+Atunci
+\[ \sum_{k=1}^n\sin\frac{k}{n^2}=\sum_{k=1}^n\frac{k}{n^2}-E_n=\frac{n(n+1)}{2n^2}-E_n,\qquad 0\le E_n\le\sum_{k=1}^n\frac{k^3}{6n^6}\le\frac{n\cdot n^3}{6n^6}\to0 . \]
+Prin criteriul cleștelui (Teorema 2.35), limita este $\dfrac12$.\\[2pt]
+\emph{Observație.} Morala: când argumentele sunt uniform mici, $\sin$ „este'' identitatea, cu eroare cubică total neglijabilă la scara sumei.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.13}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție continuă și periodică (există $T>0$ cu $f(x+T)=f(x)$ pentru orice $x$), pentru care limita $\displaystyle\lim_{x\to+\infty}f(x)$ există și este finită. Arătați că $f$ este constantă.
+\sol Fie $L=\displaystyle\lim_{x\to+\infty}f(x)$ și fie $x\in\mathbb{R}$ un punct oarecare. Prin periodicitate (proprietățile funcțiilor periodice, Propoziția 2.8), valoarea lui $f$ se repetă de-a lungul întregii progresii $x,\ x+T,\ x+2T,\dots$:
+\[ f(x)=f(x+T)=f(x+2T)=\cdots=f(x+nT)\qquad\text{pentru orice }n\in\mathbb{N} . \]
+Șirul de puncte $x_{n}=x+nT$ tinde la $+\infty$ (căci $T>0$), deci, prin definiția limitei la infinit cu șiruri,
+\[ f(x+nT)\ \xrightarrow[n\to\infty]{}\ L . \]
+Dar șirul $\bigl(f(x+nT)\bigr)_{n}$ este \emph{constant}, egal cu $f(x)$; un șir constant converge la valoarea sa, iar limita unui șir este unică (Teorema 2.10). Prin urmare
+\[ f(x)=L . \]
+Punctul $x$ a fost arbitrar, deci $f\equiv L$: funcția este constantă.\\[2pt]
+\emph{Observație 1 (nu e nevoie de continuitate).} Demonstrația nu a folosit nicăieri continuitatea lui $f$ --- doar periodicitatea și existența limitei. Ipoteza de continuitate din enunț este, așadar, de prisos; am păstrat-o doar pentru că, în practică, funcțiile periodice interesante sunt continue.
+
+\emph{Observație 2 (contrapoziția utilă).} Forma în care rezultatul se folosește cel mai des este cea răsturnată: \emph{o funcție periodică neconstantă nu are limită la $+\infty$}. De aici, dintr-o singură lovitură: $\sin$, $\cos$, $\{x\}$ nu au limită la infinit --- fără nicio construcție de șiruri ad-hoc pentru fiecare în parte.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.14}{Clasică}
+Fie $a\in\mathbb{R}$ și funcția
+\[ f(x)=x^{2}\sin\frac{1}{x}\ \ (x\neq0),\qquad f(0)=a . \]
+\begin{parti}
+  \item Determinați $a$ astfel încât $f$ să fie continuă pe $\mathbb{R}$. Pentru acest $a$, arătați că $f$ este derivabilă pe $\mathbb{R}$ și calculați $f'$.
+  \item Arătați că $f'$ nu are limită în $0$. Ce spune acest lucru despre criteriul „$f'(0)=\lim_{x\to0}f'(x)$''?
+  \item Fie $g:\mathbb{R}\to\mathbb{R}$, $g(x)=\dfrac x2+x^{2}\sin\dfrac1x$ pentru $x\neq0$ și $g(0)=0$. Arătați că $g'(0)>0$, dar că $g$ nu este monotonă pe niciun interval de forma $(-\delta,\delta)$, $\delta>0$.
+\end{parti}
+\sol (a) \emph{Continuitatea.} În afara originii, $f$ este continuă: produs și compunere de funcții elementare continue (Propoziția 2.48). Problema este doar \emph{lipirea} în $0$ (limita funcției lipite, Teorema 2.59): trebuie ca limita în $0$ să existe și să egaleze valoarea $a$. Prin criteriul cleștelui (Teorema 2.35),
+\[ 0\ \le\ \left|x^{2}\sin\frac1x\right|\ \le\ x^{2}\ \xrightarrow[x\to0]{}\ 0 , \]
+deci $\displaystyle\lim_{x\to0}f(x)=0$ (cele două limite laterale există și sunt egale --- Propoziția 2.46). Prin criteriul de continuitate al funcției lipite (Corolarul 2.60), $f$ este continuă pe $\mathbb{R}$ dacă și numai dacă
+\[ a=0 . \]
+
+\emph{Derivabilitatea.} Fie deci $a=0$. În afara originii, regulile de calcul (Propoziția 2.67: produsul și compunerea) dau
+\[ f'(x)=2x\sin\frac1x+x^{2}\cos\frac1x\cdot\left(-\frac{1}{x^{2}}\right)=2x\sin\frac1x-\cos\frac1x\qquad(x\neq0) . \]
+În origine, derivata se calculează \emph{din definiție}:
+\[ \frac{f(x)-f(0)}{x-0}=\frac{x^{2}\sin\frac1x}{x}=x\sin\frac1x\ \xrightarrow[x\to0]{}\ 0 \]
+(din nou cleștele: $\bigl|x\sin\frac1x\bigr|\le|x|$). Așadar $f$ este derivabilă peste tot, cu
+\[ f'(0)=0,\qquad f'(x)=2x\sin\frac1x-\cos\frac1x\ \ (x\neq0) . \]
+
+(b) Primul termen tinde la $0$ (cleștele), dar al doilea \emph{oscilează}: pe șirurile $u_{k}=\dfrac{1}{2k\pi}\to0$ și $v_{k}=\dfrac{1}{(2k+1)\pi}\to0$,
+\[ \cos\frac{1}{u_{k}}=1,\qquad \cos\frac{1}{v_{k}}=-1 , \]
+deci $f'(u_{k})\to-1$ și $f'(v_{k})\to1$. Două șiruri care tind la $0$ dau valori ale lui $f'$ cu limite diferite: prin criteriul lui Heine (Teorema 2.45), $f'$ \emph{nu are limită} în $0$.
+
+Concluzia despre criteriu: pentru funcții lipite există rezultatul comod (Propoziția 2.61) --- \emph{dacă} $\lim_{x\to0}f'(x)$ există, atunci $f$ este derivabilă în $0$ și $f'(0)$ egalează această limită. Exemplul de față arată că acest criteriu este \textbf{suficient, dar nu necesar}: aici limita lui $f'$ nu există, și totuși $f'(0)$ există (și e $0$). Când criteriul tace, definiția derivatei rămâne singura instanță de apel --- și ea decide.
+
+(c) Avem $g(x)=\frac x2+f(x)$, cu $f$ de la (a) (pentru $a=0$). Prin (a), $g$ este derivabilă pe $\mathbb{R}$, cu
+\[ g'(0)=\frac12+f'(0)=\frac12>0,\qquad g'(x)=\frac12+2x\sin\frac1x-\cos\frac1x\ \ (x\neq0) . \]
+Pe șirurile de la (b), $u_{k}=\dfrac{1}{2k\pi}$ și $v_{k}=\dfrac{1}{(2k+1)\pi}$, sinusul se anulează, deci
+\[ g'(u_{k})=\frac12-1=-\frac12<0,\qquad g'(v_{k})=\frac12+1=\frac32>0 . \]
+Fie $\delta>0$ și $k$ suficient de mare încât $u_{k},v_{k}\in(0,\delta)$. Pe $(0,\infty)$ funcția $g'$ este continuă, deci există un interval $I\subset(0,\delta)$ în jurul lui $u_{k}$ pe care $g'<0$ și un interval $J\subset(0,\delta)$ în jurul lui $v_{k}$ pe care $g'>0$. Prin consecința teoremei lui Lagrange (2.71), $g$ este strict descrescătoare pe $I$ și strict crescătoare pe $J$, deci nu este monotonă pe $(-\delta,\delta)$.\\[2pt]
+\emph{Observație 1 (un semn într-un punct nu spune nimic).} Dacă $g'>0$ pe un \emph{interval}, atunci $g$ este crescătoare acolo; punctul (c) arată că $g'(0)>0$ într-un singur punct nu ajunge nici măcar pentru monotonia pe o vecinătate a acelui punct. Concluzia ar fi adevărată dacă $g'$ ar fi continuă în $0$ (atunci $g'>0$ pe o vecinătate), iar exemplul funcționează tocmai pentru că $g'$ oscilează în $0$, ca $f'$ la punctul (b). Ce rămâne adevărat este doar o informație punctuală: $g(x)<g(0)$ pentru $x<0$ mic și $g(x)>g(0)$ pentru $x>0$ mic.
+
+\emph{Observație 2 (derivata nu moștenește continuitatea).} Funcția $f$ este derivabilă pe tot $\mathbb{R}$, dar derivata ei este \emph{discontinuă} în $0$. „Derivabilă'' nu implică „derivată continuă'' --- iar acest exemplu este cel mai simplu martor. (Reciproca banală rămâne adevărată: derivabilitatea implică propria continuitate a lui $f$, Teorema 2.66.)
+
+\emph{Observație 3 (fabrica de contraexemple).} Familia $x^{\alpha}\sin\frac1x$ este o fabrică întreagă: $\alpha=2$ dă „derivabilă cu derivata discontinuă'' (exemplul de față); $\alpha=1$ dă „continuă în $0$, dar nederivabilă acolo''; $\alpha=0$ dă „fără limită în $0$''. Reglajul exponentului dozează exact cât de multă regularitate supraviețuiește oscilației.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.15}{Clasică}
+Fie $f:[0,\infty)\to\mathbb{R}$, $f(x)=x\,e^{-x}$.
+\begin{parti}
+  \item Determinați, în funcție de parametrul real $a>0$, numărul soluțiilor ecuației
+  \[ x\,e^{-x}=a\ ,\qquad x\ge0 . \]
+  \item Pentru $0<a<\frac1e$, fie $x_1<x_2$ cele două soluții. Arătați că $x_1+x_2>2$.
+\end{parti}
+\sol (a) Derivata $f'(x)=(1-x)e^{-x}$ este pozitivă pe $[0,1)$, nulă în $1$ și negativă pe $(1,\infty)$, deci $f$ urcă strict pe $[0,1]$ și coboară strict pe $[1,\infty)$, cu valoarea maximă $f(1)=\frac1e$. La capete: $f(0)=0$ și $f(x)\to0$ când $x\to+\infty$. Discuție după $a>0$:
+
+$\bullet$ $a>\frac1e$: $f(x)\le\frac1e<a$ pentru orice $x$: \emph{zero soluții}.
+
+$\bullet$ $a=\frac1e$: maximul este atins doar în $x=1$: \emph{o soluție}.
+
+$\bullet$ $0<a<\frac1e$: pe $[0,1]$, prin valorile intermediare și stricta creștere, există o soluție unică; pe $[1,\infty)$, prin valorile intermediare și stricta descreștere, încă o soluție unică: \emph{exact două soluții}.
+\[ \boxed{\ a>\tfrac1e:\ 0\ \text{soluții};\qquad a=\tfrac1e:\ 1\ \text{soluție};\qquad 0<a<\tfrac1e:\ 2\ \text{soluții}.\ } \]
+
+(b) Din (a), $0<x_1<1<x_2$. Graficul lui $f$ nu este simetric față de dreapta $x=1$, iar punctul (b) spune în ce sens: comparăm $f$ cu reflexia ei față de $1$.
+
+\emph{Pasul 1: o inegalitate între $f$ și reflexia ei.} Fie $h:[0,1]\to\mathbb{R}$, $h(t)=f(1+t)-f(1-t)$. Atunci $h(0)=0$ și
+\[ h'(t)=f'(1+t)+f'(1-t)=-t\,e^{-1-t}+t\,e^{-1+t}=\frac{t}{e}\bigl(e^{t}-e^{-t}\bigr)>0\qquad\text{pentru }t\in(0,1] , \]
+unde am folosit $f'(x)=(1-x)e^{-x}$. Deci $h$ este strict crescătoare, iar $h(t)>h(0)=0$, adică
+\[ f(1+t)>f(1-t)\qquad\text{pentru orice }t\in(0,1] . \]
+
+\emph{Pasul 2: concluzia.} Aplicăm Pasul 1 pentru $t=1-x_1\in(0,1)$: $f(2-x_1)>f(x_1)=a=f(x_2)$. Ambele numere $2-x_1$ și $x_2$ sunt în $(1,\infty)$, unde $f$ este strict descrescătoare; din $f(2-x_1)>f(x_2)$ rezultă $2-x_1<x_2$, adică
+\[ x_1+x_2>2 . \]
+\emph{Observație.} Numeric, pentru $a=0{,}3$: $x_1\approx0{,}4894$, $x_2\approx1{,}7813$, cu suma $\approx2{,}2707$; când $a\to\frac1e$, ambele soluții tind la $1$ și suma tinde la $2$, deci constanta $2$ nu poate fi mărită. Punctul de maxim $1$ nu este mijlocul celor două soluții: coborârea spre dreapta este mai lentă decât urcarea din stânga, iar funcția $h$ măsoară exact această asimetrie.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.16}{}
+Fie $x_1\in\mathbb{R}$ și $x_{n+1}=\ln\!\left(1+e^{x_n}\right)$ pentru $n\ge1$.
+\begin{parti}
+  \item Arătați că $x_n\to\infty$ și calculați $\displaystyle\lim_{n\to\infty}\frac{x_n}{\ln n}$.
+  \item Calculați $\displaystyle\lim_{n\to\infty}\frac{x_1+x_2+\cdots+x_n}{n\ln n}$.
+\end{parti}
+\sol (a) Cheia este substituția $y_n=e^{x_n}>0$. Din recurență,
+\[ y_{n+1}=e^{x_{n+1}}=1+e^{x_n}=y_n+1, \]
+deci $(y_n)$ este progresie aritmetică de rație $1$: $y_n=e^{x_1}+n-1$. Prin urmare, \emph{exact},
+\[ x_n=\ln\!\left(n-1+e^{x_1}\right)\ \longrightarrow\ \infty . \]
+Mai departe, cu $c=e^{x_1}-1$: $x_n=\ln n+\ln\!\left(1+\frac cn\right)$, deci $x_n-\ln n\to0$ și
+\[ \lim_{n\to\infty}\frac{x_n}{\ln n}=1 . \]
+
+(b) Răspuns: limita este tot $1$ --- dar de data aceasta nu mai putem „citi'' rezultatul din formula închisă, fiindcă suma $\sum_{k\le n}\ln(k-1+e^{x_1})$ nu are formă elementară. Aplicăm Cesàro--Stolz.
+
+Fie $a_n=x_1+x_2+\cdots+x_n$ și $b_n=n\ln n$. Șirul $(b_n)_{n\ge2}$ este strict crescător și nemărginit, deci putem folosi Cesàro--Stolz în cazul $\frac{\infty}{\infty}$ (Teorema 2.39):
+\[ \frac{a_{n+1}-a_n}{b_{n+1}-b_n}=\frac{x_{n+1}}{(n+1)\ln(n+1)-n\ln n} . \]
+Prelucrăm numitorul, scoțând $\ln(n+1)$ în față:
+\[ (n+1)\ln(n+1)-n\ln n=\ln(n+1)+n\bigl[\ln(n+1)-\ln n\bigr]=\ln(n+1)+n\ln\!\left(1+\frac1n\right) . \]
+Al doilea termen tinde la $1$ (limita clasică $n\ln(1+\frac1n)\to1$), deci este mărginit. Împărțim atunci numărătorul și numitorul la $\ln n$:
+\[ \frac{x_{n+1}}{(n+1)\ln(n+1)-n\ln n}=\frac{\dfrac{x_{n+1}}{\ln n}}{\dfrac{\ln(n+1)}{\ln n}+\dfrac{n\ln\!\left(1+\frac1n\right)}{\ln n}} . \]
+Prin (a), $\dfrac{x_{n+1}}{\ln n}=\dfrac{x_{n+1}}{\ln(n+1)}\cdot\dfrac{\ln(n+1)}{\ln n}\to1\cdot1=1$; la numitor, $\dfrac{\ln(n+1)}{\ln n}\to1$, iar al doilea raport tinde la $0$ (numărător mărginit, numitor $\to\infty$). Așadar raportul incrementelor tinde la $1$ și, prin Teorema 2.39,
+\[ \lim_{n\to\infty}\frac{x_1+x_2+\cdots+x_n}{n\ln n}=1 . \]
+\emph{Observație 1 (de ce Cesàro--Stolz și nu media aritmetică).} Din (a) știm că $\frac{x_n}{\ln n}\to1$, dar de aici \emph{nu} se poate încheia direct: media aritmetică a lui $(x_n)$ (Corolarul 2.41) ar da $\frac{a_n}{n}\to\infty$, informație inutilizabilă. Cesàro--Stolz este exact unealta care compară două șiruri divergente „la aceeași viteză'', iar alegerea $b_n=n\ln n$ este dictată de ordinul de mărime al sumei.
+
+\emph{Observație 2 (viteza de convergență).} Cum $a_n\approx n\ln n-n$, avem de fapt
+\[ \frac{a_n}{n\ln n}\ \approx\ 1-\frac{1}{\ln n} , \]
+deci convergența este \emph{logaritmic} de lentă: la $n=200\,000$ raportul este încă $\approx0{,}918$, în deplin acord cu $1-\frac{1}{\ln n}$. O verificare numerică grăbită ar putea sugera, greșit, o limită subunitară.
+
+\emph{Observație 3 (contracție slabă fără punct fix).} Funcția $f(x)=\ln(1+e^x)$ are $0<f'(x)=\frac{e^x}{1+e^x}<1$, deci prin Lagrange (Teorema 2.71) $|f(x)-f(y)|<|x-y|$ pentru $x\neq y$ --- o \emph{contracție slabă}. Totuși $f$ nu are niciun punct fix, căci $f(x)-x=\ln(1+e^{-x})>0$, iar șirul diverge. Nu este o contradicție cu Teorema 2.28 (contracții slabe pe compact): acolo domeniul este un interval compact, aici este $\mathbb{R}$. Ipoteza de compactitate este, așadar, esențială.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.17}{Clasică}
+Arătați că mulțimea $\{\sin n : n\in\mathbb{N}\}$ este densă în $[-1,1]$.
+\sol Admitem faptul clasic că $\pi$ este irațional; atunci $\alpha=\frac1{2\pi}$ este irațional. Prin teorema lui Kronecker (Teorema 2.7), mulțimea $\{m+n\alpha:m\in\mathbb{Z},\ n\in\mathbb{N}\}$ este densă în $\mathbb{R}$; înmulțind cu $2\pi$, mulțimea $\{2\pi m+n\}$ este densă în $\mathbb{R}$. Echivalent: pentru orice $\theta\in\mathbb{R}$ și $\varepsilon>0$ există $n\in\mathbb{N}$ și $k\in\mathbb{Z}$ cu $|n-(\theta+2\pi k)|<\varepsilon$.
+
+Fie $c\in[-1,1]$ și $\theta\in[0,2\pi)$ cu $\sin\theta=c$. Alegem $n$ și $k$ ca mai sus. Cum $\sin$ este $1$-lipschitziană (prin Lagrange 2.71: $|\sin u-\sin v|\le|u-v|$) și $2\pi$-periodică,
+\[ |\sin n-c|=\bigl|\sin n-\sin(\theta+2\pi k)\bigr|\le|n-\theta-2\pi k|<\varepsilon . \]
+Deci orice $c\in[-1,1]$ este aproximat oricât de bine de valori $\sin n$.
+
+\emph{Observație (numărabil contra nenumărabil).} Pasul-cheie --- un subgrup aditiv al lui $\mathbb{R}$ care nu este ciclic este dens --- este exact principiul densității (Teorema 2.3). Iar densitatea obținută nu poate deveni niciodată egalitate: mulțimea $\{\sin n\}$ este numărabilă, pe când un interval nedegenerat nu este (Lema 2.6) --- o orbită numărabilă care umple vizual un continuum, fără a-l acoperi vreodată.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.18}{Clasică}
+(a) Arătați că funcția $f(x)=\sin(x^2)$ nu este uniform continuă pe $\mathbb{R}$.
+(b) Arătați că $g(x)=\sin\sqrt{x}$ este uniform continuă pe $[0,\infty)$.
+\sol (a) Folosim criteriul cu șiruri (Propoziția 2.64). Fie $x_n=\sqrt{2\pi n+\frac\pi2}$ și $y_n=\sqrt{2\pi n}$. Atunci
+\[ x_n-y_n=\frac{\pi/2}{x_n+y_n}\to0,\qquad\text{dar}\qquad |f(x_n)-f(y_n)|=|1-0|=1\not\to0, \]
+deci $f$ nu este uniform continuă.
+
+(b) Pe $[1,\infty)$: $|g'(x)|=\dfrac{|\cos\sqrt x|}{2\sqrt x}\le\dfrac12$, deci prin Lagrange (2.71) $g$ este $\tfrac12$-lipschitziană, în particular uniform continuă. Pe $[0,2]$: $g$ este continuă pe un interval compact, deci uniform continuă prin teorema lui Cantor (Teorema 2.63). Lipirea: fie $\varepsilon>0$ și $\delta_1,\delta_2$ modulele date de cele două bucăți; punem $\delta=\min(\delta_1,\delta_2,1)$. Dacă $|x-y|<\delta$, atunci fie ambele puncte sunt în $[0,2]$, fie ambele în $[1,\infty)$ (dacă, să zicem, $x<1<y$, atunci $y<x+1<2$, deci ambele sunt în $[0,2]$); în ambele cazuri $|g(x)-g(y)|<\varepsilon$.\\[2pt]
+\emph{Observație.} Contrast instructiv: derivata lui $g$ este \emph{nemărginită} lângă $0$, și totuși $g$ este uniform continuă --- mărginirea derivatei este suficientă, nu și necesară.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.19}{Ecuația lui Jensen}
+Fie $f:\mathbb{R}\to\mathbb{R}$ continuă cu
+\[ f(x+y)+f(x-y)=2f(x)\qquad\text{pentru orice }x,y\in\mathbb{R}. \]
+Determinați toate funcțiile $f$ cu această proprietate.
+\sol Răspuns: exact funcțiile afine, $f(x)=ax+b$.
+
+Substituim $u=x+y$, $v=x-y$; când $(x,y)$ parcurge $\mathbb{R}^2$, perechea $(u,v)$ parcurge tot $\mathbb{R}^2$ (invers: $x=\frac{u+v}2$, $y=\frac{u-v}2$). Relația devine
+\[ f(u)+f(v)=2f\!\left(\frac{u+v}{2}\right)\qquad\text{pentru orice }u,v\in\mathbb{R}, \]
+adică exact ecuația lui Jensen. Prin Teorema 2.57 (ecuația lui Jensen pentru funcții continue), $f$ este afină. Reciproc, orice $f(x)=ax+b$ verifică identitatea (calcul imediat).\\[2pt]
+\emph{Observație.} Fără continuitate concluzia cade: există soluții patologice provenite din funcții aditive discontinue.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.20}{Clasică}
+Fie $A,B,C$ unghiurile unui triunghi. Arătați că
+\[ \sin A+\sin B+\sin C\ \le\ \frac{3\sqrt3}{2} , \]
+cu egalitate dacă și numai dacă triunghiul este echilateral.
+\sol \emph{Sinusul este strict concav pe $(0,\pi)$.} Derivata sa, $\cos$, este strict descrescătoare pe $(0,\pi)$; prin echivalența dintre convexitate și monotonia derivatei (Teorema 2.79, aplicată lui $-\sin$), rezultă că $\sin$ este strict concavă pe $(0,\pi)$.
+
+Unghiurile $A,B,C\in(0,\pi)$ au media $\frac{A+B+C}{3}=\frac\pi3$. Inegalitatea lui Jensen (Teorema 2.81), în forma pentru funcții \emph{concave} și ponderi egale, dă
+\[ \frac{\sin A+\sin B+\sin C}{3}\ \le\ \sin\!\left(\frac{A+B+C}{3}\right)=\sin\frac\pi3=\frac{\sqrt3}{2} , \]
+adică exact inegalitatea cerută.
+
+\emph{Egalitatea.} Pentru o funcție \emph{strict} concavă, egalitatea în Jensen are loc doar când argumentele coincid: $A=B=C=\frac\pi3$ --- triunghiul echilateral. Reciproc, echilateralul dă $3\cdot\frac{\sqrt3}2$.\\[2pt]
+\emph{Observație.} Prin teorema sinusurilor, $\sin A+\sin B+\sin C=\dfrac{a+b+c}{2R}$: inegalitatea spune că, dintre toate triunghiurile înscrise într-un cerc dat, \emph{echilateralul are perimetrul maxim}.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.21}{}
+Fie $f:[0,1]\to\mathbb{R}$ derivabilă. Arătați că există $c\in(0,1)$ astfel încât
+\[ \pi\,(1+c^{2})\,f'(c)\ =\ 4\bigl(f(1)-f(0)\bigr) . \]
+\sol Aplicăm teorema lui Cauchy --- a creșterilor finite generalizată (Teorema 2.73) --- perechii $(f,g)$, unde
+\[ g(x)=\arctan x . \]
+Funcția $g$ este derivabilă pe $[0,1]$, cu $g'(x)=\dfrac{1}{1+x^{2}}\neq0$ pe $(0,1)$. Teorema dă un $c\in(0,1)$ cu
+\[ \frac{f(1)-f(0)}{g(1)-g(0)}=\frac{f'(c)}{g'(c)} \Longrightarrow \frac{f(1)-f(0)}{\frac\pi4-0}=(1+c^{2})\,f'(c) , \]
+adică exact identitatea cerută.\\[2pt]
+\emph{Observație 1.} Alegerea lui $g$ este o „schimbare de ceas'': Lagrange (2.71) este cazul particular $g(x)=x$. Cu alte ceasuri se obțin alte identități --- de pildă $g(x)=x^{2}$ pe $[a,b]\subset(0,\infty)$ dă $f(b)-f(a)=\dfrac{f'(c)}{2c}\,(b^{2}-a^{2})$.
+
+\emph{Observație 2.} Nimic nu se poate spune despre \emph{poziția} lui $c$: pentru $f=g=\arctan$ orice $c$ convine, pe când pentru $f(x)=x$ punctul este unic ($\pi(1+c^{2})=4$, deci $c=\sqrt{4/\pi-1}\approx0{,}52$).
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.22}{Clasică}
+Arătați că nu există nicio funcție continuă $f:\mathbb{R}\to\mathbb{R}$ cu
+\[ f\bigl(f(x)\bigr)=-x\qquad\text{pentru orice }x\in\mathbb{R} . \]
+\sol Presupunem că o astfel de funcție există.
+
+\emph{Pasul 1: $f$ este injectivă.} Dacă $f(x)=f(y)$, atunci $-x=f(f(x))=f(f(y))=-y$, deci $x=y$.
+
+\emph{Pasul 2: $f$ este strict monotonă.} $f$ este continuă pe intervalul $\mathbb{R}$, deci are proprietatea lui Darboux (Teorema 2.58). O funcție injectivă cu proprietatea lui Darboux pe un interval este strict monotonă (Teorema 2.58).
+
+\emph{Pasul 3: contradicția.} Compunerea a două funcții strict monotone de \emph{același} sens este strict crescătoare; la fel și compunerea a două strict descrescătoare (descrescător $\circ$ descrescător $=$ crescător). Așadar, indiferent de sensul lui $f$, funcția $f\circ f$ este \emph{strict crescătoare}. Dar $f(f(x))=-x$ este strict descrescătoare --- contradicție. Deci nu există.\\[2pt]
+\emph{Observație 1 (generalizare gratuită).} Argumentul nu folosește forma lui $-x$, ci doar stricta sa descreștere: \emph{nicio funcție continuă $f:\mathbb{R}\to\mathbb{R}$ nu poate avea $f\circ f$ strict descrescătoare} --- deci nici $f(f(x))=1-x^{3}$, nici $f(f(x))=e^{-x}$ nu au soluții continue.
+
+\emph{Observație 2 (continuitatea este esențială).} Există soluții \emph{discontinue}, și chiar explicite. Definim $f(0)=0$; pentru $t>0$ folosim intervalele $I_{k}=(2k,\,2k+1]$ și $J_{k}=(2k+1,\,2k+2]$, $k\ge0$:
+\[ f(t)=t+1\ \ (t\in I_{k}),\qquad f(t)=-(t-1)\ \ (t\in J_{k}) , \]
+și extindem impar: $f(-t)=-f(t)$. Verificare: pentru $t\in I_{k}$, $f(f(t))=f(t+1)=-(t+1-1)=-t$ (căci $t+1\in J_{k}$); pentru $t\in J_{k}$, $f(t)=-(t-1)$ cu $t-1\in I_{k}$, deci $f(f(t))=-f(t-1)=-t$; pentru $t<0$, imparitatea dă $f(f(-t))=-f(f(t))$. Funcția „rotește'' orbitele de patru puncte $t\to t+1\to-t\to-t-1\to t$ --- exact ce face înmulțirea cu $i$ în plan.
+
+\emph{Observație 3 (morala).} În $\mathbb{C}$, ecuația are soluția banală $f(z)=iz$ (rotația cu $90^{\circ}$): obstrucția este strict \emph{unidimensională} --- pe dreaptă, o funcție continuă nu are „loc să rotească''.
+\vspace{1mm}\hrule
+
+\nivel{ojm}{Nivelul OJM}{Faza județeană --- combină două rezultate.}
+\prob{ojm}{OJM.1}{}
+Fie $(x_n)_{n\ge1}$ șirul de numere reale definit prin $x_1=1$ și
+\[ 3x_{n+1}=\frac{x_n}{1!}+\frac{x_{n-1}}{2!}+\frac{x_{n-2}}{3!}+\cdots+\frac{x_1}{n!}\ ,\qquad n\ge1 . \]
+\begin{parti}
+  \item Arătați că șirul este convergent și calculați limita sa.
+  \item Calculați $\displaystyle\lim_{n\to\infty}2^{\,n}x_n$.
+\end{parti}
+\sol (a) \emph{Pozitivitatea.} Prin inducție: $x_1=1>0$, iar dacă $x_1,\dots,x_n>0$, atunci $3x_{n+1}$ este o sumă de termeni strict pozitivi, deci $x_{n+1}>0$.
+
+\emph{Monotonia.} Scriem recurența pentru $n$ și pentru $n-1$ (pentru $n\ge2$):
+\[ 3x_{n+1}=\sum_{k=1}^{n}\frac{x_{n+1-k}}{k!},\qquad 3x_{n}=\sum_{k=1}^{n-1}\frac{x_{n-k}}{k!} . \]
+Scăzând, termenul cu $k=n$ din prima sumă rămâne nepereche:
+\[ 3\bigl(x_{n+1}-x_n\bigr)=\sum_{k=1}^{n-1}\frac{x_{n+1-k}-x_{n-k}}{k!}\ +\ \frac{x_1}{n!} . \tag{1} \]
+\textbf{Atenție:} termenul suplimentar este $+\dfrac{x_1}{n!}=+\dfrac1{n!}$, deci \emph{pozitiv}. Prin urmare inducția „toate diferențele anterioare sunt negative, deci și suma este negativă'' \emph{nu} se închide singură: trebuie arătat că diferențele negative îl domină pe $\frac1{n!}$.
+
+Notăm $e_j=x_j-x_{j+1}$ (vrem $e_j>0$). Cu această notație, $(1)$ devine
+\[ 3\,e_n=\sum_{k=1}^{n-1}\frac{e_{n-k}}{k!}-\frac{1}{n!}=\sum_{j=1}^{n-1}\frac{e_j}{(n-j)!}-\frac{1}{n!} . \tag{2} \]
+Baza: $e_1=x_1-x_2=1-\frac13=\frac23>0$ (căci $3x_2=x_1=1$).
+
+Pasul inductiv: fie $n\ge2$ și presupunem $e_1,\dots,e_{n-1}>0$. În suma din $(2)$ păstrăm doar termenul $j=1$ (ceilalți sunt pozitivi prin ipoteză) și folosim $e_1=\frac23$:
+\[ 3\,e_n\ \ge\ \frac{e_1}{(n-1)!}-\frac{1}{n!}=\frac{\frac23\,n-1}{n!}\ >\ 0\qquad\text{pentru }n\ge2 , \]
+deoarece $\frac23 n-1\ge\frac43-1>0$. Deci $e_n>0$: șirul este strict descrescător.
+
+\emph{Limita.} Fiind descrescător și minorat de $0$, șirul converge (Weierstrass, Teorema 2.11) către un $L\ge0$. Trecem la limită în recurență. Fie $M=x_1=1$ un majorant al șirului. Pentru $K$ fixat,
+\[ 3x_{n+1}=\underbrace{\sum_{k=1}^{K}\frac{x_{n+1-k}}{k!}}_{\to\ L\sum_{k=1}^{K}\frac1{k!}}\ +\ \underbrace{\sum_{k=K+1}^{n}\frac{x_{n+1-k}}{k!}}_{\le\ M\sum_{k>K}\frac1{k!}} . \]
+Cum $\sum_{k>K}\frac1{k!}\to0$ când $K\to\infty$, trecând la limită mai întâi după $n$ și apoi după $K$ obținem
+\[ 3L=L\sum_{k\ge1}\frac1{k!}=L\,(e-1) \Longrightarrow L\,(4-e)=0 . \]
+Cum $4-e\approx1{,}28\neq0$, rezultă
+\[ \lim_{n\to\infty}x_n=0 . \]
+
+(b) Răspuns: $\displaystyle\lim_{n\to\infty}2^{\,n}x_n=+\infty$.
+
+Toți termenii recurenței sunt pozitivi, deci putem păstra doar primii \emph{doi} (pentru $n\ge2$):
+\[ 3x_{n+1}\ \ge\ x_n+\frac{x_{n-1}}{2} \Longrightarrow x_{n+1}\ \ge\ \frac{x_n}{3}+\frac{x_{n-1}}{6} . \]
+Punem $y_n=2^{\,n}x_n>0$ și înmulțim cu $2^{\,n+1}$; folosind $2^{n+1}=2\cdot2^n=4\cdot2^{n-1}$:
+\[ y_{n+1}\ \ge\ \frac{2}{3}\,y_n+\frac{4}{6}\,y_{n-1}=\frac{2}{3}\,y_n+\frac{2}{3}\,y_{n-1} . \tag{3} \]
+Suma coeficienților este $\frac23+\frac23=\frac43>1$ --- aici se ascunde tot rezultatul. Într-adevăr, notând
+\[ m_n=\min\bigl(y_n,\ y_{n-1}\bigr) , \]
+inegalitatea $(3)$ dă
+\[ y_{n+1}\ \ge\ \left(\frac23+\frac23\right)\min\bigl(y_n,y_{n-1}\bigr)=\frac43\,m_n . \tag{4} \]
+\emph{$(m_n)$ este crescător:} din $(4)$, $y_{n+1}\ge\frac43m_n\ge m_n$, iar $y_n\ge m_n$, deci $m_{n+1}=\min(y_{n+1},y_n)\ge m_n$.
+
+\emph{Creșterea la doi pași.} Folosind $(4)$ de două ori și monotonia lui $(m_n)$:
+\[ y_{n+2}\ \ge\ \frac43\,m_{n+1}\ \ge\ \frac43\,m_n,\qquad y_{n+1}\ \ge\ \frac43\,m_n , \]
+deci
+\[ m_{n+2}=\min\bigl(y_{n+2},\,y_{n+1}\bigr)\ \ge\ \frac43\,m_n . \]
+Prin inducție, $m_{2+2j}\ge\left(\frac43\right)^{j}m_2$ și $m_{3+2j}\ge\left(\frac43\right)^{j}m_3$, cu $m_2,m_3>0$. Cum $\frac43>1$, rezultă $m_n\to+\infty$, iar din $y_n\ge m_n$:
+\[ \lim_{n\to\infty}2^{\,n}x_n=+\infty . \]
+\emph{Observație 1 (capcana de la monotonie).} Diferența $(1)$ conține termenul \emph{pozitiv} $+\frac{x_1}{n!}$, nu unul negativ: o inducție care îl ignoră (sau îi schimbă semnul) demonstrează ceva fals. Salvarea vine din faptul că primul salt este mare, $e_1=\frac23$, iar $\frac{e_1}{(n-1)!}=\frac{2n/3}{n!}$ îl domină comod pe $\frac1{n!}$ încă de la $n=2$.
+
+\emph{Observație 2 (unde este pragul).} Argumentul de la (b) nu depinde de baza $2$: pentru $c>0$ și $y_n=c^{\,n}x_n$, păstrând \emph{toți} termenii, recurența devine
+\[ y_{n+1}=\sum_{k=1}^{n}\frac{c^{\,k}}{3\cdot k!}\ y_{n+1-k},\qquad\text{cu}\qquad \sum_{k\ge1}\frac{c^{k}}{3\cdot k!}=\frac{e^{c}-1}{3} . \]
+Suma ponderilor depășește $1$ exact când $e^{c}>4$, adică $c>\ln4$. Așadar $c^{\,n}x_n\to+\infty$ pentru orice $c>\ln4$; cum $2>\ln4=1{,}3863\dots$, cazul din enunț se încadrează. Pragul $c=\ln4$ este critic: acolo ponderile au suma exact $1$, iar limita devine finită și nenulă --- se poate arăta că $(\ln4)^n x_n\to\frac34$ (Problema ONM.4 din această secțiune). În particular, $x_n$ scade geometric cu rația $\frac1{\ln4}=0{,}7213\dots$, iar $2^{\,n}x_n\approx\frac34\left(\frac{2}{\ln4}\right)^{\!n}$ explodează, fiindcă $\frac{2}{\ln4}=1{,}4427\dots>1$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.2}{}
+Determinați toate funcțiile continue $f:\mathbb{R}\to\mathbb{R}$ cu proprietatea
+\[ f\bigl(x^{2}+y^{2}\bigr)=f(x)^{2}+f(y)^{2}\qquad\text{pentru orice }x,y\in\mathbb{R}. \]
+\sol Răspuns: exact patru funcții,
+\[ f\equiv0,\qquad f\equiv\frac12,\qquad f(x)=x,\qquad f(x)=|x| . \]
+
+\emph{Pasul 1: valoarea în $0$.} Cu $x=y=0$: $f(0)=2f(0)^{2}$, deci, notând $a=f(0)$,
+\[ a\,(2a-1)=0 \Longrightarrow a\in\left\{0,\ \tfrac12\right\} . \tag{1} \]
+
+\emph{Pasul 2: legătura dintre $f(x^{2})$ și $f(x)^{2}$.} Cu $y=0$:
+\[ f\bigl(x^{2}\bigr)=f(x)^{2}+a^{2}\qquad\text{pentru orice }x\in\mathbb{R}. \tag{2} \]
+
+\emph{Pasul 3: $f$ este aditivă pe $[0,\infty)$, până la o constantă.} Fie $u,v\ge0$; scriem $u=x^{2}$, $v=y^{2}$ (orice număr nenegativ este un pătrat). Ecuația și (2) dau
+\[ f(u+v)=f(x)^{2}+f(y)^{2}\overset{(2)}{=}\bigl(f(u)-a^{2}\bigr)+\bigl(f(v)-a^{2}\bigr)=f(u)+f(v)-2a^{2} . \]
+Punând $g(u)=f(u)-2a^{2}$ pentru $u\ge0$, obținem \emph{ecuația lui Cauchy}:
+\[ g(u+v)=g(u)+g(v)\qquad\text{pentru orice }u,v\ge0 . \tag{3} \]
+
+\emph{Lemă (Cauchy, cu continuitate).} Dacă $g:[0,\infty)\to\mathbb{R}$ este continuă și verifică (3), atunci $g(u)=cu$, unde $c=g(1)$.
+
+\emph{Demonstrație.} Din (3), prin inducție, $g(nu)=n\,g(u)$ pentru orice $n\in\mathbb{N}$ și $u\ge0$; în particular $g(u)=n\,g\!\left(\frac un\right)$, deci $g\!\left(\frac un\right)=\frac1n g(u)$. Combinând, $g(qu)=q\,g(u)$ pentru orice rațional $q\ge0$; cu $u=1$: $g(q)=c\,q$ pentru orice $q\in\mathbb{Q}_{\ge0}$. Fiindcă $\mathbb{Q}$ este densă în $\mathbb{R}$ (Teorema 2.2), orice $u\ge0$ este limita unui șir de raționale nenegative $q_n$, iar continuitatea lui $g$ dă $g(u)=\lim g(q_n)=\lim c\,q_n=cu$. $\square$
+
+Prin lemă, $f(u)=cu+2a^{2}$ pentru $u\ge0$. (Coerent cu (1): în $u=0$ obținem $f(0)=2a^{2}=a$.)
+
+\emph{Pasul 4: determinarea constantelor.} Impunem (2) pentru $x\ge0$, folosind $a=2a^{2}$ (deci $a^{2}=\frac a2$):
+\[ \underbrace{c\,x^{2}+a}_{f(x^{2})}=\underbrace{(cx+a)^{2}+a^{2}}_{f(x)^{2}+a^{2}}=c^{2}x^{2}+2ac\,x+a^{2}+a^{2}=c^{2}x^{2}+2ac\,x+a . \]
+Identificând coeficienții polinoamelor (egalitate valabilă pentru o infinitate de $x$):
+\[ c=c^{2}\qquad\text{și}\qquad 2ac=0 . \tag{4} \]
+
+$\bullet$ \emph{Cazul $a=\frac12$.} Din (4), $2ac=c=0$, deci $f(u)=\frac12$ pentru $u\ge0$.
+
+$\bullet$ \emph{Cazul $a=0$.} Din (4), $c\in\{0,1\}$, deci $f(u)=0$ sau $f(u)=u$, pentru $u\ge0$.
+
+\emph{Pasul 5: valorile pe $(-\infty,0)$.} Aici ecuația „vede'' $f$ doar prin $f(x)^{2}$, prin (2): pentru $x<0$,
+\[ f(x)^{2}=f\bigl(x^{2}\bigr)-a^{2} . \]
+
+$\bullet$ $a=\frac12$, $c=0$: $f(x)^{2}=\frac12-\frac14=\frac14$, deci $f(x)=\pm\frac12$ pe $(-\infty,0)$. Funcția $2f$ este continuă pe intervalul $(-\infty,0)$ și ia doar valorile $\pm1$; prin proprietatea valorilor intermediare (Teorema 2.53) ea este constantă acolo. Continuitatea în $0$, unde $f(0)=\frac12$, elimină varianta $-\frac12$. Deci $f\equiv\frac12$.
+
+$\bullet$ $a=0$, $c=0$: $f(x)^{2}=f(x^{2})=0$, deci $f(x)=0$: $f\equiv0$.
+
+$\bullet$ $a=0$, $c=1$: $f(x)^{2}=x^{2}$, deci $f(x)\in\{x,\,-x\}$ pentru $x<0$. Funcția $x\mapsto\frac{f(x)}{|x|}$ este continuă pe $(-\infty,0)$ și ia doar valorile $\pm1$, deci (din nou prin 2.53) este constantă. Avem așadar două posibilități, ambele continue și în $0$:
+\[ \begin{gathered} f(x)=x\ \text{pe }(-\infty,0)\ \Longrightarrow\ f(x)=x\ \text{pe }\mathbb{R};\\ f(x)=-x\ \text{pe }(-\infty,0)\ \Longrightarrow\ f(x)=|x| . \end{gathered} \]
+
+
+\emph{Verificare.} Toate patru satisfac ecuația: pentru $f\equiv0$, $0=0+0$; pentru $f\equiv\frac12$, $\frac12=\frac14+\frac14$; pentru $f(x)=x$ și $f(x)=|x|$, ambii membri valorează $x^{2}+y^{2}$.\\[2pt]
+\emph{Observație 1 (de ce apare $|x|$).} Ecuația nu „simte'' semnul lui $f$ pe semiaxa negativă: acolo $f$ intervine exclusiv prin $f(x)^{2}$. De aceea, alături de identitate, apare și modulul --- iar acesta este singurul loc din problemă unde soluțiile se ramifică. Continuitatea intervine exact de două ori: o dată pentru a rezolva ecuația lui Cauchy pe $[0,\infty)$, a doua oară pentru a împiedica semnul să oscileze pe $(-\infty,0)$.
+
+\emph{Observație 2 (fără continuitate).} Ipoteza nu poate fi eliminată. Chiar păstrând $f(x)=x$ pe $[0,\infty)$, orice funcție de forma
+\[ f(x)=\varepsilon(x)\,|x|\quad (x<0),\qquad \varepsilon:(-\infty,0)\to\{-1,+1\}\ \text{arbitrară}, \]
+verifică ecuația --- deci există o infinitate (nenumărabilă) de soluții discontinue. La aceasta se adaugă, pe $[0,\infty)$, soluțiile patologice ale ecuației lui Cauchy.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.3}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție cu proprietatea lui Darboux (imaginea oricărui interval este un interval) și fie $n\ge1$ un întreg pentru care
+\[ f^{[n]}=\mathrm{id},\qquad\text{unde}\quad f^{[n]}=\underbrace{f\circ f\circ\cdots\circ f}_{n\ \text{factori}} . \]
+\begin{parti}
+  \item Arătați că, dacă $n$ este impar, atunci $f=\mathrm{id}$.
+  \item Arătați că, dacă $n$ este par și $f\neq\mathrm{id}$, atunci $f\circ f=\mathrm{id}$ și $f$ are exact un punct fix.
+\end{parti}
+\sol \emph{Pasul 1: $f$ este injectivă.} Ipoteza nu o cere, dar o produce. Într-adevăr, dacă $f(a)=f(b)$, aplicând de $n-1$ ori funcția $f$ obținem
+\[ a=f^{[n]}(a)=f^{[n-1]}\bigl(f(a)\bigr)=f^{[n-1]}\bigl(f(b)\bigr)=f^{[n]}(b)=b . \]
+(Pentru $n=1$ afirmația este banală: $f=\mathrm{id}$.) În particular, $f$ este chiar \emph{bijectivă}, inversa ei fiind $f^{[n-1]}$.
+
+\emph{Pasul 2: $f$ este strict monotonă și continuă.} O funcție injectivă cu proprietatea lui Darboux, definită pe un interval, este strict monotonă (Teorema 2.58).
+
+Mai mult, $f$ este continuă. Presupunem $f$ crescătoare (cazul descrescător e simetric) și fie $a\in\mathbb{R}$. Fiind monotonă, $f$ are limite laterale în $a$ (Teorema 2.50), iar singurul tip de discontinuitate posibil pentru o funcție monotonă este saltul (clasificarea din 2.49):
+\[ \begin{gathered} f(a-0)\ \le\ f(a)\ \le\ f(a+0),\\ \text{cu }f(a-0)<f(a+0)\ \text{în caz de discontinuitate}. \end{gathered} \]
+Alegem $v$ strict între $f(a-0)$ și $f(a+0)$, cu $v\neq f(a)$. Prin monotonie, $f$ \emph{nu} ia valoarea $v$ pe nicio vecinătate $(a-\delta,a+\delta)$, deși ia acolo valori și sub, și peste $v$: imaginea unui interval nu ar fi interval --- contradicție cu Darboux. Deci $f$ este continuă. (Monotonia și continuitatea stabilite aici sunt puncte ale rezultatului-sinteză 2.55.)
+
+\emph{Pasul 3: dacă $f$ este crescătoare, atunci $f=\mathrm{id}$.} Fie $x\in\mathbb{R}$. Dacă $f(x)>x$, aplicând succesiv funcția strict crescătoare $f$ obținem
+\[ x<f(x)<f^{[2]}(x)<\cdots<f^{[n]}(x)=x , \]
+absurd. Analog, $f(x)<x$ este imposibil. Deci $f(x)=x$ pentru orice $x$.
+
+\emph{Pasul 4: sensul monotoniei este dictat de paritatea lui $n$.} Compunerea a două funcții strict descrescătoare este strict crescătoare; prin inducție, dacă $f$ este strict descrescătoare, atunci $f^{[n]}$ este strict crescătoare pentru $n$ par și strict \emph{descrescătoare} pentru $n$ impar.
+
+(a) Fie $n$ impar. Dacă $f$ ar fi strict descrescătoare, atunci $f^{[n]}$ ar fi strict descrescătoare (Pasul 4) --- imposibil, căci $f^{[n]}=\mathrm{id}$ este strict crescătoare. Deci $f$ este strict crescătoare și, prin Pasul 3, $f=\mathrm{id}$.
+
+(b) Fie $n$ par și $f\neq\mathrm{id}$. Prin Pasul 3, $f$ \emph{nu} poate fi crescătoare, deci este strict descrescătoare.
+
+\emph{$f$ este involuție.} Funcția $g=f\circ f$ este injectivă, are proprietatea lui Darboux (fiind continuă, prin Pasul 2) și este strict \emph{crescătoare}. Cum $n$ este par, $n=2m$, iar
+\[ g^{[m]}=f^{[2m]}=f^{[n]}=\mathrm{id} . \]
+Aplicăm Pasul 3 funcției $g$: rezultă $g=\mathrm{id}$, adică $f\circ f=\mathrm{id}$.
+
+\emph{Punctul fix este unic.} Funcția $h(x)=f(x)-x$ este continuă și strict descrescătoare (diferență dintre o funcție strict descrescătoare și una strict crescătoare). Pentru $x\le0$ avem $f(x)\ge f(0)$, deci
+\[ h(x)\ \ge\ f(0)-x\ \xrightarrow[x\to-\infty]{}\ +\infty ; \]
+pentru $x\ge0$ avem $f(x)\le f(0)$, deci $h(x)\le f(0)-x\to-\infty$. Prin proprietatea valorilor intermediare (Teorema 2.53), $h$ se anulează într-un punct $c$, adică $f(c)=c$; stricta descreștere a lui $h$ arată că acest punct este unic.\\[2pt]
+\emph{Observație 1 (un mini-Sharkovskii).} Din demonstrație se citește un fapt mai general: o funcție injectivă cu proprietatea lui Darboux nu poate avea \emph{niciun} punct periodic de perioadă $\ge3$ --- perioadele posibile sunt doar $1$ și $2$, iar perioada $2$ cere $f$ descrescătoare. Contrastul cu funcțiile continue \emph{oarecare} este spectaculos: teorema lui Sharkovskii afirmă că o funcție continuă $\mathbb{R}\to\mathbb{R}$ având un punct periodic de perioadă $3$ are puncte periodice de \emph{orice} perioadă. Injectivitatea este, așadar, exact bariera care interzice haosul.
+
+\emph{Observație 2 (nu orice descrescătoare este involuție).} Ipoteza $f^{[n]}=\mathrm{id}$ este cea care forțează involutivitatea: funcția strict descrescătoare $f(x)=-x^{3}$ are $f(f(x))=x^{9}\neq x$. Structura tuturor soluțiilor de la (b): se alege $c\in\mathbb{R}$ și o bijecție continuă strict descrescătoare $\varphi:[c,\infty)\to(-\infty,c]$, apoi se pune $f=\varphi$ pe $[c,\infty)$ și $f=\varphi^{-1}$ pe $(-\infty,c]$. Graficul unei involuții este exact o curbă simetrică față de prima bisectoare.
+
+\emph{Observație 3 (Darboux este esențial).} Fără ea, chiar și unicitatea punctului fix de la (b) cade --- împreună cu \emph{existența} lui: funcția
+\[ f(x)=x+1\ \ \text{dacă }\lfloor x\rfloor\text{ este par},\qquad f(x)=x-1\ \ \text{dacă }\lfloor x\rfloor\text{ este impar} \]
+verifică $f\circ f=\mathrm{id}$ (deci și $f^{[n]}=\mathrm{id}$ pentru orice $n$ par) (schimbă între ele benzile $[2k,2k+1)$ și $[2k+1,2k+2)$), dar nu are \emph{niciun} punct fix. Ea nu este, desigur, monotonă.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.4}{}
+Pentru un șir real $(a_n)$ notăm cu $\mathcal{L}(a_n)$ mulțimea punctelor sale limită, iar cu $\{t\}$ partea fracționară a lui $t$. Vom privi părțile fracționare ca puncte pe cercul de circumferință $1$, iar prin \emph{arc de lungime $\ell$} înțelegem imaginea pe cerc a unui interval $[u,u+\ell)$.
+\begin{parti}
+  \item Fie $(t_n)$ un șir real cu $t_n\to+\infty$ și $t_{n+1}-t_n\to0$. Arătați că
+  \[ \mathcal{L}\bigl(\{t_n\}\bigr)=[0,1] . \]
+  \item Arătați că
+  \[ \mathcal{L}\bigl(\sin\sqrt n\,\bigr)=\mathcal{L}\bigl(\sin(\ln n)\bigr)=[-1,1] . \]
+  \item Fie $(t_n)$ un șir real cu $t_n\to+\infty$, pentru care pașii $t_{n+1}-t_n$ \emph{nu} tind neapărat la $0$, ci doar
+  \[ \delta:=\limsup_{n\to\infty}\ \bigl|t_{n+1}-t_n\bigr|\ <\ \infty . \]
+  Arătați că orice arc de lungime $>\delta$ conține cel puțin un punct al mulțimii $\mathcal{L}\bigl(\{t_n\}\bigr)$.
+  \item Arătați că marginea de la (c) este optimă, determinând $\delta$ și $\mathcal{L}\bigl(\{t_n\}\bigr)$ pentru șirul
+  \[ t_n=\tfrac12\sqrt{n^{2}+n}\ . \]
+\end{parti}
+\sol (a) Evident $\mathcal{L}(\{t_n\})\subseteq[0,1]$. Fie $c\in[0,1)$ și $\varepsilon\in(0,1-c)$. Alegem $N$ cu $|t_{n+1}-t_n|<\varepsilon$ pentru orice $n\ge N$.
+
+\emph{Ideea: cu pași mici nu poți sări peste o țintă de lungime $\varepsilon$.} Fie $k$ un întreg arbitrar cu $k+c>t_{N}$. Cum $t_n\to+\infty$, mulțimea $\{n>N:\ t_n\ge k+c\}$ este nevidă; fie $n_k$ cel mai mic element al ei. Prin minimalitate, $t_{n_k-1}<k+c\le t_{n_k}$, deci
+\[ 0\ \le\ t_{n_k}-(k+c)\ \le\ t_{n_k}-t_{n_k-1}\ <\ \varepsilon . \]
+Așadar $t_{n_k}\in[\,k+c,\ k+c+\varepsilon\,)$ și, cum $\varepsilon<1-c$, partea fracționară este
+\[ \{t_{n_k}\}=t_{n_k}-k\ \in\ [\,c,\ c+\varepsilon\,) . \]
+Întregul $k$ poate fi luat oricât de mare, iar $t_n\to\infty$, deci indicii $n_k$ obținuți sunt nemărginiți: există o \emph{infinitate} de indici $n$ cu $|\{t_n\}-c|<\varepsilon$. Cum $\varepsilon$ este arbitrar, $c\in\mathcal{L}(\{t_n\})$.
+
+În fine, și $1$ este punct limită: aplicând cele de mai sus lui $c=1-\frac\varepsilon2$ obținem o infinitate de termeni în $(1-\varepsilon,1)$. Prin urmare $\mathcal{L}(\{t_n\})=[0,1]$.
+
+(b) Observăm că $\sin(2\pi t)$ depinde numai de $\{t\}$: $\sin(2\pi t)=\sin\bigl(2\pi\{t\}\bigr)$. Luăm
+\[ t_n=\frac{\sqrt n}{2\pi}\qquad\text{respectiv}\qquad t_n=\frac{\ln n}{2\pi} . \]
+Ambele tind la $+\infty$, cu pași care tind la $0$:
+\[ \begin{gathered} \frac{\sqrt{n+1}-\sqrt n}{2\pi}=\frac{1}{2\pi\bigl(\sqrt{n+1}+\sqrt n\bigr)}\to0,\\ \frac{\ln(n+1)-\ln n}{2\pi}=\frac{1}{2\pi}\ln\!\left(1+\frac1n\right)\to0 . \end{gathered} \]
+Prin (a), $\mathcal{L}(\{t_n\})=[0,1]$ în ambele cazuri.
+
+Fie acum $s\in[0,1]$ și un subșir cu $\{t_{n_j}\}\to s$. Prin continuitatea sinusului,
+\[ \sin(2\pi t_{n_j})=\sin\bigl(2\pi\{t_{n_j}\}\bigr)\ \longrightarrow\ \sin(2\pi s) ; \]
+reciproc, orice punct limită al șirului $\bigl(\sin(2\pi t_n)\bigr)$ se obține astfel, deoarece $\bigl(\{t_n\}\bigr)$ este mărginit și orice subșir al său are, prin Bolzano--Weierstrass (Teorema 2.13), un subșir convergent. Prin urmare
+\[ \mathcal{L}\bigl(\sin(2\pi t_n)\bigr)=\bigl\{\sin(2\pi s):\ s\in[0,1]\bigr\}=[-1,1] . \]
+Cum $\sin(2\pi t_n)$ este exact $\sin\sqrt n$, respectiv $\sin(\ln n)$, ambele șiruri au mulțimea punctelor limită $[-1,1]$.
+
+(c) Fie $I$ un arc de lungime $\ell>\delta$; scriem $I=[u,u+\ell)$ (mod $1$). Alegem $\varepsilon$ cu $\delta<\varepsilon<\ell$. Prin definiția limitei superioare (caracterizarea cu $\varepsilon$, Propoziția 2.17), există $N$ astfel încât
+\[ \bigl|t_{n+1}-t_n\bigr|<\varepsilon\qquad\text{pentru orice }n\ge N . \]
+Reluăm exact construcția de la (a), cu $c=u$: pentru orice întreg $k$ suficient de mare există $n_k>N$, minimal cu $t_{n_k}\ge k+u$, iar
+\[ 0\le t_{n_k}-(k+u)\le t_{n_k}-t_{n_k-1}<\varepsilon<\ell . \]
+Deci $\{t_{n_k}\}$ se află în arcul \emph{închis} $[u,u+\varepsilon]$, și aceasta pentru o infinitate de indici. Prin Bolzano--Weierstrass (Teorema 2.13), un subșir al lor converge, iar limita aparține arcului închis $[u,u+\varepsilon]$, inclus în $[u,u+\ell)=I$ deoarece $\varepsilon<\ell$. Așadar $I$ conține un punct al lui $\mathcal{L}(\{t_n\})$.
+
+\emph{(Observăm că (a) este cazul $\delta=0$: atunci orice arc, oricât de scurt, conține un punct limită, deci $\mathcal{L}$ este densă în cerc; fiind totodată \emph{închisă} --- mulțimea punctelor limită ale unui șir mărginit este închisă, cu $\min\mathcal{L}=\liminf$ și $\max\mathcal{L}=\limsup$, prin Propoziția 2.19 ---, ea umple tot cercul.)}
+
+(d) Fie $t_n=\frac12\sqrt{n^{2}+n}$.
+
+\emph{Calculul lui $\delta$.} Prin amplificare cu conjugatul,
+\[ \begin{aligned} t_{n+1}-t_n&=\frac{(n+1)^{2}+(n+1)-\bigl(n^{2}+n\bigr)}{2\Bigl(\sqrt{(n+1)^{2}+(n+1)}+\sqrt{n^{2}+n}\Bigr)}\\ &=\frac{2n+2}{2\Bigl(\sqrt{n^{2}+3n+2}+\sqrt{n^{2}+n}\Bigr)}\ \longrightarrow\ \frac{2n}{2\cdot2n}=\frac12 , \end{aligned} \]
+deci $\delta=\dfrac12$.
+
+\emph{Calculul lui $\mathcal{L}$.} Folosim încadrarea (verificabilă prin ridicare la pătrat)
+\[ n+\frac12-\frac{1}{8n}\ <\ \sqrt{n^{2}+n}\ <\ n+\frac12 : \]
+marginea din dreapta rezultă din $\bigl(n+\frac12\bigr)^{2}=n^{2}+n+\frac14>n^{2}+n$; cea din stânga, din
+$\bigl(n+\frac12-\frac1{8n}\bigr)^{2}=n^{2}+n+\frac{1}{64n^{2}}-\frac{1}{8n}<n^{2}+n$.
+Așadar $\sqrt{n^{2}+n}=n+\frac12-\eta_n$ cu $0<\eta_n<\frac1{8n}\to0$, deci
+\[ t_n=\frac n2+\frac14-\frac{\eta_n}{2} . \]
+$\bullet$ Pentru $n=2m$ par: $t_n=m+\frac14-\frac{\eta_n}{2}$, deci $\{t_n\}=\frac14-\frac{\eta_n}{2}\to\frac14$.
+
+$\bullet$ Pentru $n=2m+1$ impar: $t_n=m+\frac34-\frac{\eta_n}{2}$, deci $\{t_n\}=\frac34-\frac{\eta_n}{2}\to\frac34$.
+
+Prin urmare
+\[ \mathcal{L}\bigl(\{t_n\}\bigr)=\left\{\frac14,\ \frac34\right\} . \]
+\emph{Optimalitatea.} Cele două puncte împart cercul în două arce \emph{deschise}, $\left(\frac14,\frac34\right)$ și $\left(\frac34,\frac54\right)$, fiecare de lungime $\frac12=\delta$ și fiecare lipsit de puncte limită. Prin urmare, pentru orice $\ell<\delta=\frac12$, arcul $[u,u+\ell)$ cu $u=\frac14+\eta$, $\eta=\frac{1}{2}\bigl(\frac12-\ell\bigr)>0$, este inclus în $\left(\frac14,\frac34\right)$ (căci $u+\ell=\frac34-\eta$) și nu conține niciun punct limită. Așadar pragul $\delta$ de la (c) nu poate fi coborât: arcele de lungime $>\delta$ conțin obligatoriu un punct limită, dar pentru orice $\ell<\delta$ există arce de lungime $\ell$ fără niciun punct limită. (Pentru arcele semideschise $[u,u+\delta)$, de lungime exact $\delta$, concluzia rămâne adevărată în acest exemplu: un asemenea arc conține exact unul dintre punctele $\frac14$, $\frac34$, aflate la distanța $\frac12$ unul de altul; doar arcele \emph{deschise} de lungime $\delta$ pot fi evitate.)\\[2pt]
+\emph{Observație 1 (ce spune (c), de fapt).} Cu cât pașii sunt mai mari, cu atât șirul poate „ocoli'' porțiuni mai mari ale cercului --- dar nu mai mari decât pasul însuși. Punctul (a) este cazul-limită $\delta=0$: acolo nu se poate ocoli nimic, iar orbita mătură tot cercul. Trecerea de la (a) la (c) înlocuiește o alternativă brutală („totul sau nimic'') cu o măsură cantitativă a rigidității.
+
+\emph{Observație 2 (consecința trigonometrică).} Cum $\sin\bigl(\pi\sqrt{n^{2}+n}\bigr)=\sin(2\pi t_n)$ pentru șirul de la (d), rezultă
+\[ \mathcal{L}\Bigl(\sin\bigl(\pi\sqrt{n^{2}+n}\bigr)\Bigr)=\left\{\sin\frac\pi2,\ \sin\frac{3\pi}{2}\right\}=\{-1,\ 1\} . \]
+Contrastul cu (b) este brutal: $\sin\sqrt n$ mătură tot intervalul $[-1,1]$, pe când $\sin\bigl(\pi\sqrt{n^{2}+n}\bigr)$ --- un șir care \emph{arată} la fel de „aleator'' --- are doar două puncte limită. Numeric, printre primii $2\cdot10^{6}$ termeni ai celui de-al doilea, \emph{niciunul} nu cade în $(-0{,}9;\ 0{,}9)$. Diferența stă exclusiv în mărimea pașilor.
+
+\emph{Observație 3 (rigiditate).} „Pași mici + drum nemărginit'' este o condiție de rigiditate: orbita nu poate avea comportări izolate. Șiruri precum cel de la (d) scapă tocmai fiindcă fac salturi mari --- de lungime aproape exact $\frac12$ de cerc.
+
+\emph{Observație 4 (varianta pe dreaptă).} Aceeași idee („nu poți sări peste'') funcționează și fără cerc: dacă $(x_n)$ este \emph{mărginit} și $x_{n+1}-x_n\to0$, atunci mulțimea punctelor sale limită este exact intervalul $\bigl[\liminf x_n,\ \limsup x_n\bigr]$. Un asemenea șir are, prin urmare, ori \emph{un singur} punct limită --- și atunci converge, prin criteriul punctului limită unic (Teorema 2.21) ---, ori o infinitate; niciodată exact $2$ sau $3$. Se observă și că pașii mici nu schimbă marginile: din $x_{n+1}=x_n+d_n$ cu $d_n\to0$ și din Corolarul 2.23 (când unul dintre șiruri converge, $\liminf$ devine aditiv) rezultă $\liminf x_{n+1}=\liminf x_n$. Inegalitatea generală $\liminf a_n+\liminf b_n\le\liminf(a_n+b_n)$ (Propoziția 2.22) este strictă doar când \emph{ambele} șiruri oscilează --- ceea ce aici nu se întâmplă.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.5}{}
+Fie $k\in\mathbb{R}$ fixat. Determinați toate funcțiile continue $f:(0,\infty)\to(0,\infty)$ cu proprietatea
+\[ f\bigl(x\,f(y)\bigr)=y^{\,k}\,f(x)\qquad\text{pentru orice }x,y>0 . \]
+(Discutați după valorile lui $k$.)
+\sol Răspuns:
+\[ \begin{aligned} k<0&:\ \text{nicio soluție};\\ k=0&:\ \text{exact funcțiile constante};\\ k>0&:\ \text{exact}\ \ f(x)=x^{\sqrt k}\ \ \text{și}\ \ f(x)=x^{-\sqrt k} . \end{aligned} \]
+
+\emph{Cazul $k=0$.} Ecuația devine $f\bigl(x\,f(y)\bigr)=f(x)$ pentru orice $x,y>0$. Notăm cu $S=f\bigl((0,\infty)\bigr)$ imaginea lui $f$; ea este un \emph{interval} (imaginea unui interval printr-o funcție continuă, Teorema 2.53). Relația spune că fiecare $s\in S$ este \emph{perioadă multiplicativă}:
+\[ f(x\,s)=f(x)\qquad\text{pentru orice }x>0 . \]
+Mulțimea $P$ a perioadelor multiplicative este stabilă la produs și la cât (dacă $f(xs)=f(x)$ și $f(xt)=f(x)$ pentru orice $x$, atunci și $f(xst)=f(x)$, iar înlocuind $x\to x/t$ se obține $f(x\,s/t)=f(x)$).
+
+Presupunem $f$ neconstantă. Atunci $S$ este un interval \emph{nedegenerat}, deci conține două elemente $\alpha<\beta$; prin stabilitatea la cât, $P$ conține toate rapoartele elementelor lui $S$, în particular numere $\neq1$ oricât de apropiate de $1$ (raporturi $s/t$ cu $s,t\in[\alpha,\beta]$ apropiate). Fie deci $u\in P$, $u\neq1$, cu $|\ln u|<\eta$. Cum $P$ conține toate puterile $u^{m}$ ($m\in\mathbb{Z}$), logaritmii perioadelor conțin întreaga rețea $\{m\ln u\}$, ai cărei pași au lungimea $|\ln u|<\eta$: perioadele sunt deci \emph{dense} în $(0,\infty)$. Prin continuitate, $f(x\,t)=f(x)$ pentru \emph{orice} $t>0$ (trecând la limită după perioade $t_{j}\to t$), deci $f(t)=f(1\cdot t)=f(1)$: $f$ este constantă --- contradicție.
+
+Așadar $f$ este constantă; reciproc, orice constantă $c>0$ verifică ecuația ($f(xf(y))=c=y^{0}f(x)$).
+
+\emph{Cazul $k\neq0$: ecuația ascunsă este cea multiplicativă.}
+
+\emph{Pasul 1: $f$ este injectivă.} Punând $x=1$ și notând $c=f(1)>0$:
+\[ f\bigl(f(y)\bigr)=c\,y^{\,k}\qquad\text{pentru orice }y>0 . \tag{1} \]
+Dacă $f(y_{1})=f(y_{2})$, aplicând $f$ obținem $y_{1}^{\,k}=y_{2}^{\,k}$, deci $y_{1}=y_{2}$ (funcția $t\mapsto t^{k}$ este injectivă pe $(0,\infty)$ pentru $k\neq0$).
+
+\emph{Pasul 2: $c=1$.} Punând $y=1$ în ecuația din enunț: $f(x\,c)=f(x)$ pentru orice $x$; prin injectivitate, $x\,c=x$, deci $c=1$. Relația (1) devine
+\[ f\bigl(f(y)\bigr)=y^{\,k} . \tag{2} \]
+
+\emph{Pasul 3: multiplicativitatea.} În ecuația din enunț înlocuim $y$ cu $f(y)$ și folosim (2):
+\[ f\Bigl(x\,f\bigl(f(y)\bigr)\Bigr)=f(y)^{\,k}\,f(x) \Longrightarrow f\bigl(x\,y^{\,k}\bigr)=f(y)^{\,k}\,f(x) . \tag{3} \]
+Punând $x=1$ în (3): $f\bigl(y^{\,k}\bigr)=f(y)^{\,k}$. Înlocuind înapoi în (3):
+\[ f\bigl(x\,y^{\,k}\bigr)=f\bigl(y^{\,k}\bigr)\,f(x) . \]
+Cum $k\neq0$, aplicația $y\mapsto y^{\,k}$ este \emph{surjectivă} pe $(0,\infty)$: notând $z=y^{\,k}$, obținem
+\[ f(x\,z)=f(x)\,f(z)\qquad\text{pentru orice }x,z>0 . \]
+
+\emph{Pasul 4: teorema de clasificare.} $f$ este continuă pe $(0,\infty)$, cu valori strict pozitive --- în particular neidentic nulă --- și multiplicativă. Prin Teorema 2.56 (ecuația multiplicativă), există $a\in\mathbb{R}$ cu
+\[ f(x)=x^{\,a}\qquad\text{pentru orice }x>0 . \]
+
+\emph{Pasul 5: selecția exponentului.} Din (2), $f(f(x))=x^{\,a^{2}}=x^{\,k}$ pentru orice $x>0$; luând logaritmul, $(a^{2}-k)\ln x=0$ pentru orice $x$, deci
+\[ a^{2}=k . \]
+$\bullet$ Dacă $k<0$: ecuația $a^{2}=k$ nu are soluții reale --- \emph{nu există} nicio funcție cu proprietatea din enunț.
+
+$\bullet$ Dacă $k>0$: $a=\pm\sqrt k$, deci $f(x)=x^{\sqrt k}$ sau $f(x)=x^{-\sqrt k}$.
+
+\emph{Verificare} (pentru $a^{2}=k$): $f\bigl(x\,f(y)\bigr)=\bigl(x\,y^{\,a}\bigr)^{a}=x^{\,a}y^{\,a^{2}}=y^{\,k}f(x)$. \checkmark\\[2pt]
+\emph{Observație 1 (unde stă dificultatea).} Ecuația nu \emph{arată} multiplicativă. Ea devine astfel abia după ce o singură substituție ($x=1$) dă injectivitatea, o a doua ($y=1$) normalizează $f(1)=1$, iar o a treia ($y\to f(y)$) descoperă că $f$ transportă produsul. Abia atunci Teorema 2.56 poate fi invocată --- iar ea face restul instantaneu. Aceasta este arhitectura tipică a ecuațiilor funcționale „mascate'': substituții până la o ecuație \emph{recunoscută}, apoi teorema de clasificare.
+
+\emph{Observație 2 (cazul $k=1$).} Se regăsește versiunea clasică: $f(x)=x$ și $f(x)=\frac1x$ --- singurele automorfisme continue involutive ale grupului multiplicativ $\bigl((0,\infty),\cdot\bigr)$.
+
+\emph{Observație 3 (asimetria semnului).} Faptul că pentru $k<0$ \emph{nu există} soluții are o explicație structurală: din (2), $f\circ f$ este funcția $x\mapsto x^{k}$, care pentru $k<0$ este strict \emph{descrescătoare}. Dar $f$, fiind continuă și injectivă, este strict monotonă (Teorema 2.58), iar compunerea unei funcții monotone cu ea însăși este \emph{întotdeauna} crescătoare --- indiferent de sens. Contradicția este imediată, fără a mai trece prin ecuația multiplicativă.
+
+\emph{Observație 4 (rolul continuității).} A fost folosită de două ori: în cazul $k=0$ (imaginea este interval, plus trecerea la limită pe perioade) și în Pasul 4. Fără ea, pașii 1--3 arată doar că soluțiile sunt \emph{morfismele multiplicative} $f$ cu $f\circ f=(\,\cdot\,)^{k}$; substituind $x=e^{t}$, acestea corespund funcțiilor aditive $h:\mathbb{R}\to\mathbb{R}$ cu $h\circ h=k\,\mathrm{id}$, care --- privind $\mathbb{R}$ ca spațiu vectorial peste $\mathbb{Q}$ --- sunt nenumărat de multe și patologice.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.6}{}
+\begin{parti}
+\item Există funcții $f:\mathbb{R}\to\mathbb{R}$ continue \emph{numai} în punctele iraționale?
+\item Există funcții continue derivabile \emph{numai} în punctele iraționale?
+\end{parti}
+\sol \textbf{(a) DA: funcția lui Thomae.} Definim $t(x)=\frac1q$ dacă $x=\frac pq$ cu $p\in\mathbb{Z}$, $q\in\mathbb{N}^*$, $\gcd(p,q)=1$, și $t(x)=0$ dacă $x\notin\mathbb{Q}$.
+
+\emph{Discontinuitatea în raționale.} Dacă $r=\frac pq$, atunci $t(r)=\frac1q>0$, dar în orice vecinătate a lui $r$ există iraționali, unde $t=0$; un șir de iraționali $x_n\to r$ dă $t(x_n)=0\not\to t(r)$.
+
+\emph{Continuitatea în iraționale.} Fie $\alpha\notin\mathbb{Q}$ și $\varepsilon>0$; alegem $Q\in\mathbb{N}^*$ cu $\frac1Q<\varepsilon$. În intervalul $(\alpha-1,\alpha+1)$ există doar un număr finit de raționale cu numitorul $q\le Q$ (pentru fiecare $q$, cel mult $2q+1$ numărători $p$). Niciunul nu este egal cu $\alpha$, deci există $\delta\in(0,1)$ astfel încât $(\alpha-\delta,\alpha+\delta)$ să nu conțină niciunul dintre ele. Pentru $|x-\alpha|<\delta$: fie $x\notin\mathbb{Q}$ și $t(x)=0$, fie $x=\frac pq$ cu $q>Q$ și $t(x)=\frac1q<\varepsilon$. Deci $|t(x)-t(\alpha)|<\varepsilon$.
+
+\textbf{(b) DA.} Fie $(q_n)_{n\ge1}$ o enumerare a raționalelor și $g_n(x)=|x-q_n|-|q_n|$. Din inegalitatea triunghiului, $|g_n(x)|\le|x|$ și $|g_n(x)-g_n(y)|\le|x-y|$. Definim
+\[
+f(x)=\sum_{n=1}^{\infty}2^{-n}g_n(x) .
+\]
+Seria converge absolut pentru orice $x$ (termenii sunt majorați de $2^{-n}|x|$), iar $|f(x)-f(y)|\le\sum_n 2^{-n}|x-y|=|x-y|$, deci $f$ este continuă.
+
+\emph{Câtul diferențial.} Fie $a\in\mathbb{R}$ și $h\neq0$. Atunci
+\[
+\frac{f(a+h)-f(a)}{h}=\sum_{n=1}^{\infty}2^{-n}D_n(h),\qquad D_n(h)=\frac{|a+h-q_n|-|a-q_n|}{h},\qquad |D_n(h)|\le1 .
+\]
+Dacă $q_n\neq a$, notăm $s_n=\operatorname{sgn}(a-q_n)\in\{-1,1\}$; pentru $|h|<|a-q_n|$ numerele $a+h-q_n$ și $a-q_n$ au același semn, deci $D_n(h)=s_n$ \emph{exact}.
+
+\emph{În iraționale, $f$ e derivabilă.} Fie $a\notin\mathbb{Q}$, deci $q_n\neq a$ pentru orice $n$, și fie $S=\sum_n 2^{-n}s_n$. Dat $\varepsilon>0$, alegem $N$ cu $\sum_{n>N}2^{-n}<\frac\varepsilon2$ și $\delta=\min_{n\le N}|a-q_n|>0$. Pentru $0<|h|<\delta$, termenii cu $n\le N$ coincid cu cei ai lui $S$, iar
+\[
+\Bigl|\frac{f(a+h)-f(a)}{h}-S\Bigr|\le\sum_{n>N}2^{-n}\bigl|D_n(h)-s_n\bigr|\le2\sum_{n>N}2^{-n}<\varepsilon .
+\]
+Deci $f'(a)=S$.
+
+\emph{În raționale, $f$ nu e derivabilă.} Fie $a=q_k$. Termenul de indice $k$ are $D_k(h)=\frac{|h|}{h}=\operatorname{sgn}h$. Pentru ceilalți termeni ($q_n\neq a$), exact argumentul de mai sus arată că $\sum_{n\neq k}2^{-n}D_n(h)\to S'=\sum_{n\neq k}2^{-n}s_n$ când $h\to0$. Așadar câtul diferențial tinde la $S'+2^{-k}$ pentru $h\to0^+$ și la $S'-2^{-k}$ pentru $h\to0^-$: derivatele laterale diferă, deci $f$ nu este derivabilă în $q_k$.
+
+\begin{obs}
+Ideea comună: o infinitate numărabilă de „defecte'' (salturi mici la (a), colțuri $2^{-n}|x-q_n|$ la (b)) se plasează în raționale, cu mărimi care descresc suficient de repede ca suma lor să nu strice nimic în celelalte puncte. Întrebările cu rolurile inversate sunt mult mai grele și depășesc nivelul cărții. \emph{Continuă numai în raționale} nu există nicio funcție: mulțimea punctelor de continuitate ale oricărei funcții este o intersecție numărabilă de mulțimi deschise, iar $\mathbb{Q}$ nu este de acest tip (teorema lui Baire). În schimb, \emph{continuă și derivabilă numai în raționale} există, dar construcția folosește teorema lui Zahorski (1946) despre mulțimile de nederivabilitate ale funcțiilor continue; o menționăm fără demonstrație.
+\end{obs}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.7}{}
+Fie $x_1 = 1$ și $x_{n+1} = x_n + \dfrac{\lfloor\sqrt{n}\rfloor}{x_n}$ pentru $n \geq 1$. Calculați $\displaystyle\lim_{n\to\infty} \dfrac{x_n}{n^{3/4}}$.
+\sol Răspuns: $\dfrac{2}{\sqrt{3}}$. Prin inducție, $x_n > 0$, deci șirul este bine definit și crescător. Ridicând recurența la pătrat,
+\[
+x_{n+1}^2 = x_n^2 + 2\lfloor\sqrt{n}\rfloor + \frac{\lfloor\sqrt{n}\rfloor^2}{x_n^2}.
+\]
+Însumând și minorând ($\lfloor\sqrt{k}\rfloor \geq \sqrt{k} - 1$, iar $\sum_{k=1}^{n-1}\sqrt{k} \geq \int_0^{n-1}\sqrt{t}\,dt = \frac{2}{3}(n-1)^{3/2}$), obținem $x_n^2 \geq c\,n^{3/2}$ pentru un anumit $c > 0$ și pentru orice $n$ suficient de mare; în particular
+\[
+\frac{\lfloor\sqrt{n}\rfloor^2}{x_n^2} \;\leq\; \frac{n}{c\,n^{3/2}} \;\longrightarrow\; 0.
+\]
+Aplicăm Cesàro--Stolz șirului $\dfrac{x_n^2}{n^{3/2}}$: prin teorema lui Lagrange aplicată funcției $t \mapsto t^{3/2}$, $(n+1)^{3/2} - n^{3/2} = \frac{3}{2}\sqrt{n} + o(\sqrt{n})$, iar $\lfloor\sqrt{n}\rfloor = \sqrt{n} + O(1)$, deci
+\[
+\frac{x_{n+1}^2 - x_n^2}{(n+1)^{3/2} - n^{3/2}} \;=\; \frac{2\lfloor\sqrt{n}\rfloor + o(\sqrt{n})}{\frac{3}{2}\sqrt{n} + o(\sqrt{n})} \;\longrightarrow\; \frac{4}{3}.
+\]
+Așadar $\dfrac{x_n^2}{n^{3/2}} \to \dfrac{4}{3}$ și, prin continuitatea radicalului, $\dfrac{x_n}{n^{3/4}} \to \dfrac{2}{\sqrt{3}}$. $\blacksquare$
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.8}{}
+\begin{parti}
+  \item Există funcții monotone $f:\mathbb{R}\to\mathbb{R}$ ale căror puncte de discontinuitate sunt exact punctele raționale?
+  \item Dar funcții monotone ale căror puncte de discontinuitate sunt exact punctele iraționale?
+\end{parti}
+\sol\noindent\textbf{(a)} \textbf{Da.} Fie $(q_n)_{n\ge1}$ o enumerare a numerelor raționale și
+\[ f(x)=\sum_{n:\ q_n<x}2^{-n} \]
+(suma acelor $2^{-n}$ pentru care $q_n<x$; seria totală $\sum 2^{-n}=1$ este convergentă, deci suma parțială pe orice submulțime de indici este bine definită). Funcția $f$ este crescătoare: când $x$ crește, mulțimea indicilor din sumă doar se mărește.
+
+\emph{Discontinuitatea în fiecare punct rațional.} Fie $q_k$ un număr rațional fixat. Pentru $x>q_k$ suma conține $2^{-k}$, iar pentru $x\le q_k$ nu, deci
+\[ f(x)-f(y)\ \ge\ 2^{-k}\qquad\text{pentru orice } y\le q_k<x : \]
+saltul lui $f$ în $q_k$ este cel puțin $2^{-k}>0$.
+
+\emph{Continuitatea în fiecare punct irațional.} Fie $\alpha\notin\mathbb{Q}$ și $\varepsilon>0$. Alegem $N$ cu $\sum_{n>N}2^{-n}<\varepsilon$. Punctele $q_1,\dots,q_N$ sunt în număr finit și diferite de $\alpha$, deci există $\delta>0$ astfel încât intervalul $(\alpha-\delta,\alpha+\delta)$ să nu conțină niciunul dintre ele. Pentru $|x-\alpha|<\delta$, sumele care definesc $f(x)$ și $f(\alpha)$ diferă doar prin indici $n>N$, deci
+\[ |f(x)-f(\alpha)|\ \le\ \sum_{n>N}2^{-n}\ <\ \varepsilon . \]
+
+\noindent\textbf{(b)} \textbf{Nu.} Punctele de discontinuitate ale unei funcții monotone formează o mulțime cel mult numărabilă (teorema din capitolul despre continuitate: în fiecare salt se alege un număr rațional, iar salturile sunt disjuncte, ceea ce dă o injecție în $\mathbb{Q}$). Mulțimea numerelor iraționale este însă nenumărabilă. Prin urmare, nicio funcție monotonă nu poate avea drept puncte de discontinuitate exact numerele iraționale.\\[2pt]
+\emph{Observație.} Asimetria este instructivă: raționalele, fiind numărabile, „încap'' în bugetul de salturi al unei funcții monotone, iar construcția de la (a) împarte explicit acest buget între ele, cu salturi $2^{-n}$; iraționalele nu încap. Fără ipoteza de monotonie, întrebarea (b) își schimbă complet natura (funcția lui Thomae, discutată în legătură cu criteriul lui Lebesgue, este discontinuă exact pe $\mathbb{Q}$; dar pentru discontinuitatea exact pe $\mathbb{R}\setminus\mathbb{Q}$ răspunsul rămâne negativ chiar și pentru funcții arbitrare, printr-un argument de categorie care depășește nivelul acestei cărți). Problema OJM.6 pune întrebările analoage, cu continuitatea și derivabilitatea în locul monotoniei și al continuității.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.9}{}
+Determinați toate funcțiile continue $f:\mathbb{R}\to\mathbb{R}$ cu proprietatea că
+\[
+f(x+1)=f(x)+1 \qquad \text{și} \qquad f\!\left((x+1)^2\right)=f(x^2)+2x+1
+\]
+pentru orice $x\in\mathbb{R}$.
+\sol Scriem $f(x)=x+g(x)$ și reformulăm condițiile:
+\begin{itemize}[nosep,leftmargin=1.5em]
+\item[(1)] $g(x+1)=g(x)$ pentru orice $x$ (din prima condiție), deci $g$ este \emph{continuă și periodică} cu perioada $1$.
+\item[(2)] $g\bigl((x+1)^2\bigr)=g(x^2)$ pentru orice $x$ (din a doua condiție, după simplificare).
+\end{itemize}
+Trebuie să arătăm că $g$ este constantă.
+
+\emph{Pasul 1 (iterarea lui (2)).} Prin inducție după $k\in\mathbb{N}$, $g\bigl((x+k)^2\bigr)=g(x^2)$ pentru orice $x\in\mathbb{R}$: pentru $k=0$ e evident, iar pasul de inducție este (2) aplicată în punctul $x+k$, adică $g\bigl((x+k+1)^2\bigr)=g\bigl((x+k)^2\bigr)=g(x^2)$. Cum $(x+k)^2=x^2+2kx+k^2$, iar $k^2$ este întreg și $g$ are perioada $1$, obținem
+\[
+g\bigl(x^2+2kx\bigr)=g(x^2)\qquad\text{pentru orice } x\in\mathbb{R},\ k\in\mathbb{N}. \tag{$*$}
+\]
+
+\emph{Pasul 2 (densitate).} Luăm $x=\sqrt2$ în ($*$): $g(2+2\sqrt2\,k)=g(2)$ pentru orice $k\in\mathbb{N}$. Numărul $2\sqrt2$ este irațional, deci, prin teorema lui Kronecker, părțile fracționare $\{2\sqrt2\,k\}$, $k\in\mathbb{N}$, formează o mulțime densă în $[0,1)$. Fie $y\in[0,1)$ și $k_j$ indici cu $\{2\sqrt2\,k_j\}\to y$. Din periodicitate, $g(2)=g(2+2\sqrt2\,k_j)=g\bigl(2+\{2\sqrt2\,k_j\}\bigr)$, iar din continuitate membrul drept tinde la $g(2+y)$. Deci $g(2+y)=g(2)$ pentru orice $y\in[0,1)$, adică $g$ este constantă pe un interval de lungime $1$; fiind periodică de perioadă $1$, $g$ este constantă pe tot $\mathbb{R}$.
+
+Prin urmare $g\equiv c$ (constantă), și
+\[
+\boxed{f(x)=x+c,\qquad c\in\mathbb{R}.}
+\]
+\emph{Verificare.} $f(x+1)=x+1+c=(x+c)+1=f(x)+1$ \checkmark; $\;f((x+1)^2)=(x+1)^2+c=x^2+2x+1+c=f(x^2)+2x+1$ \checkmark.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.10}{}
+Spunem că un număr natural \emph{începe cu $2026$} dacă primele patru cifre ale scrierii sale zecimale sunt $2,0,2,6$.
+\begin{parti}
+  \item Arătați că există un număr natural $N$ cu următoarea proprietate: \emph{oricare ar fi} $m\ge1$, printre cele $N$ puteri consecutive
+  \[ 2^{m},\ 2^{m+1},\ \dots,\ 2^{m+N-1} \]
+  cel puțin una începe cu $2026$.
+  \item Arătați că există o constantă $c>0$ astfel încât, pentru orice $x$ suficient de mare, numărul exponenților $n\le x$ pentru care $2^{n}$ începe cu $2026$ este cel puțin $c\,x$.
+\end{parti}
+\sol \emph{Traducerea condiției.} Numărul $2^{n}$ începe cu $2026$ dacă și numai dacă există $k\in\mathbb{N}$ cu
+\[ \begin{gathered} 2026\cdot10^{k}\le2^{n}<2027\cdot10^{k} \iff \log_{10}2{,}026+k\ \le\ n\alpha\ <\ \log_{10}2{,}027+k ,\\ \alpha=\log_{10}2 , \end{gathered} \]
+adică dacă și numai dacă partea fracționară a lui $n\alpha$ aparține intervalului
+\[ I=\bigl[\log_{10}2{,}026,\ \log_{10}2{,}027\bigr)\subset(0,1),\qquad L:=|I|=\log_{10}\frac{2027}{2026}>0 . \]
+
+\emph{$\alpha$ este irațional.} Dacă $\alpha=\frac pq$ cu $p,q\in\mathbb{N}^{*}$, atunci $2^{q}=10^{p}=2^{p}5^{p}$, deci $5^{p}=2^{\,q-p}$; unicitatea descompunerii în factori primi forțează $p=0$, deci $2^{q}=1$ --- absurd.
+
+(a) \emph{Pasul 1: un pas mic.} Prin teorema lui Kronecker (Teorema 2.7), mulțimea $\{m+n\alpha:\ m\in\mathbb{Z},\ n\in\mathbb{N}\}$ este densă în $\mathbb{R}$, ceea ce revine la densitatea în $[0,1)$ a mulțimii părților fracționare ale numerelor $n\alpha$. Aplicând densitatea intervalului $(0,L)$, există $q\in\mathbb{N}^{*}$ astfel încât partea fracționară a lui $q\alpha$, notată
+\[ \beta=\{q\alpha\}, \qquad\text{satisface}\qquad 0<\beta<L . \]
+Am obținut deci un „pas'' strict pozitiv, dar \emph{mai mic decât lungimea țintei}.
+
+\emph{Pasul 2: pași mici nu pot sări peste $I$.} Fie $J=\left\lceil\frac1\beta\right\rceil$ și fie $m\ge1$ arbitrar. Considerăm cei $J+1$ exponenți
+\[ m,\ m+q,\ m+2q,\ \dots,\ m+Jq . \]
+Părțile fracționare corespunzătoare avansează exact cu $\beta$ la fiecare pas, modulo $1$:
+\[ \{(m+jq)\alpha\}=\bigl\{\ \{m\alpha\}+j\beta\ \bigr\},\qquad j=0,1,\dots,J . \]
+Privim aceste puncte pe cercul $\mathbb{R}/\mathbb{Z}$, de circumferință $1$: pornind din $\{m\alpha\}$, ele parcurg cercul cu pași \emph{egali}, de mărime $\beta<L=|I|$. După $J$ pași, distanța totală parcursă este $J\beta\ge1$, deci punctele au făcut cel puțin un tur complet.
+
+Un drum care înconjoară cercul avansând de fiecare dată cu \emph{mai puțin} decât lungimea arcului $I$ nu poate „sări peste'' $I$. Într-adevăr, dacă niciunul dintre puncte nu ar cădea în $I$, atunci --- parcurgând cercul --- ar exista un pas care trece direct dintr-un punct aflat înaintea lui $I$ într-unul aflat după $I$; acel pas ar avea lungimea cel puțin $|I|=L>\beta$, contradicție.
+
+Așadar există $j\in\{0,1,\dots,J\}$ cu $\{(m+jq)\alpha\}\in I$, adică $2^{\,m+jq}$ începe cu $2026$. Cum $m\le m+jq\le m+Jq$, concluzia are loc cu
+\[ N=qJ+1=q\left\lceil\frac1\beta\right\rceil+1 , \]
+număr care \emph{nu depinde de $m$}.
+
+(b) Fie $x\ge2N$. Împărțim $\{1,2,\dots,\lfloor x\rfloor\}$ în $\left\lfloor\frac{\lfloor x\rfloor}{N}\right\rfloor$ blocuri disjuncte, fiecare format din $N$ exponenți consecutivi. Prin (a), fiecare bloc conține cel puțin un exponent bun, iar blocurile fiind disjuncte, exponenții obținuți sunt distincți. Numărul lor este deci cel puțin
+\[ \left\lfloor\frac{\lfloor x\rfloor}{N}\right\rfloor\ \ge\ \frac{x}{2N} , \]
+adică exact afirmația cerută, cu $c=\frac1{2N}$.\\[2pt]
+\emph{Observație 1 (cât de tare este concluzia).} Simpla \emph{existență} a unui $n$ cu $2^{n}$ începând cu $2026$ ar rezulta imediat din densitate. Aici am obținut mult mai mult: proprietatea este \emph{sindetică} --- golurile dintre exponenții buni sunt \emph{mărginite}. Nu se poate merge oricât de departe în șirul puterilor lui $2$ fără a întâlni una care începe cu $2026$.
+
+\emph{Observație 2 (ce garantează metoda și ce nu).} Constanta $N$ produsă de demonstrație este enormă: pentru blocul $2026$, primul $q$ potrivit este $q=2136$, cu $\beta\approx7{,}1\cdot10^{-5}$, de unde $N\approx3\cdot10^{7}$. Golul maxim \emph{real}, calculat până la $n=4\cdot10^{6}$, este însă doar $11\,165$. Metoda garantează mărginirea, nu și optimalitatea --- pentru margini fine e nevoie de aproximare diofantică (fracții continue).
+
+\emph{Observație 3 (frecvența adevărată).} Se poate arăta, printr-un rezultat mai fin decât Kronecker (echidistribuția), că proporția exponenților $n\le x$ cu $2^{n}$ începând cu $2026$ tinde la $L=\log_{10}\frac{2027}{2026}\approx2{,}14\cdot10^{-4}$; numeric, până la $x=4\cdot10^{6}$, proporția observată este $2{,}15\cdot10^{-4}$. Punctul (b) dă doar o \emph{minorare} de acest tip --- dar o obține cu mijloace complet elementare.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.11}{Clasică}
+Fie $f:\mathbb{R}\to\mathbb{R}$ convexă și mărginită superior. Arătați că $f$ este constantă.
+\sol Presupunem că $f$ nu e constantă: există $a<b$ cu $f(a)\neq f(b)$. Fie $m=\dfrac{f(b)-f(a)}{b-a}$.
+
+\emph{Cazul $m>0$.} Prin lema pantelor (Lema 2.77), pentru $x>b$, panta pe $[a,x]$ domină panta pe $[a,b]$:
+\[ \frac{f(x)-f(a)}{x-a}\ \ge\ m \Longrightarrow f(x)\ \ge\ f(a)+m\,(x-a)\ \xrightarrow[x\to\infty]{}\ \infty, \]
+contrazicând mărginirea superioară.
+
+\emph{Cazul $m<0$.} Pentru $x<a$, tot din lema pantelor (aplicată punctelor $x<a<b$), panta pe $[x,a]$ este cel mult panta pe $[a,b]$:
+\[ \frac{f(a)-f(x)}{a-x}\ \le\ m \Longrightarrow f(x)\ \ge\ f(a)-m\,(a-x)=f(a)+|m|\,(a-x)\ \xrightarrow[x\to-\infty]{}\ \infty, \]
+din nou contradicție. Deci $f$ este constantă.\\[2pt]
+\emph{Observație.} „Mărginită superior'' nu se poate înlocui cu „mărginită inferior'': $e^x$ este convexă, mărginită inferior, neconstantă. Prin simetrie, o funcție \emph{concavă} și mărginită \emph{inferior} este constantă.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.12}{}
+Fie $f:[0,1]\to\mathbb{R}$ convexă.
+\begin{parti}
+  \item Arătați că $f$ are limită la dreapta în $0$ și că
+  \[ \lim_{x\to0^{+}}f(x)\ \le\ f(0) . \]
+  \item Arătați, printr-un exemplu, că inegalitatea poate fi strictă --- deci $f$ poate fi discontinuă în $0$ --- deși pe $(0,1)$ orice funcție convexă este automat continuă.
+\end{parti}
+\sol Fixăm $y_{0}\in(0,1)$ și notăm, pentru $x\in(0,y_{0})$, panta coardei spre capătul drept fix:
+\[ s(x)=\frac{f(y_{0})-f(x)}{y_{0}-x} . \]
+
+(a) \emph{Mărginirea superioară lângă $0$.} Lema pantelor (Lema 2.77), pe tripleta $0<x<y_{0}$, dă
+\[ \frac{f(x)-f(0)}{x}\ \le\ \frac{f(y_{0})-f(0)}{y_{0}}=:M \Longrightarrow f(x)\ \le\ f(0)+Mx , \]
+deci $\limsup_{x\to0^{+}}f(x)\le f(0)$.
+
+\emph{Existența limitei.} Tot din lema pantelor, pentru $0<x_{1}<x_{2}<y_{0}$ (tripleta $x_{1}<x_{2}<y_{0}$):
+\[ s(x_{1})=\frac{f(y_{0})-f(x_{1})}{y_{0}-x_{1}}\ \le\ \frac{f(y_{0})-f(x_{2})}{y_{0}-x_{2}}=s(x_{2}) : \]
+funcția $s$ este \emph{crescătoare} pe $(0,y_{0})$. Este și minorată: pe tripleta $0<x<y_{0}$, panta totală stă sub cea dinspre dreapta,
+\[ s(x)\ \ge\ \frac{f(y_{0})-f(0)}{y_{0}}=M . \]
+O funcție monotonă și mărginită are limite laterale (Teorema 2.50), deci există $L_{0}=\lim_{x\to0^{+}}s(x)$, finită. Atunci
+\[ f(x)=f(y_{0})-(y_{0}-x)\,s(x)\ \xrightarrow[x\to0^{+}]{}\ f(y_{0})-y_{0}L_{0}=:\ell , \]
+adică limita la dreapta există; iar din pasul anterior, $\ell\le f(0)$.
+
+(b) Exemplul:
+\[ f(0)=1,\qquad f(x)=0\ \ \text{pentru }x\in(0,1] . \]
+\emph{Convexitatea}, direct pe definiție: fie $u<v$ în $[0,1]$ și $\lambda\in(0,1)$, $w=\lambda u+(1-\lambda)v$. Dacă $u>0$, toate valorile implicate sunt $0$ și inegalitatea $0\le0$ e clară. Dacă $u=0$, atunci $w>0$ (căci $\lambda<1$, $v>0$), deci
+\[ f(w)=0\ \le\ \lambda\cdot1+(1-\lambda)\cdot0=\lambda f(0)+(1-\lambda)f(v) . \]
+Aici $\lim_{x\to0^{+}}f(x)=0<1=f(0)$: salt în capăt. Pe $(0,1)$, în schimb, $f$ este continuă --- și nu întâmplător: orice funcție convexă este continuă pe \emph{interiorul} intervalului de definiție (Teorema 2.78). Fenomenul de discontinuitate al convexelor este posibil \emph{numai în capete}.\\[2pt]
+\emph{Observație.} Din (a) rezultă o „regularizare'': redefinind $f(0):=\ell$, funcția rămâne convexă și devine continuă în $0$. Capătul poate doar să \emph{sară în sus} față de limita din interior --- niciodată în jos, altfel lema pantelor s-ar încălca.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.13}{}
+Fie $n\ge2$ un număr natural fixat. Determinați toate funcțiile \emph{derivabile} $f:(0,\infty)\to(0,\infty)$ cu proprietatea
+\[ f\bigl(x^{\,n}\bigr)=f(x)^{\,n}\qquad\text{pentru orice }x>0 . \]
+\sol Răspuns: exact funcțiile putere
+\[ f(x)=x^{\,a},\qquad a\in\mathbb{R}\ \text{arbitrar} \]
+(în particular $a=0$ dă $f\equiv1$).
+
+\emph{Pasul 1: liniarizarea.} Valorile fiind strict pozitive, putem lua logaritmul. Punem
+\[ x=e^{\,t},\qquad g(t)=\ln f\bigl(e^{\,t}\bigr),\qquad t\in\mathbb{R} . \]
+Funcția $g$ este derivabilă (compunere de funcții derivabile, $f>0$), iar ecuația din enunț devine
+\[ \ln f\bigl(e^{\,nt}\bigr)=n\ln f\bigl(e^{\,t}\bigr) \Longrightarrow g(nt)=n\,g(t)\qquad\text{pentru orice }t\in\mathbb{R} . \tag{1} \]
+
+\emph{Pasul 2: normalizarea.} Punând $t=0$ în (1): $g(0)=n\,g(0)$, deci $g(0)=0$ (căci $n\ge2$). Definim
+\[ h(t)=\frac{g(t)}{t}\qquad(t\neq0) . \]
+Împărțind (1) prin $nt$ (pentru $t\neq0$):
+\[ \frac{g(nt)}{nt}=\frac{g(t)}{t} \Longrightarrow h(nt)=h(t)\qquad\text{pentru orice }t\neq0 . \tag{2} \]
+Așadar $h$ este \emph{constantă pe orbitele} $\{\,n^{k}t\ :\ k\in\mathbb{Z}\,\}$: prin inducție, $h\!\left(\dfrac{t}{n^{k}}\right)=h(t)$ pentru orice $k\in\mathbb{N}$.
+
+\emph{Pasul 3: derivabilitatea în punctul $1$ încheie totul.} Funcția $f$ este derivabilă în $x=1$, deci $g$ este derivabilă în $t=0$; cum $g(0)=0$, prin definiția derivatei
+\[ L:=g'(0)=\lim_{t\to0}\frac{g(t)-g(0)}{t-0}=\lim_{t\to0}h(t) . \]
+Fie acum $t\neq0$ \emph{fixat}. Punctele $\dfrac{t}{n^{k}}$ tind la $0$ când $k\to\infty$ (căci $n\ge2$), deci prin (2)
+\[ h(t)=h\!\left(\frac{t}{n^{k}}\right)\ \xrightarrow[k\to\infty]{}\ L . \]
+Membrul stâng nu depinde de $k$, deci $h(t)=L$. Cum $t$ a fost arbitrar,
+\[ h\equiv L \Longrightarrow g(t)=L\,t \Longrightarrow \ln f\bigl(e^{t}\bigr)=L\,t \Longrightarrow f(x)=x^{\,L} . \]
+
+\emph{Verificare.} $f\bigl(x^{n}\bigr)=\bigl(x^{n}\bigr)^{L}=x^{\,nL}=\bigl(x^{L}\bigr)^{n}=f(x)^{n}$. \checkmark\\[2pt]
+\emph{Observație 1 (unde s-a folosit derivabilitatea).} \emph{Într-un singur punct}: în $x=1$. Restul demonstrației folosește doar relația (2). Ipoteza „derivabilă pe $(0,\infty)$'' este, așadar, mult mai mult decât e nevoie: ajunge derivabilitatea în $1$.
+
+\emph{Observație 2 (fără derivabilitate, enunțul este fals).} Continuitatea singură \emph{nu} ajunge --- iar eșecul este spectaculos. Relația (2) spune că $h$ este invariantă la înmulțirea cu $n$; punând $t=e^{s}$ (pentru $t>0$) și $H(s)=h(e^{s})$, ea devine
+\[ H(s+\ln n)=H(s) : \]
+$H$ este orice funcție continuă \emph{periodică}, de perioadă $\ln n$. Alegând, de pildă, $n=2$ și $H(s)=2+\sin\!\left(\dfrac{2\pi s}{\ln 2}\right)$, obținem funcția continuă
+\[ f(x)=x^{\,H(\ln\ln x)}\quad (x>1),\qquad f(x)=1\quad(0<x\le1) , \]
+care verifică $f(x^{2})=f(x)^{2}$ pe tot $(0,\infty)$, dar \emph{nu} este de forma $x^{a}$: exponentul ei oscilează la nesfârșit între $1$ și $3$. Există deci o infinitate (nenumărabilă) de soluții continue.
+
+\emph{Observație 3 (unde se rupe exemplul).} Toate patologiile se strâng în punctul $1$: funcția de mai sus \emph{nu este derivabilă} acolo. Într-adevăr, pentru $\varepsilon\to0^{+}$,
+\[ \frac{f(1+\varepsilon)-f(1)}{\varepsilon}=\frac{(1+\varepsilon)^{H(\ln\ln(1+\varepsilon))}-1}{\varepsilon}\ \approx\ H\bigl(\ln\ln(1+\varepsilon)\bigr) , \]
+iar argumentul $\ln\ln(1+\varepsilon)\to-\infty$: funcția periodică $H$ oscilează, deci raportul nu are limită. Numeric, pentru $\varepsilon=10^{-3},\,10^{-5},\,10^{-9},\,10^{-13}$ el ia valorile $2{,}21;\ 2{,}64;\ 2{,}60;\ 1{,}08$. Un singur punct de derivabilitate este exact bariera care elimină întreaga familie patologică.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.14}{}
+Fie $a>0$ și $f:[0,a)\to\mathbb{R}$ derivabilă, cu $f(0)=1$ și $f'(x)=f(x)^2$ pentru orice $x\in[0,a)$. Arătați că $a\le1$ și că $f(x)=\dfrac1{1-x}$.
+\sol \emph{$f$ nu se anulează.} Presupunem contrariul și fie $c=\inf\{x\in[0,a):f(x)=0\}$; prin continuitate $f(c)=0$, iar $f>0$ pe $[0,c)$ (căci $f(0)=1>0$). Pe $[0,c)$, funcția $g=\dfrac1f$ este derivabilă, cu
+\[ g'=-\frac{f'}{f^2}=-1 ; \]
+atunci $(g(x)+x)'=0$ și, prin Corolarul 2.72, $g(x)+x$ este constantă:
+\[ g(x)=g(0)-x=1-x \Longrightarrow f(x)=\frac1{1-x}\quad(0\le x<c). \]
+Dar atunci: dacă $c<1$, continuitatea dă $f(c)=\lim_{x\to c^-}\frac1{1-x}=\frac1{1-c}\neq0$ --- contradicție; iar $c\ge1$ este imposibil, căci $f(x)=\frac1{1-x}\to+\infty$ pentru $x\to1^-$, pe când $f$, fiind definită și continuă în $1\le c<a$, ar trebui să aibă limită finită acolo. Deci $f$ nu se anulează, rămâne strict pozitivă, iar raționamentul de mai sus (valabil acum pe tot domeniul pe care $f>0$, adică pe tot $[0,a)\cap[0,1)$) dă $f(x)=\dfrac1{1-x}$.
+
+\emph{$a\le1$.} Dacă $a>1$, punctul $x=1$ este în domeniu; $f$ este continuă în $1$, dar $f(x)=\frac1{1-x}\to+\infty$ pentru $x\to1^-$ --- imposibil pentru o funcție cu valori reale. Deci $a\le1$ și $f(x)=\dfrac1{1-x}$ pe $[0,a)$.\\[2pt]
+\emph{Observație.} Fenomenul se numește \emph{explozie în timp finit}: creșterea pătratică din $f'=f^2$ este prea rapidă pentru o soluție globală --- spre deosebire de $f'=f$, ale cărei soluții $Ce^x$ trăiesc pe tot $\mathbb{R}$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.15}{}
+Fie $a>0$ și $x_{1}=a$, iar pentru orice $n\ge1$
+\[ x_{n+1}=\bigl(x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}\bigr)+\bigl(x_{1}+x_{2}+\cdots+x_{n}\bigr) . \]
+(Fiecare termen depinde, așadar, de \emph{toți} cei dinaintea lui.) Calculați
+\[ \sum_{k\ge2}\frac{2^{\,k}}{x_{k}+2} . \]
+\sol Răspuns: $\dfrac{4}{a^{2}+a}$.
+
+\emph{Pasul 1: recurența globală se prăbușește într-una locală.} Notăm
+\[ S_{n}=\sum_{k=1}^{n}x_{k},\qquad Q_{n}=\sum_{k=1}^{n}x_{k}^{2} , \]
+astfel încât ipoteza se scrie $x_{n+1}=Q_{n}+S_{n}$. Ideea: scriem \emph{aceeași} relație pentru indicele următor și scădem --- toate sumele lungi dispar.
+\[ x_{n+2}=Q_{n+1}+S_{n+1}=\bigl(Q_{n}+x_{n+1}^{2}\bigr)+\bigl(S_{n}+x_{n+1}\bigr)=\underbrace{\bigl(Q_{n}+S_{n}\bigr)}_{=\ x_{n+1}}+x_{n+1}^{2}+x_{n+1} . \]
+Prin urmare, pentru orice $n\ge1$,
+\[ x_{n+2}=x_{n+1}^{2}+2\,x_{n+1} , \]
+adică exact relația din enunț, valabilă pentru orice indice $\ge2$. \emph{Memoria completă a șirului s-a evaporat}: de la al doilea termen încolo, fiecare depinde doar de predecesorul său.
+
+(Atenție: relația \emph{nu} se extinde la $n=1$: acolo $x_{2}=Q_{1}+S_{1}=a^{2}+a$, pe când $x_{1}^{2}+2x_{1}=a^{2}+2a$. Primul pas este special.)
+
+\emph{Pasul 2: substituția care liniarizează.} Polinomul $P(X)=X^{2}+2X$ se completează la pătrat perfect:
+\[ x_{n+1}+1=x_{n}^{2}+2x_{n}+1=\bigl(x_{n}+1\bigr)^{2} . \]
+Notând $y_{n}=x_{n}+1$, obținem, pentru $n\ge2$,
+\[ y_{n+1}=y_{n}^{2} , \]
+adică \emph{ridicare la pătrat pură}. Prin inducție,
+\[ y_{n}=y_{2}^{\,2^{\,n-2}}\qquad(n\ge2) . \]
+Cum $y_{2}=x_{2}+1=a^{2}+a+1$, rezultă
+\[ x_{n}+1=\bigl(a^{2}+a+1\bigr)^{2^{\,n-2}}\qquad(n\ge2) . \]
+Notăm $c=a^{2}+a+1>1$ (căci $a>0$). Șirul crește, deci, \emph{dublu exponențial}.
+
+\emph{Pasul 3: suma ponderată telescopează.} Pentru $n\ge2$, folosim $y_{n+1}-1=y_{n}^{2}-1=\bigl(y_{n}-1\bigr)\bigl(y_{n}+1\bigr)$, adică, în variabila $x$,
+\[ x_{n+1}=x_{n}\bigl(x_{n}+2\bigr) . \]
+Luând inversul și descompunând în fracții simple (identitatea $\frac{1}{u(u+2)}=\frac12\left(\frac1u-\frac{1}{u+2}\right)$):
+\[ \frac{1}{x_{n+1}}=\frac{1}{x_{n}\bigl(x_{n}+2\bigr)}=\frac12\left(\frac{1}{x_{n}}-\frac{1}{x_{n}+2}\right) \Longleftrightarrow \boxed{\ \frac{1}{x_{n}+2}=\frac{1}{x_{n}}-\frac{2}{x_{n+1}}\ } \]
+Aceasta \emph{nu} este încă telescopică: apare un factor $2$. Îl absorbim înmulțind cu $2^{n}$:
+\[ \frac{2^{\,n}}{x_{n}+2}=\frac{2^{\,n}}{x_{n}}-\frac{2^{\,n+1}}{x_{n+1}} . \]
+Acum \emph{este}: membrul drept este diferența a doi termeni consecutivi ai șirului $u_{n}=\dfrac{2^{\,n}}{x_{n}}$. Sumând de la $k=2$ la $n$:
+\[ \sum_{k=2}^{n}\frac{2^{\,k}}{x_{k}+2}=u_{2}-u_{n+1}=\frac{4}{x_{2}}-\frac{2^{\,n+1}}{x_{n+1}} . \]
+Aici Pasul 2 devine indispensabil --- și nu este ornamental. Din recurență se citește doar $x_{n+1}=x_{n}(x_{n}+2)>2x_{n}$, de unde $x_{n}>2^{\,n-2}x_{2}$: \emph{exact același ordin} ca numărătorul $2^{\,n+1}$, deci restul nu ar tinde nicăieri. Forma închisă dă însă mai mult: $x_{n+1}=c^{\,2^{\,n-1}}-1$ cu $c>1$, adică o creștere \emph{dublu} exponențială, care strivește orice exponențială. Prin urmare $\dfrac{2^{\,n+1}}{x_{n+1}}\to0$. Cu $x_{2}=a^{2}+a$:
+\[ \sum_{k\ge2}\frac{2^{\,k}}{x_{k}+2}=\frac{4}{a^{2}+a} . \]
+\emph{Observație 1 (ce a fost greu).} Nu calculul, ci \emph{descoperirea}: enunțul arată ca o recurență cu memorie infinită, imposibil de iterat. Trucul --- a scrie relația pentru doi indici consecutivi și a le scădea --- este singurul pas neevident; după el, totul devine o recurență de gradul al doilea, deci rezolvabilă exact. Aceasta este strategia standard pentru orice recurență de forma $x_{n+1}=F(S_{n})$: \emph{diferențierea discretă} elimină suma.
+
+\emph{Observație 2 (rolul factorului $2^{k}$).} Fără el, seria $\sum\frac{1}{x_{k}+2}$ ar converge (termenii scad dublu exponențial), dar nu ar avea nicio valoare închisă. Ponderea $2^{k}$ este \emph{exact} cea care face descompunerea în fracții simple să telescopeze --- ea compensează factorul $\frac12$ produs de identitatea $\frac{1}{u(u+2)}=\frac12(\cdots)$. Alegerea ponderii nu este un artificiu: ea este \emph{impusă} de polinom.
+
+\emph{Observație 3 (verificare numerică).} Pentru $a=1$: șirul este $1$, $2$, $8$, $80$, $6560$, \dots, iar $x_{n}+1=3^{\,2^{\,n-2}}$ dă $3$, $9$, $81$, $6561$, ceea ce se potrivește. Suma cerută este $2$, iar $\frac{4}{a^{2}+a}=\frac42=2$. \checkmark\ Pentru $a=\frac12$ se obține $5{,}3333\ldots=\frac{4}{3/4}$, iar pentru $a=2$, $\frac23$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.16}{}
+Fie $x_{1}\in\mathbb{R}$ și
+\[ x_{n+1}=x_{n}^{2}-2\ ,\qquad n\ge1 . \]
+Notăm $P_{n}=x_{1}x_{2}\cdots x_{n}$.
+\begin{parti}
+  \item Presupunem $x_{1}>2$. Calculați $\displaystyle\lim_{n\to\infty}\frac{P_{n}}{x_{n+1}}$ și $\displaystyle\sum_{n\ge1}\frac{1}{P_{n}}$.
+  \item Presupunem $|x_{1}|<2$. Arătați că șirul $(P_{n})$ este \emph{mărginit}.
+\end{parti}
+\sol Același polinom, două lumi. Cheia amândurora este o observație de o linie: \emph{există o substituție în care $X^{2}-2$ înseamnă „dublează''}.
+
+\medskip
+\emph{Preliminarii: cosinusul hiperbolic.} Prin analogie cu funcțiile trigonometrice, se definesc, pentru $t\in\mathbb{R}$,
+\[ \begin{aligned} \operatorname{ch}t&=\frac{e^{\,t}+e^{-t}}{2}\qquad\text{(cosinus hiperbolic)},\\ \operatorname{sh}t&=\frac{e^{\,t}-e^{-t}}{2}\qquad\text{(sinus hiperbolic)} . \end{aligned} \]
+Ele nu sunt un obiect nou, ci doar o \emph{scriere comodă}: tot ce vom folosi se verifică prin simplă înmulțire de exponențiale.
+\begin{itemize}
+  \item \emph{Identitatea fundamentală:} $\operatorname{ch}^{2}t-\operatorname{sh}^{2}t=1$, căci $\left(\frac{e^{t}+e^{-t}}{2}\right)^{2}-\left(\frac{e^{t}-e^{-t}}{2}\right)^{2}=\frac{4}{4}=1$. (La cerc era $\cos^{2}+\sin^{2}=1$; aici semnul se schimbă --- de unde numele „hiperbolic'': punctul $(\operatorname{ch}t,\operatorname{sh}t)$ descrie hiperbola $X^{2}-Y^{2}=1$, așa cum $(\cos\theta,\sin\theta)$ descrie cercul.)
+  \item \emph{Duplicarea:} $\operatorname{ch}2t=2\operatorname{ch}^{2}t-1$ și $\operatorname{sh}2t=2\operatorname{sh}t\operatorname{ch}t$ --- exact formulele de la $\cos$ și $\sin$, prima cu \emph{același} semn. Verificare: $2\left(\frac{e^{t}+e^{-t}}{2}\right)^{2}-1=\frac{e^{2t}+2+e^{-2t}}{2}-1=\frac{e^{2t}+e^{-2t}}{2}=\operatorname{ch}2t$. \checkmark
+\end{itemize}
+\emph{De ce ne interesează.} Rescriem formula duplicării înmulțind-o cu $2$:
+\[ 2\operatorname{ch}2t=4\operatorname{ch}^{2}t-2=\bigl(2\operatorname{ch}t\bigr)^{2}-2 . \]
+Cu alte cuvinte: \emph{dacă} $x=2\operatorname{ch}t$, \emph{atunci} $x^{2}-2=2\operatorname{ch}2t$. Polinomul din enunț, aplicat unui număr de forma $2\operatorname{ch}t$, nu face decât să \emph{dubleze argumentul} $t$. Aceasta este întreaga problemă.
+
+Exact aceeași identitate are loc pentru cosinusul obișnuit: $\bigl(2\cos\theta\bigr)^{2}-2=2\cos2\theta$. Iar $2\operatorname{ch}t=e^{t}+e^{-t}=a+\frac1a$ (cu $a=e^{t}$) parcurge $[2,\infty)$, pe când $2\cos\theta$ parcurge $[-2,2]$: cele două substituții \emph{acoperă exact} cele două cazuri din enunț.
+
+\medskip
+\emph{(a) Cazul $x_{1}>2$: substituția hiperbolică.}
+
+\emph{Pasul 1.} Cum $2\operatorname{ch}$ este o bijecție de la $(0,\infty)$ la $(2,\infty)$, există un unic $t>0$ cu $x_{1}=2\operatorname{ch}t$. Concret, notând $a=e^{\,t}>1$, condiția este $x_{1}=a+\frac1a$, adică $a^{2}-x_{1}a+1=0$, cu
+\[ a=\frac{x_{1}+\sqrt{x_{1}^{2}-4}}{2}>1 . \]
+Reținem, din identitatea fundamentală ($\operatorname{sh}t>0$ pentru $t>0$),
+\[ 2\operatorname{sh}t=a-\frac1a=\sqrt{\left(a+\frac1a\right)^{2}-4}=\sqrt{x_{1}^{2}-4} . \tag{1} \]
+
+\emph{Pasul 2: formula închisă.} Prin duplicare repetată,
+\[ x_{n}=2\operatorname{ch}\bigl(2^{\,n-1}t\bigr)=a^{\,2^{\,n-1}}+a^{-2^{\,n-1}} . \]
+(Inducție: dacă $x_{n}=2\operatorname{ch}(2^{n-1}t)$, atunci $x_{n+1}=x_{n}^{2}-2=2\operatorname{ch}(2^{n}t)$.)
+
+\emph{Pasul 3: produsul telescopează.} Aici intră $\operatorname{sh}$. Din $\operatorname{sh}2u=2\operatorname{sh}u\operatorname{ch}u$ rezultă
+\[ 2\operatorname{ch}u=\frac{\operatorname{sh}2u}{\operatorname{sh}u} , \]
+deci fiecare factor al produsului este un raport în care numitorul se anulează cu numărătorul precedent:
+\[ P_{n}=\prod_{k=1}^{n}2\operatorname{ch}\bigl(2^{\,k-1}t\bigr)=\prod_{k=1}^{n}\frac{\operatorname{sh}\bigl(2^{\,k}t\bigr)}{\operatorname{sh}\bigl(2^{\,k-1}t\bigr)}=\frac{\operatorname{sh}\bigl(2^{\,n}t\bigr)}{\operatorname{sh}t} . \tag{2} \]
+În scriere exponențială, $2\operatorname{sh}(2^{n}t)=a^{\,2^{n}}-a^{-2^{n}}$, deci (2) devine
+\[ \left(a-\frac1a\right)P_{n}=a^{\,2^{\,n}}-a^{-2^{\,n}} . \tag{2$'$} \]
+
+\emph{Prima limită.} Împărțind (2$'$) la $x_{n+1}=a^{\,2^{n}}+a^{-2^{n}}$, apoi prin $a^{\,2^{n}}$:
+\[ \frac{P_{n}}{x_{n+1}}=\frac{1}{a-\frac1a}\cdot\frac{1-a^{-2^{\,n+1}}}{1+a^{-2^{\,n+1}}}\ \xrightarrow[n\to\infty]{}\ \frac{1}{a-\frac1a}\overset{(1)}{=}\frac{1}{\sqrt{x_{1}^{2}-4}} , \]
+căci $a>1$ dă $a^{-2^{\,n+1}}\to0$.
+
+\emph{A doua sumă.} Notăm $u=\frac1a\in(0,1)$. Din (2$'$),
+\[ P_{n}=\frac{u^{-2^{n}}\bigl(1-u^{\,2^{\,n+1}}\bigr)}{a-\frac1a} \Longrightarrow \frac{1}{P_{n}}=\left(a-\frac1a\right)\cdot\frac{u^{\,2^{\,n}}}{1-u^{\,2^{\,n+1}}} . \]
+Fracția din dreapta este \emph{exact} o diferență telescopică: pentru orice $|v|<1$,
+\[ \frac{1}{1-v}-\frac{1}{1-v^{2}}=\frac{(1+v)-1}{1-v^{2}}=\frac{v}{1-v^{2}} , \]
+iar cu $v=u^{\,2^{\,n}}$ (deci $v^{2}=u^{\,2^{\,n+1}}$) se obține
+\[ \frac{u^{\,2^{\,n}}}{1-u^{\,2^{\,n+1}}}=\frac{1}{1-u^{\,2^{\,n}}}-\frac{1}{1-u^{\,2^{\,n+1}}} . \]
+Sumând de la $n=1$ la $N$, termenii intermediari se reduc:
+\[ \sum_{n=1}^{N}\frac{u^{\,2^{\,n}}}{1-u^{\,2^{\,n+1}}}=\frac{1}{1-u^{2}}-\frac{1}{1-u^{\,2^{\,N+1}}}\ \xrightarrow[N\to\infty]{}\ \frac{1}{1-u^{2}}-1=\frac{u^{2}}{1-u^{2}} , \]
+deoarece $u^{\,2^{\,N+1}}\to0$. Cu $u=\frac1a$ și $a-\frac1a=\frac{a^{2}-1}{a}$:
+\[ \sum_{n\ge1}\frac{1}{P_{n}}=\frac{a^{2}-1}{a}\cdot\frac{\frac{1}{a^{2}}}{1-\frac{1}{a^{2}}}=\frac{a^{2}-1}{a}\cdot\frac{1}{a^{2}-1}=\frac{1}{a} , \]
+adică
+\[ \sum_{n\ge1}\frac{1}{x_{1}x_{2}\cdots x_{n}}=\frac{2}{x_{1}+\sqrt{x_{1}^{2}-4}} . \]
+
+\medskip
+\emph{(b) Cazul $|x_{1}|<2$: aceeași demonstrație, cu cercul în locul hiperbolei.}
+
+Acum $\frac{x_{1}}{2}\in(-1,1)$, deci există un unic $\theta\in(0,\pi)$ cu
+\[ x_{1}=2\cos\theta,\qquad \sin\theta=\sqrt{1-\frac{x_{1}^{2}}{4}}=\frac{\sqrt{4-x_{1}^{2}}}{2}>0 . \tag{3} \]
+Duplicarea cosinusului este \emph{aceeași} identitate ca mai sus: $\bigl(2\cos\varphi\bigr)^{2}-2=2\cos2\varphi$. Prin inducție,
+\[ x_{n}=2\cos\bigl(2^{\,n-1}\theta\bigr) , \]
+iar produsul telescopează prin $\sin2\varphi=2\sin\varphi\cos\varphi$ --- exact rolul jucat de $\operatorname{sh}$ la punctul (a):
+\[ P_{n}=\prod_{k=1}^{n}2\cos\bigl(2^{\,k-1}\theta\bigr)=\prod_{k=1}^{n}\frac{\sin\bigl(2^{\,k}\theta\bigr)}{\sin\bigl(2^{\,k-1}\theta\bigr)}=\frac{\sin\bigl(2^{\,n}\theta\bigr)}{\sin\theta} . \]
+Diferența decisivă față de (2): numărătorul este acum \emph{mărginit}, $\bigl|\sin\bigl(2^{n}\theta\bigr)\bigr|\le1$, pe când acolo $\operatorname{sh}\bigl(2^{n}t\bigr)$ exploda. Prin (3),
+\[ \bigl|P_{n}\bigr|\le\frac{1}{\sin\theta}=\frac{2}{\sqrt{4-x_{1}^{2}}}\qquad\text{pentru orice }n , \]
+deci $(P_{n})$ este mărginit.\\[2pt]
+\emph{Observație 1 (o singură demonstrație, două fețe).} Cele două puncte nu sunt două probleme: sunt \emph{aceeași} problemă. Peste tot, substituția a fost
+\[ x=z+\frac1z , \]
+cu $z=a=e^{\,t}$ real $>1$ la punctul (a), și cu $z=e^{\,i\theta}$ de modul $1$ la punctul (b) --- de unde $z+\frac1z=2\cos\theta$. În variabila $z$, recurența $x\mapsto x^{2}-2$ devine pur și simplu
+\[ z\ \longmapsto\ z^{2} , \]
+căci $\left(z+\frac1z\right)^{2}-2=z^{2}+\frac{1}{z^{2}}$. Iar $\operatorname{ch}$ și $\cos$ sunt \emph{aceeași funcție} privită pe două drepte diferite: $\cos\theta=\operatorname{ch}(i\theta)$. Comportarea depinde exclusiv de $|z|$: dacă $|z|>1$, orbita fuge la infinit; dacă $|z|=1$, ea rămâne prizonieră pe cerc.
+
+\emph{Observație 2 (dihotomia).} De aici contrastul brutal. Pentru $x_{1}>2$, produsul explodează \emph{dublu exponențial}: din (2), $P_{n}\approx\frac{a^{\,2^{n}}}{\sqrt{x_{1}^{2}-4}}$. Pentru $|x_{1}|<2$, el rămâne într-o bandă --- deși termenii $x_{n}=2\cos(2^{\,n-1}\theta)$ sar haotic prin $[-2,2]$ și nu converg. Frontiera este exact $|x_{1}|=2$: acolo $\operatorname{sh}t=\sin\theta=0$, iar ambele formule degenerează (și, într-adevăr, $x_{1}=2$ dă șirul constant $2$).
+
+\emph{Observație 3 (marginea este, în general, optimă).} Atenție: iraționalitatea lui $\frac{\theta}{\pi}$ \emph{nu} ajunge pentru ca valorile $2^{\,n}\theta$ modulo $2\pi$ să fie dense (există $\theta$ cu $\frac\theta\pi$ irațional pentru care cifrele binare ale lui $\frac{\theta}{2\pi}$ nu conțin niciodată doi de $1$ consecutivi, iar atunci orbita evită un întreg arc). Este însă adevărat, printr-un rezultat de teoria ergodică depășind nivelul cărții, că pentru \emph{aproape toate} valorile lui $\theta$ orbita $2^{\,n}\theta$ modulo $2\pi$ este densă; pentru acestea $\bigl|\sin(2^{n}\theta)\bigr|$ se apropie oricât de mult de $1$, iar $|P_{n}|$ se apropie de $\frac{2}{\sqrt{4-x_{1}^{2}}}$, deci marginea nu poate fi îmbunătățită. Numeric, pentru $x_{1}=1{,}3$ marginea este $1{,}31590$, iar maximul observat pe primii termeni este $1{,}31563$.
+\vspace{1mm}\hrule
+
+\nivel{onm}{Nivelul ONM}{Faza națională --- mai mulți pași și o idee-cheie.}
+\prob{onm}{ONM.1}{Clasică}
+Arătați că numărul $\cos1$ este irațional.
+\sol Din seria cosinusului, $\cos1=\displaystyle\sum_{k\ge0}\frac{(-1)^k}{(2k)!}$ --- serie alternată cu termeni strict descrescători în modul.
+
+\emph{Restul este nenul și mic.} Pentru orice $N$, gruparea în perechi
+\[ \begin{aligned} R_N&=\cos1-\sum_{k=0}^{N}\frac{(-1)^k}{(2k)!}\\ &=(-1)^{N+1}\biggl[\left(\frac1{(2N+2)!}-\frac1{(2N+4)!}\right)\\ &\qquad\qquad+\left(\frac1{(2N+6)!}-\frac1{(2N+8)!}\right)+\cdots\biggr] \end{aligned} \]
+are toate parantezele strict pozitive, deci $0<|R_N|<\dfrac1{(2N+2)!}$.
+
+Presupunem $\cos1=\frac pq$ cu $p\in\mathbb{Z}$, $q\in\mathbb{N}^*$, și alegem $N\ge q$. Înmulțim cu $(2N)!$:
+\[ (2N)!\,\frac pq=(2N)!\sum_{k=0}^{N}\frac{(-1)^k}{(2k)!}+(2N)!\,R_N . \]
+Membrul stâng este întreg, căci $q\le N\le 2N$ divide $(2N)!$. Suma este întreagă, fiecare $\frac{(2N)!}{(2k)!}$ cu $k\le N$ fiind întreg. Iar restul satisface
+\[ 0<(2N)!\,|R_N|<\frac{(2N)!}{(2N+2)!}=\frac1{(2N+1)(2N+2)}<1 . \]
+Ar rezulta că diferența a doi întregi este un număr nenul de modul subunitar --- contradicție. Deci $\cos1\notin\mathbb{Q}$.\\[2pt]
+\emph{Observație.} Este aceeași schemă care dă iraționalitatea lui $e$ (estimarea restului din Teorema 2.42 și Corolarul 2.43); ea funcționează identic pentru $\sin1$, $\cos\frac1m$, $e^{1/m}$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.2}{Inegalitatea lui Landau}
+Fie $f:\mathbb{R}\to\mathbb{R}$ de două ori derivabilă, cu $|f(x)|\le M_0$ și $|f''(x)|\le M_2$ pentru orice $x\in\mathbb{R}$. Arătați că
+\[ |f'(x)|\ \le\ 2\sqrt{M_0M_2}\qquad\text{pentru orice }x\in\mathbb{R}. \]
+\sol Dacă $M_2=0$: $f''\equiv0$, deci $f$ este afină; o funcție afină mărginită este constantă, deci $f'\equiv0$ și inegalitatea este banală.
+
+Fie $M_2>0$, $x\in\mathbb{R}$ și $h>0$ arbitrar. Prin Taylor--Lagrange (Teorema 2.71) pe intervalul $[x,x+h]$ există $\xi$ cu
+\[ f(x+h)=f(x)+h\,f'(x)+\frac{h^2}{2}f''(\xi) \Longrightarrow f'(x)=\frac{f(x+h)-f(x)}{h}-\frac h2\,f''(\xi), \]
+de unde
+\[ |f'(x)|\ \le\ \frac{2M_0}{h}+\frac{M_2\,h}{2}\qquad\text{pentru orice }h>0 . \]
+Prin inegalitatea mediilor, $\dfrac{2M_0}h+\dfrac{M_2h}2\ \ge\ 2\sqrt{M_0M_2}$, cu egalitate la $h=2\sqrt{M_0/M_2}$; alegând exact acest $h$, obținem $|f'(x)|\le2\sqrt{M_0M_2}$.\\[2pt]
+\emph{Observație.} Este inegalitatea lui Landau. Constanta $2$ obținută aici nu este cea optimă pe $\mathbb{R}$ (aceea este $\sqrt2$ --- un rezultat mai dificil, Landau--Kolmogorov), dar este optimă pe semidreaptă.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.3}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție derivabilă și \emph{strict convexă}, și fie $P\in\mathbb{R}[X]$ un polinom cu proprietatea
+\[ f\bigl(P(x)\bigr)=f(x)\qquad\text{pentru orice }x\in\mathbb{R}. \]
+\begin{parti}
+  \item Arătați că, dacă $f'$ nu se anulează în niciun punct, atunci $P=X$.
+  \item Determinați, în cazul general (adică fără ipoteza suplimentară de la (a)), toate polinoamele $P$ posibile.
+\end{parti}
+\sol \emph{Pasul 0: stricta convexitate înseamnă $f'$ strict crescătoare.}
+Prin Teorema 2.79, pentru o funcție derivabilă pe un interval, convexitatea este echivalentă cu monotonia (crescătoare) a derivatei; în particular $f'$ este crescătoare. Arătăm că este chiar \emph{strict} crescătoare. Fie $x<y$ și $m=\frac{x+y}{2}$. Din lema pantelor (Lema 2.77), pentru o funcție convexă panta coardei crește odată cu capătul: aplicată tripletei $x<m<y$, ea dă
+\[ \frac{f(m)-f(x)}{m-x}\ \le\ \frac{f(y)-f(m)}{y-m}, \]
+iar pentru $f$ \emph{strict} convexă inegalitatea este strictă (o egalitate ar însemna că $f$ este afină pe $[x,y]$, ceea ce contrazice stricta convexitate). Pe de altă parte, tot din monotonia pantelor, panta $t\mapsto\frac{f(t)-f(x)}{t-x}$ este crescătoare și tinde la $f'(x)$ când $t\to x^{+}$, deci $f'(x)\le\frac{f(m)-f(x)}{m-x}$; simetric, $\frac{f(y)-f(m)}{y-m}\le f'(y)$. Punând cap la cap:
+\[ f'(x)\ \le\ \frac{f(m)-f(x)}{m-x}\ <\ \frac{f(y)-f(m)}{y-m}\ \le\ f'(y) , \]
+deci $f'(x)<f'(y)$: derivata este strict crescătoare. În particular, $f'$ se poate anula în cel mult un punct.
+
+\emph{Derivăm relația din enunț} (membrul stâng este o compunere de funcții derivabile):
+\[ f'\bigl(P(x)\bigr)\cdot P'(x)=f'(x)\qquad\text{pentru orice }x\in\mathbb{R}. \tag{$\ast$} \]
+Reținem consecința imediată: \emph{în orice punct în care $f'(x)\neq0$ avem și $P'(x)\neq0$.}
+
+(a) Presupunem că $f'$ nu se anulează nicăieri. Derivata are proprietatea lui Darboux (Teorema 2.74), deci dacă ar lua atât valori negative, cât și valori pozitive, ar trebui să treacă prin $0$ --- exclus. Așadar $f'$ păstrează semn constant și, prin consecința teoremei lui Lagrange (2.71), $f$ este strict monotonă, deci \emph{injectivă}. Din $f(P(x))=f(x)$ obținem atunci $P(x)=x$ pentru orice $x$; două polinoame care coincid în infinit de multe puncte sunt egale, deci $P=X$. (Din $(\ast)$ se vede și că $P'$ nu se anulează nicăieri --- coerent cu $P=X$.)
+
+(b) Rămâne cazul în care $f'$ \emph{se anulează} undeva; prin Pasul 0 există atunci un unic punct $a$ cu $f'(a)=0$. Răspunsul este:
+\[ \begin{gathered} P=X\quad\text{(întotdeauna)},\\
+\text{iar dacă }f\text{ este simetrică față de }a,\ \text{și}\quad P(x)=2a-x . \end{gathered} \]
+Alte polinoame nu există. („Simetrică față de $a$'' înseamnă $f(2a-x)=f(x)$ pentru orice $x$.)
+
+\emph{Structura lui $f$.} Prin Pasul 0, $f'$ este strict crescătoare, deci punctul $a$ cu $f'(a)=0$ este unic; iar $f'<0$ pe $(-\infty,a)$ și $f'>0$ pe $(a,\infty)$. Prin Lagrange (2.71), $f$ este strict descrescătoare pe $(-\infty,a]$ și strict crescătoare pe $[a,\infty)$: $a$ este \emph{unicul} punct de minim global. Mai mult, $f(x)\to+\infty$ la ambele capete: pentru $x\ge a+1$ avem $f'(x)\ge f'(a+1)=:m>0$, deci $f(x)\ge f(a+1)+m\,(x-a-1)\to\infty$ (tot Lagrange), și analog la $-\infty$.
+
+\emph{Pasul 1: $P(a)=a$.} Într-adevăr, $f(P(a))=f(a)=\min f$, iar $a$ este unicul punct în care minimul se atinge.
+
+\emph{Pasul 2: fiecare nivel are exact două puncte.} Fie $x\neq a$, deci $f(x)>f(a)$. Pe ramura care conține $x$, funcția este strict monotonă, deci $x$ este singura soluție a ecuației $f(t)=f(x)$ de acea parte. Pe cealaltă ramură, $f$ este continuă, valorează $f(a)<f(x)$ în $a$ și tinde la $+\infty$; prin proprietatea valorilor intermediare (Teorema 2.53), ecuația $f(t)=f(x)$ are acolo o soluție, unică prin stricta monotonie. Notăm cu $\tau(x)$ această „oglindă'' a lui $x$ și punem $\tau(a)=a$. Funcția $\tau$ este continuă, strict descrescătoare și involutivă: $\tau(\tau(x))=x$.
+
+Prin urmare, pentru fiecare $x$:
+\[ f\bigl(P(x)\bigr)=f(x) \Longrightarrow P(x)\in\{\,x,\ \tau(x)\,\} . \]
+
+\emph{Pasul 3: $P$ coincide cu una dintre ele peste tot.} Presupunem $P\neq X$. Atunci polinomul $P(x)-x$ este nenul, deci are un număr \emph{finit} de rădăcini; în afara acestora, $P(x)=\tau(x)$. Mulțimea acestor $x$ este densă în $\mathbb{R}$, iar $P$ și $\tau$ sunt continue, deci $P=\tau$ pe tot $\mathbb{R}$.
+
+\emph{Pasul 4: un polinom involutiv este o reflexie.} Din $\tau\circ\tau=\mathrm{id}$ și $\tau=P$ polinom, comparând gradele obținem $(\deg P)^2=1$, deci $\deg P=1$: fie $P(x)=\alpha x+\beta$. Involutivitatea dă $\alpha^2=1$ și $\alpha\beta+\beta=0$. Dacă $\alpha=1$, atunci $\beta=0$ și $P=X$ --- exclus în acest pas. Deci $\alpha=-1$, iar $P(a)=a$ (Pasul 1) forțează $-a+\beta=a$, adică $\beta=2a$:
+\[ P(x)=2a-x . \]
+
+\emph{Pasul 5: reciproca.} Polinomul $P(x)=2a-x$ verifică relația din enunț dacă și numai dacă $f(2a-x)=f(x)$ pentru orice $x$, adică exact atunci când $f$ este simetrică față de $a$. Iar $P=X$ funcționează întotdeauna.\\[2pt]
+\emph{Observație 1 (rolul convexității).} Fără convexitate enunțul este fals: pentru $f(x)=\sin(2\pi x)$ --- derivabilă și neconstantă --- polinomul $P=X+1$ satisface $f(P(x))=f(x)$. Convexitatea elimină din start astfel de exemple: o funcție convexă și periodică ar fi mărginită superior, deci constantă (Problema OJM.11 din această secțiune). Singura simetrie care supraviețuiește este reflexia față de vârf.
+
+\emph{Observație 2 (exemple).} Pentru $f(x)=(x-3)^2$, simetrică față de $a=3$, funcționează atât $P=X$, cât și $P(x)=6-x$. Pentru $f(x)=e^x+x^2$, strict convexă dar \emph{nesimetrică}, singurul polinom este $P=X$: minimul este în $a\approx-0{,}3517$, iar $f(2a-x)\not\equiv f(x)$.
+
+\emph{Observație 3 (ce dă și ce nu dă derivarea).} Identitatea $(\ast)$ nu poate încheia singură problema: ea rămâne valabilă și în contraexemplul periodic de mai sus, unde spune doar că $f'$ este periodică. Rolul ei este structural --- arată că $P$ nu are puncte critice în afara lui $a$ ---, iar la punctul (a) reduce totul la injectivitate.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.4}{}
+Fie $(x_n)_{n\ge1}$ șirul de numere reale definit prin $x_1=1$ și
+\[ 3x_{n+1}=\frac{x_n}{1!}+\frac{x_{n-1}}{2!}+\frac{x_{n-2}}{3!}+\cdots+\frac{x_1}{n!}\ ,\qquad n\ge1 . \]
+Arătați că limita $\displaystyle\lim_{n\to\infty}\bigl(\ln4\bigr)^{n}x_n$ există și calculați-o.
+\sol Răspuns: $\displaystyle\lim_{n\to\infty}(\ln4)^n\,x_n=\frac34$.
+
+Fie $r=\ln4$ (deci $e^{r}=4$) și punem
+\[ u_n=r^{\,n}x_n,\qquad p_k=\frac{r^{k}}{3\cdot k!}\ \ (k\ge1) . \]
+Coeficienții $p_k$ sunt strict pozitivi și, cheia întregii probleme,
+\[ \sum_{k\ge1}p_k=\frac{1}{3}\sum_{k\ge1}\frac{r^k}{k!}=\frac{e^{r}-1}{3}=\frac{4-1}{3}=1 . \tag{1} \]
+Așadar $(p_k)_{k\ge1}$ este o \emph{distribuție de probabilitate} pe $\{1,2,3,\dots\}$. Înmulțind recurența din enunț cu $r^{\,n+1}$ obținem forma normalizată
+\[ u_{n}=\sum_{k=1}^{n-1}p_k\,u_{n-k}\qquad(n\ge2),\qquad u_1=r . \tag{2} \]
+(Fiecare $u_n$, $n\ge2$, este deci o \emph{medie ponderată} a termenilor anteriori, cu ponderi de sumă $\le1$.)
+
+\emph{Pasul 1: $(u_n)$ este mărginit între constante strict pozitive.}
+Fie $M_n=\max_{j\le n}u_j$ și $m_n=\min_{j\le n}u_j$. Din (2) și (1),
+\[ u_{n+1}=\sum_{k=1}^{n}p_k\,u_{n+1-k}\ \le\ M_n\sum_{k=1}^{n}p_k\ \le\ M_n , \]
+deci $M_{n+1}=M_n$: șirul este majorat de $M_1=u_1=r$. Analog, notând coada $T_n=\sum_{k>n}p_k$,
+\[ u_{n+1}\ \ge\ m_n\sum_{k=1}^{n}p_k=m_n\,(1-T_n) \Longrightarrow m_{n+1}\ \ge\ m_n(1-T_n) . \]
+Cum $T_n\le\frac{1}{3}\sum_{k>n}\frac{r^k}{k!}\le\frac{r^{n+1}}{3\,(n+1)!}\,e^{r}$, seria $\sum_n T_n$ converge, deci produsul $\prod_{n\ge1}(1-T_n)$ are o valoare strict pozitivă $c>0$ (pentru $n$ mare, $T_n<\frac12$, iar $\ln(1-T_n)\ge-2T_n$ dă convergența produsului). Prin urmare
+\[ 0<c\,r\ \le\ u_n\ \le\ r\qquad\text{pentru orice }n . \]
+
+\emph{Pasul 2: o identitate de reînnoire.} Fie $P_m=\sum_{k>m}p_k$ (deci $P_0=1$ prin (1)) și
+\[ V_n=\sum_{i=1}^{n}u_i\,P_{n-i} . \]
+Atunci $V_n$ \emph{nu depinde de $n$}. Într-adevăr, pentru $n\ge2$:
+\[ \begin{aligned} V_n-V_{n-1}&=u_nP_0+\sum_{i=1}^{n-1}u_i\bigl(P_{n-i}-P_{n-1-i}\bigr)=u_n-\sum_{i=1}^{n-1}u_i\,p_{n-i}\\ &=u_n-\sum_{k=1}^{n-1}p_k\,u_{n-k}\overset{(2)}{=}u_n-u_n=0 , \end{aligned} \]
+unde am folosit $P_{m}-P_{m-1}=-p_{m}$. Deci
+\[ \sum_{i=1}^{n}u_i\,P_{n-i}=V_1=u_1P_0=r\qquad\text{pentru orice }n\ge1 . \tag{3} \]
+Notăm și media distribuției:
+\[ \mu=\sum_{m\ge0}P_m=\sum_{k\ge1}k\,p_k=\frac13\sum_{k\ge1}\frac{k\,r^k}{k!}=\frac13\sum_{k\ge1}\frac{r^{k}}{(k-1)!}=\frac{r\,e^{r}}{3}=\frac{4r}{3}\ <\ \infty . \tag{4} \]
+
+\emph{Pasul 3: $(u_n)$ converge.} Fie $L=\limsup u_n$ și $\ell=\liminf u_n$; prin Pasul 1 ambele sunt finite și strict pozitive. Fie $(n_j)$ cu $u_{n_j}\to L$.
+
+\emph{Afirmație:} pentru orice $k\ge1$ fixat, $u_{n_j-k}\to L$.
+Presupunem contrariul: există $k_0$ și $\delta>0$ cu $u_{n_j-k_0}\le L-\delta$ de-a lungul unui subșir. Fie $\varepsilon>0$. Alegem $N$ cu $u_n\le L+\varepsilon$ pentru $n\ge N$ și $K\ge k_0$ cu $\sum_{k>K}p_k<\varepsilon$. Termenii cu indice mic nu sunt controlați de $L+\varepsilon$, de aceea tăiem coada: pentru $j$ suficient de mare ($n_j-K\ge N$), termenii $u_{n_j-k}$ cu $k\le K$ sunt $\le L+\varepsilon$, iar ceilalți sunt $\le r$ (Pasul 1). Din (2), de-a lungul acelui subșir,
+\[ \begin{aligned} u_{n_j}=\sum_{k=1}^{n_j-1}p_k\,u_{n_j-k}&\le p_{k_0}(L-\delta)+\Bigl(\sum_{k\le K,\ k\neq k_0}p_k\Bigr)(L+\varepsilon)+r\sum_{k>K}p_k\\ &\le p_{k_0}(L-\delta)+(1-p_{k_0})(L+\varepsilon)+r\varepsilon\ \le\ L+(1+r)\varepsilon-p_{k_0}\delta . \end{aligned} \]
+Trecând la limită: $L\le L+(1+r)\varepsilon-p_{k_0}\delta$ pentru orice $\varepsilon>0$, deci $p_{k_0}\delta\le0$, absurd, căci $p_{k_0}>0$. Afirmația este demonstrată.
+
+Aplicăm acum (3) cu $n=n_j$ și substituim $m=n_j-i$:
+\[ \sum_{m=0}^{n_j-1}u_{n_j-m}\,P_m=r . \]
+Pentru fiecare $m$ fixat, $u_{n_j-m}\to L$; în plus $0\le u_{n_j-m}P_m\le r\,P_m$, iar $\sum_m P_m=\mu<\infty$ prin (4). Seria este deci dominată de una convergentă și putem trece la limită termen cu termen:
+\[ r=\lim_{j\to\infty}\sum_{m\ge0}u_{n_j-m}P_m=L\sum_{m\ge0}P_m=L\,\mu . \]
+Același raționament, cu inegalitățile inversate, pornind de la un subșir cu $u_{n_j}\to\ell$, dă $r=\ell\,\mu$. Prin urmare $L=\ell=\dfrac{r}{\mu}$: șirul $(u_n)$ este convergent.
+
+\emph{Pasul 4: valoarea.} Din (4), $\mu=\frac{4r}{3}$, deci
+\[ \lim_{n\to\infty}(\ln4)^n x_n=\lim_{n\to\infty}u_n=\frac{r}{\mu}=\frac{r}{\tfrac{4r}{3}}=\frac34 . \]
+
+\emph{Observație 1 (de ce $\ln4$ și nu $2$).} Scala este forțată: $x_{n+1}/x_n\to\frac1{\ln4}=0{,}7213\dots$, deci $2^n x_n=\bigl(\tfrac{2}{\ln4}\bigr)^n\cdot(\ln4)^nx_n\to+\infty$, fiindcă $\frac{2}{\ln4}=1{,}4427\dots>1$. Numai normalizarea cu $(\ln 4)^n$ produce o limită finită și nenulă.
+
+\emph{Observație 2 (de unde se ghicește răspunsul).} Cu funcția generatoare $f(t)=\sum_{n\ge1}x_nt^n$, recurența se rescrie ca $3\bigl(f(t)-t\bigr)=f(t)\bigl(e^{t}-1\bigr)$, de unde
+\[ f(t)=\frac{3t}{4-e^{t}} . \]
+Numitorul se anulează prima oară în $t=\ln4$, cu $\frac{d}{dt}(4-e^t)\big|_{t=\ln4}=-4$; „polul simplu'' de acolo dictează comportarea coeficienților, iar reziduul dă exact constanta $\frac{3\ln 4}{4}\cdot\frac1{\ln 4}=\frac34$. Demonstrația de mai sus atinge același rezultat fără a ieși din analiza reală.
+
+\emph{Observație 3 (formă închisă).} Din $f(t)=\frac{3t}{4}\sum_{m\ge0}\bigl(\frac{e^{t}}{4}\bigr)^{m}$, identificând coeficientul lui $t^n$ se obține
+\[ x_n=\frac{3}{4\,(n-1)!}\sum_{m\ge0}\frac{m^{\,n-1}}{4^{\,m}} \]
+(cu convenția $0^0=1$), formulă care se verifică imediat pentru $n=1,2$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.5}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție derivabilă cu proprietatea
+\[ f(x)=1\quad\Longleftrightarrow\quad f'(x)=0\qquad\text{(pentru orice }x\in\mathbb{R}\text{)} . \]
+Arătați că orice valoare $v\neq1$ este luată de $f$ în cel mult două puncte.
+\sol Notăm cu
+\[ A=\{x\in\mathbb{R}:\ f(x)=1\}=\{x\in\mathbb{R}:\ f'(x)=0\} \]
+mulțimea comună din ipoteză (cele două descrieri coincid, tocmai prin echivalența dată).
+
+\emph{Pasul 1: $A$ este un interval închis.} Închiderea este imediată: $A=f^{-1}\bigl(\{1\}\bigr)$, iar $f$ este continuă (fiind derivabilă).
+
+Arătăm că $A$ nu are „găuri''. Fie $x_{1}<x_{2}$ două puncte din $A$; demonstrăm că $f\equiv1$ pe $[x_{1},x_{2}]$ --- de unde $[x_{1},x_{2}]\subseteq A$.
+
+Funcția $f$ este continuă pe compactul $[x_{1},x_{2}]$, deci își atinge acolo marginile (Weierstrass, Teorema 2.54): fie $M$ maximul și $m$ minimul.
+
+Presupunem $M>1$. Cum $f(x_{1})=f(x_{2})=1<M$, maximul \emph{nu} se atinge în capete, deci este atins într-un punct \emph{interior} $d\in(x_{1},x_{2})$. Fiind punct de extrem local interior al unei funcții derivabile, teorema lui Fermat (Teorema 2.68) dă $f'(d)=0$; prin ipoteză, atunci $f(d)=1$. Dar $f(d)=M>1$ --- contradicție. Așadar $M\le1$.
+
+Simetric, dacă $m<1$, minimul se atinge într-un punct interior $e$, unde Fermat dă $f'(e)=0$, deci $f(e)=1$; or $f(e)=m<1$ --- contradicție. Așadar $m\ge1$.
+
+Din $m\ge1$ și $M\le1$ rezultă $f\equiv1$ pe $[x_{1},x_{2}]$. Prin urmare $A$ este un interval (eventual vid, redus la un punct, o semidreaptă sau chiar $\mathbb{R}$).
+
+\emph{Pasul 2: complementara are cel mult două componente.} Fiind un interval \emph{închis}, complementara $\mathbb{R}\setminus A$ este o reuniune de cel mult \emph{două} intervale deschise --- o „rază'' la stânga lui $A$ și una la dreapta:
+\[ \mathbb{R}\setminus A\ \subseteq\ (-\infty,\alpha)\ \cup\ (\beta,+\infty) , \]
+unde $\alpha=\inf A$ și $\beta=\sup A$ (dacă $A=\emptyset$, complementara este $\mathbb{R}$ însuși, adică o singură componentă; dacă $A=\mathbb{R}$, complementara este vidă).
+
+\emph{Pasul 3: pe fiecare componentă, $f$ este strict monotonă.} Fie $J$ una dintre aceste componente (un interval deschis). Pe $J$, derivata $f'$ \emph{nu se anulează}: un zero al lui $f'$ ar fi, prin ipoteză, un punct în care $f=1$, deci un punct din $A$ --- iar $J\cap A=\emptyset$.
+
+Derivata are proprietatea lui Darboux (Teorema 2.74): dacă ar lua pe $J$ atât valori negative, cât și valori pozitive, ar trebui să treacă prin $0$ --- exclus. Așadar $f'$ păstrează \emph{semn constant} pe $J$, iar prin consecința teoremei lui Lagrange (Teorema 2.71), $f$ este strict monotonă pe $J$. În particular, $f$ este \emph{injectivă} pe $J$: ecuația $f(x)=v$ are cel mult o soluție în $J$.
+
+\emph{Pasul 4: numărătoarea.} Fie $v\neq1$ și fie $x$ o soluție a ecuației $f(x)=v$. Atunci $x\notin A$ (căci pe $A$ funcția valorează $1\neq v$), deci $x$ aparține uneia dintre cele cel mult două componente ale lui $\mathbb{R}\setminus A$. Prin Pasul 3, fiecare componentă conține cel mult o soluție. Prin urmare ecuația $f(x)=v$ are
+\[ \text{cel mult}\quad 2\quad\text{soluții}. \]
+\emph{Observație 1 (marginea este atinsă).} Pentru $f(x)=1-x^{2}$ avem $f(x)=1\iff x=0$ și $f'(x)=-2x=0\iff x=0$: ipoteza este verificată. Orice $v<1$ este luată în exact două puncte, $x=\pm\sqrt{1-v}$. Deci „doi'' nu poate fi coborât la „unu'': o astfel de funcție \emph{nu} este neapărat injectivă.
+
+\emph{Observație 2 (când este $f$ injectivă).} Din demonstrație se citește criteriul exact: $f$ este injectivă dacă și numai dacă $A$ are cel mult un punct \emph{și} $f'$ păstrează \emph{același} semn de o parte și de alta a lui $A$. Comparați:
+\[ f(x)=1+x^{3}\quad(\text{injectivă}),\qquad f(x)=1-x^{2}\quad(\text{neinjectivă}), \]
+ambele cu $A=\{0\}$ --- singura diferență este semnul derivatei în jurul originii.
+
+\emph{Observație 3 (o capcană).} Este tentant să credem că $f$ nu poate \emph{traversa} nivelul $1$: orice punct cu $f(x)=1$ fiind punct critic, graficul are acolo tangentă orizontală. Fals --- traversarea se poate face prin \emph{inflexiune}: $f(x)=1+x^{3}$ trece de la valori $<1$ la valori $>1$, chiar dacă $f'(0)=0$.
+
+\emph{Observație 4 (extremele).} Tot din Fermat: \emph{orice} extrem local al unei asemenea funcții are valoarea $1$. Nivelul $1$ este singurul la care graficul se poate „întoarce'' --- ipoteza controlează exclusiv structura acestui nivel, și nimic altceva.
+\vspace{1mm}\hrule
+
+\subsectiuneclasa{Puntea între a XI-a și a XII-a}{Șiruri rezolvate cu integrale: sume Riemann, comparare cu integrala, asimptotică, ecuații diferențiale elementare --- soluții complete.}{Soluții · Puntea XI--XII}
+\nivel{olm}{Nivelul OLM}{Faza locală --- o singură idee, bine aplicată.}
+\prob{olm}{OLM.1}{Clasică}
+Fie $S_n=\dfrac1{n+1}+\dfrac1{n+2}+\cdots+\dfrac1{2n}$, $n\ge1$.
+\begin{parti}
+  \item Calculați $\displaystyle\lim_{n\to\infty}S_n$.
+  \item Calculați $\displaystyle\lim_{n\to\infty}n\bigl(\ln2-S_n\bigr)$.
+\end{parti}
+\sol (a) Suma se rescrie
+\[ \sum_{k=1}^{n}\frac{1}{n+k}=\frac1n\sum_{k=1}^{n}\frac{1}{1+\frac kn}, \]
+adică o sumă Riemann a funcției continue $f(x)=\dfrac1{1+x}$ pe $[0,1]$. Prin Teorema 3.1,
+\[ \lim_{n\to\infty}\frac1n\sum_{k=1}^{n}f\!\left(\frac kn\right)=\int_0^1\frac{dx}{1+x}=\ln2 . \]
+
+(b) Răspuns: $\dfrac14$. Suma Riemann dă limita, dar nu și viteza; pentru viteză lucrăm direct cu diferențele consecutive.
+
+\emph{Pasul 1: incrementul.} Trecând de la $S_n$ la $S_{n+1}$, dispare termenul $\frac1{n+1}$ și apar $\frac1{2n+1}$, $\frac1{2n+2}$:
+\[ S_{n+1}-S_n=\frac1{2n+1}+\frac1{2n+2}-\frac1{n+1}=\frac1{2n+1}-\frac1{2n+2}=\frac{1}{(2n+1)(2n+2)}>0 . \]
+
+\emph{Pasul 2: Cesàro--Stolz.} Fie $u_n=\ln2-S_n$ și $v_n=\frac1n$. Din (a), $u_n\to0$; de asemenea $v_n\to0$, iar $(v_n)$ este strict descrescător. Sunt ipotezele lui Cesàro--Stolz în cazul $\frac00$ (Teorema 2.40), iar raportul incrementelor este
+\[ \frac{u_{n+1}-u_n}{v_{n+1}-v_n}=\frac{-\frac{1}{(2n+1)(2n+2)}}{-\frac{1}{n(n+1)}}=\frac{n(n+1)}{(2n+1)(2n+2)}\ \longrightarrow\ \frac14 . \]
+Deci $\dfrac{u_n}{v_n}=n\bigl(\ln2-S_n\bigr)\to\dfrac14$.\\[2pt]
+\emph{Observație 1 (fundamentul).} Trecerea „sumă $\to$ integrală'' se sprijină pe caracterizarea integrabilității cu șiruri de diviziuni (Teorema 4.12) --- echivalentă cu criteriul lui Darboux (Teorema 4.15) --- aplicată funcției continue de sub sumă.
+
+\emph{Observație 2 (de ce $\frac14$).} Din Pasul 1, $(S_n)$ este strict crescător, deci $S_n<\ln2$ pentru orice $n$: suma Riemann cu nodurile în capetele din dreapta subestimează integrala funcției descrescătoare $\frac1{1+x}$. Rezultatul (b) spune că eroarea este aproximativ $\frac{1}{4n}$, ceea ce coincide cu estimarea generală pentru sumele Riemann ale unei funcții derivabile: eroarea este aproximativ $\frac{f(0)-f(1)}{2n}$, iar aici $\frac{f(0)-f(1)}{2}=\frac{1-\frac12}{2}=\frac14$. Numeric, $10^{4}\bigl(\ln2-S_{10^{4}}\bigr)\approx0{,}249994$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.2}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție de două ori derivabilă, cu
+\[ f''(x)=f(x)\,f'(x)\quad\text{pentru orice }x\in[0,1],\qquad f(0)=f(1)=0 . \]
+Arătați că $f'(1)=f'(0)$.
+\sol Ideea este că membrul drept al ecuației este el însuși o \emph{derivată}, iar acest lucru transformă o ecuație diferențială într-o simplă integrare.
+
+\emph{Pasul 1: recunoașterea primitivei.} Prin regula de derivare a puterii,
+\[ \left(\frac{f(x)^{2}}{2}\right)'=f(x)\,f'(x) . \]
+Așadar funcția $x\mapsto\dfrac{f(x)^{2}}{2}$ este o primitivă a lui $f\,f'$ pe $[0,1]$.
+
+\emph{Pasul 2: integrarea ecuației.} Funcția $f''$ este continuă? Nu neapărat --- dar nu avem nevoie: din ecuație, $f''=f\,f'$, iar membrul drept \emph{este} continuu (produs de funcții continue, $f$ și $f'$ fiind derivabile, deci continue). Prin urmare $f''$ este continuă, deci integrabilă, iar formula Leibniz--Newton (Teorema 4.21) se aplică de două ori:
+\[ f'(1)-f'(0)=\int_{0}^{1}f''(x)\,dx=\int_{0}^{1}f(x)f'(x)\,dx=\left[\frac{f(x)^{2}}{2}\right]_{0}^{1}=\frac{f(1)^{2}-f(0)^{2}}{2} . \]
+
+\emph{Pasul 3: condițiile la capete.} Cum $f(0)=f(1)=0$, membrul drept este nul:
+\[ f'(1)-f'(0)=0 \Longrightarrow f'(1)=f'(0) . \]
+\emph{Observație 1 (o informație mai tare, gratuit).} Aceeași primitivă dă mai mult decât se cere: din $f''=\left(\frac{f^{2}}{2}\right)'$ rezultă că funcția $f'-\dfrac{f^{2}}{2}$ are derivata nulă pe $[0,1]$, deci este \emph{constantă} (Corolarul 2.72):
+\[ f'(x)=\frac{f(x)^{2}}{2}+c\qquad\text{pentru orice }x\in[0,1] . \]
+Punând $x=0$ și $x=1$ și folosind $f(0)=f(1)=0$, se obține direct $f'(0)=c=f'(1)$. Egalitatea cerută nu este, deci, un accident al capetelor: ea exprimă faptul că mărimea $f'-\frac{f^{2}}{2}$ este o \emph{integrală primă} a ecuației --- se conservă de-a lungul întregii soluții.
+
+\emph{Observație 2 (soluțiile există).} Enunțul nu este vid: funcția $f\equiv0$ îl verifică (cu $c=0$). Există însă și soluții neconstante: ecuația $f'=\frac{f^{2}}{2}+c$ cu $c=-\frac{k^{2}}{2}<0$ se integrează prin separarea variabilelor și are soluții de forma $f(x)=-k\,\tanh\!\left(\frac{k}{2}(x-x_{0})\right)$; alegând $k$ și $x_{0}$ astfel încât $f(0)=f(1)=0$ ar cere $x_{0}=0$ și $x_{0}=1$ simultan --- imposibil. Într-adevăr, se poate arăta că \emph{singura} soluție a problemei este $f\equiv0$: din $f'=\frac{f^{2}}{2}+c$ și $f(0)=f(1)=0$, teorema lui Rolle (2.69) dă un punct $\xi$ cu $f'(\xi)=0$, deci $c=-\frac{f(\xi)^{2}}{2}\le0$; dacă $c<0$, funcția $f$ ar trebui să atingă valorile $\pm\sqrt{-2c}$, iar monotonia strictă a lui $\tanh$ împiedică revenirea la $0$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.3}{}
+Calculați $\left\lfloor\displaystyle\sum_{k=1}^{10^6}\frac1{\sqrt k}\right\rfloor$.
+\sol Funcția $t\mapsto\frac1{\sqrt t}$ este descrescătoare, deci comparăm suma cu integrala (Teorema 3.2):
+\[ \frac1{\sqrt k}\ \ge\ \int_k^{k+1}\frac{dt}{\sqrt t}\ \ (k\ge1),\qquad \frac1{\sqrt k}\ \le\ \int_{k-1}^{k}\frac{dt}{\sqrt t}\ \ (k\ge2). \]
+Sumând, cu $S_n=\sum_{k=1}^n\frac1{\sqrt k}$ și $n=10^6$:
+\[ S_n\ \ge\ \int_1^{n+1}\frac{dt}{\sqrt t}=2\sqrt{n+1}-2,\qquad\quad S_n\ \le\ 1+\int_1^{n}\frac{dt}{\sqrt t}=2\sqrt n-1 . \]
+Numeric: $2\sqrt{10^6+1}-2>2\cdot1000-2=1998$ (minorantul e chiar $>1998{,}0009$), iar $2\sqrt{10^6}-1=1999$. Deci $S_{10^6}\in(1998,1999)$ și
+\[ \left\lfloor S_{10^6}\right\rfloor=1998 . \]
+\emph{Observație.} Valoarea reală este $S_{10^6}\approx1998{,}54$: încadrarea prin integrale localizează o sumă cu un milion de termeni cu eroare sub $1$ --- exact cât trebuie pentru partea întreagă.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.4}{}
+Notăm $H_{n}=1+\dfrac12+\dfrac13+\cdots+\dfrac1n$. Arătați că șirul
+\[ x_{n}=H_{n^{2}}-2H_{n} \]
+este convergent și calculați limita sa.
+\sol Răspuns: $\displaystyle\lim_{n\to\infty}x_{n}=-\gamma$, unde $\gamma$ este constanta lui Euler.
+
+Instrumentul este dezvoltarea sumelor armonice dată de rafinarea la constanta aditivă (Teorema 3.6): pentru $f(x)=\dfrac1x$ --- continuă, descrescătoare, cu $f(n)\to0$ --- șirul $H_{n}-\displaystyle\int_{1}^{n}\frac{dx}{x}$ este descrescător și mărginit inferior, deci convergent către o constantă $\gamma$ (constanta lui Euler --- Teorema 2.44), adică
+\[ H_{n}=\ln n+\gamma+\varepsilon_{n},\qquad \varepsilon_{n}\to0 . \tag{1} \]
+
+Aplicăm (1) de două ori --- o dată pentru indicele $n^{2}$, o dată pentru $n$:
+\[ x_{n}=H_{n^{2}}-2H_{n}=\bigl(\ln n^{2}+\gamma+\varepsilon_{n^{2}}\bigr)-2\bigl(\ln n+\gamma+\varepsilon_{n}\bigr) . \]
+Partea logaritmică se anihilează exact: $\ln n^{2}=2\ln n$. Rămâne
+\[ x_{n}=-\gamma+\varepsilon_{n^{2}}-2\varepsilon_{n}\ \xrightarrow[n\to\infty]{}\ -\gamma\approx-0{,}5772 . \]
+\emph{Observație 1 (de ce funcționează).} Combinația $H_{n^{2}}-2H_{n}$ este construită special ca partea principală ($\ln$) să dispară: coeficienții $1$ și $-2$ sunt exact cei care anulează $\ln n^{2}-2\ln n$. Ceea ce supraviețuiește este \emph{constanta} --- termenul de ordinul al doilea din dezvoltare, invizibil pentru orice raționament care reține doar $H_{n}\sim\ln n$. Într-adevăr, echivalența $H_{n}\sim\ln n$ singură nu poate decide limita: ea este compatibilă cu orice valoare a constantei.
+
+\emph{Observație 2 (generalizare imediată).} Același calcul dă, pentru orice întreg $p\ge2$,
+\[ \lim_{n\to\infty}\bigl(H_{n^{p}}-p\,H_{n}\bigr)=(1-p)\,\gamma , \]
+iar pentru combinația $H_{2n}-H_{n}$ (unde logaritmii nu se anulează complet) limita este $\ln 2$.
+
+\emph{Observație 3 (verificare numerică).} Pentru $n=600$: $x_{n}\approx-0{,}5789$, față de $-\gamma=-0{,}5772$ --- convergența are viteza lui $\varepsilon_{n}\approx\frac{1}{2n}$, deci eroarea dominantă este $-2\varepsilon_{n}\approx-\frac1n$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.5}{}
+Calculați $\displaystyle\lim_{n\to\infty}\ n\sum_{k=n+1}^{\infty}\frac1{k^2}$.
+\sol Seria $\sum\frac1{k^2}$ converge (de pildă prin comparare cu $\frac1{k(k-1)}$, telescopică), deci coada $T_n=\sum_{k>n}\frac1{k^2}$ are sens. Estimăm coada prin integrale (cozile seriilor, Teorema 3.7):
+\[ \int_k^{k+1}\frac{dt}{t^2}\ \le\ \frac1{k^2}\ \le\ \int_{k-1}^{k}\frac{dt}{t^2}\qquad(k\ge n+1), \]
+și, sumând pentru $k\ge n+1$:
+\[ \frac1{n+1}=\int_{n+1}^\infty\frac{dt}{t^2}\ \le\ T_n\ \le\ \int_n^\infty\frac{dt}{t^2}=\frac1n . \]
+Deci $\dfrac{n}{n+1}\le n\,T_n\le1$ și, prin cleștele (2.35), $\lim n\,T_n=1$.\\[2pt]
+\emph{Observație.} Identic: $n^{\alpha-1}\sum_{k>n}k^{-\alpha}\to\dfrac1{\alpha-1}$ pentru orice $\alpha>1$ --- viteza cu care „moare'' coada măsoară exact exponentul.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.6}{}
+Calculați
+\[ \lim_{x\to0}\frac{e^{x^2/2}\cos x-1}{x^4} . \]
+\sol Folosim dezvoltările Taylor--Young (Teorema 2.84) până la ordinul $4$. Reamintim notația: scrierea $g(x)=o(x^{4})$ (pentru $x\to0$) înseamnă că $g(x)=\varepsilon(x)\,x^{4}$ cu $\varepsilon(x)\to0$ când $x\to0$ --- adică $g$ este \emph{neglijabilă} față de $x^{4}$. Avem:
+\[ \cos x=1-\frac{x^2}{2}+\frac{x^4}{24}+o(x^4),\qquad e^{t}=1+t+\frac{t^2}{2}+o(t^2)\ \ \text{cu }t=\frac{x^2}{2}, \]
+deci $e^{x^2/2}=1+\dfrac{x^2}{2}+\dfrac{x^4}{8}+o(x^4)$. Înmulțind și reținând termenii până la $x^4$: termenii în $x^2$ se reduc $\left(\frac12-\frac12=0\right)$, iar coeficientul lui $x^4$ este
+\[ 1\cdot\frac1{24}+\frac12\cdot\left(-\frac12\right)+\frac18\cdot1=\frac{1-6+3}{24}=-\frac1{12} . \]
+Așadar $e^{x^2/2}\cos x=1-\dfrac{x^4}{12}+o(x^4)$ și limita cerută este $-\dfrac1{12}$.\\[2pt]
+\emph{Observație.} Verificare de bun-simț: pentru $x=0{,}01$ expresia valorează $\approx-0{,}08334$, în acord cu $-1/12=-0{,}08\overline{3}$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.7}{}
+Arătați că șirul $s_n=\displaystyle\sum_{k=1}^{n}\sin\frac1k-\ln n$ este convergent.
+\sol Descompunem:
+\[ s_n=\underbrace{\left(\sum_{k=1}^n\frac1k-\ln n\right)}_{\gamma_n}\ -\ \underbrace{\sum_{k=1}^n\left(\frac1k-\sin\frac1k\right)}_{d_n} . \]
+$(\gamma_n)$ converge --- este exact rafinarea la constanta aditivă (Teorema 3.6), aplicată lui $f(x)=\frac1x$.
+
+Pentru $(d_n)$: termenii sunt nenegativi și, prin inegalitatea $0\le t-\sin t\le\frac{t^3}6$ (demonstrată la Problema OLM.12 a secțiunii „Clasa a XI-a''),
+\[ 0\ \le\ \frac1k-\sin\frac1k\ \le\ \frac1{6k^3} . \]
+Sumele parțiale $d_n$ sunt deci crescătoare și mărginite:
+\[ d_n\ \le\ \frac16\sum_{k\ge1}\frac1{k^3}\ \le\ \frac16\left(1+\sum_{k\ge2}\frac1{k(k-1)}\right)=\frac16(1+1)=\frac13 \]
+(a doua sumă este telescopică). Prin Weierstrass (2.11), $(d_n)$ converge; diferența a două șiruri convergente este convergentă.\\[2pt]
+\emph{Observație.} Așadar $\sum\sin\frac1k$ diverge „la fel de încet'' ca seria armonică: diferă de $\ln n$ printr-o constantă plus un termen $o(1)$ --- adică un termen care tinde la $0$.
+\vspace{1mm}\hrule
+
+\nivel{ojm}{Nivelul OJM}{Faza județeană --- combină două rezultate.}
+\prob{ojm}{OJM.1}{}
+Determinați numerele reale $x>0$ pentru care seria
+\[ \sum_{n\ge1}\frac{n!\ x^{\,n}}{n^{\,n}} \]
+este convergentă.
+\sol Răspuns: seria converge pentru $x<e$ și diverge pentru $x\ge e$.
+
+Fie $a_{n}=\dfrac{n!\,x^{n}}{n^{n}}>0$. Cheia este asimptotica lui $\ln n!$ (Stirling slab, Teorema 3.8):
+\[ \ln n!=n\ln n-n+O(\ln n) , \]
+unde $O(\ln n)$ desemnează un termen mărginit în modul de $C\ln n$, cu $C$ o constantă. Atunci
+\[ \ln a_{n}=\ln n!+n\ln x-n\ln n=n\bigl(\ln x-1\bigr)+O(\ln n) . \tag{1} \]
+Totul depinde, așadar, de semnul lui $\ln x-1$, adică de poziția lui $x$ față de $e$.
+
+\emph{Cazul $x<e$.} Fie $\varepsilon=\dfrac{1-\ln x}{2}>0$. Cum $\dfrac{\ln n}{n}\to0$ (Corolarul 2.38), termenul $O(\ln n)$ din (1) este $\le\varepsilon n$ pentru $n$ suficient de mare, deci
+\[ \ln a_{n}\ \le\ n(\ln x-1)+\varepsilon n=-\varepsilon n \Longrightarrow a_{n}\ \le\ \bigl(e^{-\varepsilon}\bigr)^{n} , \]
+cu $e^{-\varepsilon}<1$. Seria este majorată de o serie geometrică subunitară, deci converge (comparare).
+
+\emph{Cazul $x>e$.} Simetric, cu $\varepsilon=\dfrac{\ln x-1}{2}>0$: pentru $n$ mare, $\ln a_{n}\ge\varepsilon n\to\infty$, deci $a_{n}\to\infty$. Termenul general nu tinde la $0$, iar seria diverge (condiția necesară de convergență).
+
+\emph{Cazul de frontieră $x=e$.} Aici (1) spune doar $\ln a_{n}=O(\ln n)$ --- Stirlingul \emph{slab} nu poate decide. Este nevoie de forma completă a formulei lui Stirling (rezultat clasic), $n!\sim\sqrt{2\pi n}\,\bigl(\frac ne\bigr)^{n}$, care dă
+\[ a_{n}=\frac{n!\ e^{n}}{n^{n}}\ \sim\ \sqrt{2\pi n}\ \longrightarrow\ \infty : \]
+termenul general explodează, seria diverge. În concluzie, mulțimea de convergență este $(0,e)$.\\[2pt]
+\emph{Observație 1 (pe scurt, cu raportul).} Alternativ,
+\[ \frac{a_{n+1}}{a_{n}}=x\cdot\frac{n^{n}}{(n+1)^{n}}=\frac{x}{\left(1+\frac1n\right)^{n}}\ \longrightarrow\ \frac{x}{e} , \]
+și criteriul raportului pentru serii decide cazurile $x\neq e$. Dar la $x=e$ raportul tinde la $1$ și criteriul tace --- exact ca Stirlingul slab. Frontiera cere, în ambele abordări, informația mai fină.
+
+\emph{Observație 2 (morala).} „Slab'' și „complet'' nu sunt sinonime cu „inutil'' și „necesar'': versiunea slabă, care se demonstrează în trei rânduri prin comparare cu integrala, rezolvă întreaga semidreaptă $(0,\infty)$ cu excepția unui singur punct. Prețul preciziei suplimentare --- factorul $\sqrt{2\pi n}$ --- se plătește doar la frontieră.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.2}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție de două ori derivabilă, cu derivata a doua continuă, care satisface
+\[ f''(x)=e^{\,x}f(x)\quad\text{pentru orice }x\in[0,1],\qquad f(0)=f(1)=0 . \]
+Arătați că $f$ este identic nulă.
+\sol Ideea: înmulțim ecuația cu $f$ și integrăm pe $[0,1]$. Integrarea prin părți transformă termenul $\int f f''$ într-unul de semn \emph{opus} celui din dreapta --- iar două cantități de semne opuse care sunt egale nu pot fi decât nule.
+
+\emph{Pasul 1: înmulțirea cu $f$ și integrarea.} Din $f''=e^{x}f$ obținem $f(x)f''(x)=e^{x}f(x)^{2}$, deci
+\[ \int_{0}^{1}f(x)f''(x)\,dx=\int_{0}^{1}e^{\,x}f(x)^{2}\,dx . \tag{1} \]
+Ambele integrale există: toate funcțiile de sub integrale sunt continue.
+
+\emph{Pasul 2: integrarea prin părți în membrul stâng.} Aplicăm formula de integrare prin părți pentru integrale definite (Teorema 4.22), cu $u=f$ și $dv=f''\,dx$ (deci $v=f'$):
+\[ \begin{aligned} \int_{0}^{1}f\,f''\,dx&=\Bigl[\,f(x)f'(x)\,\Bigr]_{0}^{1}-\int_{0}^{1}f'(x)\cdot f'(x)\,dx\\ &=\underbrace{f(1)f'(1)-f(0)f'(0)}_{=\,0}-\int_{0}^{1}f'(x)^{2}\,dx . \end{aligned} \]
+Termenul de graniță se anulează \emph{exact} datorită condițiilor $f(0)=f(1)=0$. Așadar
+\[ \int_{0}^{1}f\,f''\,dx=-\int_{0}^{1}f'(x)^{2}\,dx . \]
+
+\emph{Pasul 3: confruntarea semnelor.} Înlocuind în (1):
+\[ -\int_{0}^{1}f'(x)^{2}\,dx=\int_{0}^{1}e^{\,x}f(x)^{2}\,dx . \]
+Membrul stâng este $\le0$ (integrala unei funcții nenegative, luată cu semn minus), iar membrul drept este $\ge0$ (integrandul $e^{x}f(x)^{2}$ este nenegativ). Fiind egale, ambele sunt \emph{nule}:
+\[ \int_{0}^{1}f'(x)^{2}\,dx=0 . \]
+
+\emph{Pasul 4: concluzia.} Funcția $f'^{2}$ este continuă, nenegativă, cu integrala nulă pe $[0,1]$; prin urmare $f'\equiv0$ (Teorema 4.20: o funcție continuă și nenegativă cu integrala nulă este identic nulă). Deci $f$ este constantă (Corolarul 2.72), iar din $f(0)=0$ rezultă
+\[ f\equiv0 . \]
+\emph{Observație 1 (ce a făcut semnul lui $e^{x}$).} Singura proprietate folosită a coeficientului este $e^{x}>0$. Demonstrația funcționează identic pentru orice ecuație $f''=g(x)f$ cu $g$ continuă și \emph{nenegativă}: o astfel de ecuație nu are soluții netriviale care se anulează în ambele capete. Interpretare: coeficientul pozitiv „împinge'' graficul departe de axă (convexitate acolo unde $f>0$, concavitate acolo unde $f<0$), deci $f$ nu se poate întoarce la zero.
+
+\emph{Observație 2 (contrastul cu semnul negativ).} Dacă $g<0$, concluzia cade spectaculos: ecuația $f''=-\pi^{2}f$ are soluția $f(x)=\sin(\pi x)$, care se anulează în ambele capete fără a fi nulă. Semnul lui $g$ este, deci, esențial --- nu un detaliu tehnic.
+
+\emph{Observație 3 (verificare independentă).} Se poate raționa și prin unicitate: soluția cu $f(0)=0$, $f'(0)=s$ depinde \emph{liniar} de $s$, deci $f(1)=s\cdot\varphi(1)$, unde $\varphi$ este soluția cu $s=1$. Numeric, $\varphi(1)\approx1{,}3064\neq0$, deci $f(1)=0$ forțează $s=0$, adică $f\equiv0$ --- în acord cu cele de mai sus.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.3}{}
+Determinați toate funcțiile derivabile $f:\mathbb{R}\to\mathbb{R}$ cu $f(0)=1$ și
+\[ f'(x)\cdot f(-x)=1\qquad\text{pentru orice }x\in\mathbb{R} . \]
+\sol Răspuns: unica soluție este $f(x)=e^{\,x}$.
+
+Ecuația leagă valorile lui $f$ în puncte \emph{simetrice}, deci nu este o ecuație diferențială obișnuită: nu putem separa variabilele. Strategia este cea standard pentru ecuațiile diferențiale --- \emph{integrăm relația} pe un interval --- iar cheia va fi să \emph{recunoaștem o primitivă} sub semnul integralei.
+
+\emph{Pasul 0: ipoteza, folosită de două ori.} Relația din enunț, scrisă în punctul $x$, dă $f'(x)f(-x)=1$; scrisă în punctul $-x$, dă
+\[ f'(-x)\,f(x)=1 . \]
+Avem deci \emph{două} relații, valabile simultan pentru orice $x$.
+
+\emph{Pasul 1: integrăm diferența lor.} Scăzându-le, obținem o funcție identic nulă:
+\[ f'(x)f(-x)-f(x)f'(-x)=1-1=0\qquad\text{pentru orice }x\in\mathbb{R} . \]
+Integrăm această identitate pe $[0,x]$ (toate funcțiile sunt continue, $f$ fiind derivabilă):
+\[ \int_{0}^{x}\Bigl(f'(t)f(-t)-f(t)f'(-t)\Bigr)dt=\int_{0}^{x}0\,dt=0 . \tag{1} \]
+
+\emph{Pasul 2: ghicim primitiva.} Cum se calculează integrala din stânga? Nu prin părți, ci \emph{recunoscând} integrandul. Derivăm funcția $t\mapsto f(t)f(-t)$, atenți la regula lanțului ($x\mapsto f(-x)$ are derivata $-f'(-x)$):
+\[ \frac{d}{dt}\Bigl(f(t)\,f(-t)\Bigr)=f'(t)f(-t)+f(t)\cdot\bigl(-f'(-t)\bigr)=f'(t)f(-t)-f(t)f'(-t) . \]
+Este \emph{exact} integrandul din (1). Am găsit deci primitiva, iar prin formula Leibniz--Newton (Teorema 4.21):
+\[ \int_{0}^{x}\Bigl(f'(t)f(-t)-f(t)f'(-t)\Bigr)dt=\Bigl[\,f(t)\,f(-t)\,\Bigr]_{0}^{x}=f(x)f(-x)-f(0)^{2} . \]
+Comparând cu (1) și folosind $f(0)=1$:
+\[ f(x)\,f(-x)=1\qquad\text{pentru orice }x\in\mathbb{R} . \tag{$\star$} \]
+În particular $f$ nu se anulează nicăieri, iar $f(-x)=\dfrac{1}{f(x)}$.
+
+\emph{Pasul 3: ecuația se decuplează.} Înlocuind ($\star$) în relația din enunț, dependența de $-x$ dispare:
+\[ f'(x)\cdot\frac{1}{f(x)}=1 \Longrightarrow \frac{f'(x)}{f(x)}=1 . \]
+Cum $f$ este continuă și nu se anulează, ea păstrează semn constant (proprietatea valorilor intermediare, Teorema 2.53); din $f(0)=1>0$ rezultă $f>0$ pe $\mathbb{R}$.
+
+\emph{Pasul 4: integrăm din nou, ghicind din nou primitiva.} Integrăm relația $\dfrac{f'}{f}=1$ pe $[0,x]$:
+\[ \int_{0}^{x}\frac{f'(t)}{f(t)}\,dt=\int_{0}^{x}1\,dt=x . \]
+Integrandul din stânga este iarăși o derivată recunoscută --- de data aceasta a logaritmului compus:
+\[ \frac{d}{dt}\Bigl(\ln f(t)\Bigr)=\frac{f'(t)}{f(t)}\qquad(\text{legitim, căci }f>0) , \]
+deci, prin Leibniz--Newton (4.21),
+\[ \Bigl[\,\ln f(t)\,\Bigr]_{0}^{x}=x \Longrightarrow \ln f(x)-\underbrace{\ln f(0)}_{=\,\ln 1\,=\,0}=x \Longrightarrow \ln f(x)=x . \]
+Prin urmare
+\[ f(x)=e^{\,x} . \]
+
+\emph{Verificare.} $f'(x)f(-x)=e^{\,x}\cdot e^{-x}=1$ pentru orice $x$, iar $f(0)=1$. \checkmark\\[2pt]
+\emph{Observație 1 (metoda, pe scurt).} De două ori aceeași mișcare: se integrează relația și se \emph{ghicește primitiva} integrandului. Prima dată primitiva a fost $f(x)f(-x)$ --- o \emph{integrală primă}, adică o combinație a valorilor lui $f$ care se conservă; a doua oară, $\ln f$. Odată descoperită integrala primă, ecuația funcțional-diferențială (care leagă $x$ de $-x$) se \emph{decuplează} într-una diferențială obișnuită.
+
+\emph{Observație 2 (aceeași idee, altundeva).} Exact aceeași strategie rezolvă Problema OLM.2 din această secțiune ($f''=f\,f'$): acolo integrala primă a fost $f'-\frac{f^{2}}{2}$, iar primitiva ghicită sub integrală, $\frac{f^{2}}{2}$. Recunoașterea unei derivate ascunse sub semnul integralei este \emph{motorul} întregii secțiuni.
+
+\emph{Observație 3 (rolul lui $f(0)=1$).} Condiția inițială nu este decorativă. Fără ea, Pasul 2 dă doar $f(x)f(-x)=f(0)^{2}=:m$, cu $m>0$ deoarece $f'(0)f(0)=1$ impune $f(0)\neq0$; Pasul 3 devine $\dfrac{f'}{f}=\dfrac{1}{m}$, iar $f$ are semnul constant al lui $f(0)=\pm\sqrt m$. Integrând la fel (pentru $f<0$ se lucrează cu $\ln(-f)$), se obțin două familii,
+\[ f(x)=\sqrt{m}\;e^{\,x/m}\qquad\text{și}\qquad f(x)=-\sqrt{m}\;e^{\,x/m},\qquad m>0 , \]
+care se verifică imediat: $f'(x)f(-x)=\frac{\pm\sqrt m}{m}e^{x/m}\cdot\bigl(\pm\sqrt m\bigr)e^{-x/m}=1$. Condiția $f(0)=1$ (adică semnul plus și $m=1$) selectează exact exponențiala standard.
+
+\emph{Observație (ecuația liniară).} Ecuația finală $\frac{f'}{f}=1$, adică $f'=f$, este cazul $a=1$, $b=0$ al ecuației liniare $y'=ay+b$, rezolvată complet în Teorema 2.87 prin funcția auxiliară $e^{-ax}y$ --- aceeași idee de integrală primă, doar că acolo primitiva se ghicește o singură dată.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.4}{}
+Fie $x_{1}\in(0,1)$ și
+\[ x_{n+1}=x_{n}-x_{n}^{3}\ ,\qquad n\ge1 . \]
+\begin{parti}
+  \item Calculați $\displaystyle\lim_{n\to\infty}\bigl(x_{1}^{3}+x_{2}^{3}+\cdots+x_{n}^{3}\bigr)$.
+  \item Calculați $\displaystyle\lim_{n\to\infty}n\,x_{n}^{2}$.
+  \item Calculați $\displaystyle\lim_{n\to\infty}\frac{x_{1}^{2}+x_{2}^{2}+\cdots+x_{n}^{2}}{\ln n}$.
+\end{parti}
+\sol Răspunsuri: (a) $x_{1}$;\qquad (b) $\dfrac12$;\qquad (c) $\dfrac12$.
+
+\emph{Pasul 0: șirul scade la $0$.} Scriem recurența factorizat, $x_{n+1}=x_{n}\bigl(1-x_{n}^{2}\bigr)$. Prin inducție, $x_{n}\in(0,1)$: dacă $x_{n}\in(0,1)$, atunci $1-x_{n}^{2}\in(0,1)$, deci $x_{n+1}$ este produsul a doi factori din $(0,1)$, deci $x_{n+1}\in(0,x_{n})$. Șirul este strict descrescător și mărginit inferior, deci convergent (Teorema 2.11); limita $\ell$ verifică $\ell=\ell-\ell^{3}$, deci $\ell=0$:
+\[ x_{n}\ \searrow\ 0 . \]
+
+(a) \emph{Suma cuburilor telescopează --- chiar recurența o spune.} Rescriem ecuația ca
+\[ x_{k}^{3}=x_{k}-x_{k+1} . \]
+Cubul termenului \emph{este} pasul făcut de șir. Prin urmare
+\[ \sum_{k=1}^{n}x_{k}^{3}=\sum_{k=1}^{n}\bigl(x_{k}-x_{k+1}\bigr)=x_{1}-x_{n+1}\ \xrightarrow[n\to\infty]{}\ x_{1} , \]
+căci $x_{n+1}\to0$. Suma \emph{întregii} serii a cuburilor este, deci, exact valoarea de pornire:
+\[ \sum_{k\ge1}x_{k}^{3}=x_{1} . \]
+
+(b) \emph{Ce mărime crește liniar?} Pașii $x_{n+1}-x_{n}=-x_{n}^{3}$ sunt mici, deci recurența imită ecuația diferențială $\frac{dx}{dn}=-x^{3}$, care se integrează prin separarea variabilelor: $\frac{1}{2x^{2}}=n+\text{const}$. Aceasta \emph{sugerează} că mărimea de urmărit este $\dfrac{1}{x_{n}^{2}}$ și că ea crește liniar, cu pasul $2$. Verificăm \emph{exact}:
+\[ \frac{1}{x_{n+1}^{2}}-\frac{1}{x_{n}^{2}}=\frac{1}{x_{n}^{2}\bigl(1-x_{n}^{2}\bigr)^{2}}-\frac{1}{x_{n}^{2}}=\frac{1-\bigl(1-x_{n}^{2}\bigr)^{2}}{x_{n}^{2}\bigl(1-x_{n}^{2}\bigr)^{2}} . \]
+Numărătorul se factorizează ca diferență de pătrate: $1-\bigl(1-x_{n}^{2}\bigr)^{2}=x_{n}^{2}\bigl(2-x_{n}^{2}\bigr)$. Simplificând prin $x_{n}^{2}\neq0$:
+\[ \frac{1}{x_{n+1}^{2}}-\frac{1}{x_{n}^{2}}=\frac{2-x_{n}^{2}}{\bigl(1-x_{n}^{2}\bigr)^{2}}\ \xrightarrow[n\to\infty]{}\ \frac{2-0}{(1-0)^{2}}=2 . \]
+Aplicăm Cesàro--Stolz în cazul $\frac{\cdot}{\infty}$ (Teorema 2.39) șirurilor $a_{n}=\dfrac{1}{x_{n}^{2}}$ și $b_{n}=n$ (strict crescător, nemărginit): raportul incrementelor tinde la $2$, deci $\dfrac{a_{n}}{n}\to2$, adică
+\[ \frac{1}{n\,x_{n}^{2}}\to2 \Longrightarrow \lim_{n\to\infty}n\,x_{n}^{2}=\frac12 . \]
+
+(c) \emph{Suma pătratelor.} Din (b), $x_{n}^{2}$ se comportă ca $\frac{1}{2n}$, deci suma pătratelor ar trebui să crească logaritmic. Aplicăm din nou Cesàro--Stolz (2.39), acum cu
+\[ a_{n}=\sum_{k=1}^{n}x_{k}^{2},\qquad b_{n}=\ln n \]
+($b_{n}$ este strict crescător și nemărginit). Raportul incrementelor este
+\[ \begin{aligned} \frac{a_{n+1}-a_{n}}{b_{n+1}-b_{n}}&=\frac{x_{n+1}^{2}}{\ln(n+1)-\ln n}=\frac{x_{n+1}^{2}}{\ln\!\left(1+\frac1n\right)}\\ &=\underbrace{\Bigl((n+1)\,x_{n+1}^{2}\Bigr)}_{\to\ \frac12}\cdot\underbrace{\frac{1}{(n+1)\,\ln\!\left(1+\frac1n\right)}}_{\to\ 1} . \end{aligned} \]
+Al doilea factor tinde la $1$ deoarece $n\ln\!\left(1+\frac1n\right)\to1$ (limita fundamentală $\frac{\ln(1+t)}{t}\to1$ pentru $t=\frac1n\to0$), iar $\frac{n+1}{n}\to1$. Așadar raportul incrementelor tinde la $\frac12$, deci
+\[ \lim_{n\to\infty}\frac{x_{1}^{2}+\cdots+x_{n}^{2}}{\ln n}=\frac12 . \]
+\emph{Observație 1 (exponentul critic).} Cele trei puncte spun, împreună, unde se rupe convergența seriei $\sum x_{k}^{\,p}$. Cubul este \emph{exact} pasul șirului, deci $\sum x_{k}^{3}$ converge --- și converge la $x_{1}$, o valoare închisă. Pătratul este prea mare: $\sum x_{k}^{2}$ \emph{diverge}, dar doar logaritmic, cu $\frac12\ln n$. Exponentul $p=2$ este pragul: $\sum x_{k}^{\,p}$ converge pentru $p>2$ și diverge pentru $p\le2$, fiindcă $x_{k}^{\,p}$ se comportă ca $(2k)^{-p/2}$.
+
+\emph{Observație 2 (unde a fost folosită ecuația diferențială).} Nicăieri în demonstrație --- doar în \emph{ghicit}. Ea a indicat mărimea $1/x_{n}^{2}$; incrementul acesteia s-a calculat însă \emph{exact}, printr-o factorizare, iar Cesàro--Stolz a făcut restul. Ecuația diferențială ghicește; algebra demonstrează.
+
+\emph{Observație 3 (verificare numerică).} Pentru $x_{1}=0{,}9$, suma cuburilor primilor $300\,000$ de termeni este $0{,}898709$, iar restul care lipsește este exact $x_{300\,001}\approx0{,}00129$ --- în acord cu (a). Punctul (c) converge \emph{foarte} lent (eroarea este de ordinul $\frac{1}{\ln n}$): la $n=300\,000$ raportul este abia $0{,}451$.
+
+\emph{Observație 4 (generalizarea).} Pentru $x_{n+1}=x_{n}-x_{n}^{\,p}$, cu $p\ge2$ întreg și $x_{1}\in(0,1)$, aceleași trei idei dau
+\[ \sum_{j\ge1}x_{j}^{\,p}=x_{1},\qquad \lim n\,x_{n}^{\,p-1}=\frac{1}{p-1},\qquad \lim\frac{x_{1}^{\,p-1}+\cdots+x_{n}^{\,p-1}}{\ln n}=\frac{1}{p-1} . \]
+Cu cât $p$ este mai mare, cu atât frâna $-x^{p}$ este mai slabă lângă $0$, deci cu atât mai lent coboară șirul.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.5}{}
+Determinați toate funcțiile continue $f:(-1,1)\to\mathbb{R}$ cu proprietatea
+\[ f\bigl(x^{2}\bigr)=f(x)+x\qquad\text{pentru orice }x\in(-1,1) . \]
+\sol Răspuns: exact funcțiile
+\[ f(x)=c-\sum_{k\ge0}x^{2^{k}}=c-\Bigl(x+x^{2}+x^{4}+x^{8}+x^{16}+\cdots\Bigr),\qquad c\in\mathbb{R}\ \text{arbitrar}. \]
+
+\emph{Pasul 1: telescoparea.} Relația din enunț leagă $x$ de $x^{2}$; o aplicăm succesiv pentru $x,\ x^{2},\ x^{4},\dots$ Pentru $|x|<1$ toate aceste puteri rămân în $(-1,1)$, deci relația este valabilă la fiecare pas:
+\[ \begin{gathered} f\bigl(x^{2}\bigr)=f(x)+x,\qquad f\bigl(x^{4}\bigr)=f\bigl(x^{2}\bigr)+x^{2},\qquad \dots,\\ f\bigl(x^{2^{n}}\bigr)=f\bigl(x^{2^{n-1}}\bigr)+x^{2^{n-1}} . \end{gathered} \]
+Adunând cele $n$ egalități, termenii intermediari se reduc:
+\[ f\bigl(x^{2^{n}}\bigr)=f(x)+\sum_{k=0}^{n-1}x^{2^{k}} . \tag{1} \]
+
+\emph{Pasul 2: trecerea la limită.} Fie $|x|<1$ fixat. Atunci $\bigl|x^{2^{n}}\bigr|=|x|^{2^{n}}\to0$, deoarece exponenții $2^{n}$ tind la $\infty$, iar $|x|<1$. Prin continuitatea lui $f$ în punctul $0$,
+\[ f\bigl(x^{2^{n}}\bigr)\ \xrightarrow[n\to\infty]{}\ f(0)=:c . \]
+Pe de altă parte, seria din (1) converge absolut: $\sum_{k\ge0}\bigl|x^{2^{k}}\bigr|\le\sum_{m\ge1}|x|^{m}=\frac{|x|}{1-|x|}<\infty$, exponenții $2^{k}$ fiind numere naturale distincte. Trecând la limită în (1):
+\[ c=f(x)+\sum_{k\ge0}x^{2^{k}} \Longrightarrow f(x)=c-\sum_{k\ge0}x^{2^{k}} . \]
+
+\emph{Pasul 3: verificarea.} Funcția astfel obținută este continuă: seria converge \emph{uniform} pe orice compact $[-r,r]\subset(-1,1)$, fiind majorată de seria convergentă $\sum_{m\ge1}r^{m}$ (criteriul majorării al lui Weierstrass (Teorema 4.46)), iar limita uniformă a unor funcții continue este continuă (Teorema 4.47). Și verifică ecuația:
+\[ \begin{aligned} f\bigl(x^{2}\bigr)&=c-\sum_{k\ge0}\bigl(x^{2}\bigr)^{2^{k}}=c-\sum_{k\ge0}x^{2^{k+1}}=c-\sum_{k\ge1}x^{2^{k}}\\ &=\left(c-\sum_{k\ge0}x^{2^{k}}\right)+x=f(x)+x . \end{aligned} \]
+\emph{Observație 1 (de ce domeniul nu poate fi $\mathbb{R}$).} Ecuația este \emph{contradictorie} în punctul $1$: acolo $x^{2}=x$, deci relația ar da
+\[ f(1)=f(1)+1 \Longrightarrow 0=1 . \]
+Așadar niciun domeniu care conține $1$ nu este admisibil --- oricât de bună ar fi funcția. Punctele fixe ale aplicației $x\mapsto x^{2}$ sunt $0$ și $1$; în $0$ relația nu spune nimic (ea devine $f(0)=f(0)$), iar în $1$ spune ceva fals. Domeniul natural este exact bazinul de atracție al lui $0$, adică $(-1,1)$: numai acolo iterațiile $x^{2^{n}}$ converg la punctul fix „inofensiv''.
+
+\emph{Observație 2 (obstrucția este reală, nu formală).} Nu doar că ecuația nu poate fi impusă în $1$: soluția găsită nici nu se poate \emph{prelungi prin continuitate} până acolo. Într-adevăr, pentru $x\to1^{-}$,
+\[ \sum_{k\ge0}x^{2^{k}}\ \longrightarrow\ +\infty \]
+(fiecare sumă parțială tinde la numărul ei de termeni, deci suma depășește orice prag), deci $f(x)\to-\infty$. Numeric: pentru $x=0{,}999$ suma este deja $\approx9{,}63$.
+
+\emph{Observație 3 (cât de puțină continuitate am folosit).} Doar continuitatea în \emph{punctul} $0$! Pasul 2 este singurul loc unde ea intervine. Fără nicio ipoteză de regularitate, relația (1) rămâne valabilă, dar $f(x^{2^{n}})$ nu mai poate fi controlată, iar soluțiile se înmulțesc.
+
+\emph{Observație 4 (o serie celebră).} Seria $\sum_{k\ge0}z^{2^{k}}$ este una \emph{lacunară}: exponenții cresc geometric, lăsând goluri tot mai mari. Se poate arăta că funcția pe care o definește admite cercul unitate drept \emph{frontieră naturală} --- nu se poate prelungi analitic dincolo de el în niciun punct. Este o coincidență plăcută: aceeași barieră $|x|=1$ care blochează ecuația funcțională blochează și seria.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.6}{}
+Fie $x_1\in\mathbb{R}$ și
+\[ x_{n+1}=\frac{x_n^{2}+x_n}{x_n^{2}+1}\ ,\qquad n\ge1 . \]
+\begin{parti}
+  \item Arătați că, dacă $x_1>0$, atunci șirul este convergent și calculați limita sa.
+  \item Arătați că, dacă $x_1\in(-1,0)$, atunci șirul este convergent și calculați $\displaystyle\lim_{n\to\infty}n\,x_n$.
+\end{parti}
+\sol Fie $f(x)=\dfrac{x^{2}+x}{x^{2}+1}$. Totul se sprijină pe două identități, obținute prin calcul direct:
+\[ f(x)-x=\frac{x^{2}+x-x^{3}-x}{x^{2}+1}=\frac{x^{2}(1-x)}{x^{2}+1} , \tag{1} \]
+\[ f(x)-1=\frac{x^{2}+x-x^{2}-1}{x^{2}+1}=\frac{x-1}{x^{2}+1} . \tag{2} \]
+Din (1) se citesc \emph{punctele fixe}: $f(x)=x\iff x^{2}(1-x)=0\iff x\in\{0,1\}$. Orice limită finită a șirului, obținută prin trecere la limită în recurență (funcția $f$ fiind continuă), este deci $0$ sau $1$.
+
+(a) \emph{Fie $x_1>0$.} Identitatea (2) arată că semnul lui $x_n-1$ se \emph{păstrează}: $x_{n+1}-1$ are același semn cu $x_n-1$.
+
+$\bullet$ Dacă $x_1=1$, șirul este constant egal cu $1$.
+
+$\bullet$ Dacă $0<x_1<1$: prin (2), $x_n<1$ pentru orice $n$; prin (1), cum $x_n>0$ și $1-x_n>0$, avem $x_{n+1}>x_n$ (pozitivitatea se propagă: $x_{n+1}>x_n>0$). Șirul este strict crescător și majorat de $1$, deci convergent (Weierstrass, Teorema 2.11). Limita este un punct fix $\ge x_1>0$, deci nu poate fi $0$: rezultă $\lim x_n=1$.
+
+$\bullet$ Dacă $x_1>1$: prin (2), $x_n>1$ pentru orice $n$; prin (1), cum $1-x_n<0$, avem $x_{n+1}<x_n$. Șirul este strict descrescător și minorat de $1$, deci convergent, iar limita, fiind punct fix $\ge1$, este $1$.
+
+În toate cazurile, $\displaystyle\lim_{n\to\infty}x_n=1$.
+
+(b) \emph{Fie $x_1\in(-1,0)$.}
+
+\emph{Șirul rămâne în $(-1,0)$ și crește.} Dacă $x\in(-1,0)$, atunci $f(x)=\dfrac{x(x+1)}{x^{2}+1}<0$ (produs dintre un factor negativ și unul pozitiv). Pe de altă parte, pentru \emph{orice} $x$ real,
+\[ f(x)+1=\frac{x^{2}+x+x^{2}+1}{x^{2}+1}=\frac{2x^{2}+x+1}{x^{2}+1}\ >\ 0 , \]
+căci trinomul $2x^{2}+x+1$ are discriminantul $1-8<0$, deci este strict pozitiv. Așadar $f(x)\in(-1,0)$: intervalul este stabil. Iar din (1), pentru $x<0$ avem $f(x)-x=\frac{x^{2}(1-x)}{x^{2}+1}>0$, deci șirul este strict crescător.
+
+Fiind crescător și majorat de $0$, șirul converge (Teorema 2.11) către un punct fix din $(-1,0]$; singurul este $0$. Deci $x_n\nearrow0$, cu $x_n<0$ pentru orice $n$.
+
+\emph{Trucul asimptotic.} Scădem $x_n$ din recurență, adică folosim (1):
+\[ x_{n+1}-x_n=\frac{x_n^{2}\,(1-x_n)}{x_n^{2}+1}\ \approx\ x_n^{2}\qquad\text{(pentru }x_n\to0\text{)} . \]
+Privind $n$ ca pe o variabilă continuă, aceasta este ecuația diferențială $\dfrac{dx}{dn}=x^{2}$, cu soluțiile $-\dfrac1x=n+C$, adică $x\approx-\dfrac1n$. \emph{Ghicim} deci $n\,x_n\to-1$; rămâne de demonstrat riguros --- iar ghicitul ne spune \emph{ce} șir să privim: $\frac1{x_n}$.
+
+\emph{Demonstrația.} Calculăm exact incrementul lui $\frac1{x_n}$. Din recurență, $x_{n+1}=\dfrac{x_n(x_n+1)}{x_n^{2}+1}$, deci
+\[ \frac{1}{x_{n+1}}-\frac{1}{x_n}=\frac{x_n^{2}+1}{x_n(x_n+1)}-\frac1{x_n}=\frac{x_n^{2}+1-(x_n+1)}{x_n(x_n+1)}=\frac{x_n^{2}-x_n}{x_n(x_n+1)}=\frac{x_n-1}{x_n+1} . \]
+Am obținut identitatea \emph{exactă}
+\[ \frac{1}{x_{n+1}}-\frac{1}{x_n}=-\,\frac{1-x_n}{1+x_n}\ \xrightarrow[n\to\infty]{}\ -1 , \tag{3} \]
+deoarece $x_n\to0$. (Numitorul $1+x_n$ nu se anulează: $x_n\in(-1,0)$.)
+
+Cum $x_n\nearrow0$ cu $x_n<0$, șirul $a_n=\dfrac1{x_n}$ tinde la $-\infty$, iar $b_n=n$ este strict crescător și nemărginit. Aplicăm Cesàro--Stolz în cazul $\frac{\infty}{\infty}$ (Teorema 2.39):
+\[ \frac{a_{n+1}-a_n}{b_{n+1}-b_n}=\frac{1}{x_{n+1}}-\frac{1}{x_n}\ \overset{(3)}{\longrightarrow}\ -1 \Longrightarrow \frac{1}{n\,x_n}=\frac{a_n}{b_n}\ \longrightarrow\ -1 . \]
+Prin urmare
+\[ \lim_{n\to\infty}n\,x_n=-1 . \]
+\emph{Observație 1 (de ce doar la $0$ funcționează trucul).} Viteza de convergență către un punct fix $\ell$ este dictată de $f'(\ell)$. Aici, din (2), $f(x)-1=\frac{x-1}{x^{2}+1}$, deci $f'(1)=\frac12$: lângă $1$ convergența este \emph{geometrică}, $|x_{n+1}-1|\approx\frac12|x_n-1|$, și nicio putere a lui $n$ nu o poate măsura. Lângă $0$, în schimb, $f(x)=x+x^{2}+O(x^{3})$, deci $f'(0)=1$: punctul fix este \emph{tangent la identitate}, convergența devine lentă (de ordinul $\frac1n$), iar termenul următor, $x^{2}$, este exact cel care dictează scara. Trucul asimptotic se aplică numai în acest caz degenerat.
+
+\emph{Observație 2 (legătura cu ecuațiile diferențiale).} Ecuația $\frac{dx}{dn}=x^{2}$ este chiar cea din Problema OJM.14 a secțiunii „Clasa a XI-a'' ($f'=f^{2}$): soluțiile cu date inițiale \emph{pozitive} explodează în timp finit, iar cele cu date \emph{negative}, $x(t)=-\frac{1}{t+c}$, tind lent la $0$. Regăsim exact dihotomia șirului: pornind din $(-1,0)$ se ajunge la $0$ cu viteza $-\frac1n$, iar pornind din $(0,\infty)$ șirul \emph{fuge} de $0$ --- doar că, spre deosebire de cazul continuu, aici nu explodează, ci este captat de al doilea punct fix, $1$.
+
+\emph{Observație 3 (verificare numerică).} Pentru $x_1=-0{,}5$ și $n=200\,000$ se obține $n\,x_n\approx-0{,}99988$, în acord cu limita $-1$; convergența este lentă (eroarea este de ordinul $\frac{\ln n}{n}$).
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.7}{Clasică}
+Fie $x_1=1$ și $x_{n+1}=x_n+\dfrac{1}{x_n}$ pentru $n\ge1$.
+\begin{parti}
+  \item Arătați că $\displaystyle\lim_{n\to\infty}\frac{x_n}{\sqrt{2n}}=1$.
+  \item Arătați că $\displaystyle\lim_{n\to\infty}\frac{x_n^{2}-2n}{\ln n}=\frac12$.
+\end{parti}
+\sol Toți termenii sunt $\ge1$ și șirul crește (adunăm o cantitate pozitivă). Dacă ar fi mărginit, ar converge (Weierstrass, Teorema 2.11) către un $\ell\ge1$ care ar verifica $\ell=\ell+\frac1\ell$ --- absurd. Deci $x_n\to\infty$.
+
+\emph{Ideea centrală: ridicăm recurența la pătrat.} Punem $t_n=x_n^{2}$. Atunci
+\[ t_{n+1}=\left(x_n+\frac1{x_n}\right)^{\!2}=t_n+2+\frac{1}{t_n} . \tag{$\ast$} \]
+Recurența devine \emph{aproape} aritmetică, cu rația $2$ și o perturbație mică $\frac1{t_n}\to0$: aici e tot secretul.
+
+(a) Din $(\ast)$, $t_{n+1}\ge t_n+2$, deci prin sumare $t_n\ge t_1+2(n-1)=2n-1$. În particular $t_n\to\infty$ și $\frac{1}{t_n}\le\frac{1}{2n-1}$. Sumând acum $(\ast)$ de la $1$ la $n-1$:
+\[ 2(n-1)\ \le\ t_n-t_1\ =\ 2(n-1)+\sum_{k=1}^{n-1}\frac{1}{t_k}\ \le\ 2(n-1)+\sum_{k=1}^{n-1}\frac{1}{2k-1} . \]
+Ultima sumă este $O(\ln n)$ --- notație care înseamnă „mărginită de $C\ln n$, cu $C$ o constantă'' --- prin comparare cu integrala (Teorema 3.2). Deci
+\[ t_n=2n+O(\ln n)\Longrightarrow\frac{t_n}{2n}\to1\Longrightarrow\lim_{n\to\infty}\frac{x_n}{\sqrt{2n}}=1 . \]
+
+(b) Punctul (a) ne spune că $t_n-2n$ crește ca un $O(\ln n)$; determinăm acum \emph{exact} constanta. Fie
+\[ u_n=t_n-2n \qquad\text{și}\qquad b_n=\ln n . \]
+Din $(\ast)$, $u_{n+1}-u_n=\dfrac{1}{t_n}>0$, deci $(u_n)$ este crescător; iar $b_n$ este strict crescător și nemărginit. Sunt exact ipotezele pentru Cesàro--Stolz în cazul $\frac{\infty}{\infty}$ (Teorema 2.39) --- rămâne să calculăm raportul incrementelor:
+\[ \frac{u_{n+1}-u_n}{b_{n+1}-b_n}=\frac{\dfrac{1}{t_n}}{\ln(n+1)-\ln n}=\frac{1}{t_n\,\ln\!\left(1+\dfrac1n\right)}=\underbrace{\frac{n}{t_n}}_{\to\ \frac12}\cdot\underbrace{\frac{1}{n\ln\!\left(1+\frac1n\right)}}_{\to\ 1}\ \longrightarrow\ \frac12 , \]
+unde am folosit $\frac{t_n}{n}\to2$ (din (a)) și limita clasică $n\ln\!\left(1+\frac1n\right)\to1$. Prin Teorema 2.39,
+\[ \lim_{n\to\infty}\frac{x_n^{2}-2n}{\ln n}=\lim_{n\to\infty}\frac{u_n}{b_n}=\frac12 . \]
+\emph{Observație 1 (ce am obținut, de fapt).} Punând cap la cap:
+\[ x_n^{2}=2n+\frac12\ln n+o(\ln n) , \]
+unde $o(\ln n)$ desemnează un termen \emph{neglijabil} față de $\ln n$, adică de forma $\varepsilon_n\ln n$ cu $\varepsilon_n\to0$. Metoda --- \emph{pătratul recurenței, apoi Cesàro--Stolz pe rest} --- extrage dezvoltarea asimptotică \emph{termen cu termen}: (a) dă termenul principal $2n$, (b) îl dă pe următorul, $\frac12\ln n$. Procedeul se poate itera.
+
+\emph{Observație 2 (atenție la verificarea numerică).} De fapt $x_n^{2}=2n+\frac12\ln n+C+o(1)$ cu $C\approx1{,}73$ (aici $o(1)$ este un termen care tinde la $0$), deci
+\[ \frac{x_n^{2}-2n}{\ln n}\approx\frac12+\frac{C}{\ln n} , \]
+iar convergența este \emph{logaritmic} de lentă: la $n=10^{4}$ raportul este $\approx0{,}687$, la $n=10^{6}$ încă $\approx0{,}625$. Cine s-ar opri aici ar bănui, greșit, o limită în jur de $0{,}6$. Valorile se potrivesc însă perfect cu $\frac12+\frac{1{,}73}{\ln n}$ --- confirmând limita $\frac12$.
+
+\emph{Observație 3 (legătura cu ecuațiile diferențiale).} Recurența $(\ast)$ spune $t_{n+1}-t_n\approx2$, adică $\frac{dt}{dn}\approx2$, de unde $t\approx2n$: același „truc asimptotic'' ca la Problema OJM.6 din această secțiune, doar că aici perturbația $\frac{1}{t_n}$ este cea care produce corecția logaritmică, prin $\sum\frac{1}{2k}\approx\frac12\ln n$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.8}{}
+Fie $\alpha>0$ un număr real fixat și $S_{n}=1^{\alpha}+2^{\alpha}+\cdots+n^{\alpha}$. Arătați că
+\[ \lim_{n\to\infty}\ n\left(\frac{S_{n}}{n^{\alpha+1}}-\frac{1}{\alpha+1}\right)=\frac12 . \]
+\sol Termenul principal este cunoscut: $S_{n}\sim\dfrac{n^{\alpha+1}}{\alpha+1}$ (asimptotica sumelor de puteri, Teorema 3.5; notația $\sim$, „echivalent asimptotic'', este cea din Definiția 3.4). Problema cere \emph{termenul următor} al dezvoltării --- iar pentru asta încadrările brute nu mai ajung: este nevoie de formula de sumare a lui Euler.
+
+\emph{Pasul 1: formula lui Euler de ordinul întâi} (Teorema 3.3), pentru $f(x)=x^{\alpha}$, de clasă $C^{1}$ pe $[1,n]$:
+\[ S_{n}=\sum_{i=1}^{n}f(i)=\int_{1}^{n}x^{\alpha}\,dx+\frac{f(1)+f(n)}{2}+\int_{1}^{n}\Bigl(\{x\}-\tfrac12\Bigr)\,\alpha\,x^{\alpha-1}\,dx , \]
+unde $\{x\}$ este partea fracționară. Calculând integrala principală:
+\[ S_{n}=\frac{n^{\alpha+1}}{\alpha+1}+\frac{n^{\alpha}}{2}+\underbrace{\frac12-\frac{1}{\alpha+1}}_{=:C_{\alpha}}+\ \alpha\,R_{n},\qquad R_{n}=\int_{1}^{n}\Bigl(\{x\}-\tfrac12\Bigr)x^{\alpha-1}\,dx . \tag{1} \]
+
+\emph{Pasul 2: restul $R_{n}$ este mic.} Majorarea directă $\bigl|\{x\}-\frac12\bigr|\le\frac12$ dă doar $|R_{n}|\le\frac12\int_1^n x^{\alpha-1}dx=O(n^{\alpha})$ --- \emph{insuficient}, fiind de același ordin cu termenul pe care îl căutăm. Salvarea vine din faptul că funcția $\{x\}-\frac12$ \emph{oscilează cu medie nulă}, iar oscilațiile se compensează. Facem acest lucru precis printr-o integrare prin părți.
+
+Fie
+\[ P(t)=\int_{0}^{t}\Bigl(s-\tfrac12\Bigr)ds=\frac{t^{2}-t}{2},\qquad t\in[0,1] , \]
+și prelungim periodic: $Q(x)=P\bigl(\{x\}\bigr)$. Cum $P(0)=P(1)=0$, funcția $Q$ este \emph{continuă} pe $\mathbb{R}$, derivabilă în afara întregilor, cu $Q'(x)=\{x\}-\frac12$ acolo, și \emph{mărginită}: $|Q(x)|\le\max_{[0,1]}|P|=\frac18$. Integrarea prin părți (pe fiecare interval $[j,j+1]$ și sumând --- termenii de graniță se lipesc prin continuitatea lui $Q$) dă
+\[ R_{n}=\Bigl[\,Q(x)\,x^{\alpha-1}\Bigr]_{1}^{n}-(\alpha-1)\int_{1}^{n}Q(x)\,x^{\alpha-2}\,dx=-(\alpha-1)\int_{1}^{n}Q(x)\,x^{\alpha-2}\,dx , \]
+căci $Q(n)=Q(1)=P(0)=0$. Prin mărginirea lui $Q$:
+\[ |R_{n}|\ \le\ \frac{|\alpha-1|}{8}\int_{1}^{n}x^{\alpha-2}\,dx\ =\ \begin{cases}O\bigl(n^{\alpha-1}\bigr), & \alpha>1,\\[2pt] 0, & \alpha=1,\\[2pt] O(1), & 0<\alpha<1,\end{cases} \]
+în toate cazurile $R_{n}=o\bigl(n^{\alpha}\bigr)$ (termen neglijabil față de $n^{\alpha}$: de forma $\varepsilon_{n}n^{\alpha}$ cu $\varepsilon_{n}\to0$).
+
+\emph{Pasul 3: concluzia.} Din (1),
+\[ n\left(\frac{S_{n}}{n^{\alpha+1}}-\frac{1}{\alpha+1}\right)=\frac{S_{n}-\dfrac{n^{\alpha+1}}{\alpha+1}}{n^{\alpha}}=\frac{\dfrac{n^{\alpha}}{2}+C_{\alpha}+\alpha R_{n}}{n^{\alpha}}=\frac12+\frac{C_{\alpha}+\alpha R_{n}}{n^{\alpha}}\ \longrightarrow\ \frac12 , \]
+deoarece $C_{\alpha}$ este constantă, $R_{n}=o(n^{\alpha})$, iar $n^{\alpha}\to\infty$ (aici se folosește $\alpha>0$).\\[2pt]
+\emph{Observație 1 (ipoteza $\alpha>0$ este esențială).} Pentru $-1<\alpha<0$ afirmația este \emph{falsă}. Dezvoltarea (1) rămâne valabilă, dar acum $n^{\alpha}\to0$, iar constanta $C_{\alpha}+\alpha\lim R_{n}$ (limita restului există, integrala fiind absolut convergentă pentru $\alpha<1$) nu se mai stinge la împărțire --- dimpotrivă, termenul $\frac{\text{const}}{n^{\alpha}}$ \emph{explodează}. Numeric, pentru $\alpha=-\frac12$, expresia din enunț valorează $\approx-64{,}8$ la $n=2000$ și $\approx-206$ la $n=20\,000$: divergență, nu $\frac12$. (Constanta vinovată este, în limbaj modern, $\zeta(-\alpha)\neq0$.)
+
+\emph{Observație 2 (verificare numerică pentru $\alpha>0$).} Pentru $\alpha=2$, $n=20\,000$: expresia valorează $0{,}5000083$; pentru $\alpha=\frac12$: $0{,}4985$. Pentru $\alpha=2$ se poate verifica și exact: $S_{n}=\frac{n(n+1)(2n+1)}{6}$ dă $n\bigl(\frac{S_n}{n^3}-\frac13\bigr)=\frac12+\frac{1}{6n}$.
+
+\emph{Observație 3 (unde duce drumul).} Iterând integrarea prin părți cu primitive periodice succesive ale lui $\{x\}-\frac12$ se obțin termenii următori ai dezvoltării (formula Euler--Maclaurin de ordin superior); coeficienții care apar sunt numerele lui Bernoulli. Ordinul întâi, folosit aici, este exact echilibrul potrivit pentru a extrage constanta $\frac12$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.9}{}
+Arătați că \emph{nu există} nicio funcție $f:[0,1]\to\mathbb{R}$, de două ori derivabilă și cu derivata a doua continuă, care să satisfacă simultan
+\[ f''(x)+\pi^{2}f(x)=\sin(\pi x)\quad\text{pentru orice }x\in[0,1],\qquad f(0)=f(1)=0 . \]
+\sol Ideea: înmulțim ecuația cu $\sin(\pi x)$ și integrăm pe $[0,1]$. Prin \emph{două} integrări prin părți, membrul stâng se anulează identic --- indiferent care ar fi $f$ ---, în timp ce membrul drept este strict pozitiv. Contradicția arată că nicio $f$ nu poate exista.
+
+\emph{Pasul 1: proiectarea ecuației.} Notăm $s(x)=\sin(\pi x)$ și observăm cele două proprietăți esențiale:
+\[ s(0)=s(1)=0,\qquad s''(x)=-\pi^{2}\sin(\pi x)=-\pi^{2}s(x) . \]
+Presupunem, prin absurd, că o astfel de funcție $f$ există. Înmulțind ecuația cu $s(x)$ și integrând pe $[0,1]$:
+\[ \int_{0}^{1}f''(x)\,s(x)\,dx+\pi^{2}\int_{0}^{1}f(x)\,s(x)\,dx=\int_{0}^{1}\sin^{2}(\pi x)\,dx . \tag{1} \]
+
+\emph{Pasul 2: prima integrare prin părți.} Cu $u=s$, $dv=f''\,dx$ (Teorema 4.22):
+\[ \int_{0}^{1}f''\,s\,dx=\Bigl[\,f'(x)\,s(x)\,\Bigr]_{0}^{1}-\int_{0}^{1}f'(x)\,s'(x)\,dx=-\int_{0}^{1}f'\,s'\,dx , \]
+termenul de graniță anulându-se pentru că $s(0)=s(1)=0$ (aici nu am folosit nimic despre $f$).
+
+\emph{Pasul 3: a doua integrare prin părți.} Cu $u=s'$, $dv=f'\,dx$:
+\[ \int_{0}^{1}f'\,s'\,dx=\Bigl[\,f(x)\,s'(x)\,\Bigr]_{0}^{1}-\int_{0}^{1}f(x)\,s''(x)\,dx=-\int_{0}^{1}f\,s''\,dx , \]
+de data aceasta termenul de graniță anulându-se datorită condițiilor $f(0)=f(1)=0$. Combinând cei doi pași și folosind $s''=-\pi^{2}s$:
+\[ \int_{0}^{1}f''\,s\,dx=\int_{0}^{1}f\,s''\,dx=-\pi^{2}\int_{0}^{1}f\,s\,dx . \tag{2} \]
+(Această egalitate --- „operatorul derivatei a doua își poate muta locul'' --- este simetria care stă la baza întregului raționament.)
+
+\emph{Pasul 4: contradicția.} Înlocuind (2) în (1), membrul stâng devine
+\[ -\pi^{2}\int_{0}^{1}f\,s\,dx+\pi^{2}\int_{0}^{1}f\,s\,dx=0 , \]
+\emph{oricare} ar fi $f$. Membrul drept, în schimb, se calculează exact:
+\[ \int_{0}^{1}\sin^{2}(\pi x)\,dx=\int_{0}^{1}\frac{1-\cos(2\pi x)}{2}\,dx=\frac12-\left[\frac{\sin(2\pi x)}{4\pi}\right]_{0}^{1}=\frac12 . \]
+Am obținut $0=\dfrac12$ --- absurd. Prin urmare o astfel de funcție $f$ nu există.\\[2pt]
+\emph{Observație 1 (fenomenul se numește rezonanță).} Membrul drept $\sin(\pi x)$ este chiar o soluție a ecuației \emph{omogene} $y''+\pi^{2}y=0$ care satisface condițiile la capete. „A forța'' un sistem exact pe frecvența lui proprie face ca răspunsul să nu mai poată rămâne mărginit de condițiile impuse: nu există soluție. Este exact motivul fizic pentru care un pod poate fi distrus de un pas cadențat în rezonanță cu frecvența sa proprie.
+
+\emph{Observație 2 (condiția de existență).} Raționamentul de mai sus arată mai mult: pentru ecuația $f''+\pi^{2}f=g$ cu $f(0)=f(1)=0$, aceleași două integrări prin părți dau, \emph{necesar},
+\[ \int_{0}^{1}g(x)\sin(\pi x)\,dx=0 . \]
+Soluția există, deci, doar dacă termenul liber este \emph{ortogonal} pe $\sin(\pi x)$ --- de pildă pentru $g(x)=\sin(2\pi x)$, unde integrala este nulă, iar o soluție chiar există: $f(x)=-\dfrac{\sin(2\pi x)}{3\pi^{2}}$. Aceasta este, în miniatură, \emph{alternativa lui Fredholm}.
+
+\emph{Observație 3 (de ce $\pi^{2}$ și nu altceva).} Dacă se înlocuiește $\pi^{2}$ cu $\lambda\neq k^{2}\pi^{2}$, obstrucția dispare și soluția există și este unică. Numerele $\lambda_{k}=k^{2}\pi^{2}$ --- singurele pentru care ecuația omogenă are soluții nenule cu $f(0)=f(1)=0$ --- se numesc \emph{valori proprii} ale problemei.
+\vspace{1mm}\hrule
+
+\nivel{onm}{Nivelul ONM}{Faza națională --- mai mulți pași și o idee-cheie.}
+\prob{onm}{ONM.1}{Clasică}
+Pentru $n\ge1$, fie
+\[ x_n=\frac{1}{e^{\,n}}\sum_{i=0}^{n}\frac{n^{\,i}}{i!} \]
+(adică raportul dintre suma \emph{primilor $n+1$ termeni} din dezvoltarea în serie Taylor a lui $e^{\,n}$ și $e^{\,n}$ însuși). Arătați că șirul $(x_n)$ este convergent și calculați limita sa.
+\sol Răspuns: $\displaystyle\lim_{n\to\infty}x_n=\frac12$.
+
+Intuiția: seria lui $e^n$ are termenul maxim tocmai în jurul indicelui $i=n$, iar suma se rupe exact la vârf --- deci ne așteptăm ca „jumătate'' din masă să rămână. Transformăm această intuiție în demonstrație trecând de la sumă la integrală.
+
+\emph{Pasul 1: identitatea integrală.} Pentru orice $n\ge0$,
+\[ \int_n^{\infty}t^{\,n}e^{-t}\,dt=n!\;e^{-n}\sum_{k=0}^{n}\frac{n^{k}}{k!}\ ,\qquad\text{adică}\qquad x_n=\frac{1}{n!}\int_n^{\infty}t^{\,n}e^{-t}\,dt . \tag{1} \]
+Într-adevăr, integrând prin părți (Teorema 4.38), pentru $m\ge1$:
+\[ \int_n^{\infty}t^{\,m}e^{-t}\,dt=\Bigl[-t^{m}e^{-t}\Bigr]_n^{\infty}+m\int_n^{\infty}t^{\,m-1}e^{-t}\,dt=n^{m}e^{-n}+m\int_n^{\infty}t^{\,m-1}e^{-t}\,dt \]
+(termenul de la $\infty$ este nul, exponențiala bătând orice putere --- Corolarul 2.38). Iterând de la $m=n$ până la $m=0$ și folosind $\int_n^\infty e^{-t}dt=e^{-n}$, obținem
+\[ \int_n^{\infty}t^{\,n}e^{-t}\,dt=\sum_{j=0}^{n}\frac{n!}{(n-j)!}\;n^{\,n-j}e^{-n}=n!\,e^{-n}\sum_{k=0}^{n}\frac{n^{k}}{k!} \]
+(am notat $k=n-j$), ceea ce este exact (1). Observăm că $n!=\int_0^\infty t^n e^{-t}dt$: așadar $x_n$ este \emph{fracțiunea din integrala lui $t^ne^{-t}$ aflată dincolo de vârful $t=n$} --- integranda își atinge maximul exact în $t=n$, căci $\frac{d}{dt}\bigl(n\ln t-t\bigr)=\frac nt-1$.
+
+\emph{Pasul 2: coada depărtată este neglijabilă.} Pentru $t\ge2n$, funcția $\psi(t)=t^{n}e^{-t/2}$ este descrescătoare $\bigl(\frac{\psi'}{\psi}=\frac nt-\frac12\le0\bigr)$, deci $t^{n}e^{-t}=\psi(t)\,e^{-t/2}\le\psi(2n)\,e^{-t/2}$ și
+\[ \int_{2n}^{\infty}t^{\,n}e^{-t}\,dt\ \le\ (2n)^{n}e^{-n}\int_{2n}^{\infty}e^{-t/2}\,dt=2\,(2n)^{n}e^{-2n}=2\,n^{n}e^{-n}\left(\frac2e\right)^{\!n} . \tag{2} \]
+
+\emph{Pasul 3: schimbarea de variabilă la scara $\sqrt n$.} În $\int_n^{2n}$ punem $t=n+s\sqrt n$ (Teorema 4.5), deci $dt=\sqrt n\,ds$ și $s$ parcurge $[0,\sqrt n\,]$. Cu $u=\frac{s}{\sqrt n}\in[0,1]$ avem $s\sqrt n=un$, deci
+\[ t^{\,n}e^{-t}=e^{\,n\ln(n+s\sqrt n)-n-s\sqrt n}=n^{n}e^{-n}\cdot e^{\,\varphi_n(s)},\qquad \varphi_n(s)=n\bigl[\ln(1+u)-u\bigr] . \]
+Prin urmare
+\[ \int_n^{2n}t^{\,n}e^{-t}\,dt=n^{n}e^{-n}\sqrt n\int_0^{\sqrt n}e^{\,\varphi_n(s)}\,ds . \tag{3} \]
+
+\emph{Pasul 4: limita integralei.} Arătăm că \[ \int_0^{\sqrt n}e^{\varphi_n(s)}\,ds\to\int_0^{\infty}e^{-s^{2}/2}\,ds=\sqrt{\frac\pi2} \] (integrala lui Gauss, rezultat clasic pe care îl admitem fără demonstrație).
+
+\emph{(i) Convergență punctuală.} Pentru $s$ fixat, $u=\frac s{\sqrt n}\to0$ și $\ln(1+u)-u=-\frac{u^{2}}{2}+O(u^{3})$, deci
+\[ \varphi_n(s)=n\Bigl(-\frac{s^{2}}{2n}+O\bigl(n^{-3/2}\bigr)\Bigr)\longrightarrow-\frac{s^{2}}{2} , \]
+iar convergența este \emph{uniformă} pe orice compact $[0,A]$ (eroarea este $O(A^{3}/\sqrt n)$).
+
+\emph{(ii) Majorare uniformă.} Pentru orice $u\ge0$ are loc $\ln(1+u)\le u-\frac{u^{2}}{2}+\frac{u^{3}}{3}$: funcția $\psi(u)=u-\frac{u^2}2+\frac{u^3}3-\ln(1+u)$ are $\psi(0)=0$ și $\psi'(u)=\frac{u^{3}}{1+u}\ge0$. Cu $u=\frac s{\sqrt n}\le1$ și $nu^{2}=s^{2}$:
+\[ \begin{aligned} \varphi_n(s)=n\bigl[\ln(1+u)-u\bigr]&\ \le\ n\Bigl(-\frac{u^{2}}{2}+\frac{u^{3}}{3}\Bigr)=-s^{2}\Bigl(\frac12-\frac u3\Bigr)\\ &\ \le\ -\frac{s^{2}}{6}\qquad(0\le s\le\sqrt n). \end{aligned} \tag{4} \]
+\emph{(iii) Încheierea.} Fie $\varepsilon>0$ și $A$ cu $2\int_A^{\infty}e^{-s^{2}/6}ds<\varepsilon$. Pentru $n>A^{2}$,
+\[ \begin{aligned} \left|\int_0^{\sqrt n}e^{\varphi_n}-\int_0^{\infty}e^{-s^{2}/2}\right|&\le\underbrace{\int_0^{A}\bigl|e^{\varphi_n}-e^{-s^{2}/2}\bigr|}_{\to\,0\ \text{(conv. uniformă, Teorema 4.48)}}\\ &\quad+\underbrace{\int_A^{\sqrt n}e^{\varphi_n}}_{\overset{(4)}{\le}\int_A^{\infty}e^{-s^{2}/6}}+\underbrace{\int_A^{\infty}e^{-s^{2}/2}}_{\le\int_A^{\infty}e^{-s^{2}/6}} , \end{aligned} \]
+deci limsup-ul modulului este $\le\varepsilon$, pentru orice $\varepsilon>0$. Așadar $\int_0^{\sqrt n}e^{\varphi_n}\to\sqrt{\frac\pi2}$.
+
+\emph{Pasul 5: asamblarea.} Din (1), (2) și (3),
+\[ x_n=\frac{n^{n}e^{-n}\sqrt n}{n!}\int_0^{\sqrt n}e^{\varphi_n(s)}ds\ +\ R_n,\qquad 0\le R_n\le\frac{2\,n^{n}e^{-n}}{n!}\left(\frac2e\right)^{\!n} . \]
+Folosim formula lui Stirling în forma completă, $n!\sim\sqrt{2\pi n}\,\bigl(\frac ne\bigr)^{n}$ (rezultat clasic, admis fără demonstrație: Teorema 3.8 demonstrează doar forma slabă $\ln n!=n\ln n-n+O(\ln n)$, iar forma completă este doar enunțată acolo), adică $\dfrac{n^{n}e^{-n}}{n!}\sim\dfrac{1}{\sqrt{2\pi n}}$. Atunci:
+\[ \frac{n^{n}e^{-n}\sqrt n}{n!}\ \longrightarrow\ \frac{\sqrt n}{\sqrt{2\pi n}}=\frac{1}{\sqrt{2\pi}},\qquad R_n\ \le\ \frac{2}{\sqrt{2\pi n}}\left(\frac2e\right)^{\!n}\longrightarrow0 \]
+(căci $\frac2e<1$). Prin urmare
+\[ \lim_{n\to\infty}x_n=\frac{1}{\sqrt{2\pi}}\cdot\sqrt{\frac\pi2}=\sqrt{\frac{\pi}{2}\cdot\frac{1}{2\pi}}=\sqrt{\frac14}=\frac12 . \]
+\emph{Observație 1 (de ce exact jumătate).} Prin (1), $x_n$ este proporția din integrala $\int_0^\infty t^ne^{-t}dt=n!$ aflată la dreapta vârfului $t=n$. Vârful este ascuțit, de lățime $\sim\sqrt n$, iar la această scară integranda devine \emph{simetrică} (gaussiana $e^{-s^{2}/2}$): tăietura trece exact prin centrul de simetrie, de unde $\frac12$. Asimetria reziduală (termenul $u^{3}$ neglijat) dă corecția de ordinul următor,
+\[ x_n=\frac12+\frac{2}{3\sqrt{2\pi n}}+O\!\left(\frac1n\right) , \]
+care explică de ce convergența este \emph{lentă}: la $n=1500$, $x_n\approx0{,}5069$, iar $\frac12+\frac{2}{3\sqrt{2\pi\cdot1500}}\approx0{,}5069$.
+
+\emph{Observație 2 (o capcană).} Este tentant să spunem: „suma are $n+1$ termeni dintr-o serie cu suma $e^n$, iar $n$ este mic față de infinit, deci $x_n\to0$''. Fals: termenii seriei cresc până la indicele $i\approx n$ și abia apoi descresc, iar \emph{jumătate} din masa totală se acumulează înaintea vârfului. Cantitatea $n$ nu este un indice „mic'': este exact indicele critic.
+
+\emph{Observație 3 (metoda).} Am folosit șablonul secțiunii: o sumă imposibil de evaluat direct a fost transformată într-o integrală, iar integrala a fost analizată la scara naturală a problemei ($\sqrt n$). Este metoda Laplace, în forma ei cea mai simplă.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.2}{}
+Fie $u_{1}>0$ și
+\[ u_{n+1}=\sqrt[n]{\,u_{n}^{\,n}+n^{\,n}\,}\ ,\qquad n\ge1 . \]
+Arătați că șirul $\bigl(u_{n}-n\bigr)_{n\ge1}$ este convergent și calculați limita sa.
+\sol Răspuns:
+\[ \lim_{n\to\infty}\bigl(u_{n}-n\bigr)=-\ln(e-1)\approx-0{,}5413 , \]
+\emph{independent de valoarea lui $u_{1}>0$}.
+
+\emph{Cum se ghicește răspunsul.} Recurența se scrie, ridicată la puterea $n$,
+\[ u_{n+1}^{\,n}=u_{n}^{\,n}+n^{\,n} . \tag{1} \]
+Presupunem, ca ansatz, că $u_{n}=n+c+o(1)$ pentru o constantă $c$. Atunci $u_{n+1}=n+(1+c)+o(1)$, iar împărțind (1) prin $n^{n}$ obținem
+\[ \left(1+\frac{1+c+o(1)}{n}\right)^{\!n}=\left(1+\frac{c+o(1)}{n}\right)^{\!n}+1 . \]
+Trecând la limită și folosind limita fundamentală $\left(1+\frac xn\right)^{n}\to e^{x}$:
+\[ e^{\,1+c}=e^{\,c}+1 \Longrightarrow e^{\,c}\,(e-1)=1 \Longrightarrow c=-\ln(e-1) . \]
+Aici $e$ apare \emph{din nimic}: nu figurează în enunț, ci este produs de trecerea la limită. Rămâne de justificat riguros ansatz-ul --- ceea ce facem în trei pași.
+
+\emph{Pasul 1: încadrarea $n-1\le u_{n}\le n$ (de la un rang încolo).}
+
+\emph{Marginea inferioară.} Din (1), $u_{n+1}^{\,n}\ge n^{\,n}$, deci $u_{n+1}\ge n$, adică
+\[ u_{n}\ge n-1\qquad(n\ge2) . \tag{2} \]
+(Tot din (1), $u_{n+1}\ge u_{n}$: șirul este crescător.)
+
+\emph{Marginea superioară --- o proprietate care se autopropagă.} Presupunem $u_{n}\le n$ pentru un $n\ge2$. Atunci, din (1),
+\[ u_{n+1}^{\,n}\le n^{\,n}+n^{\,n}=2\,n^{\,n} \Longrightarrow u_{n+1}\le 2^{1/n}\,n . \]
+Or, pentru $n\ge2$ avem $\left(1+\frac1n\right)^{n}\ge\left(1+\frac12\right)^{2}=\frac94\ge2$ (șirul $\left(1+\frac1n\right)^{n}$ este crescător --- Teorema 2.37), deci $2^{1/n}\le1+\frac1n$ și
+\[ u_{n+1}\ \le\ \left(1+\frac1n\right)n\ =\ n+1 . \]
+Prin inducție: \emph{dacă $u_{N}\le N$ pentru un $N\ge2$, atunci $u_{n}\le n$ pentru orice $n\ge N$.}
+
+\emph{Un asemenea rang $N$ există.} Cât timp $u_{n}\ge n$, relația (1) dă $u_{n+1}^{\,n}\le2u_{n}^{\,n}$, deci $u_{n+1}\le2^{1/n}u_{n}$; înmulțind aceste inegalități,
+\[ u_{n}\ \le\ u_{1}\cdot2^{\,1+\frac12+\cdots+\frac{1}{n-1}}=u_{1}\cdot2^{\,H_{n-1}} . \]
+Cum $H_{n-1}\le1+\ln n$ (comparare cu integrala, Teorema 3.2), rezultă
+\[ u_{n}\ \le\ 2u_{1}\cdot2^{\ln n}=2u_{1}\cdot n^{\ln 2} . \]
+Exponentul $\ln2\approx0{,}693$ este strict subunitar, deci $2u_{1}n^{\ln2}<n$ pentru $n$ suficient de mare (Corolarul 2.38): ipoteza „$u_{n}\ge n$ pentru orice $n$'' este imposibilă. Există deci $N$ cu $u_{N}<N$, iar de acolo încolo $u_{n}\le n$.
+
+Punând cap la cap cu (2): notând $b_{n}=u_{n}-n$, avem
+\[ b_{n}\in[-1,\,0]\qquad\text{pentru orice }n\ge N . \tag{3} \]
+
+\emph{Pasul 2: recurența exactă pentru $b_{n}$.} Împărțim (1) prin $n^{n}$ și folosim $u_{n}=n+b_{n}$, $u_{n+1}=n+(1+b_{n+1})$:
+\[ \left(1+\frac{1+b_{n+1}}{n}\right)^{\!n}=\left(1+\frac{b_{n}}{n}\right)^{\!n}+1 . \tag{4} \]
+Aceasta este o identitate \emph{exactă}, nu o aproximare.
+
+Prin (3), argumentele sunt confinate în compacte: $b_{n}\in[-1,0]$ și $1+b_{n+1}\in[0,1]$. Pe orice compact, convergența $\left(1+\frac xn\right)^{n}\to e^{x}$ este \emph{uniformă} (funcțiile fiind monotone în $n$ și limita continuă --- Teorema 2.42 și Teorema 4.48). Așadar (4) devine
+\[ e^{\,1+b_{n+1}}=e^{\,b_{n}}+1+\varepsilon_{n},\qquad \varepsilon_{n}\to0 , \]
+de unde, logaritmând,
+\[ b_{n+1}=g\bigl(b_{n}\bigr)+\delta_{n},\qquad g(b)=\ln\bigl(1+e^{\,b}\bigr)-1,\qquad \delta_{n}\to0 . \tag{5} \]
+
+\emph{Pasul 3: $g$ este o contracție.} Avem
+\[ g'(b)=\frac{e^{\,b}}{1+e^{\,b}}\ \in\ (0,1),\qquad\text{iar pentru }b\le0:\quad g'(b)\le\frac{1}{2} . \]
+Punctul fix se obține din $g(c)=c$, adică $e^{\,1+c}=e^{\,c}+1$ --- exact ecuația ghicită mai sus --- deci
+\[ c=-\ln(e-1)\approx-0{,}5413\ \in\ [-1,0] , \]
+și este unic (căci $g(b)-b$ este strict descrescătoare: derivata ei, $g'(b)-1$, este strict negativă).
+
+Prin teorema lui Lagrange (2.71) aplicată lui $g$ pe intervalul dintre $b_{n}$ și $c$ (ambele în $[-1,0]$),
+\[ \bigl|g(b_{n})-c\bigr|=\bigl|g(b_{n})-g(c)\bigr|\le\frac12\,\bigl|b_{n}-c\bigr| , \]
+deci, din (5),
+\[ \bigl|b_{n+1}-c\bigr|\ \le\ \frac12\bigl|b_{n}-c\bigr|+|\delta_{n}| . \]
+Notând $t_{n}=|b_{n}-c|\ge0$ și $L=\limsup t_{n}$ (finit, prin (3)), trecerea la limsup dă
+\[ L\ \le\ \frac12\,L+0 \Longrightarrow L\le0 \Longrightarrow L=0 . \]
+Prin urmare $b_{n}\to c$:
+\[ \boxed{\ \lim_{n\to\infty}\bigl(u_{n}-n\bigr)=-\ln(e-1)\ } \]
+\emph{Observație 1 (de unde vine $e$).} Enunțul nu conține niciun $e$ --- el apare exclusiv din limita fundamentală $\left(1+\frac xn\right)^{n}\to e^{x}$, aplicată la scara naturală a problemei. Aceasta este și explicația pentru care ansatz-ul trebuie să fie $u_{n}\approx n+c$ (\emph{aditiv}), și nu $u_{n}\approx\lambda n$ (multiplicativ): un factor multiplicativ $\lambda\neq1$ ar da $\left(\frac{u_{n}}{n}\right)^{n}\to\lambda^{\infty}\in\{0,\infty\}$, iar (1) nu s-ar putea echilibra. Scara corectă este cea în care $\left(1+\frac{\text{const}}{n}\right)^{n}$ rămâne finit și nenul --- adică deplasarea cu o constantă.
+
+\emph{Observație 2 (independența de $u_{1}$).} Limita nu depinde de punctul de pornire: Pasul 1 arată că \emph{orice} $u_{1}>0$ ajunge, după un rang, în banda $n-1\le u_{n}\le n$, iar de acolo contracția face restul. Rangul, în schimb, depinde de $u_{1}$: pentru $u_{n}\gg n$, relația (1) dă $u_{n+1}\approx u_{n}$, deci șirul „așteaptă'' până când $n$ îl ajunge din urmă, ceea ce se întâmplă abia pentru $n\approx u_{1}$.
+
+\emph{Observație 3 (verificare numerică).} Pentru $u_{1}=1$: la $n=1001$ avem $u_{n}-n=-0{,}54124$, iar la $n=200\,001$, $u_{n}-n=-0{,}5413244$ --- față de $-\ln(e-1)=-0{,}5413249$. Aceleași valori se obțin, până la ultima zecimală afișată, pornind din $u_{1}=0{,}1$, $2$ sau $100$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.3}{}
+Pentru $N\ge1$ și $0\le a<b<2\pi$, notăm cu $S_N(a,b)$ numărul indicilor $n\le N$ pentru care $\sqrt n$, redus modulo $2\pi$, cade în intervalul $[a,b)$.
+\begin{parti}
+  \item Arătați că
+  \[ S_N(a,b)=\frac{b-a}{2\pi}\,N+O\bigl(\sqrt N\bigr) , \]
+  unde notația $O\bigl(\sqrt N\bigr)$ desemnează o cantitate al cărei modul este cel mult $C\sqrt N$, pentru o constantă $C$ ce nu depinde de $N$ (poate depinde de $a$ și $b$).
+  \item Arătați că, pentru orice $-1\le u<v\le1$,
+  \[ \lim_{N\to\infty}\frac{1}{N}\cdot\#\Bigl\{\,n\le N\ :\ \sin\sqrt n\in[u,v)\,\Bigr\}=\frac{\arcsin v-\arcsin u}{\pi} , \]
+  și că, în particular, orice $c\in[-1,1]$ este punct limită al șirului $\bigl(\sin\sqrt n\bigr)_{n\ge1}$.
+\end{parti}
+\sol (a) Ideea este să numărăm \emph{direct}. Condiția din enunț înseamnă că există un întreg $k\ge0$ cu
+\[ \sqrt n\in\bigl[\,2\pi k+a,\ 2\pi k+b\,\bigr) \iff n\in\bigl[\,(2\pi k+a)^{2},\ (2\pi k+b)^{2}\,\bigr) . \]
+Aceste intervale (pentru $k=0,1,2,\dots$) sunt disjuncte, deci $S_N(a,b)$ este suma numerelor de întregi din intersecțiile lor cu $\{1,\dots,N\}$.
+
+\emph{Numărul de întregi dintr-un interval.} Pentru orice $\lambda<\mu$, numărul de întregi din $[\lambda,\mu)$ este $\mu-\lambda+\theta$, cu $|\theta|\le1$.
+
+Fie $K$ cel mai mare întreg cu $(2\pi K+b)^{2}\le N$; atunci
+\[ K=\frac{\sqrt N}{2\pi}+O(1) , \tag{1} \]
+unde $O(1)$ înseamnă o cantitate mărginită în modul de o constantă independentă de $N$.
+Intervalele cu $k\le K-1$ sunt complet incluse în $[1,N]$. Cele cu $k\ge K$ contribuie numai cu porțiuni din vecinătatea lui $N$, iar contribuția lor totală este cel mult lungimea unui asemenea interval, plus $1$:
+\[ (2\pi K+b)^{2}-(2\pi K+a)^{2}+1=(b-a)\bigl(4\pi K+a+b\bigr)+1=O\bigl(\sqrt N\bigr) , \tag{2} \]
+prin (1). Pentru $k\le K-1$, lungimea intervalului este
+\[ \ell_k=(2\pi k+b)^{2}-(2\pi k+a)^{2}=(b-a)\bigl(4\pi k+a+b\bigr) , \]
+așa că
+\[ \sum_{k=0}^{K-1}\ell_k=(b-a)\left(4\pi\cdot\frac{(K-1)K}{2}+(a+b)K\right)=(b-a)\Bigl(2\pi K^{2}+O(K)\Bigr) . \]
+Adunăm acum erorile de rotunjire --- câte una, de modul cel mult $1$, pentru fiecare dintre cele $K$ intervale, deci $O(K)=O(\sqrt N)$ în total --- și contribuția (2). Obținem
+\[ S_N(a,b)=(b-a)\,2\pi K^{2}+O\bigl(\sqrt N\bigr) . \]
+În fine, din (1), $K^{2}=\dfrac{N}{4\pi^{2}}+O\bigl(\sqrt N\bigr)$, de unde
+\[ S_N(a,b)=(b-a)\,2\pi\cdot\frac{N}{4\pi^{2}}+O\bigl(\sqrt N\bigr)=\frac{b-a}{2\pi}\,N+O\bigl(\sqrt N\bigr) . \]
+Împărțind la $N$: proporția indicilor $n\le N$ pentru care $\sqrt n\bmod2\pi\in[a,b)$ tinde la $\frac{b-a}{2\pi}$. Cu alte cuvinte, șirul $\bigl(\sqrt n\bigr)$ este \emph{echidistribuit} modulo $2\pi$.
+
+(b) Fie $-1\le u<v\le1$ și
+\[ E=\bigl\{\theta\in[0,2\pi):\ \sin\theta\in[u,v)\bigr\} . \]
+Sinusul este strict crescător pe $\left[-\frac\pi2,\frac\pi2\right]$ și strict descrescător pe $\left[\frac\pi2,\frac{3\pi}{2}\right]$, deci $E$ este reuniunea a cel mult două intervale, câte unul pe fiecare ramură de monotonie: pe ramura crescătoare, $\theta\in[\arcsin u,\arcsin v)$; pe cea descrescătoare, $\theta\in\bigl(\pi-\arcsin v,\ \pi-\arcsin u\bigr]$. Ambele au lungimea $\arcsin v-\arcsin u$, deci
+\[ |E|=2\bigl(\arcsin v-\arcsin u\bigr) . \]
+Aplicăm punctul (a) fiecăruia dintre cele (cel mult două) intervale ale lui $E$ și adunăm:
+\[ \begin{aligned} \#\bigl\{n\le N:\ \sin\sqrt n\in[u,v)\bigr\}&=\frac{|E|}{2\pi}\,N+O\bigl(\sqrt N\bigr)\\ &=\frac{\arcsin v-\arcsin u}{\pi}\,N+O\bigl(\sqrt N\bigr) , \end{aligned} \]
+iar împărțirea la $N$ dă limita cerută.
+
+\emph{Punctele limită.} Fie $c\in[-1,1]$ și $\varepsilon>0$; punem $[u,v)=[c-\varepsilon,c+\varepsilon)\cap[-1,1]$, interval nedegenerat. Cum arcsinusul este strict crescător, $\arcsin v-\arcsin u>0$, deci proporția indicilor $n$ cu $|\sin\sqrt n-c|<\varepsilon$ tinde la o limită \emph{strict pozitivă}. În particular există o infinitate de astfel de $n$, adică $c$ este punct limită.\\[2pt]
+\emph{Observație 1 (ce am câștigat).} Concluzia clasică --- „mulțimea punctelor limită este $[-1,1]$'' --- spune doar că fiecare valoare este aproximată, infinit de des. Aici am obținut \emph{frecvența} exactă cu care se întâmplă acest lucru, cu tot cu termen de eroare; punctele limită apar apoi ca simplu corolar.
+
+\emph{Observație 2 (legea arcsinusului).} Formula de la (b) spune că $\sin\sqrt n$ se distribuie ca $\sin\theta$ cu $\theta$ uniform pe cerc, adică după densitatea
+\[ \rho(s)=\frac{1}{\pi\sqrt{1-s^{2}}},\qquad s\in(-1,1) , \]
+care explodează la capete: valorile lui $\sin\sqrt n$ se \emph{înghesuie lângă $\pm1$}, acolo unde sinusul are derivata nulă și deci „zăbovește''. Verificare numerică ($N=10^{7}$): proporția valorilor din $[-0{,}5;\,0{,}5)$ este $0{,}3333$ (prezis $\frac13$), iar cea din $[0{,}8;\,1]$ este $0{,}2050$ (prezis $0{,}2048$).
+
+\emph{Observație 3 (de ce funcționează numărarea).} Cheia este că $\sqrt n$ crește \emph{lent}: în fereastra de indice $k$ cad $\asymp k$ valori ale lui $n$, iar numărul de ferestre până la $N$ este $\asymp\sqrt N$; suma $\sum_{k\le K}k\asymp K^{2}\asymp N$ redă exact ordinul corect, în timp ce erorile de rotunjire, câte una pe fereastră, însumează doar $O(\sqrt N)$. Pentru un șir cu pași \emph{mari} (de pildă $n^{2}$ în locul lui $\sqrt n$) numărarea aceasta se prăbușește, iar echidistribuția devine o problemă mult mai grea.
+\vspace{1mm}\hrule

@@ -1,0 +1,440 @@
+\subsectiuneclasa{Clasa a XII-a}{Primitive, integrala Riemann, inegalități integrale, integrale improprii.}{Enunțuri · Clasa a XII-a}
+\nivelE{olm}{Nivelul OLM}
+\prob{olm}{OLM.1}{}
+\begin{parti}
+  \item Admite funcția $f(x)=\{x\}$ (partea fracționară) primitive pe $\mathbb{R}$?
+  \item Determinați funcțiile continue $g:\mathbb{R}\to\mathbb{R}$ pentru care funcția
+        $x\mapsto g(x)\,\{x\}$ admite primitive pe $\mathbb{R}$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.2}{Clasică}
+Arătați că funcția $F(x)=\displaystyle\int_0^x e^{t^2}\,dt$ este o bijecție de la $\mathbb{R}$ la $\mathbb{R}$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.3}{Clasică}
+Fie $f:[a,b]\to\mathbb{R}$ continuă cu $\displaystyle\int_a^bf(x)\,dx=0$. Arătați că există $c\in[a,b]$ cu $f(c)=0$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.4}{}
+Calculați
+\[ \int_{0}^{1}\frac{x}{x^{2}+3x+2}\,dx . \]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.5}{Clasică}
+\begin{parti}
+  \item Calculați $\displaystyle\int_{0}^{1}\operatorname{arctg}x\,dx$.
+  \item Calculați $\displaystyle\int_{0}^{\pi/4}\ln\bigl(1+\operatorname{tg}x\bigr)\,dx$.
+  \item Deduceți valoarea integralei $\displaystyle\int_{0}^{1}\frac{\ln(1+x)}{1+x^{2}}\,dx$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.6}{}
+\begin{parti}
+  \item Arătați că există $c\in(0,1)$ astfel încât
+  \[ 1+c^{2}=\frac{4}{\pi} . \]
+  \item Fie $f:[0,1]\to\mathbb{R}$ continuă și crescătoare. Arătați că
+  \[ \int_{0}^{1}x\,f(x)\,dx\ \ge\ \frac12\int_{0}^{1}f(x)\,dx . \]
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.7}{Clasică}
+Calculați $\displaystyle\lim_{n\to\infty}\int_0^1\frac{dx}{1+x^n}$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.8}{Clasică}
+Pentru numerele întregi $m \ge 0$ și $n \ge 0$, calculați $\displaystyle I_{m,n} = \int_0^1 x^m (\ln x)^n \, dx$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.9}{}
+Fie $f : [0,1] \to \mathbb{R}$, $f(x) = (-1)^{\lfloor 1/x \rfloor}$ pentru $x \in (0,1]$ și $f(0) = 0$. Arătați că $f$ este integrabilă Riemann pe $[0,1]$, deși are o infinitate de puncte de discontinuitate.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.10}{}
+Arătați că funcția $h : \RR \to \RR$, $h(x) = \bigl(1 + \sqrt{|x|}\bigr) \sin \dfrac{1}{x}$ pentru $x \neq 0$ și $h(0) = 0$, admite primitive pe $\RR$.
+\vspace{1mm}\hrule
+
+
+
+\prob{olm}{OLM.11}{Clasică}
+Fie $f:[0,1]\to\mathbb{R}$ continuă. Calculați
+\[ \lim_{n\to\infty}\int_0^1 f(x^n)\,dx. \]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.12}{}
+Fie $f:[0,\infty)\to\mathbb{R}$ o funcție continuă și mărginită, $|f|\le M$.
+\begin{parti}
+  \item Demonstrați că $\displaystyle\lim_{n\to\infty}\int_0^{\infty}f(x)e^{-nx}\,dx=0$.
+  \item Ce se întâmplă dacă înlocuim $e^{-nx}$ cu $e^{-n}$?
+  \item Demonstrați că, mai mult,
+        $\displaystyle\lim_{n\to\infty}n\int_0^{\infty}f(x)e^{-nx}\,dx=f(0)$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.13}{}
+Fie $f,g:\mathbb{R}\to\mathbb{R}$ două funcții integrabile Riemann pe orice
+interval compact, cu proprietatea
+\[ \int_x^{y}f(t)\,dt=\int_x^{y}g(t)\,dt\qquad\text{pentru orice }x,y\in\mathbb{R}. \]
+\begin{parti}
+  \item Arătați că, totuși, nu rezultă $f=g$ \emph{în general}: dați un exemplu cu $f\neq g$.
+  \item Arătați că, dacă $f$ și $g$ sunt \emph{amândouă} continue, atunci $f=g$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.14}{}
+Fie relația
+\[ \int_0^x f(t)\,dt = x\,f(x) - x^2. \tag{$\ast$} \]
+\begin{parti}
+  \item Determinați funcțiile continue $f:[0,\infty)\to\mathbb{R}$ care verifică
+        $(\ast)$ pentru orice $x\ge0$.
+  \item Determinați funcțiile continue $f:\mathbb{R}\to\mathbb{R}$ care verifică
+        $(\ast)$ pentru orice $x\in\mathbb{R}$. Comparați cu problema OJM.13.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.15}{}
+Fie $f:[0,1]\to(0,\infty)$ o funcție continuă cu $\displaystyle\int_0^1 f(x)\,dx = 1$.
+Arătați că
+\[ \int_0^1 \frac{dx}{1+f(x)} \ \ge\ \frac12, \]
+cu egalitate dacă și numai dacă $f$ este funcția constantă $1$.
+\vspace{1mm}\hrule
+
+\nivelE{ojm}{Nivelul OJM}
+\prob{ojm}{OJM.1}{Clasică}
+Determinați toate funcțiile continue $f:[0,1]\to\mathbb{R}$ cu
+\[ \int_0^1f^2=\int_0^1f^3=\int_0^1f^4 . \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.2}{Inegalitatea lui Young}
+Fie $p,q>1$ cu $\dfrac1p+\dfrac1q=1$. Arătați că
+\[ ab\ \le\ \frac{a^p}{p}+\frac{b^q}{q}\qquad(a,b\ge0). \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.3}{}
+Pentru $n\ge1$ fie $f_n:[0,1]\to\mathbb{R}$, $f_n(x)=n\,x\,e^{-nx^2}$.
+(a) Calculați limita punctuală $f$ a șirului $(f_n)$.
+(b) Calculați $\displaystyle\lim_{n\to\infty}\int_0^1f_n(x)\,dx$.
+(c) Este convergența $f_n\to f$ uniformă pe $[0,1]$?
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.4}{}
+Determinați valorile $\alpha\in\mathbb{R}$ pentru care integrala improprie
+\[ \int_1^\infty\frac{\ln x}{x^\alpha}\,dx \]
+este convergentă.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.5}{}
+Fie $f:[0,1]\to(0,\infty)$ continuă. Notăm
+\[ A=\int_{0}^{1}f(x)\,dx,\qquad B=\int_{0}^{1}\frac{dx}{f(x)},\qquad D=\int_{0}^{1}\!\!\int_{0}^{1}\bigl|f(x)-f(y)\bigr|\,dx\,dy , \]
+unde integrala dublă înseamnă $\displaystyle\int_{0}^{1}\left(\int_{0}^{1}\bigl|f(x)-f(y)\bigr|\,dx\right)dy$. Arătați că
+\[ A\,B\ \ge\ 1+\frac{D^{2}}{2A^{2}} \]
+și determinați cazul de egalitate.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.6}{Clasică}
+Arătați că există o funcție $f:\mathbb{R}\to\mathbb{R}$ care admite primitive, dar pentru care $f^2$ nu admite primitive.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.7}{}
+Determinați funcțiile $f:\mathbb{R}\to\mathbb{R}$ care admit primitive și satisfac
+\[ f(x+y)=f(x)\,e^y+f(y)\,e^x\qquad\text{pentru orice }x,y\in\mathbb{R}. \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.8}{}
+Fie $a_{0}=2026$ și, pentru $n\ge0$,
+\[ a_{n+1}=\int_{0}^{1}\min\bigl(x,\ a_{n}\bigr)\,dx . \]
+\begin{parti}
+  \item Arătați că șirul $(a_{n})$ este convergent și calculați limita sa.
+  \item Calculați $\displaystyle\lim_{n\to\infty}n\,a_{n}$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.9}{}
+Fie $b_0 = 0$ și $b_{n+1} = \displaystyle\int_0^1 \max(x,b_n)\,dx$ pentru $n \ge 0$. Arătați că șirul $(b_n)$ este convergent, determinați limita sa $\ell$ și calculați $\displaystyle\lim_{n\to\infty} n\,(\ell - b_n)$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.10}{}
+Calculați $\displaystyle\lim_{n\to\infty}\int_0^\infty \frac{dx}{\left(1+\frac{x}{n}\right)^n}$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.11}{Clasică}
+Fie $f : [0,1] \to \RR$ continuă, cu $\displaystyle\int_0^1 x^n f(x)\,dx \;=\; \frac{1}{n+3}$ pentru orice $n \ge 0$. Determinați $f$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.12}{Clasică}
+Fie $f : [0,1] \to [0,\infty)$ continuă și $M = \max_{[0,1]} f$. Arătați că
+\[
+\lim_{n\to\infty} \left( \int_0^1 f(x)^n \, dx \right)^{1/n} = M.
+\]
+\vspace{1mm}\hrule
+
+
+
+\prob{ojm}{OJM.13}{}
+Determinați toate funcțiile continue $f:\mathbb{R}\to\mathbb{R}$ cu
+\[ \int_0^x f(t)\,dt=\frac{x}{2}\,f(x)\qquad\text{pentru orice }x\in\mathbb{R}. \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.14}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție continuă cu $\displaystyle\int_0^1 f(x)\,dx=0$.
+\begin{parti}
+  \item Demonstrați că există $c\in(0,1)$ astfel încât
+        $\displaystyle f(c)=\int_0^c f(x)\,dx$.
+  \item Mai general, arătați că pentru orice $\lambda\in\mathbb{R}^{*}$ există
+        $c\in(0,1)$ cu $\displaystyle\int_0^c f(x)\,dx=\lambda\,f(c)$.
+  \item Arătați că afirmația de la (b) este falsă pentru $\lambda=0$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.15}{}
+Fie $C\in\mathbb{R}$ fixat și fie $f:\mathbb{R}\to\mathbb{R}$ o funcție continuă
+cu $f(x)\ge1$ pentru orice $x\in\mathbb{R}$. Determinați toate șirurile
+convergente $(a_n)_{n\ge0}$ de numere reale care satisfac
+\[ a_{n+1}=\int_{a_n}^{C}f(x)\,dx,\qquad n\ge0 . \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.16}{}
+Fie $f:[0,\infty)\to(0,\infty)$ o funcție derivabilă, cu derivata continuă, și fie
+\[ F(x)=1+\int_0^{x}f(t)\,dt . \]
+\begin{parti}
+  \item Arătați că $\displaystyle\int_0^{x}\frac{f(t)}{F(t)^2}\,dt=1-\frac{1}{F(x)}$
+        pentru orice $x\ge0$ și deduceți că această integrală este $<1$, cu limita
+        $1$ când $x\to\infty$ dacă și numai dacă $\int_0^{\infty}f=+\infty$.
+  \item Presupunem în plus că $f$ este crescătoare. Arătați că
+        $\displaystyle\int_0^{x}\frac{dt}{F(t)^2}\le\frac{1}{f(0)}$ pentru orice $x\ge0$.
+  \item Arătați că mărginirea de la (b) cade fără ipoteza de monotonie: găsiți $f$
+        pentru care $\displaystyle\int_0^{\infty}\frac{dt}{F(t)^2}=+\infty$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.17}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție care admite primitive și fie $F$ o
+primitivă a sa. Determinați toate funcțiile $f$ cu proprietatea
+\[ f^2(x)=F^2(x)\qquad\text{pentru orice }x\in\mathbb{R}. \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.18}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție continuă cu $\displaystyle\int_0^1 f(x)\,dx = 0$
+și fie $M=\max_{x\in[0,1]}|f(x)|$.
+\begin{parti}
+  \item Arătați că $\displaystyle\left|\int_0^1 x f(x)\,dx\right| \le \frac{M}{4}$.
+  \item Arătați că inegalitatea de la (a) este strictă dacă $f$ nu este identic nulă.
+  \item Arătați că, pentru orice $\varepsilon>0$, există o funcție $f$ care verifică
+        ipotezele și pentru care
+        $\displaystyle\left|\int_0^1 x f(x)\,dx\right| > \frac{M}{4}-\varepsilon$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.19}{Clasică}
+Fie $a\in\mathbb{R}$ și funcția $h:\mathbb{R}\to\mathbb{R}$,
+\[ h(x)=\begin{cases}\sin^2\dfrac1x, & x\neq 0,\\[4pt] a, & x=0.\end{cases} \]
+\begin{parti}
+  \item Determinați numerele reale $a$ pentru care $h$ admite primitive pe $\mathbb{R}$.
+  \item Deduceți că există o funcție $f:\mathbb{R}\to\mathbb{R}$ care admite primitive,
+        dar pentru care $f^2$ nu admite primitive.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.20}{}
+Pentru $n\ge 1$ notăm $\displaystyle a_n = \int_0^1 \frac{dx}{1+x^n}$ (limita acestui șir a fost calculată în problema OLM.7).
+\begin{parti}
+  \item Arătați că șirul $(a_n)_{n\ge1}$ este strict crescător și că
+        $\lim_{n\to\infty}a_n = 1$ printr-o majorare explicită a restului
+        $1-a_n$.
+  \item Calculați $\displaystyle\lim_{n\to\infty} n\,(1-a_n)$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\nivelE{onm}{Nivelul ONM}
+\prob{onm}{ONM.1}{}
+Fie $f:[0,1]\to\mathbb{R}$ continuă cu
+\[ \int_0^1f(x)\,dx=0\qquad\text{și}\qquad\int_0^1x\,f(x)\,dx=1 . \]
+Arătați că $\displaystyle\int_0^1f^2\ge12$ și determinați cazul de egalitate.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.2}{Clasică}
+(a) Fie $0<a<b$. Arătați că $\left|\displaystyle\int_a^b\sin(x^2)\,dx\right|\le\dfrac1a$.
+(b) Arătați că integrala improprie $\displaystyle\int_0^\infty\sin(x^2)\,dx$ este convergentă.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.3}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție continuă, cu $\displaystyle\int_0^1 f(x)\,dx=0$.
+\begin{parti}
+  \item Fie $g:[0,1]\to(0,\infty)$ o funcție derivabilă, cu derivata continuă,
+        crescătoare și neconstantă. Arătați că există $c\in(0,1)$ astfel încât
+        $\displaystyle\int_0^c f(x)\,g(x)\,dx=0$.
+  \item Arătați că, pentru orice $p>0$, există $c\in(0,1)$ astfel încât
+        $\displaystyle\int_0^c x^{p}f(x)\,dx=0$.
+  \item Arătați că ipoteza „$g$ neconstantă'' de la punctul (a) nu poate fi eliminată.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.4}{Clasică}
+Calculați $\displaystyle\int_0^1\frac{x^{2026}-1}{\ln x}\,dx$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.5}{}
+Fie $f:[0,\infty)\to[0,\infty)$ continuă cu
+\[ f(x)^2\ \le\ 1+2\int_0^xf(t)\,dt\qquad\text{pentru orice }x\ge0 . \]
+Arătați că $f(x)\le1+x$ pentru orice $x\ge0$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.6}{Clasică}
+Fie $f:[0,1]\to\mathbb{R}$ continuă. Calculați $\displaystyle\lim_{n\to\infty}\ n\int_0^1x^nf(x)\,dx$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.7}{}
+Determinați toate funcțiile continue $f:\mathbb{R}\to\mathbb{R}$ cu proprietatea
+\[ f(x)+\int_{0}^{x}(x-t)\,f(t)\,dt=x\qquad\text{pentru orice }x\in\mathbb{R} . \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.8}{}
+\begin{parti}
+  \item Arătați că, pentru orice întreg $k\ge0$,
+  \[ \int_{0}^{1}\!\!\int_{0}^{1}(xy)^{k}\,dx\,dy=\frac{1}{(k+1)^{2}} , \]
+  unde integrala dublă înseamnă $\displaystyle\int_{0}^{1}\left(\int_{0}^{1}(xy)^{k}\,dx\right)dy$.
+  \item Arătați că
+  \[ \int_{0}^{1}\!\!\int_{0}^{1}\frac{dx\,dy}{1+xy}=\sum_{k\ge1}\frac{(-1)^{k-1}}{k^{2}} . \]
+  \item Arătați că $\displaystyle\int_{0}^{1}\!\!\int_{0}^{1}\frac{dx\,dy}{1+xy}=\frac{2}{3}\int_{0}^{1}\!\!\int_{0}^{1}\frac{dx\,dy}{1-x^{2}y^{2}}$ și că, admițând $\displaystyle\sum_{k\ge1}\frac{1}{k^{2}}=\frac{\pi^{2}}{6}$, rezultă
+  \[ \int_{0}^{1}\!\!\int_{0}^{1}\frac{dx\,dy}{1+xy}=\frac{\pi^{2}}{12} . \]
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.9}{}
+Calculați
+\[ \lim_{n\to\infty}\ n\int_{0}^{1}\left(\Bigl(1+\frac{x}{n}\Bigr)^{\!n}-e^{\,x}\right)dx . \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.10}{}
+Fie $f:[0,1]\to\mathbb{R}$ de două ori derivabilă, cu $f''$ continuă, satisfăcând
+\[ f(0)=f(1)=0\qquad\text{și}\qquad\int_{0}^{1}f(x)\,dx=1 . \]
+Arătați că
+\[ \int_{0}^{1}f''(x)^{2}\,dx\ \ge\ 120 \]
+și determinați cazul de egalitate.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.11}{}
+Determinați valoarea minimă a funcției $f : (0,\infty) \to \mathbb{R}$,
+\[
+  f(x) = \int_0^x \ln(1+t)\,dt + \int_0^{1/x} \bigl(e^{s}-1\bigr)\,ds.
+\]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.12}{}
+Calculați
+\[ \lim_{n\to\infty}\ n^{2}\int_{0}^{1}\left(\sqrt[n]{1+x^{n}+x^{2n}}-1\right)dx , \]
+admițând că $\displaystyle\sum_{k\ge1}\frac{1}{k^{2}}=\frac{\pi^{2}}{6}$.
+\vspace{1mm}\hrule
+
+
+
+
+\prob{onm}{ONM.13}{}
+Fie $\varphi:\mathbb{R}\to\mathbb{R}$ o funcție continuă și periodică, de perioadă $T>0$,
+fie $m=\min\varphi$, $M=\max\varphi$ și fie $a\in\mathbb{R}$. Definim
+$f:\mathbb{R}\to\mathbb{R}$ prin $f(x)=\varphi\bigl(\ln|x|\bigr)$ pentru $x\neq0$ și $f(0)=a$.
+\begin{parti}
+  \item Arătați că $f$ are proprietatea lui Darboux dacă și numai dacă $a\in[m,M]$.
+  \item Arătați că $f$ admite primitive dacă și numai dacă $\varphi$ este constantă și
+        $a$ este egal cu valoarea ei.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.14}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ mărginită și integrabilă pe orice interval
+compact, și fie $(a_n)_{n\ge1}$ un șir de numere reale care satisface
+\[ a_{n+2}=\int_{a_n}^{a_{n+1}}f(x)\,dx,\qquad n\ge1. \]
+\begin{parti}
+  \item Arătați că, deși $(a_n)$ poate fi mărginit, el nu este neapărat convergent.
+  \item Presupunem că $a_n>0$ pentru orice $n$ și că subșirul termenilor pari
+        $(a_{2k})_{k\ge1}$ este descrescător. Demonstrați că $(a_n)$ este
+        convergent.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.15}{}
+Fie $f,g:\mathbb{R}\to\mathbb{R}$ integrabile Riemann pe orice interval compact,
+cu $\int_x^{y}f=\int_x^{y}g$ pentru orice $x,y$ (situația din OLM.13, unde am văzut
+că $f$ și $g$ pot totuși să difere). Demonstrați că mulțimea
+\[ \{z\in\mathbb{R}\ :\ f(z)=g(z)\} \]
+este \emph{densă} în $\mathbb{R}$. În particular, este imposibil ca
+$f(z)\neq g(z)$ pentru orice $z\in\mathbb{R}$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.16}{}
+\begin{parti}
+  \item Determinați toate funcțiile continue $f:(0,1]\to\mathbb{R}$ pentru care
+        integrala (eventual improprie în $0$) $\displaystyle\int_0^{1}f(x^{\alpha})\,dx$
+        este convergentă pentru orice $\alpha>0$, iar aplicația
+        $\alpha\mapsto\displaystyle\int_0^{1}f(x^{\alpha})\,dx$ este afină în
+        $\alpha$ pe $(0,\infty)$.
+  \item Determinați toate funcțiile $f:[0,1]\to(0,\infty)$ continue pentru care
+        aplicația $\alpha\mapsto\displaystyle\int_0^{1}f(x)^{\alpha}\,dx$ este
+        afină în $\alpha$ pe $\mathbb{R}$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.17}{}
+Determinați funcțiile continue $f:[0,\infty)\to[0,\infty)$ cu proprietatea că
+\[ \left(\int_0^x f(t)\,dt\right)^{\!2} = \int_0^x f(t)^3\,dt,
+   \qquad \text{pentru orice } x\ge 0. \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.18}{}
+Fie $f:\mathbb{R}\to\mathbb{R}$ o funcție continuă, periodică de perioadă $1$, și fie
+$g:[0,1]\to\mathbb{R}$ o funcție continuă.
+\begin{parti}
+  \item Arătați că
+        $\displaystyle\lim_{n\to\infty}\int_0^1 f(nx)\,g(x)\,dx
+        = \left(\int_0^1 f(t)\,dt\right)\left(\int_0^1 g(x)\,dx\right)$.
+  \item Calculați $\displaystyle\lim_{n\to\infty}\int_0^1 x^2\left|\sin(n\pi x)\right|\,dx$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.19}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție de clasă $C^1$ și
+$\displaystyle I_n=\int_0^1 x^n f(x)\,dx$. Calculați
+\[ \lim_{n\to\infty} n\left(n I_n - f(1)\right). \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.20}{}
+Fie $\mathcal{C}$ mulțimea funcțiilor $f:[0,1]\to\mathbb{R}$ de două ori derivabile, cu
+$|f''(x)|\le1$ pentru orice $x\in[0,1]$. Pentru $f\in\mathcal{C}$ notăm
+$I(f)=\displaystyle\int_0^1 f(x)\,dx$.
+\begin{parti}
+  \item Arătați că $\left|I(f)-\dfrac{f(0)+f(1)}{2}\right|\le\dfrac1{12}$ pentru orice
+        $f\in\mathcal{C}$ și determinați funcțiile pentru care are loc egalitatea.
+  \item Arătați că $\left|I(f)-f\!\left(\tfrac12\right)\right|\le\dfrac1{24}$ pentru orice
+        $f\in\mathcal{C}$ și determinați funcțiile pentru care are loc egalitatea.
+  \item Arătați că
+        $\left|I(f)-\dfrac{f(0)+4f\left(\frac12\right)+f(1)}{6}\right|<\dfrac1{18}$
+        pentru orice $f\in\mathcal{C}$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.21}{}
+Fie $n\ge1$ un număr întreg și fie $\mathcal{K}$ mulțimea funcțiilor continue și concave
+$f:[0,1]\to[0,\infty)$ care nu sunt identic nule.
+\begin{parti}
+  \item Arătați că
+        $\displaystyle\int_0^1 x^{n}f(x)\,dx\le\frac{2}{n+2}\int_0^1 f(x)\,dx$
+        pentru orice $f\in\mathcal{K}$ și determinați cazul de egalitate.
+  \item Determinați cea mai mare constantă $c_n$ cu proprietatea că
+        $\displaystyle\int_0^1 x^{n}f(x)\,dx\ge c_n\int_0^1 f(x)\,dx$ pentru orice
+        $f\in\mathcal{K}$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.22}{}
+Fie $f:[0,1]\to\mathbb{R}$ o funcție continuă și, pentru $\alpha>0$,
+$I(\alpha)=\displaystyle\int_0^1 f(x^{\alpha})\,dx$.
+\begin{parti}
+  \item Arătați că
+        \[ \lim_{t\to0}\frac{I(1+t)-I(1)}{t}=-\int_0^1 f(x)\,(1+\ln x)\,dx , \]
+        integrala din membrul drept (improprie în $0$) fiind convergentă.
+  \item Arătați că, dacă $I(\alpha)\le I(1)$ pentru orice $\alpha>0$, atunci
+        $\displaystyle\int_0^1 f(x)\ln x\,dx=-\int_0^1 f(x)\,dx$.
+  \item Arătați că funcția $f(x)=8x-9x^{2}$ verifică ipoteza de la punctul (b).
+\end{parti}
+\vspace{1mm}\hrule
+

@@ -1,0 +1,2213 @@
+\setlength{\parskip}{8pt plus 3pt minus 1pt}
+\addtolength{\jot}{3pt}
+
+\chapter{Polinoame}\label{ch:polinoame}
+
+\textbf{Convenție pentru tot volumul.} Prin $K$ notăm corpul scalarilor, care este unul dintre corpurile $\mathbb{Q}$, $\mathbb{R}$ sau $\mathbb{C}$. Când un rezultat este valabil numai pentru unul dintre ele (de exemplu teorema fundamentală a algebrei, valabilă doar pentru $\mathbb{C}$), precizăm explicit.
+
+\section{Polinoame și proprietățile lor}
+
+Începem prin a defini noțiunea de polinom și a vedea câteva proprietăți.
+
+\begin{definitie}
+O funcție $P : \mathbb{R} \to \mathbb{R}$ se numește \emph{polinom cu coeficienți reali} (prescurtat, \emph{polinom}) dacă există un număr natural $n \ge 0$ și numere reale $a_0, a_1, \ldots, a_n$ astfel încât, pentru orice $x \in \mathbb{R}$,
+\[
+P(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n.
+\]
+\end{definitie}
+
+Vom vedea mai jos (Corolarul~\ref{cor:identitate}) că un polinom se scrie într-un mod unic sub această formă. Dacă $a_n \neq 0$, spunem că \emph{gradul} lui $P$, notat $\deg P$, este $n$; în acest caz $a_n$ se numește \emph{coeficientul dominant} al lui $P$. Prin convenție, gradul polinomului nul este $-\infty$; astfel, polinoamele de grad zero sunt exact funcțiile constante nenule. Dacă coeficientul dominant al lui $P$ este $1$, spunem că $P$ este \emph{unitar} (sau \emph{monic}).
+
+Notăm cu $\mathbb{R}[X]$ mulțimea polinoamelor cu coeficienți reali. În mod similar, $\mathbb{Q}[X]$, $\mathbb{C}[X]$ și $\mathbb{Z}[X]$ sunt mulțimile polinoamelor cu coeficienți raționali, complecși, respectiv întregi, iar $K[X]$ desemnează una dintre primele trei. Vom scrie indiferent $P(x)$, $P(X)$ sau simplu $P$.
+
+\begin{exemplu}
+Funcția $P(x) = \sqrt{2} - 2x + \pi x^2$ este un polinom de gradul $2$, cu coeficientul dominant $\pi$. Funcția $Q(x) = |x|$ \textbf{nu} este un polinom.
+\end{exemplu}
+
+\begin{propozitie}
+Fie $P, Q$ două polinoame. Atunci $P + Q$ și $PQ$ sunt polinoame și
+\[
+\deg(P + Q) \leq \max(\deg P, \deg Q),
+\qquad
+\deg(PQ) = \deg P + \deg Q,
+\]
+cu convenția $-\infty + \alpha = -\infty$.
+\end{propozitie}
+
+\begin{proof}
+Suma se obține adunând coeficienții termenilor de același grad, iar produsul prin desfacerea parantezelor, deci ambele sunt polinoame. Dacă $\deg P > \deg Q$, atunci $\deg(P+Q)=\deg P$; dacă $\deg P = \deg Q$, termenii dominanți se pot reduce, deci doar $\deg(P + Q) \leq \deg P$ (de exemplu pentru $P = X^2$, $Q = -X^2$). Dacă $a_n$ și $b_m$ sunt coeficienții dominanți ai lui $P$, respectiv $Q$, atunci $a_n b_m\neq 0$ este coeficientul dominant al lui $PQ$, de unde a doua relație.
+\end{proof}
+
+\begin{teorema}
+Fie $P(x) = a_0 + a_1 x + \cdots + a_n x^n$ un polinom cu coeficienți reali astfel încât $P(x) = 0$ pentru orice $x \in \mathbb{R}$. Atunci $a_0 = a_1 = \cdots = a_n = 0$.
+\end{teorema}
+
+\begin{proof}
+Presupunem prin absurd că nu toți coeficienții sunt nuli și fie $a_k$ primul coeficient nenul, deci $P(x) = a_k x^k + a_{k+1} x^{k+1} + \cdots + a_n x^n$. Pentru $x \neq 0$, împărțind prin $x^k$, obținem
+\[
+a_k + a_{k+1}x + \cdots + a_n x^{n-k} = 0, \qquad \forall x \in \mathbb{R}^*.
+\]
+Făcând $x \to 0$ rezultă $a_k = 0$, contradicție.
+\end{proof}
+
+\begin{corolar}\label{cor:identitate}
+Dacă $a_0 + a_1 x + \cdots + a_n x^n = b_0 + b_1 x + \cdots + b_m x^m$ pentru orice $x\in\mathbb{R}$, cu $a_n \neq 0$ și $b_m \neq 0$, atunci $m = n$ și $a_i = b_i$ pentru orice $0 \le i \le n$.
+\end{corolar}
+
+\begin{proof}
+Aplicăm teorema precedentă diferenței celor doi membri, care este un polinom nul pe $\mathbb{R}$.
+\end{proof}
+
+\section{Împărțirea euclidiană a polinoamelor}
+
+\begin{teorema}[Împărțirea cu rest]\label{teo:impartire}
+Fie $P, U \in K[X]$ cu $\deg U \ge 1$. Atunci există un unic cuplu de polinoame $Q, R \in K[X]$ astfel încât
+\[
+P = QU + R \qquad \text{și} \qquad \deg R \le \deg U - 1.
+\]
+\end{teorema}
+
+\begin{proof}
+\emph{Existența}, prin inducție după $\deg P$. Dacă $\deg P < \deg U$, luăm $Q = 0$ și $R = P$. Altfel, fie $p_m X^m$ și $u_k X^k$ termenii dominanți ai lui $P$ și $U$, cu $m \ge k$. Polinomul $P_1 = P - \frac{p_m}{u_k} X^{m-k} U$ are grad strict mai mic decât $m$, deci, din ipoteza de inducție, $P_1 = Q_1 U + R$ cu $\deg R \le \deg U - 1$. Atunci $P = \bigl(Q_1 + \frac{p_m}{u_k} X^{m-k}\bigr) U + R$.
+
+\emph{Unicitatea.} Dacă $QU + R = Q'U + R'$, atunci $(Q - Q')U = R' - R$. Dacă $Q \neq Q'$, membrul stâng are grad cel puțin $\deg U$, iar membrul drept are grad cel mult $\deg U - 1$, contradicție. Deci $Q = Q'$ și apoi $R = R'$.
+\end{proof}
+
+\begin{exemplu}
+Împărțirea euclidiană a polinomului $X^5 - 3X^3 + 2X + 1$ la $X^3 + 3X^2 - 2X - 1$ este
+\[
+X^5 - 3X^3 + 2X + 1 = (X^2 - 3X + 8)(X^3 + 3X^2 - 2X - 1) - 29X^2 + 15X + 9.
+\]
+\end{exemplu}
+
+\begin{observatie}
+Împărțirea euclidiană, în forma sa generală, este falsă pentru polinoame cu coeficienți întregi: nu există $Q \in \mathbb{Z}[X]$ și $r\in\mathbb{Z}$ cu $3X^2 + 1 = Q(X)(2X + 1)+r$, ceea ce se vede comparând coeficienții dominanți. În schimb, dacă $P, U \in \mathbb{Z}[X]$ și $U$ este monic, demonstrația de mai sus funcționează fără schimbări și dă $Q, R \in \mathbb{Z}[X]$: singura împărțire efectuată este cea la coeficientul dominant $u_k$, iar pentru $u_k = 1$ ea nu iese din $\mathbb{Z}$.
+\end{observatie}
+
+\begin{definitie}
+Fie $P, Q \in K[X]$, cu $P \neq 0$. Spunem că $P$ \emph{divide} pe $Q$ (și scriem $P\mid Q$) dacă există $R \in K[X]$ astfel încât $Q = PR$; echivalent, restul împărțirii lui $Q$ la $P$ este nul. Polinoamele $P$ și $Q$, nu ambele nule, sunt \emph{prime între ele} dacă singurii lor divizori comuni din $K[X]$ sunt constantele nenule.
+\end{definitie}
+
+\begin{exemplu}
+Restul împărțirii lui $A(X) = X^{2013} + 2013$ la $X - 1$ este o constantă $c$, căci are grad cel mult $0$. Din $A(X) = Q(X)(X-1) + c$, evaluând în $X = 1$, obținem $c = A(1) = 2014$.
+\end{exemplu}
+
+\begin{observatie}
+Noțiunea de polinoame prime între ele depinde, a priori, de mulțimea coeficienților. Teorema următoare arată totuși că, pentru $P,Q\in\mathbb{Q}[X]$, a fi prime între ele în $\mathbb{Q}[X]$ sau în $\mathbb{C}[X]$ este același lucru: relația $PU+QV=1$ rămâne adevărată în $\mathbb{C}[X]$.
+\end{observatie}
+
+\begin{teorema}[Bézout]\label{teo:bezout}
+Fie $P, Q \in K[X]$, nu ambele nule. Atunci $P$ și $Q$ sunt prime între ele dacă și numai dacă există $U, V \in K[X]$ astfel încât $PU + QV = 1$.
+\end{teorema}
+
+\begin{proof}
+Dacă $PU + QV = 1$, orice divizor comun al lui $P$ și $Q$ divide $1$, deci este o constantă nenulă. Reciproc, fie $\mathcal{S} = \{PU + QV : U, V \in K[X]\}$, care conține polinoame nenule, și fie $D = PU_0 + QV_0 \in \mathcal{S}$ un polinom nenul de grad minim. Împărțim: $P = cD + R$ cu $\deg R < \deg D$. Atunci $R = P(1 - cU_0) + Q(-cV_0) \in \mathcal{S}$, iar minimalitatea gradului lui $D$ impune $R = 0$, deci $D \mid P$. Analog $D \mid Q$. Cum $P$ și $Q$ sunt prime între ele, $D$ este o constantă nenulă $d$, iar $P\frac{U_0}{d} + Q\frac{V_0}{d} = 1$.
+\end{proof}
+
+\section{Rădăcini și factorizarea polinoamelor}
+
+Vom vedea aici că rădăcinile unui polinom permit factorizarea acestuia.
+
+\begin{definitie}
+Un element $a \in K$ se numește \emph{rădăcină} a polinomului $P \in K[X]$ dacă $P(a) = 0$.
+\end{definitie}
+
+\begin{exemplu}
+Polinomul real $X^2 - 1$ are rădăcinile $1$ și $-1$, iar $X^2 + 1$ nu are rădăcini reale. Polinomul $X^2 - 2$ are două rădăcini reale, dar privit în $\mathbb{Q}[X]$ nu are rădăcini, deoarece $\sqrt{2}$ este irațional. Polinomul $(X - 1)^{2012}$ are gradul $2012$, dar o singură rădăcină, $1$.
+\end{exemplu}
+
+\begin{teorema}[Teorema lui Bézout pentru rădăcini]\label{teo:factor}
+Fie $P \in K[X]$ și $a \in K$. Restul împărțirii lui $P$ la $X-a$ este $P(a)$. În particular, $a$ este rădăcină a lui $P$ dacă și numai dacă există $Q \in K[X]$ cu $P = (X - a)Q$.
+\end{teorema}
+
+\begin{proof}
+Prin Teorema~\ref{teo:impartire}, $P = (X-a)Q + c$ cu $c\in K$ constant; evaluând în $a$ obținem $c = P(a)$.
+\end{proof}
+
+\begin{corolar}\label{cor:nrradacini}
+Un polinom nenul de grad $n$ are cel mult $n$ rădăcini. În particular, un polinom cu o infinitate de rădăcini este polinomul nul, iar două polinoame care coincid într-o infinitate de puncte sunt egale.
+\end{corolar}
+
+\begin{proof}
+Inducție după $n$: pentru $n = 0$ polinomul este o constantă nenulă. Dacă $P$ de grad $n\ge 1$ are o rădăcină $a$, atunci $P = (X - a)Q$ cu $\deg Q = n - 1$, iar orice altă rădăcină $b\neq a$ a lui $P$ verifică $(b-a)Q(b)=0$, deci este rădăcină a lui $Q$. Din ipoteza de inducție, $Q$ are cel mult $n-1$ rădăcini, deci $P$ are cel mult $n$.
+\end{proof}
+
+\begin{definitie}[Multiplicitatea unei rădăcini]
+Fie $P \in K[X]$ nenul și $a \in K$. Spunem că $a$ este \emph{rădăcină de multiplicitate $m \ge 1$} a lui $P$ dacă $P = (X - a)^m Q$, cu $Q \in K[X]$ și $Q(a) \neq 0$. O rădăcină de multiplicitate $1$ se numește \emph{simplă}.
+\end{definitie}
+
+\begin{propozitie}[Criteriul derivatelor]\label{prop:multiplicitate}
+Fie $P \in K[X]$ nenul, $a \in K$ și $m \ge 1$. Atunci $a$ este rădăcină de multiplicitate cel puțin $m$ a lui $P$ dacă și numai dacă
+\[
+P(a) = P'(a) = \cdots = P^{(m-1)}(a) = 0 .
+\]
+\end{propozitie}
+
+\begin{proof}
+Scriind $X = a + (X-a)$ și desfăcând puterile, obținem $P = \sum_{k\ge 0} c_k (X-a)^k$; derivând de $k$ ori și evaluând în $a$ rezultă $P^{(k)}(a) = k!\,c_k$ (formula lui Taylor pentru polinoame). Așadar condiția din enunț înseamnă $c_0 = \cdots = c_{m-1} = 0$, adică $(X-a)^m \mid P$.
+\end{proof}
+
+\begin{teorema}[Teorema fundamentală a algebrei]\label{teo:fundamentala}
+Orice polinom $P \in \mathbb{C}[X]$ de grad $n \ge 1$ are cel puțin o rădăcină în $\mathbb{C}$.
+\end{teorema}
+
+\begin{corolar}\label{cor:scindatC}
+Orice polinom $P \in \mathbb{C}[X]$ de grad $n\ge 1$ se scrie
+\[
+P = a_n (X - x_1)(X - x_2) \cdots (X - x_n),
+\]
+unde $a_n \neq 0$ este coeficientul dominant, iar $x_1, \ldots, x_n \in \mathbb{C}$ sunt rădăcinile lui $P$, nu neapărat distincte. Așadar gradul lui $P$ este egal cu numărul rădăcinilor sale, numărate cu multiplicitate.
+\end{corolar}
+
+\begin{proof}
+Inducție după $n$, aplicând Teorema~\ref{teo:fundamentala} și Teorema~\ref{teo:factor}.
+\end{proof}
+
+\begin{exemplu}
+Polinomul $P = X^{6}-4X^{5}+5X^{4}-2X^{3}$ se factorizează ca $P = X^3 (X - 1)^2 (X - 2)$. Așadar $0$ este rădăcină de multiplicitate $3$, $1$ este rădăcină de multiplicitate $2$, iar $2$ este rădăcină simplă; în total $3+2+1 = 6 = \deg P$.
+\end{exemplu}
+
+\begin{teorema}[Relațiile lui Viète]\label{teo:viete}
+Fie $P = a_n X^n + a_{n-1}X^{n-1} + \cdots + a_0 = a_n (X - x_1)\cdots(X - x_n)$. Notând
+\[
+e_k = \sum_{1 \le i_1 < \cdots < i_k \le n} x_{i_1} x_{i_2}\cdots x_{i_k}
+\]
+(polinoamele simetrice fundamentale în rădăcini, cu $e_0 = 1$), avem $e_k = (-1)^k \dfrac{a_{n-k}}{a_n}$ pentru $1 \le k \le n$. În particular
+\[
+x_1 + \cdots + x_n = -\frac{a_{n-1}}{a_n}, \qquad x_1 x_2 \cdots x_n = (-1)^n \frac{a_0}{a_n}.
+\]
+\end{teorema}
+
+\begin{proof}
+Desfăcând produsul $(X - x_1)\cdots(X-x_n)$, coeficientul lui $X^{n-k}$ se obține alegând din $k$ paranteze termenul $-x_i$ și din celelalte $X$; el este $(-1)^k e_k$. Identificăm apoi coeficienții (Corolarul~\ref{cor:identitate}).
+\end{proof}
+
+\section{Ireductibilitatea polinoamelor}
+
+\begin{definitie}
+Un polinom $P \in K[X]$ cu $\deg P \ge 1$ se numește \emph{ireductibil} peste $K$ dacă nu se poate scrie $P = QR$ cu $Q, R \in K[X]$ și $\deg Q, \deg R \ge 1$.
+\end{definitie}
+
+\begin{exemplu}
+\begin{itemize}
+    \item $X^2 + 1$ este ireductibil în $\mathbb{R}[X]$, dar în $\mathbb{C}[X]$ se factorizează $(X - i)(X + i)$.
+    \item $X^2 - 2$ este ireductibil în $\mathbb{Q}[X]$: un factor de grad $1$ ar da o rădăcină rațională, iar $\sqrt{2} \notin \mathbb{Q}$.
+    \item Orice polinom de grad $1$ este ireductibil.
+\end{itemize}
+\end{exemplu}
+
+\begin{propozitie}\label{prop:ireductibil}
+\begin{enumerate}
+    \item Un polinom din $\mathbb{C}[X]$ este ireductibil dacă și numai dacă are gradul $1$ (Teorema~\ref{teo:fundamentala}).
+    \item Un polinom de grad $2$ sau $3$ din $K[X]$ este ireductibil peste $K$ dacă și numai dacă nu are rădăcini în $K$.
+    \item Dacă $P \in K[X]$ este ireductibil și $P \mid QR$, atunci $P \mid Q$ sau $P \mid R$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+Punctul 2 rezultă din faptul că o descompunere netrivială a unui polinom de grad $2$ sau $3$ conține un factor de grad $1$, adică o rădăcină în $K$. Pentru punctul 3, presupunem că $P \nmid Q$. Un divizor comun al lui $P$ și $Q$ este, fiind divizor al polinomului ireductibil $P$, fie o constantă nenulă, fie de forma $cP$; al doilea caz ar da $P \mid Q$. Deci $P$ și $Q$ sunt prime între ele și, prin Teorema~\ref{teo:bezout}, $PU + QV = 1$ pentru niște $U, V$. Înmulțind cu $R$: $R = P(UR) + (QR)V$, iar $P$ divide ambii termeni, deci $P \mid R$.
+\end{proof}
+
+\begin{teorema}[Criteriul lui Eisenstein]
+Fie $P = a_n X^n + \cdots + a_1 X + a_0 \in \mathbb{Z}[X]$ și $p$ un număr prim astfel încât $p \mid a_0, a_1, \ldots, a_{n-1}$, $p \nmid a_n$ și $p^2 \nmid a_0$. Atunci $P$ este ireductibil în $\mathbb{Q}[X]$.
+\end{teorema}
+
+\begin{observatie}
+Ireductibilitatea depinde de corpul peste care privim polinomul: un polinom poate fi ireductibil în $\mathbb{Q}[X]$, dar reductibil în $\mathbb{R}[X]$ (de exemplu $X^2-2$) sau în $\mathbb{C}[X]$. O demonstrație a criteriului lui Eisenstein se găsește în soluția Problemei ONM.2.
+\end{observatie}
+
+\section{Numere algebrice și polinom minimal}
+
+\begin{definitie}
+Un număr complex $\alpha$ se numește \emph{algebric peste $\mathbb{Q}$} dacă există un polinom nenul $f\in\mathbb{Q}[X]$ cu $f(\alpha)=0$. Un polinom monic din $\mathbb{Q}[X]$ de grad minim care se anulează în $\alpha$ se numește \emph{polinom minimal} al lui $\alpha$ și se notează $m_\alpha$.
+\end{definitie}
+
+\begin{teorema}\label{teo:minimalalg}
+Fie $\alpha$ algebric peste $\mathbb{Q}$ și $m_\alpha$ un polinom minimal al său. Atunci:
+\begin{enumerate}
+\item pentru orice $f \in \mathbb{Q}[X]$ cu $f(\alpha) = 0$ avem $m_\alpha \mid f$ în $\mathbb{Q}[X]$;
+\item polinomul minimal este unic;
+\item $m_\alpha$ este ireductibil în $\mathbb{Q}[X]$;
+\item reciproc, dacă $f \in \mathbb{Q}[X]$ este monic, ireductibil și $f(\alpha) = 0$, atunci $f = m_\alpha$.
+\end{enumerate}
+\end{teorema}
+
+\begin{proof}
+1. Împărțim: $f = q\,m_\alpha + r$ cu $\deg r < \deg m_\alpha$. Evaluând în $\alpha$ obținem $r(\alpha) = 0$. Dacă $r \neq 0$, împărțind $r$ la coeficientul său dominant am obține un polinom monic de grad mai mic decât $\deg m_\alpha$ care se anulează în $\alpha$, contradicție. Deci $r = 0$.
+
+2. Dacă $m_1$ și $m_2$ sunt două polinoame minimale, din punctul 1 avem $m_1 \mid m_2$ și $m_2 \mid m_1$; având același grad, $m_2 = c\,m_1$ cu $c$ constant, iar ambele fiind monice, $c = 1$.
+
+3. Dacă $m_\alpha = gh$ cu $1 \le \deg g, \deg h < \deg m_\alpha$, atunci $g(\alpha)h(\alpha) = 0$, deci unul dintre $g$, $h$ se anulează în $\alpha$ și are grad mai mic decât $m_\alpha$, contradicție cu minimalitatea.
+
+4. Din punctul 1, $m_\alpha \mid f$. Cum $f$ este ireductibil și $\deg m_\alpha \ge 1$, rezultă $f = c\,m_\alpha$ cu $c$ constant, iar din faptul că ambele sunt monice, $c = 1$.
+\end{proof}
+
+\begin{exemplu}
+Polinomul minimal al lui $\sqrt{2}$ este $X^2 - 2$ (monic, ireductibil peste $\mathbb{Q}$, se anulează în $\sqrt 2$). Polinomul minimal al lui $\zeta=\cos\frac{2\pi}{5}+i\sin\frac{2\pi}{5}$ este $1+X+X^2+X^3+X^4$, a cărui ireductibilitate peste $\mathbb{Q}$ face obiectul Problemei ONM.2.
+\end{exemplu}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Determinați restul împărțirii polinomului $X^{100}$ la $X^2 - 3X + 2$.
+\item Determinați $a, b \in \mathbb{R}$ astfel încât $X^2 + X + 1$ să dividă $X^4 + aX + b$.
+\item Aflați multiplicitatea rădăcinii $1$ a polinomului $X^5 - 5X + 4$.
+\item Arătați că $(X-1)^2$ divide $nX^{n+1} - (n+1)X^n + 1$, pentru orice $n \ge 1$.
+\item Fie $x_1, x_2, x_3$ rădăcinile polinomului $X^3 - X + 1$. Calculați $x_1^3 + x_2^3 + x_3^3$.
+\item Determinați polinomul $P$ de grad $2$ cu $P(0) = 1$, $P(1) = 2$ și $P(2) = 7$.
+\item Aflați restul împărțirii lui $(X+1)^{10}$ la $X^2 + 1$.
+\item Arătați că $X^4 + 1$ este ireductibil în $\mathbb{Q}[X]$.
+\item Descompuneți $X^4 + 4$ în factori ireductibili în $\mathbb{Q}[X]$.
+\item Arătați că polinomul minimal al lui $\sqrt{2} + \sqrt{3}$ este $X^4 - 10X^2 + 1$.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Restul este $aX + b$, cu $a + b = 1^{100}$ și $2a + b = 2^{100}$ (evaluând în rădăcinile $1$ și $2$): $R = (2^{100} - 1)X + 2 - 2^{100}$.
+\item Cu $\omega$ rădăcină a lui $X^2+X+1$ avem $\omega^3 = 1$, deci $\omega^4 = \omega$ și condiția devine $(1 + a)\omega + b = 0$; cum $\omega\notin\mathbb{R}$, rezultă $a = -1$, $b = 0$. Verificare: $X^4 - X = X(X - 1)(X^2 + X + 1)$.
+\item $P(1) = 0$, $P'(1) = 5 - 5 = 0$, $P''(1) = 20 \ne 0$: multiplicitatea este $2$; de fapt $X^5 - 5X + 4 = (X-1)^2(X^3 + 2X^2 + 3X + 4)$.
+\item Polinomul și derivata sa, $n(n+1)X^n - n(n+1)X^{n-1}$, se anulează în $1$; aplicați Propoziția~\ref{prop:multiplicitate}.
+\item Din $x_i^3 = x_i - 1$ și $x_1 + x_2 + x_3 = 0$ (Viète) rezultă suma $0 - 3 = -3$.
+\item $P = aX^2 + bX + 1$ cu $a + b = 1$ și $4a + 2b = 6$: $P = 2X^2 - X + 1$.
+\item $(X+1)^2 = X^2 + 1 + 2X$, deci $(X+1)^{10}$ dă același rest ca $(2X)^5 = 32X^5$, adică $32X$ (căci $X^4 \equiv 1$).
+\item $(X+1)^4 + 1 = X^4 + 4X^3 + 6X^2 + 4X + 2$ verifică criteriul lui Eisenstein cu $p = 2$; o factorizare a lui $X^4 + 1$ ar da una pentru $(X+1)^4 + 1$.
+\item $X^4 + 4 = (X^2 + 2)^2 - 4X^2 = (X^2 - 2X + 2)(X^2 + 2X + 2)$; factorii nu au rădăcini reale, deci sunt ireductibili (Propoziția~\ref{prop:ireductibil}).
+\item Din $x = \sqrt2+\sqrt3$: $x^2 = 5 + 2\sqrt 6$, deci $(x^2 - 5)^2 = 24$, adică $x^4 - 10x^2 + 1 = 0$. Polinomul nu are rădăcini raționale (singurele candidate sunt $\pm1$) și nu se scrie $(X^2+aX+b)(X^2-aX+c)$ cu $a,b,c\in\mathbb{Q}$: identificând coeficienții, $a(c-b)=0$, $bc=1$ și $b+c-a^2=-10$; pentru $a=0$ rezultă $b,c=-5\pm2\sqrt6\notin\mathbb{Q}$, iar pentru $a\neq0$ rezultă $b=c=\pm1$ și $a^2=10+2b\in\{8,12\}$, imposibil în $\mathbb{Q}$; deci este ireductibil și, fiind monic, este polinomul minimal (Teorema~\ref{teo:minimalalg}).
+\end{enumerate}
+
+\chapter{Determinanți și sisteme}\label{ch:determinanti}
+
+În acest capitol construim determinantul unei matrice pătratice, demonstrăm proprietățile lui fundamentale și le aplicăm la inversarea matricelor și la rezolvarea sistemelor liniare. Notăm cu $M_{m,n}(K)$ mulțimea matricelor cu $m$ linii și $n$ coloane cu elemente din $K$, cu $M_n(K)=M_{n,n}(K)$, cu $I_n$ matricea unitate și cu $O_n$ (sau $O$) matricea nulă. Toate rezultatele capitolelor următoare care folosesc determinanți se sprijină pe acest capitol.
+
+\section{Permutări și signatura lor}
+
+\begin{definitie}
+O \emph{permutare} de grad $n$ este o funcție bijectivă $\sigma:\{1,\dots,n\}\to\{1,\dots,n\}$. Mulțimea lor se notează $S_n$ și are $n!$ elemente; compunerea a două permutări este tot o permutare. O pereche $(i,j)$ cu $i<j$ și $\sigma(i)>\sigma(j)$ se numește \emph{inversiune} a lui $\sigma$. Dacă $\sigma$ are $\mathrm{inv}(\sigma)$ inversiuni, \emph{signatura} lui $\sigma$ este
+\[
+\sgn(\sigma)=(-1)^{\mathrm{inv}(\sigma)}\in\{1,-1\}.
+\]
+Permutarea $\sigma$ este \emph{pară} dacă $\sgn\sigma=1$ și \emph{impară} dacă $\sgn\sigma=-1$.
+\end{definitie}
+
+\begin{exemplu}
+Permutarea $\sigma=\begin{pmatrix}1&2&3&4\\2&4&1&3\end{pmatrix}$ are inversiunile $(1,3)$, $(2,3)$, $(2,4)$ (valorile $2>1$, $4>1$, $4>3$), deci $\sgn\sigma=-1$.
+\end{exemplu}
+
+\begin{propozitie}\label{prop:sgn}
+\begin{enumerate}
+\item $\displaystyle\sgn(\sigma)=\prod_{1\le i<j\le n}\frac{\sigma(j)-\sigma(i)}{j-i}$.
+\item $\sgn(\sigma\tau)=\sgn(\sigma)\sgn(\tau)$ pentru orice $\sigma,\tau\in S_n$; în particular $\sgn(\sigma^{-1})=\sgn(\sigma)$.
+\item Orice transpoziție (permutare care schimbă între ele două elemente $i\neq j$ și le fixează pe celelalte) este impară.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. Când $\{i,j\}$ parcurge perechile neordonate, $\{\sigma(i),\sigma(j)\}$ parcurge tot perechile neordonate, câte o dată. Deci numărătorii și numitorii au aceleași valori absolute, iar produsul este $\pm1$; un factor este negativ exact când $(i,j)$ este inversiune.
+
+2. Scriem
+\[
+\sgn(\sigma\tau)=\prod_{i<j}\frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}\cdot\prod_{i<j}\frac{\tau(j)-\tau(i)}{j-i}.
+\]
+Al doilea produs este $\sgn\tau$. În primul, fiecare factor nu se schimbă la schimbarea între ele a lui $i$ și $j$, deci produsul depinde doar de perechile neordonate $\{\tau(i),\tau(j)\}$, care parcurg toate perechile $\{k,l\}$; el este $\prod_{k<l}\frac{\sigma(l)-\sigma(k)}{l-k}=\sgn\sigma$. Din $\sigma\sigma^{-1}=\mathrm{id}$ rezultă $\sgn\sigma\cdot\sgn\sigma^{-1}=1$.
+
+3. Pentru transpoziția care schimbă $i<j$, inversiunile sunt $(i,j)$, perechile $(i,k)$ și $(k,j)$ cu $i<k<j$: în total $2(j-i-1)+1$, număr impar.
+\end{proof}
+
+\section{Definiția determinantului}
+
+\begin{definitie}\label{def:det}
+\emph{Determinantul} matricei $A=(a_{ij})\in M_n(K)$ este numărul
+\[
+\det A=\sum_{\sigma\in S_n}\sgn(\sigma)\,a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)} .
+\]
+Îl notăm și cu $|A|$ sau scriind elementele între bare verticale.
+\end{definitie}
+
+Fiecare termen al sumei conține exact câte un element de pe fiecare linie și de pe fiecare coloană. Pentru $n=2$ și $n=3$ regăsim formulele cunoscute:
+\[
+\begin{vmatrix} a_{11}&a_{12}\\ a_{21}&a_{22}\end{vmatrix}=a_{11}a_{22}-a_{12}a_{21},
+\]
+\[
+\begin{vmatrix} a_{11}&a_{12}&a_{13}\\ a_{21}&a_{22}&a_{23}\\ a_{31}&a_{32}&a_{33}\end{vmatrix}
+=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}
+\]
+(regula lui Sarrus: cele trei permutări pare dau semnul $+$, cele trei impare semnul $-$).
+
+\section{Proprietățile determinantului}
+
+Notăm cu $L_1,\dots,L_n$ liniile unei matrice și scriem $\det(L_1,\dots,L_n)$.
+
+\begin{propozitie}\label{prop:dettranspusa}
+Pentru orice $A\in M_n(K)$ avem $\det A^t=\det A$. În consecință, orice proprietate a determinantului formulată pentru linii rămâne adevărată pentru coloane.
+\end{propozitie}
+
+\begin{proof}
+Elementul $(i,j)$ al lui $A^t$ este $a_{ji}$, deci $\det A^t=\sum_{\sigma}\sgn\sigma\prod_i a_{\sigma(i)i}$. Punând $j=\sigma(i)$, produsul devine $\prod_j a_{j\sigma^{-1}(j)}$, iar $\sgn\sigma=\sgn\sigma^{-1}$. Cum $\sigma\mapsto\sigma^{-1}$ este o bijecție a lui $S_n$, obținem exact suma care definește $\det A$.
+\end{proof}
+
+\begin{propozitie}\label{prop:detproprietati}
+Fie $A\in M_n(K)$.
+\begin{enumerate}
+\item \emph{(Liniaritate)} Determinantul este liniar în fiecare linie: dacă $L_i=\alpha L_i'+\beta L_i''$, atunci
+\[
+\det(\dots,L_i,\dots)=\alpha\det(\dots,L_i',\dots)+\beta\det(\dots,L_i'',\dots).
+\]
+\item \emph{(Alternanță)} Dacă schimbăm între ele două linii, determinantul își schimbă semnul. Dacă două linii sunt egale, determinantul este nul.
+\item Dacă o linie este nulă sau două linii sunt proporționale, determinantul este nul.
+\item Adunând la o linie un multiplu al altei linii, determinantul nu se schimbă.
+\item $\det(cA)=c^n\det A$ pentru orice $c\in K$.
+\item Mai general, permutând liniile cu $\sigma\in S_n$, adică trecând la matricea cu liniile $L_{\sigma(1)},\dots,L_{\sigma(n)}$, determinantul se înmulțește cu $\sgn\sigma$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. Fiecare termen al sumei din Definiția~\ref{def:det} conține exact un factor de pe linia $i$, iar acesta intră liniar.
+
+6. Matricea $B$ cu liniile $L_{\sigma(1)},\dots,L_{\sigma(n)}$ are $b_{ij}=a_{\sigma(i)j}$, deci
+\[
+\det B=\sum_{\tau}\sgn\tau\prod_i a_{\sigma(i)\tau(i)}=\sum_\tau\sgn\tau\prod_j a_{j\,\tau\sigma^{-1}(j)} .
+\]
+Notând $\rho=\tau\sigma^{-1}$, avem $\sgn\tau=\sgn\rho\,\sgn\sigma$ (Propoziția~\ref{prop:sgn}), iar $\rho$ parcurge $S_n$ când $\tau$ parcurge $S_n$; deci $\det B=\sgn\sigma\det A$.
+
+2. Prima afirmație este cazul particular al punctului 6 pentru o transpoziție. Dacă liniile $i$ și $j$ sunt egale, schimbându-le între ele matricea nu se schimbă, deci $\det A=-\det A$, adică $\det A=0$.
+
+3. O linie nulă este $0$ ori ea însăși, iar din liniaritate determinantul este $0$. Dacă $L_j=cL_i$, din liniaritate $\det A=c\det(\dots,L_i,\dots,L_i,\dots)=0$.
+
+4. Din liniaritate, $\det(\dots,L_i+cL_j,\dots,L_j,\dots)=\det A+c\det(\dots,L_j,\dots,L_j,\dots)=\det A$.
+
+5. Aplicăm liniaritatea pe fiecare dintre cele $n$ linii.
+\end{proof}
+
+\begin{propozitie}\label{prop:dettriunghiulara}
+Dacă $A\in M_n(K)$ este triunghiulară (superior: $a_{ij}=0$ pentru $i>j$; sau inferior: $a_{ij}=0$ pentru $i<j$), atunci $\det A=a_{11}a_{22}\cdots a_{nn}$.
+\end{propozitie}
+
+\begin{proof}
+Fie $A$ superior triunghiulară și $\sigma\neq\mathrm{id}$. Cum $\sum_i\sigma(i)=\sum_i i$, dacă am avea $\sigma(i)\ge i$ pentru orice $i$, ar rezulta $\sigma(i)=i$ pentru orice $i$. Deci există $i$ cu $\sigma(i)<i$, iar termenul corespunzător lui $\sigma$ conține factorul $a_{i\sigma(i)}=0$. Rămâne doar termenul lui $\mathrm{id}$, adică $a_{11}\cdots a_{nn}$. Cazul inferior triunghiular rezultă prin transpunere.
+\end{proof}
+
+\begin{exemplu}
+Proprietățile de mai sus dau metoda practică de calcul (eliminarea lui Gauss): prin operații de tipul 4 aducem matricea la forma triunghiulară.
+\[
+\begin{vmatrix}1&2&3\\4&5&6\\7&8&10\end{vmatrix}
+=\begin{vmatrix}1&2&3\\0&-3&-6\\0&-6&-11\end{vmatrix}
+=\begin{vmatrix}1&2&3\\0&-3&-6\\0&0&1\end{vmatrix}=-3 .
+\]
+\end{exemplu}
+
+\section{Dezvoltarea după o linie sau o coloană}
+
+\begin{definitie}
+Fie $A\in M_n(K)$, $n\ge2$. \emph{Minorul} elementului $a_{ij}$, notat $M_{ij}$, este determinantul matricei de ordin $n-1$ obținute din $A$ prin eliminarea liniei $i$ și a coloanei $j$. \emph{Complementul algebric} al lui $a_{ij}$ este $\Gamma_{ij}=(-1)^{i+j}M_{ij}$.
+\end{definitie}
+
+\begin{teorema}[Dezvoltarea Laplace]\label{teo:laplace}
+Fie $A\in M_n(K)$, $n\ge2$. Pentru orice linie $i$ și orice coloană $j$,
+\[
+\det A=\sum_{k=1}^n a_{ik}\Gamma_{ik}=\sum_{k=1}^n a_{kj}\Gamma_{kj}.
+\]
+Mai mult, pentru $i\neq l$ și $j\neq l$ avem
+\[
+\sum_{k=1}^n a_{lk}\Gamma_{ik}=0,\qquad \sum_{k=1}^n a_{kl}\Gamma_{kj}=0 .
+\]
+\end{teorema}
+
+\begin{proof}
+Scriem linia $i$ ca $L_i=\sum_k a_{ik}e_k$, unde $e_k$ este linia cu $1$ pe poziția $k$ și $0$ în rest. Din liniaritate, $\det A=\sum_k a_{ik}\det A^{(k)}$, unde $A^{(k)}$ se obține din $A$ înlocuind linia $i$ cu $e_k$. Arătăm că $\det A^{(k)}=\Gamma_{ik}$.
+
+Mutăm linia $i$ a lui $A^{(k)}$ pe ultimul loc prin $n-i$ schimbări de linii vecine și coloana $k$ pe ultimul loc prin $n-k$ schimbări de coloane vecine; ordinea celorlalte linii și coloane se păstrează. Obținem o matrice $B$ cu $\det B=(-1)^{(n-i)+(n-k)}\det A^{(k)}=(-1)^{i+k}\det A^{(k)}$, a cărei ultimă linie este $(0,\dots,0,1)$ și al cărei bloc din stânga sus, de ordin $n-1$, este exact matricea din care se calculează $M_{ik}$. În $\det B=\sum_\sigma\sgn\sigma\prod_l b_{l\sigma(l)}$ rămân doar permutările cu $\sigma(n)=n$, pentru care $b_{n\sigma(n)}=1$; acestea sunt permutările lui $\{1,\dots,n-1\}$, cu aceleași inversiuni. Deci $\det B=M_{ik}$ și $\det A^{(k)}=(-1)^{i+k}M_{ik}=\Gamma_{ik}$.
+
+Pentru a doua afirmație, $\sum_k a_{lk}\Gamma_{ik}$ este, după prima parte, dezvoltarea după linia $i$ a matricei obținute din $A$ înlocuind linia $i$ cu linia $l$; aceasta are două linii egale, deci determinantul ei este $0$. Afirmațiile pentru coloane rezultă prin transpunere (Propoziția~\ref{prop:dettranspusa}).
+\end{proof}
+
+\begin{observatie}
+Dezvoltarea Laplace este utilă mai ales după o linie sau o coloană cu multe zerouri. De exemplu, dacă linia $i$ are un singur element nenul, $a_{ij}$, atunci $\det A=(-1)^{i+j}a_{ij}M_{ij}$.
+\end{observatie}
+
+\section{Determinantul produsului}
+
+\begin{teorema}\label{teo:detprodus}
+Pentru orice $A,B\in M_n(K)$,
+\[
+\det(AB)=\det A\cdot\det B .
+\]
+\end{teorema}
+
+\begin{proof}
+Fie $B_1,\dots,B_n$ liniile lui $B$. Linia $i$ a lui $AB$ este $\sum_{k}a_{ik}B_k$. Aplicând liniaritatea în fiecare dintre cele $n$ linii,
+\[
+\det(AB)=\sum_{\varphi}a_{1\varphi(1)}a_{2\varphi(2)}\cdots a_{n\varphi(n)}\,\det\bigl(B_{\varphi(1)},\dots,B_{\varphi(n)}\bigr),
+\]
+suma fiind după toate funcțiile $\varphi:\{1,\dots,n\}\to\{1,\dots,n\}$. Dacă $\varphi$ nu este injectivă, determinantul din dreapta are două linii egale, deci este nul. Rămân funcțiile bijective, adică permutările $\sigma$, pentru care $\det(B_{\sigma(1)},\dots,B_{\sigma(n)})=\sgn\sigma\det B$ (Propoziția~\ref{prop:detproprietati}, punctul 6). Așadar
+\[
+\det(AB)=\det B\sum_{\sigma\in S_n}\sgn\sigma\,a_{1\sigma(1)}\cdots a_{n\sigma(n)}=\det A\det B.\qedhere
+\]
+\end{proof}
+
+\begin{corolar}
+$\det(A^k)=(\det A)^k$ pentru orice $k\ge1$, iar $\det(AB)=\det(BA)$, deși în general $AB\neq BA$.
+\end{corolar}
+
+\section{Adjuncta și inversa unei matrice}
+
+\begin{definitie}
+Fie $A\in M_n(K)$, $n\ge2$. \emph{Adjuncta} lui $A$ este matricea $\adj A\in M_n(K)$ al cărei element de pe poziția $(i,j)$ este complementul algebric $\Gamma_{ji}$ (transpusa matricei complemenților algebrici). Pentru $n=1$ punem $\adj A=(1)$.
+\end{definitie}
+
+\begin{observatie}
+În acest volum $\adj A$ desemnează întotdeauna adjuncta definită mai sus, iar $A^*$ desemnează transpusa conjugată $\overline{A}^{\,t}$ (Secțiunea~\ref{sec:remarcabile}). Atenție: în manualele școlare $A^*$ notează adesea adjuncta; aici nu. Pentru $n=2$,
+\[
+\adj\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}d&-b\\-c&a\end{pmatrix}.
+\]
+\end{observatie}
+
+\begin{teorema}\label{teo:adj}
+Pentru orice $A\in M_n(K)$,
+\[
+A\cdot\adj A=\adj A\cdot A=(\det A)\,I_n .
+\]
+\end{teorema}
+
+\begin{proof}
+Elementul $(i,l)$ al lui $A\adj A$ este $\sum_k a_{ik}\Gamma_{lk}$, care este $\det A$ pentru $l=i$ și $0$ pentru $l\neq i$ (Teorema~\ref{teo:laplace}). Analog, elementul $(i,l)$ al lui $\adj A\cdot A$ este $\sum_k\Gamma_{ki}a_{kl}$, adică dezvoltarea după coloana $i$ (pentru $l=i$) sau o sumă nulă (pentru $l\neq i$).
+\end{proof}
+
+\begin{definitie}
+O matrice $A\in M_n(K)$ este \emph{inversabilă} dacă există $B\in M_n(K)$ cu $AB=BA=I_n$; $B$ este unică, se notează $A^{-1}$ și se numește inversa lui $A$. Notăm cu $\GL_n(K)$ mulțimea matricelor inversabile din $M_n(K)$.
+\end{definitie}
+
+\begin{teorema}\label{teo:inversabila}
+O matrice $A\in M_n(K)$ este inversabilă dacă și numai dacă $\det A\neq0$. În acest caz
+\[
+A^{-1}=\frac{1}{\det A}\,\adj A,\qquad \det(A^{-1})=\frac1{\det A}.
+\]
+Mai mult, dacă $A,B\in M_n(K)$ și $AB=I_n$, atunci $A$ este inversabilă și $B=A^{-1}$ (deci și $BA=I_n$).
+\end{teorema}
+
+\begin{proof}
+Dacă $AB=I_n$, atunci $\det A\det B=1$ (Teorema~\ref{teo:detprodus}), deci $\det A\neq0$. Reciproc, dacă $\det A\neq0$, Teorema~\ref{teo:adj} arată că $\frac1{\det A}\adj A$ este inversa lui $A$. În fine, dacă $AB=I_n$, atunci $A$ este inversabilă, iar $B=A^{-1}(AB)=A^{-1}$.
+\end{proof}
+
+\begin{exemplu}
+Pentru $A=\begin{pmatrix}2&1\\5&3\end{pmatrix}$ avem $\det A=1$ și $A^{-1}=\adj A=\begin{pmatrix}3&-1\\-5&2\end{pmatrix}$.
+\end{exemplu}
+
+\section{Sisteme liniare. Regula lui Cramer}
+
+Un sistem de $m$ ecuații liniare cu $n$ necunoscute
+\[
+\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
+\quad\vdots\\
+a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m
+\end{cases}
+\]
+se scrie matriceal $AX=b$, unde $A=(a_{ij})\in M_{m,n}(K)$ este \emph{matricea sistemului}, $X$ este coloana necunoscutelor, iar $b$ coloana termenilor liberi. Matricea $\overline{A}=(A\,|\,b)\in M_{m,n+1}(K)$ se numește \emph{matricea extinsă}. Sistemul este \emph{compatibil} dacă are cel puțin o soluție (\emph{determinat} dacă soluția este unică, \emph{nedeterminat} altfel) și \emph{incompatibil} dacă nu are soluții. Sistemul este \emph{omogen} dacă $b=0$; un sistem omogen are mereu soluția nulă.
+
+\begin{teorema}[Regula lui Cramer]\label{teo:cramer}
+Fie $A\in M_n(K)$ cu $\det A\neq0$ și $b\in M_{n,1}(K)$. Atunci sistemul $AX=b$ are soluție unică, dată de
+\[
+x_j=\frac{\det A_j}{\det A},\qquad j=1,\dots,n,
+\]
+unde $A_j$ se obține din $A$ înlocuind coloana $j$ cu coloana $b$.
+\end{teorema}
+
+\begin{proof}
+Din $AX=b$ rezultă $X=A^{-1}b$, iar reciproc $X=A^{-1}b$ este soluție; deci soluția există și este unică. Din Teorema~\ref{teo:inversabila}, $x_j=\frac1{\det A}\sum_i\Gamma_{ij}b_i$, iar $\sum_i b_i\Gamma_{ij}$ este dezvoltarea lui $\det A_j$ după coloana $j$ (complemenții algebrici ai coloanei $j$ sunt aceiași în $A$ și în $A_j$).
+\end{proof}
+
+\begin{exemplu}
+Sistemul $x+y+z=6$, $x-y+2z=5$, $2x+y-z=1$ are $\det A=7\neq 0$, iar regula lui Cramer dă $x=1$, $y=2$, $z=3$.
+\end{exemplu}
+
+\section{Rangul unei matrice. Teorema Rouché-Capelli}
+
+\begin{definitie}\label{def:rang}
+Fie $A\in M_{m,n}(K)$. Un \emph{minor de ordin $k$} al lui $A$ este determinantul unei submatrice pătratice de ordin $k$, obținute alegând $k$ linii și $k$ coloane ale lui $A$ (păstrând ordinea lor). \emph{Rangul} lui $A$, notat $\rang A$, este cel mai mare ordin al unui minor nenul al lui $A$; prin convenție, $\rang O=0$.
+\end{definitie}
+
+\begin{observatie}\label{obs:rangminori}
+Dacă toți minorii de ordin $k$ ai lui $A$ sunt nuli, atunci, prin dezvoltarea Laplace după o linie, sunt nuli și toți minorii de ordin mai mare decât $k$. Prin urmare $\rang A=r$ dacă și numai dacă $A$ are un minor nenul de ordin $r$, iar toți minorii de ordin $r+1$ sunt nuli. Cum minorii lui $A^t$ sunt minorii lui $A$, avem $\rang A^t=\rang A$; evident $\rang A\le\min(m,n)$, iar pentru $A\in M_n(K)$ avem $\rang A=n$ dacă și numai dacă $\det A\neq 0$. Studiul detaliat al rangului se face în Capitolul~\ref{ch:rang}.
+\end{observatie}
+
+Un minor nenul de ordin $r=\rang A$ se numește \emph{minor principal}. Liniile și coloanele lui sunt \emph{principale}; ecuațiile corespunzătoare liniilor principale sunt \emph{ecuațiile principale}, iar necunoscutele corespunzătoare coloanelor principale sunt \emph{necunoscutele principale}. Celelalte se numesc \emph{secundare}.
+
+\begin{lema}\label{lema:liniisecundare}
+Fie $A\in M_{m,n}(K)$ cu $\rang A=r\ge1$ și $\Delta$ un minor principal. Atunci fiecare linie a lui $A$ este o combinație liniară a liniilor principale.
+\end{lema}
+
+\begin{proof}
+Renumerotând liniile și coloanele (ceea ce schimbă minorii cel mult prin semn), putem presupune că $\Delta$ este format de primele $r$ linii și primele $r$ coloane. Fie $i>r$ o linie secundară. Sistemul
+\[
+\sum_{k=1}^r\lambda_k a_{kj}=a_{ij},\qquad j=1,\dots,r,
+\]
+cu necunoscutele $\lambda_1,\dots,\lambda_r$, are determinantul $\Delta\neq0$ (este sistemul cu matricea transpusă submatricei lui $\Delta$), deci are o soluție (Teorema~\ref{teo:cramer}). Fie acum $j>r$ și $D_j$ minorul de ordin $r+1$ format cu liniile $1,\dots,r,i$ și coloanele $1,\dots,r,j$; cum $\rang A=r$, avem $D_j=0$. Scădem din ultima linie a lui $D_j$ combinația $\lambda_1L_1+\cdots+\lambda_rL_r$ a primelor $r$ linii, ceea ce nu schimbă determinantul; prin alegerea lui $\lambda$, ultima linie devine $\bigl(0,\dots,0,\ a_{ij}-\sum_k\lambda_ka_{kj}\bigr)$. Dezvoltând după ea,
+\[
+0=D_j=\Bigl(a_{ij}-\sum_{k=1}^r\lambda_ka_{kj}\Bigr)\Delta,
+\]
+deci $a_{ij}=\sum_k\lambda_ka_{kj}$ și pentru $j>r$. Așadar $L_i=\lambda_1L_1+\cdots+\lambda_rL_r$.
+\end{proof}
+
+\begin{teorema}[Rouché-Capelli]\label{teo:rouche}
+Sistemul $AX=b$, cu $A\in M_{m,n}(K)$, este compatibil dacă și numai dacă
+\[
+\rang A=\rang\overline{A}.
+\]
+În acest caz, dacă $r=\rang A$, sistemul este echivalent cu sistemul ecuațiilor principale; necunoscutele secundare, în număr de $n-r$, pot lua valori arbitrare, iar pentru fiecare alegere a lor necunoscutele principale sunt unic determinate. În particular, sistemul este compatibil determinat dacă și numai dacă $\rang A=\rang\overline A=n$.
+\end{teorema}
+
+\begin{proof}
+Cum minorii lui $A$ sunt și minori ai lui $\overline A$, avem mereu $\rang\overline A\ge\rang A=r$.
+
+\emph{Necesitatea.} Fie $X=(x_1,\dots,x_n)^t$ o soluție, deci $b=x_1C_1+\cdots+x_nC_n$, unde $C_j$ sunt coloanele lui $A$. Fie $D$ un minor de ordin $r+1$ al lui $\overline A$. Dacă $D$ nu conține coloana $b$, el este minor al lui $A$, deci $D=0$. Dacă o conține, din liniaritatea în acea coloană, $D=\sum_jx_jD^{(j)}$, unde $D^{(j)}$ se obține punând în locul lui $b$ (restrânsă la liniile lui $D$) coloana $C_j$; fiecare $D^{(j)}$ fie are două coloane egale, fie este, până la semn, un minor de ordin $r+1$ al lui $A$, deci este nul. Așadar toți minorii de ordin $r+1$ ai lui $\overline A$ sunt nuli și $\rang\overline A=r$ (Observația~\ref{obs:rangminori}).
+
+\emph{Suficiența.} Dacă $r=0$, atunci $A=O$ și $\overline A=O$, deci $b=0$ și orice $X$ este soluție. Fie $r\ge1$ și, după renumerotarea ecuațiilor și a necunoscutelor, $\Delta$ minorul format cu primele $r$ linii și coloane. $\Delta$ este minor nenul de ordin $r=\rang\overline A$ și pentru $\overline A$, deci, prin Lema~\ref{lema:liniisecundare} aplicată lui $\overline A$, fiecare linie a lui $\overline A$ este o combinație liniară a primelor $r$ linii. Cu alte cuvinte, fiecare ecuație secundară este o combinație liniară a ecuațiilor principale, deci este verificată de orice soluție a acestora. Ecuațiile principale se scriu
+\[
+\sum_{j=1}^r a_{kj}x_j=b_k-\sum_{j=r+1}^n a_{kj}x_j,\qquad k=1,\dots,r,
+\]
+iar pentru orice valori ale lui $x_{r+1},\dots,x_n$ acesta este un sistem cu determinantul $\Delta\neq0$, cu soluție unică $x_1,\dots,x_r$ (Teorema~\ref{teo:cramer}). Deci sistemul inițial este compatibil, iar soluțiile lui sunt descrise ca în enunț. Soluția este unică exact când nu există necunoscute secundare, adică $r=n$.
+\end{proof}
+
+\begin{corolar}[Sisteme omogene]\label{cor:omogen}
+Sistemul omogen $AX=0$, cu $A\in M_{m,n}(K)$, are soluții nenule dacă și numai dacă $\rang A<n$. În particular:
+\begin{enumerate}
+\item dacă $m<n$ (mai puține ecuații decât necunoscute), sistemul are soluții nenule;
+\item dacă $m=n$, sistemul are soluții nenule dacă și numai dacă $\det A=0$.
+\end{enumerate}
+\end{corolar}
+
+\begin{proof}
+Sistemul omogen este compatibil ($\overline A$ are o coloană nulă în plus, deci $\rang\overline A=\rang A$). Prin Teorema~\ref{teo:rouche}, soluția nulă este unica soluție exact când $\rang A=n$. Dacă $m<n$, atunci $\rang A\le m<n$; dacă $m=n$, $\rang A<n$ înseamnă $\det A=0$.
+\end{proof}
+
+\begin{exemplu}
+Discutăm după $m\in\mathbb{R}$ sistemul
+\[
+mx+y+z=1,\qquad x+my+z=1,\qquad x+y+mz=1 .
+\]
+Determinantul sistemului este $(m-1)^2(m+2)$. Pentru $m\notin\{1,-2\}$ sistemul este compatibil determinat, cu $x=y=z=\frac1{m+2}$. Pentru $m=1$ toate ecuațiile coincid: $\rang A=\rang\overline A=1$, sistemul este compatibil nedeterminat, cu soluțiile $x=1-y-z$, $y,z\in\mathbb{R}$ arbitrare. Pentru $m=-2$ avem $\rang A=2$, iar adunând cele trei ecuații obținem $0=3$; deci sistemul este incompatibil (și într-adevăr $\rang\overline A=3$).
+\end{exemplu}
+
+\section{Aplicații: determinantul lui $xA+yB$}
+
+\begin{lema}\label{lema:detxAyB}
+Fie $A,B\in M_n(\mathbb{C})$. Atunci $\det(xA+yB)$ este un polinom omogen de grad $n$ în $x,y$:
+\[
+\det(xA+yB)=\sum_{k=0}^n\alpha_k\,x^{n-k}y^k,
+\]
+unde $\alpha_k$ este suma determinanților matricelor obținute alegând $k$ linii din $B$ și celelalte $n-k$ linii din $A$ (liniile rămânând pe pozițiile lor). În particular
+\[
+\alpha_0=\det A,\qquad\alpha_n=\det B,\qquad \alpha_1=\Tr(\adj(A)\,B),\qquad\alpha_{n-1}=\Tr(\adj(B)\,A).
+\]
+\end{lema}
+
+\begin{proof}
+Linia $i$ a lui $xA+yB$ este $xA_i+yB_i$ (cu $A_i$, $B_i$ liniile lui $A$, respectiv $B$). Aplicând liniaritatea în fiecare linie, $\det(xA+yB)$ este suma, după toate submulțimile $S\subset\{1,\dots,n\}$, a termenilor $x^{n-|S|}y^{|S|}\det M_S$, unde $M_S$ are liniile $B_i$ pentru $i\in S$ și $A_i$ pentru $i\notin S$. Grupând după $k=|S|$ obținem formula și valorile lui $\alpha_0$, $\alpha_n$.
+
+Pentru $k=n-1$, $S=\{1,\dots,n\}\setminus\{i\}$, iar $M_S$ este $B$ cu linia $i$ înlocuită de $A_i$. Dezvoltând după linia $i$ (complemenții algebrici ai liniei $i$ sunt cei ai lui $B$), $\det M_S=\sum_ja_{ij}\Gamma^B_{ij}=\sum_j a_{ij}(\adj B)_{ji}$. Sumând după $i$ obținem $\alpha_{n-1}=\Tr(A\adj B)=\Tr(\adj(B)A)$. Formula pentru $\alpha_1$ rezultă schimbând rolurile lui $A$ și $B$.
+\end{proof}
+
+\begin{observatie}
+Pentru $A,B\in M_2(\mathbb{C})$ avem $\adj A=\Tr(A)I_2-A$ (se verifică direct pe formula adjunctei de ordin $2$), deci
+\begin{equation}\label{eq:trace-adj-2x2}
+\Tr(\adj(A)\,B)=\Tr(A)\Tr(B)-\Tr(AB),
+\end{equation}
+iar Lema~\ref{lema:detxAyB} devine $\det(xA+yB)=x^2\det A+xy\bigl(\Tr A\Tr B-\Tr(AB)\bigr)+y^2\det B$.
+\end{observatie}
+
+\begin{lema}\label{lema:sumaradacini}
+Fie $A,B\in M_n(\mathbb{C})$ și $\varepsilon=\cos\frac{2\pi}n+i\sin\frac{2\pi}n$. Atunci
+\[
+\sum_{j=0}^{n-1}\det(A+\varepsilon^jB)=n\bigl(\det A+\det B\bigr).
+\]
+În particular, pentru $n=2$: $\det(A+B)+\det(A-B)=2(\det A+\det B)$.
+\end{lema}
+
+\begin{proof}
+Prin Lema~\ref{lema:detxAyB}, $P(t)=\det(A+tB)=\sum_{k=0}^nc_kt^k$, cu $c_0=\det A$ și $c_n=\det B$. Atunci $\sum_{j=0}^{n-1}P(\varepsilon^j)=\sum_kc_k\sum_{j=0}^{n-1}\varepsilon^{jk}$. Pentru $k=0$ și $k=n$ suma interioară este $n$ (căci $\varepsilon^n=1$), iar pentru $1\le k\le n-1$ este $\frac{\varepsilon^{nk}-1}{\varepsilon^k-1}=0$ (progresie geometrică cu rația $\varepsilon^k\neq1$).
+\end{proof}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Calculați signatura permutării $\sigma=\begin{pmatrix}1&2&3&4\\3&1&4&2\end{pmatrix}$.
+\item Calculați $\det(a_{ij})\in M_n(K)$, unde $a_{ii}=a$ și $a_{ij}=b$ pentru $i\neq j$.
+\item Fie $D_n$ determinantul de ordin $n$ cu $2$ pe diagonala principală, $1$ pe cele două diagonale vecine și $0$ în rest. Arătați că $D_n=2D_{n-1}-D_{n-2}$ și calculați $D_n$.
+\item Arătați că o matrice $A\in M_n(\mathbb{R})$ cu $A^t=-A$ și $n$ impar are $\det A=0$.
+\item Calculați inversa matricei $\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}$.
+\item Fie $A\in M_n(K)$, $n\ge2$. Arătați că $\det(\adj A)=(\det A)^{n-1}$.
+\item Discutați după $m\in\mathbb{R}$ și rezolvați sistemul $mx+y+z=1$, $x+my+z=m$, $x+y+mz=m^2$.
+\item Determinați $m\in\mathbb{R}$ pentru care sistemul omogen $x+my+z=0$, $mx+y+z=0$, $x+y+mz=0$ are soluții nenule.
+\item Arătați că, dacă $A\in M_n(K)$ este inversabilă, atunci $\adj A$ este inversabilă și $(\adj A)^{-1}=\adj(A^{-1})=\frac{1}{\det A}A$.
+\item Fie $A,B\in M_2(\mathbb{C})$ cu $\det A=\det B=0$. Arătați că $\det(A+B)=-\det(A-B)$.
+\item Calculați determinantul circulant $\begin{vmatrix}a&b&c\\c&a&b\\b&c&a\end{vmatrix}$.
+\item Calculați determinantul matricei de ordin $n$ cu $a_{ii}=1+x_i^2$ și $a_{ij}=x_ix_j$ pentru $i\neq j$ (metoda bordării).
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Inversiunile sunt $(1,2)$, $(1,4)$, $(3,4)$: $\sgn\sigma=-1$.
+\item Adunăm toate coloanele la prima, scoatem factorul $a+(n-1)b$ și scădem prima linie din celelalte: $\det=(a+(n-1)b)(a-b)^{n-1}$.
+\item Dezvoltăm după prima linie, apoi al doilea minor după prima coloană. Cu $D_1=2$, $D_2=3$, obținem $D_n=n+1$.
+\item $\det A=\det A^t=\det(-A)=(-1)^n\det A=-\det A$.
+\item $\begin{pmatrix}1&-1&0\\0&1&-1\\0&0&1\end{pmatrix}$.
+\item Dacă $\det A\neq0$, luăm determinantul în $A\adj A=\det(A)I_n$. Dacă $\det A=0$ și $\adj A$ ar fi inversabilă, din $A\adj A=O_n$ ar rezulta $A=O_n$, deci $\adj A=O_n$, contradicție; așadar $\det(\adj A)=0$.
+\item Determinantul este $(m-1)^2(m+2)$. Pentru $m\notin\{1,-2\}$: $x=-\frac{m+1}{m+2}$, $y=\frac1{m+2}$, $z=\frac{(m+1)^2}{m+2}$. Pentru $m=1$: compatibil nedeterminat, $x=1-y-z$. Pentru $m=-2$: incompatibil (suma ecuațiilor dă $0=3$).
+\item Determinantul este $-(m-1)^2(m+2)$, deci $m\in\{1,-2\}$ (Corolarul~\ref{cor:omogen}).
+\item Din $A\adj A=\det(A)I_n$ rezultă $\adj A\cdot\frac1{\det A}A=I_n$; iar $\adj(A^{-1})=\det(A^{-1})\,(A^{-1})^{-1}=\frac1{\det A}A$.
+\item Prin Lema~\ref{lema:sumaradacini}, $\det(A+B)+\det(A-B)=2(\det A+\det B)=0$.
+\item Adunând toate coloanele la prima, scoatem factorul $a+b+c$: determinantul este $(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=a^3+b^3+c^3-3abc$.
+\item Matricea este $I_n+xx^t$, cu $x=(x_1,\dots,x_n)^t$. Bordăm: $\det(I_n+xx^t)=\begin{vmatrix}1&-x^t\\x&I_n\end{vmatrix}$ (scădem din a doua linie de blocuri prima înmulțită cu $x$), iar același determinant, eliminând $x$ cu ajutorul lui $I_n$, este $1+x^tx$. Răspuns: $1+x_1^2+\cdots+x_n^2$.
+\end{enumerate}
+
+\chapter{Rangul matricelor}\label{ch:rang}
+
+Rangul unei matrice a fost definit prin minori (Definiția~\ref{def:rang}). În acest capitol îl legăm de independența liniară a coloanelor și a liniilor și demonstrăm proprietățile folosite în probleme.
+
+\section{Rang și independență liniară}
+
+Identificăm coloanele din $M_{m,1}(K)$ cu vectori din $K^m$. O \emph{combinație liniară} a coloanelor $C_1,\dots,C_k$ este o coloană $\alpha_1C_1+\cdots+\alpha_kC_k$, cu $\alpha_i\in K$.
+
+\begin{definitie}
+Coloanele $C_1,\dots,C_k\in M_{m,1}(K)$ sunt \emph{liniar independente} dacă
+\[
+\alpha_1C_1+\cdots+\alpha_kC_k=0\ \Longrightarrow\ \alpha_1=\cdots=\alpha_k=0,
+\]
+și \emph{liniar dependente} în caz contrar. Analog pentru linii.
+\end{definitie}
+
+Cu alte cuvinte, $C_1,\dots,C_k$ sunt liniar independente exact când sistemul omogen cu matricea $(C_1\ \cdots\ C_k)$ are doar soluția nulă. Noțiunea se generalizează la spații vectoriale oarecare în Capitolul~\ref{ch:spatii}.
+
+\begin{lema}\label{lema:maimulticomb}
+Dacă $v_1,\dots,v_{k+1}\in M_{m,1}(K)$ sunt combinații liniare ale coloanelor $w_1,\dots,w_k$, atunci $v_1,\dots,v_{k+1}$ sunt liniar dependente.
+\end{lema}
+
+\begin{proof}
+Scriem $v_j=\sum_{i=1}^k\lambda_{ij}w_i$ și fie $\Lambda=(\lambda_{ij})\in M_{k,k+1}(K)$. Sistemul omogen $\Lambda y=0$ are $k$ ecuații și $k+1$ necunoscute, deci are o soluție nenulă $y$ (Corolarul~\ref{cor:omogen}). Atunci
+\[
+\sum_{j}y_jv_j=\sum_i\Bigl(\sum_j\lambda_{ij}y_j\Bigr)w_i=0,
+\]
+cu $y\neq0$.
+\end{proof}
+
+\begin{teorema}\label{teo:rangcoloane}
+Pentru orice $A\in M_{m,n}(K)$, rangul lui $A$ este egal cu numărul maxim de coloane liniar independente ale lui $A$ și cu numărul maxim de linii liniar independente ale lui $A$. Mai precis, dacă $r=\rang A\ge1$, coloanele unui minor principal sunt liniar independente și orice coloană a lui $A$ este o combinație liniară a lor; la fel pentru linii.
+\end{teorema}
+
+\begin{proof}
+Fie $\Delta$ un minor principal, format cu liniile $i_1,\dots,i_r$ și coloanele $j_1,\dots,j_r$. Dacă $\sum_k\alpha_kC_{j_k}=0$, restrângând această egalitate la liniile $i_1,\dots,i_r$ obținem un sistem omogen cu determinantul $\Delta\neq0$, deci $\alpha=0$: coloanele principale sunt independente.
+
+Fie acum $k>r$ coloane oarecare ale lui $A$ și $B\in M_{m,k}(K)$ matricea formată cu ele. Orice minor al lui $B$ este minor al lui $A$, deci $\rang B\le r<k$, iar sistemul omogen $By=0$ are o soluție nenulă (Corolarul~\ref{cor:omogen}): cele $k$ coloane sunt dependente. Așadar numărul maxim de coloane independente este $r$.
+
+Aplicând Lema~\ref{lema:liniisecundare} matricei $A^t$ (care are același rang și minorul principal $\Delta$), fiecare coloană a lui $A$ este o combinație liniară a coloanelor principale. Afirmațiile despre linii rezultă prin transpunere.
+\end{proof}
+
+\begin{corolar}\label{cor:detrang}
+Pentru $A\in M_n(K)$ sunt echivalente: $\det A\neq0$; $\rang A=n$; coloanele lui $A$ sunt liniar independente; liniile lui $A$ sunt liniar independente; $A$ este inversabilă.
+\end{corolar}
+
+\begin{exemplu}
+Pentru $A=\begin{pmatrix}1&2&3\\2&4&6\\1&0&1\end{pmatrix}$ avem $\det A=0$ (primele două linii sunt proporționale), iar minorul $\begin{vmatrix}1&2\\1&0\end{vmatrix}=-2\neq0$; deci $\rang A=2$.
+\end{exemplu}
+
+\section{Proprietățile rangului}
+
+\begin{teorema}\label{teo:proprang}
+Fie $A,B$ matrice cu elemente din $K$, de dimensiuni potrivite în fiecare punct.
+\begin{enumerate}
+\item $\rang A\le\min(m,n)$ pentru $A\in M_{m,n}(K)$, iar $\rang A^t=\rang A$.
+\item $\rang(A\pm B)\le\rang(A\,|\,B)\le\rang A+\rang B$, unde $(A\,|\,B)$ se obține alăturând coloanele lui $B$ celor ale lui $A$.
+\item $\rang(AB)\le\min\{\rang A,\rang B\}$.
+\item Dacă $P\in\GL_m(K)$ și $Q\in\GL_n(K)$, atunci $\rang(PAQ)=\rang A$ pentru orice $A\in M_{m,n}(K)$.
+\item $\rang(A+B)\ge\bigl|\rang A-\rang B\bigr|$.
+\end{enumerate}
+\end{teorema}
+
+\begin{proof}
+Folosim următoarea consecință a Lemei~\ref{lema:maimulticomb} și a Teoremei~\ref{teo:rangcoloane}: \emph{dacă toate coloanele unei matrice $M$ sunt combinații liniare a $k$ coloane fixate, atunci $\rang M\le k$} (orice $k+1$ coloane ale lui $M$ sunt dependente).
+
+1. Este Observația~\ref{obs:rangminori}.
+
+2. Coloanele lui $(A\,|\,B)$ sunt combinații liniare ale celor $\rang A$ coloane principale ale lui $A$ și ale celor $\rang B$ coloane principale ale lui $B$. Coloanele lui $A\pm B$ sunt combinații liniare ale coloanelor lui $(A\,|\,B)$, deci ale coloanelor principale ale lui $(A\,|\,B)$.
+
+3. Coloana $j$ a lui $AB$ este $\sum_kb_{kj}C_k$, unde $C_k$ sunt coloanele lui $A$; deci coloanele lui $AB$ sunt combinații liniare ale coloanelor principale ale lui $A$ și $\rang(AB)\le\rang A$. Apoi $\rang(AB)=\rang(B^tA^t)\le\rang B^t=\rang B$.
+
+4. Din 3, $\rang(PAQ)\le\rang A=\rang\bigl(P^{-1}(PAQ)Q^{-1}\bigr)\le\rang(PAQ)$.
+
+5. Din 2, $\rang A=\rang\bigl((A+B)-B\bigr)\le\rang(A+B)+\rang B$; analog cu $A$ și $B$ schimbate.
+\end{proof}
+
+\section{Matrice de rang 1}
+
+\begin{propozitie}\label{prop:rang1}
+O matrice $A\in M_{m,n}(K)$ are rangul $1$ dacă și numai dacă $A=u\,v^t$ cu $u\in M_{m,1}(K)$ și $v\in M_{n,1}(K)$ nenule.
+\end{propozitie}
+
+\begin{proof}
+Dacă $\rang A=1$, fie $u$ o coloană principală; prin Teorema~\ref{teo:rangcoloane} fiecare coloană este de forma $C_j=v_ju$, deci $A=uv^t$, cu $v\neq0$ fiindcă $A\neq O$. Reciproc, $A=uv^t$ este nenulă (are elementul $u_iv_j\neq0$ pentru $u_i\neq0$, $v_j\neq0$) și toate coloanele ei sunt multipli ai lui $u$, deci $\rang A\le1$.
+\end{proof}
+
+\begin{lema}\label{lema:rang1}
+Fie $A\in M_n(K)$ cu $\rang A=1$. Atunci $A^2=\Tr(A)\,A$ și, mai general, $A^k=(\Tr A)^{k-1}A$ pentru orice $k\ge1$.
+\end{lema}
+
+\begin{proof}
+Scriem $A=uv^t$ (Propoziția~\ref{prop:rang1}). Atunci $A^2=u(v^tu)v^t=(v^tu)A$, iar scalarul $v^tu=\sum_iu_iv_i$ este exact $\Tr(uv^t)=\Tr A$. Formula pentru $A^k$ rezultă prin inducție.
+\end{proof}
+
+\begin{exemplu}
+Pentru $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$, de rang $1$ și urmă $5$, avem $A^{10}=5^9A$.
+\end{exemplu}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Calculați rangul matricei $\begin{pmatrix}1&2&1&0\\2&4&3&1\\3&6&4&1\end{pmatrix}$.
+\item Discutați după $m\in\mathbb{R}$ rangul matricei $\begin{pmatrix}1&1&1\\1&m&1\\1&1&m\end{pmatrix}$.
+\item Calculați rangul matricei $A\in M_n(\mathbb{R})$, $n\ge2$, cu $a_{ij}=i+j$.
+\item Calculați rangul matricei $A\in M_n(\mathbb{R})$ cu $a_{ij}=ij$ și apoi $A^k$, $k\ge1$.
+\item Fie $A\in M_{3,2}(\mathbb{R})$ și $B\in M_{2,3}(\mathbb{R})$. Arătați că $\det(AB)=0$.
+\item Fie $A,B\in M_n(K)$ cu $\rang A=n$. Arătați că $\rang(AB)=\rang(BA)=\rang B$.
+\item Arătați că, dacă $A\in M_n(K)$ și $\rang A=1$, atunci $I_n+A$ este inversabilă dacă și numai dacă $\Tr A\neq-1$ (folosiți Lema~\ref{lema:rang1}).
+\item Fie $u,v\in M_{n,1}(\mathbb{R})$ nenule. Determinați $\rang(uv^t+vu^t)$ după cum $u$ și $v$ sunt sau nu proporționali.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Linia a treia este suma primelor două, iar $\begin{vmatrix}1&1\\3&1\end{vmatrix}=-2\neq0$ (coloanele $1$ și $3$): rangul este $2$.
+\item Determinantul este $(m-1)^2$. Pentru $m\neq1$ rangul este $3$, iar pentru $m=1$ toate liniile sunt egale și rangul este $1$.
+\item $A=u\,\mathbf 1^t+\mathbf 1\,u^t$, cu $u=(1,\dots,n)^t$ și $\mathbf 1=(1,\dots,1)^t$, deci $\rang A\le2$; minorul $\begin{vmatrix}2&3\\3&4\end{vmatrix}=-1\neq0$ arată că $\rang A=2$.
+\item $A=uu^t$ cu $u=(1,\dots,n)^t$, deci $\rang A=1$, $\Tr A=\sum i^2=\frac{n(n+1)(2n+1)}6$ și $A^k=(\Tr A)^{k-1}A$.
+\item $\rang(AB)\le\rang A\le2<3$.
+\item $\rang B=\rang(A^{-1}AB)\le\rang(AB)\le\rang B$; analog pentru $BA$.
+\item Căutați inversa de forma $I_n+cA$; pentru $\Tr A=-1$ avem $(I_n+A)A=O_n$ cu $A\neq O_n$, deci $I_n+A$ nu este inversabilă. Este Problema OLM.19.
+\item Dacă $v=cu$, atunci $uv^t+vu^t=2c\,uu^t$ are rangul $1$ (căci $c\neq0$). Altfel, rangul este cel mult $2$ (Teorema~\ref{teo:proprang}), iar coloanele lui $M=uv^t+vu^t$ sunt combinații de $u$ și $v$; alegând $x$ cu $v^tx=0$ și $u^tx\neq0$ (posibil, căci $u,v$ nu sunt proporționali), $Mx=(u^tx)v$, iar alegând $y$ cu $u^ty=0$, $v^ty\neq0$, $My=(v^ty)u$. Deci coloanele lui $M$ generează atât $u$ cât și $v$, independenți, și $\rang M=2$.
+\end{enumerate}
+
+\chapter{Matrice pe blocuri și transformări elementare}\label{ch:blocuri}
+
+\section{Matrice pe blocuri}
+
+Fie $A\in M_{m,n}(K)$ și partițiile $m=m_1+\dots+m_q$, $n=n_1+\dots+n_p$. Tăind $A$ după aceste partiții obținem scrierea pe blocuri
+\[
+A=
+\begin{pmatrix}
+A_{11} & A_{12} & \cdots & A_{1p}\\
+A_{21} & A_{22} & \cdots & A_{2p}\\
+\vdots & \vdots & \ddots & \vdots\\
+A_{q1} & A_{q2} & \cdots & A_{qp}
+\end{pmatrix},
+\qquad A_{ij}\in M_{m_i,n_j}(K).
+\]
+Operațiile cu matrice pe blocuri se fac ca și cum blocurile ar fi numere, cu condiția ca dimensiunile să fie compatibile și ca ordinea factorilor să fie păstrată:
+\[
+\begin{pmatrix}A_{11}&A_{12}\\A_{21}&A_{22}\end{pmatrix}+\begin{pmatrix}B_{11}&B_{12}\\B_{21}&B_{22}\end{pmatrix}=\begin{pmatrix}A_{11}+B_{11}&A_{12}+B_{12}\\A_{21}+B_{21}&A_{22}+B_{22}\end{pmatrix},\qquad
+\lambda\begin{pmatrix}A_{11}&A_{12}\\A_{21}&A_{22}\end{pmatrix}=\begin{pmatrix}\lambda A_{11}&\lambda A_{12}\\\lambda A_{21}&\lambda A_{22}\end{pmatrix},
+\]
+\[
+\begin{pmatrix}A_{11}&A_{12}\\A_{21}&A_{22}\end{pmatrix}\begin{pmatrix}B_{11}&B_{12}\\B_{21}&B_{22}\end{pmatrix}=
+\begin{pmatrix}
+A_{11}B_{11}+A_{12}B_{21} & A_{11}B_{12}+A_{12}B_{22}\\
+A_{21}B_{11}+A_{22}B_{21} & A_{21}B_{12}+A_{22}B_{22}
+\end{pmatrix}.
+\]
+Regula produsului rezultă din definiția înmulțirii: elementul $(i,j)$ al produsului este suma produselor $a_{ik}b_{kj}$, iar indicii $k$ se împart după partiția comună a coloanelor lui $A$ și a liniilor lui $B$. În particular, produsul a două matrice bloc-diagonale se face bloc cu bloc, iar puterile unei matrice bloc-diagonale sunt $\diag(A_1,\dots,A_k)^s=\diag(A_1^s,\dots,A_k^s)$.
+
+\section{Determinantul și rangul matricelor pe blocuri}
+
+\begin{propozitie}\label{prop:detbloc}
+Pentru o matrice bloc-triunghiulară
+\[
+T=
+\begin{pmatrix}
+A_1 & * & \cdots & *\\
+0 & A_2 & \cdots & *\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & A_k
+\end{pmatrix},\qquad A_i\in M_{n_i}(K),
+\]
+avem $\det T=\det A_1\det A_2\cdots\det A_k$. Același rezultat este valabil pentru matrice bloc-triunghiulare inferior.
+\end{propozitie}
+
+\begin{proof}
+Pentru două blocuri, $T=\begin{pmatrix}A_1&B\\0&C\end{pmatrix}$ cu $A_1\in M_p(K)$, $C\in M_q(K)$, verificăm prin înmulțire pe blocuri că
+\[
+T=\begin{pmatrix}I_p&0\\0&C\end{pmatrix}\begin{pmatrix}A_1&B\\0&I_q\end{pmatrix}.
+\]
+Dezvoltând primul factor succesiv după primele $p$ linii (fiecare are un singur element nenul, egal cu $1$, pe diagonală) obținem $\det C$, iar dezvoltând al doilea factor succesiv după ultimele $q$ linii obținem $\det A_1$ (Teorema~\ref{teo:laplace}). Din Teorema~\ref{teo:detprodus}, $\det T=\det A_1\det C$. Cazul general rezultă prin inducție după $k$, scriind $T=\begin{pmatrix}A_1&*\\0&T'\end{pmatrix}$. Cazul inferior triunghiular rezultă prin transpunere.
+\end{proof}
+
+\begin{propozitie}\label{prop:rangbloc}
+\begin{enumerate}
+\item Pentru o matrice bloc-diagonală $D=\diag(A_1,\dots,A_k)$, cu $A_i\in M_{m_i,n_i}(K)$, avem $\rang D=\rang A_1+\cdots+\rang A_k$.
+\item Pentru orice matrice $X$, $Y$, $Z$ de dimensiuni potrivite,
+\[
+\rang\begin{pmatrix}X&Z\\0&Y\end{pmatrix}\ \ge\ \rang X+\rang Y .
+\]
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+2. Fie $\Delta_1$ un minor nenul de ordin $\rang X$ al lui $X$ și $\Delta_2$ un minor nenul de ordin $\rang Y$ al lui $Y$ (dacă unul dintre ranguri este $0$, afirmația este evidentă). Minorul matricei mari format cu liniile și coloanele lui $\Delta_1$ și ale lui $\Delta_2$ este determinantul unei matrice bloc-triunghiulare cu blocurile diagonale corespunzătoare lui $\Delta_1$ și $\Delta_2$, deci este egal cu $\Delta_1\Delta_2\neq0$ (Propoziția~\ref{prop:detbloc}).
+
+1. Pentru $k=2$, inegalitatea $\ge$ este punctul 2 cu $Z=0$. Pentru $\le$: coloanele lui $D$ care trec prin blocul $A_1$ au zerouri pe liniile blocului $A_2$ și invers, deci o combinație liniară a coloanelor lui $D$ este nulă exact când părțile ei corespunzătoare lui $A_1$ și lui $A_2$ sunt nule. Prin urmare o mulțime de coloane ale lui $D$ este liniar independentă exact când coloanele ei din fiecare bloc sunt independente, deci are cel mult $\rang A_1+\rang A_2$ elemente (Teorema~\ref{teo:rangcoloane}). Cazul general rezultă prin inducție.
+\end{proof}
+
+\section{Transformări elementare și matrice elementare}
+
+Transformările elementare ale liniilor unei matrice $A\in M_{m,n}(K)$ sunt:
+\begin{enumerate}
+\item schimbarea între ele a două linii $i\neq j$;
+\item înmulțirea liniei $i$ cu un scalar $\alpha\neq0$;
+\item adunarea la linia $i$ a liniei $j\neq i$ înmulțite cu un scalar $\alpha$: $L_i\leftarrow L_i+\alpha L_j$.
+\end{enumerate}
+Analog se definesc transformările elementare ale coloanelor. Fiecare transformare se realizează prin înmulțirea cu o \emph{matrice elementară}, obținută aplicând aceeași transformare matricei unitate:
+\begin{itemize}
+\item $P_{ij}$ se obține din $I_m$ schimbând liniile $i$ și $j$; $P_{ij}^{-1}=P_{ij}$ și $\det P_{ij}=-1$;
+\item $D_i(\alpha)=\diag(1,\dots,1,\alpha,1,\dots,1)$, cu $\alpha$ pe poziția $i$; $D_i(\alpha)^{-1}=D_i(\alpha^{-1})$ și $\det D_i(\alpha)=\alpha$;
+\item $E_{ij}(\alpha)=I_m+\alpha e_{ij}$, unde $e_{ij}$ are $1$ pe poziția $(i,j)$ și $0$ în rest; $E_{ij}(\alpha)^{-1}=E_{ij}(-\alpha)$ și $\det E_{ij}(\alpha)=1$.
+\end{itemize}
+De exemplu, pentru $m=3$,
+\[
+P_{13}=\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix},\qquad
+D_2(\alpha)=\begin{pmatrix}1&0&0\\0&\alpha&0\\0&0&1\end{pmatrix},\qquad
+E_{12}(\alpha)=\begin{pmatrix}1&\alpha&0\\0&1&0\\0&0&1\end{pmatrix}.
+\]
+
+\begin{propozitie}\label{prop:elementare}
+Fie $A\in M_{m,n}(K)$.
+\begin{enumerate}
+\item Înmulțirea la stânga cu o matrice elementară de ordin $m$ efectuează transformarea corespunzătoare asupra liniilor lui $A$: $P_{ij}A$ schimbă liniile $i$ și $j$, $D_i(\alpha)A$ înmulțește linia $i$ cu $\alpha$, iar $E_{ij}(\alpha)A$ realizează $L_i\leftarrow L_i+\alpha L_j$.
+\item Înmulțirea la dreapta cu o matrice elementară de ordin $n$ efectuează transformarea asupra coloanelor: $AP_{ij}$ schimbă coloanele $i$ și $j$, $AD_i(\alpha)$ înmulțește coloana $i$ cu $\alpha$, iar $AE_{ij}(\alpha)$ realizează $C_j\leftarrow C_j+\alpha C_i$ (la dreapta rolurile indicilor se inversează).
+\item Transformările elementare nu schimbă rangul, deoarece matricele elementare sunt inversabile (Teorema~\ref{teo:proprang}).
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+Fiecare linie a produsului $EA$ este o combinație liniară a liniilor lui $A$, cu coeficienții dați de linia corespunzătoare a lui $E$; pentru matricele elementare aceste combinații sunt exact cele din enunț. Pentru coloane se procedează la fel, sau se transpune.
+\end{proof}
+
+\section{Matrice echivalente. Forma canonică}
+
+\begin{definitie}
+Matricele $A,B\in M_{m,n}(K)$ sunt \emph{echivalente}, și scriem $A\sim B$, dacă există $P\in\GL_m(K)$ și $Q\in\GL_n(K)$ cu $B=PAQ$.
+\end{definitie}
+
+Notăm $J_r=\begin{pmatrix}I_r&0\\0&0\end{pmatrix}\in M_{m,n}(K)$, matricea cu $1$ pe primele $r$ poziții ale diagonalei principale și $0$ în rest.
+
+\begin{teorema}[Forma canonică]\label{teo:formacanonica}
+Fie $A\in M_{m,n}(K)$ cu $\rang A=r$. Atunci există $P\in\GL_m(K)$ și $Q\in\GL_n(K)$, produse de matrice elementare, astfel încât
+\[
+A=PJ_rQ .
+\]
+În consecință, două matrice din $M_{m,n}(K)$ sunt echivalente dacă și numai dacă au același rang.
+\end{teorema}
+
+\begin{proof}
+Arătăm prin inducție după $m+n$ că, prin transformări elementare de linii și de coloane, $A$ se aduce la o matrice de forma $J_s$. Dacă $A=O$, nu avem nimic de făcut. Altfel, prin schimbări de linii și de coloane aducem un element nenul pe poziția $(1,1)$, împărțim prima linie la el, apoi, scăzând multipli ai primei linii din celelalte linii și multipli ai primei coloane din celelalte coloane, anulăm restul primei linii și al primei coloane. Obținem $\begin{pmatrix}1&0\\0&A'\end{pmatrix}$, iar transformările aplicate lui $A'$ se pot face în matricea mare fără a strica prima linie și prima coloană. Din ipoteza de inducție, $A'$ se aduce la o formă $J$, deci și $A$.
+
+Așadar $E_k\cdots E_1\,A\,F_1\cdots F_l=J_s$ pentru niște matrice elementare $E_i$, $F_j$. Cum transformările elementare păstrează rangul și $\rang J_s=s$, rezultă $s=r$, iar $A=PJ_rQ$ cu $P=E_1^{-1}\cdots E_k^{-1}$ și $Q=F_l^{-1}\cdots F_1^{-1}$. Pentru ultima afirmație: echivalența păstrează rangul (Teorema~\ref{teo:proprang}), iar dacă $\rang A=\rang B=r$, ambele sunt echivalente cu $J_r$.
+\end{proof}
+
+\begin{exemplu}
+Pentru $A=\begin{pmatrix}1&2&3\\2&4&6\end{pmatrix}$, cu $P_0=\begin{pmatrix}1&0\\-2&1\end{pmatrix}$ (adică $L_2\leftarrow L_2-2L_1$) și $Q_0=\begin{pmatrix}1&-2&-3\\0&1&0\\0&0&1\end{pmatrix}$ (adică $C_2\leftarrow C_2-2C_1$, $C_3\leftarrow C_3-3C_1$) obținem $P_0AQ_0=J_1$.
+\end{exemplu}
+
+\begin{lema}[Factorizarea de rang]\label{lema:factorizare}
+Fie $A\in M_{m,n}(K)$ cu $\rang A=r\ge1$. Atunci există $X\in M_{m,r}(K)$ și $Y\in M_{r,n}(K)$, ambele de rang $r$, cu $A=XY$.
+\end{lema}
+
+\begin{proof}
+Scriem $A=PJ_rQ$ (Teorema~\ref{teo:formacanonica}). Cu $X_0=\begin{pmatrix}I_r\\0\end{pmatrix}\in M_{m,r}(K)$ și $Y_0=\begin{pmatrix}I_r&0\end{pmatrix}\in M_{r,n}(K)$, înmulțirea pe blocuri dă $J_r=X_0Y_0$. Luăm $X=PX_0$ și $Y=Y_0Q$, care au rangul $r$ (Teorema~\ref{teo:proprang}).
+\end{proof}
+
+\section{Transformări elementare pe blocuri}
+
+Transformările elementare se pot face și cu blocuri întregi. Fie $M=\begin{pmatrix}M_{11}&M_{12}\\M_{21}&M_{22}\end{pmatrix}$ o matrice pe blocuri în care prima linie de blocuri are $p$ linii, a doua $q$ linii, prima coloană de blocuri are $s$ coloane, iar a doua $t$ coloane. Pentru $X\in M_{p,q}(K)$ și $Y\in M_{t,s}(K)$,
+\[
+\begin{pmatrix}I_p&X\\0&I_q\end{pmatrix}M=\begin{pmatrix}M_{11}+XM_{21}&M_{12}+XM_{22}\\M_{21}&M_{22}\end{pmatrix},
+\qquad
+M\begin{pmatrix}I_s&0\\Y&I_t\end{pmatrix}=\begin{pmatrix}M_{11}+M_{12}Y&M_{12}\\M_{21}+M_{22}Y&M_{22}\end{pmatrix}.
+\]
+Prima operație adună la prima linie de blocuri a doua linie de blocuri înmulțită \emph{la stânga} cu $X$, iar a doua adună la prima coloană de blocuri a doua coloană de blocuri înmulțită \emph{la dreapta} cu $Y$; analog pentru celelalte poziții. Matricele $\begin{pmatrix}I_p&X\\0&I_q\end{pmatrix}$ și $\begin{pmatrix}I_s&0\\Y&I_t\end{pmatrix}$ au determinantul $1$ (Propoziția~\ref{prop:detbloc}), deci aceste operații păstrează atât determinantul, cât și rangul.
+
+\begin{exemplu}
+Pentru $A\in\GL_p(K)$ avem
+\[
+\begin{pmatrix}I_p&0\\-CA^{-1}&I_q\end{pmatrix}\begin{pmatrix}A&B\\C&D\end{pmatrix}=\begin{pmatrix}A&B\\0&D-CA^{-1}B\end{pmatrix},
+\]
+de unde $\det\begin{pmatrix}A&B\\C&D\end{pmatrix}=\det A\cdot\det(D-CA^{-1}B)$ (formula lui Schur).
+\end{exemplu}
+
+\section{Inegalitățile lui Sylvester și Frobenius. Rangul adjunctei}
+
+\begin{teorema}[Inegalitatea lui Frobenius]\label{teo:frobeniusrang}
+Pentru orice $A\in M_{m,n}(K)$, $B\in M_{n,p}(K)$ și $C\in M_{p,q}(K)$,
+\[
+\rang(AB)+\rang(BC)\le\rang B+\rang(ABC).
+\]
+\end{teorema}
+
+\begin{proof}
+Pornim de la $N=\begin{pmatrix}ABC&0\\0&B\end{pmatrix}$, cu $\rang N=\rang(ABC)+\rang B$ (Propoziția~\ref{prop:rangbloc}). Prin transformări pe blocuri care păstrează rangul:
+\[
+\begin{pmatrix}ABC&0\\0&B\end{pmatrix}
+\xrightarrow{L_1\leftarrow L_1+A\,L_2}
+\begin{pmatrix}ABC&AB\\0&B\end{pmatrix}
+\xrightarrow{C_1\leftarrow C_1-C_2\,C}
+\begin{pmatrix}0&AB\\-BC&B\end{pmatrix}.
+\]
+Schimbând între ele cele două coloane de blocuri (o permutare de coloane, care nu schimbă rangul) obținem $\begin{pmatrix}AB&0\\B&-BC\end{pmatrix}$, al cărei rang este cel puțin $\rang(AB)+\rang(-BC)$ (Propoziția~\ref{prop:rangbloc}, aplicată transpusei). Deci $\rang(ABC)+\rang B\ge\rang(AB)+\rang(BC)$.
+\end{proof}
+
+\begin{corolar}[Inegalitatea lui Sylvester]\label{cor:sylvester}
+Pentru $A\in M_{m,n}(K)$ și $B\in M_{n,p}(K)$,
+\[
+\rang(AB)\ge\rang A+\rang B-n .
+\]
+În particular, dacă $AB=O$, atunci $\rang A+\rang B\le n$.
+\end{corolar}
+
+\begin{proof}
+Aplicăm Teorema~\ref{teo:frobeniusrang} tripletului $(A,I_n,B)$: $\rang A+\rang B\le n+\rang(AB)$.
+\end{proof}
+
+\begin{lema}\label{lema:rangadj}
+Fie $A\in M_n(K)$, $n\ge2$.
+\begin{enumerate}
+    \item Dacă $\rang A=n$, atunci $\adj A=\det(A)A^{-1}$ și $\rang(\adj A)=n$ (valorile proprii ale lui $\adj A$ sunt descrise în Propoziția~\ref{prop:valpropinversa}).
+    \item Dacă $\rang A=n-1$, atunci $\rang(\adj A)=1$.
+    \item Dacă $\rang A\le n-2$, atunci $\adj A=O_n$.
+\end{enumerate}
+\end{lema}
+
+\begin{proof}
+1. Din Teorema~\ref{teo:adj}, $\adj A=\det(A)A^{-1}$, care este inversabilă.
+
+2. Avem $\det A=0$, deci $A\adj A=O_n$, iar din inegalitatea lui Sylvester $\rang A+\rang(\adj A)\le n$, adică $\rang(\adj A)\le1$. Pe de altă parte, $A$ are un minor nenul de ordin $n-1$, deci un complement algebric nenul, și $\adj A\neq O_n$. Prin urmare $\rang(\adj A)=1$.
+
+3. Toți minorii de ordin $n-1$ ai lui $A$ sunt nuli, deci toți complemenții algebrici sunt nuli.
+\end{proof}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Calculați $\begin{vmatrix}1&2&1&0\\3&4&0&1\\0&0&1&2\\0&0&3&4\end{vmatrix}$.
+\item Fie $X\in M_n(K)$ și $M=\begin{pmatrix}I_n&X\\0&I_n\end{pmatrix}$. Calculați $M^k$ pentru $k\ge1$ și $M^{-1}$.
+\item Arătați că $\det\begin{pmatrix}A&B\\B&A\end{pmatrix}=\det(A+B)\det(A-B)$ pentru orice $A,B\in M_n(K)$.
+\item Arătați că $\rang\begin{pmatrix}A&A\\A&A\end{pmatrix}=\rang A$ și $\rang\begin{pmatrix}I_n&A\\A&A^2\end{pmatrix}=n$ pentru orice $A\in M_n(K)$.
+\item Fie $A\in M_{m,n}(K)$ și $B\in M_{n,m}(K)$. Arătați că $\det(I_m+AB)=\det(I_n+BA)$.
+\item Fie $A\in M_n(K)$ cu $\rang A=r$. Arătați că există $B\in M_n(K)$ cu $\rang B=n-r$ și $A+B$ inversabilă.
+\item Fie $A,B\in M_n(K)$ cu $AB=O_n$ și $A+B$ inversabilă. Arătați că $\rang A+\rang B=n$.
+\item Fie $A\in M_{m,n}(K)$ cu $\rang A=n$ și $B\in M_{n,p}(K)$. Arătați că $\rang(AB)=\rang B$.
+\item Aduceți la forma canonică matricea $\begin{pmatrix}1&1&2\\2&2&4\\1&0&1\end{pmatrix}$ și precizați rangul ei.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Matricea este bloc-triunghiulară: $\det=(-2)\cdot(-2)=4$.
+\item $M^k=\begin{pmatrix}I_n&kX\\0&I_n\end{pmatrix}$ (inducție, înmulțire pe blocuri), $M^{-1}=\begin{pmatrix}I_n&-X\\0&I_n\end{pmatrix}$.
+\item Adunăm a doua linie de blocuri la prima, apoi scădem prima coloană de blocuri din a doua: obținem $\begin{pmatrix}A+B&0\\B&A-B\end{pmatrix}$.
+\item Scăzând prima linie de blocuri din a doua obținem $\begin{pmatrix}A&A\\0&0\end{pmatrix}$, apoi, scăzând prima coloană de blocuri din a doua, $\diag(A,O_n)$. Pentru a doua matrice, $L_2\leftarrow L_2-A\,L_1$ dă $\begin{pmatrix}I_n&A\\0&0\end{pmatrix}$, de rang $n$.
+\item Calculăm în două feluri determinantul lui $\begin{pmatrix}I_m&-A\\B&I_n\end{pmatrix}$: eliminând $B$ cu prima linie de blocuri obținem $\det(I_n+BA)$, iar eliminând $-A$ cu a doua linie de blocuri obținem $\det(I_m+AB)$.
+\item $A=PJ_rQ$; luăm $B=P(I_n-J_r)Q$, iar $A+B=PQ$.
+\item Din Sylvester, $\rang A+\rang B\le n$; din Teorema~\ref{teo:proprang}, $n=\rang(A+B)\le\rang A+\rang B$.
+\item Din Corolarul~\ref{cor:sylvester}, $\rang(AB)\ge n+\rang B-n=\rang B$, iar $\rang(AB)\le\rang B$ din Teorema~\ref{teo:proprang}.
+\item $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3-L_1$ dau liniile $(1,1,2)$, $(0,0,0)$, $(0,-1,-1)$; continuând cu transformări de coloane ajungem la $J_2$: rangul este $2$.
+\end{enumerate}
+
+\chapter{Spații vectoriale}\label{ch:spatii}
+
+Limbajul spațiilor vectoriale unifică tot ce am văzut despre coloane, matrice și polinoame: în toate cazurile adunăm obiecte și le înmulțim cu scalari din $K$.
+
+\section{Definiție și exemple}
+
+\begin{definitie}[Spațiu vectorial]
+Un \emph{spațiu vectorial peste $K$} este o mulțime nevidă $V$, ale cărei elemente se numesc \emph{vectori}, înzestrată cu o \emph{adunare} $V\times V\to V$, $(v,w)\mapsto v+w$, și cu o \emph{înmulțire cu scalari} $K\times V\to V$, $(a,v)\mapsto av$, astfel încât, pentru orice $u,v,w\in V$ și $a,b\in K$:
+\begin{enumerate}
+\item $(u+v)+w=u+(v+w)$ și $v+w=w+v$;
+\item există un vector $0\in V$ cu $v+0=v$ pentru orice $v$;
+\item pentru orice $v\in V$ există $-v\in V$ cu $v+(-v)=0$;
+\item $a(v+w)=av+aw$ și $(a+b)v=av+bv$;
+\item $(ab)v=a(bv)$ și $1v=v$.
+\end{enumerate}
+\end{definitie}
+
+Primele trei axiome spun că $(V,+)$ este un grup comutativ. Scalarul $0\in K$ nu trebuie confundat cu vectorul nul $0\in V$.
+
+\begin{propozitie}
+Într-un spațiu vectorial $V$ peste $K$, pentru orice $v\in V$ și $a\in K$:
+\begin{enumerate}
+\item $0\cdot v=0$, $a\cdot 0=0$ și $(-1)v=-v$;
+\item dacă $av=0$, atunci $a=0$ sau $v=0$;
+\item dacă $v+u=w+u$, atunci $v=w$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. $0v=(0+0)v=0v+0v$; adunând $-0v$ obținem $0v=0$. Analog $a0=a(0+0)=a0+a0$. Apoi $v+(-1)v=(1+(-1))v=0v=0$.
+2. Dacă $a\neq0$, atunci $v=a^{-1}(av)=a^{-1}0=0$.
+3. Adunăm $-u$ în ambii membri.
+\end{proof}
+
+\begin{exemplu}\label{ex:spatii}
+\begin{enumerate}
+\item $K^n$, identificat cu $M_{n,1}(K)$, cu operațiile pe componente; vectorul nul are toate componentele $0$.
+\item $M_{m,n}(K)$, cu adunarea matricelor și înmulțirea cu scalari.
+\item $K[X]$, mulțimea polinoamelor, și $K_n[X]$, mulțimea polinoamelor de grad cel mult $n$.
+\item Mulțimea funcțiilor $f:\mathbb{R}\to\mathbb{R}$, cu $(f+g)(x)=f(x)+g(x)$ și $(af)(x)=af(x)$, este un spațiu vectorial peste $\mathbb{R}$.
+\item $\mathbb{C}$ este spațiu vectorial peste $\mathbb{R}$, iar $\mathbb{R}$ este spațiu vectorial peste $\mathbb{Q}$.
+\end{enumerate}
+\end{exemplu}
+
+\section{Subspații}
+
+\begin{definitie}
+O submulțime nevidă $W$ a unui spațiu vectorial $V$ se numește \emph{subspațiu} dacă $v+w\in W$ și $cv\in W$ pentru orice $v,w\in W$ și $c\in K$. Echivalent, $av+bw\in W$ pentru orice $v,w\in W$ și $a,b\in K$.
+\end{definitie}
+
+\begin{observatie}
+\begin{enumerate}
+\item Orice subspațiu conține vectorul nul: dacă $v\in W$, atunci $0=0v\in W$.
+\item Un subspațiu este el însuși spațiu vectorial, cu operațiile induse din $V$.
+\item Orice combinație liniară finită de elemente din $W$ aparține lui $W$.
+\item Intersecția unei familii oarecare de subspații este un subspațiu. Reuniunea a două subspații este subspațiu doar dacă unul îl conține pe celălalt (vezi Problema OJM.28).
+\end{enumerate}
+\end{observatie}
+
+\begin{exemplu}
+\begin{enumerate}
+\item Mulțimea soluțiilor unui sistem liniar omogen $AX=0$, cu $A\in M_{m,n}(K)$, este un subspațiu al lui $K^n$.
+\item Funcțiile continue, respectiv derivabile, formează subspații ale spațiului funcțiilor reale.
+\item Matricele simetrice ($A^t=A$) și cele antisimetrice ($A^t=-A$) formează subspații ale lui $M_n(K)$.
+\end{enumerate}
+\end{exemplu}
+
+\section{Sumă și sumă directă}
+
+\begin{definitie}
+Suma subspațiilor $W_1,\dots,W_k$ ale lui $V$ este
+\[
+W_1+\cdots+W_k=\{w_1+\cdots+w_k : w_i\in W_i\},
+\]
+care este un subspațiu, cel mai mic care le conține pe toate. Subspațiile $W_1,\dots,W_k$ sunt \emph{în sumă directă} dacă din $w_1+\cdots+w_k=0$ cu $w_i\in W_i$ rezultă $w_1=\cdots=w_k=0$; în acest caz scriem $W_1\oplus\cdots\oplus W_k$ pentru suma lor. Dacă $V=W_1\oplus W_2$, spunem că $W_2$ este un \emph{complement} al lui $W_1$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:sumadirecta}
+\begin{enumerate}
+\item $W_1,\dots,W_k$ sunt în sumă directă dacă și numai dacă orice vector din $W_1+\cdots+W_k$ se scrie \emph{în mod unic} ca $w_1+\cdots+w_k$ cu $w_i\in W_i$.
+\item Două subspații $W_1,W_2$ sunt în sumă directă dacă și numai dacă $W_1\cap W_2=\{0\}$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. Dacă $\sum w_i=\sum w_i'$, atunci $\sum(w_i-w_i')=0$, cu $w_i-w_i'\in W_i$; deci unicitatea scrierii este echivalentă cu faptul că $0$ se scrie doar ca sumă de zerouri.
+2. Dacă $w\in W_1\cap W_2$, atunci $w+(-w)=0$ cu $w\in W_1$ și $-w\in W_2$; reciproc, dacă $w_1+w_2=0$, atunci $w_1=-w_2\in W_1\cap W_2$.
+\end{proof}
+
+\begin{exemplu}
+\begin{enumerate}
+\item $\mathbb{R}^2=\{(x,0)\}\oplus\{(0,y)\}$.
+\item $M_n(\mathbb{R})$ este suma directă dintre subspațiul matricelor simetrice și cel al matricelor antisimetrice: $A=\frac{A+A^t}2+\frac{A-A^t}2$, iar o matrice simetrică și antisimetrică este nulă.
+\item Spațiul funcțiilor reale este suma directă dintre funcțiile pare și cele impare: $f(x)=\frac{f(x)+f(-x)}2+\frac{f(x)-f(-x)}2$.
+\end{enumerate}
+\end{exemplu}
+
+\section{Combinații liniare și subspațiul generat}
+
+\begin{definitie}
+Fie $S\subset V$. O \emph{combinație liniară} de elemente din $S$ este un vector $c_1v_1+\cdots+c_kv_k$, cu $v_i\in S$ și $c_i\in K$ (numărul termenilor fiind finit). Mulțimea tuturor combinațiilor liniare de elemente din $S$ se numește \emph{subspațiul generat} de $S$ și se notează $\Span(S)$; pentru $S=\{v_1,\dots,v_k\}$ scriem $\Span(v_1,\dots,v_k)$. Spunem că $S$ este un \emph{sistem de generatori} pentru $V$ dacă $\Span(S)=V$.
+\end{definitie}
+
+\begin{propozitie}
+$\Span(S)$ este cel mai mic subspațiu al lui $V$ care conține $S$, adică intersecția tuturor subspațiilor care conțin $S$.
+\end{propozitie}
+
+\begin{proof}
+O sumă de combinații liniare și un multiplu al unei combinații liniare sunt tot combinații liniare, deci $\Span(S)$ este subspațiu și conține $S$. Orice subspațiu care conține $S$ conține toate combinațiile liniare de elemente din $S$, deci include $\Span(S)$.
+\end{proof}
+
+\begin{exemplu}
+\begin{enumerate}
+\item În $K^n$, vectorii $e_1,\dots,e_n$ (unde $e_i$ are $1$ pe poziția $i$ și $0$ în rest) formează un sistem de generatori: $(x_1,\dots,x_n)=x_1e_1+\cdots+x_ne_n$.
+\item În $M_{m,n}(K)$, matricele $E_{ij}$, cu $1$ pe poziția $(i,j)$ și $0$ în rest, formează un sistem de generatori.
+\item În $K_n[X]$, polinoamele $1,X,\dots,X^n$ formează un sistem de generatori.
+\item Un vector $v\in K^m$ aparține lui $\Span(v_1,\dots,v_k)$ dacă și numai dacă sistemul $AX=v$, unde $A$ are coloanele $v_1,\dots,v_k$, este compatibil, ceea ce se decide cu teorema Rouché-Capelli (Teorema~\ref{teo:rouche}).
+\end{enumerate}
+\end{exemplu}
+
+\begin{exemplu}
+Transformările elementare ale liniilor nu schimbă subspațiul generat de linii. Pentru $v_1=(1,2,3,4)$, $v_2=(3,1,2,1)$, $v_3=(1,2,1,2)$ din $\mathbb{R}^4$, eliminarea Gauss aplicată matricei cu liniile $v_1,v_2,v_3$ conduce la liniile $(1,0,0,-\frac35)$, $(0,1,0,\frac45)$, $(0,0,1,1)$. Deci $\Span(v_1,v_2,v_3)$ este mulțimea vectorilor de forma $\bigl(a,b,c,-\frac35a+\frac45b+c\bigr)$, $a,b,c\in\mathbb{R}$.
+\end{exemplu}
+
+\section{Independență liniară}
+
+\begin{definitie}
+Vectorii $v_1,\dots,v_k\in V$ sunt \emph{liniar independenți} dacă din $a_1v_1+\cdots+a_kv_k=0$ rezultă $a_1=\cdots=a_k=0$, și \emph{liniar dependenți} în caz contrar. O mulțime infinită de vectori este liniar independentă dacă orice submulțime finită a ei este liniar independentă.
+\end{definitie}
+
+\begin{observatie}
+\begin{enumerate}
+\item Vectorii $v_1,\dots,v_k$ sunt liniar independenți dacă și numai dacă orice vector din $\Span(v_1,\dots,v_k)$ se scrie \emph{în mod unic} ca o combinație liniară a lor.
+\item Pentru $v_1,\dots,v_k\in K^n$ și $A\in M_{n,k}(K)$ matricea cu coloanele $v_1,\dots,v_k$: vectorii sunt liniar independenți dacă și numai dacă $\rang A=k$ (Teorema~\ref{teo:rangcoloane}). În particular, mai mult de $n$ vectori din $K^n$ sunt întotdeauna liniar dependenți.
+\end{enumerate}
+\end{observatie}
+
+\begin{propozitie}\label{prop:dependenta}
+\begin{enumerate}
+\item Vectorii $v_1,\dots,v_k$ sunt liniar dependenți dacă și numai dacă unul dintre ei este o combinație liniară a celorlalți.
+\item Dacă $v_1,\dots,v_k$ sunt liniar independenți și $v\notin\Span(v_1,\dots,v_k)$, atunci $v_1,\dots,v_k,v$ sunt liniar independenți.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. Dacă $\sum a_iv_i=0$ cu $a_j\neq0$, atunci $v_j=-\sum_{i\neq j}\frac{a_i}{a_j}v_i$; reciproc, $v_j=\sum_{i\neq j}c_iv_i$ dă o relație cu coeficientul lui $v_j$ egal cu $-1$.
+2. Dacă $\sum a_iv_i+av=0$ și $a\neq0$, atunci $v\in\Span(v_1,\dots,v_k)$, contradicție; deci $a=0$ și apoi toți $a_i=0$.
+\end{proof}
+
+\begin{lema}[Lema schimbului, Steinitz]\label{lema:steinitz}
+Fie $v_1,\dots,v_n$ vectori liniar independenți și $w_1,\dots,w_m$ un sistem de generatori al lui $V$. Atunci $n\le m$ și, după o renumerotare a vectorilor $w_j$, vectorii $v_1,\dots,v_n,w_{n+1},\dots,w_m$ generează $V$.
+\end{lema}
+
+\begin{proof}
+Arătăm prin inducție după $k\in\{0,\dots,n\}$ că $k\le m$ și, după o renumerotare, $v_1,\dots,v_k,w_{k+1},\dots,w_m$ generează $V$. Pentru $k=0$ este ipoteza. Presupunem afirmația adevărată pentru $k<n$. Atunci
+\[
+v_{k+1}=a_1v_1+\cdots+a_kv_k+b_{k+1}w_{k+1}+\cdots+b_mw_m .
+\]
+Dacă toți $b_j$ ar fi nuli (în particular, dacă $k=m$), $v_{k+1}$ ar fi o combinație a lui $v_1,\dots,v_k$, contrazicând independența. Deci $k+1\le m$ și există $b_j\neq0$; renumerotând, $b_{k+1}\neq0$. Atunci $w_{k+1}$ se exprimă din relația de mai sus prin $v_1,\dots,v_{k+1},w_{k+2},\dots,w_m$, deci acești vectori generează tot $V$.
+\end{proof}
+
+\section{Bază și dimensiune}
+
+\begin{definitie}
+Spațiul $V$ este \emph{finit dimensional} dacă are un sistem finit de generatori. O \emph{bază} a lui $V$ este un sistem de vectori liniar independenți care generează $V$.
+\end{definitie}
+
+Dacă $(e_1,\dots,e_n)$ este o bază, orice $v\in V$ se scrie unic $v=x_1e_1+\cdots+x_ne_n$; scalarii $x_1,\dots,x_n$ sunt \emph{coordonatele} lui $v$ în această bază.
+
+\begin{teorema}\label{teo:baza}
+Fie $V\neq\{0\}$ un spațiu finit dimensional. Atunci $V$ are o bază finită și toate bazele lui $V$ au același număr de elemente.
+\end{teorema}
+
+\begin{proof}
+Pornim de la un sistem finit de generatori. Cât timp el este liniar dependent, unul dintre vectori este o combinație a celorlalți (Propoziția~\ref{prop:dependenta}) și îl putem elimina fără a schimba subspațiul generat. Procesul se oprește la un sistem independent de generatori, adică la o bază. Dacă $B$ și $B'$ sunt două baze cu $n$, respectiv $n'$ elemente, Lema~\ref{lema:steinitz} dă $n\le n'$ și $n'\le n$.
+\end{proof}
+
+\begin{definitie}
+\emph{Dimensiunea} unui spațiu finit dimensional $V$, notată $\dim V$, este numărul de elemente al unei baze; prin convenție $\dim\{0\}=0$.
+\end{definitie}
+
+\begin{exemplu}
+$\dim K^n=n$ (baza $e_1,\dots,e_n$), $\dim K_n[X]=n+1$ (baza $1,X,\dots,X^n$), $\dim M_{m,n}(K)=mn$ (baza $E_{ij}$). Spațiul $K[X]$ nu este finit dimensional: un număr finit de polinoame are grad mărginit și nu poate genera toate puterile lui $X$.
+\end{exemplu}
+
+\begin{teorema}\label{teo:dimensiune}
+Fie $V$ un spațiu vectorial cu $\dim V=n$.
+\begin{enumerate}
+\item Orice sistem de vectori liniar independenți din $V$ are cel mult $n$ elemente și poate fi completat până la o bază.
+\item Orice sistem de generatori al lui $V$ are cel puțin $n$ elemente și conține o bază.
+\item Pentru un sistem $S$ de exact $n$ vectori sunt echivalente: $S$ este liniar independent; $S$ generează $V$; $S$ este bază.
+\item Orice subspațiu $W$ al lui $V$ este finit dimensional, $\dim W\le n$, iar $\dim W=n$ dacă și numai dacă $W=V$.
+\end{enumerate}
+\end{teorema}
+
+\begin{proof}
+1. Prima parte este Lema~\ref{lema:steinitz}, aplicată cu o bază ca sistem de generatori. Cât timp un sistem independent nu generează $V$, îi putem adăuga un vector din afara subspațiului generat, păstrând independența (Propoziția~\ref{prop:dependenta}); procesul se oprește după cel mult $n$ pași, la o bază.
+
+2. Prima parte este Lema~\ref{lema:steinitz}, aplicată cu o bază ca sistem independent; a doua este demonstrația Teoremei~\ref{teo:baza}.
+
+3. Un sistem independent de $n$ vectori se completează la o bază, care are $n$ elemente, deci el însuși este bază. Un sistem de generatori de $n$ vectori conține o bază cu $n$ elemente, deci el însuși este bază.
+
+4. Un sistem independent din $W$ este independent în $V$, deci are cel mult $n$ elemente. Alegem în $W$ un sistem independent cu număr maxim de elemente; prin Propoziția~\ref{prop:dependenta} el generează $W$, deci este bază a lui $W$ și $\dim W\le n$. Dacă $\dim W=n$, o bază a lui $W$ este un sistem independent de $n$ vectori din $V$, deci bază a lui $V$, și $W=V$.
+\end{proof}
+
+\begin{teorema}[Formula lui Grassmann]\label{teo:grassmann}
+Dacă $W_1,W_2$ sunt subspații ale unui spațiu finit dimensional, atunci
+\[
+\dim(W_1+W_2)+\dim(W_1\cap W_2)=\dim W_1+\dim W_2 .
+\]
+\end{teorema}
+
+\begin{proof}
+Fie $(u_1,\dots,u_k)$ o bază a lui $W_1\cap W_2$, pe care o completăm la o bază $(u_1,\dots,u_k,a_1,\dots,a_p)$ a lui $W_1$ și la o bază $(u_1,\dots,u_k,b_1,\dots,b_q)$ a lui $W_2$. Vectorii $u_i,a_j,b_l$ generează evident $W_1+W_2$. Dacă $\sum\alpha_iu_i+\sum\beta_ja_j+\sum\gamma_lb_l=0$, atunci $\sum\gamma_lb_l=-\sum\alpha_iu_i-\sum\beta_ja_j\in W_1\cap W_2$, deci $\sum\gamma_lb_l=\sum\delta_iu_i$ pentru niște $\delta_i$; din independența lui $(u,b)$ rezultă $\gamma=0$, iar apoi din independența lui $(u,a)$ rezultă $\alpha=\beta=0$. Deci $\dim(W_1+W_2)=k+p+q=\dim W_1+\dim W_2-\dim(W_1\cap W_2)$.
+\end{proof}
+
+\begin{corolar}\label{cor:sumadirectadim}
+Fie $U,W$ subspații ale spațiului finit dimensional $V$. Atunci $V=U\oplus W$ dacă și numai dacă $V=U+W$ și $\dim V=\dim U+\dim W$. În acest caz, reuniunea unei baze a lui $U$ cu o bază a lui $W$ este o bază a lui $V$; la fel pentru mai multe subspații în sumă directă.
+\end{corolar}
+
+\begin{proof}
+Prin formula lui Grassmann, pentru $V=U+W$, condiția $\dim V=\dim U+\dim W$ este echivalentă cu $\dim(U\cap W)=0$, adică (Propoziția~\ref{prop:sumadirecta}) cu $U\oplus W$. Reuniunea bazelor generează $V$ și are $\dim V$ elemente, deci este bază (Teorema~\ref{teo:dimensiune}).
+\end{proof}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Arătați că $W=\{(x,y,z)\in\mathbb{R}^3: x+2y-z=0\}$ este un subspațiu și găsiți o bază a lui.
+\item Sunt vectorii $(1,2,3)$, $(4,5,6)$, $(7,8,9)$ liniar independenți în $\mathbb{R}^3$?
+\item Determinați $a\in\mathbb{R}$ pentru care $(1,1,a)$, $(1,a,1)$, $(a,1,1)$ formează o bază a lui $\mathbb{R}^3$.
+\item Calculați dimensiunea subspațiului matricelor simetrice și a celui al matricelor antisimetrice din $M_n(\mathbb{R})$.
+\item Aflați coordonatele polinomului $X^2+3X+1$ în baza $1$, $X-1$, $(X-1)^2$ a lui $\mathbb{R}_2[X]$.
+\item Fie $U=\Span\bigl((1,0,1,0),(0,1,0,1)\bigr)$ și $W=\Span\bigl((1,1,0,0),(0,0,1,1)\bigr)$ în $\mathbb{R}^4$. Calculați $\dim(U+W)$ și $\dim(U\cap W)$.
+\item Arătați că, pentru orice $a\in K$, polinoamele $1,X-a,(X-a)^2,\dots,(X-a)^n$ formează o bază a lui $K_n[X]$.
+\item Arătați că funcțiile $1$, $\sin x$, $\cos x$ sunt liniar independente în spațiul funcțiilor reale.
+\item Fie $W_1,W_2$ subspații de dimensiune $3$ ale lui $\mathbb{R}^5$. Arătați că $W_1\cap W_2\neq\{0\}$.
+\item Arătați că soluțiile sistemului omogen $x_1+x_2+x_3+x_4=0$, $x_1-x_2+x_3-x_4=0$ formează un subspațiu de dimensiune $2$ al lui $\mathbb{R}^4$ și găsiți o bază.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item $W=\{(x,y,x+2y)\}=\Span\bigl((1,0,1),(0,1,2)\bigr)$, iar cei doi vectori sunt independenți: $\dim W=2$.
+\item Nu: $(1,2,3)-2(4,5,6)+(7,8,9)=0$.
+\item Determinantul este $-(a-1)^2(a+2)$; baza se obține pentru $a\notin\{1,-2\}$.
+\item O bază a simetricelor este formată din $E_{ii}$ și $E_{ij}+E_{ji}$ ($i<j$), deci dimensiunea este $\frac{n(n+1)}2$; pentru antisimetrice, $E_{ij}-E_{ji}$ ($i<j$), deci $\frac{n(n-1)}2$. Suma lor este $n^2$, în acord cu suma directă.
+\item $X^2+3X+1=5+5(X-1)+(X-1)^2$ (formula lui Taylor în $1$): coordonatele sunt $(5,5,1)$.
+\item Cei patru vectori au rangul $3$, iar $(1,1,1,1)$ aparține ambelor subspații: $\dim(U+W)=3$ și, prin Grassmann, $\dim(U\cap W)=1$, cu $U\cap W=\Span\bigl((1,1,1,1)\bigr)$.
+\item Sunt $n+1$ vectori de grade distincte $0,1,\dots,n$; o combinație nulă are coeficientul termenului de grad maxim nul, și așa mai departe. Folosiți apoi Teorema~\ref{teo:dimensiune}.
+\item Dacă $a+b\sin x+c\cos x=0$ pentru orice $x$, luăm $x=0$, $\frac\pi2$, $\pi$: $a+c=0$, $a+b=0$, $a-c=0$, deci $a=b=c=0$.
+\item Grassmann: $\dim(W_1\cap W_2)\ge3+3-5=1$.
+\item Rangul matricei sistemului este $2$, deci soluțiile depind de $2$ parametri: $x_3,x_4$ arbitrare, $x_1=-x_3$, $x_2=-x_4$. O bază: $(-1,0,1,0)$, $(0,-1,0,1)$.
+\end{enumerate}
+
+\chapter{Aplicații liniare}\label{ch:aplicatii}
+
+Studiem acum funcțiile dintre spații vectoriale care respectă operațiile. Reprezentându-le prin matrice, obținem rezultate despre matrice care ar fi greu de demonstrat altfel.
+
+\section{Definiție și exemple}
+
+\begin{definitie}
+Fie $V,W$ spații vectoriale peste $K$. O funcție $T:V\to W$ se numește \emph{aplicație liniară} (sau \emph{transformare liniară}) dacă
+\[
+T(v_1+v_2)=T(v_1)+T(v_2)\quad\text{și}\quad T(cv)=cT(v)
+\]
+pentru orice $v_1,v_2,v\in V$ și $c\in K$; echivalent, $T(v_1+cv_2)=T(v_1)+cT(v_2)$. O aplicație liniară $T:V\to V$ se numește și \emph{endomorfism} al lui $V$.
+\end{definitie}
+
+Din definiție, $T(0)=0$ și $T\bigl(\sum c_iv_i\bigr)=\sum c_iT(v_i)$.
+
+\begin{exemplu}
+\begin{enumerate}
+\item Pentru $c\in K$, aplicația $v\mapsto cv$ este liniară; pentru $c=0$ obținem aplicația nulă, iar pentru $c=1$ identitatea $\mathrm{id}_V$.
+\item Orice matrice $A\in M_{m,n}(K)$ definește aplicația liniară $T_A:K^n\to K^m$, $T_A(X)=AX$.
+\item Derivarea $P\mapsto P'$ este o aplicație liniară $K[X]\to K[X]$.
+\item Transpunerea $X\mapsto X^t$ este o aplicație liniară $M_n(K)\to M_n(K)$.
+\item Urma $\Tr:M_n(K)\to K$, $\Tr(A)=a_{11}+\cdots+a_{nn}$, este liniară.
+\end{enumerate}
+\end{exemplu}
+
+\begin{propozitie}\label{prop:urma}
+Pentru orice $A\in M_{m,n}(K)$ și $B\in M_{n,m}(K)$ avem $\Tr(AB)=\Tr(BA)$.
+\end{propozitie}
+
+\begin{proof}
+$\Tr(AB)=\sum_{i=1}^m\sum_{k=1}^na_{ik}b_{ki}=\sum_{k=1}^n\sum_{i=1}^mb_{ki}a_{ik}=\Tr(BA)$.
+\end{proof}
+
+\begin{propozitie}\label{prop:determinataprinbaza}
+Fie $(v_1,\dots,v_n)$ o bază a lui $V$ și $w_1,\dots,w_n\in W$ vectori arbitrari. Există o unică aplicație liniară $T:V\to W$ cu $T(v_i)=w_i$ pentru orice $i$.
+\end{propozitie}
+
+\begin{proof}
+Orice $v$ se scrie unic $v=\sum x_iv_i$; punem $T(v)=\sum x_iw_i$, care este liniară. Unicitatea: o aplicație liniară cu $T(v_i)=w_i$ trebuie să verifice $T\bigl(\sum x_iv_i\bigr)=\sum x_iw_i$.
+\end{proof}
+
+\section{Nucleu și imagine}
+
+\begin{definitie}
+Fie $T:V\to W$ liniară. \emph{Nucleul} lui $T$ este $\Ker T=\{v\in V: T(v)=0\}$, iar \emph{imaginea} lui $T$ este $\Ima T=\{T(v): v\in V\}$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:kerim}
+Fie $T:V\to W$ liniară.
+\begin{enumerate}
+\item $\Ker T$ este subspațiu al lui $V$, iar $\Ima T$ este subspațiu al lui $W$.
+\item $T$ este injectivă dacă și numai dacă $\Ker T=\{0\}$.
+\item Dacă $T$ este injectivă și $v_1,\dots,v_k$ sunt liniar independenți, atunci $T(v_1),\dots,T(v_k)$ sunt liniar independenți.
+\item Dacă $T$ este surjectivă și $S$ generează $V$, atunci $T(S)$ generează $W$. Dacă $v_1,\dots,v_n$ generează $V$, atunci $T(v_1),\dots,T(v_n)$ generează $\Ima T$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. Dacă $T(v)=T(v')=0$, atunci $T(v+cv')=0$; iar $T(v)+cT(v')=T(v+cv')\in\Ima T$.
+2. $T(v)=T(v')$ echivalează cu $v-v'\in\Ker T$.
+3. Din $\sum c_iT(v_i)=0$ rezultă $T\bigl(\sum c_iv_i\bigr)=0$, deci $\sum c_iv_i=0$ și $c_i=0$.
+4. Orice $w\in\Ima T$ este $T(v)$ cu $v=\sum c_is_i$, $s_i\in S$, deci $w=\sum c_iT(s_i)$.
+\end{proof}
+
+\begin{definitie}
+O aplicație liniară bijectivă se numește \emph{izomorfism}; spațiile $V$ și $W$ sunt \emph{izomorfe} dacă există un izomorfism $V\to W$. Inversa unui izomorfism este tot liniară.
+\end{definitie}
+
+\begin{propozitie}\label{prop:coordonate}
+Fie $B=(e_1,\dots,e_n)$ o bază a lui $V$. Aplicația $K^n\to V$, $(x_1,\dots,x_n)\mapsto x_1e_1+\cdots+x_ne_n$, este un izomorfism. Două spații finit dimensionale sunt izomorfe dacă și numai dacă au aceeași dimensiune.
+\end{propozitie}
+
+\begin{proof}
+Liniaritatea este evidentă, surjectivitatea înseamnă că $B$ generează $V$, iar injectivitatea că $B$ este liniar independentă. Un izomorfism duce o bază într-o bază (Propoziția~\ref{prop:kerim}), deci păstrează dimensiunea; reciproc, două spații de dimensiune $n$ sunt ambele izomorfe cu $K^n$.
+\end{proof}
+
+\section{Teorema rangului și a defectului}
+
+\begin{definitie}
+Fie $T:V\to W$ liniară, cu $V$ finit dimensional. \emph{Rangul} lui $T$ este $\rang T=\dim\Ima T$, iar \emph{defectul} (nulitatea) lui $T$ este $\dim\Ker T$.
+\end{definitie}
+
+\begin{teorema}[Teorema rang-nulitate]\label{teo:rangnulitate}
+Fie $T:V\to W$ o aplicație liniară, cu $V$ finit dimensional. Atunci
+\[
+\dim\Ker T+\rang T=\dim V .
+\]
+\end{teorema}
+
+\begin{proof}
+Fie $(u_1,\dots,u_k)$ o bază a lui $\Ker T$, completată la o bază $(u_1,\dots,u_k,v_1,\dots,v_p)$ a lui $V$ (Teorema~\ref{teo:dimensiune}). Arătăm că $T(v_1),\dots,T(v_p)$ este o bază a lui $\Ima T$. Ei generează $\Ima T$, deoarece $T(u_i)=0$ (Propoziția~\ref{prop:kerim}). Dacă $\sum c_jT(v_j)=0$, atunci $\sum c_jv_j\in\Ker T$, deci $\sum c_jv_j=\sum d_iu_i$, iar independența bazei lui $V$ dă $c_j=0$. Așadar $\rang T=p=\dim V-\dim\Ker T$.
+\end{proof}
+
+\begin{corolar}\label{cor:injsurj}
+Fie $V$ finit dimensional și $T:V\to V$ liniară. Sunt echivalente: $T$ este injectivă; $T$ este surjectivă; $T$ este bijectivă. Mai general, aceeași concluzie are loc pentru $T:V\to W$ liniară între spații finit dimensionale cu $\dim V=\dim W$.
+\end{corolar}
+
+\begin{proof}
+$T$ injectivă $\iff\dim\Ker T=0\iff\rang T=\dim V=\dim W\iff\Ima T=W$ (Teorema~\ref{teo:dimensiune}), adică $T$ surjectivă.
+\end{proof}
+
+\begin{observatie}
+Fără ipoteza de dimensiune finită corolarul este fals: pe $K[X]$, înmulțirea cu $X$ este injectivă, dar nu surjectivă, iar derivarea este surjectivă, dar nu injectivă.
+\end{observatie}
+
+\section{Matricea unei aplicații liniare}
+
+\begin{definitie}
+Fie $T:V\to W$ liniară, $B=(v_1,\dots,v_n)$ o bază a lui $V$ și $C=(w_1,\dots,w_m)$ o bază a lui $W$. Scriem $T(v_j)=\sum_{i=1}^ma_{ij}w_i$. Matricea $A=(a_{ij})\in M_{m,n}(K)$ se numește \emph{matricea lui $T$ în bazele $B$, $C$} și se notează $\mathrm{Mat}_{C,B}(T)$: coloana $j$ conține coordonatele lui $T(v_j)$ în baza $C$. Pentru $T:V\to V$ și $C=B$ scriem $\mathrm{Mat}_B(T)$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:matriceaplicatie}
+\begin{enumerate}
+\item Dacă $X$ este coloana coordonatelor lui $v$ în baza $B$, atunci coloana coordonatelor lui $T(v)$ în baza $C$ este $AX$, unde $A=\mathrm{Mat}_{C,B}(T)$.
+\item Pentru $T:V\to W$, $S:W\to U$ și baze $B$, $C$, $D$ ale lui $V$, $W$, $U$:
+\[
+\mathrm{Mat}_{D,B}(S\circ T)=\mathrm{Mat}_{D,C}(S)\,\mathrm{Mat}_{C,B}(T).
+\]
+\item $\rang T=\rang\mathrm{Mat}_{C,B}(T)$. În particular, pentru $A\in M_{m,n}(K)$, rangul lui $A$ este dimensiunea subspațiului generat de coloanele lui $A$, iar mulțimea soluțiilor sistemului omogen $AX=0$ este un subspațiu de dimensiune $n-\rang A$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. $T\bigl(\sum_jx_jv_j\bigr)=\sum_jx_j\sum_ia_{ij}w_i=\sum_i\bigl(\sum_ja_{ij}x_j\bigr)w_i$.
+
+2. Aplicând punctul 1 de două ori, coordonatele lui $S(T(v))$ sunt $\mathrm{Mat}_{D,C}(S)\,\mathrm{Mat}_{C,B}(T)X$ pentru orice $X$; alegând $X$ coloanele matricei unitate obținem egalitatea coloană cu coloană.
+
+3. Izomorfismul coordonatelor din $W$ duce $\Ima T=\Span(T(v_1),\dots,T(v_n))$ în subspațiul generat de coloanele lui $A$, care are dimensiunea egală cu numărul maxim de coloane independente, adică $\rang A$ (Teorema~\ref{teo:rangcoloane}). Pentru $T_A:K^n\to K^m$, $\Ker T_A$ este mulțimea soluțiilor lui $AX=0$, iar Teorema~\ref{teo:rangnulitate} dă $\dim\Ker T_A=n-\rang A$.
+\end{proof}
+
+\begin{exemplu}
+Matricea derivării $D:\mathbb{R}_3[X]\to\mathbb{R}_3[X]$ în baza $1,X,X^2,X^3$ este
+\[
+\begin{pmatrix}0&1&0&0\\0&0&2&0\\0&0&0&3\\0&0&0&0\end{pmatrix},
+\]
+deoarece $D(1)=0$, $D(X)=1$, $D(X^2)=2X$, $D(X^3)=3X^2$. Ea are rangul $3$, iar $\Ker D$ este format din constante.
+\end{exemplu}
+
+\section{Schimbarea bazei. Matrice asemenea}
+
+\begin{definitie}
+Fie $B=(v_1,\dots,v_n)$ și $B'=(v_1',\dots,v_n')$ baze ale lui $V$. \emph{Matricea de trecere} de la $B$ la $B'$ este matricea $P=(p_{ij})$ cu $v_j'=\sum_ip_{ij}v_i$: coloana $j$ conține coordonatele lui $v'_j$ în baza $B$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:schimbarebaza}
+Matricea de trecere $P$ de la $B$ la $B'$ este inversabilă. Dacă $X$ și $X'$ sunt coordonatele aceluiași vector în bazele $B$, respectiv $B'$, atunci $X=PX'$. Pentru $T:V\to V$,
+\[
+\mathrm{Mat}_{B'}(T)=P^{-1}\,\mathrm{Mat}_B(T)\,P .
+\]
+\end{propozitie}
+
+\begin{proof}
+$P=\mathrm{Mat}_{B,B'}(\mathrm{id}_V)$, deci $X=PX'$ din Propoziția~\ref{prop:matriceaplicatie}; analog matricea de trecere $Q$ de la $B'$ la $B$ verifică $X'=QX$, de unde $PQ=I_n$ (Teorema~\ref{teo:inversabila}). Apoi, scriind $T=\mathrm{id}\circ T\circ\mathrm{id}$ și aplicând Propoziția~\ref{prop:matriceaplicatie},
+$\mathrm{Mat}_{B'}(T)=\mathrm{Mat}_{B',B}(\mathrm{id})\,\mathrm{Mat}_B(T)\,\mathrm{Mat}_{B,B'}(\mathrm{id})=P^{-1}\mathrm{Mat}_B(T)P$.
+\end{proof}
+
+\begin{definitie}\label{def:asemenea}
+Două matrice $A,B\in M_n(K)$ se numesc \emph{asemenea} (sau \emph{similare}) dacă există $P\in\GL_n(K)$ astfel încât $B=P^{-1}AP$.
+\end{definitie}
+
+Asemănarea este o relație de echivalență pe $M_n(K)$. Prin Propoziția~\ref{prop:schimbarebaza}, două matrice sunt asemenea exact când reprezintă aceeași aplicație liniară $T:K^n\to K^n$ în două baze: dacă $B=P^{-1}AP$, atunci $B$ este matricea lui $X\mapsto AX$ în baza formată din coloanele lui $P$.
+
+\begin{propozitie}\label{prop:invarianti}
+Matricele asemenea au același determinant, aceeași urmă și același rang. Dacă $B=P^{-1}AP$, atunci $B^k=P^{-1}A^kP$ și $Q(B)=P^{-1}Q(A)P$ pentru orice polinom $Q$.
+\end{propozitie}
+
+\begin{proof}
+$\det(P^{-1}AP)=\det P^{-1}\det A\det P=\det A$; $\Tr(P^{-1}AP)=\Tr(APP^{-1})=\Tr A$ (Propoziția~\ref{prop:urma}); rangul se păstrează prin Teorema~\ref{teo:proprang}. Apoi $(P^{-1}AP)^k=P^{-1}A^kP$, factorii $PP^{-1}$ din interior reducându-se.
+\end{proof}
+
+\begin{observatie}
+Reciproca este falsă: $I_2$ și $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ au același determinant, aceeași urmă și același rang, dar nu sunt asemenea, deoarece $P^{-1}I_2P=I_2$ pentru orice $P$. Clasificarea matricelor până la asemănare este dată de forma Jordan (Capitolul~\ref{ch:jordan}).
+\end{observatie}
+
+\section{Proiecții și simetrii}
+
+\begin{definitie}
+Fie $V=W_1\oplus W_2$. Orice $v\in V$ se scrie unic $v=w_1+w_2$ cu $w_i\in W_i$. Aplicația $p:V\to V$, $p(v)=w_1$, se numește \emph{proiecția pe $W_1$ de-a lungul lui $W_2$}, iar $s:V\to V$, $s(v)=w_1-w_2$, se numește \emph{simetria față de $W_1$ de-a lungul lui $W_2$}. Ambele sunt liniare. Un endomorfism se numește \emph{proiecție}, respectiv \emph{simetrie}, dacă este de această formă pentru o descompunere $V=W_1\oplus W_2$.
+\end{definitie}
+
+\begin{teorema}\label{teo:proiectii}
+Fie $T:V\to V$ liniară.
+\begin{enumerate}
+\item $T$ este o proiecție dacă și numai dacă $T\circ T=T$. În acest caz $V=\Ima T\oplus\Ker T$, iar $T$ este proiecția pe $\Ima T$ de-a lungul lui $\Ker T$.
+\item $T$ este o simetrie dacă și numai dacă $T\circ T=\mathrm{id}_V$. În acest caz $V=\Ker(T-\mathrm{id})\oplus\Ker(T+\mathrm{id})$.
+\end{enumerate}
+\end{teorema}
+
+\begin{proof}
+1. Pentru proiecția pe $W_1$ de-a lungul lui $W_2$, $p(p(v))=p(w_1)=w_1=p(v)$. Reciproc, fie $T^2=T$. Orice $v$ se scrie $v=T(v)+(v-T(v))$, cu $T(v)\in\Ima T$ și $T(v-T(v))=T(v)-T^2(v)=0$. Dacă $w\in\Ima T\cap\Ker T$, atunci $w=T(u)$ și $w=T(u)=T^2(u)=T(w)=0$. Deci $V=\Ima T\oplus\Ker T$, iar $T$ duce $v=T(v)+(v-T(v))$ în prima componentă.
+
+2. Pentru simetrie, $s(s(v))=s(w_1-w_2)=w_1+w_2=v$. Reciproc, fie $T^2=\mathrm{id}$. Scriem $v=\frac{v+T(v)}2+\frac{v-T(v)}2$; primul termen este fixat de $T$, iar al doilea este dus de $T$ în opusul său. Un vector din ambele subspații verifică $w=T(w)=-w$, deci $w=0$. Pe această descompunere $T$ acționează exact ca simetria.
+\end{proof}
+
+\begin{corolar}\label{cor:idempotenta}
+O matrice $A\in M_n(K)$ cu $A^2=A$ (\emph{idempotentă}) este asemenea cu $\diag(I_r,O_{n-r})$, unde $r=\rang A$. O matrice cu $A^2=I_n$ (\emph{involutivă}) este asemenea cu $\diag(I_p,-I_q)$, cu $p+q=n$.
+\end{corolar}
+
+\begin{proof}
+Luăm o bază a lui $K^n$ formată dintr-o bază a lui $\Ima A$ urmată de o bază a lui $\Ker A$ (Corolarul~\ref{cor:sumadirectadim}); în această bază aplicația $X\mapsto AX$ are matricea $\diag(I_r,O_{n-r})$, cu $r=\dim\Ima A=\rang A$. Pentru involuții procedăm la fel cu subspațiile $\Ker(A-I_n)$ și $\Ker(A+I_n)$.
+\end{proof}
+
+\begin{lema}\label{lema:idemptrrang}
+Fie $A\in M_n(K)$ o matrice idempotentă, adică $A^2=A$. Atunci $\Tr(A)=\rang(A)$.
+\end{lema}
+
+\begin{proof}
+Prin Corolarul~\ref{cor:idempotenta}, $A$ este asemenea cu $\diag(I_r,O_{n-r})$, $r=\rang A$, iar urma se păstrează prin asemănare (Propoziția~\ref{prop:invarianti}); deci $\Tr A=r$.
+\end{proof}
+
+\section{Subspații stabile}
+
+\begin{definitie}
+Fie $T:V\to V$ liniară. Un subspațiu $W\subset V$ este \emph{stabil} la $T$ (sau $T$-invariant) dacă $T(W)\subset W$. În acest caz, restricția $T|_W:W\to W$ este o aplicație liniară. Pentru o matrice $A\in M_n(K)$ vorbim despre subspații stabile la $X\mapsto AX$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:stabile}
+Fie $T:V\to V$ liniară.
+\begin{enumerate}
+\item $\{0\}$, $V$, $\Ker T$ și $\Ima T$ sunt stabile la $T$.
+\item Dacă $S:V\to V$ comută cu $T$, atunci $\Ker S$ și $\Ima S$ sunt stabile la $T$. În particular, pentru orice polinom $Q$, subspațiile $\Ker Q(T)$ și $\Ima Q(T)$ sunt stabile la $T$.
+\item Fie $W$ stabil, $(v_1,\dots,v_k)$ o bază a lui $W$ completată la o bază $B$ a lui $V$. Atunci $\mathrm{Mat}_B(T)=\begin{pmatrix}A_1&*\\0&A_2\end{pmatrix}$, cu $A_1=\mathrm{Mat}(T|_W)$ de ordin $k$. Dacă $V=W_1\oplus W_2$ cu $W_1$, $W_2$ ambele stabile, atunci în baza formată din bazele lor matricea lui $T$ este $\diag(A_1,A_2)$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+2. Dacă $S(v)=0$, atunci $S(T(v))=T(S(v))=0$; iar $T(S(v))=S(T(v))\in\Ima S$. Polinoamele în $T$ comută cu $T$.
+3. Pentru $j\le k$, $T(v_j)\in W$ are coordonate nule după vectorii care nu sunt în $W$, de unde blocul nul; în cazul sumei directe, analog pentru ambele blocuri.
+\end{proof}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Fie $T:\mathbb{R}^3\to\mathbb{R}^2$, $T(x,y,z)=(x+y,\,y-z)$. Determinați $\Ker T$, $\Ima T$ și verificați teorema rang-nulitate.
+\item Scrieți matricea proiecției lui $\mathbb{R}^2$ pe $W_1=\Span\bigl((1,0)\bigr)$ de-a lungul lui $W_2=\Span\bigl((1,1)\bigr)$ în baza canonică.
+\item Scrieți matricea simetriei lui $\mathbb{R}^2$ față de dreapta $y=x$ de-a lungul dreptei $y=-x$.
+\item Fie $T:\mathbb{R}^2\to\mathbb{R}^2$, $T(x,y)=(2x+y,\,x+2y)$. Scrieți matricea lui $T$ în baza $(1,1)$, $(1,-1)$.
+\item Arătați că nu există $T:\mathbb{R}^3\to\mathbb{R}^3$ liniară cu $\Ker T=\Ima T$, dar există o astfel de aplicație $T:\mathbb{R}^4\to\mathbb{R}^4$.
+\item Arătați că, dacă $T^2=T$, atunci $\mathrm{id}-T$ este tot o proiecție, cu $\Ima(\mathrm{id}-T)=\Ker T$ și $\Ker(\mathrm{id}-T)=\Ima T$.
+\item Determinați subspațiile lui $\mathbb{R}^2$ stabile la rotația de unghi $\frac\pi2$.
+\item Fie $T:\mathbb{R}_n[X]\to\mathbb{R}_n[X]$, $T(P)=P(X+1)-P(X)$. Determinați $\Ker T$ și $\Ima T$.
+\item Arătați că aplicația $T:M_n(\mathbb{R})\to M_n(\mathbb{R})$, $T(X)=X^t$, este o simetrie și precizați descompunerea corespunzătoare.
+\item Fie $T:V\to V$ liniară. Arătați că $\Ker T\subset\Ker T^2\subset\Ker T^3\subset\cdots$ și că, dacă $\Ker T^k=\Ker T^{k+1}$ pentru un $k$, atunci $\Ker T^{k+1}=\Ker T^{k+2}$ (deci șirul se stabilizează de la $k$ încolo).
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item $\Ker T=\Span\bigl((-1,1,1)\bigr)$, $\Ima T=\mathbb{R}^2$; $1+2=3$.
+\item $(x,y)=(x-y)(1,0)+y(1,1)$, deci $p(x,y)=(x-y,0)$ și matricea este $\begin{pmatrix}1&-1\\0&0\end{pmatrix}$, cu $P^2=P$.
+\item $\begin{pmatrix}0&1\\1&0\end{pmatrix}$: vectorul $(1,1)$ este fixat, iar $(1,-1)$ trece în opusul său.
+\item $T(1,1)=3(1,1)$ și $T(1,-1)=(1,-1)$: matricea este $\diag(3,1)$, iar cu $P=\begin{pmatrix}1&1\\1&-1\end{pmatrix}$ avem $P^{-1}\begin{pmatrix}2&1\\1&2\end{pmatrix}P=\diag(3,1)$.
+\item Din Teorema~\ref{teo:rangnulitate}, $2\dim\Ker T=3$, imposibil. În $\mathbb{R}^4$: $T(e_1)=T(e_2)=0$, $T(e_3)=e_1$, $T(e_4)=e_2$ (Propoziția~\ref{prop:determinataprinbaza}).
+\item $(\mathrm{id}-T)^2=\mathrm{id}-2T+T^2=\mathrm{id}-T$; restul rezultă din Teorema~\ref{teo:proiectii}.
+\item Doar $\{0\}$ și $\mathbb{R}^2$: o dreaptă stabilă ar fi generată de un vector $v$ cu $Rv=\lambda v$, $\lambda$ real, dar rotația nu duce niciun vector nenul într-un multiplu real al său.
+\item $\Ker T$ este format din constante (un polinom cu $P(X+1)=P(X)$ ia aceeași valoare în $0,1,2,\dots$), iar $\deg T(P)\le\deg P-1$ dă $\Ima T\subset\mathbb{R}_{n-1}[X]$; prin rang-nulitate, $\dim\Ima T=n$, deci $\Ima T=\mathbb{R}_{n-1}[X]$.
+\item $T^2=\mathrm{id}$; $\Ker(T-\mathrm{id})$ sunt matricele simetrice, iar $\Ker(T+\mathrm{id})$ cele antisimetrice.
+\item Dacă $T^k(v)=0$, atunci $T^{k+1}(v)=0$. Dacă $T^{k+2}(v)=0$, atunci $T(v)\in\Ker T^{k+1}=\Ker T^k$, deci $T^{k+1}(v)=0$.
+\end{enumerate}
+
+\chapter{Valori și vectori proprii. Polinomul caracteristic și polinomul minimal}\label{ch:valproprii}
+
+\section{Valori proprii și vectori proprii}
+
+\begin{definitie}
+Fie $A\in M_n(K)$. Un scalar $\lambda\in K$ se numește \emph{valoare proprie} a lui $A$ dacă există o coloană nenulă $X\in M_{n,1}(K)$ cu
+\[
+AX=\lambda X ;
+\]
+un astfel de $X$ se numește \emph{vector propriu} corespunzător lui $\lambda$. Mulțimea valorilor proprii se numește \emph{spectrul} lui $A$ și se notează $\Spec(A)$. Analog se definesc valorile și vectorii proprii ai unui endomorfism $T:V\to V$.
+\end{definitie}
+
+Când nu precizăm altfel, lucrăm cu $K=\mathbb{C}$; o matrice cu elemente reale este privită și ca matrice complexă, iar valorile ei proprii complexe au sens chiar dacă nu sunt reale.
+
+\begin{teorema}\label{teo:valpropdet}
+Un scalar $\lambda$ este valoare proprie a lui $A\in M_n(K)$ dacă și numai dacă $\det(\lambda I_n-A)=0$. Mulțimea
+\[
+V_\lambda=\Ker(\lambda I_n-A)=\{X: AX=\lambda X\}
+\]
+este un subspațiu stabil la $A$, numit \emph{subspațiul propriu} al lui $\lambda$.
+\end{teorema}
+
+\begin{proof}
+Relația $AX=\lambda X$ se scrie $(\lambda I_n-A)X=0$, iar acest sistem omogen are soluții nenule exact când $\det(\lambda I_n-A)=0$ (Corolarul~\ref{cor:omogen}). $V_\lambda$ este nucleul unei matrice care comută cu $A$, deci este stabil (Propoziția~\ref{prop:stabile}).
+\end{proof}
+
+\begin{propozitie}\label{prop:valpropputeri}
+Fie $AX=\lambda X$, $X\neq0$. Atunci:
+\begin{enumerate}
+\item $(kA)X=(k\lambda)X$ pentru orice $k\in K$ și $A^kX=\lambda^kX$ pentru orice $k\ge1$;
+\item $Q(A)X=Q(\lambda)X$ pentru orice polinom $Q$;
+\item dacă $A$ este inversabilă, atunci $\lambda\neq0$ și $A^{-1}X=\frac1\lambda X$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+Prin inducție, $A^{k+1}X=A(\lambda^kX)=\lambda^kAX=\lambda^{k+1}X$; punctul 2 rezultă prin liniaritate. Dacă $A$ este inversabilă, $\lambda=0$ ar da $AX=0$ cu $X\neq0$; apoi $X=A^{-1}AX=\lambda A^{-1}X$.
+\end{proof}
+
+\begin{lema}\label{lema:valpropanulare}
+Dacă $p\in\mathbb{C}[X]$ și $p(A)=O_n$, atunci orice valoare proprie $\lambda$ a lui $A$ verifică $p(\lambda)=0$.
+\end{lema}
+
+\begin{proof}
+Dacă $AX=\lambda X$ cu $X\neq0$, atunci $0=p(A)X=p(\lambda)X$ (Propoziția~\ref{prop:valpropputeri}), deci $p(\lambda)=0$.
+\end{proof}
+
+\begin{propozitie}\label{prop:vectpropindependenti}
+Vectori proprii corespunzători unor valori proprii distincte două câte două sunt liniar independenți. În consecință, subspațiile proprii corespunzătoare unor valori proprii distincte sunt în sumă directă.
+\end{propozitie}
+
+\begin{proof}
+Inducție după numărul $k$ de vectori. Fie $AX_i=\lambda_iX_i$, $X_i\neq0$, cu $\lambda_1,\dots,\lambda_k$ distincte, și $\sum c_iX_i=0$. Aplicând $A-\lambda_kI_n$ obținem $\sum_{i<k}c_i(\lambda_i-\lambda_k)X_i=0$, deci, din ipoteza de inducție, $c_i=0$ pentru $i<k$; apoi $c_kX_k=0$ dă $c_k=0$. A doua afirmație este aceeași, cu $X_i\in V_{\lambda_i}$ oarecare (termenii nuli se omit).
+\end{proof}
+
+\section{Polinomul caracteristic}
+
+\begin{definitie}
+Pentru $A\in M_n(K)$, polinomul
+\[
+p_A(X)=\det(XI_n-A)
+\]
+se numește \emph{polinomul caracteristic} al lui $A$; îl notăm și cu $f_A$. El este monic, de grad $n$, iar valorile proprii ale lui $A$ sunt exact rădăcinile lui din $K$ (Teorema~\ref{teo:valpropdet}). Multiplicitatea lui $\lambda$ ca rădăcină a lui $p_A$ se numește \emph{multiplicitatea algebrică} a lui $\lambda$. Deoarece $\det(A-XI_n)=(-1)^np_A(X)$, ambele variante au aceleași rădăcini; în tot volumul folosim $\det(XI_n-A)$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:coefpolcar}
+Pentru $A\in M_n(K)$,
+\[
+p_A(X)=X^n-\sigma_1X^{n-1}+\sigma_2X^{n-2}-\cdots+(-1)^n\sigma_n,
+\]
+unde $\sigma_k$ este suma minorilor diagonali (formați cu aceleași linii și coloane) de ordin $k$ ai lui $A$. În particular
+\[
+\sigma_1=\Tr A,\qquad\sigma_{n-1}=\Tr(\adj A),\qquad\sigma_n=\det A .
+\]
+Pentru $n=2$: $p_A(X)=X^2-\Tr(A)X+\det A$.
+\end{propozitie}
+
+\begin{proof}
+Linia $i$ a lui $XI_n-A$ este $Xe_i-A_i$. Ca în Lema~\ref{lema:detxAyB}, din liniaritatea în fiecare linie, $p_A$ este suma, după submulțimile $S$, a determinanților matricelor cu liniile $-A_i$ pentru $i\in S$ și $Xe_i$ pentru $i\notin S$. Dezvoltând după liniile $Xe_i$, un astfel de determinant este $X^{n-|S|}$ înmulțit cu minorul diagonal al lui $-A$ format cu indicii din $S$, adică cu $(-1)^{|S|}$ ori minorul diagonal corespunzător al lui $A$. Minorii diagonali de ordin $n-1$ sunt $M_{ii}=\Gamma_{ii}$, a căror sumă este $\Tr(\adj A)$.
+\end{proof}
+
+\begin{teorema}\label{teo:vietevalprop}
+Dacă $p_A(X)=(X-\lambda_1)\cdots(X-\lambda_n)$ (de exemplu, orice $A\in M_n(\mathbb{C})$, prin Corolarul~\ref{cor:scindatC}), atunci $\sigma_k=e_k(\lambda_1,\dots,\lambda_n)$ (Teorema~\ref{teo:viete}). În particular
+\[
+\Tr A=\sum_{i=1}^n\lambda_i,\qquad\det A=\prod_{i=1}^n\lambda_i,\qquad\Tr(\adj A)=\sum_{i=1}^n\prod_{j\neq i}\lambda_j .
+\]
+\end{teorema}
+
+\begin{propozitie}\label{prop:polcarinvariant}
+\begin{enumerate}
+\item Matricele asemenea (Definiția~\ref{def:asemenea}) au același polinom caracteristic, deci aceleași valori proprii, cu aceleași multiplicități.
+\item $p_{A^t}=p_A$.
+\item Polinomul caracteristic al unei matrice bloc-triunghiulare $\begin{pmatrix}A_1&*\\0&A_2\end{pmatrix}$ este $p_{A_1}p_{A_2}$.
+\item Dacă $A$ are elemente reale, $p_A$ are coeficienți reali, deci valorile proprii nereale ale lui $A$ apar în perechi conjugate, cu aceleași multiplicități.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. $\det(XI_n-P^{-1}AP)=\det\bigl(P^{-1}(XI_n-A)P\bigr)=\det(XI_n-A)$.
+2. $\det\bigl((XI_n-A)^t\bigr)=\det(XI_n-A)$.
+3. $XI-\begin{pmatrix}A_1&*\\0&A_2\end{pmatrix}$ este bloc-triunghiulară; aplicăm Propoziția~\ref{prop:detbloc}.
+4. Dacă $p_A=(X-\lambda)^mQ$ cu $Q(\lambda)\neq0$, conjugând coeficienții obținem $p_A=(X-\overline\lambda)^m\overline Q$, cu $\overline Q(\overline\lambda)\neq0$.
+\end{proof}
+
+\begin{propozitie}\label{prop:ABBA}
+Fie $A\in M_{n,m}(K)$ și $B\in M_{m,n}(K)$, cu $m\ge n$. Atunci
+\[
+p_{BA}(X)=X^{m-n}p_{AB}(X).
+\]
+În particular, pentru $A,B\in M_n(K)$ matricele $AB$ și $BA$ au același polinom caracteristic.
+\end{propozitie}
+
+\begin{proof}
+Fie $x\in K$ și $M=\begin{pmatrix}I_n&A\\B&xI_m\end{pmatrix}$. Scăzând din a doua linie de blocuri prima înmulțită la stânga cu $B$ obținem $\begin{pmatrix}I_n&A\\0&xI_m-BA\end{pmatrix}$, deci $\det M=p_{BA}(x)$. Pe de altă parte,
+\[
+M\begin{pmatrix}xI_n&0\\-B&I_m\end{pmatrix}=\begin{pmatrix}xI_n-AB&A\\0&xI_m\end{pmatrix},
+\]
+deci $x^n\det M=x^mp_{AB}(x)$. Rezultă $x^np_{BA}(x)=x^mp_{AB}(x)$ pentru orice $x\in K$, deci $X^np_{BA}=X^mp_{AB}$ ca polinoame (Corolarul~\ref{cor:nrradacini}); simplificând cu $X^n$ obținem enunțul.
+\end{proof}
+
+\begin{propozitie}\label{prop:valpropinversa}
+Fie $A\in\GL_n(\mathbb{C})$ cu valorile proprii $\lambda_1,\dots,\lambda_n$ (cu multiplicități). Atunci valorile proprii ale lui $A^{-1}$ sunt $\frac1{\lambda_1},\dots,\frac1{\lambda_n}$, iar cele ale lui $\adj A$ sunt $\mu_i=\frac{\det A}{\lambda_i}=\prod_{j\neq i}\lambda_j$, tot cu multiplicități.
+\end{propozitie}
+
+\begin{proof}
+Pentru $x\neq0$, $xI_n-A^{-1}=-xA^{-1}\bigl(\tfrac1xI_n-A\bigr)$, deci
+\[
+p_{A^{-1}}(x)=\frac{(-x)^n}{\det A}\prod_i\Bigl(\frac1x-\lambda_i\Bigr)=\frac{(-1)^n}{\det A}\prod_i(1-x\lambda_i)=\frac{\prod_i\lambda_i}{\det A}\prod_i\Bigl(x-\frac1{\lambda_i}\Bigr)=\prod_i\Bigl(x-\frac1{\lambda_i}\Bigr).
+\]
+Cele două polinoame coincid pentru $x\neq0$, deci sunt egale. Apoi $\adj A=\det(A)A^{-1}$ (Teorema~\ref{teo:inversabila}), iar $p_{cB}(x)=c^np_B(x/c)$ arată că valorile proprii ale lui $cB$ sunt cele ale lui $B$ înmulțite cu $c$.
+\end{proof}
+
+\section{Matrice remarcabile și valorile lor proprii}\label{sec:remarcabile}
+
+Pentru $A=(a_{ij})\in M_n(\mathbb{C})$ notăm $A^*=\overline{A}^{\,t}=(\overline{a_{ji}})$, \emph{transpusa conjugată} a lui $A$. \textbf{Atenție:} în manualele școlare din România $A^*$ notează de obicei \emph{adjuncta} matricei; în acest volum adjuncta se notează $\adj A$, iar $A^*$ înseamnă numai transpusa conjugată. O matrice $A\in M_n(\mathbb{C})$ se numește:
+\begin{itemize}
+\item \emph{hermitiană} (autoadjunctă) dacă $A^*=A$;
+\item \emph{antihermitiană} dacă $A^*=-A$;
+\item \emph{unitară} dacă $A^*A=I_n$, adică $A^*=A^{-1}$.
+\end{itemize}
+Pentru $A\in M_n(\mathbb{R})$ avem $A^*=A^t$, iar denumirile devin \emph{simetrică} ($A^t=A$), \emph{antisimetrică} ($A^t=-A$), respectiv \emph{ortogonală} ($A^tA=I_n$).
+
+Pentru $X,Y\in M_{n,1}(\mathbb{C})$ definim produsul scalar
+\[
+\langle X,Y\rangle=\sum_{k=1}^nx_k\overline{y_k}=Y^*X .
+\]
+El este liniar în $X$, $\langle X,Y\rangle=\overline{\langle Y,X\rangle}$, $\langle X,aY\rangle=\overline a\langle X,Y\rangle$, iar $\langle X,X\rangle=\sum|x_k|^2>0$ pentru $X\neq0$. Mai mult,
+\[
+\langle AX,Y\rangle=Y^*AX=(A^*Y)^*X=\langle X,A^*Y\rangle .
+\]
+
+\begin{propozitie}\label{prop:remarcabile}
+Fie $A\in M_n(\mathbb{C})$ și $\lambda$ o valoare proprie a lui $A$.
+\begin{enumerate}
+\item Dacă $A$ este hermitiană, atunci $\lambda\in\mathbb{R}$.
+\item Dacă $A$ este antihermitiană, atunci $\lambda\in i\mathbb{R}$ (partea reală este nulă).
+\item Dacă $A$ este unitară, atunci $|\lambda|=1$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+Fie $AX=\lambda X$, $X\neq0$, deci $\langle AX,X\rangle=\lambda\langle X,X\rangle$.
+1. $\langle AX,X\rangle=\langle X,AX\rangle=\langle X,\lambda X\rangle=\overline\lambda\langle X,X\rangle$, deci $\lambda=\overline\lambda$.
+2. $\langle AX,X\rangle=\langle X,-AX\rangle=-\overline\lambda\langle X,X\rangle$, deci $\lambda=-\overline\lambda$.
+3. $|\lambda|^2\langle X,X\rangle=\langle AX,AX\rangle=\langle X,A^*AX\rangle=\langle X,X\rangle$, deci $|\lambda|=1$.
+\end{proof}
+
+\begin{observatie}
+Pentru matrice reale: o matrice simetrică are toate valorile proprii reale; o matrice antisimetrică are toate valorile proprii de forma $ib$, $b\in\mathbb{R}$; o matrice ortogonală are toate valorile proprii de modul $1$, adică de forma $\cos\alpha+i\sin\alpha$ (cele nereale grupate în perechi conjugate, iar cele reale egale cu $1$ sau $-1$).
+\end{observatie}
+
+\section{Polinomul minimal}
+
+Fie $A\in M_n(K)$. Cele $n^2+1$ matrice $I_n,A,A^2,\dots,A^{n^2}$ se află în spațiul $M_n(K)$, de dimensiune $n^2$, deci sunt liniar dependente (Teorema~\ref{teo:dimensiune}): există un polinom nenul $f\in K[X]$ cu $f(A)=O_n$. Vom vedea în Capitolul~\ref{ch:jordan} că $p_A$ însuși este un astfel de polinom (teorema Cayley-Hamilton).
+
+\begin{propozitie}\label{prop:minimaldivide}
+Fie $f$ un polinom nenul de grad minim printre polinoamele din $K[X]$ care anulează $A$. Atunci pentru orice $g\in K[X]$ cu $g(A)=O_n$ avem $f\mid g$.
+\end{propozitie}
+
+\begin{proof}
+Scriem $g=fq+r$ cu $\deg r<\deg f$. Atunci $r(A)=g(A)-f(A)q(A)=O_n$, iar minimalitatea gradului lui $f$ impune $r=0$.
+\end{proof}
+
+Două polinoame monice de grad minim care anulează $A$ se divid reciproc, deci sunt egale. Aceasta justifică definiția următoare.
+
+\begin{definitie}
+\emph{Polinomul minimal} al lui $A\in M_n(K)$, notat $m_A$, este polinomul monic de grad minim din $K[X]$ care anulează $A$. Prin Propoziția~\ref{prop:minimaldivide}, $m_A$ divide orice polinom care anulează $A$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:minimalvalprop}
+Orice valoare proprie a lui $A$ este rădăcină a lui $m_A$. Matricele asemenea au același polinom minimal.
+\end{propozitie}
+
+\begin{proof}
+Prima afirmație este Lema~\ref{lema:valpropanulare}. Pentru a doua, $f(P^{-1}AP)=P^{-1}f(A)P$ (Propoziția~\ref{prop:invarianti}), deci $A$ și $P^{-1}AP$ sunt anulate de aceleași polinoame.
+\end{proof}
+
+\begin{exemplu}
+Fie $A=\begin{pmatrix}-1&0&0\\0&0&1\\0&1&0\end{pmatrix}$. Atunci $p_A(X)=(X+1)(X^2-1)=(X+1)^2(X-1)$. Cum $A^2=I_3$, polinomul $X^2-1$ anulează $A$; iar $X-1$ și $X+1$ nu anulează $A$, deoarece $A\neq\pm I_3$. Prin urmare $m_A(X)=X^2-1$, un divizor strict al lui $p_A$.
+\end{exemplu}
+
+\section{Câteva leme utile}
+
+\begin{lema}\label{lema:comut2x2}
+Fie $A,B\in M_2(\mathbb{C})$ cu $AB=BA$. Dacă $B$ nu este scalară (adică $B\neq\lambda I_2$ pentru orice $\lambda\in\mathbb{C}$), atunci există $x,y\in\mathbb{C}$ astfel încât $A=xB+yI_2$.
+\end{lema}
+
+\begin{proof}
+Fie $B=\begin{pmatrix}b_1&b_2\\b_1'&b_2'\end{pmatrix}$ și $A=\begin{pmatrix}a_1&a_2\\a_1'&a_2'\end{pmatrix}$. Condiția $AB=BA$ este echivalentă cu
+\[
+b_2a_1'=b_1'a_2,\qquad (b_1-b_2')a_2+b_2(a_2'-a_1)=0,\qquad (b_1-b_2')a_1'+b_1'(a_2'-a_1)=0 .
+\]
+Cum $B$ nu este scalară, fie unul dintre $b_2$, $b_1'$ este nenul, fie $b_2=b_1'=0$ și $b_1\neq b_2'$. Dacă $b_2\neq0$, exprimând $a_1'$ din prima relație și $a_2'$ din a doua, se verifică direct că $A=\frac{a_2}{b_2}B+\bigl(a_1-\frac{b_1}{b_2}a_2\bigr)I_2$; cazul $b_1'\neq0$ este analog (folosind prima și a treia relație). Dacă $b_2=b_1'=0$ și $b_1\neq b_2'$, a doua și a treia relație dau $a_2=a_1'=0$, iar $A=\frac{a_1-a_2'}{b_1-b_2'}B+\frac{b_1a_2'-b_2'a_1}{b_1-b_2'}I_2$. Reciproc, orice matrice de forma $xB+yI_2$ comută cu $B$.
+\end{proof}
+
+\begin{lema}\label{lema:ABBAlambdaB}
+Fie $A\in M_n(\mathbb{R})$ și $\lambda\in\mathbb{R}$ o valoare proprie a lui $A$. Atunci există coloane nenule $x,y\in\mathbb{R}^n$ astfel încât matricea nenulă $B=xy^t$, de rang $1$, verifică
+\[
+AB=BA=\lambda B .
+\]
+În particular, dacă $A$ nu este inversabilă, există $B\neq O_n$ cu $AB=BA=O_n$.
+\end{lema}
+
+\begin{proof}
+Cum $\det(\lambda I_n-A)=0$ și sistemul are coeficienți reali, există $x\in\mathbb{R}^n$ nenul cu $Ax=\lambda x$ (Corolarul~\ref{cor:omogen}, aplicat peste $\mathbb{R}$). Matricea $A^t$ are același polinom caracteristic (Propoziția~\ref{prop:polcarinvariant}), deci există și $y\in\mathbb{R}^n$ nenul cu $A^ty=\lambda y$. Pentru $B=xy^t$ (de rang $1$, Propoziția~\ref{prop:rang1}),
+\[
+AB=(Ax)y^t=\lambda xy^t=\lambda B,\qquad BA=x(y^tA)=x(A^ty)^t=\lambda xy^t=\lambda B.
+\]
+Pentru $\lambda=0$ obținem ultima afirmație.
+\end{proof}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Determinați valorile și vectorii proprii ai matricei $\begin{pmatrix}2&1\\1&2\end{pmatrix}$.
+\item Determinați polinomul caracteristic și polinomul minimal al matricei $\begin{pmatrix}1&2&0\\0&1&0\\0&0&3\end{pmatrix}$.
+\item Fie $J\in M_n(\mathbb{R})$, $n\ge2$, matricea cu toate elementele egale cu $1$. Determinați $p_J$ și $m_J$.
+\item Fie $A\in M_3(\mathbb{C})$ cu valorile proprii $1,2,3$. Calculați $\det(A^2+I_3)$, $\Tr(A^{-1})$ și $\Tr(\adj A)$.
+\item Arătați că o matrice nilpotentă ($A^k=O_n$ pentru un $k\ge1$) are toate valorile proprii nule.
+\item Arătați că o matrice $A\in M_n(\mathbb{C})$ este inversabilă dacă și numai dacă $0$ nu este valoare proprie a ei.
+\item Determinați valorile proprii și polinomul minimal peste $\mathbb{R}$ al matricei $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.
+\item Fie $A=\begin{pmatrix}1&1\\0&2\end{pmatrix}$. Determinați valorile proprii ale lui $A^3-A$ și calculați $\det(A^2+A+I_2)$.
+\item Arătați că, dacă $A\in M_n(\mathbb{C})$ verifică $A^2=A$, atunci $\Spec(A)\subset\{0,1\}$.
+\item Arătați că $AB$ și $BA$ au aceleași valori proprii nenule, pentru orice $A\in M_{2,3}(\mathbb{C})$ și $B\in M_{3,2}(\mathbb{C})$, iar $BA$ are și valoarea proprie $0$.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item $p_A=(X-1)(X-3)$; $\lambda=1$ cu vectorii proprii $t(1,-1)^t$, $\lambda=3$ cu $t(1,1)^t$, $t\neq0$.
+\item $p_A=(X-1)^2(X-3)$; $(A-I_3)(A-3I_3)\neq O_3$, dar $(A-I_3)^2(A-3I_3)=O_3$, deci $m_A=p_A$.
+\item $J^2=nJ$, deci $J$ este anulată de $X^2-nX$ și nu de un polinom de grad $1$ (căci $J$ nu este scalară): $m_J=X(X-n)$. Cum $\rang J=1$, $\sigma_k=0$ pentru $k\ge2$ și $p_J=X^n-nX^{n-1}=X^{n-1}(X-n)$.
+\item Vectorii proprii $X_1,X_2,X_3$ corespunzători lui $1,2,3$ sunt independenți (Propoziția~\ref{prop:vectpropindependenti}); cu $P=(X_1\ X_2\ X_3)$ avem $P^{-1}AP=\diag(1,2,3)$, deci $A^2+I_3$ este asemenea cu $\diag(2,5,10)$ și $\det(A^2+I_3)=100$; $\Tr(A^{-1})=1+\frac12+\frac13=\frac{11}6$; $\Tr(\adj A)=2\cdot3+1\cdot3+1\cdot2=11$.
+\item Aplicați Lema~\ref{lema:valpropanulare} cu $p=X^k$.
+\item $\det A=\prod\lambda_i$, sau direct Teorema~\ref{teo:valpropdet} cu $\lambda=0$.
+\item $p_A=X^2+1$: valorile proprii sunt $\pm i$, niciuna reală; $m_A=X^2+1$ (o matrice nescalară nu are polinom minimal de grad $1$).
+\item Valorile proprii ale lui $A$ sunt $1$ și $2$; ale lui $A^3-A$ sunt $0$ și $6$, iar $\det(A^2+A+I_2)=3\cdot7=21$.
+\item Lema~\ref{lema:valpropanulare} cu $p=X^2-X$.
+\item Propoziția~\ref{prop:ABBA}: $p_{BA}=Xp_{AB}$.
+\end{enumerate}
+
+\chapter{Triangularizare, diagonalizare și forma Jordan}\label{ch:jordan}
+
+Multe probleme se simplifică atunci când matricea poate fi înlocuită cu o matrice asemenea triunghiulară sau diagonală. Acest capitol explică atunci când este posibil acest lucru și ce se poate spune în general.
+
+\section{Matrice triunghiulare}
+
+O matrice $A=(a_{ij})\in M_n(K)$ este \emph{superior triunghiulară} dacă $a_{ij}=0$ pentru $i>j$, \emph{inferior triunghiulară} dacă $a_{ij}=0$ pentru $i<j$ și \emph{diagonală} dacă $a_{ij}=0$ pentru $i\neq j$; scriem $\diag(a_{11},\dots,a_{nn})$.
+
+\begin{lema}\label{lema:valproptriunghiulara}
+Valorile proprii ale unei matrice triunghiulare sunt elementele de pe diagonala principală, cu multiplicitățile date de numărul aparițiilor: $p_A(X)=\prod_{i=1}^n(X-a_{ii})$.
+\end{lema}
+
+\begin{proof}
+$XI_n-A$ este triunghiulară, cu diagonala $X-a_{ii}$; aplicăm Propoziția~\ref{prop:dettriunghiulara}.
+\end{proof}
+
+Produsul a două matrice superior triunghiulare este superior triunghiulară, iar diagonala produsului este produsul diagonalelor. În consecință, dacă $T$ este superior triunghiulară cu diagonala $t_{11},\dots,t_{nn}$ și $Q$ este un polinom, atunci $Q(T)$ este superior triunghiulară cu diagonala $Q(t_{11}),\dots,Q(t_{nn})$.
+
+\section{Triangularizare}
+
+\begin{definitie}
+Un polinom $P\in K[X]$ este \emph{scindat peste $K$} dacă se scrie $P=c(X-a_1)\cdots(X-a_n)$ cu $c,a_1,\dots,a_n\in K$. O matrice $A\in M_n(K)$ este \emph{triangularizabilă peste $K$} dacă este asemenea (Definiția~\ref{def:asemenea}) cu o matrice superior triunghiulară din $M_n(K)$.
+\end{definitie}
+
+De exemplu, $X^2+1$ nu este scindat peste $\mathbb{R}$, dar este scindat peste $\mathbb{C}$. Prin Corolarul~\ref{cor:scindatC}, orice polinom din $\mathbb{C}[X]$ este scindat peste $\mathbb{C}$.
+
+\begin{teorema}\label{teo:triangularizare}
+O matrice $A\in M_n(K)$ este triangularizabilă peste $K$ dacă și numai dacă $p_A$ este scindat peste $K$.
+\end{teorema}
+
+\begin{proof}
+Dacă $A=PTP^{-1}$ cu $T$ triunghiulară, atunci $p_A=p_T=\prod(X-t_{ii})$ este scindat (Propoziția~\ref{prop:polcarinvariant}, Lema~\ref{lema:valproptriunghiulara}).
+
+Reciproc, procedăm prin inducție după $n$; cazul $n=1$ este evident. Fie $\lambda\in K$ o rădăcină a lui $p_A$ și $v_1\in K^n$ un vector propriu, $Av_1=\lambda v_1$. Completăm $v_1$ la o bază $B=(v_1,\dots,v_n)$ a lui $K^n$ (Teorema~\ref{teo:dimensiune}). Cum $\Span(v_1)$ este stabil, în această bază (Propoziția~\ref{prop:stabile}, Propoziția~\ref{prop:schimbarebaza})
+\[
+P^{-1}AP=\begin{pmatrix}\lambda&*\\0&A'\end{pmatrix},\qquad A'\in M_{n-1}(K),
+\]
+unde $P$ are coloanele $v_1,\dots,v_n$. Din $p_A=(X-\lambda)p_{A'}$ (Propoziția~\ref{prop:polcarinvariant}), $p_{A'}$ este scindat, deci, din ipoteza de inducție, $A'=QT'Q^{-1}$ cu $T'$ superior triunghiulară. Atunci
+\[
+\begin{pmatrix}1&0\\0&Q\end{pmatrix}^{-1}P^{-1}AP\begin{pmatrix}1&0\\0&Q\end{pmatrix}=\begin{pmatrix}\lambda&*\\0&T'\end{pmatrix}
+\]
+este superior triunghiulară.
+\end{proof}
+
+\begin{corolar}\label{cor:triangC}
+Orice matrice $A\in M_n(\mathbb{C})$ este asemenea cu o matrice superior triunghiulară, pe a cărei diagonală se află valorile proprii ale lui $A$, fiecare de atâtea ori cât este multiplicitatea ei algebrică.
+\end{corolar}
+
+\begin{teorema}\label{teo:valpropQ}
+Fie $A\in M_n(\mathbb{C})$ cu $p_A=\prod_{i=1}^n(X-\lambda_i)$ și $Q\in\mathbb{C}[X]$. Atunci
+\[
+p_{Q(A)}=\prod_{i=1}^n\bigl(X-Q(\lambda_i)\bigr).
+\]
+În particular, valorile proprii ale lui $A^k$ sunt $\lambda_i^k$, iar $\det Q(A)=\prod_iQ(\lambda_i)$ și $\Tr Q(A)=\sum_iQ(\lambda_i)$.
+\end{teorema}
+
+\begin{proof}
+Scriem $A=PTP^{-1}$ cu $T$ superior triunghiulară, de diagonală $\lambda_1,\dots,\lambda_n$. Atunci $Q(A)=PQ(T)P^{-1}$, iar $Q(T)$ este superior triunghiulară, cu diagonala $Q(\lambda_1),\dots,Q(\lambda_n)$; aplicăm Lema~\ref{lema:valproptriunghiulara}.
+\end{proof}
+
+\begin{observatie}
+Astfel, singurele valori proprii ale lui $kA$, $A^k$, respectiv $A^{-1}$ sunt $k\lambda$, $\lambda^k$, respectiv $\frac1\lambda$, cu $\lambda$ valoare proprie a lui $A$, completând Propoziția~\ref{prop:valpropputeri}.
+\end{observatie}
+
+\begin{lema}\label{lema:vectpropcomun}
+Fie $A_1,\dots,A_k\in M_n(\mathbb{C})$ care comută două câte două. Atunci ele au un vector propriu comun.
+\end{lema}
+
+\begin{proof}
+Demonstrăm afirmația mai generală: endomorfismele $T_1,\dots,T_k$ ale unui spațiu complex $V\neq\{0\}$, finit dimensional, care comută două câte două, au un vector propriu comun. Inducție după $k$. Pentru $k=1$, matricea lui $T_1$ într-o bază are o valoare proprie complexă (Teorema~\ref{teo:fundamentala}). Pentru $k\ge2$, fie $\lambda$ o valoare proprie a lui $T_1$ și $W=\Ker(T_1-\lambda\,\mathrm{id})\neq\{0\}$. Deoarece $T_i$ comută cu $T_1$, $W$ este stabil la fiecare $T_i$ (Propoziția~\ref{prop:stabile}). Restricțiile lui $T_2,\dots,T_k$ la $W$ comută, deci, din ipoteza de inducție, au un vector propriu comun $w\in W$, care este vector propriu și pentru $T_1$.
+\end{proof}
+
+\begin{teorema}[Triangularizare simultană]\label{teo:triangsimultana}
+Dacă matricele $A_1,\dots,A_k\in M_n(\mathbb{C})$ comută două câte două, atunci există $P\in\GL_n(\mathbb{C})$ astfel încât toate matricele $P^{-1}A_iP$ sunt superior triunghiulare.
+\end{teorema}
+
+\begin{proof}
+Inducție după $n$. Fie $v_1$ un vector propriu comun (Lema~\ref{lema:vectpropcomun}), completat la o bază; cu $P$ matricea acestei baze, $P^{-1}A_iP=\begin{pmatrix}\lambda_i&*\\0&A_i'\end{pmatrix}$. Înmulțind pe blocuri, blocul din dreapta jos al lui $P^{-1}A_iA_jP$ este $A_i'A_j'$, deci matricele $A_i'$ comută două câte două. Din ipoteza de inducție există $Q$ care le triangularizează simultan, iar $P\diag(1,Q)$ convine pentru toate $A_i$.
+\end{proof}
+
+\section{Teorema Cayley-Hamilton}
+
+\begin{teorema}[Cayley-Hamilton]\label{teo:cayleyhamilton}
+Pentru orice $A\in M_n(K)$, $p_A(A)=O_n$. Pentru $n=2$: $A^2-\Tr(A)\,A+\det(A)\,I_2=O_2$.
+\end{teorema}
+
+\begin{proof}
+Privim $A$ ca matrice complexă; $p_A$ nu se schimbă. Prin Corolarul~\ref{cor:triangC}, $A=PTP^{-1}$ cu $T=(t_{ij})$ superior triunghiulară, iar $p_A(A)=Pp_T(T)P^{-1}$ (Propoziția~\ref{prop:invarianti}), cu $p_T=p_A=\prod_{i=1}^n(X-t_{ii})$. Este suficient să arătăm că $p_T(T)=O_n$. Fie $Q_k=\prod_{i=1}^k(X-t_{ii})$ și $e_1,\dots,e_n$ baza canonică. Arătăm prin inducție după $k$ că $Q_k(T)e_i=0$ pentru $1\le i\le k$. Cum $T$ este superior triunghiulară, $Te_k=\sum_{j\le k}t_{jk}e_j$, deci $(T-t_{kk}I_n)e_k\in\Span(e_1,\dots,e_{k-1})$. Pentru $k=1$ obținem $(T-t_{11}I_n)e_1=0$. Pentru $k\ge2$, polinoamele în $T$ comută, deci $Q_k(T)=(T-t_{kk}I_n)Q_{k-1}(T)=Q_{k-1}(T)(T-t_{kk}I_n)$. Pentru $i\le k-1$, $Q_k(T)e_i=(T-t_{kk}I_n)Q_{k-1}(T)e_i=0$, iar
+\[
+Q_k(T)e_k=Q_{k-1}(T)\sum_{j=1}^{k-1}t_{jk}e_j=0 .
+\]
+Pentru $k=n$ obținem $p_T(T)e_i=0$ pentru orice $i$, deci $p_T(T)=O_n$. Cazul $n=2$ rezultă din Propoziția~\ref{prop:coefpolcar}.
+\end{proof}
+
+\begin{corolar}\label{cor:mdividep}
+$m_A$ divide $p_A$; în particular $\deg m_A\le n$. Pentru $A\in M_n(\mathbb{C})$, $m_A$ și $p_A$ au exact aceleași rădăcini (valorile proprii ale lui $A$), eventual cu multiplicități diferite.
+\end{corolar}
+
+\begin{proof}
+Prima afirmație rezultă din Teorema~\ref{teo:cayleyhamilton} și Propoziția~\ref{prop:minimaldivide}. Orice rădăcină a lui $m_A$ este rădăcină a lui $p_A$, iar reciproca este Propoziția~\ref{prop:minimalvalprop}.
+\end{proof}
+
+\begin{teorema}[Frobenius]\label{teo:frobeniusminimal}
+Fie $A\in M_n(K)$. Polinoamele $p_A$ și $m_A$ au aceiași divizori ireductibili peste $K$.
+\end{teorema}
+
+\begin{proof}
+Cum $m_A\mid p_A$, orice divizor ireductibil al lui $m_A$ divide $p_A$. Reciproc, fie $f$ un divizor ireductibil al lui $p_A$ și $\alpha\in\mathbb{C}$ o rădăcină a lui $f$ (Teorema~\ref{teo:fundamentala}); atunci $p_A(\alpha)=0$, deci $\alpha$ este valoare proprie a lui $A$ privite ca matrice complexă și $m_A(\alpha)=0$ (Propoziția~\ref{prop:minimalvalprop}). Dacă $f\nmid m_A$, atunci $f$ și $m_A$ sunt prime între ele în $K[X]$ ($f$ fiind ireductibil), deci $uf+vm_A=1$ pentru niște $u,v\in K[X]$ (Teorema~\ref{teo:bezout}); evaluând în $\alpha$ obținem $0=1$, contradicție.
+\end{proof}
+
+\section{Matrice diagonalizabile}
+
+\begin{definitie}
+O matrice $A\in M_n(K)$ este \emph{diagonalizabilă peste $K$} dacă este asemenea cu o matrice diagonală din $M_n(K)$.
+\end{definitie}
+
+\begin{teorema}\label{teo:diagvectori}
+$A\in M_n(K)$ este diagonalizabilă dacă și numai dacă $K^n$ are o bază formată din vectori proprii ai lui $A$. În acest caz, dacă $P$ are drept coloane acești vectori proprii $v_1,\dots,v_n$, cu $Av_i=\lambda_iv_i$, atunci $P^{-1}AP=\diag(\lambda_1,\dots,\lambda_n)$.
+\end{teorema}
+
+\begin{proof}
+Relația $AP=P\diag(\lambda_1,\dots,\lambda_n)$ spune, coloană cu coloană, exact $Av_i=\lambda_iv_i$; iar $P$ este inversabilă exact când coloanele ei formează o bază (Corolarul~\ref{cor:detrang}).
+\end{proof}
+
+\begin{corolar}\label{cor:valpropdistincte}
+O matrice din $M_n(K)$ cu $n$ valori proprii distincte în $K$ este diagonalizabilă.
+\end{corolar}
+
+\begin{proof}
+Cei $n$ vectori proprii corespunzători sunt independenți (Propoziția~\ref{prop:vectpropindependenti}), deci formează o bază.
+\end{proof}
+
+\begin{teorema}[Criteriul polinomului minimal]\label{teo:criteriudiag}
+Pentru $A\in M_n(K)$ sunt echivalente:
+\begin{enumerate}
+\item[(a)] $A$ este diagonalizabilă peste $K$;
+\item[(b)] $m_A$ este scindat peste $K$ și are rădăcini simple;
+\item[(c)] există un polinom $P\in K[X]$, scindat peste $K$ cu rădăcini simple, astfel încât $P(A)=O_n$.
+\end{enumerate}
+\end{teorema}
+
+\begin{proof}
+(a) $\Rightarrow$ (b). Fie $S^{-1}AS=D=\diag(\mu_1,\dots,\mu_n)$ și $\lambda_1,\dots,\lambda_k$ valorile distincte dintre $\mu_i$. Pentru $P=\prod_{i=1}^k(X-\lambda_i)$ avem $P(D)=\diag(P(\mu_1),\dots,P(\mu_n))=O_n$, deci $P(A)=SP(D)S^{-1}=O_n$ și $m_A\mid P$; așadar $m_A$ este scindat cu rădăcini simple.
+
+(b) $\Rightarrow$ (c). Luăm $P=m_A$.
+
+(c) $\Rightarrow$ (a). Fie $P=\prod_{i=1}^k(X-\lambda_i)$ cu $\lambda_i\in K$ distincte și $P(A)=O_n$ (putem presupune $P$ monic). Considerăm polinoamele de interpolare Lagrange
+\[
+L_i=\prod_{j\ne i}\frac{X-\lambda_j}{\lambda_i-\lambda_j}\in K[X],\qquad i=1,\dots,k .
+\]
+Polinomul $L_1+\cdots+L_k-1$ are grad cel mult $k-1$ și se anulează în $\lambda_1,\dots,\lambda_k$ (căci $L_i(\lambda_j)$ este $1$ pentru $i=j$ și $0$ altfel), deci este nul (Corolarul~\ref{cor:nrradacini}); astfel $L_1(A)+\cdots+L_k(A)=I_n$. Pe de altă parte, $(X-\lambda_i)L_i=c_iP$ cu $c_i$ constant, deci $(A-\lambda_iI_n)L_i(A)=O_n$. Așadar orice $v\in K^n$ se scrie $v=\sum_iL_i(A)v$, cu $L_i(A)v\in\Ker(A-\lambda_iI_n)$. Deci $K^n$ este suma subspațiilor proprii, care sunt în sumă directă (Propoziția~\ref{prop:vectpropindependenti}); reuniunea bazelor lor este o bază a lui $K^n$ formată din vectori proprii (Corolarul~\ref{cor:sumadirectadim}) și aplicăm Teorema~\ref{teo:diagvectori}.
+\end{proof}
+
+\begin{corolar}\label{cor:diagexemple}
+\begin{enumerate}
+\item Dacă $A\in M_n(\mathbb{C})$ și $A^k=I_n$ pentru un $k\ge1$, atunci $A$ este diagonalizabilă (polinomul $X^k-1$ are rădăcini simple).
+\item Matricele idempotente ($A^2=A$) și involutive ($A^2=I_n$) sunt diagonalizabile (vezi și Corolarul~\ref{cor:idempotenta}).
+\item Dacă $A$ este diagonalizabilă și $W$ este un subspațiu stabil la $A$, atunci restricția lui $A$ la $W$ este diagonalizabilă (ea este anulată de $m_A$).
+\end{enumerate}
+\end{corolar}
+
+\begin{exemplu}
+Pentru $A=\begin{pmatrix}4&-2\\1&1\end{pmatrix}$, $p_A=(X-2)(X-3)$, cu vectorii proprii $(1,1)^t$ pentru $2$ și $(2,1)^t$ pentru $3$. Cu $P=\begin{pmatrix}1&2\\1&1\end{pmatrix}$ avem $P^{-1}AP=\diag(2,3)$, deci
+\[
+A^n=P\diag(2^n,3^n)P^{-1}=\begin{pmatrix}2\cdot3^n-2^n&2^{n+1}-2\cdot3^n\\3^n-2^n&2^{n+1}-3^n\end{pmatrix}.
+\]
+\end{exemplu}
+
+Enunțăm fără demonstrație două rezultate des folosite.
+
+\begin{teorema}[Diagonalizare simultană]\label{teo:diagsimultana}
+Două matrice diagonalizabile $A,B\in M_n(\mathbb{C})$ sunt simultan diagonalizabile (există $P$ cu $P^{-1}AP$ și $P^{-1}BP$ ambele diagonale) dacă și numai dacă $AB=BA$.
+\end{teorema}
+
+\begin{teorema}[Teorema spectrală reală]\label{teo:spectrala}
+Fie $A\in M_n(\mathbb{R})$ simetrică. Atunci toate valorile proprii ale lui $A$ sunt reale și există o matrice ortogonală $U$ ($U^tU=I_n$) astfel încât $U^tAU=\diag(\lambda_1,\dots,\lambda_n)$.
+\end{teorema}
+
+\section{Forma Jordan a matricelor nilpotente}
+
+\begin{definitie}
+Un endomorfism $T$ (sau o matrice $A$) este \emph{nilpotent} dacă $T^k=0$ (respectiv $A^k=O_n$) pentru un $k\ge1$; cel mai mic astfel de $k$ se numește \emph{indicele} de nilpotență. Pentru $k\ge1$, \emph{blocul Jordan nilpotent} de ordin $k$ este
+\[
+J_k=\begin{pmatrix}
+0&1&0&\cdots&0\\
+0&0&1&\cdots&0\\
+\vdots&\vdots&\ddots&\ddots&\vdots\\
+0&0&\cdots&0&1\\
+0&0&\cdots&0&0
+\end{pmatrix}\in M_k(K),
+\]
+cu $1$ pe supradiagonală și $0$ în rest. Dacă $e_1,\dots,e_k$ este baza canonică, $J_ke_1=0$ și $J_ke_j=e_{j-1}$ pentru $j\ge2$; deci $J_k^{\,j}\neq O_k$ pentru $j<k$ și $J_k^{\,k}=O_k$, iar $\rang J_k^{\,j}=\max(k-j,0)$.
+\end{definitie}
+
+\begin{propozitie}\label{prop:nilpotent}
+Fie $T:V\to V$ nilpotent de indice $k$, cu $\dim V=n$.
+\begin{enumerate}
+\item Dacă $T^{k-1}(v)\neq0$, atunci $v,T(v),\dots,T^{k-1}(v)$ sunt liniar independenți; în particular $k\le n$, adică $T^n=0$.
+\item O matrice $A\in M_n(\mathbb{C})$ este nilpotentă dacă și numai dacă toate valorile ei proprii sunt nule, adică $p_A=X^n$.
+\end{enumerate}
+\end{propozitie}
+
+\begin{proof}
+1. Dacă $\sum_{i=0}^{k-1}c_iT^i(v)=0$ și $c_j$ este primul coeficient nenul, aplicând $T^{k-1-j}$ obținem $c_jT^{k-1}(v)=0$, contradicție.
+2. Dacă $A$ este nilpotentă, valorile proprii sunt nule (Lema~\ref{lema:valpropanulare}), deci $p_A=X^n$; reciproc, din Cayley-Hamilton $A^n=O_n$.
+\end{proof}
+
+\begin{teorema}[Forma Jordan a matricelor nilpotente]\label{teo:jordannilpotent}
+Fie $T:V\to V$ nilpotent, cu $\dim V=n\ge1$. Există o bază a lui $V$ în care matricea lui $T$ este
+\[
+\diag(J_{k_1},J_{k_2},\dots,J_{k_d}),\qquad k_1\ge k_2\ge\cdots\ge k_d\ge1,\quad k_1+\cdots+k_d=n .
+\]
+Echivalent, orice matrice nilpotentă $N\in M_n(K)$ este asemenea cu o astfel de matrice bloc-diagonală. Numerele $k_1,\dots,k_d$ sunt unic determinate: numărul blocurilor de ordin cel puțin $j$ este
+\[
+\rang N^{\,j-1}-\rang N^{\,j},\qquad j\ge1 .
+\]
+În particular, numărul blocurilor este $d=n-\rang N=\dim\Ker N$.
+\end{teorema}
+
+\begin{proof}
+Numim \emph{lanț} de lungime $l$ un sistem $w,T(w),\dots,T^{l-1}(w)$ cu $T^l(w)=0$. Arătăm prin inducție după $\dim V$ că $V$ are o bază formată din lanțuri. Pentru $V=\{0\}$ nu avem nimic de demonstrat. Altfel, $W=\Ima T$ este stabil și $\dim W<\dim V$ ($T$ nu este injectivă, fiind nilpotentă, deci $\dim\Ker T\ge1$ și Teorema~\ref{teo:rangnulitate}). Din ipoteza de inducție aplicată lui $T|_W$, $W$ are o bază formată din lanțurile $w_i,T(w_i),\dots,T^{l_i-1}(w_i)$, $i=1,\dots,s$. Cum $w_i\in\Ima T$, scriem $w_i=T(v_i)$. Ultimii vectori $T^{l_i-1}(w_i)=T^{l_i}(v_i)$ sunt independenți și se află în $\Ker T$; îi completăm cu $u_1,\dots,u_t$ la o bază a lui $\Ker T$, deci $s+t=\dim\Ker T$. Considerăm lanțurile
+\[
+v_i,T(v_i),\dots,T^{l_i}(v_i)\ \ (i=1,\dots,s),\qquad u_1,\dots,u_t\ \text{(lanțuri de lungime $1$)}.
+\]
+Numărul lor total de vectori este $\sum_i(l_i+1)+t=\dim W+\dim\Ker T=\dim V$. Sunt independenți: dacă o combinație liniară a lor este nulă, aplicând $T$ obținem o combinație a vectorilor bazei lui $W$ (vectorii $T^{l_i}(v_i)$ și $u_j$ dispar), deci coeficienții lui $T^j(v_i)$ cu $j<l_i$ sunt nuli; rămâne o combinație a vectorilor $T^{l_i}(v_i)$ și $u_j$, bază a lui $\Ker T$, deci și acești coeficienți sunt nuli. Așadar avem o bază formată din lanțuri (Teorema~\ref{teo:dimensiune}).
+
+Ordonând fiecare lanț ca $T^{l-1}(w),\dots,T(w),w$, aplicația $T$ duce fiecare vector în precedentul, iar primul în $0$; matricea pe acest lanț este exact $J_l$. Ordonând lanțurile descrescător după lungime obținem forma din enunț.
+
+Pentru unicitate, $\rang N^{\,j}=\sum_i\max(k_i-j,0)$ (Propoziția~\ref{prop:rangbloc}), deci $\rang N^{\,j-1}-\rang N^{\,j}=\#\{i:k_i\ge j\}$, iar aceste numere determină complet șirul $k_1\ge\cdots\ge k_d$.
+\end{proof}
+
+\section{Forma Jordan în cazul general}
+
+\begin{lema}[Lema nucleelor]\label{lema:nuclee}
+Fie $A\in M_n(K)$ și $P=P_1P_2$, cu $P_1,P_2\in K[X]$ prime între ele și $P(A)=O_n$. Atunci
+\[
+K^n=\Ker P_1(A)\oplus\Ker P_2(A),
+\]
+iar ambele subspații sunt stabile la $A$.
+\end{lema}
+
+\begin{proof}
+Prin Teorema~\ref{teo:bezout}, $UP_1+VP_2=1$, deci $I_n=U(A)P_1(A)+V(A)P_2(A)$. Pentru $v\in K^n$, $v=U(A)P_1(A)v+V(A)P_2(A)v$; primul termen este în $\Ker P_2(A)$, deoarece $P_2(A)U(A)P_1(A)v=U(A)P(A)v=0$, iar al doilea, analog, în $\Ker P_1(A)$. Dacă $v$ este în ambele nuclee, formula dă $v=0$. Stabilitatea rezultă din Propoziția~\ref{prop:stabile}.
+\end{proof}
+
+Pentru $\lambda\in\mathbb{C}$ și $k\ge1$, \emph{blocul Jordan} de ordin $k$ asociat lui $\lambda$ este $J_k(\lambda)=\lambda I_k+J_k$ (cu $\lambda$ pe diagonală și $1$ pe supradiagonală).
+
+\begin{teorema}[Forma canonică Jordan]\label{teo:jordan}
+Pentru orice $A\in M_n(\mathbb{C})$ există $P\in\GL_n(\mathbb{C})$ astfel încât
+\[
+P^{-1}AP=\diag\bigl(J_{n_1}(\lambda_1),\dots,J_{n_s}(\lambda_s)\bigr),
+\]
+unde $\lambda_1,\dots,\lambda_s$ sunt valori proprii ale lui $A$ (nu neapărat distincte). Această formă este unică în afara ordinii blocurilor: pentru fiecare valoare proprie $\lambda$, numărul blocurilor $J_k(\lambda)$ cu $k\ge j$ este $\rang(A-\lambda I_n)^{j-1}-\rang(A-\lambda I_n)^j$. Dacă $A\in M_n(\mathbb{R})$ are toate valorile proprii reale, $P$ se poate alege în $\GL_n(\mathbb{R})$.
+\end{teorema}
+
+\begin{proof}[Demonstrația existenței]
+Fie $p_A=\prod_{i=1}^r(X-\mu_i)^{m_i}$ cu $\mu_1,\dots,\mu_r$ distincte. Polinoamele $(X-\mu_i)^{m_i}$ sunt prime între ele două câte două (nu au rădăcini comune), iar $p_A(A)=O_n$ (Teorema~\ref{teo:cayleyhamilton}). Aplicând repetat Lema~\ref{lema:nuclee} obținem
+\[
+\mathbb{C}^n=V_1\oplus\cdots\oplus V_r,\qquad V_i=\Ker(A-\mu_iI_n)^{m_i},
+\]
+cu $V_i$ stabile la $A$. Pe $V_i$, restricția lui $A-\mu_iI_n$ este nilpotentă, deci are o bază Jordan (Teorema~\ref{teo:jordannilpotent}), în care restricția lui $A$ are matricea $\diag(J_{k}(\mu_i),\dots)$. Reuniunea acestor baze este o bază a lui $\mathbb{C}^n$ (Corolarul~\ref{cor:sumadirectadim}), în care matricea lui $A$ are forma din enunț (Propoziția~\ref{prop:stabile}).
+\end{proof}
+
+\begin{observatie}
+Din forma Jordan: numărul blocurilor asociate lui $\lambda$ este $\dim\Ker(A-\lambda I_n)$; suma ordinelor lor este multiplicitatea algebrică a lui $\lambda$; ordinul celui mai mare bloc asociat lui $\lambda$ este multiplicitatea lui $\lambda$ în $m_A$. Matricea $A$ este diagonalizabilă exact când toate blocurile au ordinul $1$.
+\end{observatie}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Arătați că $\begin{pmatrix}1&a\\0&1\end{pmatrix}$ este diagonalizabilă dacă și numai dacă $a=0$.
+\item Fie $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$. Exprimați $A^2$ și $A^3$ ca $xA+yI_2$.
+\item Determinați forma Jordan a matricei $\begin{pmatrix}3&1\\-1&1\end{pmatrix}$.
+\item Fie $N\in M_4(\mathbb{C})$ nilpotentă cu $\rang N=2$ și $\rang N^2=1$. Determinați forma Jordan a lui $N$.
+\item Arătați că, dacă $N\in M_n(\mathbb{C})$ este nilpotentă, atunci $I_n+N$ este inversabilă și $(I_n+N)^{-1}=I_n-N+N^2-\cdots+(-1)^{n-1}N^{n-1}$.
+\item Fie $A\in M_n(\mathbb{C})$ cu valorile proprii $\lambda_1,\dots,\lambda_n$. Calculați $\det(A^2+A+I_n)$ pentru $A=\begin{pmatrix}1&1\\0&2\end{pmatrix}$ folosind Teorema~\ref{teo:valpropQ}.
+\item Arătați că, dacă $A,B\in M_n(\mathbb{C})$ sunt diagonalizabile și comută, atunci $A+B$ și $AB$ sunt diagonalizabile.
+\item Arătați că o matrice $A\in M_n(\mathbb{C})$ cu $A^2=O_n$ și $A\neq O_n$ nu este diagonalizabilă.
+\item Arătați că orice matrice $A\in M_n(\mathbb{C})$ este asemenea cu transpusa ei.
+\item Calculați $\Tr(A^6)$ pentru $A=\begin{pmatrix}0&1\\1&1\end{pmatrix}$.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Singura valoare proprie este $1$; dacă matricea ar fi diagonalizabilă, ar fi asemenea cu $I_2$, deci egală cu $I_2$.
+\item Din Cayley-Hamilton ($\Tr A=5$, $\det A=-2$): $A^2=5A+2I_2$, apoi $A^3=5A^2+2A=27A+10I_2$.
+\item $p_A=(X-2)^2$, iar $A-2I_2\neq O_2$: forma Jordan este $J_2(2)=\begin{pmatrix}2&1\\0&2\end{pmatrix}$.
+\item Numărul blocurilor este $4-2=2$, iar numărul blocurilor de ordin cel puțin $2$ este $2-1=1$; cum ordinele au suma $4$, blocurile sunt $J_3$ și $J_1$ (Teorema~\ref{teo:jordannilpotent}).
+\item $(I_n+N)(I_n-N+\cdots+(-1)^{n-1}N^{n-1})=I_n+(-1)^{n-1}N^n=I_n$, căci $N^n=O_n$ (Propoziția~\ref{prop:nilpotent}).
+\item Valorile proprii sunt $1$ și $2$, deci $\det(A^2+A+I_2)=3\cdot7=21$.
+\item Prin Teorema~\ref{teo:diagsimultana}, $P^{-1}AP$ și $P^{-1}BP$ sunt diagonale, deci și $P^{-1}(A+B)P$, $P^{-1}ABP$.
+\item Polinomul $X^2$ anulează $A$, deci $m_A=X^2$ (căci $A\neq O_n$), care nu are rădăcini simple (Teorema~\ref{teo:criteriudiag}).
+\item Prin forma Jordan, e suficient pentru un bloc: dacă $Q$ este matricea cu $1$ pe diagonala secundară și $0$ în rest, atunci $Q=Q^{-1}$ și $QJ_k(\lambda)Q^{-1}=J_k(\lambda)^t$.
+\item Valorile proprii $\varphi,\psi$ sunt rădăcinile lui $X^2-X-1$, iar $t_k=\varphi^k+\psi^k$ verifică $t_{k+2}=t_{k+1}+t_k$, cu $t_1=1$, $t_2=3$: $\Tr(A^6)=18$.
+\end{enumerate}
+
+\chapter{Determinanți speciali}\label{ch:detspeciali}
+
+Aplicăm acum proprietățile determinanților (Capitolul~\ref{ch:determinanti}) la câteva determinanți cu structură specială și la o consecință importantă, lema lui Jacobson. Determinanții matricelor circulante sunt tratați în capitolul de construcții de la începutul volumului.
+
+\section{Determinantul Vandermonde}
+
+\begin{teorema}\label{teo:vandermonde}
+Pentru $x_1,\dots,x_n\in K$,
+\[
+V(x_1,\dots,x_n)=
+\begin{vmatrix}
+1 & 1 & \cdots & 1 \\
+x_1 & x_2 & \cdots & x_n \\
+x_1^2 & x_2^2 & \cdots & x_n^2 \\
+\vdots & \vdots & \ddots & \vdots \\
+x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1}
+\end{vmatrix}
+=\prod_{1\le i<j\le n}(x_j-x_i).
+\]
+În particular, $V(x_1,\dots,x_n)\neq0$ dacă și numai dacă $x_1,\dots,x_n$ sunt distincte.
+\end{teorema}
+
+\begin{proof}
+Inducție după $n$; pentru $n=1$ determinantul este $1$. Scădem din fiecare linie, începând cu ultima, linia precedentă înmulțită cu $x_1$ (Propoziția~\ref{prop:detproprietati}). Linia $k$ devine $\bigl(0,\ x_2^{k-2}(x_2-x_1),\ \dots,\ x_n^{k-2}(x_n-x_1)\bigr)$ pentru $k\ge2$, iar prima rămâne $(1,\dots,1)$. Dezvoltând după prima coloană și scoțind factorii $x_j-x_1$ de pe coloane, obținem
+\[
+V(x_1,\dots,x_n)=\prod_{j=2}^n(x_j-x_1)\cdot V(x_2,\dots,x_n),
+\]
+iar ipoteza de inducție încheie demonstrația.
+\end{proof}
+
+\begin{corolar}[Interpolare]\label{cor:interpolare}
+Dacă $x_1,\dots,x_n\in K$ sunt distincte și $y_1,\dots,y_n\in K$, există un unic polinom $P\in K_{n-1}[X]$ cu $P(x_i)=y_i$ pentru orice $i$.
+\end{corolar}
+
+\begin{proof}
+Pentru $P=c_0+c_1X+\cdots+c_{n-1}X^{n-1}$, condițiile formează un sistem liniar în $c_0,\dots,c_{n-1}$ al cărui determinant este (transpusul lui) $V(x_1,\dots,x_n)\neq0$; aplicăm regula lui Cramer (Teorema~\ref{teo:cramer}).
+\end{proof}
+
+\section{Determinantul Vandermonde lacunar}
+
+Fie $n\ge2$ și $k\in\{0,1,\dots,n\}$. Determinantul Vandermonde \emph{lacunar} este determinantul de ordin $n$ obținut din $V(a_1,\dots,a_n,x)$ (de ordin $n+1$, cu puterile $0,1,\dots,n$) eliminând ultima coloană și linia puterii $k$:
+\[
+V_k(a_1,\dots,a_n)=
+\begin{vmatrix}
+1 & \cdots & 1 \\
+\vdots & & \vdots \\
+a_1^{k-1} & \cdots & a_n^{k-1} \\
+a_1^{k+1} & \cdots & a_n^{k+1} \\
+\vdots & & \vdots \\
+a_1^{n} & \cdots & a_n^{n}
+\end{vmatrix}.
+\]
+
+\begin{teorema}\label{teo:vandermondelacunar}
+$V_k(a_1,\dots,a_n)=V(a_1,\dots,a_n)\,e_{n-k}(a_1,\dots,a_n)$, unde $e_j$ sunt polinoamele simetrice fundamentale (Teorema~\ref{teo:viete}), cu $e_0=1$. Pentru $k=n$ regăsim determinantul Vandermonde.
+\end{teorema}
+
+\begin{proof}
+Fie $D(x)=V(a_1,\dots,a_n,x)$. Prin Teorema~\ref{teo:vandermonde},
+\[
+D(x)=V(a_1,\dots,a_n)\prod_{i=1}^n(x-a_i)=V(a_1,\dots,a_n)\sum_{j=0}^n(-1)^{n-j}e_{n-j}\,x^j .
+\]
+Pe de altă parte, dezvoltând $D(x)$ după ultima coloană (Teorema~\ref{teo:laplace}), coeficientul lui $x^k$, aflat pe linia $k+1$ și coloana $n+1$, este $(-1)^{(k+1)+(n+1)}V_k(a_1,\dots,a_n)=(-1)^{n+k}V_k$. Identificând coeficienții lui $x^k$ (ambii membri sunt polinoame în $x$ egale) și folosind $(-1)^{n+k}=(-1)^{n-k}$ obținem formula.
+\end{proof}
+
+\begin{exemplu}
+Pentru $n=3$ și $k=1$,
+\[
+\begin{vmatrix}1&1&1\\x_1^2&x_2^2&x_3^2\\x_1^3&x_2^3&x_3^3\end{vmatrix}=(x_2-x_1)(x_3-x_1)(x_3-x_2)(x_1x_2+x_1x_3+x_2x_3).
+\]
+Pentru $(x_1,x_2,x_3)=(0,1,2)$ determinantul este $\begin{vmatrix}1&1&1\\0&1&4\\0&1&8\end{vmatrix}=4$, iar membrul drept este $1\cdot2\cdot1\cdot2=4$.
+\end{exemplu}
+
+\section{Lema lui Jacobson}
+
+\begin{lema}\label{lema:urmenilpotent}
+Fie $Z\in M_n(\mathbb{C})$ cu $\Tr(Z)=\Tr(Z^2)=\cdots=\Tr(Z^n)=0$. Atunci $Z$ este nilpotentă.
+\end{lema}
+
+\begin{proof}
+Presupunem că $Z$ are valori proprii nenule și fie $\lambda_1,\dots,\lambda_r$ valorile proprii nenule distincte, cu multiplicitățile $m_1,\dots,m_r\ge1$ ($r\le n$). Prin Teorema~\ref{teo:valpropQ}, $\Tr(Z^k)=\sum_jm_j\lambda_j^k$ (valoarea proprie $0$ nu contribuie), deci
+\[
+\sum_{j=1}^r\lambda_j^{\,k-1}\,(m_j\lambda_j)=0,\qquad k=1,\dots,r .
+\]
+Acesta este un sistem omogen în necunoscutele $m_j\lambda_j$, cu determinantul $V(\lambda_1,\dots,\lambda_r)\neq0$ (Teorema~\ref{teo:vandermonde}), deci $m_j\lambda_j=0$ (Corolarul~\ref{cor:omogen}), contradicție. Așadar toate valorile proprii sunt nule și $Z$ este nilpotentă (Propoziția~\ref{prop:nilpotent}).
+\end{proof}
+
+\begin{lema}[Jacobson]\label{lema:jacobson}
+Fie $A,B\in M_n(\mathbb{C})$ astfel încât $A$ comută cu $C=AB-BA$. Atunci $C$ este nilpotentă.
+\end{lema}
+
+\begin{proof}
+Din $AC=CA$ rezultă, prin inducție, $AC^k=C^kA$ pentru orice $k\ge0$. Pentru $k\ge1$,
+\[
+C^k=C^{k-1}(AB-BA)=AC^{k-1}B-C^{k-1}BA,
+\]
+iar din $\Tr(XY)=\Tr(YX)$ (Propoziția~\ref{prop:urma}), $\Tr(AC^{k-1}B)=\Tr(C^{k-1}BA)$. Deci $\Tr(C^k)=0$ pentru orice $k\ge1$, iar Lema~\ref{lema:urmenilpotent} încheie demonstrația.
+\end{proof}
+
+\section{Exerciții}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item Calculați $V(1,2,3,4)$ și $V(1,2,4,8)$.
+\item Calculați $\begin{vmatrix}1&1&1\\a&b&c\\a^3&b^3&c^3\end{vmatrix}$.
+\item Calculați $\begin{vmatrix}1&1&1&1\\a&b&c&d\\a^2&b^2&c^2&d^2\\a^4&b^4&c^4&d^4\end{vmatrix}$.
+\item Calculați $\begin{vmatrix}1&1&1\\a&b&c\\bc&ca&ab\end{vmatrix}$.
+\item Determinați polinomul $P$ de grad cel mult $2$ cu $P(1)=1$, $P(2)=4$, $P(3)=11$.
+\item Arătați că, dacă $A,B\in M_n(\mathbb{C})$ și $AB-BA=A$, atunci $A$ este nilpotentă.
+\item Fie $A\in M_2(\mathbb{C})$ cu $\Tr A=\Tr(A^2)=0$. Arătați că $A^2=O_2$.
+\item Fie $x_1,\dots,x_n\in\mathbb{C}$ distincte și nenule. Arătați că singura soluție a sistemului $\sum_{j=1}^nx_j^{\,k}c_j=0$, $k=1,\dots,n$, este $c=0$.
+\end{enumerate}
+
+\medskip\noindent\textbf{Răspunsuri și indicații.}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*]
+\item $V(1,2,3,4)=1\cdot2\cdot3\cdot1\cdot2\cdot1=12$; $V(1,2,4,8)=1\cdot3\cdot7\cdot2\cdot6\cdot4=1008$.
+\item Lacunar cu $n=3$, $k=2$: $(b-a)(c-a)(c-b)(a+b+c)$.
+\item Lacunar cu $n=4$, $k=3$: $V(a,b,c,d)(a+b+c+d)$.
+\item Înmulțind coloanele cu $a$, $b$, $c$ și împărțind cu $abc$ (sau direct prin factorizare): $(b-a)(c-a)(c-b)$.
+\item Corolarul~\ref{cor:interpolare}: $P=2X^2-3X+2$.
+\item $A$ comută cu $AB-BA=A$; aplicați Lema~\ref{lema:jacobson}.
+\item Lema~\ref{lema:urmenilpotent} dă $A$ nilpotentă, deci $A^2=O_2$ (Propoziția~\ref{prop:nilpotent}).
+\item Determinantul sistemului este $x_1\cdots x_n\,V(x_1,\dots,x_n)\neq0$.
+\end{enumerate}
+
+\setlength{\parskip}{2pt}
+\addtolength{\jot}{-3pt}

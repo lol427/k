@@ -1,0 +1,638 @@
+\chapter{Puntea între clasa a XI-a și a XII-a: șiruri rezolvate cu integrale}
+
+Multe probleme despre șiruri se reduc la integrale prin două principii: \textbf{sumele Riemann} (o medie de valori $\frac1n\sum f(k/n)$ converge la integrala lui $f$) și \textbf{testul integralei} (o sumă $\sum f(k)$ cu $f$ descrescătoare se încadrează între două integrale). Aceste idei dau limite exacte, estimări asimptotice și criterii de convergență.
+
+\section{Sume, integrale și formula de sumare a lui Euler}
+
+\subsection{Sume Riemann pentru șiruri}
+
+\begin{teorema}[Suma Riemann]
+Dacă $f:[0,1]\to\mathbb{R}$ este continuă, atunci
+\[
+\lim_{n\to\infty}\frac1n\sum_{k=1}^{n}f\!\left(\frac{k}{n}\right)=\int_0^1 f(x)\,dx.
+\]
+\end{teorema}
+
+\begin{tehbox}{Cum recunoști o sumă Riemann}
+Semnalul: o sumă cu $n$ termeni, fiecare de mărime comparabilă cu $1/n$, în care $k$ apare numai prin raportul $k/n$. Pași: scoate factorul $\frac1n$, identifică $f(k/n)$, scrie integrala. Variante: nodurile $\frac{k-1}{n}$ sau $\frac{2k-1}{2n}$ dau aceeași limită; pe $[a,b]$, $\frac{b-a}{n}\sum f\big(a+k\frac{b-a}{n}\big)\to\int_a^b f$.
+\end{tehbox}
+
+\textbf{Exemplu 1.} Pentru $\alpha<1$,
+\[
+\lim_{n\to\infty}\frac1n\sum_{k=1}^{n}\left(\frac{k}{n}\right)^{-\alpha}=\int_0^1 x^{-\alpha}\,dx=\frac{1}{1-\alpha}.
+\]
+Aici $f(x)=x^{-\alpha}$ are o singularitate integrabilă în $0$ exact când $\alpha<1$ (justificarea riguroasă trece prin restrângerea la $[\varepsilon,1]$ și controlul cozii).
+
+\textbf{Exemplu 2.} Pentru
+$c_n=\dfrac1n\displaystyle\sum_{k=1}^n \dfrac{k/n}{1+(k/n)^2}$, funcția este $f(x)=\dfrac{x}{1+x^2}$, deci
+\[
+\lim_{n\to\infty}c_n=\int_0^1\frac{x}{1+x^2}\,dx=\frac12\ln(1+x^2)\Big|_0^1=\frac{\ln 2}{2}.
+\]
+
+\subsection{Testul integralei: estimarea sumelor}
+
+\begin{teorema}[Compararea cu integrala]
+Fie $f:[1,\infty)\to(0,\infty)$ continuă și descrescătoare. Atunci pentru orice $n\ge 1$:
+\[
+\int_1^{n+1}f(x)\,dx\ \le\ \sum_{k=1}^{n}f(k)\ \le\ f(1)+\int_1^{n}f(x)\,dx.
+\]
+\end{teorema}
+
+(Ideea: pe $[k,k+1]$, din monotonie, $f(k+1)\le\int_k^{k+1}f\le f(k)$; se sumează.)
+
+\textbf{Aplicația 1 (seria armonică).} Cu $f(x)=1/x$:
+\[
+\ln(n+1)\ \le\ H_n=\sum_{k=1}^n\frac1k\ \le\ 1+\ln n,
+\]
+deci $H_n-\ln n$ rămâne mărginit; rafinat, $H_n-\ln n\to\gamma$ (constanta lui Euler, vezi Partea I). Aceste două afirmații vor primi în secțiunea următoare scrierea compactă $H_n=\ln n+O(1)$, respectiv $H_n=\ln n+\gamma+o(1)$.
+
+\textbf{Aplicația 2 (sume de puteri).} Pentru $b_n=\sum_{k=1}^n k^{-\alpha}$:
+\[
+\alpha<1:\quad \frac{(n+1)^{1-\alpha}-1}{1-\alpha}\le b_n\le 1+\frac{n^{1-\alpha}-1}{1-\alpha}
+\ \Rightarrow\ \frac{b_n}{\,n^{1-\alpha}/(1-\alpha)\,}\to1;
+\]
+$\alpha=1$: creștere logaritmică; $\alpha>1$: șirul $(b_n)$ e mărginit și crescător, deci seria converge.
+
+\begin{tehbox}{Când te gândești la integrale pentru un șir}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item $\frac1n\sum f(k/n)$ sau orice medie cu pas $1/n$ $\to$ sumă Riemann.
+\item $\sum f(k)$ cu $f$ monotonă $\to$ testul integralei (limite de creștere, convergență, asimptotice).
+\item Comparații și încadrări: integrala e adesea „versiunea continuă'' calculabilă a unei sume necalculabile.
+\end{enumerate}
+\end{tehbox}
+
+\subsection{Formula de sumare a lui Euler}
+
+Sumele Riemann și testul integralei spun că $\sum f(i)\approx\int f$; formula lui Euler spune \emph{exact cu cât} diferă --- e rafinamentul comun al amândurora, cu termenul de corecție și restul sub control.
+
+\begin{teorema}[Formula de sumare a lui Euler, ordinul 1]
+Fie $m<n$ întregi și $f$ de clasă $C^1$ pe $[m,n]$. Atunci
+\[
+\sum_{i=m}^{n}f(i)\;=\;\int_m^n f(x)\,dx\;+\;\frac{f(m)+f(n)}{2}\;+\;\int_m^n\Big(\{x\}-\frac12\Big)f'(x)\,dx,
+\]
+unde $\{x\}$ e partea fracționară.
+\end{teorema}
+\begin{proof}
+Pe o celulă $[j,j+1]$, integrăm prin părți cu $u=\{x\}-\frac12=x-j-\frac12$:
+\[
+\begin{aligned}
+\int_j^{j+1}\Big(\{x\}-\frac12\Big)f'(x)\,dx
+&=\Big[\big(x-j-\tfrac12\big)f(x)\Big]_j^{j+1}-\int_j^{j+1}f(x)\,dx\\
+&=\frac{f(j)+f(j+1)}{2}-\int_j^{j+1}f(x)\,dx.
+\end{aligned}
+\]
+Sumăm pentru $j=m,\dots,n-1$: în stânga se asamblează integrala pe $[m,n]$ (funcția $\{x\}-\frac12$ e aceeași pe fiecare celulă), iar în dreapta suma $\sum_j\frac{f(j)+f(j+1)}{2}$ \emph{telescopează} la $\sum_{i=m}^nf(i)-\frac{f(m)+f(n)}{2}$. Rearanjând, formula.
+\end{proof}
+
+\begin{obs}[Cum se citește și se folosește]
+(1) Primii doi termeni sunt exact \emph{formula trapezului}: suma $=$ integrala $+$ media capetelor, cu restul $R=\int(\{x\}-\frac12)f'$. (2) Controlul restului: $|\{x\}-\frac12|\le\frac12$ dă $|R|\le\frac12\int_m^n|f'|$; pentru $f$ \emph{monotonă}, $\int|f'|=|f(n)-f(m)|$, deci $|R|\le\frac12|f(n)-f(m)|$ --- un rând. (3) Semnul: dacă $f'$ e monotonă pe fiecare celulă, corelația de tip Cebîșev dă semn constant fiecărei bucăți din $R$. (4) Ordinele superioare (Euler--Maclaurin): înlocuind $\{x\}-\frac12$ cu polinoame Bernoulli periodizate, corecția următoare e $\frac{f'(n)-f'(m)}{12}$ etc.\ --- același mecanism de integrare prin părți, iterat.
+\end{obs}
+
+\subsubsection*{Exemplu}
+
+\emph{Fie $k\ge3$ fixat. Arătați că șirul}
+\[
+b_n=\sum_{i=1}^{n}\frac{1}{\sqrt[k]{\,n^{k}+i\,}}
+\]
+\emph{este strict crescător (de la un rang încolo, cu rang explicitabil) și $b_n\to1$.}
+
+\emph{Pasul 0 --- aplicăm formula.} Cu $f_n(x)=(n^k+x)^{-1/k}$, de clasă $C^1$ pe $[0,n]$, formula pe $[0,n]$ (și scăderea termenului $i=0$) dă
+\[
+b_n=\underbrace{\int_0^n\frac{dx}{(n^k+x)^{1/k}}}_{I_n}\;+\;\underbrace{\frac{f_n(n)-f_n(0)}{2}}_{\beta_n}\;+\;\underbrace{\int_0^n\Big(\{x\}-\frac12\Big)f_n'(x)\,dx}_{R_n}.
+\]
+
+\emph{Pasul 1 --- termenul principal, exact apoi dezvoltat.} Integrala se calculează:
+\[
+I_n=\frac{k}{k-1}\Big[(n^k+n)^{\frac{k-1}{k}}-n^{k-1}\Big]
+=\frac{k}{k-1}\,n^{k-1}\Big[\big(1+n^{1-k}\big)^{\frac{k-1}{k}}-1\Big],
+\]
+iar Taylor--Lagrange pentru $(1+u)^{\frac{k-1}{k}}$ în $u=n^{1-k}\to0$ dă
+\[
+I_n=1-\frac{1}{2k}\,n^{1-k}+\rho_n,\qquad |\rho_n|\le C_k\,n^{2-2k}.
+\]
+
+\emph{Pasul 2 --- corecturile sunt de ordinul $n^{-k}$.} Prin Lagrange aplicat lui $u\mapsto u^{-1/k}$ pe $[n^k,n^k+n]$:
+\[
+|f_n(n)-f_n(0)|=\Big|\,(n^k+n)^{-1/k}-n^{-1}\Big|\le\frac1k\,n^{-(k+1)/k\cdot k}\cdot n=\frac{n^{-k}}{k},
+\]
+deci $|\beta_n|\le\frac{1}{2k}n^{-k}$; iar din observația (2), $f_n$ fiind descrescătoare, $|R_n|\le\frac12\big(f_n(0)-f_n(n)\big)\le\frac{1}{2k}n^{-k}$. Deja avem forma șirului: $b_n=1-\frac{1}{2k}n^{1-k}+O(n^{-k})\to1$ (notația $O(a_n)$ înseamnă „dominat de $a_n$''; definiția formală e în secțiunea~\ref{subsec:vocab-asimptotic} de mai jos).
+
+\emph{Pasul 3 --- monotonia: diferența, termen cu termen.} Capcana: la diferența $b_{n+1}-b_n$, termenul principal scade cu $\sim n^{-k}$ --- \emph{același ordin} ca marginile corecturilor, deci inegalitatea triunghiului brută nu închide. Salvarea: \textbf{diferențele} corecturilor sunt cu un ordin mai mici decât corecturile însele.
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+\item \emph{Principalul:} prin Lagrange pe $t\mapsto t^{1-k}$,
+\[
+\frac{1}{2k}\Big[n^{1-k}-(n+1)^{1-k}\Big]\ \ge\ \frac{k-1}{2k}\,(n+1)^{-k}.
+\]
+\item \emph{Frontiera:} $\beta_n=-\frac{1}{2k}n^{-k}+O(n^{1-2k})$ (aceeași dezvoltare ca la Pasul 2, dusă un ordin mai adânc), deci $|\beta_{n+1}-\beta_n|\le c_1n^{-k-1}+O(n^{1-2k})$ --- diferența a două cantități de același ordin e cu un ordin mai mică.
+\item \emph{Restul:} despărțim $R_{n+1}-R_n$ în bucata nouă $\int_n^{n+1}$, mărginită de $\frac12\sup|f_{n+1}'|\le\frac{1}{2k}n^{-k-1}$, și diferența pe $[0,n]$, unde Lagrange în raport cu parametrul (pe $a\mapsto(a+x)^{-\frac{k+1}{k}}$, între $a=n^k$ și $a=(n+1)^k$) dă $|f_{n+1}'(x)-f_n'(x)|\le c_2\,n^{-k-2}$, deci integrala $\le c_2\,n^{-k-1}$. Total: $|R_{n+1}-R_n|\le c_3\,n^{-k-1}$.
+\item \emph{Eroarea $\rho$:} $|\rho_{n+1}-\rho_n|\le2C_kn^{2-2k}$, și \textbf{aici intră ipoteza} $k\ge3$: $2-2k<-k\iff k>2$, deci termenul e $o(n^{-k})$. (La $k=2$, $\rho_n\sim n^{-2}$ ar concura chiar cu incrementul principal --- metoda ar cere ordinul 2 al formulei.)
+\end{enumerate}
+Adunând: $b_{n+1}-b_n\ \ge\ \dfrac{k-1}{2k}(n+1)^{-k}-c_4\,n^{-k-1}-2C_k\,n^{2-2k}\ >\ 0$ pentru $n\ge N_k$ (toate constantele fiind explicite, rangul $N_k$ e concret, iar primii termeni se verifică direct). $\blacksquare$
+
+\emph{Morala:} formula lui Euler transformă o sumă „vie'' într-un termen principal neted $+$ corecturi cu mărimi \emph{și diferențe} controlate --- iar la probleme de monotonie, lupta se dă întotdeauna pe diferențele corecturilor, nu pe mărimile lor. De reținut și rolul ipotezei numerice ($k\ge3$): fixează ordinul de la care eroarea dezvoltării nu mai concurează cu incrementul.
+
+\section{Teorie asimptotică: cum se compară șirurile „la infinit''}
+
+Teoria asimptotică răspunde la două întrebări: \emph{ce putem neglija} (un termen față de altul) și \emph{când două șiruri cresc cam la fel de repede}. Integralele sunt instrumentul principal de calcul.
+
+\subsection{Vocabularul: $\sim$, $o$, $O$}\label{subsec:vocab-asimptotic}
+
+\begin{definitie}
+Fie $(a_n)$, $(b_n)$ șiruri cu $b_n \neq 0$ de la un rang încolo.
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item $a_n\sim b_n$ (\emph{echivalente asimptotic}) dacă $\dfrac{a_n}{b_n}\to 1$. Citire: „$a_n$ se comportă ca $b_n$''.
+\item $a_n=o(b_n)$ (\emph{neglijabil față de}) dacă $\dfrac{a_n}{b_n}\to 0$. Citire: „$a_n$ e mult mai mic decât $b_n$''.
+\item $a_n=O(b_n)$ (\emph{dominat de}) dacă există $C>0$ cu $|a_n|\le C\,|b_n|$ de la un rang încolo. Citire: „$a_n$ nu depășește un multiplu al lui $b_n$''.
+\end{enumerate}
+\end{definitie}
+
+Exemple: $n^2+3n\sim n^2$; \ $\ln n=o(n)$; \ $\sin n=O(1)$; \ $H_n=\ln n+O(1)$ înseamnă „$H_n$ minus $\ln n$ rămâne mărginit''. Scara ordinelor de creștere din Partea I se rescrie: $\ln n=o(n^k)$, $n^k=o(a^n)$, $a^n=o(n!)$ pentru $k>0$, $a>1$.
+
+\begin{tehbox}{Reguli de calcul cu $\sim$ (și capcana principală)}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item $\sim$ e compatibilă cu \textbf{produsul, câtul și puterile fixe}: dacă $a_n\sim b_n$ și $c_n\sim d_n$, atunci $a_nc_n\sim b_nd_n$, $\frac{a_n}{c_n}\sim\frac{b_n}{d_n}$, $a_n^{\alpha}\sim b_n^{\alpha}$.
+\item Dacă $a_n\sim b_n$ și $b_n\to\ell$, atunci $a_n\to\ell$ --- echivalentele se pot înlocui în limite de produse/rapoarte.
+\item \textbf{Capcană: $\sim$ NU se adună/scade.} $n+1\sim n$ și $-n\sim -n+\sqrt n$, dar sumele $1$ și $\sqrt n$ nu sunt echivalente. La diferențe, echivalarea termenilor poate distruge exact partea care contează.
+\item \textbf{Capcană: $\sim$ nu trece la exponențială.} $n+\ln n\sim n$, dar $e^{n+\ln n}=n\,e^n\not\sim e^n$. Corect este: $a_n\sim b_n$ \emph{și} $a_n-b_n\to0$ $\Rightarrow$ $e^{a_n}\sim e^{b_n}$.
+\end{enumerate}
+\end{tehbox}
+
+\begin{tehbox}{Operații cu $o$ și $O$}
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+\item \textbf{Suma finită:} $o(b_n)+o(b_n)=o(b_n)$ și $O(b_n)+O(b_n)=O(b_n)$ --- o sumă \emph{finită} de termeni neglijabili/dominați rămâne neglijabilă/dominată. Mai general, $o(b_n)+O(b_n)=O(b_n)$.
+\item \textbf{Produs:} $o(a_n)\cdot O(b_n)=o(a_nb_n)$ și $o(a_n)\cdot o(b_n)=o(a_nb_n)$.
+\item \textbf{Suma infinită nu se mai comportă la fel.} Fiecare termen $\frac{1}{k}$ este $o(1)$ (tinde la $0$), dar suma lor $H_n=\sum_{k=1}^n\frac1k\sim\ln n\to\infty$: o \emph{infinitate} de termeni $o(1)$ nu mai dă $o(1)$. Suma armonică este paradigma: aici $n$ termeni $o(1)$ dau $\sim\ln n$, nu $o(1)$. În general, despre suma primilor $n$ termeni ai unui șir care tinde la $0$ se poate spune doar că este $o(n)$ (vezi demonstrația de mai jos).
+\item \textbf{Capcana absorbției.} $o(n)+O(1)=o(n)$ (termenul mai mic e absorbit), dar $O(n)+O(n^2)=O(n^2)$ (termenul dominant câștigă).
+\end{enumerate}
+\end{tehbox}
+
+\emph{Demonstrațiile regulilor de mai sus.}
+
+\emph{Suma finită (prima regulă).} Dacă $|a_n|\le\varepsilon_n|b_n|$ cu $\varepsilon_n\to0$ și $|c_n|\le\delta_n|b_n|$ cu $\delta_n\to0$, atunci $|a_n+c_n|\le(\varepsilon_n+\delta_n)|b_n|$ și $\varepsilon_n+\delta_n\to0$. Prin inducție, orice sumă finită de $o(b_n)$ e tot $o(b_n)$. La fel pentru $O$.
+
+\emph{Produs (a doua regulă).} Dacă $|a_n|\le\varepsilon_n|\alpha_n|$ cu $\varepsilon_n\to0$ și $|c_n|\le C|\beta_n|$, atunci $|a_nc_n|\le C\varepsilon_n|\alpha_n\beta_n|$, și cum $C\varepsilon_n\to0$, rezultă $a_nc_n=o(\alpha_n\beta_n)$.
+
+\emph{Suma infinită (a treia regulă).} Suma armonică: deși fiecare $\frac1k=o(1)$, suma $H_n=\sum_{k=1}^n\frac1k$ crește la infinit. Prima regulă \emph{nu} se poate aplica „de $n$ ori'': ea privește un număr fix de termeni, iar aici numărul lor crește odată cu $n$. Ce rămâne adevărat se obține din Cesàro--Stolz: dacă $a_k\to0$, atunci, cu $x_n=\sum_{k=1}^n a_k$ și $y_n=n$, avem $\frac{x_{n+1}-x_n}{y_{n+1}-y_n}=a_{n+1}\to0$, deci $\frac1n\sum_{k=1}^n a_k\to0$, adică suma a $n$ termeni $o(1)$ este $o(n)$, dar nu neapărat $o(1)$. Și chiar $\sum_{k=1}^n\frac1k\sim\ln n=o(n)$, dar $\not=o(1)$. Lecția: numărul de termeni contează.
+
+\subsection{Integrale și asimptotice}
+
+Principiul: pentru $f$ monotonă, suma $\sum_{k=1}^n f(k)$ diferă de integrala $\int_1^n f(x)\,dx$ printr-o cantitate controlabilă (testul integralei din secțiunea precedentă). Integrala se calculează exact; suma moștenește comportamentul ei.
+
+\begin{teorema}[Asimptotica sumelor de puteri]
+Pentru $\alpha>-1$:
+\[
+\sum_{k=1}^{n}k^{\alpha}\ \sim\ \frac{n^{\alpha+1}}{\alpha+1}.
+\]
+\emph{Demonstrație (schiță).} Pentru $\alpha\ge0$, $f(x)=x^\alpha$ e crescătoare și încadrarea pe fiecare $[k-1,k]$ dă
+$\int_0^{n}x^{\alpha}dx\le\sum_{k=1}^n k^{\alpha}\le\int_1^{n+1}x^{\alpha}dx$;
+ambele margini sunt $\sim\frac{n^{\alpha+1}}{\alpha+1}$, deci și suma (clește asimptotic). Pentru $-1<\alpha<0$ funcția e descrescătoare și încadrarea se inversează, cu aceeași concluzie. \qed
+\end{teorema}
+
+\textbf{Exemplu ($\alpha=-\tfrac12$).} Fie $a_n=\sum_{k=1}^n\frac{1}{\sqrt k}$. Cu $f(x)=\frac1{\sqrt x}$ descrescătoare, pe $[k,k+1]$ avem $f(k+1)\le\int_k^{k+1}f\le f(k)$, deci sumând:
+\[
+\int_1^{n+1}\frac{dx}{\sqrt x}\ \le\ a_n\ \le\ 1+\int_1^{n}\frac{dx}{\sqrt x},
+\qquad\text{adică}\qquad
+2\sqrt{n+1}-2\ \le\ a_n\ \le\ 2\sqrt n-1.
+\]
+Ambele capete sunt $\sim2\sqrt n$, deci $\boxed{a_n\sim2\sqrt n}$. Mai fin: șirul $a_n-2\sqrt n$ este monoton și mărginit (se verifică cu aceeași încadrare pe pași), deci converge --- adică $a_n=2\sqrt n+C+o(1)$ pentru o constantă $C$, exact ca la constanta lui Euler.
+
+\begin{teorema}[Rafinarea la constanta aditivă]
+Dacă $f:[1,\infty)\to(0,\infty)$ e continuă, descrescătoare, cu $f(n)\to0$, atunci șirul
+\[
+d_n=\sum_{k=1}^{n}f(k)-\int_1^{n}f(x)\,dx
+\]
+este descrescător și mărginit inferior de $0$, deci \textbf{convergent}. Consecință: $\sum_{k\le n}f(k)=\int_1^n f(x)\,dx+C+o(1)$.
+Cazul $f(x)=\frac1x$ dă exact constanta lui Euler: $H_n=\ln n+\gamma+o(1)$.
+\emph{Demonstrație:} $d_n-d_{n+1}=\int_n^{n+1}f(x)\,dx-f(n+1)\ge0$ din monotonie, iar $d_n\ge\sum_{k=1}^{n}\big(f(k)-\int_k^{k+1}f\big)+\int_n^{n+1}f\ge 0$ termen cu termen. \qed
+\end{teorema}
+
+\begin{teorema}[Cozile seriilor convergente]
+Pentru $\alpha>1$, restul seriei se estimează tot prin integrale:
+\[
+\int_{n+1}^{\infty}\frac{dx}{x^{\alpha}}\ \le\ \sum_{k=n+1}^{\infty}\frac{1}{k^{\alpha}}\ \le\ \int_{n}^{\infty}\frac{dx}{x^{\alpha}}
+\qquad\Longrightarrow\qquad
+\sum_{k=n+1}^{\infty}\frac{1}{k^{\alpha}}\ \sim\ \frac{1}{(\alpha-1)\,n^{\alpha-1}}.
+\]
+Utilizare tipică: viteza de convergență a lui $\sum1/k^2$ către $\pi^2/6$ este de ordin $1/n$.
+\end{teorema}
+
+\begin{teorema}[Stirling slab: asimptotica lui $\ln n!$]
+\[
+\ln n!=\sum_{k=1}^{n}\ln k=n\ln n-n+O(\ln n),
+\qquad\text{deci}\qquad
+\ln n!\sim n\ln n.
+\]
+\emph{Demonstrație.} $f(x)=\ln x$ e crescătoare, deci $\int_1^n\ln x\,dx\le\sum_{k=1}^n\ln k\le\int_1^{n+1}\ln x\,dx$. Cum $\int_1^n\ln x\,dx=n\ln n-n+1$, ambele margini sunt $n\ln n-n+O(\ln n)$. \qed
+
+Consecință deja văzută în Partea I pe altă cale: $\sqrt[n]{n!}\sim\dfrac{n}{e}$, fiindcă $\frac1n\ln n!=\ln n-1+o(1)$. Forma completă: $n!\sim\sqrt{2\pi n}\,\big(\frac ne\big)^n$.
+\end{teorema}
+
+\begin{tehbox}{Strategia asimptotică în 3 pași}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item \textbf{Identifică termenul principal} înlocuind suma cu integrala corespunzătoare (calculabilă exact).
+\item \textbf{Controlează eroarea} prin încadrarea din testul integralei --- de obicei eroarea este $O(f(1))$ sau $O(f(n))$, oricum de ordin strict mai mic.
+\item \textbf{Rafinează dacă e nevoie}: diferența sumă $-$ integrală e adesea monotonă și mărginită, deci convergentă --- asta dă termenul constant ($\gamma$ la seria armonică, $C$ la $\sum1/\sqrt k$).
+\end{enumerate}
+Șablonul acoperă majoritatea problemelor de tip „găsiți $\lim\frac{a_n}{g(n)}$'' cu $a_n$ definită printr-o sumă.
+\end{tehbox}
+
+\subsection{Dezvoltările Taylor citite asimptotic}
+
+Formula Taylor--Young din Partea I are o interpretare asimptotică. Mai întâi, notația $o$ definită mai sus pentru șiruri se extinde identic la funcții: $g(x)=o(x^n)$ pentru $x\to0$ înseamnă $\dfrac{g(x)}{x^n}\to0$ --- adică exact restul $x^n\varepsilon(x)$ din dezvoltările standard ale Părții I, acum cu nume oficial. Cu această notație, Taylor--Young spune că, pentru $x\to0$,
+\[
+f(x)=a_0+a_1x+a_2x^2+\dots+a_nx^n+o(x^n),
+\qquad a_k=\frac{f^{(k)}(0)}{k!},
+\]
+adică $f$ se descompune într-o \textbf{scară de termeni}, fiecare neglijabil față de precedentul --- exact structura dezvoltărilor asimptotice de la sume ($H_n=\ln n+\gamma+o(1)$), doar că aici variabila tinde la $0$, nu la $\infty$. O astfel de scriere se numește \emph{dezvoltare limitată} (DL).
+
+\begin{tehbox}{Cum se calculează cu DL-uri}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item \textbf{Echivalentul} unei funcții este primul termen nenul al DL-ului: $\sin x-x\sim-\frac{x^3}{6}$, $1-\cos x\sim\frac{x^2}{2}$.
+\item \textbf{Adunare/scădere:} termen cu termen --- dar la diferențe primii termeni se pot anula, deci trebuie mers la un ordin suficient de mare ca să rămână ceva (regula practică: dacă totul se taie, crește ordinul).
+\item \textbf{Produs:} se înmulțesc polinoamele și se aruncă tot ce depășește ordinul.
+\item \textbf{Compunere:} se substituie un DL în altul (posibil doar dacă termenul substituit tinde la $0$), apoi se trunchiază.
+\item \textbf{Limite:} un DL suficient de lung transformă orice nedeterminare într-un raport de termeni dominanți. Ex.: $\dfrac{1}{x^2}-\dfrac{1}{\sin^2x}=\dfrac{\sin^2x-x^2}{x^2\sin^2x}=\dfrac{-\frac{x^4}{3}+o(x^4)}{x^4+o(x^4)}\to-\dfrac13$.
+\end{enumerate}
+\end{tehbox}
+
+\medskip
+\textbf{Exemplu.} Să se calculeze
+\[
+L=\lim_{x\to0}\ \frac{(1+x)^{1/x}-e+\dfrac{ex}{2}}{x^{2}}.
+\]
+
+\emph{Citirea enunțului.} Știm limita fundamentală $(1+x)^{1/x}\to e$, deci numărătorul tinde la $0$; termenul $\frac{ex}2$ e pus acolo tocmai ca să anuleze și ordinul 1. Așadar enunțul ne cere, deghizat, \textbf{coeficientul lui $x^2$} din dezvoltarea funcției $(1+x)^{1/x}$ în $0$ --- avem nevoie de un DL la ordinul 2. (L'Hôpital ar însemna să derivăm $(1+x)^{1/x}$ de două ori --- un calcul de nedescris; DL-ul e drumul civilizat.)
+
+\emph{Pasul 1 --- exponentul.} Scriem $(1+x)^{1/x}=e^{\ln(1+x)/x}$ și dezvoltăm exponentul; cum împărțim la $x$, pornim de la $\ln(1+x)$ dus la ordinul \textbf{3}:
+\[
+\frac{\ln(1+x)}{x}=\frac{x-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3)}{x}
+=1-\frac{x}{2}+\frac{x^2}{3}+o(x^2).
+\]
+
+\emph{Pasul 2 --- compunerea cu exponențiala.} Exponentul tinde la $1$, nu la $0$, deci nu putem substitui direct în dezvoltarea lui $e^u$; scoatem întâi partea constantă:
+\[
+(1+x)^{1/x}=e\cdot e^{u},
+\qquad
+u=-\frac{x}{2}+\frac{x^2}{3}+o(x^2)\ \to\ 0.
+\]
+Acum compunerea e legitimă. Cu $e^u=1+u+\frac{u^2}{2}+o(u^2)$ și $u^2=\frac{x^2}{4}+o(x^2)$:
+\[
+e^{u}=1-\frac{x}{2}+\frac{x^2}{3}+\frac{x^2}{8}+o(x^2)
+=1-\frac{x}{2}+\frac{11x^2}{24}+o(x^2),
+\]
+deci
+\[
+(1+x)^{1/x}=e-\frac{ex}{2}+\frac{11e}{24}x^{2}+o(x^2).
+\]
+
+\emph{Concluzia.} Numărătorul devine $\frac{11e}{24}x^2+o(x^2)$, deci
+\[
+\boxed{\ L=\frac{11e}{24}.\ }
+\]
+
+Două lecții de reținut. \textbf{(1)} Ordinul de lucru se dictează din aval: împărțirea finală la $x^2$ cere DL la ordinul 2 al funcției, ceea ce (din cauza împărțirii la $x$ din exponent) cere $\ln(1+x)$ la ordinul 3 --- se planifică \emph{înapoi}, de la rezultat spre ingrediente. \textbf{(2)} La compunerea cu $e^{(\cdot)}$, partea care nu tinde la $0$ se scoate \emph{în factor} ($e^{1+u}=e\cdot e^u$); substituția într-un DL e permisă numai când cantitatea substituită tinde la punctul de dezvoltare. Uitarea acestui pas e cea mai frecventă greșeală la astfel de limite.
+
+\medskip
+\textbf{Exemplu.} Fie $u_0\in\big(0,\frac\pi2\big)$ și $u_{n+1}=\sin u_n$. Echivalentul lui $u_n$?
+
+\emph{Pas 1 (limita).} Pentru $x\in(0,\frac\pi2)$ avem $0<\sin x<x$, deci $(u_n)$ e strict descrescător și pozitiv $\Rightarrow$ convergent; limita $\ell$ satisface $\sin\ell=\ell$, deci $\ell=0$. Șirul tinde \emph{lent} la $0$ --- căutăm viteza.
+
+\emph{Pas 2 (DL-ul potrivit).} Din $\sin u=u\big(1-\frac{u^2}{6}+o(u^2)\big)$ obținem, prin ridicare la pătrat și inversare (DL-uri de compunere):
+\[
+\frac{1}{u_{n+1}^{2}}=\frac{1}{\sin^2u_n}=\frac{1}{u_n^2}\Big(1+\frac{u_n^2}{3}+o(u_n^2)\Big)
+=\frac{1}{u_n^2}+\frac13+o(1),
+\]
+deci $\dfrac{1}{u_{n+1}^2}-\dfrac{1}{u_n^2}\to\dfrac13$.
+
+\emph{Pas 3 (Cesàro--Stolz).} Diferențele consecutive ale șirului $v_n=1/u_n^2$ tind la $\frac13$, deci $\frac{v_n}{n}\to\frac13$ (Cesàro--Stolz cu $b_n=n$, Partea I). Așadar $u_n^{-2}\sim\frac n3$, adică
+\[
+\boxed{\;u_n\sim\sqrt{\frac{3}{n}}\;}
+\]
+Morala: DL-ul (local, la $0$) furnizează recurența asimptotică, iar Cesàro--Stolz (global, la $\infty$) o transformă în echivalent --- cele două jumătăți ale teoriei asimptotice lucrând împreună.
+
+\subsection{Metoda ecuației diferențiale pentru estimări asimptotice}
+
+De unde am „știut'', la exemplul precedent, că mărimea corectă de urmărit e $1/u_n^2$? Observație-cheie: recurența seamănă cu o \textbf{ecuație diferențială}. O recurență cu pași mici,
+\[
+u_{n+1}=u_n+g(u_n)\qquad(\text{cu } g(u_n)\to0),
+\]
+este \emph{versiunea discretă} a ecuației $y'=g(y)$ (pasul de „timp'' fiind $1$: $y(n+1)-y(n)\approx y'(n)$). Ecuația continuă se rezolvă prin separare, iar soluția ei spune \emph{cum arată răspunsul} --- adică ce combinație a lui $u_n$ crește \textbf{liniar} în $n$.
+
+\begin{tehbox}{Metoda, în 4 pași}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item \textbf{Extrage pasul:} dezvoltă (Taylor) recurența sub forma $u_{n+1}-u_n=g(u_n)+\dots$ și reține termenul dominant al lui $g$.
+\item \textbf{Rezolvă ecuația-busolă} $y'=g(y)$ prin separare: $\displaystyle w(y):=\int\frac{dy}{g(y)}$ satisface $w(y(x))=x+\mathcal C$. Deci candidatul: $w(u_n)$ ar trebui să crească \emph{liniar} în $n$.
+\item \textbf{Rigorizează discret:} calculează, cu un DL, limita $w(u_{n+1})-w(u_n)\to c$; apoi Cesàro--Stolz dă $\dfrac{w(u_n)}{n}\to c$, de unde echivalentul lui $u_n$ prin inversarea lui $w$.
+\item \textbf{Redactare:} ecuația diferențială este \emph{busolă, nu demonstrație} --- în redactarea finală ea \textbf{nu apare deloc}; apare doar mărimea $w(u_n)$, „scoasă din pălărie'', cu DL-ul și Cesàro--Stolz (exact distincția ciornă/curat din secțiunea de redactare).
+\end{enumerate}
+Cazul tipic: pasul are forma $g(u)=-a\,u^{\alpha+1}$ cu $a,\alpha>0$. Atunci $w(y)=\frac{1}{\alpha a\,y^{\alpha}}$, limita de la pasul 3 este $c=1$ și se obține $u_n\sim(\alpha a\,n)^{-1/\alpha}$. Pentru $u_{n+1}=\sin u_n$ de mai sus: $g(u)=-\frac{u^3}{6}$, deci $a=\frac16$, $\alpha=2$ și $u_n\sim(2\cdot\frac16\,n)^{-1/2}=\sqrt{3/n}$. \checkmark
+\end{tehbox}
+
+\textbf{Exemplul 1.} \emph{Fie $u_0>0$ și $u_{n+1}=\ln(1+u_n)$. Echivalentul lui $u_n$?}
+
+\emph{Limita:} pentru $x>0$, $\ln(1+x)<x$ și $\ln(1+x)>0$, deci $(u_n)$ e strict descrescător, pozitiv, convergent la $\ell$ cu $\ell=\ln(1+\ell)$, adică $\ell=0$.
+
+\emph{Busola (pe ciornă):} $\ln(1+u)=u-\frac{u^2}{2}+o(u^2)$, deci pasul e $g(u)=-\frac{u^2}{2}$; ecuația $y'=-\frac{y^2}{2}$ se separă: $w(y)=\frac{2}{y}$ crește liniar. Candidatul: $\dfrac1{u_n}$.
+
+\emph{Rigorizarea (pe curat):}
+\[
+\frac{1}{u_{n+1}}-\frac{1}{u_n}
+=\frac{u_n-u_{n+1}}{u_nu_{n+1}}
+=\frac{\frac{u_n^2}{2}+o(u_n^2)}{u_n\big(u_n+o(u_n)\big)}
+=\frac{\frac12+o(1)}{1+o(1)}\ \longrightarrow\ \frac12,
+\]
+folosind $u_{n+1}=u_n-\frac{u_n^2}{2}+o(u_n^2)=u_n(1+o(1))$. Prin Cesàro--Stolz, $\dfrac{1/u_n}{n}\to\dfrac12$, deci
+\[
+\boxed{\;u_n\sim\frac{2}{n}.\;}
+\]
+
+\textbf{Exemplul 2.} \emph{Fie $u_0>0$ și $u_{n+1}=u_n+\dfrac{1}{u_n}$. Echivalentul lui $u_n$?}
+
+\emph{Divergența:} șirul e strict crescător; dacă ar fi mărginit, ar converge la $\ell$ cu $\ell=\ell+\frac1\ell$ --- imposibil. Deci $u_n\to+\infty$.
+
+\emph{Busola:} $y'=\frac1y$ se separă în $\frac{y^2}{2}=x+\mathcal C$: candidatul e $u_n^2$, care ar trebui să crească liniar cu panta $2$.
+
+\emph{Rigorizarea:} aici nici nu e nevoie de DL --- ridicăm la pătrat exact:
+\[
+u_{n+1}^{2}=u_n^{2}+2+\frac{1}{u_n^{2}}
+\qquad\Longrightarrow\qquad
+u_{n+1}^2-u_n^2=2+\frac{1}{u_n^2}\ \longrightarrow\ 2,
+\]
+și Cesàro--Stolz dă $\dfrac{u_n^2}{n}\to2$, adică
+\[
+\boxed{\;u_n\sim\sqrt{2n}.\;}
+\]
+ Aceeași mașinărie, aplicată încă o dată șirului $u_n^2-2n$ (ale cărui diferențe sunt $\frac{1}{u_n^2}\sim\frac{1}{2n}$, sumate prin testul integralei), dă rafinarea $u_n^2=2n+\frac12\ln n+O(1)$.
+
+\begin{obs}
+De ce funcționează euristica: pentru pași mici, suma $\sum g(u_k)$ care guvernează recurența e o „sumă Riemann'' a integralei care rezolvă ecuația --- exact filozofia acestei Părți. Și de ce rămâne doar euristică: discretizarea are erori care se pot acumula, deci fiecare caz cere verificarea discretă de la pasul 3 (care, în plus, e scurtă). Compară cu E5 de la ecuațiile nonstandard (secțiunea Construcții): acolo ecuația $y'=y^2$ \emph{explodează în timp finit}, iar recurența discretă $u_{n+1}=u_n+u_n^2$ crește dublu-exponențial --- semn că analogia discret--continuu are limite și trebuie tratată ca busolă, nu ca teoremă.
+\end{obs}
+
+\section{Ecuații diferențiale rezolvate cu integrale}
+
+Derivarea e reflexul standard la ecuații diferențiale — dar uneori drumul bun e invers: \textbf{integrezi} ecuația. Situațiile în care integrarea e unealta potrivită:
+
+\begin{tehbox}{Când folosești integrale la ecuații diferențiale}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item \textbf{Membrul stâng e o derivată deghizată.} Dacă ecuația se scrie $\dfrac{d}{dx}\big[E(x)\big]=g(x)$ pentru o expresie $E$ (un produs, un pătrat, o compunere), o integrare o rezolvă dintr-o mișcare: $E(x)=\int g+\mathcal C$. Toate „trucurile'' clasice sunt cazuri particulare: factorul integrant ($\big(e^{-ax}y\big)'$), derivata logaritmică ($\big(\ln y\big)'$), separarea variabilelor ($\big(G(y(x))\big)'=f(x)$).
+\item \textbf{Ecuația leagă puncte diferite} ($x$ și $\frac ax$, $x$ și $-x$, $x$ și $x+1$): derivarea suplimentară \emph{complică} (mărește ordinul), dar integrarea celor două forme ale ecuației (în punct și în punctul-oglindă) poate scoate la iveală o \textbf{cantitate conservată} --- o expresie constantă de-a lungul soluțiilor --- care liniarizează problema. Semnalul: după integrare prin părți, termenii „urâți'' se taie.
+\item \textbf{Vrei estimări, nu formule.} Scrierea integrală $y(x)=y(x_0)+\int_{x_0}^{x}y'(t)\,dt$ transformă informații despre $y'$ (semn, mărginire, monotonie) în informații despre $y$.
+\end{enumerate}
+\end{tehbox}
+
+\textbf{Exemplu.} \emph{Găsiți $f$ derivabilă pe $\mathbb{R}$ cu $f(x)\,f'(x)=x$ și $f(0)=1$.}
+
+Membrul stâng este $\dfrac{d}{dx}\Big[\dfrac{f(x)^2}{2}\Big]$ --- o derivată deghizată. Integrăm:
+\[
+\frac{f(x)^2}{2}=\frac{x^2}{2}+\mathcal C
+\quad\overset{f(0)=1}{\Longrightarrow}\quad
+f(x)^2=x^2+1
+\quad\Longrightarrow\quad
+f(x)=\sqrt{x^2+1}
+\]
+(semnul $+$ e forțat de $f(0)=1>0$ și de continuitate: $f^2=x^2+1>0$, deci $f$ nu se anulează și păstrează semn constant). Verificare: $f'(x)=\frac{x}{\sqrt{x^2+1}}$, deci $ff'=x$ \checkmark.
+
+\medskip
+\textbf{Exemplu.} \emph{Determinați funcțiile derivabile $f:(0,\infty)\to(0,\infty)$ pentru care există $a>0$ astfel încât}
+\[
+f'\Big(\frac ax\Big)=\frac{x}{f(x)},\qquad\forall x>0.
+\]
+
+\emph{Pasul 1 --- înmulțim și pregătim două forme ale ecuației.} Înmulțind cu $f(x)$:
+\[
+f'\Big(\frac ax\Big)f(x)=x. \tag{$*$}
+\]
+Substituind $x\mapsto\frac ax$ în ecuația \emph{originală} (transformarea $x\mapsto a/x$ e o involuție pe $(0,\infty)$):
+\[
+f'(x)\,f\Big(\frac ax\Big)=\frac ax. \tag{$**$}
+\]
+
+\emph{Pasul 2 --- integrăm $(**)$ nedefinit, prin părți.} Integrala membrului stâng, cu părți ($u=f\big(\frac ax\big)$, $dv=f'(x)\,dx$) și apoi cu regula lanțului $\big[f\big(\frac ax\big)\big]'=-\frac{a}{x^2}f'\big(\frac ax\big)$:
+\[
+\int f\Big(\frac ax\Big)f'(x)\,dx
+= f\Big(\frac ax\Big)f(x)+\int \frac{a}{x^2}\,\underbrace{f'\Big(\frac ax\Big)f(x)}_{=\,x\ \text{din }(*)}\,dx
+= f\Big(\frac ax\Big)f(x)+a\int\frac{dx}{x}.
+\]
+Dar din $(**)$ aceeași integrală este $\int\frac ax\,dx=a\ln x+\mathcal C_1$. Egalând, termenii $a\ln x$ se \emph{taie}:
+\[
+f\Big(\frac ax\Big)\,f(x)=C\quad(\text{constantă}),\qquad C=f(\sqrt a)^2>0
+\]
+(valoarea lui $C$ ieșind din $x=\sqrt a$). Integrarea a scos la iveală o \textbf{cantitate conservată}: produsul valorilor în punctele-oglindă.
+
+\emph{Pasul 3 --- înlocuim în ecuația inițială și rămâne o ecuație simplă.} Din produsul conservat, $f\big(\frac ax\big)=\frac{C}{f(x)}$; ecuația $(**)$ devine
+\[
+f'(x)\cdot\frac{C}{f(x)}=\frac ax
+\qquad\Longleftrightarrow\qquad
+\frac{f'(x)}{f(x)}=\frac{a}{C}\cdot\frac1x,
+\]
+o ecuație cu variabile separabile (derivată logaritmică): $\big(\ln f(x)-\frac aC\ln x\big)'=0$, deci pe intervalul $(0,\infty)$
+\[
+f(x)=K\,x^{b},\qquad b=\frac aC>0,\ K>0.
+\]
+
+\emph{Pasul 4 --- reimpunem originalul} (pașii 1--3 pot lărgi mulțimea soluțiilor). Pentru $f=Kx^b$: $f'\big(\frac ax\big)=Kb\,a^{b-1}x^{1-b}$ și $\frac{x}{f(x)}=\frac1K x^{1-b}$ --- puterile coincid automat, iar coeficienții cer
+\[
+K^2\,b\,a^{b-1}=1.
+\]
+\textbf{Răspuns:} $f(x)=K x^{b}$ cu $K,b>0$; pentru $b\neq1$, orice astfel de pereche merge (se ia $a=(K^2b)^{-1/(b-1)}$), iar pentru $b=1$ e nevoie de $K=1$ (și $a$ arbitrar). $\blacksquare$
+
+\emph{Morala:} la ecuații cu punctul-oglindă $\frac ax$, integrarea nedefinită (prin părți, folosind ambele forme ale ecuației) poate produce o \emph{cantitate conservată} --- aici produsul $f\big(\frac ax\big)f(x)$ --- care liniarizează complet problema. Echivalent și mai rapid: se verifică direct că $\dfrac{d}{dx}\Big[f\big(\tfrac ax\big)f(x)\Big]=-\frac{a}{x^2}\cdot x+\frac ax=0$, combinând $(*)$ și $(**)$; integrarea prin părți e drumul care \emph{descoperă} această combinație.
+
+\section{Serii și funcții generatoare}
+
+Până acum am „citit'' șiruri cu ajutorul integralelor (sume Riemann, testul integralei, formula lui Euler). Instrumentul de față este complementar și \emph{algebric}: atașăm șirului o serie de puteri și lăsăm operațiile cu serii să facă munca. Ideea, care vine încă de la Euler, este surprinzător de puternică: o \emph{recurență} (informație locală, „de la un pas la altul'') se transformă într-o \emph{ecuație algebrică} pentru un singur obiect, iar comportarea la infinit a șirului se citește dintr-un singur număr: poziția celei mai apropiate \emph{singularități}. Seria de puteri, cu raza ei de convergență și cu derivarea și integrarea termen cu termen, este obiect de \textbf{clasa a XII-a}; o dezvoltăm aici tocmai fiindcă face puntea între algebra recurențelor și analiza limitelor.
+
+\subsection*{1. Serii de puteri și raza de convergență}
+
+\begin{definitie}[Convergență și convergență absolută]
+O serie $\sum_{n\ge0}u_n$ \emph{converge} (are suma $S$) dacă șirul sumelor parțiale $S_N=\sum_{n=0}^{N}u_n$ are limita finită $S$ când $N\to\infty$. Ea \emph{converge absolut} dacă seria modulelor $\sum_{n\ge0}|u_n|$ converge. Convergența absolută este mai tare: orice serie absolut convergentă este convergentă, iar în plus termenii ei pot fi rearanjați și grupați liber fără a schimba suma. Aceasta este o proprietate esențială, fiindcă exact ea legitimează operațiile formale cu serii (produsul Cauchy, derivarea termen cu termen) de mai jos.
+\end{definitie}
+
+\begin{definitie}[Serie de puteri, rază de convergență]
+Fie $(a_n)_{n\ge0}$ un șir de numere reale. \emph{Seria de puteri} asociată este expresia $A(t)=\sum_{n\ge0}a_nt^n$. Mulțimea valorilor $t$ pentru care seria converge este întotdeauna un interval simetric (eventual redus la $\{0\}$, eventual egal cu tot $\mathbb{R}$): există un $R\in[0,+\infty]$, numit \emph{raza de convergență}, astfel încât seria converge absolut pentru $|t|<R$ și diverge pentru $|t|>R$. Pe discul $|t|<R$ funcția $A$ este indefinit derivabilă și se poate deriva și integra termen cu termen.
+\end{definitie}
+
+\begin{tehbox}{Cum se calculează raza (clasa a XII-a)}
+Raza $R$ se obține din creșterea coeficienților:
+\[
+\frac1R=\limsup_{n\to\infty}\sqrt[n]{|a_n|}\qquad\text{(Cauchy--Hadamard)},
+\]
+iar când există, $\dfrac1R=\lim_{n\to\infty}\dfrac{|a_{n+1}|}{|a_n|}$ (criteriul raportului). Reciproca acestei formule este exact mesajul de reținut: \textbf{a cunoaște raza $R$ înseamnă a cunoaște rația de creștere a coeficienților}, căci $|a_n|$ se comportă, la ordinul dominant, ca $R^{-n}$. Toată metoda de mai jos exploatează acest dublu sens: aflăm $R$ \emph{geometric} (unde „se strică'' funcția $A$) și deducem de aici \emph{numeric} viteza lui $a_n$.
+\end{tehbox}
+
+\begin{exemplu}
+Câteva serii-etalon, cu raza lor:
+\[
+\begin{gathered}
+\frac{1}{1-t}=\sum_{n\ge0}t^n\ (R=1),\qquad
+e^t=\sum_{n\ge0}\frac{t^n}{n!}\ (R=\infty),\\
+\frac{1}{(1-t)^2}=\sum_{n\ge0}(n+1)t^n\ (R=1).
+\end{gathered}
+\]
+Prima are $a_n=1$, deci $\sqrt[n]{|a_n|}\to1$ și $R=1$; a doua are $a_n=1/n!$, iar $\sqrt[n]{1/n!}\to0$, deci $R=\infty$ (de aceea $e^t$ nu are nicio singularitate la distanță finită). Ultima se obține derivând prima.
+\end{exemplu}
+
+\subsection*{2. Singularități: ce anume fixează raza}
+
+Formula lui Cauchy--Hadamard spune \emph{cât} este raza, dar nu spune \emph{de ce}. Răspunsul geometric (și cheia întregii metode) este noțiunea de singularitate.
+
+\begin{definitie}[Singularitate]
+Spunem că funcția $A$, definită de seria ei pe $|t|<R$, are o \emph{singularitate} în punctul $t_*$ (cu $|t_*|=R$) dacă $A$ \textbf{nu} poate fi prelungită la o funcție \emph{analitică} pe nicio vecinătate a lui $t_*$ în planul complex, adică la o funcție care, în jurul fiecărui punct $t_1$ al vecinătății, este suma unei serii de puteri $\sum c_k(t-t_1)^k$ convergente lângă $t_1$. (Nu e suficient ca funcția să fie netedă, adică indefinit derivabilă: există funcții indefinit derivabile care nu sunt sume de serii de puteri, de exemplu $e^{-1/x^2}$ prelungită cu $0$ în $0$.) Intuitiv: este un punct în care funcția „se strică'': explodează la infinit, are un colț insurmontabil sau încetează pur și simplu să mai fie definită printr-o serie convergentă. Punctele în care $A$ \emph{se poate} prelungi analitic se numesc \emph{regulate}.
+\end{definitie}
+
+\begin{tehbox}{Principiul razei $=$ distanța până la cea mai apropiată singularitate}
+Raza de convergență a lui $A(t)=\sum a_nt^n$ este exact \textbf{distanța de la $0$ până la cea mai apropiată singularitate} a funcției $A$ (măsurată în planul complex, nu doar pe axa reală!). Deci:
+\[
+R=\min\{\,|t_*|:\ t_*\text{ este o singularitate a lui }A\,\}.
+\]
+Consecință operațională: pentru a afla viteza lui $a_n$ nu trebuie să calculăm niciun coeficient, ci doar să \emph{găsim cea mai apropiată singularitate} $t_0$ a funcției $A$. Atunci $|a_n|$ crește geometric cu rația $1/|t_0|$, în sensul că $\limsup_{n\to\infty}\sqrt[n]{|a_n|}=\frac{1}{|t_0|}$.
+
+\smallskip
+\emph{Statutul acestui principiu.} El este o teoremă de analiză complexă (dezvoltarea în serie a funcțiilor olomorfe, teorema Cauchy--Taylor), care depășește programa de liceu; îl folosim \textbf{fără demonstrație}, ca rezultat citat. Tot ce urmează în această secțiune se bazează pe el.
+\end{tehbox}
+
+\begin{obs}
+Sublinierea „în planul complex'' nu e pedanterie. Funcția $A(t)=\dfrac{1}{1+t^2}=\sum_{n\ge0}(-1)^nt^{2n}$ este perfect netedă pe toată axa reală (nu explodează nicăieri) și totuși raza ei este doar $R=1$. Motivul: singularitățile ei sunt în $t=\pm i$, la distanță $1$ de origine. Coeficienții „simt'' aceste singularități complexe, chiar dacă ochiul, privind graficul real, nu vede niciun necaz. Aceasta este marea lecție a punții: \emph{comportarea reală a unui șir poate fi guvernată de o singularitate complexă}.
+\end{obs}
+
+Cel mai simplu și mai des întâlnit tip de singularitate este \emph{polul}.
+
+\begin{definitie}[Pol simplu și reziduu]
+Funcția $A$ are un \emph{pol} în $t_0$ dacă $A(t)\to\infty$ când $t\to t_0$ și dacă produsul $(t-t_0)^kA(t)$ rămâne finit și nenul în $t_0$ pentru un anumit întreg $k\ge1$; cel mai mic astfel de $k$ este \emph{ordinul} polului. Polul este \emph{simplu} dacă $k=1$. Pentru un pol simplu, numărul
+\[
+R_{t_0}=\lim_{t\to t_0}(t-t_0)A(t)
+\]
+se numește \emph{reziduul} lui $A$ în $t_0$; el măsoară „tăria'' explozivă a polului. Dacă $A=N/D$ cu $N(t_0)\neq0$, $D(t_0)=0$, $D'(t_0)\neq0$, atunci polul este simplu și, prin regula lui L'H\^opital, $R_{t_0}=\dfrac{N(t_0)}{D'(t_0)}$.
+\end{definitie}
+
+\begin{obs}
+De ce contează \emph{cea mai apropiată} singularitate și nu celelalte? Fiindcă, dezvoltând $\dfrac{1}{t-t_0}=-\dfrac{1}{t_0}\cdot\dfrac{1}{1-t/t_0}=-\sum_{n\ge0}\dfrac{t^n}{t_0^{n+1}}$, un pol în $t_0$ contribuie la coeficientul $a_n$ cu un termen de mărime $|t_0|^{-n}$. Un pol mai îndepărtat, în $t_1$ cu $|t_1|>|t_0|$, contribuie doar cu $|t_1|^{-n}$, care este \emph{neglijabil} față de $|t_0|^{-n}$. Așadar, pentru $n$ mare, cel mai apropiat pol domină; ceilalți se sting exponențial. Acesta este scheletul teoremei de mai jos.
+\end{obs}
+
+\subsection*{3. Dicționarul șir $\leftrightarrow$ serie}
+
+\begin{tehbox}{Operații care se traduc}
+Fie $A(t)=\sum a_nt^n$ și $B(t)=\sum b_nt^n$. Atunci:
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+\item \emph{liniaritate}: $\alpha a_n+\beta b_n\leftrightarrow\alpha A+\beta B$;
+\item \emph{deplasare}: $(a_{n-1})_{n\ge1}\leftrightarrow tA(t)$; mai general $(a_{n-k})\leftrightarrow t^kA(t)$;
+\item \emph{derivare}: $\bigl((n+1)a_{n+1}\bigr)\leftrightarrow A'(t)$, deci $\bigl(n\,a_n\bigr)\leftrightarrow tA'(t)$;
+\item \emph{produsul Cauchy} (convoluție): $c_n=\displaystyle\sum_{k=0}^{n}a_kb_{n-k}\ \leftrightarrow\ A(t)B(t)$;
+\item \emph{exponențiala}: $\displaystyle\sum_{k\ge0}\frac{t^k}{k!}=e^t$, deci $\displaystyle\sum_{k\ge1}\frac{t^k}{k!}=e^t-1$, iar $[t^m]e^{ct}=\dfrac{c^m}{m!}$.
+\end{itemize}
+\end{tehbox}
+
+\begin{tehbox}{Catalog de funcții generatoare uzuale}
+De reținut ca „vocabular'', pentru a recunoaște coeficienții după forma funcției:
+\[
+\frac{1}{1-t}=\sum t^n\qquad\qquad \frac{1}{1-ct}=\sum c^nt^n
+\]
+\[
+\frac{1}{(1-t)^2}=\sum(n+1)t^n\qquad \frac{1}{(1-t)^{k+1}}=\sum\binom{n+k}{k}t^n
+\]
+\[
+e^{ct}=\sum\frac{c^n}{n!}t^n\qquad\qquad -\ln(1-t)=\sum_{n\ge1}\frac{t^n}{n}
+\]
+Poziția singularității se citește direct: $\frac{1}{1-ct}$ are un pol simplu în $t_0=1/c$ (raza $1/|c|$, coeficienți $\sim c^n$); $\frac{1}{(1-t)^{k+1}}$ are un pol de ordinul $k+1$ în $t_0=1$ (coeficienți polinomiali în $n$); $e^{ct}$ nu are singularități (rază infinită, coeficienți care se sting mai repede decât orice progresie geometrică, datorită lui $n!$).
+\end{tehbox}
+
+\subsection*{4. Recurențe cu convoluție $\to$ ecuație algebrică}
+
+\begin{tehbox}{Rețeta}
+Dacă recurența exprimă $a_n$ (sau $a_{n+1}$) printr-o \emph{convoluție} $\sum_k w_k a_{n-k}$ cu ponderi fixe $w_k$, atunci, notând $W(t)=\sum_k w_kt^k$:
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item recunoști convoluția drept coeficient al produsului $W(t)A(t)$;
+\item traduci recurența într-o \emph{ecuație algebrică} pentru $A(t)$ (atenție la primii câțiva termeni, care pot să nu respecte tiparul: tocmai ei produc membrul drept);
+\item izolezi $A(t)$ ca funcție explicită;
+\item recuperezi $a_n$ prin dezvoltare (serie geometrică, $e^{ct}$, descompunere în fracții simple\ldots), iar ordinul lor de mărime la infinit se citește din \emph{singularitatea cea mai apropiată de $0$}.
+\end{enumerate}
+\end{tehbox}
+
+\begin{exemplu}[Fibonacci, de la un capăt la altul]
+Fie $F_0=0$, $F_1=1$, $F_n=F_{n-1}+F_{n-2}$ pentru $n\ge2$. Cu $F(t)=\sum_{n\ge0}F_nt^n$, deplasarea dă $\sum_{n\ge2}F_{n-1}t^n=t\bigl(F(t)-F_0\bigr)=tF(t)$ și $\sum_{n\ge2}F_{n-2}t^n=t^2F(t)$. Scriind recurența pentru $n\ge2$ și adăugând termenii $F_0,F_1$ care nu o respectă:
+\[
+F(t)=t+tF(t)+t^2F(t)\implies F(t)=\frac{t}{1-t-t^2}.
+\]
+Numitorul $D(t)=1-t-t^2$ are rădăcinile $t_0=1/\varphi=\frac{\sqrt5-1}{2}\approx0{,}618$ și $t_1=-\varphi\approx-1{,}618$, unde $\varphi=\frac{1+\sqrt5}{2}$ este raportul de aur. Cea mai apropiată singularitate de $0$ este \emph{polul simplu} $t_0=1/\varphi$: de aici raza $R=1/\varphi$ și creșterea $F_n\sim\text{const}\cdot\varphi^n$. Descompunând în fracții simple obținem chiar formula lui Binet,
+\[
+F_n=\frac{1}{\sqrt5}\Bigl(\varphi^{\,n}-(-\varphi)^{-n}\Bigr),
+\]
+în care termenul dominant vine din polul cel mai apropiat, iar cel care se stinge, $(-\varphi)^{-n}$, vine din polul îndepărtat $t_1$. Exact acest mecanism îl formalizează teorema următoare.
+\end{exemplu}
+
+\subsection*{5. Asimptotica: teorema polului simplu}
+
+\begin{teorema}[Asimptotica coeficienților proveniți dintr-un pol simplu]
+Fie $A(t)=\dfrac{N(t)}{D(t)}$, cu $N,D$ sume ale unor serii de puteri convergente în tot planul complex (de pildă polinoame, sau combinații în care apare $e^t$). Presupunem că $D$ are, în discul complex $|t|\le t_0$, o singură rădăcină $t_0>0$, simplă ($D(t_0)=0$, $D'(t_0)\neq0$), și că $N(t_0)\neq0$. Atunci $A$ este dezvoltabilă pe $|t|<t_0$ și
+\[
+a_nt_0^n\xrightarrow[n\to\infty]{}\frac{-N(t_0)}{t_0\,D'(t_0)}.
+\]
+Echivalent, $a_n\sim\dfrac{-N(t_0)}{t_0D'(t_0)}\,t_0^{-n}$: rația este $1/t_0$, iar constanta e dictată de reziduul din polul $t_0$.
+\end{teorema}
+
+\begin{proof}
+Reziduul lui $A$ în polul simplu $t_0$ este $R=\dfrac{N(t_0)}{D'(t_0)}$. Funcția
+\[
+B(t)=A(t)-\frac{R}{t-t_0}
+\]
+nu mai are singularitate în $t_0$ (am scăzut exact partea principală, adică polul), iar celelalte singularități ale lui $A$ sunt zerouri ale lui $D$ și au, prin ipoteză, modulul $>t_0$. Zerourile lui $D$ (funcție analitică neidentic nulă) sunt izolate, deci într-un disc închis sunt doar în număr finit; așadar există $\rho>t_0$ astfel încât $B$ nu are nicio singularitate în discul $|t|<\rho$. Prin principiul razei (rezultatul de analiză complexă citat mai sus, fără demonstrație), seria lui $B$ are raza $\ge\rho$. Atunci, pentru orice $t_0<r<\rho$, seria lui $B$ converge în $t=r$, deci termenii ei $[t^n]B\cdot r^n$ sunt mărginiți, adică $[t^n]B=O(r^{-n})=o(t_0^{-n})$. Pe de altă parte,
+\[
+\frac{R}{t-t_0}=\frac{-R/t_0}{1-t/t_0}=-\frac{R}{t_0}\sum_{n\ge0}\Bigl(\frac{t}{t_0}\Bigr)^n
+\implies [t^n]\frac{R}{t-t_0}=-\frac{R}{t_0^{n+1}}.
+\]
+Adunând, $a_n=-\dfrac{R}{t_0^{n+1}}+o(t_0^{-n})$, deci $a_nt_0^n\to-\dfrac{R}{t_0}=\dfrac{-N(t_0)}{t_0D'(t_0)}$.
+\end{proof}
+
+\begin{corolar}[mai mulți poli simpli]
+Dacă $D$ are, în discul considerat, mai mulți poli simpli $t_0,t_1,\ldots,t_m$ (cu $|t_0|\le|t_1|\le\cdots$), atunci prin descompunere în fracții simple $A(t)=\sum_j\dfrac{R_j}{t-t_j}+(\text{parte regulată})$ și
+\[
+a_n=-\sum_j\frac{R_j}{t_j^{\,n+1}}+o\bigl(|t_m|^{-n}\bigr),
+\]
+adică o \emph{sumă de progresii geometrice}, dominată de polul cel mai apropiat de $0$: exact așa cum formula lui Binet este o sumă de două progresii geometrice.
+\end{corolar}
+
+\begin{proof}
+Cum fiecare $t_j$ este rădăcină simplă a lui $D$ ($D(t_j)=0$, $D'(t_j)\neq0$) și $N(t_j)\neq0$, funcția $A=N/D$ are în fiecare $t_j$ un pol simplu, cu reziduul $R_j=\dfrac{N(t_j)}{D'(t_j)}$. Scăzând partea principală a fiecăruia, funcția
+\[
+S(t)=A(t)-\sum_{j=0}^{m}\frac{R_j}{t-t_j}
+\]
+nu mai are singularitate în niciunul dintre punctele $t_0,\ldots,t_m$ (în fiecare dintre ele, termenul scăzut anulează exact polul), iar orice altă singularitate a lui $A$ are, prin ipoteză, modulul strict mai mare decât $|t_m|$; fie $\rho>|t_m|$ modulul celei mai apropiate dintre ele. Prin urmare $S$ este dezvoltabilă în serie de puteri pe $|t|<\rho$ și atunci, prin principiul razei (citat fără demonstrație), pentru orice $|t_m|<r<\rho$ avem $[t^n]S=O(r^{-n})=o\bigl(|t_m|^{-n}\bigr)$.
+
+Pe de altă parte, dezvoltând fiecare termen principal în serie geometrică,
+\[
+\frac{R_j}{t-t_j}=\frac{-R_j/t_j}{1-t/t_j}=-\frac{R_j}{t_j}\sum_{n\ge0}\Bigl(\frac{t}{t_j}\Bigr)^n
+\implies [t^n]\frac{R_j}{t-t_j}=-\frac{R_j}{t_j^{\,n+1}}.
+\]
+Adunând coeficienții de ordin $n$ din $A(t)=\sum_{j=0}^{m}\dfrac{R_j}{t-t_j}+S(t)$, rezultă că
+\[
+a_n=-\sum_{j=0}^{m}\frac{R_j}{t_j^{\,n+1}}+o\bigl(|t_m|^{-n}\bigr),
+\]
+ceea ce încheie demonstrația. Termenul corespunzător polului celui mai apropiat de $0$ (cel cu $|t_j|$ minim) domină, deoarece $|t_j|^{-n}$ descrește cu atât mai repede cu cât $|t_j|$ este mai mare.
+\end{proof}
+
+\subsection*{6. Puntea către clasa a XII-a: o integrală improprie}
+
+Legătura dintre serii și integrale nu este întâmplătoare, ci structurală. O serie $\sum_n u_n$ și o integrală $\int u(x)\,dx$ sunt \emph{aceeași} operație (adunarea unei infinități de contribuții), una pe indici discreți, cealaltă pe o variabilă continuă; tocmai de aceea testul integralei compară o serie cu o integrală, iar sumele Riemann fac drumul invers. La funcțiile generatoare, coeficientul unei serii în care apare $e^{ct}$ conține factorul $\frac{1}{n!}$, iar acest $n!$ este exact valoarea unei integrale improprii. Iată puntea concretă.
+
+\begin{tehbox}{Aceeași constantă, obținută „continuu''}
+Aceeași constantă provenită dintr-un pol se poate obține și cu integrale, nu doar cu serii. Pentru $s>0$ și $m\in\mathbb{N}$, integrala improprie (convergentă, clasa a XII-a)
+\[
+\int_0^{\infty}x^me^{-sx}\,dx=\frac{m!}{s^{\,m+1}}
+\]
+este un caz particular al funcției $\Gamma$ și se obține integrând de $m$ ori prin părți. Ea leagă \emph{sumele discrete} $\sum_{j\ge0}j^mz^j$ de \emph{integralele} continue: cu $z=e^{-s}$, suma $\sum_j j^mz^j$ și integrala $\int_0^{\infty}x^mz^x\,dx=\frac{m!}{s^{m+1}}$ au același ordin de mărime, iar factorul $m!$ este exact cel care apare la numitor în coeficienții unei funcții generatoare în care apare $e^{ct}$.
+\end{tehbox}
+
+\begin{exemplu}[O integrală care însumează o serie]
+Reprezentarea $\dfrac1n=\displaystyle\int_0^1t^{n-1}\,dt$ transformă o serie într-o integrală calculabilă. De exemplu,
+\[
+\begin{aligned}
+\sum_{n\ge1}\frac{1}{n\,2^n}&=\sum_{n\ge1}\frac{1}{2^n}\int_0^1t^{n-1}\,dt=\int_0^1\sum_{n\ge1}\frac{t^{n-1}}{2^n}\,dt\\
+&=\int_0^1\frac{1/2}{1-t/2}\,dt=\int_0^1\frac{dt}{2-t}=\ln2.
+\end{aligned}
+\]
+Inversarea sumă $\leftrightarrow$ integrală este legitimă deoarece seria de puteri converge uniform pe $[0,1]$ (raza ei este $2>1$). Aceeași idee, cu $\dfrac{1}{n^2}=-\displaystyle\int_0^1t^{n-1}\ln t\,dt$ sau cu integrala $\Gamma$ din caseta de mai sus, însumează familii întregi de serii: integrala este unealta care „închide'' suma.
+\end{exemplu}
+
+\begin{obs}
+Metoda funcțiilor generatoare nu justifică singură convergența: pasul \emph{formal} produce candidatul $A(t)$ și forma coeficienților, iar rigoarea (rază de convergență, singularități, trecere la limită) vine din analiza de clasa a XII-a. Acesta este dublul sens tipic al punții: \emph{algebra} găsește răspunsul (recurență $\to$ ecuație $\to$ pol), iar \emph{analiza} îl justifică (rază $=$ distanță până la singularitate $\to$ asimptotică). Cine stăpânește ambele fețe poate trece, cu același obiect $A(t)$, de la un enunț de clasa a XI-a la unul de clasa a XII-a.
+\end{obs}

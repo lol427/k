@@ -1,0 +1,93 @@
+%% ============================================================
+%%  PAGINA DE TITLU, COPYRIGHT, CUPRINS, CUVÂNT ÎNAINTE
+%%  (comun tuturor volumelor; textul variabil vine din macro-uri)
+%% ============================================================
+\thispagestyle{empty}
+\vspace*{2.2cm}
+\begin{center}
+  {\color{ink}\rule{\linewidth}{3pt}}\vspace{6mm}\\
+  {\fontsize{30}{36}\selectfont\bfseries\color{ink}\titluserie}\\[4mm]
+  {\color{onm}\rule{0.4\linewidth}{1.5pt}}\\[6mm]
+  {\LARGE \titluvolum}\\[3mm]
+  {\large\itshape\textcolor{grey}{\subtitluvolum}}\\[8mm]
+  {\normalsize\textcolor{grey}{Teoria completă și probleme}}\\[10mm]
+  {\color{ink}\rule{\linewidth}{3pt}}\\[8mm]
+  {\large\itshape Vlad-Ștefan Constantinescu}
+\end{center}
+\vfill
+\clearpage
+
+%% ---------------- pagina de copyright ----------------
+\thispagestyle{empty}
+\vspace*{1cm}
+\noindent{\small
+\titluserie, \titluvolum\\
+Volumul \numarvolum{} dintr-o serie de patru volume\\[2mm]
+Autor: Vlad-Ștefan Constantinescu\\
+Ediția a doua, București, 2026\\[3mm]
+\copyright{} 2026 Vlad-Ștefan Constantinescu. Toate drepturile rezervate.\\[2mm]
+Nicio parte a acestei lucrări nu poate fi reprodusă sau transmisă sub nicio formă și prin niciun mijloc,
+electronic sau mecanic, fără acordul prealabil scris al autorului, cu excepția unor scurte citate
+în recenzii și în lucrări de referință.\\[3mm]
+Tehnoredactat de autor în \LaTeX{} (Xe\LaTeX).\\[3mm]
+\ifx\isbnvolum\empty\else ISBN: \isbnvolum\fi
+
+}
+\vfill
+\clearpage
+
+\tableofcontents
+\clearpage
+
+%% ============================================================
+%%  CUVÂNT ÎNAINTE
+%% ============================================================
+\thispagestyle{empty}
+\addcontentsline{toc}{chapter}{Cuvânt înainte}
+\vspace*{1.5cm}
+{\noindent\color{onm}\rule{\linewidth}{3pt}}\par\vspace{3mm}
+{\noindent\fontsize{28}{32}\selectfont\bfseries\color{ink} Cuvânt înainte}\par\vspace{3mm}
+{\noindent\color{onm}\rule{\linewidth}{3pt}}\par\vspace{8mm}
+
+\noindent \textbf{Despre acest volum.} Acesta este volumul \numarvolum{} dintr-o serie de patru volume.
+\despreacestvolum{} Volumele care îl însoțesc sunt dedicate \celelaltevolume.
+
+\medskip
+\noindent Volumul are două mari componente: \textbf{teoria}, cu demonstrații complete și exemple, și \textbf{problemele}, grupate pe trei niveluri de dificultate (OLM $\cdot$ OJM $\cdot$ ONM). În partea de teorie am inclus două secțiuni pe care le consider esențiale și care lipsesc adesea din cărțile de olimpiadă: una de \textbf{redactare} (cum se scrie o demonstrație riguroasă și ce greșeli de formă penalizează juriul) și una de \textbf{construcții} (ce obiecte să încerci când enunțul nu îți dă o direcție).
+
+\medskip
+\noindent \textbf{Cele trei niveluri.} Pe tot parcursul cărții, problemele sunt clasificate după cele trei
+etape ale Olimpiadei Naționale de Matematică: \textbf{OLM} (olimpiada locală, adică etapa pe școală și pe oraș),
+\textbf{OJM} (olimpiada județeană) și \textbf{ONM} (olimpiada națională, etapa finală). În linii mari,
+problemele OLM sunt probleme de concurs accesibile, OJM corespunde unei olimpiade regionale solide, iar
+problemele ONM sunt de nivelul unei finale naționale: comparabile, pentru materia acestei cărți, cu cele mai
+grele probleme din concursurile studențești precum Putnam.
+
+\medskip
+\noindent \textbf{Analiză vs.\ algebră.} Analiza matematică este un subiect continuu: materia clasei a XII-a nu este altceva decât o extensie firească a celei din clasa a XI-a, iar limitele, integralele și seriile trăiesc în aceeași lume. De aceea am construit o punte explicită între cele două clase. Algebra stă altfel: structurile algebrice din clasa a XII-a (grupuri, inele, corpuri, polinoame) formează un bloc coerent în sine, cu fire clare între ele, dar nu au nicio legătură cu algebra liniară din clasa a XI-a. Cele două jumătăți de algebră sunt lumi separate, și am ales să le tratez ca atare.
+
+\medskip
+\noindent \textbf{Despre metode.} Am îmbinat, deliberat, două perspective. Pe de o parte, tehnicile care se văd la olimpiadele din România, de la faza locală până la cea națională. Pe de altă parte, unele metode pe care le-am întâlnit în primii doi ani de facultate din sistemul \emph{CPGE} (\textit{classes préparatoires aux grandes écoles}) din Franța (funcții generatoare, comparări serie-integrală, asimptotică prin singularități) și pe care le-am găsit perfect utilizabile și la nivel de olimpiadă, adesea mai clare și mai puternice decât abordările ad-hoc. Puntea dintre clasele a XI-a și a XII-a este locul unde aceste două perspective se întâlnesc cel mai firesc.
+
+\medskip
+\noindent \textbf{Despre programă.} Nivelurile OLM $\cdot$ OJM $\cdot$ ONM indică \emph{dificultatea}, nu strict
+programa etapei corespunzătoare. Am inclus deliberat, la un anumit nivel, probleme care folosesc noțiuni ce nu
+figurează oficial în programa acelei etape: de exemplu probleme cu derivate la OLM și la OJM, deși, nefiind în
+programă, ele nu pot apărea efectiv acolo. Le-am păstrat ca exercițiu de tipul „și dacă ar pica totuși la OLM
+sau la OJM'': ideea de bază este accesibilă și la acel nivel, iar antrenamentul pe ele nu poate strica.
+
+\medskip
+\noindent \textbf{Despre redactare.} Am încercat să redactez așa cum se cere la olimpiadă: enunț și demonstrez
+fiecare lemă pe care o folosesc, împart soluțiile în pași numiți explicit, verific ipotezele înainte de a aplica
+o teoremă și marchez clar unde se încheie fiecare argument. Redactarea nu este un moft: la concurs, ea face
+diferența dintre o idee bună și punctajul maxim.
+
+\medskip
+\noindent \textbf{Despre probleme.} Aproape toate sunt inventate de mine. Excepțiile (problemele clasice și cele preluate de la concursuri) sunt indicate explicit. Am încercat, de asemenea, să includ cel puțin o problemă pentru fiecare rezultat enunțat în partea de teorie: o lemă care nu „lucrează'' nicăieri nu merită ținută minte.
+
+\vspace{1cm}
+\begin{flushright}
+{\itshape Vlad-Ștefan Constantinescu}\\
+{\small\textcolor{grey}{București, 2026}}
+\end{flushright}
+\clearpage

@@ -1,0 +1,1226 @@
+\subsectiuneclasa{Clasa a XI-a}{Algebră liniară --- soluții complete.}{Soluții · Clasa a XI-a}
+
+\nivel{olm}{Nivelul OLM}{Faza locală --- probleme de acomodare, cu o idee principală.}
+\prob{olm}{OLM.1}{}
+Fie $A\in M_2(\mathbb{R})$ cu $\Tr(A)=3$ și $\det(A)=2$.
+\begin{parti}
+  \item Exprimați $A^2$ în funcție de $A$ și $I_2$.
+  \item Calculați $\Tr(A^2)$ și $\det(A^2)$.
+\end{parti}
+\sol (a) Prin teorema Cayley--Hamilton în $M_2$, $A^2-\Tr(A)\,A+\det(A)\,I_2=O_2$, deci
+\[ A^2=3A-2I_2. \]
+(b) Luăm urma: $\Tr(A^2)=3\Tr(A)-2\Tr(I_2)=3\cdot3-2\cdot2=5$ (echivalent, $\Tr(A^2)=\Tr(A)^2-2\det(A)=9-4=5$). Iar $\det(A^2)=\det(A)^2=4$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.2}{Clasică}
+Calculați determinantul și precizați când este nul:
+\[ D=\begin{vmatrix} 1&1&1\\ a&b&c\\ a^2&b^2&c^2 \end{vmatrix},\qquad a,b,c\in\mathbb{R}. \]
+\sol Este un determinant Vandermonde. Scăzând prima coloană din celelalte și dând factori comuni (sau observând că $D=0$ ori de câte ori două dintre $a,b,c$ coincid, deci $(b-a),(c-a),(c-b)$ divid $D$, iar gradul și coeficientul dominant fixează constanta $1$), obținem
+\[ D=(b-a)(c-a)(c-b). \]
+Prin urmare $D=0$ dacă și numai dacă cel puțin două dintre numerele $a,b,c$ sunt egale.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.3}{}
+Fie
+\[ A=\begin{pmatrix} 2&1&0\\ 0&2&1\\ 0&0&2 \end{pmatrix}. \]
+\begin{parti}
+  \item Determinați valorile proprii, polinomul caracteristic $f_A$ și polinomul minimal $m_A$.
+  \item Este $A$ diagonalizabilă? Justificați.
+\end{parti}
+\sol (a) $A$ este triunghiulară, deci valorile proprii sunt elementele diagonalei: $\lambda=2$ (triplă), iar $f_A(X)=\det(XI_3-A)=(X-2)^3$. Fie $N=A-2I_3=\begin{psmallmatrix}0&1&0\\0&0&1\\0&0&0\end{psmallmatrix}$. Atunci $N^2=\begin{psmallmatrix}0&0&1\\0&0&0\\0&0&0\end{psmallmatrix}\neq O_3$ și $N^3=O_3$; cum $(A-2I_3)^2\neq O_3$ dar $(A-2I_3)^3=O_3$, rezultă $m_A(X)=(X-2)^3$.\\[2pt]
+(b) $m_A$ are rădăcina $2$ cu multiplicitate $3$ (nu simplă), deci prin criteriul polinomului minimal (Teorema~\ref{teo:criteriudiag}) $A$ \emph{nu} este diagonalizabilă. (Echivalent: subspațiul propriu al lui $2$ are dimensiunea $1<3$.)
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.4}{}
+Determinați toate polinoamele $P$ (cu coeficienți complecși) astfel încât
+\[ P(z+1)=P(z)+2z+1\qquad\text{pentru orice } z. \]
+\sol Scriem partea din dreapta folosind că $2z+1=(z+1)^2-z^2$; relația devine
+\[ P(z+1)-(z+1)^2=P(z)-z^2. \]
+Definim atunci un nou polinom $Q(z)=P(z)-z^2$. Egalitatea de mai sus spune exact că $Q(z+1)=Q(z)$ pentru orice $z$. Un polinom cu această proprietate este constant: dacă $Q$ ar avea grad $\ge1$, atunci $Q(z)-Q(0)$ ar avea o infinitate de rădăcini ($z=0,1,2,\dots$), ceea ce e imposibil pentru un polinom nenul. Deci $Q\equiv c$ (constant) și
+\[ P(z)=z^2+c,\qquad c\in\mathbb{C}. \]
+Reciproc, orice polinom $P(z)=z^2+c$ verifică relația, căci $(z+1)^2+c=(z^2+c)+2z+1$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.5}{}
+Determinați numărul real $a$ pentru care $(x-1)$ divide polinomul $x^4-a$.
+\sol Prin teorema factorului (restul împărțirii lui $P$ la $x-1$ este $P(1)$), avem $(x-1)\mid P(x)$ dacă și numai dacă $P(1)=0$. Aici $P(x)=x^4-a$, deci condiția este
+\[ P(1)=1^4-a=1-a=0\ \Longrightarrow\ a=1. \]
+Într-adevăr, pentru $a=1$: $x^4-1=(x-1)(x^3+x^2+x+1)$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.6}{Clasică}
+Rezolvați în $M_2(\mathbb{C})$ ecuația $A^2=A+I_2$.
+\sol Prin Cayley--Hamilton, $A^2=\Tr(A)\,A-\det(A)\,I_2$, deci ecuația $A^2=A+I_2$ devine
+\[ \bigl(\Tr(A)-1\bigr)A=\bigl(\det(A)+1\bigr)I_2. \]
+Dacă $\Tr(A)\neq1$, atunci $A$ este scalară, $A=cI_2$, iar $c^2=c+1$ dă $c=\dfrac{1\pm\sqrt5}{2}$. Dacă $\Tr(A)=1$, egalitatea de mai sus dă $\det(A)+1=0$, adică $\det(A)=-1$; reciproc, orice $A$ cu $\Tr(A)=1$ și $\det(A)=-1$ verifică ecuația (tot prin Cayley--Hamilton).\\[2pt]
+Soluțiile sunt deci $A=\dfrac{1+\sqrt5}{2}\,I_2$, $A=\dfrac{1-\sqrt5}{2}\,I_2$, precum și \emph{toate} matricele $A\in M_2(\mathbb{C})$ cu $\Tr(A)=1$ și $\det(A)=-1$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.7}{Clasică}
+Fie $\alpha\in\mathbb{R}$ și $A=\begin{pmatrix}\cos\alpha & -\sin\alpha\\ \sin\alpha & \cos\alpha\end{pmatrix}$. Determinați $A^n$ (pentru $n\ge1$).
+\sol Arătăm prin inducție că $A^n=\begin{pmatrix}\cos n\alpha & -\sin n\alpha\\ \sin n\alpha & \cos n\alpha\end{pmatrix}$. Pentru $n=1$ este chiar $A$. Presupunând formula pentru $n$,
+\[ A^{n+1}=A^n A=\begin{pmatrix}\cos n\alpha & -\sin n\alpha\\ \sin n\alpha & \cos n\alpha\end{pmatrix}\begin{pmatrix}\cos\alpha & -\sin\alpha\\ \sin\alpha & \cos\alpha\end{pmatrix}. \]
+Folosind formulele de adunare $\cos n\alpha\cos\alpha-\sin n\alpha\sin\alpha=\cos(n+1)\alpha$ și $\sin n\alpha\cos\alpha+\cos n\alpha\sin\alpha=\sin(n+1)\alpha$, produsul devine
+\[ A^{n+1}=\begin{pmatrix}\cos(n+1)\alpha & -\sin(n+1)\alpha\\ \sin(n+1)\alpha & \cos(n+1)\alpha\end{pmatrix}, \]
+ceea ce încheie inducția. (Geometric, $A$ este rotația de unghi $\alpha$, iar $A^n$ rotația de unghi $n\alpha$.)
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.8}{Clasică}
+Fie $x_1,x_2,x_3\in\mathbb{C}$ rădăcinile polinomului $X^3-2X^2+3X-1$. Calculați $x_1^2+x_2^2+x_3^2$ și $\dfrac1{x_1}+\dfrac1{x_2}+\dfrac1{x_3}$.
+\sol Prin relațiile lui Viète, $x_1+x_2+x_3=2$, $x_1x_2+x_2x_3+x_3x_1=3$ și $x_1x_2x_3=1$. Atunci
+\[ x_1^2+x_2^2+x_3^2=(x_1+x_2+x_3)^2-2(x_1x_2+x_2x_3+x_3x_1)=2^2-2\cdot3=-2, \]
+\[ \frac1{x_1}+\frac1{x_2}+\frac1{x_3}=\frac{x_1x_2+x_2x_3+x_3x_1}{x_1x_2x_3}=\frac{3}{1}=3. \]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.9}{}
+Fie $n\ge2$ un întreg fixat. Rezolvați în $M_2(\mathbb{C})$ ecuația $A^{n+1}=A^n$.
+\sol Ecuația se scrie $A^n(A-I_2)=O_2$. Dacă $A$ este inversabilă, atunci $A^n$ este inversabilă, deci $A-I_2=O_2$, adică $A=I_2$. Dacă $A$ nu este inversabilă, atunci $\det A=0$, deci fie $A=O_2$, fie $\rang A=1$. În al doilea caz, prin \emph{lema matricelor de rang $1$} (Lema~\ref{lema:rang1}), $A^2=(\Tr A)\,A$, de unde $A^k=(\Tr A)^{k-1}A$ pentru orice $k\ge1$. Ecuația devine $(\Tr A)^n A=(\Tr A)^{n-1}A$, adică $(\Tr A)^{n-1}\bigl(\Tr A-1\bigr)A=O_2$; cum $A\neq O_2$ și $n\ge2$, rezultă $\Tr A=0$ sau $\Tr A=1$.\\[2pt]
+Așadar soluțiile sunt exact matricele cu $A^2=A$ (idempotentele: $I_2$, $O_2$ și cele de rang $1$ cu $\Tr A=1$) sau cu $A^2=O_2$ (nilpotentele: $O_2$ și cele de rang $1$ cu $\Tr A=0$).
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.10}{Clasică}
+Fie $n\ge1$ un întreg. Arătați că ecuația $A^n=I_2$ are cel puțin $n$ soluții în $M_2(\mathbb{R})$.
+\sol Pentru fiecare $k\in\{0,1,\dots,n-1\}$ considerăm rotația de unghi $\theta_k=\dfrac{2k\pi}{n}$:
+\[ A_k=\begin{pmatrix}\cos\theta_k & -\sin\theta_k\\ \sin\theta_k & \cos\theta_k\end{pmatrix}\in M_2(\mathbb{R}). \]
+Prin formula puterii unei rotații (Problema OLM.7), $A_k^n=\begin{psmallmatrix}\cos n\theta_k & -\sin n\theta_k\\ \sin n\theta_k & \cos n\theta_k\end{psmallmatrix}$; cum $n\theta_k=2k\pi$, avem $\cos n\theta_k=1$ și $\sin n\theta_k=0$, deci $A_k^n=I_2$. Prin urmare fiecare dintre $A_0,A_1,\dots,A_{n-1}$ este soluție.\\[2pt]
+Aceste $n$ matrice sunt distincte: o rotație determină unic unghiul în $[0,2\pi)$ (prin perechea $(\cos\theta,\sin\theta)$), iar unghiurile $\theta_0,\dots,\theta_{n-1}$ sunt distincte în $[0,2\pi)$. Așadar ecuația $A^n=I_2$ are cel puțin $n$ soluții în $M_2(\mathbb{R})$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.11}{}
+Fie $A\in M_n(\mathbb{C})$ o matrice în care suma elementelor de pe fiecare linie este egală cu același număr $s$.
+\begin{parti}
+  \item Arătați că, pentru orice $k\ge1$, suma elementelor de pe fiecare linie a lui $A^k$ este $s^k$.
+  \item Presupunem că $A$ este inversabilă. Arătați că $s\neq0$ și că suma elementelor de pe fiecare linie a lui $A^{-1}$ este $\dfrac1s$.
+\end{parti}
+\sol Fie $u\in M_{n,1}(\mathbb{C})$ coloana cu toate elementele $1$. Componenta $i$ a produsului $Au$ este exact suma liniei $i$ a lui $A$, deci ipoteza se scrie compact
+\[ Au=su. \]
+(a) Prin inducție, $A^ku=s^ku$: cazul $k=1$ este ipoteza, iar $A^{k+1}u=A(A^ku)=s^k(Au)=s^{k+1}u$. Componenta $i$ a egalității $A^ku=s^ku$ spune că suma liniei $i$ a lui $A^k$ este $s^k$.\\[2pt]
+(b) Dacă $s=0$, atunci $Au=0$ cu $u\neq0$, deci sistemul omogen $Ax=0$ are soluție nebanală și $A$ nu ar fi inversabilă; așadar $s\neq0$. Înmulțind $Au=su$ la stânga cu $A^{-1}$ și împărțind la $s$ obținem $A^{-1}u=\dfrac1s\,u$, adică fiecare linie a lui $A^{-1}$ are suma $\dfrac1s$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.12}{}
+Fie $A\in M_2(\mathbb{Z})$ cu $\Tr(A)=1$ și $\det(A)=-1$.
+\begin{parti}
+  \item Arătați că $A^{k+2}=A^{k+1}+A^{k}$ pentru orice $k\ge0$.
+  \item Deduceți că toate numerele $t_k=\Tr(A^k)$ sunt întregi și calculați $\Tr(A^{10})$.
+\end{parti}
+\sol (a) Prin teorema Cayley--Hamilton în $M_2$, $A^2-\Tr(A)\,A+\det(A)\,I_2=O_2$, adică $A^2=A+I_2$. Înmulțind cu $A^k$ obținem $A^{k+2}=A^{k+1}+A^k$.\\[2pt]
+(b) Luând urma în relația de la (a), $t_{k+2}=t_{k+1}+t_k$, cu pornirea $t_1=\Tr(A)=1$ și $t_2=\Tr(A^2)=\Tr(A+I_2)=1+2=3$. Prin inducție, toți $t_k$ sunt întregi (sume de întregi), iar valorile nu depind de alegerea lui $A$:
+\[ 1,\;3,\;4,\;7,\;11,\;18,\;29,\;47,\;76,\;123,\dots \]
+deci $\Tr(A^{10})=123$. (Un exemplu este $A=\begin{psmallmatrix}0&1\\1&1\end{psmallmatrix}$; șirul $t_k$ este șirul lui Lucas.)
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.13}{Clasică}
+Fie $A\in M_2(\mathbb{R})$ cu $A^2=A-I_2$.
+\begin{parti}
+  \item Arătați că $A^6=I_2$.
+  \item Calculați $A^{2026}$ (în funcție de $A$).
+  \item Dați un exemplu de astfel de matrice.
+\end{parti}
+\sol (a) Înmulțim relația $A^2=A-I_2$ cu $A$:
+\[ A^3=A^2-A=(A-I_2)-A=-I_2, \]
+deci $A^6=(A^3)^2=(-I_2)^2=I_2$.\\[2pt]
+(b) Împărțim exponentul la $6$: $2026=6\cdot337+4$, deci
+\[ A^{2026}=(A^6)^{337}\,A^4=A^4=A^3\cdot A=-A. \]
+(c) Relația cerută este exact Cayley--Hamilton pentru o matrice cu $\Tr(A)=1$ și $\det(A)=1$; de pildă rotația de $60^\circ$,
+\[ A=\begin{pmatrix}\tfrac12&-\tfrac{\sqrt3}{2}\\[2pt] \tfrac{\sqrt3}{2}&\tfrac12\end{pmatrix}, \]
+care are urma $1$ și determinantul $1$. (Geometric, $A^6$ este rotația de $360^\circ$, în acord cu (a).)
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.14}{Clasică}
+Fie $n\ge2$ și $x_1,\dots,x_n,y_1,\dots,y_n\in\mathbb{C}$. Considerăm matricea $A\in M_n(\mathbb{C})$ cu elementele $a_{ij}=1+x_iy_j$.
+\begin{parti}
+  \item Pentru $n=2$, arătați că $\det(A)=(x_1-x_2)(y_1-y_2)$.
+  \item Pentru $n\ge3$, arătați că $\det(A)=0$.
+\end{parti}
+\sol (a) Calcul direct:
+\[ \det A=(1+x_1y_1)(1+x_2y_2)-(1+x_1y_2)(1+x_2y_1). \]
+Desfăcând parantezele, termenii $1$ și $x_1x_2y_1y_2$ se reduc și rămâne
+\[ \det A=x_1y_1+x_2y_2-x_1y_2-x_2y_1=(x_1-x_2)(y_1-y_2). \]
+(b) Fie $u,x,y\in M_{n,1}(\mathbb{C})$ coloanele $u=(1,\dots,1)^t$, $x=(x_1,\dots,x_n)^t$, $y=(y_1,\dots,y_n)^t$. Din $a_{ij}=1\cdot1+x_iy_j$ rezultă descompunerea
+\[ A=u\,u^{\,t}+x\,y^{\,t}, \]
+o sumă de două matrice de rang cel mult $1$. Prin subaditivitatea rangului, $\rang(A)\le\rang(uu^t)+\rang(xy^t)\le2<n$ pentru $n\ge3$; o matrice cu rangul strict mai mic decât ordinul are determinantul nul, deci $\det(A)=0$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.15}{Clasică}
+Fie $n\ge1$. Arătați că nu există matrice $A,B\in\Mn$ cu proprietatea
+\[ AB-BA=I_n . \]
+\sol Presupunem, prin absurd, că există. Aplicăm \emph{urma} ambilor membri. Urma este liniară, deci
+\[ \Tr(AB-BA)=\Tr(AB)-\Tr(BA). \]
+Pentru orice două matrice, $\Tr(AB)=\Tr(BA)$: într-adevăr, scriind explicit,
+\[ \Tr(AB)=\sum_{i=1}^n\sum_{k=1}^n a_{ik}b_{ki}=\sum_{k=1}^n\sum_{i=1}^n b_{ki}a_{ik}=\Tr(BA), \]
+cele două sume conținând exact aceiași termeni. Prin urmare membrul stâng are urma $0$.\\[2pt]
+Pe de altă parte, $\Tr(I_n)=n\neq0$. Am obținut $0=n$, contradicție. Deci nu există astfel de matrice.\\[2pt]
+\emph{Observație.} Ipoteza că lucrăm peste $\mathbb{C}$ (mai general, peste un corp de caracteristică $0$) este esențială: peste $\mathbb{Z}/2$, matricele $A=\begin{psmallmatrix}0&1\\0&0\end{psmallmatrix}$ și $B=\begin{psmallmatrix}0&0\\1&0\end{psmallmatrix}$ verifică $AB-BA=\begin{psmallmatrix}1&0\\0&1\end{psmallmatrix}=I_2$, căci acolo $\Tr(I_2)=2=0$. Cu alte cuvinte, obstrucția nu este „geometrică'', ci pur aritmetică: $n\neq0$ în corpul de bază.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.16}{Clasică}
+Fie $A\in M_n(\mathbb{R})$ cu $A^2=-I_n$. Arătați că $n$ este par, și arătați că pentru orice $n$ par există o astfel de matrice.
+\sol \emph{Necesitatea.} Luăm determinantul în relația $A^2=-I_n$. Folosind multiplicativitatea determinantului și scoaterea scalarului dintr-o matrice de ordin $n$ ($\det(cM)=c^n\det M$):
+\[ \bigl(\det A\bigr)^2=\det(A^2)=\det(-I_n)=(-1)^n\det(I_n)=(-1)^n . \]
+Matricea $A$ având elemente \emph{reale}, numărul $\det A$ este real, deci $(\det A)^2\ge0$; mai mult, din egalitatea de mai sus $(\det A)^2=(-1)^n\neq0$, deci $(\det A)^2>0$. Rezultă $(-1)^n>0$, adică $(-1)^n=1$: numărul $n$ este \emph{par}.\\[2pt]
+\emph{Existența.} Fie $n=2m$ par. Pornim de la blocul $2\times2$
+\[ J=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad\text{pentru care}\qquad J^2=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}=-I_2 , \]
+și luăm matricea bloc-diagonală cu $m$ astfel de blocuri pe diagonală (restul intrărilor fiind nule):
+\[ A=\begin{pmatrix}
+ J & O_2 & \cdots & O_2\\
+ O_2 & J & \cdots & O_2\\
+ \vdots & \vdots & \ddots & \vdots\\
+ O_2 & O_2 & \cdots & J
+\end{pmatrix}
+=\begin{pmatrix}
+ 0&-1& & & & \\
+ 1& 0& & & & \\
+  &  &0&-1& & \\
+  &  &1& 0& & \\
+  &  & &  &\ddots& \\
+  &  & &  & &\begin{matrix}0&-1\\1&0\end{matrix}
+\end{pmatrix}\in M_n(\mathbb{R}) . \]
+Înmulțirea matricelor bloc-diagonale se face bloc cu bloc, deci
+\[ A^2=\begin{pmatrix}
+ J^2 & O_2 & \cdots & O_2\\
+ O_2 & J^2 & \cdots & O_2\\
+ \vdots & \vdots & \ddots & \vdots\\
+ O_2 & O_2 & \cdots & J^2
+\end{pmatrix}
+=\begin{pmatrix}
+ -I_2 & O_2 & \cdots & O_2\\
+ O_2 & -I_2 & \cdots & O_2\\
+ \vdots & \vdots & \ddots & \vdots\\
+ O_2 & O_2 & \cdots & -I_2
+\end{pmatrix}=-I_n . \]
+Deci pentru orice $n$ par există o astfel de matrice.\\[2pt]
+\emph{Observație.} Argumentul folosește \emph{esențial} că elementele sunt reale: peste $\mathbb{C}$ concluzia cade, căci $A=iI_n$ verifică $A^2=-I_n$ pentru \emph{orice} $n$ (aici $\det A=i^n$ nu mai este real, deci pătratul său poate fi negativ). Interpretare: o matrice reală cu $A^2=-I_n$ înzestrează $\mathbb{R}^n$ cu o „înmulțire cu $i$'', ceea ce forțează dimensiunea să fie pară.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.17}{}
+Fie $A,B\in M_2(\mathbb{C})$ două matrice nilpotente care comută ($AB=BA$). Arătați că $AB=O_2$.
+
+\lema
+(Lema~\ref{lema:comut2x2} din carte.) Fie $A,B\in M_2(\mathbb{C})$ cu $AB=BA$. Dacă $B$ \emph{nu} este scalară, atunci există $x,y\in\mathbb{C}$ astfel încât $A=xB+yI_2$.
+\demo Cum $B$ nu este scalară, există un vector $v\in\mathbb{C}^2$ astfel încât $v$ și $Bv$ să fie liniar independenți: altfel, pentru \emph{orice} $v$ am avea $Bv\in\langle v\rangle$, adică orice vector nenul ar fi vector propriu al lui $B$ --- ceea ce forțează $B$ scalară. Așadar $\{v,Bv\}$ este o bază a lui $\mathbb{C}^2$.
+
+Scriem $Av$ în această bază: $Av=\alpha v+\beta\,Bv$, cu $\alpha,\beta\in\mathbb{C}$. Arătăm că $A=\beta B+\alpha I_2$, verificând egalitatea pe cei doi vectori ai bazei.
+\begin{itemize}[nosep,leftmargin=1.6em]
+  \item Pe $v$: $\ (\beta B+\alpha I_2)v=\beta\,Bv+\alpha v=Av$ (chiar definiția lui $\alpha,\beta$).
+  \item Pe $Bv$: folosind $AB=BA$,
+  \[ A(Bv)=B(Av)=B(\alpha v+\beta\,Bv)=\alpha\,Bv+\beta\,B^2v=(\beta B+\alpha I_2)(Bv). \]
+\end{itemize}
+Două aplicații liniare care coincid pe o bază sunt egale, deci $A=\beta B+\alpha I_2$. $\square$
+
+\sol Dacă $B=O_2$, atunci $AB=O_2$ și nu mai e nimic de arătat. Presupunem deci $B\neq O_2$.
+
+\emph{Pasul 1: $B$ nu este scalară.} O matrice scalară $\lambda I_2$ care este nilpotentă are $\lambda=0$, deci este nulă. Cum $B\neq O_2$ este nilpotentă, ea nu poate fi scalară.
+
+\emph{Pasul 2: $A=xB+yI_2$.} Matricele $A$ și $B$ comută, iar $B$ nu este scalară; prin lemă, există $x,y\in\mathbb{C}$ cu $A=xB+yI_2$.
+
+\emph{Pasul 3: $y=0$, deci $A$ și $B$ sunt proporționale.} O matrice nilpotentă de ordin $2$ are ambele valori proprii nule, deci urma nulă: $\Tr A=\Tr B=0$. Luând urma în relația de la Pasul 2 și folosind liniaritatea ei,
+\[ 0=\Tr A=x\,\Tr B+y\,\Tr(I_2)=x\cdot0+2y=2y , \]
+de unde $y=0$. Așadar $A=xB$.
+
+\emph{Pasul 4: concluzia.} Prin teorema Cayley--Hamilton aplicată lui $B$,
+\[ B^2-\Tr(B)\,B+\det(B)\,I_2=O_2 . \]
+Matricea $B$ fiind nilpotentă, ambele valori proprii sunt $0$, deci $\Tr B=0$ și $\det B=0$; rămâne $B^2=O_2$. Prin urmare
+\[ AB=(xB)B=x\,B^2=O_2 . \]
+
+\emph{Observație 1.} Concluzia este mult mai tare decât cea generală (Problema OJM.14): acolo, din comutare, aflăm doar că $AB$ este \emph{nilpotentă}; în $M_2$ ea este de fapt \emph{nulă}, iar cele două matrice sunt chiar proporționale.\\[2pt]
+\emph{Observație 2.} Rezultatul este strict bidimensional. În $M_3(\mathbb{C})$ el cade: pentru
+\[ A=B=J=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix} \]
+matricele comută (fiind egale) și sunt nilpotente ($J^3=O_3$), dar $AB=J^2\neq O_3$ (are $1$ pe poziția $(1,3)$). Motivul de fond: lema folosită este specifică lui $M_2$ --- acolo centralizatorul unei matrice nescalare $B$ este doar planul $\{xB+yI_2\}$, pe când în $M_3$ el este mult mai mare, iar $A$ nu mai este forțată să fie proporțională cu $B$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.18}{Clasică}
+Fie $n \geq 3$ și $A \in \Mn$. Arătați că
+\[
+  \adj\bigl(\adj(A)\bigr) = \bigl(\det A\bigr)^{n-2} A.
+\]
+\sol Discutăm după rangul lui $A$, folosind trihotomia din Lema~\ref{lema:rangadj} ($\rang(\adj A) \in \{n,1,0\}$ după cum $\rang A$ este egal cu $n$, cu $n-1$ sau este $\leq n-2$).
+
+Cazul $\rang(A) = n$. Notăm $d = \det A \neq 0$. Din identitatea fundamentală $A \cdot \adj(A) = d\,I_n$ rezultă $\adj(A) = d\,A^{-1}$, care este inversabilă, cu $\det(\adj A) = d^{\,n} \det(A^{-1}) = d^{\,n-1}$. Aplicând aceeași identitate matricei $\adj(A)$:
+\[
+  \adj\bigl(\adj A\bigr) = \det(\adj A) \cdot \bigl(\adj A\bigr)^{-1}
+  = d^{\,n-1} \cdot \bigl(d\,A^{-1}\bigr)^{-1}
+  = d^{\,n-1} \cdot \frac{A}{d} = d^{\,n-2} A.
+\]
+
+Cazul $\rang(A) = n-1$. Aici $\det A = 0$, deci membrul drept este $\On$ (exponentul este $n-2 \geq 1$ tocmai pentru că $n \geq 3$). Prin Lema~\ref{lema:rangadj}, $\rang(\adj A) = 1 \leq n-2\,$; aplicând din nou Lema~\ref{lema:rangadj}, de data aceasta matricei $\adj(A)$ (care se încadrează în cazul „rang $\leq n-2$''), obținem $\adj(\adj A) = \On$. $\checkmark$
+
+Cazul $\rang(A) \leq n-2$. Prin Lema~\ref{lema:rangadj}, $\adj(A) = \On$, iar $\adj(\On) = \On$ (toți minorii de ordin $n-1$ sunt nuli); membrul drept este tot $\On$. $\checkmark$
+
+\begin{obs}
+Pentru $n = 2$ formula devine $\adj(\adj A) = A$, care se verifică direct: $\adj\bigl(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\bigr) = \bigl(\begin{smallmatrix} d & -b \\ -c & a \end{smallmatrix}\bigr)$, iar aplicând de două ori această operație revenim la matricea inițială. Cazul interesant al problemei este exact cazul degenerat $\rang A = n-1$, în care \emph{ambele} ramuri ale Lemei~\ref{lema:rangadj} se aplică în lanț.
+\end{obs}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.19}{Clasică}
+Fie $A \in \Mn$ de rang $1$ și fie $t = \Tr(A)$. Arătați că $I_n + A$ este inversabilă dacă și numai dacă $t \neq -1$ și că, în acest caz,
+\[
+(I_n + A)^{-1} = I_n - \frac{1}{1+t}\,A.
+\]
+\sol Toată problema se sprijină pe identitatea de rang $1$ (Lema~\ref{lema:rang1}): $A^2 = t\,A$.
+
+Dacă $t \neq -1$, căutăm inversa sub forma $I_n + cA$ și lăsăm identitatea să decidă valoarea lui $c$:
+\[
+(I_n + A)(I_n + cA) = I_n + (1+c)A + cA^2 = I_n + \bigl(1 + c + ct\bigr)A,
+\]
+expresie egală cu $I_n$ exact când $c(1+t) = -1$, adică $c = -\dfrac{1}{1+t}$. Produsul în ordine inversă dă același rezultat (apar aceleași puteri ale lui $A$), deci
+\[
+(I_n + A)^{-1} = I_n - \frac{1}{1+t}\,A.
+\]
+
+Dacă $t = -1$, identitatea devine $A^2 = -A$, adică $(I_n + A)A = O_n$. Cum $A \neq O_n$ (are rangul $1$), $A$ are o coloană nenulă $v$, iar $(I_n + A)v = 0$ cu $v \neq 0$: matricea $I_n + A$ are nucleul netrivial, deci nu este inversabilă. Împreună cu primul caz, obținem echivalența cerută.
+
+\textbf{Observație.} Este cazul particular al formulei Sherman--Morrison din algebra numerică: pentru $A = uv^T$ (forma generală a unei matrice de rang $1$), $t = v^T u$, iar inversa perturbării de rang $1$ a identității nu costă mai mult decât o corecție de rang $1$. Tiparul de reținut: pentru matricele de rang $1$, identitatea $A^2 = tA$ înlocuiește \emph{orice} calcul cu puteri.
+\vspace{1mm}\hrule
+
+\nivel{ojm}{Nivelul OJM}{Faza județeană --- probleme care combină două rezultate.}
+\prob{ojm}{OJM.1}{}
+Fie $A,B\in M_2(\mathbb{Z})$ cu $\det A=\det B=1$. Arătați că $\det(A+B)$ și $\det(A-B)$ au aceeași paritate.
+\lema
+Pentru orice $A,B\in M_2(\mathbb{R})$ are loc identitatea
+\[ \det(A+B)+\det(A-B)=2\bigl(\det A+\det B\bigr). \]
+\demo Prin Lema~\ref{lema:detxAyB}, pentru matrice de ordin $2$ funcția $t\mapsto\det(A+tB)$ este un polinom de grad cel mult $2$ în $t$:
+\[ \det(A+tB)=\det A+t\,\Tr\!\bigl(\adj(A)\,B\bigr)+t^2\det B. \]
+Luăm $t=1$ și $t=-1$ și adunăm cele două egalități: termenul liniar se anulează (coeficienții $+1$ și $-1$ se reduc), iar termenul pătratic se dublează. Rezultă
+\[ \det(A+B)+\det(A-B)=2\det A+2\det B. \qquad\square \]
+
+\sol Aplicăm lema matricelor din enunț. Cum $\det A=\det B=1$,
+\[ \det(A+B)+\det(A-B)=2(1+1)=4, \]
+număr par. Iar $A,B$ având elemente întregi, atât $\det(A+B)$ cât și $\det(A-B)$ sunt numere \emph{întregi}. Suma a două numere întregi este pară exact când ele au aceeași paritate; deci $\det(A+B)$ și $\det(A-B)$ au aceeași paritate.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.2}{Clasică}
+Fie $A,B\in\Mn$ cu $AB=BA$ și $B$ nilpotentă. Arătați că $\det(A+B)=\det(A)$.
+\sol Deoarece $A$ și $B$ comută, prin teorema de triangularizare simultană a matricelor care comută (Teorema~\ref{teo:triangsimultana}) există $P\in\mathrm{GL}_n(\mathbb{C})$ astfel încât $P^{-1}AP=T_A$ și $P^{-1}BP=T_B$ sunt \emph{ambele} superior triunghiulare. Cum $B$ este nilpotentă, toate valorile ei proprii sunt $0$, deci diagonala lui $T_B$ este nulă. Atunci $P^{-1}(A+B)P=T_A+T_B$ este superior triunghiulară, având aceeași diagonală ca $T_A$. Determinantul unei matrice triunghiulare este produsul elementelor diagonale, deci
+\[ \det(A+B)=\det(T_A+T_B)=\prod_i (T_A)_{ii}=\det(T_A)=\det(A). \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.3}{Clasică}
+Fie $n\ge1$ și $A\in\Mn$ cu $A^2=\On$.
+\begin{parti}
+  \item Arătați că $\rang(A)\le n/2$.
+  \item Reciproc, pentru orice $r$ cu $0\le r\le n/2$, construiți $A\in\Mn$ cu $A^2=\On$ și $\rang(A)=r$.
+\end{parti}
+\sol (a) Aplicăm inegalitatea lui Frobenius (Teorema~\ref{teo:frobeniusrang}) $\rang(XY)+\rang(YZ)\le\rang(Y)+\rang(XYZ)$ cu $X=Z=A$ și $Y=I_n$:
+\[ \rang(A)+\rang(A)\le\rang(I_n)+\rang(A^2)=n+0, \]
+deoarece $A^2=\On$. Rezultă $2\rang(A)\le n$, adică $\rang(A)\le n/2$.\\[2pt]
+(b) Fie $J=\begin{psmallmatrix}0&1\\0&0\end{psmallmatrix}$ și considerăm matricea bloc-diagonală cu $r$ blocuri $J$ pe diagonală, completată cu un bloc nul (toate celelalte intrări fiind $0$):
+\[ A=\begin{pmatrix}
+ J & O_2 & \cdots & O_2 & O\\
+ O_2 & J & \cdots & O_2 & O\\
+ \vdots & \vdots & \ddots & \vdots & \vdots\\
+ O_2 & O_2 & \cdots & J & O\\
+ O & O & \cdots & O & O_{n-2r}
+\end{pmatrix}
+=\begin{pmatrix}
+ 0&1& & & & & \\
+ 0&0& & & & & \\
+  &  &\ddots& & & & \\
+  &  & &0&1& & \\
+  &  & &0&0& & \\
+  &  & & & &\ddots& \\
+  &  & & & & &0
+\end{pmatrix}\in\Mn , \]
+unde primele $2r$ linii și coloane conțin cele $r$ blocuri $J$, iar ultimele $n-2r$ sunt nule.
+
+Înmulțirea bloc-diagonală se face bloc cu bloc, iar $J^2=O_2$, deci $A^2=\On$. Rangul unei matrice bloc-diagonale este suma rangurilor blocurilor, iar $\rang(J)=1$, deci $\rang(A)=r\cdot1+0=r$. Condiția $2r\le n$ asigură că blocul nul $O_{n-2r}$ are sens (eventual vid, când $n=2r$).
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.4}{}
+Fie $A\in M_n(\mathbb{C})$ o matrice autoadjunctă ($A^*=A$) și unitară ($A^*A=I_n$). Arătați că $\det(A)\in\{1,-1\}$.
+\sol Din $A^*=A$ și $A^*A=I_n$ rezultă $A^2=A^*A=I_n$. Prin urmare orice valoare proprie $\lambda$ a lui $A$ satisface $\lambda^2=1$ (dacă $Ax=\lambda x$ cu $x\neq0$, atunci $x=A^2x=\lambda^2x$), deci $\lambda\in\{1,-1\}$. Cum determinantul este produsul valorilor proprii (cu multiplicități), $\det(A)=\prod_i\lambda_i$ este un produs de numere egale cu $\pm1$, așadar $\det(A)\in\{1,-1\}$.\\[2pt]
+\emph{Alternativ:} $A$ autoadjunctă $\Rightarrow$ valorile proprii sunt reale; $A$ unitară $\Rightarrow$ ele au modulul $1$; împreună, $\lambda\in\{1,-1\}$.\\[2pt]
+\emph{Observație.} Ambele ipoteze sunt necesare: $A=2I_n$ este autoadjunctă, dar $\det(A)=2^n$; iar $A=\operatorname{diag}(i,1,\dots,1)$ este unitară, dar $\det(A)=i\notin\{1,-1\}$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.5}{}
+Determinați toate matricele $A\in M_n(\mathbb{C})$ care se pot scrie ca produs de două matrice de rang $1$.
+\sol Răspuns: exact matricele cu $\rang(A)\le1$.\\[2pt]
+($\Rightarrow$) Dacă $A=BC$ cu $\rang(B)=\rang(C)=1$, atunci $\rang(A)=\rang(BC)\le\min\{\rang(B),\rang(C)\}=1$.\\[2pt]
+($\Leftarrow$) Fie $\rang(A)\le1$. Dacă $\rang(A)=1$, prin \emph{forma canonică} (Teorema~\ref{teo:formacanonica}) există $P,Q\in\mathrm{GL}_n(\mathbb{C})$ cu
+\[ A=PEQ,\qquad E=\begin{pmatrix} I_1 & 0\\ 0 & 0\end{pmatrix}=\operatorname{diag}(1,0,\dots,0). \]
+Cum $E^2=E$ și $\rang(E)=1$, scriem $E=E\cdot E$, deci
+\[ A=PEQ=P(E\cdot E)Q=(PE)(EQ), \]
+unde $\rang(PE)=\rang(EQ)=\rang(E)=1$ ($P,Q$ fiind inversabile). Așadar $A$ este produs de două matrice de rang $1$. Dacă $\rang(A)=0$ (adică $A=O_n$), luăm $B=C=E_{12}$ (unitatea matriceală cu $1$ pe poziția $(1,2)$): $\rang(B)=\rang(C)=1$ și $BC=O_n$.\\[2pt]
+\emph{Observație (construcție directă).} Pentru $\rang(A)=1$, scriind $A=CL$ cu $C$ coloană și $L$ linie nenule, avem imediat $A=(C\,e_1^{\,t})(e_1\,L)$, produs de două matrice de rang $1$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.6}{}
+Determinați toate matricele $A\in M_2(\mathbb{C})$ cu proprietatea că pentru orice $n\ge1$ există un polinom $P$ (depinzând eventual de $n$) astfel încât $A^{n+1}=P(A^n)$.
+\sol Răspuns: toate matricele, cu excepția celor diagonalizabile cu două valori proprii distincte nenule $\lambda\neq\mu$ pentru care $\lambda/\mu$ este rădăcină a unității.\\[2pt]
+Prin Cayley--Hamilton, $A^2=\Tr(A)\,A-\det(A)\,I_2$, deci orice putere a lui $A$ (și orice polinom în ea) aparține planului $\{aI_2+bA\}$; în particular $P(A^n)\in\operatorname{span}\{I_2,A^n\}$. Cum $A^{n+1}=A\cdot A^n$, existența lui $P$ cu $A^{n+1}=P(A^n)$ echivalează cu $A^{n+1}\in\operatorname{span}\{I_2,A^n\}$.\\[2pt]
+Dacă $A^n$ \emph{nu} este scalară, atunci $\{I_2,A^n\}$ generează tot planul $\{aI_2+bA\}$ (din $A^n=aI_2+bA$ cu $b\neq0$ rezultă $A\in\operatorname{span}\{I_2,A^n\}$), deci $A^{n+1}$ aparține acestui span: există $P$ (de grad $\le1$). Dacă $A^n=cI_2$ este scalară, atunci $P(A^n)=P(c)I_2$ este scalară, iar $A^{n+1}=cA$; aceasta e scalară doar dacă $c=0$ (și atunci $A^{n+1}=O_2=P(A^n)$) sau $A$ e scalară. Așadar proprietatea cade la un anume $n$ \emph{doar} dacă $A^n$ este scalară nenulă cu $A$ nescalară.\\[2pt]
+Fie $\lambda,\mu$ valorile proprii ale lui $A$. Dacă $A$ este scalară, nilpotentă ($A^2=O_2$), cu valoare proprie dublă nenulă (bloc Jordan $\lambda I_2+N$: $A^n=\lambda^nI_2+n\lambda^{n-1}N$ e nescalară) sau cu o valoare proprie nulă și una nenulă ($A^n$ are valorile proprii $0$ și $\mu^n\neq0$, deci nescalară), atunci $A^n$ nu este niciodată scalară nenulă, deci proprietatea are loc pentru orice $n$. Dacă $A$ este diagonalizabilă cu $\lambda,\mu$ distincte și nenule, atunci $A^n=cI_2\iff\lambda^n=\mu^n\iff(\lambda/\mu)^n=1$; un astfel de $n$ există exact când $\lambda/\mu$ este rădăcină a unității --- singurul caz în care proprietatea cade.\\[2pt]
+\emph{Observație.} $A=\operatorname{diag}(1,-1)$ cade la $n=2$ ($A^2=I_2$ scalară, dar $A^3=A$ nu e polinom în $I_2$); în schimb $\operatorname{diag}(1,2)$ are proprietatea pentru orice $n$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.7}{}
+Fie $A,B\in M_n(\mathbb{C})$ două matrice care comută.
+\begin{parti}
+  \item Presupunând că $A$ și $B$ au rang $1$ și $AB\neq O_n$, arătați că $\Tr(AB)=\Tr(A)\,\Tr(B)$.
+  \item Arătați, printr-un exemplu, că egalitatea de la (a) poate cădea dacă una dintre matrice nu are rangul $1$.
+\end{parti}
+\sol (a) Prin \emph{lema matricelor de rang $1$}, o matrice $M$ de rang $1$ satisface $M^2=\Tr(M)\,M$; deci $A^2=\Tr(A)\,A$ și $B^2=\Tr(B)\,B$. Cum $A$ și $B$ comută ($AB=BA$),
+\[ (AB)^2=A(BA)B=A(AB)B=A^2B^2=\Tr(A)\Tr(B)\,AB. \]
+Cum $\rang(AB)\le\min\{\rang A,\rang B\}=1$ și $AB\neq O_n$, avem $\rang(AB)=1$, deci $(AB)^2=\Tr(AB)\,AB$. Comparând, $\Tr(AB)\,AB=\Tr(A)\Tr(B)\,AB$, iar $AB\neq O_n$ dă $\Tr(AB)=\Tr(A)\,\Tr(B)$. (Ipoteza $AB\neq O_n$ este și ea necesară: pentru $A=\operatorname{diag}(1,0)$, $B=\operatorname{diag}(0,1)$ --- de rang $1$, care comută --- avem $AB=O_2$, deci $\Tr(AB)=0\neq1=\Tr(A)\Tr(B)$.)\\[2pt]
+(b) Fie $A=I_2$ (de rang $2$) și $B=\operatorname{diag}(1,0)$ (de rang $1$); ele comută, însă $\Tr(AB)=\Tr(B)=1$, în timp ce $\Tr(A)\Tr(B)=2\cdot1=2$. Deci egalitatea nu mai are loc dacă se renunță la ipoteza de rang $1$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.8}{}
+Fie $n\ge2$ un întreg. Determinați toate polinoamele $P\in\mathbb{C}[X]$ cu proprietatea că, pentru orice $A\in M_n(\mathbb{C})$,
+\[ P(A)=O_n \;\Longleftrightarrow\; A=O_n. \]
+\sol Răspuns: exact polinoamele $P(X)=cX$ cu $c\in\mathbb{C}^{*}$ (gradul $1$, fără termen liber).\\[2pt]
+\emph{Necesitatea.} Fie $P$ cu proprietatea cerută. Testăm mai întâi pe matrice scalare: pentru $\lambda\in\mathbb{C}$ și $A=\lambda I_n$ avem $P(\lambda I_n)=P(\lambda)\,I_n$, deci $P(A)=O_n\Leftrightarrow P(\lambda)=0$, în timp ce $A=O_n\Leftrightarrow\lambda=0$. Echivalența cerută devine
+\[ P(\lambda)=0 \;\Longleftrightarrow\; \lambda=0, \]
+adică $0$ este \emph{singura} rădăcină complexă a lui $P$ (în particular $P(0)=0$). Prin urmare $P(X)=cX^{\,k}$ cu $c\neq0$ și $k=\deg P\ge1$.\\[2pt]
+Testăm acum o matrice nilpotentă. Dacă $k\ge2$: cum $n\ge2$, matricea $A=E_{12}$ (cu $1$ pe poziția $(1,2)$ și $0$ în rest) este nenulă și are $A^2=O_n$, deci $A^k=O_n$. Atunci $P(A)=cA^{k}=O_n$ deși $A\neq O_n$, contrazicând implicația „$\Rightarrow$''. Rămâne $k=1$, adică $P(X)=cX$ cu $c\neq0$.\\[2pt]
+\emph{Suficiența.} Pentru $P(X)=cX$ cu $c\neq0$ avem $P(A)=cA$, iar $cA=O_n\Leftrightarrow A=O_n$; ambele sensuri au loc.\\[2pt]
+\emph{Observație.} Ipoteza $n\ge2$ este esențială pentru pasul $k=1$: în $M_1(\mathbb{C})=\mathbb{C}$ nu există elemente nilpotente nenule, deci acolo \emph{orice} $P(X)=cX^{k}$ ($c\neq0$, $k\ge1$) are proprietatea, fiindcă $z^k=0\Leftrightarrow z=0$. Existența matricelor nenule cu $A^k=O_n$ (posibilă exact când $n\ge2$) este ceea ce forțează $k=1$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.9}{Clasică}
+Fie $A\in M_n(\mathbb{C})$.
+\begin{parti}
+  \item Arătați că, dacă $A$ este nilpotentă (există $m\ge1$ cu $A^m=O_n$), atunci $A^n=O_n$.
+  \item Pentru fiecare $k$ cu $1\le k\le n$, construiți o matrice $A_k\in M_n(\mathbb{C})$ astfel încât $A_k^{\,j}\neq O_n$ pentru $1\le j\le k-1$ și $A_k^{\,k}=O_n$.
+\end{parti}
+\sol (a) Fie $\lambda\in\mathbb{C}$ o valoare proprie a lui $A$, cu $Av=\lambda v$ și $v\neq0$. Atunci $A^m v=\lambda^m v$, iar din $A^m=O_n$ rezultă $\lambda^m v=0$, deci $\lambda^m=0$, adică $\lambda=0$. Prin urmare toate valorile proprii ale lui $A$ sunt nule, iar polinomul caracteristic este $f_A(X)=\det(XI_n-A)=\prod_{i=1}^{n}(X-\lambda_i)=X^n$. Prin teorema Cayley și Hamilton, $f_A(A)=O_n$, adică $A^n=O_n$.\\[2pt]
+(b) Fie $J_k\in M_k(\mathbb{C})$ blocul Jordan nilpotent, cu $1$ pe supradiagonală și $0$ în rest ($(J_k)_{i,i+1}=1$ pentru $1\le i\le k-1$), și considerăm matricea bloc-diagonală
+\[ A_k=\begin{pmatrix} J_k & O\\ O & O_{\,n-k}\end{pmatrix}\in M_n(\mathbb{C}). \]
+Puterile lui $J_k$ „împing'' diagonala de $1$-uri spre colțul din dreapta-sus: $(J_k^{\,j})_{i,i+j}=1$ pentru $1\le i\le k-j$, restul $0$. Astfel $J_k^{\,j}\neq O_k$ pentru $0\le j\le k-1$ (are un $1$ pe poziția $(1,1+j)$), iar $J_k^{\,k}=O_k$ (a $k$-a supradiagonală iese din matrice). Cum $A_k^{\,j}=\begin{psmallmatrix}J_k^{\,j}&O\\O&O\end{psmallmatrix}$, obținem
+\[ A_k^{\,j}\neq O_n\quad(1\le j\le k-1),\qquad A_k^{\,k}=O_n. \]
+În particular, pentru $k=n$ avem $A_n=J_n$ cu $A_n^{\,n-1}\neq O_n$ și $A_n^{\,n}=O_n$: marginea din (a) este atinsă (există matrice nilpotente de index exact $n$).\\[2pt]
+\emph{Exemplu ($k=3$).} Colțul stânga-sus al lui $A_3$ este $\begin{psmallmatrix}0&1&0\\0&0&1\\0&0&0\end{psmallmatrix}$; atunci $A_3^2$ are un singur $1$, pe poziția $(1,3)$, iar $A_3^3=O_n$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.10}{Clasică}
+Fie $A\in M_n(\mathbb{C})$ cu $A^2=I_n$.
+\begin{parti}
+  \item Arătați că $\rang(A-I_n)+\rang(A+I_n)=n$.
+  \item Fie $p$ numărul valorilor proprii egale cu $1$ (cu multiplicitate). Arătați că $p=\dfrac{n+\Tr(A)}{2}$; deduceți că $\Tr(A)$ și $n$ au aceeași paritate și $-n\le\Tr(A)\le n$.
+\end{parti}
+\sol Polinomul $X^2-1=(X-1)(X+1)$ are rădăcini simple și anulează $A$ (căci $A^2-I_n=O_n$), deci prin criteriul polinomului minimal (Teorema~\ref{teo:criteriudiag}) $A$ este diagonalizabilă, cu valori proprii în $\{-1,1\}$; astfel $A$ este asemenea cu $\operatorname{diag}(I_p,-I_q)$, unde $p$, respectiv $q$, este numărul valorilor proprii egale cu $1$, respectiv $-1$, și $p+q=n$.\\[2pt]
+(a) $A-I_n$ este asemenea cu $\operatorname{diag}(O_p,-2I_q)$, de rang $q$, iar $A+I_n$ cu $\operatorname{diag}(2I_p,O_q)$, de rang $p$. Prin urmare $\rang(A-I_n)+\rang(A+I_n)=q+p=n$.\\[2pt]
+\emph{Alternativ (fără diagonalizare).} Matricele $A-I_n$ și $A+I_n$ comută, cu $(A-I_n)(A+I_n)=A^2-I_n=O_n$; prin inegalitatea lui Sylvester, $\rang(A-I_n)+\rang(A+I_n)\le n+\rang(O_n)=n$. Reciproc, folosind subaditivitatea rangului, $\rang(A+I_n)+\rang(A-I_n)=\rang(A+I_n)+\rang(I_n-A)\ge\rang\bigl((A+I_n)+(I_n-A)\bigr)=\rang(2I_n)=n$. Deci suma este exact $n$.\\[2pt]
+(b) $\Tr(A)=p\cdot1+q\cdot(-1)=p-q$; împreună cu $p+q=n$, aceasta dă $p=\dfrac{n+\Tr(A)}{2}$. Cum $p\in\mathbb{Z}$, numărul $n+\Tr(A)$ este par, deci $\Tr(A)\equiv n\pmod2$. Iar $0\le p\le n$ dă $-n\le\Tr(A)\le n$.\\[2pt]
+\emph{Observație.} $E=\tfrac12(I_n+A)$ este idempotentă: $E^2=\tfrac14(I_n+A)^2=\tfrac14(2I_n+2A)=E$ (folosind $A^2=I_n$). Prin lema urmei unei matrice idempotente (Lema~\ref{lema:idemptrrang}), $\rang(E)=\Tr(E)=\tfrac{n+\Tr(A)}{2}=p$, în acord cu (b); $E$ este proiecția pe subspațiul propriu al valorii proprii $1$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.11}{Clasică}
+Fie $A\in M_n(\mathbb{C})$ cu $A^2=A$.
+\begin{parti}
+  \item Arătați că $\det(I_n+A)=2^{\Tr(A)}$.
+  \item Arătați că $I_n-A$ este inversabilă dacă și numai dacă $A=O_n$.
+\end{parti}
+\sol Polinomul $X^2-X=X(X-1)$ are rădăcini simple și anulează $A$, deci $A$ este diagonalizabilă, cu valori proprii în $\{0,1\}$; fie $p$ numărul valorilor proprii egale cu $1$. Prin lema urmei unei matrice idempotente (Lema~\ref{lema:idemptrrang}), $p=\rang(A)=\Tr(A)$.\\[2pt]
+(a) Dacă $A=SDS^{-1}$ cu $D=\operatorname{diag}(\lambda_1,\dots,\lambda_n)$, atunci $I_n+A=S(I_n+D)S^{-1}$, deci
+\[ \det(I_n+A)=\prod_{i=1}^n(1+\lambda_i)=2^{\,p}\cdot1^{\,n-p}=2^{\,p}=2^{\Tr(A)}. \]
+(b) La fel, $\det(I_n-A)=\prod_i(1-\lambda_i)=0^{\,p}\cdot1^{\,n-p}$, nenul dacă și numai dacă $p=0$. Dar $p=0$ înseamnă că toate valorile proprii sunt nule, iar $A$, fiind diagonalizabilă, este atunci $A=S\,O_n\,S^{-1}=O_n$. Așadar $I_n-A$ este inversabilă exact când $A=O_n$.\\[2pt]
+\emph{Observație.} Ipoteza $A^2=A$ este esențială la (a): pentru $A=(3)\in M_1(\mathbb{C})$, $\det(I_1+A)=4\neq2^{3}=2^{\Tr(A)}$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.12}{}
+Fie $A\in M_n(\mathbb{C})$ cu $A^3=2A$. Arătați că
+\[ \det(A^2+I_n)=3^{\,\rang(A)}. \]
+\sol Polinomul $P(X)=X^3-2X=X(X-\sqrt2)(X+\sqrt2)$ are rădăcini simple și $P(A)=O_n$, deci $A$ este diagonalizabilă, cu valori proprii în $\{0,\sqrt2,-\sqrt2\}$. Pentru o matrice diagonalizabilă rangul este numărul valorilor proprii nenule; fie $r=\rang(A)$ acest număr.\\[2pt]
+Scriind $A=SDS^{-1}$ cu $D$ diagonală, avem $A^2+I_n=S(D^2+I_n)S^{-1}$, deci valorile proprii ale lui $A^2+I_n$ sunt $\lambda_i^2+1$. Cum $\lambda_i^2+1=1$ pentru $\lambda_i=0$ și $\lambda_i^2+1=3$ pentru $\lambda_i=\pm\sqrt2$,
+\[ \det(A^2+I_n)=\prod_{i=1}^n(\lambda_i^2+1)=3^{\,r}\cdot1^{\,n-r}=3^{\,\rang(A)}. \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.13}{}
+Fie $A\in M_n(\mathbb{R})$ o matrice simetrică ($A^t=A$) cu
+\[ A^3=A+6I_n. \]
+Arătați că $A=2I_n$.
+\sol Prin teorema spectrală reală (Teorema~\ref{teo:spectrala}), matricea simetrică $A$ are toate valorile proprii reale și există o matrice ortogonală $U$ cu $U^tAU=\operatorname{diag}(\lambda_1,\dots,\lambda_n)$. Din $A^3=A+6I_n$, fiecare valoare proprie verifică $\lambda^3-\lambda-6=0$. Factorizăm:
+\[ \lambda^3-\lambda-6=(\lambda-2)(\lambda^2+2\lambda+3),\qquad \lambda^2+2\lambda+3=(\lambda+1)^2+2>0\ \text{pentru }\lambda\in\mathbb{R}, \]
+deci singura rădăcină reală este $\lambda=2$. Toate valorile proprii ale lui $A$ sunt deci egale cu $2$: $U^tAU=2I_n$, de unde $A=U(2I_n)U^t=2I_n$.\\[2pt]
+\emph{Observație.} Simetria este esențială: matricea nesimetrică $C=\begin{psmallmatrix}0&-3\\1&-2\end{psmallmatrix}$ verifică $C^3=C+6I_2$ (valorile ei proprii sunt rădăcinile complexe $-1\pm i\sqrt2$ ale factorului $\lambda^2+2\lambda+3$), dar $C\neq2I_2$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.14}{}
+Fie $A,B\in M_n(\mathbb{C})$ două matrice nilpotente care comută ($AB=BA$).
+\begin{parti}
+  \item Arătați că $A+B$ și $AB$ sunt nilpotente.
+  \item Arătați, prin exemple, că ambele concluzii pot cădea dacă $A$ și $B$ nu comută.
+\end{parti}
+\sol (a) Cum $A$ și $B$ sunt nilpotente, $A^n=B^n=O_n$ (Problema OJM.9). Deoarece $A$ și $B$ comută, putem dezvolta binomial:
+\[ (A+B)^{2n}=\sum_{j=0}^{2n}\binom{2n}{j}A^{\,j}B^{\,2n-j}. \]
+În fiecare termen, fie $j\ge n$ (și atunci $A^j=O_n$), fie $j\le n-1$, deci $2n-j\ge n+1\ge n$ (și atunci $B^{2n-j}=O_n$); toți termenii sunt nuli, deci $(A+B)^{2n}=O_n$. Tot din comutare, $(AB)^n=A^nB^n=O_n$.\\[2pt]
+(b) Fie $A=\begin{psmallmatrix}0&1\\0&0\end{psmallmatrix}$ și $B=\begin{psmallmatrix}0&0\\1&0\end{psmallmatrix}$, ambele nilpotente ($A^2=B^2=O_2$), care nu comută. Atunci $A+B=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$ satisface $(A+B)^2=I_2$, deci puterile ei sunt $I_2$ sau $A+B$, niciodată $O_2$: $A+B$ nu este nilpotentă. Iar $AB=\begin{psmallmatrix}1&0\\0&0\end{psmallmatrix}$ este idempotentă nenulă, deci $(AB)^k=AB\neq O_2$ pentru orice $k$: nici $AB$ nu este nilpotentă.\\[2pt]
+\emph{Cazul general.} Pentru $n\ge2$ oarecare, \emph{bordăm} cele două matrice cu zerouri, adică le privim ca blocuri în colțul stânga-sus:
+\[ A'=\begin{pmatrix} A & O\\ O & O_{n-2}\end{pmatrix},\qquad B'=\begin{pmatrix} B & O\\ O & O_{n-2}\end{pmatrix}\ \in M_n(\mathbb{C}). \]
+Înmulțirea pe blocuri arată că $A'^2=B'^2=\On$ (deci ambele rămân nilpotente) și că $A'B'\neq B'A'$. Mai mult,
+\[ (A'+B')^2=\begin{pmatrix}(A+B)^2 & O\\ O & O_{n-2}\end{pmatrix}=\begin{pmatrix}I_2 & O\\ O & O_{n-2}\end{pmatrix},\qquad A'B'=\begin{pmatrix}AB & O\\ O& O_{n-2}\end{pmatrix}, \]
+ambele idempotente și \emph{nenule}; puterile lor se repetă la infinit fără a se anula, deci nici $A'+B'$, nici $A'B'$ nu sunt nilpotente. (Pentru $n=1$ nu există contraexemplu: singura matrice nilpotentă din $M_1$ este $O_1$, iar concluziile de la (a) sunt banal adevărate.)
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.15}{Clasică}
+Fie $A,B\in M_n(\mathbb{C})$, cu $B$ inversabilă. Arătați că există un întreg $t$ cu $0\le t\le n$ pentru care $A+tB$ este inversabilă.
+\sol Scriem $A+tB=B\,(B^{-1}A+tI_n)$, deci
+\[ d(t)=\det(A+tB)=\det(B)\cdot\det(tI_n+B^{-1}A). \]
+Notând $M=B^{-1}A$ cu valorile proprii $\mu_1,\dots,\mu_n$, avem $\det(tI_n+M)=\prod_i(t+\mu_i)$, un polinom monic de grad $n$ în $t$. Cum $\det(B)\neq0$, funcția $d$ este un polinom de grad exact $n$ în $t$, deci are cel mult $n$ rădăcini; iar $A+tB$ este neinversabilă exact când $d(t)=0$.\\[2pt]
+Mulțimea $\{0,1,\dots,n\}$ are $n+1$ elemente, iar rădăcinile lui $d$ sunt cel mult $n$; prin principiul cutiei există deci un întreg $t\in\{0,\dots,n\}$ cu $d(t)\neq0$, adică $A+tB$ inversabilă.\\[2pt]
+\emph{Observație.} Marginea nu poate fi micșorată: pentru $B=I_n$ și $A=-\operatorname{diag}(1,2,\dots,n)$, matricea $A+tI_n=\operatorname{diag}(t-1,\dots,t-n)$ este neinversabilă pentru $t=1,2,\dots,n$, iar singurul întreg bun din $\{0,1,\dots,n\}$ rămâne $t=0$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.16}{}
+Fie $n\ge2$ fixat. Spunem că polinomul $P\in\mathbb{C}[X]$ \emph{anulează} matricea $A\in\Mn$ dacă $P(A)=\On$.
+\begin{parti}
+  \item Arătați că există polinoame \emph{nenule} care anulează o infinitate de matrice din $\Mn$.
+  \item Arătați că singurul polinom care anulează \emph{toate} matricele din $\Mn$ este polinomul nul.
+\end{parti}
+\sol (a) Luăm $P(X)=X^2$, polinom nenul. Fie $E_{12}$ matricea cu $1$ pe poziția $(1,2)$ și $0$ în rest (are sens, căci $n\ge2$). Un calcul direct dă $E_{12}^2=\On$: în produsul $E_{12}E_{12}$, singura intrare nenulă a primului factor este pe coloana $2$, iar singura intrare nenulă a celui de-al doilea este pe linia $1$, deci nu se „întâlnesc''. Prin urmare, pentru orice $t\in\mathbb{C}$, matricea
+\[ A_t=t\,E_{12} \qquad\text{satisface}\qquad P(A_t)=A_t^2=t^2E_{12}^2=\On . \]
+Matricele $A_t$ sunt distincte două câte două (elementul de pe poziția $(1,2)$ este chiar $t$), iar $t$ parcurge mulțimea infinită $\mathbb{C}$: așadar $P(X)=X^2$ anulează o infinitate de matrice.\\[2pt]
+\emph{Variantă conceptuală.} Mulțimea matricelor anulate de un polinom fixat $P$ este stabilă la conjugare, căci $P(SAS^{-1})=S\,P(A)\,S^{-1}$. Deci e de ajuns ca $P$ să anuleze o singură matrice \emph{nescalară} $A$ --- de pildă polinomul caracteristic al lui $A$, prin Cayley--Hamilton --- pentru ca $P$ să anuleze întreaga clasă de conjugare a lui $A$, care este infinită.\\[2pt]
+(b) Fie $P$ un polinom care anulează toate matricele din $\Mn$. Îl testăm pe matricele \emph{scalare}: pentru $\lambda\in\mathbb{C}$, din $(\lambda I_n)^k=\lambda^kI_n$ rezultă
+\[ P(\lambda I_n)=P(\lambda)\,I_n . \]
+Ipoteza dă $P(\lambda)\,I_n=\On$, deci $P(\lambda)=0$, \emph{pentru orice} $\lambda\in\mathbb{C}$. Un polinom nenul de grad $d$ are cel mult $d$ rădăcini, pe când $\mathbb{C}$ este infinită; așadar $P$ are o infinitate de rădăcini, deci $P=0$.\\[2pt]
+\emph{Observație.} Contrastul dintre cele două puncte este esența problemei: „o infinitate de matrice'' se poate, dar „toate matricele'' nu --- deja matricele scalare, singure, blochează orice polinom nenul. Altfel spus, $\Mn$ nu satisface nicio \emph{identitate polinomială într-o singură variabilă}. În mai multe variabile situația se schimbă radical: prin teorema lui Amitsur--Levitzki, polinomul standard de grad $2n$,
+\[ S_{2n}(X_1,\dots,X_{2n})=\sum_{\sigma\in S_{2n}}\operatorname{sgn}(\sigma)\,X_{\sigma(1)}X_{\sigma(2)}\cdots X_{\sigma(2n)}, \]
+se anulează identic pe $\Mn$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.17}{}
+Fie $A\in\Mn$ o matrice \emph{nenulă} cu proprietatea $A^3=2A$. Fie $P\in\mathbb{C}[X]$ un polinom astfel încât
+\[ P(A^k)=A^k\qquad\text{pentru orice }k\ge1 . \]
+Arătați că $P(X)=X$.
+\sol \emph{Pasul 1: valorile proprii ale lui $A$ sunt $0$, $\sqrt2$ și $-\sqrt2$.} Dacă $Av=\lambda v$ cu $v\neq0$, atunci $A^3v=\lambda^3v$, iar din $A^3=2A$ obținem $\lambda^3v=2\lambda v$, deci $\lambda^3=2\lambda$, adică $\lambda(\lambda^2-2)=0$:
+\[ \lambda\in\{0,\ \sqrt2,\ -\sqrt2\}. \]
+
+\emph{Pasul 2: $A$ are o valoare proprie nenulă.} Presupunem contrariul: toate valorile proprii ale lui $A$ sunt $0$, deci $A$ este nilpotentă și $A^m=\On$ pentru un $m$. Din $A^3=2A$ rezultă, prin inducție, $A^{2j+1}=2^{\,j}A$ pentru orice $j\ge0$ (pasul inductiv: $A^{2j+3}=A^{2j+1}A^2=2^{\,j}A\cdot A^2=2^{\,j}A^3=2^{\,j+1}A$). Alegând $j$ cu $2j+1\ge m$, membrul stâng este $\On$, deci $2^{\,j}A=\On$, adică $A=\On$ --- contrazice ipoteza. Așadar $A$ are o valoare proprie $\lambda_0$ cu $\lambda_0^2=2$, deci $|\lambda_0|=\sqrt2$.
+
+\emph{Pasul 3: puterile lui $\lambda_0$ sunt distincte două câte două.} Într-adevăr, $|\lambda_0^{\,k}|=(\sqrt2)^k=2^{k/2}$, iar funcția $k\mapsto2^{k/2}$ este strict crescătoare; deci $\lambda_0,\lambda_0^2,\lambda_0^3,\dots$ sunt o infinitate de numere complexe \emph{distincte}.
+
+\emph{Pasul 4: încheierea.} Fie $Q=P-X$; ipoteza spune că $Q(A^k)=\On$ pentru orice $k\ge1$. Fie $v\neq0$ un vector propriu al lui $A$ pentru $\lambda_0$; atunci $A^kv=\lambda_0^{\,k}v$, deci pentru orice polinom $Q$ avem $Q(A^k)\,v=Q(\lambda_0^{\,k})\,v$. Prin urmare
+\[ \mathbf{0}=Q(A^k)\,v=Q(\lambda_0^{\,k})\,v\quad\Longrightarrow\quad Q(\lambda_0^{\,k})=0\qquad\text{pentru orice }k\ge1 , \]
+căci $v\neq\mathbf 0$. Prin Pasul 3, polinomul $Q$ are o infinitate de rădăcini distincte, deci este polinomul nul. Așadar $P(X)=X$.\\[2pt]
+\emph{Observație 1.} Ipoteza $A^3=2A$ garantează, în particular, că șirul puterilor $A,A^2,A^3,\dots$ este \emph{injectiv}: dacă $A^k=A^m$ cu $k\neq m$, cele două matrice ar avea aceleași valori proprii, dar $A^k$ are valoarea proprie $\lambda_0^{\,k}$, de modul $2^{k/2}$, iar modulele valorilor proprii nenule ale lui $A^m$ sunt toate $2^{m/2}\neq2^{k/2}$.\\[2pt]
+\emph{Observație 2.} Constanta $2$ este esențială, din două motive. Întâi, polinomul $X^3-2X=X(X-\sqrt2)(X+\sqrt2)$ are rădăcini \emph{simple}, deci $A$ este diagonalizabilă --- fără această proprietate concluzia poate cădea: pentru $A=\begin{psmallmatrix}1&1\\0&1\end{psmallmatrix}$ puterile $A^k=\begin{psmallmatrix}1&k\\0&1\end{psmallmatrix}$ sunt distincte, dar $P(X)=X^2-X+1\neq X$ satisface $P(A^k)=A^k$ pentru orice $k$ (căci $P(X)-X=(X-1)^2$ și $(A^k-I_2)^2=\On$). Apoi, valorile proprii nenule au modulul $\sqrt2\neq1$, deci puterile lor nu se repetă; dacă am înlocui ipoteza cu $A^3=A$, valorile proprii ar fi $0,\pm1$ (rădăcini ale unității) și am avea $A^{k+2}=A^k$ pentru orice $k\ge1$ --- șirul puterilor nu ar mai fi injectiv, iar enunțul ar deveni fals.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.18}{}
+Fie $A,B\in\Mn$ două matrice \emph{inversabile}.
+\begin{parti}
+  \item Arătați că dacă $A^k=B^k$ pentru orice întreg $k\ge2$, atunci $A=B$.
+  \item Arătați că există două matrice inversabile \emph{distincte} $A\neq B$ pentru care $A^k=B^k$ pentru o infinitate de valori ale lui $k$.
+\end{parti}
+\sol (a) Din ipoteză folosim doar două valori: $k=2$ și $k=3$, adică
+\[ A^2=B^2\qquad\text{și}\qquad A^3=B^3 . \]
+Matricele $A$ și $B$ fiind inversabile, la fel sunt $A^2$ și $B^2$ (produse de matrice inversabile), iar
+\[ A=A^3\,(A^2)^{-1},\qquad B=B^3\,(B^2)^{-1} . \]
+Înlocuind $A^3=B^3$ și $A^2=B^2$ în prima egalitate, obținem
+\[ A=A^3(A^2)^{-1}=B^3(B^2)^{-1}=B . \]
+
+(b) Luăm
+\[ A=I_n,\qquad B=-I_n . \]
+Ele sunt inversabile și \emph{distincte} (căci $1\neq-1$ în $\mathbb{C}$). Pentru orice $k\ge1$,
+\[ A^k=I_n,\qquad B^k=(-1)^k I_n , \]
+deci $A^k=B^k$ dacă și numai dacă $(-1)^k=1$, adică exact atunci când $k$ este \emph{par}. Există o infinitate de astfel de exponenți ($k=2,4,6,\dots$), deci cele două matrice distincte coincid la o infinitate de puteri.\\[2pt]
+\emph{Observație 1 (cât de puțin e nevoie).} La (a) nu am folosit toată ipoteza, ci doar doi exponenți \emph{consecutivi}. Mai general, are loc: \emph{dacă $A,B$ sunt inversabile și $A^m=B^m$, $A^p=B^p$ cu $\gcd(m,p)=1$, atunci $A=B$.} Într-adevăr, prin relația lui Bézout există întregii $u,v$ cu $um+vp=1$; puterile aceleiași matrice comută între ele, iar inversele există, deci
+\[ A=A^{\,um+vp}=(A^m)^u\,(A^p)^v=(B^m)^u\,(B^p)^v=B^{\,um+vp}=B . \]
+Cazul din enunț este $m=2$, $p=3$, cu $\gcd(2,3)=1$.\\[2pt]
+\emph{Observație 2 (de ce (b) nu contrazice (a)).} În exemplul de la (b), mulțimea exponenților la care cele două matrice coincid este $\{2,4,6,\dots\}$ --- toți \emph{pari}, deci având cel mai mare divizor comun $2\neq1$. Bézout nu mai poate „ajunge'' la exponentul $1$, și tocmai de aceea concluzia $A=B$ nu se mai obține. Așadar nu numărul exponenților contează, ci \emph{aritmetica} lor.\\[2pt]
+\emph{Observație 3 (inversabilitatea este esențială).} Fără ea, punctul (a) este fals: pentru
+\[ A=\begin{pmatrix}0&1\\0&0\end{pmatrix},\qquad B=O_2 \]
+avem $A^2=O_2$, deci $A^k=O_2=B^k$ pentru \emph{orice} $k\ge2$, deși $A\neq B$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.19}{}
+Fie $A \in M_n(\RR)$ cu $A^3 + A^2 = A + 2I_n$. Arătați că $\det A > 0$.
+\sol Matricea satisface ecuația polinomială $p(A) = O_n$, cu $p(X) = X^3 + X^2 - X - 2$. Prin Lema~\ref{lema:valpropanulare}, \emph{orice} valoare proprie $\lambda \in \CC$ a lui $A$ satisface $p(\lambda) = 0$: valorile proprii se ascund printre cele trei rădăcini ale lui $p$.
+
+\emph{Rădăcinile lui $p$.} Derivata $p'(X) = 3X^2 + 2X - 1 = (3X-1)(X+1)$ se anulează în $X = -1$ (maxim local) și în $X = \frac{1}{3}$ (minim local). Valoarea în punctul de maxim local este $p(-1) = -1 + 1 + 1 - 2 = -1 < 0$: graficul urcă, atinge un maxim \emph{sub} axă, coboară, apoi urcă definitiv, deci $p$ are \emph{o singură} rădăcină reală $\alpha$, situată la dreapta lui $\frac{1}{3}$. Cum $p(1) = -1 < 0$ și $p(2) = 8 > 0$, avem $\alpha \in (1,2)$, în particular $\alpha > 0$. Celelalte două rădăcini formează o pereche de numere complexe conjugate $\beta, \overline{\beta}$ (coeficienții sunt reali). Prin relațiile lui Viète, produsul rădăcinilor este $\alpha\,\beta\overline{\beta} = -\frac{-2}{1} = 2$, deci $\beta\overline{\beta} = |\beta|^2 = \frac{2}{\alpha} > 0$.
+
+\emph{Împerecherea conjugatelor.} Polinomul caracteristic $p_A$ are coeficienți \emph{reali}, deci valorile proprii nereale ale lui $A$ apar în perechi conjugate, cu aceleași multiplicități. Dacă $\alpha$ apare cu multiplicitatea $a$, iar perechea $\{\beta, \overline{\beta}\}$ cu multiplicitatea $b$ (fiecare), atunci $a + 2b = n$ și
+\[
+\det A = \prod_{\lambda} \lambda = \alpha^{\,a}\bigl(\beta\overline{\beta}\bigr)^{b} = \alpha^{\,a}\,|\beta|^{2b} > 0,
+\]
+ca produs de numere strict pozitive. $\blacksquare$
+
+\smallskip
+\noindent\textbf{Observație} \textperiodcentered\ (unde se află capcana) Concluzia folosește în mod esențial faptul că $A$ este \emph{reală}: tocmai aceasta forțează împerecherea conjugatelor. Peste $\CC$ afirmația cade: $A = \diag(\beta, \dots, \beta)$ satisface aceeași ecuație, dar $\det A = \beta^n$ nu este, în general, nici măcar real. Schema de reținut: o ecuație polinomială pentru $A \to$ (Lema~\ref{lema:valpropanulare}) valorile proprii se găsesc printre rădăcinile polinomului $\to$ semnul determinantului se citește din structura rădăcinilor.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.20}{}
+Fie $A,B \in \Mn$ cu $A+B = I_n$ și $\rang(A)+\rang(B) = n$. Arătați că
+$AB = BA = \On$ și că $A$ și $B$ sunt idempotente.
+\sol Cheia este să așezăm cele două ranguri într-o singură matrice $2n \times 2n$ și să o reducem prin transformări elementare pe blocuri.
+
+Pornim de la matricea bloc-diagonală $M = \begin{psmallmatrix} A & \On \\ \On & B \end{psmallmatrix}$, cu $\rang(M) = \rang(A)+\rang(B) = n$. Efectuăm transformări elementare pe blocuri (fiecare dintre ele păstrează rangul):
+\[
+\begin{pmatrix} A & \On \\ \On & B \end{pmatrix}
+\xrightarrow{\;R_1 \to R_1 + R_2\;}
+\begin{pmatrix} A & B \\ \On & B \end{pmatrix}
+\xrightarrow{\;C_1 \to C_1 + C_2\;}
+\begin{pmatrix} I_n & B \\ B & B \end{pmatrix}
+\]
+\[
+\xrightarrow{\;R_2 \to R_2 - B\,R_1\;}
+\begin{pmatrix} I_n & B \\ \On & B - B^2 \end{pmatrix}
+\xrightarrow{\;C_2 \to C_2 - C_1\,B\;}
+\begin{pmatrix} I_n & \On \\ \On & B - B^2 \end{pmatrix},
+\]
+unde la al doilea pas am folosit $A+B = I_n$. Prin urmare
+\[
+n = \rang(M) = n + \rang\bigl(B - B^2\bigr)
+\implies \rang\bigl(B-B^2\bigr) = 0
+\implies B^2 = B.
+\]
+De aici decurge totul: $A^2 = (I_n - B)^2 = I_n - 2B + B^2 = I_n - B = A$, iar $AB = (I_n - B)B = B - B^2 = \On$ și $BA = B(I_n - B) = B - B^2 = \On$. $\blacksquare$
+
+\medskip
+\noindent\textbf{Observație.} Lanțul de transformări demonstrează de fapt identitatea generală
+\[
+\rang(A) + \rang(B) = n + \rang\bigl(B - B^2\bigr)
+\qquad \text{ori de câte ori } A + B = I_n,
+\]
+din care se citește și reciproca: dacă $B$ este idempotentă, atunci $\rang(B) + \rang(I_n - B) = n$. Ipoteza $\rang(A) + \rang(B) = n$ este deci \emph{exact} caracterizarea descompunerii identității în două proiecții complementare.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.21}{}
+Fie $x_1 < x_2 < \cdots < x_{2028}$ numere reale. Arătați că există numerele reale $c_1,\ldots,c_{2028}$, nu toate nule, astfel încât
+\[
+c_1P(x_1) + c_2P(x_2) + \cdots + c_{2028}P(x_{2028}) = 0
+\]
+pentru \emph{orice} polinom $P$ de grad cel mult 2026.
+\sol Fiecărui punct $x_i$ îi asociem vectorul puterilor sale:
+\[
+v_i = \bigl(1,\ x_i,\ x_i^2,\ \ldots,\ x_i^{2026}\bigr) \in \mathbb{R}^{2027}
+\qquad (i = 1,\ldots,2028).
+\]
+Avem $2028$ de vectori într-un spațiu de dimensiune $2027$, deci, prin Teorema~\ref{teo:dimensiune} (într-un spațiu de dimensiune $n$ orice mulțime liniar independentă are cel mult $n$ elemente; principiul cutiei pentru dimensiuni), ei sunt liniar dependenți: există $c_1,\ldots,c_{2028}$, nu toate nule, cu
+\[
+c_1v_1 + c_2v_2 + \cdots + c_{2028}v_{2028} = 0.
+\]
+Scrisă pe componenta $k$ (pentru fiecare $0 \le k \le 2026$), egalitatea devine
+\[
+\sum_{i=1}^{2028} c_i\,x_i^{\,k} = 0.
+\]
+Fie acum $P(X) = \sum_{k=0}^{2026} a_kX^k$ un polinom arbitrar de grad cel mult $2026$. Înmulțim relația corespunzătoare componentei $k$ cu $a_k$ și însumăm după $k$:
+\[
+\sum_{i=1}^{2028} c_i\,P(x_i) = \sum_{k=0}^{2026} a_k\Bigl(\sum_{i=1}^{2028} c_i\,x_i^{\,k}\Bigr) = 0.
+\]
+Aceiași coeficienți $c_i$ funcționează pentru \textup{toate} polinoamele deodată, deoarece anulează simultan toate puterile, iar orice $P$ este o combinație liniară de puteri. $\blacksquare$
+
+\vspace{2mm}
+\noindent\textbf{\large Observație}\quad Numărul $2028$ este optim: pentru numai $2027$ de puncte, coeficienții ar trebui să anuleze $P = \prod_{j\neq i}(X - x_j)$ pentru fiecare $i$ (un polinom de grad $2026$ care „vede'' doar punctul $x_i$), ceea ce forțează, pe rând, $c_i = 0$. Ordinea $x_1 < \cdots < x_{2028}$ este doar decor: contează numai ca punctele să fie distincte; enunțul cere acest lucru pentru ca dependența de mai sus să nu fie trivială.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.22}{}
+Determinați toate polinoamele $P \in \RR[X]$ astfel încât
+\[
+P(\sin x) + P(\cos x) = 1 \qquad \text{pentru orice } x \in \RR.
+\]
+\sol Răspuns: $P(X) = \dfrac{1}{2} + R\Bigl(X^2 - \dfrac{1}{2}\Bigr)$, cu $R \in \RR[X]$ un polinom impar arbitrar.
+
+Aplicând substituția $x \mapsto -x$ (care lasă $\cos$ neschimbat), obținem $P(-\sin x) + P(\cos x) = 1$, deci $P(-t) = P(t)$ pentru orice $t \in [-1,1]$; două polinoame care coincid pe o mulțime infinită sunt egale, așadar $P$ este par: $P(X) = Q(X^2)$ pentru un anumit $Q \in \RR[X]$. Cu $t = \sin^2 x$ (care parcurge $[0,1]$), ecuația devine
+\[
+Q(t) + Q(1-t) = 1 \qquad \text{pentru orice } t \in [0,1],
+\]
+deci are loc identic (prin același argument). Punând $R(u) = Q\Bigl(u + \dfrac{1}{2}\Bigr) - \dfrac{1}{2}$, condiția se rescrie $R(u) + R(-u) = 0$: $R$ este impar. Reciproc, pentru orice $R$ impar, polinomul $P(X) = \frac{1}{2} + R\bigl(X^2 - \frac{1}{2}\bigr)$ satisface
+\[
+P(\sin x) + P(\cos x) = 1 + R\Bigl(\sin^2 x - \tfrac{1}{2}\Bigr) + R\Bigl(\cos^2 x - \tfrac{1}{2}\Bigr) = 1,
+\]
+deoarece argumentele sunt opuse ($\sin^2 x - \frac{1}{2} = -(\cos^2 x - \frac{1}{2})$) și $R$ este impar.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.23}{}
+Fie $n\ge1$ și $A,B\in\Mn$ cu $A^2=B^2=I_n$ și $AB+BA=\On$ (adică $A$ și $B$ anticomută).
+\begin{parti}
+  \item Arătați că $\Tr(A)=\Tr(B)=0$.
+  \item Deduceți că $A$ este asemenea cu $\operatorname{diag}(I_{n/2},-I_{n/2})$ (în particular $n$ este par); la fel și $B$.
+\end{parti}
+\sol (a) Din $AB=-BA$, înmulțim la stânga cu $A$ și folosim $A^2=I_n$: $B=A^2B=-ABA$. Luând urma și folosind proprietatea ciclică $\Tr(ABA)=\Tr(A^2B)=\Tr(B)$, obținem $\Tr(B)=-\Tr(B)$, deci $\Tr(B)=0$. Analog, înmulțind $AB=-BA$ la dreapta cu $B$ și folosind $B^2=I_n$: $A=-BAB$, de unde $\Tr(A)=-\Tr(A)=0$.\\[2pt]
+(b) $A^2=I_n$ înseamnă că polinomul $X^2-1=(X-1)(X+1)$, cu rădăcini simple, anulează $A$; prin criteriul polinomului minimal (Teorema~\ref{teo:criteriudiag}), $A$ este diagonalizabilă, cu valori proprii în $\{1,-1\}$. Fie $p$ numărul valorilor proprii egale cu $1$ și $q$ cele egale cu $-1$, $p+q=n$. Din (a), $\Tr(A)=p-q=0$, deci $p=q=n/2$ (în particular $n$ este par). O matrice diagonalizabilă cu $p=q=n/2$ valori proprii $1$, respectiv $-1$, este asemenea cu $\operatorname{diag}(I_{n/2},-I_{n/2})$; același argument se aplică lui $B$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.24}{}
+Fie $A\in\Mn$ cu $A^3=A$.
+\begin{parti}
+  \item Arătați că $A^2$ este idempotentă și că $\rang(A)=\Tr(A^2)$.
+  \item Presupunem în plus $\Tr(A)=0$ și $A\neq\On$. Arătați că numărul valorilor proprii nenule ale lui $A$ este par (deci $\rang(A)$ este par).
+\end{parti}
+\sol Polinomul $P(X)=X^3-X=X(X-1)(X+1)$ are rădăcini simple și $P(A)=A^3-A=\On$, deci prin criteriul polinomului minimal (Teorema~\ref{teo:criteriudiag}) $A$ este diagonalizabilă, cu valori proprii în $\{-1,0,1\}$.\\[2pt]
+(a) Cum $A$ este diagonalizabilă, la fel este $A^2$, cu valori proprii $\lambda^2\in\{0,1\}$. Mai mult, $(A^2)^2=A^4=A\cdot A^3=A\cdot A=A^2$, deci $A^2$ este idempotentă; prin lema urmei unei idempotente, $\Tr(A^2)=\rang(A^2)$. Însă pentru o matrice diagonalizabilă rangul este numărul valorilor proprii nenule: valorile proprii nenule ale lui $A^2$ corespund exact valorilor proprii $\pm1$ ale lui $A$, adică valorilor proprii nenule ale lui $A$. Deci $\rang(A^2)=\rang(A)$, de unde $\rang(A)=\Tr(A^2)$.\\[2pt]
+(b) Fie $p$ numărul valorilor proprii egale cu $1$ și $q$ cele egale cu $-1$. Din $\Tr(A)=p-q=0$ rezultă $p=q$, deci numărul valorilor proprii nenule este $p+q=2p$, par. Cum $A\neq\On$, există măcar o valoare proprie nenulă, deci $2p\ge2$, iar $\rang(A)=2p$ este par.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.25}{}
+Fie $X,Y\in M_n(\mathbb{C})$ astfel încât $(X+2I_n)^n=XY-YX$. Arătați că $XY=YX$.
+\sol Notăm $A=X+2I_n$. Cum $I_n$ comută cu orice matrice, $XY-YX=(A-2I_n)Y-Y(A-2I_n)=AY-YA$; ipoteza devine
+\[ A^n=AY-YA=[A,Y]. \]
+Matricea $A$ comută cu orice putere a sa, în particular cu $A^n=[A,Y]$. Prin \emph{lema lui Jacobson} (Lema~\ref{lema:jacobson}: dacă $A$ comută cu $[A,Y]=AY-YA$, atunci $[A,Y]$ este nilpotentă), rezultă că $[A,Y]=A^n$ este nilpotentă. Dar dacă $A^n$ este nilpotentă, atunci și $A$ este nilpotentă (din $(A^n)^m=A^{nm}=O_n$ pentru un $m$), iar o matrice nilpotentă din $M_n(\mathbb{C})$ satisface $A^n=O_n$. Prin urmare $[A,Y]=A^n=O_n$, adică $AY=YA$. Cum $A=X+2I_n$, aceasta revine la $(X+2I_n)Y=Y(X+2I_n)$, echivalent cu $XY=YX$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.26}{}
+Determinați toate matricele $A\in M_n(\mathbb{C})$ cu proprietatea că pentru orice $k\ge1$ există scalari $x,y\in\mathbb{C}$ (depinzând de $k$) astfel încât $A^k=xA+yI_n$.
+\sol Răspuns: exact matricele cu $A^2=xA+yI_n$ pentru niște scalari $x,y$ (echivalent, cu polinomul minimal $m_A$ de grad cel mult $2$).\\[2pt]
+Luând $k=2$ în proprietate obținem direct $A^2=xA+yI_n$. Reciproc, dacă $A^2=xA+yI_n$, atunci orice putere este de aceeași formă $A^k=x_kA+y_kI_n$: pentru $k=1$ luăm $x_1=1$, $y_1=0$, iar din $A^k=x_kA+y_kI_n$ rezultă
+\[ A^{k+1}=A\cdot A^k=x_kA^2+y_kA=x_k(xA+yI_n)+y_kA=(x_kx+y_k)A+(x_ky)I_n. \]
+Așadar proprietatea (pentru orice $k$) echivalează cu $A^2\in\operatorname{span}\{I_n,A\}$.\\[2pt]
+Condiția $A^2=xA+yI_n$ înseamnă că $A$ este anulată de un polinom de grad $\le2$, deci $\deg m_A\le2$. Explicit, acestea sunt: matricele scalare $A=\lambda I_n$ (cazul $\deg m_A=1$); matricele diagonalizabile cu cel mult două valori proprii distincte (când $m_A=(X-\lambda)(X-\mu)$, $\lambda\neq\mu$); și matricele de forma $A=\lambda I_n+N$ cu $N\neq O_n$ și $N^2=O_n$ (când $m_A=(X-\lambda)^2$).
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.27}{Clasică}
+Fie $A,B\in M_n(\mathbb{C})$ cu $AB-BA=B^2$. Arătați că $B$ este nilpotentă.
+\sol Cheia este că $B$ comută cu comutatorul perechii $(B,A)$: într-adevăr,
+\[ BA-AB=-B^2,\qquad B\cdot(-B^2)=(-B^2)\cdot B, \]
+deci $B$ comută cu $BA-AB$. Prin \emph{lema lui Jacobson} (Lema~\ref{lema:jacobson}: dacă o matrice $X$ comută cu $XY-YX$, atunci $XY-YX$ este nilpotentă), aplicată perechii $X=B$, $Y=A$, rezultă că $BA-AB=-B^2$ este nilpotentă. Așadar $B^2$ este nilpotentă: $(B^2)^m=O_n$ pentru un $m\ge1$, adică $B^{2m}=O_n$, deci $B$ este nilpotentă.\\[2pt]
+\emph{Observație.} Ipoteza se realizează netrivial: pentru $B=J_3$ (blocul Jordan nilpotent $3\times3$) și $A=E_{12}$ (unitatea matriceală), un calcul direct dă $AB-BA=E_{13}=B^2$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.28}{}
+Fie $A \in \Mn$ cu proprietatea că, pentru orice $v \in \CC^n$, este îndeplinită cel puțin una dintre următoarele condiții: sistemul $Ax = v$ are soluție sau $Av = 0$. Arătați că $A$ este inversabilă sau $A = \On$.
+\sol Traducem mai întâi cele două condiții în limbajul subspațiilor. „Sistemul $Ax = v$ are soluție'' înseamnă $v \in \Ima A$; „$Av = 0$'' înseamnă $v \in \Ker A$. Ipoteza spune, așadar, că
+\[
+\CC^n = \Ima A \cup \Ker A :
+\]
+întregul spațiu este \emph{reuniunea} a două subspații. Aici intervine lema-cheie.
+
+\medskip
+\emph{Lema (un spațiu vectorial nu este reuniunea a două subspații proprii).} Dacă $U, W$ sunt subspații ale lui $V$ cu $U \cup W = V$, atunci $U = V$ sau $W = V$.
+
+\medskip
+Demonstrație. Presupunem contrariul: $U \neq V$ și $W \neq V$. Atunci există $u \notin W$ și $w \notin U$; cum reuniunea acoperă tot spațiul, $u \in U$ și $w \in W$. Considerăm vectorul $u + w$, care trebuie să se afle într-una dintre cele două mulțimi. Dacă $u + w \in U$, atunci $w = (u + w) - u \in U$ (un subspațiu este închis la diferențe), contradicție. Dacă $u + w \in W$, atunci $u = (u + w) - w \in W$, din nou contradicție. $\square$
+
+\medskip
+\emph{Concluzia.} Aplicăm lema subspațiilor $U = \Ima A$ și $W = \Ker A$: unul dintre ele este întregul $\CC^n$.
+\begin{itemize}
+  \item[---] Dacă $\Ima A = \CC^n$, aplicația $x \mapsto Ax$ este surjectivă, deci bijectivă (Corolarul~\ref{cor:injsurj}): $A$ este inversabilă.
+  \item[---] Dacă $\Ker A = \CC^n$, atunci $Av = 0$ pentru orice $v$, adică $A = \On$.
+\end{itemize}
+Ambele familii apar efectiv, deci concluzia nu poate fi întărită. $\blacksquare$
+
+\medskip
+\textbf{Observație} $\cdot$ 1 (de ce nu merge o abordare „element cu element''). Fără limbajul subspațiilor, ipoteza pare greu de exploatat: ea leagă fiecare vector $v$ de una dintre două condiții complet diferite (una de \emph{existență}, cealaltă de \emph{anulare}). Toată forța soluției stă în a recunoaște că cele două mulțimi de vectori sunt subspații și că reuniunea a două subspații este o structură extrem de rigidă. Aceeași demonstrație, cuvânt cu cuvânt, dovedește afirmația analoagă pentru grupuri (un grup nu este reuniunea a două subgrupuri proprii).
+
+\medskip
+\textbf{Observație} $\cdot$ 2 (trei subspații). Pentru \emph{trei} subspații afirmația rămâne adevărată peste $\CC$ (și peste orice corp infinit), dar demonstrația cere un alt argument: dreapta $\{u + tw : t \in \CC\}$ are o infinitate de puncte, iar fiecare subspațiu propriu o poate intersecta în cel mult un punct suplimentar. Peste corpul cu două elemente afirmația cade: $\ZZ_2^2$ \emph{este} reuniunea celor trei drepte ale sale.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.29}{Clasică}
+Fie $A,B\in M_n(\mathbb{R})$ cu $AB=BA$.
+\begin{parti}
+  \item Arătați că $\det(A^2+B^2)\ge0$.
+  \item Arătați că $\det(A^2+AB+B^2)\ge0$.
+\end{parti}
+\sol (a) Cum $A$ și $B$ comută,
+\[ (A+iB)(A-iB)=A^2-iAB+iBA+B^2=A^2+B^2 . \]
+Matricele $A$ și $B$ fiind reale, elementele lui $A-iB$ sunt conjugatele elementelor lui $A+iB$. Determinantul este o sumă de produse de elemente cu coeficienți $\pm1$ (Definiția~\ref{def:det}), iar conjugarea comută cu adunarea și înmulțirea; deci $\det(A-iB)=\overline{\det(A+iB)}$. Din Teorema~\ref{teo:detprodus},
+\[ \det(A^2+B^2)=\det(A+iB)\,\overline{\det(A+iB)}=\bigl|\det(A+iB)\bigr|^2\ge0 . \]
+(b) Fie $\varepsilon=-\frac12+i\frac{\sqrt3}2$, cu $\varepsilon+\overline\varepsilon=-1$ și $\varepsilon\overline\varepsilon=1$. Din comutare,
+\[ (A-\varepsilon B)(A-\overline\varepsilon B)=A^2-(\varepsilon+\overline\varepsilon)AB+\varepsilon\overline\varepsilon B^2=A^2+AB+B^2, \]
+iar ca la (a), $\det(A^2+AB+B^2)=|\det(A-\varepsilon B)|^2\ge0$.\\[2pt]
+\emph{Observație.} Comutarea este esențială: pentru $A=\begin{psmallmatrix}-1&2\\-2&0\end{psmallmatrix}$ și $B=\begin{psmallmatrix}-2&1\\1&1\end{psmallmatrix}$ avem $A^2+B^2=\begin{psmallmatrix}2&-3\\1&-2\end{psmallmatrix}$, cu determinantul $-1<0$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.30}{Clasică}
+\begin{parti}
+  \item Fie $A\in M_n(\mathbb{Z})$ cu toate elementele de pe diagonala principală impare și toate celelalte elemente pare. Arătați că $A$ este inversabilă.
+  \item Fie $n$ par și $A\in M_n(\mathbb{Z})$ cu elementele de pe diagonala principală nule și toate celelalte elemente impare. Arătați că $\det A\neq0$.
+\end{parti}
+\sol Lucrăm modulo $2$ în formula
+\[ \det A=\sum_{\sigma\in S_n}\sgn(\sigma)\,a_{1\sigma(1)}\cdots a_{n\sigma(n)} \]
+(Definiția~\ref{def:det}); cum $-1\equiv1\pmod 2$, semnele nu contează.\\[2pt]
+(a) Pentru $\sigma\neq\mathrm{id}$ există $i$ cu $\sigma(i)\neq i$, iar factorul $a_{i\sigma(i)}$ este par; deci toți termenii sunt pari, cu excepția lui $a_{11}\cdots a_{nn}$, care este impar. Așadar $\det A$ este impar, în particular nenul, iar $A$ este inversabilă (Teorema~\ref{teo:inversabila}; inversa are elemente raționale).\\[2pt]
+(b) Un termen este nenul modulo $2$ exact când $\sigma(i)\neq i$ pentru orice $i$ (altfel conține un factor $a_{ii}=0$), și atunci este impar. Deci $\det A\equiv D_n\pmod2$, unde $D_n$ este numărul permutărilor fără puncte fixe ale lui $\{1,\dots,n\}$. Acestea verifică $D_1=0$, $D_2=1$ și
+\[ D_n=(n-1)(D_{n-1}+D_{n-2}),\qquad n\ge3 \]
+(fixăm $k=\sigma(n)$, care are $n-1$ valori posibile; dacă $\sigma(k)=n$, restricția lui $\sigma$ la celelalte $n-2$ elemente este o permutare fără puncte fixe a lor; dacă $\sigma(k)\neq n$, fie $m$ cu $\sigma(m)=n$, deci $m\neq k$; punând $\tau(m)=k$ și $\tau(j)=\sigma(j)$ pentru $j\neq m$, $j\le n-1$, obținem o permutare fără puncte fixe $\tau$ a lui $\{1,\dots,n-1\}$, iar corespondența $\sigma\mapsto\tau$ este bijectivă, inversa fiind $m=\tau^{-1}(k)$, $\sigma(m)=n$, $\sigma(n)=k$). Prin inducție, $D_n\equiv n-1\pmod2$: $D_n\equiv(n-1)\bigl((n-2)+(n-3)\bigr)=(n-1)(2n-5)\equiv n-1$. Pentru $n$ par, $D_n$ este impar, deci $\det A$ este impar și nenul.\\[2pt]
+\emph{Observație.} Pentru $n$ impar concluzia de la (b) cade: $\begin{psmallmatrix}0&1&-1\\-1&0&1\\1&-1&0\end{psmallmatrix}$ este antisimetrică de ordin impar, deci are determinantul $0$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.31}{Clasică}
+Fie $A,B\in\Mn$ și $f(x)=\det(A+xB)$.
+\begin{parti}
+  \item Arătați că $f$ este o funcție polinomială de grad cel mult $\rang B$.
+  \item Arătați că, pentru orice $B$, există $A$ pentru care gradul lui $f$ este exact $\rang B$.
+\end{parti}
+\sol Fie $r=\rang B$. Prin forma canonică (Teorema~\ref{teo:formacanonica}), $B=PJ_rQ$ cu $P,Q\in\GL_n(\mathbb{C})$ și $J_r=\diag(I_r,O_{n-r})$.\\[2pt]
+(a) Punând $C=P^{-1}AQ^{-1}$, avem $A+xB=P(C+xJ_r)Q$, deci
+\[ f(x)=\det P\,\det Q\,\det(C+xJ_r). \]
+În matricea $C+xJ_r$, variabila $x$ apare doar în elementele $(i,i)$ cu $i\le r$, fiecare de gradul întâi. Un termen din dezvoltarea determinantului (Definiția~\ref{def:det}) conține câte un singur element de pe fiecare linie, deci cel mult $r$ factori care depind de $x$; așadar este un polinom de grad cel mult $r$ în $x$, iar $f$ are gradul cel mult $r$.\\[2pt]
+(b) Luăm $A=PQ$, adică $C=I_n$. Atunci $C+xJ_r=\diag\bigl((1+x)I_r,I_{n-r}\bigr)$ și $f(x)=\det P\det Q\,(1+x)^r$, de grad exact $r$, căci $\det P\det Q\neq0$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.32}{Clasică}
+\begin{parti}
+  \item Fie $n\ge2$. Arătați că ecuația $X^n=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ nu are soluții în $M_2(\mathbb{C})$.
+  \item Arătați că ecuația $X^2=\begin{pmatrix}4&0\\0&9\end{pmatrix}$ are exact patru soluții în $M_2(\mathbb{C})$.
+  \item Arătați că ecuația $X^2=I_2$ are o infinitate de soluții în $M_2(\mathbb{C})$.
+\end{parti}
+\sol (a) Fie $N=\begin{psmallmatrix}0&1\\0&0\end{psmallmatrix}$, cu $N^2=O_2$. Dacă $X^n=N$, atunci $X^{2n}=N^2=O_2$, deci $X$ este nilpotentă și, fiind de ordin $2$, $X^2=O_2$ (Propoziția~\ref{prop:nilpotent}). Cum $n\ge2$, $X^n=O_2\neq N$, contradicție.\\[2pt]
+(b) Fie $D=\diag(4,9)$ și $X=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}$ o soluție. Atunci $X$ comută cu $X^2=D$. Din $XD=DX$ obținem $9b=4b$ și $4c=9c$, deci $b=c=0$ și $X=\diag(a,d)$ cu $a^2=4$, $d^2=9$. Soluțiile sunt exact $\diag(\pm2,\pm3)$, patru la număr (toate verifică ecuația).\\[2pt]
+(c) Pentru orice $t\in\mathbb{C}$, $X_t=\begin{psmallmatrix}1&t\\0&-1\end{psmallmatrix}$ verifică $X_t^2=\begin{psmallmatrix}1&t-t\\0&1\end{psmallmatrix}=I_2$, iar matricele $X_t$ sunt distincte.\\[2pt]
+\emph{Observație.} Diferența dintre (b) și (c): matricea $\diag(4,9)$ are valori proprii distincte, deci orice matrice care comută cu ea este diagonală, pe când $I_2$ comută cu toate matricele. Cazul (a) arată că nici măcar existența nu este garantată când membrul drept este nilpotent nenul.
+\vspace{1mm}\hrule
+
+\nivel{onm}{Nivelul ONM}{Faza națională --- probleme dificile, cu mai mulți pași.}
+\prob{onm}{ONM.1}{}
+Fie $n\ge1$ și $A,B\in\Mn$ cu $A^2=B^2=\On$ și $AB+BA=I_n$.
+\begin{parti}
+  \item Arătați că $n$ este par.
+  \item Arătați că $\rang(A)=\rang(B)=n/2$.
+\end{parti}
+\sol Observăm întâi că $ABA=A$ și că $AB$ este idempotentă: înmulțind $AB+BA=I_n$ la stânga cu $A$ obținem $A^2B+ABA=A$, iar $A^2=\On$ dă $ABA=A$; atunci $(AB)^2=ABAB=(ABA)B=AB$. Simetric, $BAB=B$.\\[2pt]
+(a) $AB$ idempotentă $\Rightarrow$ (lema urmei unei matrice idempotente) $\Tr(AB)=\rang(AB)\in\mathbb{Z}$. Pe de altă parte, din $AB+BA=I_n$, luând urma și folosind $\Tr(AB)=\Tr(BA)$: $2\Tr(AB)=n$, deci $\Tr(AB)=n/2\in\mathbb{Z}$, așadar $n$ este par.\\[2pt]
+(b) Din $A^2=\On$, ca la OJM.3, $\rang(A)\le n/2$. Din $ABA=A$ și $\rang(XY)\le\min\{\rang X,\rang Y\}$:
+\[ \rang(A)=\rang(ABA)\le\rang(AB)\le\rang(A)\ \Longrightarrow\ \rang(AB)=\rang(A). \]
+Dar $\rang(AB)=\Tr(AB)=n/2$, deci $\rang(A)=n/2$; simetric (din $BAB=B$), $\rang(B)=n/2$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.2}{Clasică}
+Fie $p$ un număr prim. Arătați că polinomul $\Phi_p(X)=1+X+X^2+\cdots+X^{p-1}$ este ireductibil peste $\mathbb{Q}$.
+\sol \emph{Pasul 1 (translația).} Ireductibilitatea se păstrează la substituția $X\mapsto X+1$: dacă $\Phi_p(X)=g(X)h(X)$ cu $g,h$ neconstante, atunci $\Phi_p(X+1)=g(X+1)h(X+1)$ este tot o factorizare netrivială (și reciproc). Este deci suficient să arătăm că $\Phi_p(X+1)$ este ireductibil.\\[2pt]
+\emph{Pasul 2 (calculul lui $\Phi_p(X+1)$).} Din $\Phi_p(X)=\dfrac{X^p-1}{X-1}$,
+\[ \begin{aligned} \Phi_p(X+1)&=\frac{(X+1)^p-1}{X}=\frac1X\sum_{k=1}^{p}\binom{p}{k}X^k=\sum_{k=1}^{p}\binom{p}{k}X^{k-1}\\ &=X^{p-1}+\binom{p}{p-1}X^{p-2}+\cdots+\binom{p}{2}X+\binom{p}{1}. \end{aligned} \]
+\emph{Pasul 3 (divizibilitatea coeficienților).} Pentru $1\le k\le p-1$ avem $p\mid\binom{p}{k}$: într-adevăr $\binom{p}{k}=\dfrac{p(p-1)\cdots(p-k+1)}{k!}$, unde $p$ divide numărătorul, dar $p\nmid k!$ (căci $1\le k<p$ și $p$ este prim); deci $p\mid\binom{p}{k}$. Prin urmare toți coeficienții lui $\Phi_p(X+1)$, în afara celui dominant ($=1$), sunt divizibili cu $p$, iar termenul liber $\binom{p}{1}=p$ este divizibil cu $p$, dar nu cu $p^2$.\\[2pt]
+\emph{Pasul 4 (Eisenstein).} Polinomul $\Phi_p(X+1)$ satisface ipotezele criteriului lui Eisenstein cu primul $p$, deci este ireductibil peste $\mathbb{Q}$; prin Pasul 1, $\Phi_p(X)$ este ireductibil peste $\mathbb{Q}$.\\[3pt]
+\emph{Criteriul lui Eisenstein (demonstrat, pentru completitudine).} Fie $f=c_mX^m+\cdots+c_1X+c_0\in\mathbb{Z}[X]$ și $p$ prim cu $p\nmid c_m$, $p\mid c_i$ pentru $0\le i\le m-1$ și $p^2\nmid c_0$. Atunci $f$ este ireductibil peste $\mathbb{Q}$. \emph{Demonstrație:} prin lema lui Gauss, e suficient să excludem o factorizare $f=g\,h$ cu $g=\sum_i b_iX^i$ și $h=\sum_j e_jX^j$ din $\mathbb{Z}[X]$, ambele de grad $\ge1$. Din $c_0=b_0e_0$ și $p\mid c_0$, $p^2\nmid c_0$, $p$ divide exact unul dintre $b_0,e_0$; fie $p\mid b_0$, $p\nmid e_0$. Din $c_m=b_re_s$ rezultă $p\nmid b_r$; fie $k$ cel mai mic indice cu $p\nmid b_k$ (atunci $1\le k\le r<m$). În
+\[ c_k=b_ke_0+b_{k-1}e_1+\cdots+b_0e_k, \]
+fiecare termen $b_{k-i}e_i$ cu $i\ge1$ are $p\mid b_{k-i}$ (minimalitatea lui $k$), iar $p\mid c_k$ (căci $k<m$); deci $p\mid b_ke_0$, contradicție cu $p\nmid b_k$ și $p\nmid e_0$. Așadar $f$ este ireductibil. $\square$
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.3}{}
+Fie $p$ un număr prim și $A\in M_n(\mathbb{Q})$ cu
+\[ I_n+A+A^2+\cdots+A^{p-1}=O_n. \]
+Arătați că $(p-1)\mid n$ și determinați $\Tr(A)$.
+\sol Fie $\Phi_p(X)=1+X+\cdots+X^{p-1}$ al $p$-lea polinom ciclotomic; el este \emph{ireductibil} peste $\mathbb{Q}$ (Problema ONM.2). Cum $A\in M_n(\mathbb{Q})$, polinomul său minimal $m_A$ are coeficienți raționali, iar polinomul caracteristic $f_A(X)=\det(XI_n-A)$ este un polinom monic de grad $n$ din $\mathbb{Q}[X]$. Ipoteza înseamnă $\Phi_p(A)=\On$, deci $m_A\mid\Phi_p$ în $\mathbb{Q}[X]$; cum $\Phi_p$ este ireductibil peste $\mathbb{Q}$, iar $m_A$ este monic și neconstant, rezultă $m_A=\Phi_p$. Prin urmare valorile proprii ale lui $A$ sunt rădăcinile lui $\Phi_p$, adică rădăcinile primitive de ordin $p$ ale unității; în particular $1$ nu este valoare proprie (căci $\Phi_p(1)=p\neq0$).\\[2pt]
+Prin teorema lui Frobenius (Teorema~\ref{teo:frobeniusminimal}) aplicată cu $K=\mathbb{Q}$, $f_A$ și $m_A$ au aceiași factori ireductibili peste $\mathbb{Q}$; cum $m_A=\Phi_p$ este ireductibil și ambele polinoame sunt monice, rezultă $f_A(X)=\Phi_p(X)^{\,b}$ pentru un $b\ge1$. Comparând gradele, $n=b(p-1)$, deci $(p-1)\mid n$ și $b=\dfrac{n}{p-1}$. Prin relațiile lui Viète, $\Tr(A)$ este suma valorilor proprii, adică $b$ copii ale sumei rădăcinilor lui $\Phi_p$; cum această sumă este $-1$ (opusul coeficientului lui $X^{p-2}$), obținem
+\[ \Tr(A)=-b=-\frac{n}{p-1}. \]
+\emph{Observație.} Ipoteza „$p$ prim'' este esențială: pentru $p=4$, matricea $A=(-1)\in M_1(\mathbb{C})$ verifică $1+A+A^2+A^3=0$, dar $\Tr(A)=-1\neq-\tfrac13$ și $(p-1)=3\nmid1$ --- fiindcă $1+X+X^2+X^3$ nu mai este ireductibil.
+
+\emph{Observație.} Ipoteza $A\in M_n(\mathbb{Q})$ este și ea esențială: peste $\mathbb{C}$ sau $\mathbb{R}$ polinomul minimal nu mai trebuie să fie $\Phi_p$. De exemplu, pentru $p\ge3$ și $\zeta=\cos\frac{2\pi}{p}+i\sin\frac{2\pi}{p}$, matricea $A=(\zeta)\in M_1(\mathbb{C})$ verifică $1+\zeta+\cdots+\zeta^{p-1}=0$, dar $(p-1)\nmid 1$. Chiar și cu elemente reale: pentru $p=5$, rotația de unghi $72^\circ$ din $M_2(\mathbb{R})$ verifică $I_2+A+A^2+A^3+A^4=O_2$ (căci $A^5=I_2$ și $A-I_2$ este inversabilă), dar $4\nmid 2$.
+
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.4}{ONM 2015, Problema 2}
+Fie $A\in M_5(\mathbb{C})$ cu $\Tr(A)=0$ și cu proprietatea că $I_5-A$ este inversabilă. Arătați că $A^5\neq I_5$.
+\sol Presupunem prin absurd că $A^5=I_5$. Atunci $X^5-1$ anulează $A$, deci $m_A\mid X^5-1$; cum $X^5-1$ are rădăcini distincte, $A$ este diagonalizabilă, iar valorile proprii ale lui $A$ sunt printre rădăcinile de ordin $5$ ale unității. Deoarece $I_5-A$ este inversabilă, $1$ \emph{nu} este valoare proprie; așadar valorile proprii sunt printre rădăcinile primitive $\zeta,\zeta^2,\zeta^3,\zeta^4$, unde $\zeta=\cos\frac{2\pi}{5}+i\sin\frac{2\pi}{5}$.\\[2pt]
+Fie $n_1,n_2,n_3,n_4\ge0$ multiplicitățile lor; cum $A\in M_5$, avem $n_1+n_2+n_3+n_4=5$. Urma fiind suma valorilor proprii,
+\[ \Tr(A)=n_1\zeta+n_2\zeta^2+n_3\zeta^3+n_4\zeta^4=0. \]
+Considerăm polinomul $g(X)=n_1X+n_2X^2+n_3X^3+n_4X^4$, cu coeficienți întregi, pentru care $g(\zeta)=0$. Polinomul $\Phi_5(X)=1+X+X^2+X^3+X^4$ este monic, se anulează în $\zeta$ și este ireductibil peste $\mathbb{Q}$ (Problema ONM.2), deci este polinomul minimal al lui $\zeta$. Prin teorema polinomului minimal, orice polinom din $\mathbb{Q}[X]$ care se anulează în $\zeta$ se divide cu $\Phi_5$; în particular $\Phi_5\mid g$. Dar $\deg g\le 4=\deg\Phi_5$, deci $g=c\,\Phi_5$ pentru o constantă $c$; comparând termenii liberi ($g(0)=0$, $\Phi_5(0)=1$) rezultă $c=0$, adică $g=0$. Așadar $n_1=n_2=n_3=n_4=0$, în contradicție cu $n_1+n_2+n_3+n_4=5$, deci $A^5\neq I_5$.\\[2pt]
+\emph{Observație.} Ipoteza „$I_5-A$ inversabilă'' este esențială: matricea $A=\operatorname{diag}(1,\zeta,\zeta^2,\zeta^3,\zeta^4)$ are $\Tr(A)=1+\zeta+\zeta^2+\zeta^3+\zeta^4=0$ și $A^5=I_5$ --- dar aici $1$ \emph{este} valoare proprie, deci $I_5-A$ nu este inversabilă.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.5}{}
+Arătați că nu există matrice $A,B\in M_n(\mathbb{C})$ care comută și pentru care $\det(A^kB^k-kI_n)=0$ pentru orice $k\ge1$.
+\sol Presupunem, prin absurd, că există astfel de matrice. Cum $A$ și $B$ comută, prin teorema de triangularizare simultană a matricelor care comută (Teorema~\ref{teo:triangsimultana}) există $P\in\mathrm{GL}_n(\mathbb{C})$ cu $P^{-1}AP=T_A$ și $P^{-1}BP=T_B$ ambele superior triunghiulare; fie $a_1,\dots,a_n$ și $b_1,\dots,b_n$ elementele lor diagonale. Atunci $A^kB^k=P\,T_A^kT_B^k\,P^{-1}$, iar $T_A^kT_B^k$ este superior triunghiulară cu diagonala $a_i^kb_i^k$. Prin urmare $A^kB^k-kI_n$ este asemenea cu o matrice triunghiulară de diagonală $a_i^kb_i^k-k$, deci
+\[ \det(A^kB^k-kI_n)=\prod_{i=1}^n\bigl(c_i^k-k\bigr),\qquad c_i:=a_ib_i. \]
+Ipoteza spune că acest produs este $0$ pentru orice $k\ge1$, adică pentru fiecare $k$ există un indice $i$ cu $c_i^k=k$.\\[2pt]
+Însă, pentru un număr complex fixat $c$, ecuația $c^k=k$ are doar un număr \emph{finit} de soluții $k\ge1$: luând modulul, $|c|^k=k$; dacă $|c|\le1$ atunci $|c|^k\le1<k$ pentru $k\ge2$, iar dacă $|c|>1$ atunci $|c|^k$ crește exponențial, depășind $k$ de la un rang încolo. Așadar mulțimea
+\[ \{k\ge1:\ \exists\,i,\ c_i^k=k\}=\bigcup_{i=1}^n\{k\ge1:\ c_i^k=k\} \]
+este o reuniune finită de mulțimi finite, deci finită --- nu poate conține toți întregii $k\ge1$. Contradicție; prin urmare nu există matrice $A,B$ cu proprietățile cerute.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.6}{}
+Fie $n\ge1$ și $A,B\in\Mn$ două matrice idempotente ($A^2=A$, $B^2=B$) care comută ($AB=BA$). Arătați că
+\[ \rang(A)+\rang(B)=\rang(AB)+\rang(A+B-AB). \]
+\sol Ideea este că toate cele patru matrice care apar în identitate sunt idempotente, iar apoi rangul fiecăreia se citește din urmă.\\[2pt]
+\emph{$AB$ este idempotentă.} Deoarece $A$ și $B$ comută, iar $A^2=A$, $B^2=B$:
+\[ (AB)^2=ABAB=A(BA)B=A(AB)B=A^2B^2=AB. \]
+(Comutarea este esențială: fără ea $ABAB$ nu se mai reduce.)\\[2pt]
+\emph{$C=A+B-AB$ este idempotentă.} Matricele $A$, $B$ și $AB$ comută două câte două, deci dezvoltăm $(A+B-AB)^2$ ca pe un pătrat obișnuit:
+\[ C^2=A^2+B^2+(AB)^2+2AB-2A^2B-2AB^2. \]
+Înlocuind $A^2=A$, $B^2=B$, $(AB)^2=AB$, $A^2B=AB$ și $AB^2=AB$,
+\[ C^2=A+B+AB+2AB-2AB-2AB=A+B-AB=C. \]
+\emph{Concluzia.} Cele patru matrice $A$, $B$, $AB$ și $C=A+B-AB$ sunt \emph{toate} idempotente. Prin \emph{lema urmei unei matrice idempotente} (Lema~\ref{lema:idemptrrang} din carte: $M^2=M\Rightarrow\Tr(M)=\rang(M)$), fiecare are urma egală cu rangul:
+\[ \begin{gathered} \rang(A)=\Tr(A),\quad \rang(B)=\Tr(B),\\ \rang(AB)=\Tr(AB),\quad \rang(C)=\Tr(C). \end{gathered} \]
+Cum urma este liniară și $C+AB=(A+B-AB)+AB=A+B$,
+\[ \begin{aligned} \rang(A+B-AB)+\rang(AB)&=\Tr(C)+\Tr(AB)=\Tr(A+B)\\ &=\Tr(A)+\Tr(B)=\rang(A)+\rang(B). \end{aligned} \]
+\emph{Observație (interpretare).} Dacă $A,B$ sunt proiecțiile pe subspațiile $U=\operatorname{Im}(A)$ și $V=\operatorname{Im}(B)$ și comută, atunci $AB$ este proiecția pe $U\cap V$, iar $C=A+B-AB$ proiecția pe $U+V$; identitatea devine exact \emph{formula lui Grassmann} $\dim(U+V)+\dim(U\cap V)=\dim U+\dim V$. Ipoteza $AB=BA$ este necesară: pentru $A=\begin{psmallmatrix}1&1\\0&0\end{psmallmatrix}$ și $B=\begin{psmallmatrix}1&0\\1&0\end{psmallmatrix}$ (idempotente de rang $1$ care nu comută) avem $AB=\begin{psmallmatrix}2&0\\0&0\end{psmallmatrix}$, care nu mai este idempotentă, iar $\rang(A)+\rang(B)=2\neq3=\rang(AB)+\rang(A+B-AB)$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.7}{}
+Fie $n\ge1$ și $A\in M_n(\mathbb{Z})$. Determinați toate matricele $A$ pentru care există un polinom ireductibil $P\in\mathbb{Z}[X]$, cu $P(0)\neq0$, astfel încât $P(A)=O_n$. (Arătați, în plus, că pentru astfel de $A$ există doar un număr finit de asemenea polinoame.)
+\sol Răspuns: exact matricele nesingulare $A\in M_n(\mathbb{Z})$ (adică $\det A\neq0$) al căror polinom minimal $m_A$ este ireductibil peste $\mathbb{Q}$. În acest caz polinoamele căutate sunt exact $\pm m_A$ (deci două).\\[2pt]
+Reamintim că mulțimea polinoamelor din $\mathbb{Q}[X]$ care anulează $A$ este idealul generat de polinomul minimal: $P(A)=O_n\Leftrightarrow m_A\mid P$ în $\mathbb{Q}[X]$. Cum $A$ are elemente întregi, $m_A$ este monic cu coeficienți întregi (divide polinomul caracteristic, monic în $\mathbb{Z}[X]$; prin lema lui Gauss $m_A\in\mathbb{Z}[X]$).\\[2pt]
+\emph{Orice anulator ireductibil este $\pm m_A$.} Fie $P\in\mathbb{Z}[X]$ ireductibil cu $P(A)=O_n$. Fiind ireductibil de grad $\ge1$, $P$ este primitiv și ireductibil și peste $\mathbb{Q}$ (lema lui Gauss). Din $m_A\mid P$ în $\mathbb{Q}[X]$ și $P$ ireductibil rezultă $P=\lambda\,m_A$ cu $\lambda\in\mathbb{Q}^{*}$; comparând conținuturile ($P$ primitiv, $m_A$ monic) obținem $|\lambda|=1$, deci $P=\pm m_A$. În particular, un astfel de $P$ poate exista \emph{doar dacă} $m_A$ este ireductibil.\\[2pt]
+\emph{Condiția $P(0)\neq0$.} Cum $P=\pm m_A$, avem $P(0)\neq0\Leftrightarrow m_A(0)\neq0\Leftrightarrow 0$ nu este rădăcină a lui $m_A\Leftrightarrow 0$ nu este valoare proprie a lui $A\Leftrightarrow\det A\neq0$.\\[2pt]
+\emph{Reciproc.} Dacă $A$ este nesingulară și $m_A$ este ireductibil peste $\mathbb{Q}$, atunci $P=m_A\in\mathbb{Z}[X]$ este ireductibil, $P(A)=O_n$ și $P(0)=m_A(0)\neq0$; deci un astfel de polinom există, iar singurele sunt $\pm m_A$ --- un număr finit.\\[2pt]
+\emph{Observație.} Ireductibilitatea este esențială: fără ea, dintr-un anulator $P$ cu $P(0)\neq0$ se obțin infinit de mulți, înmulțind cu $(X-k)$, $k\neq0$ --- căci $(X-k)P$ anulează $A$ și are termen liber $-k\,P(0)\neq0$. Trecerea la $\mathbb{Z}$ (unde asociații sunt doar $\pm$) și ireductibilitatea reduc totul la $\pm m_A$. Dacă $\deg m_A\ge2$ și $m_A$ este ireductibil, atunci automat $m_A(0)\neq0$ (altfel $X\mid m_A$); singurul caz cu $m_A$ ireductibil dar $A$ singulară este $m_A=X$, adică $A=O_n$.\\[2pt]
+\emph{Exemplu.} Pentru $A=\begin{psmallmatrix}0&1\\1&1\end{psmallmatrix}$ (cu $m_A=X^2-X-1$ ireductibil, $\det A=-1$), polinoamele ireductibile cu $P(0)\neq0$ și $P(A)=O_2$ sunt exact $\pm(X^2-X-1)$. În schimb, pentru $A=\operatorname{diag}(1,2)$ (cu $m_A=(X-1)(X-2)$ reductibil) nu există niciunul.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.8}{}
+Determinați toate matricele $C\in M_n(\mathbb{C})$ cu proprietatea că pentru orice $k\ge1$ există $A_k\in M_n(\mathbb{C})$ astfel încât $A_k^{\,k}=C$ (adică $C$ admite rădăcină de orice ordin).
+\sol Răspuns: exact matricele $C$ cu $\rang(C)=\rang(C^2)$ --- echivalent, cele pentru care valoarea proprie $0$ este semisimplă (toate blocurile Jordan asociate lui $0$ au ordinul $1$), adică $C$ este asemenea cu $\operatorname{diag}(O_d,D)$, cu $D$ inversabilă și $d=\dim\ker C$. (În particular orice matrice inversabilă și $O_n$; dar nu o matrice nilpotentă nenulă.)\\[2pt]
+Folosim descompunerea Fitting (din forma Jordan): pentru orice $C$ există subspații $C$-invariante $K=\ker(C^n)$ și $V=\operatorname{Im}(C^n)$ cu $\mathbb{C}^n=K\oplus V$, pe care $C|_K$ este nilpotentă și $C|_V$ inversabilă; iar $d:=\dim K$ este multiplicitatea algebrică a valorii proprii $0$.\\[2pt]
+\emph{Necesitatea.} Presupunem că $C=A_k^{\,k}$ pentru orice $k$ și fixăm $k\ge d$. Cum $C=A_k^{\,k}$ este o putere a lui $A_k$, avem $A_kC=CA_k$, deci $A_k$ comută și cu $C^n$; prin urmare $A_k$ lasă invariant $K=\ker(C^n)$. Fie $M=A_k|_K$. Atunci $M^k=C|_K$, care este nilpotentă, deci $M$ este nilpotentă; cum $\dim K=d$, rezultă $M^d=O$, iar din $k\ge d$ obținem $C|_K=M^k=O$. Așadar $C$ se anulează pe $K\supseteq\ker C$, deci $\ker C=\ker(C^n)$; în particular $\ker C=\ker C^2$, adică $\rang(C)=\rang(C^2)$ (echivalent, $0$ este semisimplă).\\[2pt]
+\emph{Suficiența.} Dacă $\rang(C)=\rang(C^2)$, atunci $C|_K=O$, deci $C$ este asemenea cu $\operatorname{diag}(O_d,D)$, $D\in\mathrm{GL}_{n-d}(\mathbb{C})$. Arătăm că $D$ are rădăcină de orice ordin $k$. Prin forma Jordan, $D$ este o sumă de blocuri $\lambda I_m+N$ cu $\lambda\neq0$ și $N$ nilpotentă. Fixând un $\lambda^{1/k}\in\mathbb{C}$ (există, căci $\lambda\neq0$),
+\[ B=\lambda^{1/k}\sum_{j\ge0}\binom{1/k}{j}\lambda^{-j}N^{\,j}\qquad(\text{sumă finită, }N\text{ nilpotentă}) \]
+satisface $B^k=\lambda I_m+N$, din identitatea de serii formale $\bigl((1+t)^{1/k}\bigr)^{k}=1+t$ aplicată lui $t\mapsto N/\lambda$. Adunând blocurile obținem $B_k$ cu $B_k^{\,k}=D$, iar $A_k=\operatorname{diag}(O_d,B_k)$ (în aceeași bază) dă $A_k^{\,k}=\operatorname{diag}(O_d,D)=C$.\\[2pt]
+\emph{Observație.} Blocurile Jordan de ordin $\ge2$ la $0$ sunt interzise: dacă $C$ ar fi nilpotentă nenulă, orice $A_k$ cu $A_k^{\,k}=C$ ar fi nilpotentă, deci $A_k^{\,n}=O$; pentru $k\ge n$ ar rezulta $C=A_k^{\,k}=O$, contradicție. De pildă $\operatorname{diag}(0,1)$ are proprietatea ($A_k=\operatorname{diag}(0,1)$), pe când $\begin{psmallmatrix}0&1\\0&0\end{psmallmatrix}$ nu are nici măcar rădăcină pătrată.\\[2pt]
+\emph{Soluție alternativă (fără subspații).} Pentru necesitate, notăm $A=A_k$ și aplicăm \emph{inegalitatea lui Frobenius} $\rang(XY)+\rang(YZ)\le\rang(Y)+\rang(XYZ)$ cu $X=Z=A$ și $Y=A^{\,j}$:
+\[ 2\,\rang(A^{\,j+1})\le\rang(A^{\,j})+\rang(A^{\,j+2}). \]
+Deci șirul $r_j:=\rang(A^{\,j})$ este convex; fiind și descrescător, diferențele $d_j=r_j-r_{j+1}\ge0$ sunt descrescătoare. Cum $\sum_{j\ge0}d_j=r_0\le n$, nu putem avea $d_n\ge1$ (altfel $d_0,\dots,d_n\ge1$ ar da o sumă $\ge n+1$); prin urmare $d_n=0$ și $r_n=r_{n+1}=\cdots$. Alegând $k\ge n$ (atunci și $2k\ge n$),
+\[ \rang(C)=\rang(A^{\,k})=r_k=r_{2k}=\rang(A^{\,2k})=\rang(C^2). \]
+Pentru suficiență, $\rang(C)=\rang(C^2)$ înseamnă, pe forma Jordan, că niciun bloc la valoarea proprie $0$ nu are ordin $\ge2$ (blocul $J_m(0)$ scade rangul de la $m-1$ la $m-2$ prin ridicare la pătrat, iar cele cu $\lambda\neq0$ sunt inversabile); strângând blocurile, $C=P\operatorname{diag}(O_d,D)P^{-1}$ cu $D$ inversabilă, iar rădăcina se construiește pe blocuri ca mai sus, prin $A_k=P\operatorname{diag}(O_d,B_k)P^{-1}$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.9}{}
+Fie $k\in\mathbb{C}$ fixat. Determinați toate polinoamele $P\in\mathbb{C}[X]$ de grad $n$ cu proprietatea că
+\[ P(A+kI_n)=A+kI_n\qquad\text{pentru orice matrice nilpotentă } A\in M_n(\mathbb{C}). \]
+\sol Răspuns: exact polinoamele $P(X)=X+c(X-k)^n$ cu $c\in\mathbb{C}^{*}$.\\[2pt]
+\emph{Suficiența.} Pentru $P(X)=X+c(X-k)^n$ și orice matrice nilpotentă $A\in M_n(\mathbb{C})$ avem $A^n=O_n$ (Problema OJM.9), deci
+\[ P(A+kI_n)=(A+kI_n)+c\bigl((A+kI_n)-kI_n\bigr)^n=(A+kI_n)+cA^n=A+kI_n. \]
+\emph{Necesitatea.} Fie $P$ de grad $n$ cu proprietatea cerută. Cum $kI_n$ comută cu $A$ și $A^n=O_n$, dezvoltarea lui $P$ în jurul lui $kI_n$ este finită:
+\[ P(kI_n+A)=\sum_{j=0}^{n-1}\frac{P^{(j)}(k)}{j!}\,A^{\,j}, \]
+căci $P(kI_n+A)=\sum_m a_m(kI_n+A)^m=\sum_{j\ge0}\Bigl[\sum_m a_m\tbinom{m}{j}k^{m-j}\Bigr]A^{\,j}$ și $\sum_m a_m\tbinom{m}{j}k^{m-j}=\tfrac{P^{(j)}(k)}{j!}$, iar $A^{\,j}=O_n$ pentru $j\ge n$. Luăm $A=J$, blocul Jordan nilpotent de ordin $n$ (Problema OJM.9(b)), pentru care $I_n,J,J^2,\dots,J^{n-1}$ sunt liniar independente. Egalitatea $P(kI_n+J)=kI_n+J$ dă, identificând coeficienții lui $J^{\,j}$,
+\[ P(k)=k,\qquad P'(k)=1,\qquad P^{(j)}(k)=0\ \ (2\le j\le n-1). \]
+Fie $Q(X)=P(X)-X$. Atunci $Q(k)=Q'(k)=\cdots=Q^{(n-1)}(k)=0$, deci $Q$ are în $k$ o rădăcină de ordin cel puțin $n$; cum $\deg Q\le n$, rezultă $Q(X)=c(X-k)^n$, iar $\deg P=n$ impune $c\neq0$. Așadar $P(X)=X+c(X-k)^n$.\\[2pt]
+\emph{Observație.} Se folosește doar existența unei matrice nilpotente de index $n$ (cu $A^{n-1}\neq O_n$); egalitatea pentru blocul Jordan de ordin $n$ este suficientă. Renunțând la condiția de grad, soluțiile sunt toate polinoamele $P(X)=X+(X-k)^n R(X)$ cu $R\in\mathbb{C}[X]$ arbitrar (tot din $A^n=O_n$), iar $\deg P=n$ selectează $R=c$ constant nenul.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.10}{}
+Fie $A\in M_n(\mathbb{C})$ pentru care există un întreg $m\ge1$ cu $A^m=I_n$ și, în plus, $|\Tr(A)|=n$. Arătați că $A=\lambda I_n$ pentru un număr complex $\lambda$ cu $\lambda^m=1$.
+\sol Polinomul $X^m-1$ are rădăcini simple (rădăcinile de ordin $m$ ale unității) și anulează $A$, deci $A$ este diagonalizabilă, iar valorile proprii $\lambda_1,\dots,\lambda_n$ verifică $\lambda_i^m=1$; în particular $|\lambda_i|=1$ pentru fiecare $i$.\\[2pt]
+Fie $S=\lambda_1+\cdots+\lambda_n=\Tr(A)$, cu $|S|=n>0$. Alegem $c=\overline{S}/|S|$, număr complex de modul $1$ cu $cS=|S|=n$. Pentru fiecare $i$, $\operatorname{Re}(c\lambda_i)\le|c\lambda_i|=1$; sumând,
+\[ n=\operatorname{Re}(cS)=\sum_{i=1}^n\operatorname{Re}(c\lambda_i)\le n, \]
+deci peste tot avem egalitate: $\operatorname{Re}(c\lambda_i)=1$ pentru fiecare $i$. Un număr complex de modul $1$ cu partea reală $1$ este exact $1$, așadar $c\lambda_i=1$ pentru toți $i$: toate valorile proprii sunt egale cu $\lambda:=\overline{c}$. Fiind diagonalizabilă cu unica valoare proprie $\lambda$, $A=S_0(\lambda I_n)S_0^{-1}=\lambda I_n$; iar $\lambda^m=1$ fiindcă $\lambda$ este una dintre valorile proprii.\\[2pt]
+\emph{Observație.} Ipoteza $A^m=I_n$ (care asigură diagonalizabilitatea) este esențială: $A=\begin{psmallmatrix}1&1\\0&1\end{psmallmatrix}$ are $|\Tr(A)|=2=n$ și unica valoare proprie $1$, dar nu este scalară --- aici $A^m=\begin{psmallmatrix}1&m\\0&1\end{psmallmatrix}\neq I_2$ pentru orice $m\ge1$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.11}{}
+Fie $P,Q\in M_n(\mathbb{R})$ două matrice simetrice ($P^t=P$, $Q^t=Q$) și idempotente ($P^2=P$, $Q^2=Q$).
+\begin{parti}
+  \item Arătați că $\Tr(PQ)\ge0$, cu egalitate dacă și numai dacă $PQ=O_n$.
+  \item Arătați că $\Tr(PQ)\le\min\{\Tr(P),\Tr(Q)\}$.
+\end{parti}
+\sol Folosim de două ori următorul fapt elementar: pentru orice $M\in M_n(\mathbb{R})$,
+\[ \Tr(M^tM)=\sum_{i,j}m_{ij}^2\ \ge\ 0,\qquad\text{cu egalitate}\iff M=O_n \]
+(elementul $(j,j)$ al lui $M^tM$ este $\sum_i m_{ij}^2$).\\[2pt]
+(a) Luăm $M=QP$. Folosind $P^t=P$, $Q^t=Q$ și $Q^2=Q$:
+\[ M^tM=(QP)^t(QP)=PQ\cdot QP=P\,Q^2\,P=PQP, \]
+deci, cu proprietatea ciclică a urmei și $P^2=P$,
+\[ 0\le\Tr(M^tM)=\Tr(PQP)=\Tr(QP\cdot P)=\Tr(QP^2)=\Tr(QP)=\Tr(PQ). \]
+Egalitatea $\Tr(PQ)=0$ echivalează cu $\Tr(M^tM)=0$, adică $QP=O_n$; atunci și $PQ=(QP)^t=O_n$. Reciproc, $PQ=O_n$ dă evident $\Tr(PQ)=0$.\\[2pt]
+(b) Matricea $I_n-Q$ este, la rândul ei, simetrică și idempotentă: $(I_n-Q)^2=I_n-2Q+Q^2=I_n-Q$. Aplicând partea (a) perechii $(P,\,I_n-Q)$:
+\[ 0\le\Tr\bigl(P(I_n-Q)\bigr)=\Tr(P)-\Tr(PQ), \]
+deci $\Tr(PQ)\le\Tr(P)$. Prin simetrie (schimbând rolurile lui $P$ și $Q$, cu $\Tr(PQ)=\Tr(QP)$), $\Tr(PQ)\le\Tr(Q)$.\\[2pt]
+\emph{Observație.} Prin Lema~\ref{lema:idemptrrang}, marginile se citesc $0\le\Tr(PQ)\le\min\{\rang P,\rang Q\}$. Simetria este esențială: $P=\begin{psmallmatrix}1&1\\0&0\end{psmallmatrix}$ și $Q=\begin{psmallmatrix}1&0\\-3&0\end{psmallmatrix}$ sunt idempotente (nesimetrice), dar $\Tr(PQ)=-2<0$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.12}{Clasică}
+Fie $A\in M_n(\mathbb{Z})$ o matrice cu elemente întregi. Arătați că, pentru orice număr prim $p$, are loc $\Tr(A^p)\equiv\Tr(A)\pmod p$.
+\sol Din definiția înmulțirii matricelor,
+\[ \Tr(A^p)=\sum_{i_1,i_2,\dots,i_p=1}^{n} a_{i_1i_2}\,a_{i_2i_3}\cdots a_{i_pi_1}. \]
+Pe mulțimea $p$-uplurilor $(i_1,\dots,i_p)$ acționează \emph{rotația} $\sigma(i_1,i_2,\dots,i_p)=(i_2,\dots,i_p,i_1)$, care nu schimbă termenul asociat (produsul este ciclic). Cum $\sigma^p$ este identitatea, fiecare $p$-uplu face parte dintr-o clasă (orbită) al cărei număr de elemente divide $p$; $p$ fiind prim, clasele au $1$ sau $p$ elemente.\\[2pt]
+O clasă cu $p$ elemente conține $p$ termeni egali, deci contribuția ei totală este divizibilă cu $p$. Clasele cu un singur element sunt exact $p$-uplurile constante $(i,i,\dots,i)$, cu termenul $a_{ii}^{\,p}$. Prin urmare
+\[ \Tr(A^p)\equiv\sum_{i=1}^n a_{ii}^{\,p}\pmod p, \]
+iar prin mica teoremă a lui Fermat ($a^p\equiv a\pmod p$ pentru orice întreg $a$),
+\[ \sum_{i=1}^n a_{ii}^{\,p}\equiv\sum_{i=1}^n a_{ii}=\Tr(A)\pmod p. \]
+\emph{Observație.} Primalitatea lui $p$ este esențială în ambele locuri (mărimea orbitelor și teorema lui Fermat): pentru $p=4$ și $A=(2)\in M_1(\mathbb{Z})$ avem $\Tr(A^4)=16\equiv0\pmod4$, dar $\Tr(A)=2$.
+\vspace{2mm}\hrule
+\vspace{2mm}
+
+\prob{onm}{ONM.13}{}
+Fie $n\ge2$ fixat. Determinați toate polinoamele $P\in\mathbb{C}[X]$ cu proprietatea că, pentru orice $A\in\Mn$,
+\[ \rang\bigl(P(A)\bigr)=1\quad\Longleftrightarrow\quad \rang(A)=1. \]
+\textbf{Răspuns:} exact polinoamele $P(X)=cX$, cu $c\in\mathbb{C}^{*}$.
+
+\lema
+Dacă $\rang(A)=1$, atunci $A^2=\Tr(A)\,A$; prin urmare $A^k=t^{\,k-1}A$ pentru orice $k\ge1$, unde $t=\Tr(A)$.
+\demo Imaginea lui $A$ fiind o dreaptă, generată de un vector $u\neq0$, fiecare coloană a lui $A$ este multiplu de $u$: există $v\neq0$ cu $A=u\,v^{\mathsf T}$. Atunci
+\[ A^2=u\,(v^{\mathsf T}u)\,v^{\mathsf T}=(v^{\mathsf T}u)\,u\,v^{\mathsf T}=(v^{\mathsf T}u)\,A, \]
+iar $v^{\mathsf T}u=\sum_i v_iu_i=\Tr(u\,v^{\mathsf T})=\Tr(A)$. Iterând, $A^k=t^{\,k-1}A$. $\square$
+
+\sol Scriem $P(X)=c_0+c_1X+\cdots+c_dX^d$ și punem
+\[ q(X)=c_1+c_2X+\cdots+c_dX^{\,d-1},\qquad\text{deci}\qquad P(X)=c_0+X\,q(X). \]
+Prin lemă, pentru orice $A$ de rang $1$, cu $t=\Tr(A)$,
+\begin{equation*}
+  P(A)=c_0I_n+\sum_{k\ge1}c_k\,t^{\,k-1}A=c_0I_n+q(t)\,A. \tag{$\star$}
+\end{equation*}
+
+\emph{Pasul 1: $c_0=P(0)=0$.} Fie $E_{12}$ matricea cu $1$ pe poziția $(1,2)$ și $0$ în rest: are rang $1$ și urmă $0$. Din $(\star)$, $P(E_{12})=c_0I_n+q(0)E_{12}$ este superior triunghiulară, cu toate elementele diagonale egale cu $c_0$. Dacă $c_0\neq0$, această matrice este inversabilă, deci are rangul $n\ge2$, deși $\rang(E_{12})=1$ --- contrazice implicația „$\Leftarrow$''. Așadar $c_0=0$ și $(\star)$ devine $P(A)=q(t)\,A$.
+
+\emph{Pasul 2: $q$ nu are nicio rădăcină complexă.} Fie $t_0\in\mathbb{C}$ oarecare. Există o matrice de rang $1$ cu urma $t_0$: pentru $t_0\neq0$ luăm $\operatorname{diag}(t_0,0,\dots,0)$, iar pentru $t_0=0$ luăm $E_{12}$. Pentru o astfel de matrice $A$, Pasul 1 dă $P(A)=q(t_0)A$. Dacă $q(t_0)=0$, atunci $P(A)=\On$ are rangul $0\neq1$, deși $\rang(A)=1$ --- din nou contrazice „$\Leftarrow$''. Deci $q(t_0)\neq0$ pentru orice $t_0\in\mathbb{C}$.
+
+\emph{Pasul 3: încheierea.} Un polinom fără rădăcini în $\mathbb{C}$ este, prin teorema fundamentală a algebrei, o constantă nenulă. Deci $q\equiv c$ cu $c\neq0$, adică
+\[ P(X)=X\,q(X)=cX. \]
+
+\emph{Pasul 4: verificarea reciprocă.} Pentru $P(X)=cX$ cu $c\neq0$ avem $P(A)=cA$, deci $\rang(P(A))=\rang(A)$ pentru \emph{orice} $A\in\Mn$; în particular $\rang(P(A))=1\iff\rang(A)=1$. Așadar polinoamele căutate sunt exact $P(X)=cX$, $c\neq0$.\\[2pt]
+\emph{Observație.} Peste $\mathbb{R}$ răspunsul se schimbă, căci Pasul 3 (teorema fundamentală a algebrei) cade: în $M_2(\mathbb{R})$, polinomul $P(X)=X^3+X$ verifică echivalența (aici $q(t)=t^2+1$ nu se anulează pe $\mathbb{R}$), deși nu este de forma $cX$. Pentru $n\ge3$ el nu mai merge: luând $A=\begin{psmallmatrix}0&-1\\1&0\end{psmallmatrix}\oplus\operatorname{diag}(1,0,\dots,0)$, blocul de rotație verifică $C^2=-I_2$, deci $P(C)=C(C^2+I_2)=O_2$, iar $P(A)=O_2\oplus\operatorname{diag}(2,0,\dots,0)$ are rangul $1$, deși $\rang(A)=3$.
+\vspace{2mm}\hrule
+\vspace{2mm}
+
+\prob{onm}{ONM.14}{}
+\begin{parti}
+\item Fie $n$ impar și $A \in M_n(\RR)$. Arătați că există o matrice $B \in M_n(\RR)$ de rang $1$ cu $AB = BA$.
+
+\item Arătați că pentru orice $n$ par există o matrice $A \in M_n(\RR)$ care nu comută cu nicio matrice reală de rang $1$.
+\end{parti}
+\sol \emph{(a) Există o valoare proprie reală.} Polinomul caracteristic $p_A$ are coeficienți reali și gradul \emph{impar} $n$, deci $p_A(t) \to \pm\infty$ când $t \to \pm\infty$; prin proprietatea valorilor intermediare, $p_A$ are o rădăcină reală $\lambda$.
+
+\emph{Construcția lui $B$} (Lema~\ref{lema:ABBAlambdaB}). Din $p_A(\lambda) = 0$ rezultă că există un vector real $x \neq 0$ cu $Ax = \lambda x$. Matricea $A^T$ are \emph{același} polinom caracteristic ($\det(XI_n - A^T) = \det\big((XI_n - A)^T\big) = \det(XI_n - A)$), deci există și un vector real $y \neq 0$ cu $A^T y = \lambda y$. Punem
+\[
+B := x\,y^T \in M_n(\RR).
+\]
+$B$ este nenulă (are elementul $x_i y_j \neq 0$ pentru indici convenabili) și are rangul $1$ (toate coloanele ei sunt multipli ai lui $x$). În plus,
+\[
+AB = (Ax)\,y^T = \lambda\,xy^T = \lambda B, \qquad BA = x\,(y^T A) = x\,(A^T y)^T = \lambda\,xy^T = \lambda B,
+\]
+deci $AB = BA$ $(= \lambda B)$. $\blacksquare$
+
+\emph{(b) Pentru $n$ par, obstacolul este absența valorilor proprii reale.} Fie $R = \begin{psmallmatrix} 0 & -1 \\ 1 & 0 \end{psmallmatrix}$ (rotația de unghi $90^\circ$) și $A = \diag(R, R, \dots, R) \in M_n(\RR)$, cu $n/2$ blocuri; polinomul caracteristic este $(X^2+1)^{n/2}$, \emph{fără} rădăcini reale. Presupunem că există o matrice reală $B$ de rang $1$ cu $AB = BA$. Orice matrice reală de rang $1$ se scrie $B = xy^T$ cu $x, y \in \RR^n$ nenuli (coloanele sunt multipli ai unei coloane nenule $x$, iar coeficienții formează $y$). Relația de comutare dă
+\[
+(Ax)\,y^T = A\,(xy^T) = (xy^T)\,A = x\,(A^T y)^T.
+\]
+Alegem $j_0$ cu $y_{j_0} \neq 0$ și comparăm coloanele de indice $j_0$ din cei doi membri: $y_{j_0}\,(Ax) = \big(A^T y\big)_{j_0} x$, deci
+\[
+Ax = \mu\,x, \qquad \mu = \frac{(A^T y)_{j_0}}{y_{j_0}} \in \RR :
+\]
+$x \neq 0$ ar fi un vector propriu real cu valoarea proprie \emph{reală} $\mu$, ceea ce contrazice faptul că polinomul caracteristic este $(X^2+1)^{n/2}$. $\blacksquare$
+
+\begin{obs}
+Luate împreună, (a) și (b) demonstrează o echivalență: $A \in M_n(\RR)$ comută cu o matrice reală de rang $1$ \textbf{dacă și numai dacă} $A$ are o valoare proprie reală, iar pentru $n$ impar o astfel de valoare proprie există întotdeauna. Implicația „$\Leftarrow$'' este construcția $B = xy^T$, iar implicația „$\Rightarrow$'' este argumentul de la (b), care nu folosește nimic specific rotațiilor.
+\end{obs}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.15}{}
+Fie $n \ge 3$. Determinați toate matricele $A \in M_n(\mathbb{C})$ cu proprietatea
+\[
+  \adj(A) = A.
+\]
+\sol \textbf{Răspuns:} $A = O_n$ sau $A$ inversabilă cu $A^2 = (\det A)\, I_n$.
+
+Ecuația leagă rangul lui $A$ de rangul adjunctei sale, iar Lema~\ref{lema:rangadj} spune că cele două pot fi egale doar în situații foarte speciale: $\rang(\adj A) \in \{n, 1, 0\}$, după cum $\rang(A)$ este $n$, $n-1$, respectiv $\le n-2$. Din $\adj(A) = A$ rezultă $\rang(\adj A) = \rang(A)$, așa că discutăm trei cazuri.
+
+Cazul $\rang(A) = n-1$. Ar rezulta $\rang(\adj A) = 1$, deci $n - 1 = 1$, adică $n = 2$, exclus de ipoteza $n \ge 3$. Acest caz este imposibil.
+
+Cazul $\rang(A) \le n-2$. Prin Lema~\ref{lema:rangadj}, $\adj(A) = O_n$, deci $A = \adj(A) = O_n$, care chiar verifică ecuația ($\adj O_n = O_n$). Prima familie de soluții: $A = O_n$.
+
+Cazul $\rang(A) = n$. Fie $d = \det A \ne 0$. Identitatea fundamentală $A \cdot \adj(A) = d\, I_n$ devine, cu $\adj(A) = A$,
+\[
+  A^2 = d\, I_n.
+\]
+Reciproc, dacă $A^2 = d\, I_n$ cu $d = \det A \ne 0$, atunci $A^{-1} = \frac{1}{d} A$ și
+\[
+  \adj(A) = d\, A^{-1} = d \cdot \frac{A}{d} = A,
+\]
+deci, pentru matricele inversabile, condiția $A^2 = (\det A) I_n$ este \emph{exact} echivalentă cu ecuația. $\blacksquare$
+
+\medskip
+\noindent\textnormal{\textbf{Observație} \ $\cdot$ \ (cum arată soluțiile inversabile) Luând determinantul în $A^2 = d I_n$ obținem $d^2 = d^n$, deci $d^{\,n-2} = 1$: determinantul este o rădăcină de ordinul $n-2$ a unității. Valorile proprii verifică $\lambda^2 = d$, deci sunt egale cu $\pm\sqrt{d}$; orice astfel de $A$ este diagonalizabilă ($X^2 - d$ are rădăcini simple). De exemplu, pentru $n = 4$ avem $d^2 = 1$; cu $d = 1$ convine orice matrice $A = P \diag(1, 1, -1, -1) P^{-1}$ (verificare: $\det = 1$, $A^2 = I_4$).}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.16}{}
+Fie $A,B \in \Mn$ cu $ABA = A$. Arătați că
+\[
+    \rang\bigl(I_n - BA\bigr) = n - \rang(A).
+\]
+\sol \textit{Identitatea generală.} Pentru orice $A,B \in \Mn$:
+\[
+    \rang(A) + \rang(I_n - BA) = n + \rang\bigl(A - ABA\bigr).
+    \tag{$*$}
+\]
+Pornim de la $M = \begin{psmallmatrix} I_n - BA & O_n \\ O_n & A \end{psmallmatrix}$,
+pentru care $\rang(M) = \rang(I_n - BA) + \rang(A)$, și o reducem:
+\[
+\begin{aligned}
+\begin{pmatrix} I_n - BA & O_n \\ O_n & A \end{pmatrix}
+&\xrightarrow{\;R_1 \to R_1 + B\,R_2\;}
+\begin{pmatrix} I_n - BA & BA \\ O_n & A \end{pmatrix}
+\xrightarrow{\;C_1 \to C_1 + C_2\;}
+\begin{pmatrix} I_n & BA \\ A & A \end{pmatrix} \\[2mm]
+&\xrightarrow{\;R_2 \to R_2 - A\,R_1\;}
+\begin{pmatrix} I_n & BA \\ O_n & A - ABA \end{pmatrix}\\[2mm]
+&\xrightarrow{\;C_2 \to C_2 - C_1\,BA\;}
+\begin{pmatrix} I_n & O_n \\ O_n & A - ABA \end{pmatrix}.
+\end{aligned}
+\]
+Fiecare pas este o operație elementară pe blocuri (adunarea la o linie sau la o coloană
+de blocuri a unui multiplu matriceal al alteia), deci păstrează rangul; citind cele două
+capete ale lanțului, obținem $(*)$.
+
+\textit{Aplicarea ipotezei.} Cu $ABA = A$, membrul drept devine
+$n + \rang(O_n) = n$, deci
+\[
+    \rang(I_n - BA) = n - \rang(A). \qquad \blacksquare
+\]
+
+\medskip
+\noindent\textbf{Observație} $\cdot$ 1 (a doua față a problemei)\quad
+Din $ABA = A$ rezultă $(BA)^2 = B(ABA) = BA$: matricea $E = BA$ este
+\emph{idempotentă}, iar concluzia se rescrie $\rang(I_n - E) = n - \rang(E)$,
+adică exact identitatea rangurilor complementare pentru proiecții
+(Problema OJM.20, luând acolo $A$ și $B$ egale cu $E$ și $I_n - E$). Cele două
+probleme sunt aceeași identitate $(*)$, privită de la capete opuse.
+
+\medskip
+\noindent\textbf{Observație} $\cdot$ 2 (de ce „inversă generalizată'')\quad
+Condiția $ABA = A$ spune că $B$ inversează matricea $A$ „acolo unde $A$ vede'': pe imaginea
+lui $A$. Asemenea matrice $B$ există pentru \emph{orice} $A$ (nu doar pentru cele inversabile), iar
+identitatea $(*)$ măsoară exact abaterea: $\rang(A - ABA)$
+arată „cât de departe'' este $B$ de a fi o inversă generalizată a lui $A$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.17}{Clasică}
+Fie $A, B \in \CC[X]$ polinoame neconstante, de grade $a$, respectiv $b$, fără nicio rădăcină comună. Arătați că orice polinom $C$ cu $\deg C < a + b$ se poate scrie sub forma
+\[
+C = A\,S + B\,T, \qquad \text{cu } \deg S < b,\ \deg T < a,
+\]
+și că această reprezentare este unică.
+\sol Existența va rezulta, poate surprinzător, din \emph{injectivitatea} unei aplicații: între spații de aceeași dimensiune finită, injectiv înseamnă surjectiv (consecință a teoremei rang-nulitate, Teorema~\ref{teo:rangnulitate}; vezi și Corolarul~\ref{cor:injsurj}).
+
+\smallskip
+\textup{Cadrul.} Fie $V = \CC_{b-1}[X] \times \CC_{a-1}[X]$ (perechile $(S,T)$ cu $\deg S < b$, $\deg T < a$) și $W = \CC_{a+b-1}[X]$. Aplicația
+\[
+\Phi : V \to W, \qquad \Phi(S,T) = A\,S + B\,T
+\]
+este liniară, iar $\dim V = b + a = \dim W$.
+
+\smallskip
+\textup{Injectivitatea.} Fie $(S,T) \in \Ker \Phi$, adică $AS = -BT$. Presupunem $T \neq 0$. Pentru fiecare rădăcină $\alpha$ a lui $A$, cu multiplicitatea ei $m$, factorul $(X - \alpha)^m$ divide membrul stâng; cum $\alpha$ nu este rădăcină a lui $B$ (ipoteza!), factorul $(X - \alpha)^m$ trebuie să dividă $T$. Punând laolaltă toate rădăcinile lui $A$ (cu multiplicități, $a$ în total), obținem $A \mid T$: imposibil, deoarece $0 \leq \deg T < a$ și $T \neq 0$. Prin urmare $T = 0$, iar atunci $AS = 0$ dă $S = 0$. Așadar $\Ker \Phi = \{(0,0)\}$.
+
+\smallskip
+\textup{Concluzia.} $\Phi$ este injectivă între spații de aceeași dimensiune finită, deci \emph{surjectivă} (prin teorema rang-nulitate, Teorema~\ref{teo:rangnulitate}): orice $C$ cu $\deg C < a + b$ are forma $AS + BT$ cu gradele cerute. Unicitatea este exact injectivitatea: două reprezentări diferă printr-un element al nucleului. $\blacksquare$
+
+\medskip
+\noindent\textup{\textbf{Observație}}\quad \textup{Aceasta este relația lui B\'ezout pentru polinoame, \emph{cu grade mărginite}, obținută fără algoritmul lui Euclid: partea „aritmetică'' a soluției se reduce la injectivitate (un singur pas de divizibilitate), în timp ce \emph{existența} (de obicei partea grea) vine gratuit din egalitatea dimensiunilor. Restricția $\deg C < a + b$ este esențială: pentru $C = X^{a+b}$, orice combinație $AS + BT$ cu $\deg S < b$, $\deg T < a$ are gradul cel mult $a + b - 1$, deci reprezentarea este imposibilă.}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.18}{Clasică}
+\begin{parti}
+\item Arătați că pentru orice polinom $Q \in \RR[X]$ există un polinom $P$ astfel încât
+\[
+P(X+1) - P(X) = Q(X),
+\]
+unic până la adunarea unei constante.
+
+\item Deduceți că, pentru fiecare $k \geq 1$, suma $1^k + 2^k + \cdots + m^k$ este valoarea în $m$ a unui polinom de grad $k+1$, pentru orice întreg $m \geq 1$.
+\end{parti}
+\sol (a) Fie $n = \deg Q$ și considerăm aplicația liniară
+\[
+T : \RR_{n+1}[X] \to \RR_n[X], \qquad T(P) = P(X+1) - P(X).
+\]
+$T$ ia într-adevăr valori în $\RR_n[X]$: pentru $P = X^m$, binomul lui Newton dă $T(X^m) = (X+1)^m - X^m = mX^{m-1} + \cdots$, de grad $m-1$; prin liniaritate, $\deg T(P) \leq \deg P - 1$.
+
+Nucleul. $T(P) = 0$ înseamnă $P(X+1) = P(X)$; atunci $P(0) = P(1) = P(2) = \cdots$, deci polinomul $P - P(0)$ are o infinitate de rădăcini, adică este nul. Așadar $\Ker T = \{\text{constantele}\}$, de dimensiune $1$.
+
+Dimensiunile decid. Prin teorema rang-nulitate (Teorema~\ref{teo:rangnulitate}):
+\[
+\dim \Ima T = \dim \RR_{n+1}[X] - \dim \Ker T = (n+2) - 1 = n+1 = \dim \RR_n[X],
+\]
+deci $\Ima T = \RR_n[X]$, adică $T$ este surjectivă. Prin urmare există $P \in \RR_{n+1}[X]$ cu $P(X+1) - P(X) = Q(X)$. Unicitatea până la o constantă: diferența a două soluții se află în $\Ker T$. $\blacksquare$
+
+(b) Aplicăm (a) polinomului $Q(X) = X^k$ (aici $n = k$): există $P$, de grad cel mult $k+1$, cu $P(X+1) - P(X) = X^k$. Evaluăm în $X = j$ și sumăm telescopic pentru $j = 1, \ldots, m$:
+\[
+P(m+1) - P(1) = 1^k + 2^k + \cdots + m^k .
+\]
+Așadar suma puterilor este valoarea în $m$ a polinomului $F(X) = P(X+1) - P(1)$, al cărui grad este egal cu $\deg P$. Rămâne de arătat că $\deg P = k+1$: dacă am avea $\deg P \leq k$, atunci $\deg T(P) \leq k-1 < k = \deg Q$, contradicție. $\blacksquare$
+
+\medskip
+
+\noindent\textbf{Observație} \quad Pentru $k = 1, 2, 3$ regăsim formulele clasice $\frac{m(m+1)}{2}$, $\frac{m(m+1)(2m+1)}{6}$, $\left(\frac{m(m+1)}{2}\right)^2$; dar demonstrația de mai sus dă \emph{existența} polinomului lui Faulhaber pentru orice $k$, fără a calcula niciun coeficient: nucleul are dimensiunea 1, deci imaginea are codimensiunea 1, așa că „primitiva discretă'' există întotdeauna. Comparați cu ONM.17: acolo nucleul era nul și dimensiunile egale; aici nucleul este o dreaptă, iar spațiul de sosire are dimensiunea cu o unitate mai mică. Teorema rang-nulitate ține socoteala în ambele cazuri.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.19}{Clasică}
+Fie $A,B \in \Mn$. Arătați că $I_n - AB$ este inversabilă dacă și numai dacă $I_n - BA$ este inversabilă și că, în general,
+\[
+\rang(I_n - AB) = \rang(I_n - BA).
+\]
+\sol Comparăm cele două \emph{nuclee}: vom arăta că au aceeași dimensiune, iar de aici rezultă totul.
+
+Pasul 1: transportul nucleelor. Fie $x \in \Ker(I_n - AB)$, adică $ABx = x$. Punem $y = Bx$ și calculăm:
+\[
+BA\,y = BA(Bx) = B(ABx) = Bx = y,
+\]
+deci $y \in \Ker(I_n - BA)$. Aplicația $x \mapsto Bx$ duce așadar primul nucleu în al doilea; ea este liniară, iar pe primul nucleu este \emph{injectivă}: dacă $Bx = 0$ și $ABx = x$, atunci $x = A(Bx) = 0$. O aplicație liniară injectivă nu micșorează dimensiunea, deci
+\[
+\dim \Ker(I_n - AB) \;\le\; \dim \Ker(I_n - BA).
+\]
+
+Pasul 2: simetria. Rolurile lui $A$ și $B$ se pot schimba între ele, deci are loc și inegalitatea inversă:
+\[
+\dim \Ker(I_n - AB) = \dim \Ker(I_n - BA).
+\]
+
+Pasul 3: concluziile. Prin teorema rang-nulitate (Teorema~\ref{teo:rangnulitate}), aplicată celor două matrice pe $\CC^n$:
+\[
+\rang(I_n - AB) = n - \dim \Ker(I_n - AB) = n - \dim \Ker(I_n - BA) = \rang(I_n - BA).
+\]
+În particular, $I_n - AB$ este inversabilă $\iff$ nucleul ei este nul $\iff$ nucleul lui $I_n - BA$ este nul $\iff$ $I_n - BA$ este inversabilă. $\blacksquare$
+
+\medskip
+\textbf{Observație.} Rezultatul este înrudit cu faptul clasic că $AB$ și $BA$ au aceleași valori proprii nenule: aplicat matricelor $\frac{1}{\lambda}A$ și $B$, el spune că $\lambda$ este valoare proprie a lui $AB$ exact atunci când este valoare proprie a lui $BA$ (pentru $\lambda \neq 0$), cu aceleași dimensiuni ale subspațiilor proprii. Există și o formulă explicită care „explică'' echivalența: dacă $I_n - AB$ este inversabilă, atunci
+\[
+(I_n - BA)^{-1} = I_n + B\,(I_n - AB)^{-1}A,
+\]
+identitate care se verifică direct prin înmulțire.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.20}{}
+Fie $n\ge2$, $x_1,\dots,x_n\in\mathbb{C}$ numere distincte și $P(X)=(X-x_1)(X-x_2)\cdots(X-x_n)$.
+\begin{parti}
+  \item Arătați că
+  \[ S_k=\sum_{i=1}^n\frac{x_i^{\,k}}{P'(x_i)}=\begin{cases}0,&0\le k\le n-2,\\ 1,&k=n-1,\\ x_1+x_2+\cdots+x_n,&k=n.\end{cases} \]
+  \item Fie $y_1,\dots,y_n\in\mathbb{C}$. Căutăm un polinom de forma $Q=c_0+c_1X+\cdots+c_{n-2}X^{n-2}+c_nX^n$ (fără termen în $X^{n-1}$) cu $Q(x_i)=y_i$ pentru orice $i$. Arătați că, dacă $x_1+\cdots+x_n\neq0$, un astfel de $Q$ există și este unic, iar dacă $x_1+\cdots+x_n=0$, el există dacă și numai dacă $\displaystyle\sum_{i=1}^n\frac{y_i}{P'(x_i)}=0$, caz în care există o infinitate de astfel de polinoame.
+\end{parti}
+\sol Notăm $V=V(x_1,\dots,x_n)\neq0$ determinantul Vandermonde (Teorema~\ref{teo:vandermonde}) și $e_1=x_1+\cdots+x_n$. Din regula de derivare a produsului, $P'(x_i)=\prod_{j\neq i}(x_i-x_j)\neq0$.\\[2pt]
+(a) Fie $D_k$ determinantul obținut din $V$ înlocuind ultima linie $(x_1^{n-1},\dots,x_n^{n-1})$ cu $(x_1^k,\dots,x_n^k)$. Pentru $k\le n-2$, $D_k$ are două linii egale, deci $D_k=0$; $D_{n-1}=V$; iar $D_n$ este determinantul Vandermonde lacunar căruia îi lipsește puterea $n-1$, deci $D_n=V\,e_1$ (Teorema~\ref{teo:vandermondelacunar}). Pe de altă parte, dezvoltând după ultima linie (Teorema~\ref{teo:laplace}),
+\[ D_k=\sum_{i=1}^n(-1)^{n+i}x_i^{\,k}M_i, \]
+unde $M_i=V(x_1,\dots,\widehat{x_i},\dots,x_n)$ este determinantul Vandermonde al celorlalte $n-1$ numere. Din formula lui Vandermonde,
+\[ V=M_i\prod_{j<i}(x_i-x_j)\prod_{j>i}(x_j-x_i)=(-1)^{n-i}M_i\,P'(x_i), \]
+deci $(-1)^{n+i}M_i=\dfrac{V}{P'(x_i)}$ și $D_k=V\,S_k$. Împărțind la $V\neq0$ obținem cele trei valori din enunț.\\[2pt]
+(b) Condițiile $Q(x_i)=y_i$ formează sistemul liniar $Mc=y$ cu necunoscutele $c=(c_0,\dots,c_{n-2},c_n)^t$, unde linia $i$ a lui $M\in M_n(\mathbb{C})$ este $(1,x_i,\dots,x_i^{n-2},x_i^n)$. Matricea $M$ este transpusa matricei determinantului lacunar de la (a), deci $\det M=V\,e_1$.
+
+Dacă $e_1\neq0$, $\det M\neq0$ și, prin regula lui Cramer (Teorema~\ref{teo:cramer}), sistemul are soluție unică.
+
+Fie $e_1=0$. Atunci $\det M=0$, iar minorul format cu primele $n-1$ linii și primele $n-1$ coloane este $V(x_1,\dots,x_{n-1})\neq0$, deci $\rang M=n-1$. Fie $w=\bigl(\frac1{P'(x_1)},\dots,\frac1{P'(x_n)}\bigr)$. Din (a), $\sum_iw_ix_i^k=S_k=0$ pentru $k\le n-2$ și $\sum_iw_ix_i^n=S_n=e_1=0$, adică $wM=0$.
+\begin{itemize}[nosep,leftmargin=1.6em]
+  \item Dacă sistemul are o soluție $c$, atunci $wy=wMc=0$, adică $\sum_iy_i/P'(x_i)=0$.
+  \item Reciproc, dacă $wy=0$, atunci $w\,(M\,|\,y)=0$ cu $w\neq0$, deci liniile matricei extinse $(M\,|\,y)$ sunt liniar dependente și $\rang(M\,|\,y)\le n-1$ (Teorema~\ref{teo:rangcoloane}). Cum $\rang(M\,|\,y)\ge\rang M=n-1$, avem egalitate, iar prin teorema Rouché-Capelli (Teorema~\ref{teo:rouche}) sistemul este compatibil, cu $n-(n-1)=1$ necunoscută secundară arbitrară: o infinitate de soluții.
+\end{itemize}
+\emph{Observație.} Pentru $k=n+1$, același calcul (sau o inducție) dă $S_{n+1}=\sum_{i\le j}x_ix_j$; în general $S_{n-1+m}$ este suma tuturor monoamelor de grad $m$ în $x_1,\dots,x_n$. Punctul (b) arată cum teorema Rouché-Capelli transformă o identitate de determinanți într-o condiție de compatibilitate explicită.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.21}{Clasică}
+Fie $A=(a_{ij})\in M_n(\mathbb{R})$ cu
+\[ a_{ii}>\sum_{j\neq i}|a_{ij}|\qquad\text{pentru orice } i. \]
+\begin{parti}
+  \item Arătați că $\det A>0$.
+  \item Arătați că orice valoare proprie reală a lui $A$ este strict pozitivă.
+\end{parti}
+\sol \emph{Pasul 1: orice matrice reală $M$ cu proprietatea din enunț (numită diagonal dominantă) este inversabilă.} Presupunem că $Mx=0$ cu $x\neq0$ (Corolarul~\ref{cor:omogen}) și alegem $i$ cu $|x_i|=\max_j|x_j|>0$. Din linia $i$, $m_{ii}x_i=-\sum_{j\neq i}m_{ij}x_j$, deci
+\[ m_{ii}|x_i|\le\sum_{j\neq i}|m_{ij}|\,|x_j|\le|x_i|\sum_{j\neq i}|m_{ij}|<m_{ii}|x_i|, \]
+contradicție. Așadar $\det M\neq0$.\\[2pt]
+(a) Fie $D=\diag(a_{11},\dots,a_{nn})$ și $A_t=D+t(A-D)$ pentru $t\in[0,1]$. Matricea $A_t$ are aceeași diagonală ca $A$, iar elementele din afara diagonalei sunt înmulțite cu $t\le1$, deci $A_t$ este diagonal dominantă și, prin Pasul 1, $g(t)=\det A_t\neq0$ pentru orice $t\in[0,1]$. Funcția $g$ este polinomială în $t$, deci continuă, iar $g(0)=a_{11}\cdots a_{nn}>0$. Dacă am avea $g(1)<0$, prin proprietatea lui Darboux $g$ s-ar anula în $[0,1]$. Deci $\det A=g(1)>0$.\\[2pt]
+(b) Dacă $\lambda\le0$ ar fi o valoare proprie reală, matricea $A-\lambda I_n$ ar avea elementele diagonale $a_{ii}-\lambda\ge a_{ii}$ și aceleași elemente în afara diagonalei, deci ar fi diagonal dominantă și inversabilă (Pasul 1), în contradicție cu $\det(\lambda I_n-A)=0$ (Teorema~\ref{teo:valpropdet}).\\[2pt]
+\emph{Observație.} Ipoteza de dominanță strictă este esențială: $\begin{psmallmatrix}1&1\\1&1\end{psmallmatrix}$ are $a_{ii}=\sum_{j\neq i}|a_{ij}|$ și determinantul $0$. Rezultatul (teorema lui Lévy și Desplanques) se generalizează la matrice complexe cu $|a_{ii}|>\sum_{j\neq i}|a_{ij}|$, care sunt inversabile (Pasul 1 funcționează la fel).
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.22}{}
+Fie $A\in\Mn$ o matrice idempotentă ($A^2=A$) de rang $r$ și $\mathcal{C}(A)=\{X\in\Mn: AX=XA\}$.
+\begin{parti}
+  \item Arătați că $X\in\mathcal{C}(A)$ dacă și numai dacă subspațiile $\Ima A$ și $\Ker A$ ale lui $\CC^n$ sunt ambele stabile la $X$.
+  \item Arătați că $\mathcal{C}(A)$ este un subspațiu vectorial al lui $\Mn$ de dimensiune $r^2+(n-r)^2$.
+  \item Determinați valoarea minimă a lui $\dim\mathcal{C}(A)$ când $A$ parcurge matricele idempotente din $\Mn$.
+\end{parti}
+\sol Prin caracterizarea proiecțiilor (Teorema~\ref{teo:proiectii}), $\CC^n=\Ima A\oplus\Ker A$, iar $A$ acționează ca identitatea pe $\Ima A$ și ca $0$ pe $\Ker A$.\\[2pt]
+(a) Dacă $AX=XA$, atunci $X(\Ima A)=X A(\CC^n)=AX(\CC^n)\subset\Ima A$, iar pentru $v\in\Ker A$, $A(Xv)=X(Av)=0$, deci $Xv\in\Ker A$ (Propoziția~\ref{prop:stabile}). Reciproc, presupunem ambele subspații stabile la $X$ și fie $v=u+w$, cu $u\in\Ima A$ și $w\in\Ker A$. Atunci $Xu\in\Ima A$ și $Xw\in\Ker A$, deci
+\[ AXv=AXu+AXw=Xu+0=Xu,\qquad XAv=X(u+0)=Xu . \]
+Așadar $AX=XA$.\\[2pt]
+(b) $\mathcal{C}(A)$ este nucleul aplicației liniare $X\mapsto AX-XA$, deci un subspațiu. Prin Corolarul~\ref{cor:idempotenta}, $A=SES^{-1}$ cu $E=\diag(I_r,O_{n-r})$. Aplicația $X\mapsto S^{-1}XS$ este un izomorfism liniar al lui $\Mn$ care duce $\mathcal{C}(A)$ în $\mathcal{C}(E)$ (căci $AX=XA\iff E(S^{-1}XS)=(S^{-1}XS)E$), deci $\dim\mathcal{C}(A)=\dim\mathcal{C}(E)$ (Propoziția~\ref{prop:coordonate}). Scriind $Y=\begin{psmallmatrix}Y_{11}&Y_{12}\\Y_{21}&Y_{22}\end{psmallmatrix}$ pe blocuri de ordine $r$ și $n-r$,
+\[ EY=\begin{pmatrix}Y_{11}&Y_{12}\\0&0\end{pmatrix},\qquad YE=\begin{pmatrix}Y_{11}&0\\Y_{21}&0\end{pmatrix}, \]
+deci $EY=YE$ exact când $Y_{12}=0$ și $Y_{21}=0$. Matricele bloc-diagonale $\diag(Y_{11},Y_{22})$ formează un spațiu de dimensiune $r^2+(n-r)^2$.\\[2pt]
+(c) Idempotentele de rang $r$ există pentru orice $r\in\{0,\dots,n\}$ (de exemplu $\diag(I_r,O_{n-r})$). Cum
+\[ r^2+(n-r)^2=2\Bigl(r-\frac n2\Bigr)^2+\frac{n^2}2, \]
+minimul se atinge pentru $r$ cel mai apropiat de $\frac n2$: el este $\frac{n^2}2$ pentru $n$ par și $\bigl(\frac{n-1}2\bigr)^2+\bigl(\frac{n+1}2\bigr)^2=\frac{n^2+1}2$ pentru $n$ impar.\\[2pt]
+\emph{Observație.} Același argument arată că, pentru orice $A$ diagonalizabilă cu valorile proprii distincte $\lambda_1,\dots,\lambda_k$ de multiplicități $m_1,\dots,m_k$, $\dim\mathcal{C}(A)=m_1^2+\cdots+m_k^2$; în particular $\dim\mathcal{C}(A)\ge n$, cu egalitate când valorile proprii sunt distincte.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.23}{}
+Un subspațiu $W\subset\CC^n$ este \emph{stabil} la $A\in\Mn$ dacă $AW\subset W$ (includem $\{0\}$ și $\CC^n$).
+\begin{parti}
+  \item Fie $A\in\Mn$ cu $n$ valori proprii distincte. Arătați că $A$ are exact $2^n$ subspații stabile.
+  \item Fie $J=J_n$ blocul Jordan nilpotent de ordin $n$. Arătați că subspațiile stabile la $J$ sunt exact $\Ker J^k$, $k=0,1,\dots,n$; deci sunt $n+1$.
+\end{parti}
+\sol (a) Fie $\lambda_1,\dots,\lambda_n$ valorile proprii distincte și $v_i$ vectori proprii corespunzători. Ei sunt liniar independenți (Propoziția~\ref{prop:vectpropindependenti}), deci formează o bază, iar fiecare subspațiu propriu $\Ker(A-\lambda_iI_n)$ este dreapta $\Span(v_i)$: altfel am avea $n+1$ vectori independenți în subspațiile proprii, care sunt în sumă directă.
+
+Pentru $S\subset\{1,\dots,n\}$, subspațiul $W_S=\Span(v_i:i\in S)$ este stabil, iar submulțimi diferite dau subspații diferite (dacă $j\in S\setminus S'$, atunci $v_j\in W_S$, dar $v_j\notin W_{S'}$, din independență). Obținem astfel $2^n$ subspații stabile.
+
+Reciproc, fie $W\neq\{0\}$ stabil și $T=A|_W$. Polinomul $p_A=\prod_i(X-\lambda_i)$ are rădăcini simple și anulează $A$ (Teorema~\ref{teo:cayleyhamilton}), deci anulează și $T$; prin criteriul polinomului minimal (Teorema~\ref{teo:criteriudiag}) (Teorema~\ref{teo:criteriudiag}, aplicată matricei lui $T$ într-o bază a lui $W$), $W$ are o bază formată din vectori proprii ai lui $T$, adică din vectori proprii ai lui $A$ aflați în $W$. Fiecare dintre aceștia este un multiplu nenul al unui $v_i$, deci $W=W_S$ cu $S=\{i: v_i\in W\}$. Așadar subspațiile stabile sunt exact cele $2^n$ subspații $W_S$ (pentru $S=\emptyset$ obținem $\{0\}$).\\[2pt]
+(b) Fie $e_1,\dots,e_n$ baza canonică; $Je_1=0$ și $Je_j=e_{j-1}$ pentru $j\ge2$, deci $\Ker J^k=\Span(e_1,\dots,e_k)$, de dimensiune $k$, stabil (Propoziția~\ref{prop:stabile}). Reciproc, fie $W$ stabil, cu $\dim W=k$. Restricția $J|_W$ este nilpotentă pe un spațiu de dimensiune $k$, deci $(J|_W)^k=0$ (Propoziția~\ref{prop:nilpotent}), adică $W\subset\Ker J^k$. Cele două subspații au aceeași dimensiune $k$, deci $W=\Ker J^k$ (Teorema~\ref{teo:dimensiune}).\\[2pt]
+\emph{Observație.} Cele două situații sunt extremele: la valori proprii distincte subspațiile stabile formează o mulțime „mare'' (toate sumele de drepte proprii), iar la blocul Jordan ele formează un singur lanț. Pentru $A=I_n$, toate subspațiile sunt stabile, deci ele sunt o infinitate când $n\ge2$.
+\vspace{1mm}\hrule

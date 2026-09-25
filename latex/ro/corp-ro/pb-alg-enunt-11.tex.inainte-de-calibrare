@@ -1,0 +1,464 @@
+\subsectiuneclasa{Clasa a XI-a}{Algebră liniară: matrice, determinanți, rang, valori proprii, polinoame de matrice.}{Enunțuri · Clasa a XI-a}
+
+{\small Peste tot în acest capitol, $\Mn$ este mulțimea matricelor pătratice de ordin $n$ cu elemente complexe,
+$I_n$ matricea unitate, $\On$ matricea nulă, $\Tr$ urma și $\rang$ rangul.}
+
+\nivelE{olm}{Nivelul OLM}
+\prob{olm}{OLM.1}{}
+Fie $A\in M_2(\mathbb{R})$ cu $\Tr(A)=3$ și $\det(A)=2$.
+\begin{parti}
+  \item Exprimați $A^2$ în funcție de $A$ și $I_2$.
+  \item Calculați $\Tr(A^2)$ și $\det(A^2)$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.2}{Clasică}
+Calculați determinantul și precizați când este nul:
+\[ D=\begin{vmatrix} 1&1&1\\ a&b&c\\ a^2&b^2&c^2 \end{vmatrix},\qquad a,b,c\in\mathbb{R}. \]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.3}{}
+Fie
+\[ A=\begin{pmatrix} 2&1&0\\ 0&2&1\\ 0&0&2 \end{pmatrix}. \]
+\begin{parti}
+  \item Determinați valorile proprii, polinomul caracteristic $f_A$ și polinomul minimal $m_A$.
+  \item Este $A$ diagonalizabilă? Justificați.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.4}{}
+Determinați toate polinoamele $P$ (cu coeficienți complecși) astfel încât
+\[ P(z+1)=P(z)+2z+1\qquad\text{pentru orice } z. \]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.5}{}
+Determinați numărul real $a$ pentru care $(x-1)$ divide polinomul $x^4-a$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.6}{Clasică}
+Rezolvați în $M_2(\mathbb{C})$ ecuația $A^2=A+I_2$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.7}{Clasică}
+Fie $\alpha\in\mathbb{R}$ și $A=\begin{pmatrix}\cos\alpha & -\sin\alpha\\ \sin\alpha & \cos\alpha\end{pmatrix}$. Determinați $A^n$ (pentru $n\ge1$).
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.8}{Clasică}
+Fie $x_1,x_2,x_3\in\mathbb{C}$ rădăcinile polinomului $X^3-2X^2+3X-1$. Calculați $x_1^2+x_2^2+x_3^2$ și $\dfrac1{x_1}+\dfrac1{x_2}+\dfrac1{x_3}$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.9}{}
+Fie $n\ge2$ un întreg fixat. Rezolvați în $M_2(\mathbb{C})$ ecuația $A^{n+1}=A^n$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.10}{Clasică}
+Fie $n\ge1$ un întreg. Arătați că ecuația $A^n=I_2$ are cel puțin $n$ soluții în $M_2(\mathbb{R})$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.11}{}
+Fie $A\in M_n(\mathbb{C})$ o matrice în care suma elementelor de pe fiecare linie este egală cu același număr $s$.
+\begin{parti}
+  \item Arătați că, pentru orice $k\ge1$, suma elementelor de pe fiecare linie a lui $A^k$ este $s^k$.
+  \item Presupunem că $A$ este inversabilă. Arătați că $s\neq0$ și că suma elementelor de pe fiecare linie a lui $A^{-1}$ este $\dfrac1s$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.12}{}
+Fie $A\in M_2(\mathbb{Z})$ cu $\Tr(A)=1$ și $\det(A)=-1$.
+\begin{parti}
+  \item Arătați că $A^{k+2}=A^{k+1}+A^{k}$ pentru orice $k\ge0$.
+  \item Deduceți că toate numerele $t_k=\Tr(A^k)$ sunt întregi și calculați $\Tr(A^{10})$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.13}{Clasică}
+Fie $A\in M_2(\mathbb{R})$ cu $A^2=A-I_2$.
+\begin{parti}
+  \item Arătați că $A^6=I_2$.
+  \item Calculați $A^{2026}$ (în funcție de $A$).
+  \item Dați un exemplu de astfel de matrice.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.14}{Clasică}
+Fie $n\ge2$ și $x_1,\dots,x_n,y_1,\dots,y_n\in\mathbb{C}$. Considerăm matricea $A\in M_n(\mathbb{C})$ cu elementele $a_{ij}=1+x_iy_j$.
+\begin{parti}
+  \item Pentru $n=2$, arătați că $\det(A)=(x_1-x_2)(y_1-y_2)$.
+  \item Pentru $n\ge3$, arătați că $\det(A)=0$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.15}{Clasică}
+Fie $n\ge1$. Arătați că nu există matrice $A,B\in\Mn$ cu proprietatea
+\[ AB-BA=I_n . \]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.16}{Clasică}
+Fie $A\in M_n(\mathbb{R})$ cu $A^2=-I_n$. Arătați că $n$ este par, și arătați că pentru orice $n$ par există o astfel de matrice.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.17}{}
+Fie $A,B\in M_2(\mathbb{C})$ două matrice nilpotente care comută ($AB=BA$). Arătați că $AB=O_2$.
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.18}{Clasică}
+Fie $n \geq 3$ și $A \in \Mn$. Arătați că
+\[
+  \adj\bigl(\adj(A)\bigr) = \bigl(\det A\bigr)^{n-2} A.
+\]
+\vspace{1mm}\hrule
+
+\prob{olm}{OLM.19}{Clasică}
+Fie $A \in \Mn$ de rang $1$ și fie $t = \Tr(A)$. Arătați că $I_n + A$ este inversabilă dacă și numai dacă $t \neq -1$ și că, în acest caz,
+\[
+(I_n + A)^{-1} = I_n - \frac{1}{1+t}\,A.
+\]
+\vspace{1mm}\hrule
+
+\nivelE{ojm}{Nivelul OJM}
+\prob{ojm}{OJM.1}{}
+Fie $A,B\in M_2(\mathbb{Z})$ cu $\det A=\det B=1$. Arătați că $\det(A+B)$ și $\det(A-B)$ au aceeași paritate.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.2}{Clasică}
+Fie $A,B\in\Mn$ cu $AB=BA$ și $B$ nilpotentă. Arătați că $\det(A+B)=\det(A)$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.3}{Clasică}
+Fie $n\ge1$ și $A\in\Mn$ cu $A^2=\On$.
+\begin{parti}
+  \item Arătați că $\rang(A)\le n/2$.
+  \item Reciproc, pentru orice $r$ cu $0\le r\le n/2$, construiți $A\in\Mn$ cu $A^2=\On$ și $\rang(A)=r$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.4}{}
+Fie $A\in M_n(\mathbb{C})$ o matrice autoadjunctă ($A^*=A$) și unitară ($A^*A=I_n$). Arătați că $\det(A)\in\{1,-1\}$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.5}{}
+Determinați toate matricele $A\in M_n(\mathbb{C})$ care se pot scrie ca produs de două matrice de rang $1$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.6}{}
+Determinați toate matricele $A\in M_2(\mathbb{C})$ cu proprietatea că pentru orice $n\ge1$ există un polinom $P$ (depinzând eventual de $n$) astfel încât $A^{n+1}=P(A^n)$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.7}{}
+Fie $A,B\in M_n(\mathbb{C})$ două matrice care comută.
+\begin{parti}
+  \item Presupunând că $A$ și $B$ au rang $1$ și $AB\neq O_n$, arătați că $\Tr(AB)=\Tr(A)\,\Tr(B)$.
+  \item Arătați, printr-un exemplu, că egalitatea de la (a) poate cădea dacă una dintre matrice nu are rangul $1$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.8}{}
+Fie $n\ge2$ un întreg. Determinați toate polinoamele $P\in\mathbb{C}[X]$ cu proprietatea că, pentru orice $A\in M_n(\mathbb{C})$,
+\[ P(A)=O_n \;\Longleftrightarrow\; A=O_n. \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.9}{Clasică}
+Fie $A\in M_n(\mathbb{C})$.
+\begin{parti}
+  \item Arătați că, dacă $A$ este nilpotentă (există $m\ge1$ cu $A^m=O_n$), atunci $A^n=O_n$.
+  \item Pentru fiecare $k$ cu $1\le k\le n$, construiți o matrice $A_k\in M_n(\mathbb{C})$ astfel încât $A_k^{\,j}\neq O_n$ pentru $1\le j\le k-1$ și $A_k^{\,k}=O_n$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.10}{Clasică}
+Fie $A\in M_n(\mathbb{C})$ cu $A^2=I_n$.
+\begin{parti}
+  \item Arătați că $\rang(A-I_n)+\rang(A+I_n)=n$.
+  \item Fie $p$ numărul valorilor proprii egale cu $1$ (cu multiplicitate). Arătați că $p=\dfrac{n+\Tr(A)}{2}$; deduceți că $\Tr(A)$ și $n$ au aceeași paritate și $-n\le\Tr(A)\le n$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.11}{Clasică}
+Fie $A\in M_n(\mathbb{C})$ cu $A^2=A$.
+\begin{parti}
+  \item Arătați că $\det(I_n+A)=2^{\Tr(A)}$.
+  \item Arătați că $I_n-A$ este inversabilă dacă și numai dacă $A=O_n$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.12}{}
+Fie $A\in M_n(\mathbb{C})$ cu $A^3=2A$. Arătați că
+\[ \det(A^2+I_n)=3^{\,\rang(A)}. \]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.13}{}
+Fie $A\in M_n(\mathbb{R})$ o matrice simetrică ($A^t=A$) cu
+\[ A^3=A+6I_n. \]
+Arătați că $A=2I_n$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.14}{}
+Fie $A,B\in M_n(\mathbb{C})$ două matrice nilpotente care comută ($AB=BA$).
+\begin{parti}
+  \item Arătați că $A+B$ și $AB$ sunt nilpotente.
+  \item Arătați, prin exemple, că ambele concluzii pot cădea dacă $A$ și $B$ nu comută.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.15}{Clasică}
+Fie $A,B\in M_n(\mathbb{C})$, cu $B$ inversabilă. Arătați că există un întreg $t$ cu $0\le t\le n$ pentru care $A+tB$ este inversabilă.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.16}{}
+Fie $n\ge2$ fixat. Spunem că polinomul $P\in\mathbb{C}[X]$ \emph{anulează} matricea $A\in\Mn$ dacă $P(A)=\On$.
+\begin{parti}
+  \item Arătați că există polinoame \emph{nenule} care anulează o infinitate de matrice din $\Mn$.
+  \item Arătați că singurul polinom care anulează \emph{toate} matricele din $\Mn$ este polinomul nul.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.17}{}
+Fie $A\in\Mn$ o matrice \emph{nenulă} cu proprietatea $A^3=2A$. Fie $P\in\mathbb{C}[X]$ un polinom astfel încât
+\[ P(A^k)=A^k\qquad\text{pentru orice }k\ge1 . \]
+Arătați că $P(X)=X$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.18}{}
+Fie $A,B\in\Mn$ două matrice \emph{inversabile}.
+\begin{parti}
+  \item Arătați că dacă $A^k=B^k$ pentru orice întreg $k\ge2$, atunci $A=B$.
+  \item Arătați că există două matrice inversabile \emph{distincte} $A\neq B$ pentru care $A^k=B^k$ pentru o infinitate de valori ale lui $k$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.19}{}
+Fie $A \in M_n(\RR)$ cu $A^3 + A^2 = A + 2I_n$. Arătați că $\det A > 0$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.20}{}
+Fie $A,B \in \Mn$ cu $A+B = I_n$ și $\rang(A)+\rang(B) = n$. Arătați că
+$AB = BA = \On$ și că $A$ și $B$ sunt idempotente.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.21}{}
+Fie $x_1 < x_2 < \cdots < x_{2028}$ numere reale. Arătați că există numerele reale $c_1,\ldots,c_{2028}$, nu toate nule, astfel încât
+\[
+c_1P(x_1) + c_2P(x_2) + \cdots + c_{2028}P(x_{2028}) = 0
+\]
+pentru \emph{orice} polinom $P$ de grad cel mult 2026.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.22}{}
+Determinați toate polinoamele $P \in \RR[X]$ astfel încât
+\[
+P(\sin x) + P(\cos x) = 1 \qquad \text{pentru orice } x \in \RR.
+\]
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.23}{}
+Fie $n\ge1$ și $A,B\in\Mn$ cu $A^2=B^2=I_n$ și $AB+BA=\On$ (adică $A$ și $B$ anticomută).
+\begin{parti}
+  \item Arătați că $\Tr(A)=\Tr(B)=0$.
+  \item Deduceți că $A$ este asemenea cu $\operatorname{diag}(I_{n/2},-I_{n/2})$ (în particular $n$ este par); la fel și $B$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.24}{}
+Fie $A\in\Mn$ cu $A^3=A$.
+\begin{parti}
+  \item Arătați că $A^2$ este idempotentă și că $\rang(A)=\Tr(A^2)$.
+  \item Presupunem în plus $\Tr(A)=0$ și $A\neq\On$. Arătați că numărul valorilor proprii nenule ale lui $A$ este par (deci $\rang(A)$ este par).
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.25}{}
+Fie $X,Y\in M_n(\mathbb{C})$ astfel încât $(X+2I_n)^n=XY-YX$. Arătați că $XY=YX$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.26}{}
+Determinați toate matricele $A\in M_n(\mathbb{C})$ cu proprietatea că pentru orice $k\ge1$ există scalari $x,y\in\mathbb{C}$ (depinzând de $k$) astfel încât $A^k=xA+yI_n$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.27}{Clasică}
+Fie $A,B\in M_n(\mathbb{C})$ cu $AB-BA=B^2$. Arătați că $B$ este nilpotentă.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.28}{}
+Fie $A \in \Mn$ cu proprietatea că, pentru orice $v \in \CC^n$, este îndeplinită cel puțin una dintre următoarele condiții: sistemul $Ax = v$ are soluție sau $Av = 0$. Arătați că $A$ este inversabilă sau $A = \On$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.29}{Clasică}
+Fie $A,B\in M_n(\mathbb{R})$ cu $AB=BA$.
+\begin{parti}
+  \item Arătați că $\det(A^2+B^2)\ge0$.
+  \item Arătați că $\det(A^2+AB+B^2)\ge0$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.30}{Clasică}
+\begin{parti}
+  \item Fie $A\in M_n(\mathbb{Z})$ cu toate elementele de pe diagonala principală impare și toate celelalte elemente pare. Arătați că $A$ este inversabilă.
+  \item Fie $n$ par și $A\in M_n(\mathbb{Z})$ cu elementele de pe diagonala principală nule și toate celelalte elemente impare. Arătați că $\det A\neq0$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.31}{Clasică}
+Fie $A,B\in\Mn$ și $f(x)=\det(A+xB)$.
+\begin{parti}
+  \item Arătați că $f$ este o funcție polinomială de grad cel mult $\rang B$.
+  \item Arătați că, pentru orice $B$, există $A$ pentru care gradul lui $f$ este exact $\rang B$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.32}{Clasică}
+\begin{parti}
+  \item Fie $n\ge2$. Arătați că ecuația $X^n=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ nu are soluții în $M_2(\mathbb{C})$.
+  \item Arătați că ecuația $X^2=\begin{pmatrix}4&0\\0&9\end{pmatrix}$ are exact patru soluții în $M_2(\mathbb{C})$.
+  \item Arătați că ecuația $X^2=I_2$ are o infinitate de soluții în $M_2(\mathbb{C})$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\nivelE{onm}{Nivelul ONM}
+\prob{onm}{ONM.1}{}
+Fie $n\ge1$ și $A,B\in\Mn$ cu $A^2=B^2=\On$ și $AB+BA=I_n$.
+\begin{parti}
+  \item Arătați că $n$ este par.
+  \item Arătați că $\rang(A)=\rang(B)=n/2$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.2}{Clasică}
+Fie $p$ un număr prim. Arătați că polinomul $\Phi_p(X)=1+X+X^2+\cdots+X^{p-1}$ este ireductibil peste $\mathbb{Q}$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.3}{}
+Fie $p$ un număr prim și $A\in M_n(\mathbb{Q})$ cu
+\[ I_n+A+A^2+\cdots+A^{p-1}=O_n. \]
+Arătați că $(p-1)\mid n$ și determinați $\Tr(A)$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.4}{ONM 2015, Problema 2}
+Fie $A\in M_5(\mathbb{C})$ cu $\Tr(A)=0$ și cu proprietatea că $I_5-A$ este inversabilă. Arătați că $A^5\neq I_5$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.5}{}
+Arătați că nu există matrice $A,B\in M_n(\mathbb{C})$ care comută și pentru care $\det(A^kB^k-kI_n)=0$ pentru orice $k\ge1$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.6}{}
+Fie $n\ge1$ și $A,B\in\Mn$ două matrice idempotente ($A^2=A$, $B^2=B$) care comută ($AB=BA$). Arătați că
+\[ \rang(A)+\rang(B)=\rang(AB)+\rang(A+B-AB). \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.7}{}
+Fie $n\ge1$ și $A\in M_n(\mathbb{Z})$. Determinați toate matricele $A$ pentru care există un polinom ireductibil $P\in\mathbb{Z}[X]$, cu $P(0)\neq0$, astfel încât $P(A)=O_n$. (Arătați, în plus, că pentru astfel de $A$ există doar un număr finit de asemenea polinoame.)
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.8}{}
+Determinați toate matricele $C\in M_n(\mathbb{C})$ cu proprietatea că pentru orice $k\ge1$ există $A_k\in M_n(\mathbb{C})$ astfel încât $A_k^{\,k}=C$ (adică $C$ admite rădăcină de orice ordin).
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.9}{}
+Fie $k\in\mathbb{C}$ fixat. Determinați toate polinoamele $P\in\mathbb{C}[X]$ de grad $n$ cu proprietatea că
+\[ P(A+kI_n)=A+kI_n\qquad\text{pentru orice matrice nilpotentă } A\in M_n(\mathbb{C}). \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.10}{}
+Fie $A\in M_n(\mathbb{C})$ pentru care există un întreg $m\ge1$ cu $A^m=I_n$ și, în plus, $|\Tr(A)|=n$. Arătați că $A=\lambda I_n$ pentru un număr complex $\lambda$ cu $\lambda^m=1$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.11}{}
+Fie $P,Q\in M_n(\mathbb{R})$ două matrice simetrice ($P^t=P$, $Q^t=Q$) și idempotente ($P^2=P$, $Q^2=Q$).
+\begin{parti}
+  \item Arătați că $\Tr(PQ)\ge0$, cu egalitate dacă și numai dacă $PQ=O_n$.
+  \item Arătați că $\Tr(PQ)\le\min\{\Tr(P),\Tr(Q)\}$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.12}{Clasică}
+Fie $A\in M_n(\mathbb{Z})$ o matrice cu elemente întregi. Arătați că, pentru orice număr prim $p$, are loc $\Tr(A^p)\equiv\Tr(A)\pmod p$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.13}{}
+Fie $n\ge2$ fixat. Determinați toate polinoamele $P\in\mathbb{C}[X]$ cu proprietatea că, pentru orice $A\in\Mn$,
+\[ \rang\bigl(P(A)\bigr)=1\quad\Longleftrightarrow\quad \rang(A)=1. \]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.14}{}
+\begin{parti}
+\item Fie $n$ impar și $A \in M_n(\RR)$. Arătați că există o matrice $B \in M_n(\RR)$ de rang $1$ cu $AB = BA$.
+
+\item Arătați că pentru orice $n$ par există o matrice $A \in M_n(\RR)$ care nu comută cu nicio matrice reală de rang $1$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.15}{}
+Fie $n \ge 3$. Determinați toate matricele $A \in M_n(\mathbb{C})$ cu proprietatea
+\[
+  \adj(A) = A.
+\]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.16}{}
+Fie $A,B \in \Mn$ cu $ABA = A$. Arătați că
+\[
+    \rang\bigl(I_n - BA\bigr) = n - \rang(A).
+\]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.17}{Clasică}
+Fie $A, B \in \CC[X]$ polinoame neconstante, de grade $a$, respectiv $b$, fără nicio rădăcină comună. Arătați că orice polinom $C$ cu $\deg C < a + b$ se poate scrie sub forma
+\[
+C = A\,S + B\,T, \qquad \text{cu } \deg S < b,\ \deg T < a,
+\]
+și că această reprezentare este unică.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.18}{Clasică}
+\begin{parti}
+\item Arătați că pentru orice polinom $Q \in \RR[X]$ există un polinom $P$ astfel încât
+\[
+P(X+1) - P(X) = Q(X),
+\]
+unic până la adunarea unei constante.
+
+\item Deduceți că, pentru fiecare $k \geq 1$, suma $1^k + 2^k + \cdots + m^k$ este valoarea în $m$ a unui polinom de grad $k+1$, pentru orice întreg $m \geq 1$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.19}{Clasică}
+Fie $A,B \in \Mn$. Arătați că $I_n - AB$ este inversabilă dacă și numai dacă $I_n - BA$ este inversabilă și că, în general,
+\[
+\rang(I_n - AB) = \rang(I_n - BA).
+\]
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.20}{}
+Fie $n\ge2$, $x_1,\dots,x_n\in\mathbb{C}$ numere distincte și $P(X)=(X-x_1)(X-x_2)\cdots(X-x_n)$.
+\begin{parti}
+  \item Arătați că
+  \[ S_k=\sum_{i=1}^n\frac{x_i^{\,k}}{P'(x_i)}=\begin{cases}0,&0\le k\le n-2,\\ 1,&k=n-1,\\ x_1+x_2+\cdots+x_n,&k=n.\end{cases} \]
+  \item Fie $y_1,\dots,y_n\in\mathbb{C}$. Căutăm un polinom de forma $Q=c_0+c_1X+\cdots+c_{n-2}X^{n-2}+c_nX^n$ (fără termen în $X^{n-1}$) cu $Q(x_i)=y_i$ pentru orice $i$. Arătați că, dacă $x_1+\cdots+x_n\neq0$, un astfel de $Q$ există și este unic, iar dacă $x_1+\cdots+x_n=0$, el există dacă și numai dacă $\displaystyle\sum_{i=1}^n\frac{y_i}{P'(x_i)}=0$, caz în care există o infinitate de astfel de polinoame.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.21}{Clasică}
+Fie $A=(a_{ij})\in M_n(\mathbb{R})$ cu
+\[ a_{ii}>\sum_{j\neq i}|a_{ij}|\qquad\text{pentru orice } i. \]
+\begin{parti}
+  \item Arătați că $\det A>0$.
+  \item Arătați că orice valoare proprie reală a lui $A$ este strict pozitivă.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.22}{}
+Fie $A\in\Mn$ o matrice idempotentă ($A^2=A$) de rang $r$ și $\mathcal{C}(A)=\{X\in\Mn: AX=XA\}$.
+\begin{parti}
+  \item Arătați că $X\in\mathcal{C}(A)$ dacă și numai dacă subspațiile $\Ima A$ și $\Ker A$ ale lui $\CC^n$ sunt ambele stabile la $X$.
+  \item Arătați că $\mathcal{C}(A)$ este un subspațiu vectorial al lui $\Mn$ de dimensiune $r^2+(n-r)^2$.
+  \item Determinați valoarea minimă a lui $\dim\mathcal{C}(A)$ când $A$ parcurge matricele idempotente din $\Mn$.
+\end{parti}
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.23}{}
+Un subspațiu $W\subset\CC^n$ este \emph{stabil} la $A\in\Mn$ dacă $AW\subset W$ (includem $\{0\}$ și $\CC^n$).
+\begin{parti}
+  \item Fie $A\in\Mn$ cu $n$ valori proprii distincte. Arătați că $A$ are exact $2^n$ subspații stabile.
+  \item Fie $J=J_n$ blocul Jordan nilpotent de ordin $n$. Arătați că subspațiile stabile la $J$ sunt exact $\Ker J^k$, $k=0,1,\dots,n$; deci sunt $n+1$.
+\end{parti}
+\vspace{1mm}\hrule

@@ -1,0 +1,180 @@
+\chapter{Construcții: ce obiecte să încerci}\label{ch:obiecte}
+
+\emph{Notă:} acesta este pandantul algebric al capitolului „Redactare și probleme de construcții'' din partea de analiză --- o \emph{atitudine}, nu un capitol de teorie, și de aceea stă la începutul întregii părți de algebră: se folosește peste tot, și la clasa a XI-a (matrice), și la clasa a XII-a (structuri algebrice). La analiză, subpunctele de tip „dați un exemplu / rezultă că...?'' se rezolvau dintr-un catalog scurt de funcții ($|x|$, Dirichlet, $\sqrt{x^2+\varepsilon}$...); la algebră, ele se rezolvă dintr-un catalog la fel de scurt de \emph{obiecte}. Exemplele de mai jos invocă noțiuni tratate riguros abia în capitolele următoare (blocuri, Vandermonde, Cayley, teorema de structură a abelienelor); la prima citire se rețin \emph{reflexele}, iar la capitolele respective se revine aici.
+
+\section{În general}
+
+La ONM, un subpunct b) de tip „dați un exemplu'' sau „rămâne adevărat dacă...?'' nu pică din cer: \textbf{subpunctul a) este busola lui}. Punctul a) fixează \emph{invariantul} pe care problema îl testează (la a XI-a: rangul, urma, inversabilitatea, comutarea $AB=BA$; la a XII-a: ordinul elementelor, comutativitatea, normalitatea, cardinalul unei mulțimi de soluții), iar b) cere aproape întotdeauna un obiect în care \emph{exact acel invariant} se comportă altfel. Înainte de a răsfoi catalogul, gândește logic ce ți-a arătat a).
+
+\begin{tehbox}{Rețeta în trei pași (comună celor două clase)}
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+\item \textbf{Identifică proprietatea-cheie din a).} Ce anume s-a demonstrat și \emph{ce ipoteză a fost esențială}? La a XI-a: inversabilitatea, rangul, urma, dimensiunea, faptul că matricele comută. La a XII-a: comutativitatea, primalitatea ordinului, normalitatea, faptul că un anumit număr divide altul.
+\item \textbf{Întreabă-te unde poate eșua.} Negarea concluziei lui b) cere un obiect în care ipoteza esențială din a) pică --- de obicei \emph{cel mai mic} astfel de obiect. Demonstrează întâi mici \emph{restricții obligatorii} (ce dimensiune minimă trebuie să aibă matricea? ce ordine sunt posibile? poate fi obiectul comutativ?): fiecare restricție taie din spațiul de căutare, exact ca la analiză.
+\item \textbf{Caută în catalogul clasei tale, de la mic la mare.} Nu inventa obiecte exotice. La a XI-a: rezolvă cazul $2\times2$ prin calcul direct și \emph{ridică-l pe blocuri} la orice dimensiune (secțiunea următoare); ține la îndemână rotația $P$ și blocul Jordan $N$. La a XII-a: $\ZZ_n$, produsele $\ZZ_{n_1}\times\dots\times\ZZ_{n_l}$, permutările $S_n$, grupurile de matrice; la inele: $\ZZ_n$ cu $n$ compus, $M_2(K)$, produsele de inele. Și nu uita: de multe ori b) \emph{refolosește} exact obiectul sau morfismul construit la a) --- nu reinventa ce ți s-a dat deja.
+\end{enumerate}
+\end{tehbox}
+
+\section{Clasa a XI-a: matrice}
+
+La clasa a XI-a obiectele sunt matricele, iar două tehnici acoperă majoritatea problemelor de existență: \emph{trucul blocurilor} (orice fenomen $2\times2$ se ridică la orice dimensiune) și \emph{recunoașterea circulantelor} (rotația deghizată în matrice).
+
+\subsection{Cazuri mici și trucul blocurilor}
+
+La problemele de existență cu matrice --- „găsiți $A,B\in M_n(\CC)$ cu proprietatea...'' --- dimensiunea $n$ este adesea o sperietoare falsă: fenomenul se produce deja la $2\times2$, iar de acolo se \emph{ridică} la orice $n$ printr-un truc de matrice pe blocuri (Capitolul~\refv{ch:blocuri}{5}{3}). Exemplul mic se găsește prin calcul; blocurile îl fac să funcționeze la orice dimensiune.
+
+\begin{tehbox}{De la $2\times2$ la $n\times n$: rețeta}
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+\item \textbf{Rezolvă cazul mic prin bash, impunând o formă simplă.} O matrice din $M_2$ are $4$ necunoscute --- două matrice, $8$: prea multe pentru un calcul orb. Impune o formă care respectă simetria problemei: \emph{ambele diagonale}, ambele triunghiulare, sau matrice-unitate $E_{ij}$. Sistemul rămas devine banal.
+\item \textbf{Ridică exemplul cu blocuri de zerouri.} Scufundarea $A\mapsto\begin{psmallmatrix}A&0\\0&0\end{psmallmatrix}$ păstrează adunarea, înmulțirea și puterile:
+\[
+\begin{pmatrix}A&0\\0&0\end{pmatrix}\begin{pmatrix}B&0\\0&0\end{pmatrix}=\begin{pmatrix}AB&0\\0&0\end{pmatrix},
+\]
+deci orice identitate „fără $I_n$'' verificată în colțul $2\times2$ rămâne verificată în $M_n$: dimensiunea mare doar \emph{găzduiește} colțul.
+\item \textbf{Dacă enunțul implică $I_n$ sau inversabilitatea, umple cu $I$, nu cu $0$.} Scufundarea $A\mapsto\begin{psmallmatrix}A&0\\0&I_{n-2}\end{psmallmatrix}$ păstrează produsele și inversele și duce $I_2$ în $I_n$ --- potrivită pentru ecuații de tip $X^k=I_n$ sau pentru exemple în $\GL_n$. (Atenție: aceasta \textbf{nu} păstrează sumele --- e un truc pur multiplicativ.)
+\end{enumerate}
+\end{tehbox}
+
+\textbf{Exemplu (divizori ai lui zero de orice dimensiune).} \emph{Găsiți două matrice nenule $A,B\in M_n(\CC)$ cu $AB=O_n$.}
+
+\emph{Pasul 1 (bash la $2\times2$, impunând forma diagonală).} Căutăm $A=\diag(a_1,a_2)$, $B=\diag(b_1,b_2)$; produsul e $\diag(a_1b_1,\,a_2b_2)$, deci sistemul este $a_1b_1=a_2b_2=0$, cu $A,B\neq O_2$. Alegem zerourile \emph{încrucișat}:
+\[
+A_0=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+B_0=\begin{pmatrix}0&0\\0&1\end{pmatrix},\qquad
+A_0B_0=O_2 .
+\]
+\emph{Pasul 2 (ridicarea prin blocuri).} Pentru orice $n\ge2$ punem
+\[
+\begin{gathered}
+A=\begin{pmatrix}A_0&0\\0&0\end{pmatrix},\quad
+B=\begin{pmatrix}B_0&0\\0&0\end{pmatrix}\in M_n(\CC)\\
+\Longrightarrow\quad
+AB=\begin{pmatrix}A_0B_0&0\\0&0\end{pmatrix}=O_n,
+\end{gathered}
+\]
+cu $A,B\neq O_n$. $\blacksquare$
+
+Aceeași scufundare produce, gata calibrate, exemplele-tip ale clasei a XI-a: \emph{nilpotent de indice exact $k\le n$} --- blocul Jordan $J_k$ umplut cu zerouri (teorema lui Jordan pentru matrice nilpotente, din capitolul „Triangularizare, diagonalizare și forma Jordan''\invol{3}); \emph{idempotent de rang $r$} --- $\diag(I_r,0)$, cu $\Tr=\rang$ (Lema~\refv{lema:idemptrrang}{7.24}{3}); \emph{pereche necomutativă în $M_n$}, $n\ge2$ --- $E_{11}$ și $E_{12}$ umplute cu zerouri ($E_{11}E_{12}=E_{12}$, dar $E_{12}E_{11}=O$); \emph{element de ordin $k$ în $\GL_n(\RR)$} --- rotația de unghi $\frac{2\pi}k$ umplută cu $I_{n-2}$ (a doua scufundare!). Morala: pentru problemele de existență, „cazul $2\times2$ \emph{este} cazul general''.
+
+\subsection{Matrice circulantă}
+
+Un obiect care apare obsesiv la determinanți și sisteme „cu simetrie ciclică'' --- și care merită recunoscut din prima privire.
+
+\begin{tehbox}{Circulanta $=$ polinom în rotația $P$}
+\emph{Matricea circulantă} asociată numerelor $c_0,c_1,\dots,c_{n-1}$ este matricea ale cărei linii se obțin una din alta prin rotire cu un pas spre dreapta:
+\[
+C=\mathrm{circ}(c_0,c_1,\dots,c_{n-1})=\begin{pmatrix}
+c_0&c_1&\cdots&c_{n-1}\\
+c_{n-1}&c_0&\cdots&c_{n-2}\\
+\vdots&&\ddots&\vdots\\
+c_1&c_2&\cdots&c_0
+\end{pmatrix}.
+\]
+Piesa fundamentală este cea mai simplă dintre ele, \textbf{matricea de rotație} $P=\mathrm{circ}(0,1,0,\dots,0)$, care \emph{rotește coordonatele}:
+\[
+P\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}=\begin{pmatrix}x_2\\\vdots\\x_n\\x_1\end{pmatrix},
+\qquad P^n=I_n .
+\]
+Observația-cheie: $P^k$ rotește cu $k$ pași, iar
+\[
+\begin{gathered}
+C=c_0I_n+c_1P+c_2P^2+\dots+c_{n-1}P^{n-1}=f(P),\\
+f(t)=c_0+c_1t+\dots+c_{n-1}t^{n-1}:
+\end{gathered}
+\]
+\textbf{orice circulantă este un polinom în rotația $P$}. De aici curg toate proprietățile:
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+\item \textbf{Cum acționează la înmulțire.} $Cx=c_0x+c_1Px+\dots+c_{n-1}P^{n-1}x$ --- o \emph{combinație ponderată a rotitelor} vectorului $x$; pe componente, $(Cx)_i=\sum_k c_k\,x_{i+k}$, cu indicii citiți ciclic (modulo $n$). Înmulțirea cu o circulantă este deci o „mediere ciclică'' a coordonatelor --- de aceea circulantele apar natural la sisteme și recurențe ciclice.
+\item \textbf{Produsul a două circulante e circulantă, iar circulantele comută:} $f(P)\,g(P)=(fg)(P)=g(P)\,f(P)$. Calculul cu circulante este calcul cu \emph{polinoame}, redus modulo $X^n-1$ (căci $P^n=I_n$) --- în limbajul clasei a XII-a, circulantele formează un inel comutativ.
+\item \textbf{Vectori proprii gratuiți.} Fie $\omega=\cos\frac{2\pi}n+i\sin\frac{2\pi}n$ și, pentru $j=0,1,\dots,n-1$, vectorul $v_j=\bigl(1,\omega^j,\omega^{2j},\dots,\omega^{(n-1)j}\bigr)^t$. Rotirea unei progresii geometrice o înmulțește cu rația: $Pv_j=\omega^j v_j$; aplicând polinomul $f$,
+\[
+C\,v_j=f(\omega^j)\,v_j .
+\]
+Cei $n$ vectori sunt liniar independenți (matricea lor e Vandermonde cu noduri distincte $\omega^0,\dots,\omega^{n-1}$, vezi determinantul Vandermonde din Capitolul~\refv{ch:detspeciali}{10}{3}), deci am diagonalizat dintr-un foc \emph{orice} circulantă, și
+\[
+\boxed{\;\det C=\prod_{j=0}^{n-1}f(\omega^j)=\prod_{j=0}^{n-1}\bigl(c_0+c_1\omega^j+c_2\omega^{2j}+\dots+c_{n-1}\omega^{(n-1)j}\bigr).\;}
+\]
+\item \textbf{Bonusul liniei constante:} $v_0=(1,1,\dots,1)^t$ dă valoarea proprie $f(1)=c_0+c_1+\dots+c_{n-1}$ --- suma pe linie. De aceea, la determinanții circulanți, factorul $c_0+\dots+c_{n-1}$ „se vede'' imediat (adună toate coloanele la prima).
+\end{enumerate}
+\end{tehbox}
+
+\textbf{Problemă-tip (acțiunea rotației asupra unei matrice).} \emph{Fie $A=(a_{ij})\in M_n(\CC)$ oarecare. Găsiți matrice $X,Y\in M_n(\CC)$, independente de $A$, astfel încât: \textbf{(a)} $AX$ să fie $A$ cu coloanele rotite ciclic cu un pas spre dreapta; \textbf{(b)} $YA$ să fie $A$ cu prima linie \emph{ștearsă}: liniile $2,\dots,n$ urcă toate cu un pas, iar ultima linie se completează cu zerouri.}
+
+\emph{Soluție.} \textbf{(a)} Chiar rotația: $X=P$. Coloana $j$ a lui $P$ are un singur $1$, pe linia $j-1$, deci $(AP)_{ij}=a_{i,j-1}$ (indici modulo $n$): fiecare coloană a lui $AP$ „vine'' de la vecina din stânga --- rotire cu un pas spre dreapta. (Regula generală: înmulțirea \emph{la dreapta} acționează pe coloane, cea \emph{la stânga} pe linii --- simetric, $PA$ rotește liniile cu un pas în sus.)
+
+\textbf{(b)} Rotația pură nu ajunge: în $PA$ prima linie a lui $A$ nu dispare, ci se \emph{întoarce} pe ultima poziție. Ștergere $=$ rotire \emph{fără} întoarcere: anulăm exact „$1$-ul de întoarcere'' al lui $P$ --- cel din colțul $(n,1)$, singurul din \textbf{prima coloană} a circulantei --- și obținem
+\[
+Y=N=\begin{pmatrix}0&1&&\\&0&\ddots&\\&&\ddots&1\\&&&0\end{pmatrix},
+\qquad
+(NA)_{ij}=\begin{cases}a_{i+1,j},&i<n,\\[1mm] 0,&i=n,\end{cases}
+\]
+exact cerința. $\blacksquare$
+
+\emph{Morala:} $N$ este blocul Jordan nilpotent $J_n$ (teorema lui Jordan pentru matrice nilpotente, din capitolul „Triangularizare, diagonalizare și forma Jordan''\invol{3}) --- circulanta $P$ „cu memoria tăiată''. Comparația spune totul: $P$ rotește la nesfârșit ($P^n=I_n$), pe când $N$ tot împinge în sus și șterge --- după $n$ pași nu mai rămâne nimic ($N^n=O_n$). Nilpotența lui $N$ „se vede'' din poveste, fără niciun calcul.
+
+\textbf{Exemplu (shortlist ONM).} \emph{Găsiți o matrice $X\in M_n(\ZZ)$ astfel încât $X^n=I_n$, dar $X^k\neq I_n$ pentru $1\le k\le n-1$.}
+
+\emph{Soluție.} Citim întâi busola: cerința $X^n=I_n$, $X^k\neq I_n$ spune „element de ordin \emph{exact} $n$'', iar ipoteza $M_n(\ZZ)$ --- intrări \emph{întregi} --- interzice candidații „leneși'': $\diag(\omega,1,\dots,1)$ cere numere complexe, iar rotația plană de unghi $\frac{2\pi}n$ cere sinusuri și cosinusuri. Ne trebuie un obiect de ordin $n$ cu intrări întregi --- și el stă deja pe masă: $X=P$, rotația, care are doar intrări $0$ și $1$. Fiecare coordonată revine pe locul ei după exact $n$ rotiri, deci $P^n=I_n$. Rămâne să vedem că $P^k\neq I_n$ pentru $1\le k\le n-1$ --- două argumente, fiecare instructiv:
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+\item \emph{Prin invariant (urma).} $P^k$ este matricea rotirii cu $k$ pași: $(P^k)_{ij}=1$ exact când $j\equiv i+k\pmod n$. O intrare diagonală ar cere $j=i$, adică $n\mid k$ --- imposibil pentru $1\le k\le n-1$. Deci $\Tr(P^k)=0\neq n=\Tr(I_n)$: urma este invariantul care le desparte (busola de la începutul capitolului, în acțiune).
+\item \emph{Prin vectori proprii.} Privim pe $P$ ca matrice complexă (avem voie: $M_n(\ZZ)\subset M_n(\CC)$). $Pv_1=\omega v_1$, cu $\omega=\cos\frac{2\pi}n+i\sin\frac{2\pi}n$ rădăcină \emph{primitivă} a unității; dacă am avea $P^k=I_n$, aplicând pe $v_1$ ar rezulta $\omega^k=1$, deci $n\mid k$. Așadar ordinul lui $P$ este \emph{exact} $n$. $\blacksquare$
+\end{itemize}
+
+\emph{Bonus:} mulțimea $\{I_n,P,P^2,\dots,P^{n-1}\}$ este un grup ciclic de ordin $n$ format din matrice cu intrări întregi: rotația $P$ este încarnarea matriceală a lui $\ZZ_n$ --- clasa a XI-a și clasa a XII-a, în aceeași matrice. \emph{Semnalul la concurs:} un determinant sau un sistem în care fiecare linie este precedenta „rotită'' $\to$ scrie matricea ca $f(P)$ și factorizează prin rădăcinile unității.
+
+\section{Clasa a XII-a: structuri algebrice}
+
+La clasa a XII-a obiectele sunt grupurile și inelele; catalogul de mai jos acoperă aproape toate subpunctele „dați un exemplu'' de la ONM.
+
+\subsection{Catalogul de grupuri}
+
+\begin{tehbox}{Gândește simplu: cele cinci familii standard}
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+\item \textbf{Ciclicele $\ZZ_n$} --- prototipul abelian; prin teorema de clasificare (Teorema~\refv{teo:clasif}{2.71}{4}), $\ZZ_n$ este \emph{singurul} grup ciclic de ordin $n$, deci orice enunț despre „un grup ciclic'' se testează direct aici. Are element de ordin $d$ exact pentru $d\mid n$, iar ecuația $x^k=e$ are exact $(k,n)$ soluții (Propoziția~\refv{prop:solutii}{2.75}{4}).
+\item \textbf{Produsele $\ZZ_{n_1}\times\ZZ_{n_2}\times\dots\times\ZZ_{n_l}$} --- abelienele cu ordine \emph{controlate}: $\ord(x_1,\dots,x_l)=[\ord x_1,\dots,\ord x_l]$, deci alegi componentele ca să obții exact spectrul de ordine dorit. Piesele-vedetă: grupul lui Klein $\ZZ_2\times\ZZ_2$ (cel mai mic abelian \emph{neciclic}) și $\ZZ_2^{\,k}$ (toate elementele de ordin $\le2$). Esențial: prin teorema de structură (Corolarul~\refv{cor:abelianfinit}{2.153}{4}), \emph{orice} grup abelian finit este un astfel de produs --- căutarea printre exemplele abeliene finite \textbf{se încheie} în această familie; nu există altceva.
+\item \textbf{Permutările $S_n$ (și $A_n$)} --- sursa universală de neabelian: prin Cayley (Teorema~\refv{teo:cayley}{2.93}{4}), \emph{orice} grup finit trăiește într-un $S_n$. $S_3$ este cel mai mic grup neabelian (ordin $6$). Ordinul unei permutări $=$ c.m.m.m.c.-ul lungimilor ciclilor, deci construiești ieftin elemente de orice ordin: $(1\,2\,3)(4\,5)\in S_5$ are ordinul $6$. Iar $A_4$ (ordin $12$, fără subgrup de ordin $6$) este contraexemplul-standard la reciproca teoremei lui Lagrange (observația de după Corolarul~\refv{cor:lagrange}{2.85}{4}).
+\item \textbf{Matricele} --- terenul infinit și neabelian: în $\GL_2(\RR)$, rotația de unghi $\frac{2\pi}{n}$ e un element de ordin $n$ într-un grup \emph{infinit}; matricele superior triunghiulare cu $1$ pe diagonală, peste $\ZZ_p$, dau $p$-grupuri neabeliene de ordin $p^3$; iar cuaternionii $Q_8=\{\pm1,\pm i,\pm j,\pm k\}$ (cu $i^2=j^2=k^2=ijk=-1$) --- neabelian de ordin $8$ în care \emph{toate} subgrupurile sunt normale și care are un \emph{singur} element de ordin $2$.
+\item \textbf{Diedralele și „abelienele multiplicative''.} Grupul diedral $D_n$ (simetriile poligonului regulat cu $n$ laturi: $n$ rotații $+$ $n$ reflexii, ordin $2n$, neabelian pentru $n\ge3$) are multe elemente de ordin $2$ fără a fi abelian --- reflexiile. Iar în structuri multiplicative, abelienele „gata făcute'': $U_n\subset\CC^*$ (rădăcinile unității), $U(\ZZ_n)$ --- de pildă $U(\ZZ_8)=\{\cl1,\cl3,\cl5,\cl7\}\simeq$ Klein, abelian neciclic; și reuniunea $\bigcup_{n\ge1}U_n$: grup \emph{infinit} în care orice element are ordin \emph{finit}.
+\end{enumerate}
+\end{tehbox}
+
+\subsection{Dicționarul: condiția din enunț $\to$ obiectul de încercat}
+
+\begin{tehbox}{Condiție cerută $\to$ primul candidat}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item „abelian, dar neciclic'' $\to$ $\ZZ_2\times\ZZ_2$ (general: $\ZZ_p\times\ZZ_p$).
+\item „neabelian cât mai mic'' $\to$ $S_3$ (ordin $6$); la ordin $8$: $D_4$ sau $Q_8$.
+\item „element de ordin $d$ prescris'' $\to$ $\ZZ_d$; sau cicli disjuncți cu $[\,\text{lungimi}\,]=d$ în $S_n$.
+\item „$x^2=e$ pentru toți $x$'' (exponent $2$) $\to$ $\ZZ_2^{\,k}$.
+\item „infinit, dar cu elemente de ordin finit'' $\to$ rotații în $\GL_2(\RR)$; $\bigcup_nU_n\subset\CC^*$.
+\item „$x^k=e$ cu mai mult de $k$ soluții'' $\to$ Klein pentru $k=2$ (patru soluții). Morala contrastului: în grupuri ciclice numărul e exact $(k,n)$ (Propoziția~\refv{prop:solutii}{2.75}{4}), iar într-un \emph{corp} nu se poate depăși $k$ (Teorema~\refv{teo:numarradacini}{4.16}{4}) --- deci exemplul trebuie căutat departe de ciclice.
+\item „subgrup nenormal'' $\to$ $\langle(1\,2)\rangle$ în $S_3$.
+\item „contraexemplu la reciproca lui Lagrange'' $\to$ $A_4$, fără subgrup de ordin $6$.
+\item „același ordin, neizomorfe'' $\to$ $\ZZ_4$ vs.\ Klein (ordin $4$); $\ZZ_6$ vs.\ $S_3$ (ordin $6$).
+\item „exact un element de ordin $2$'' $\to$ $\ZZ_4$ (abelian) sau $Q_8$ (neabelian).
+\item „$HK$ nu e subgrup'' $\to$ $H=\langle(1\,2)\rangle$, $K=\langle(1\,3)\rangle$ în $S_3$: $|HK|=\frac{|H|\,|K|}{|H\cap K|}=4\nmid6$ (formula produsului, Lema~\refv{lema:produsHK}{2.159}{4}, plus Lagrange).
+\end{enumerate}
+\end{tehbox}
+
+\begin{obs}[Checklist-ul ordinelor mici]
+Contraexemplele mici trăiesc la ordine mici, iar la multe ordine „nu ai unde căuta'': la ordin prim $p$ grupul e ciclic (Corolarul~\refv{cor:lagrange}{2.85}{4}, punctul (iii)), la ordin $p^2$ e abelian (Corolarul~\refv{cor:p2}{2.131}{4}). Acțiunea e concentrată la $4,6,8,12$: ordin $4$: $\ZZ_4$, Klein; ordin $6$: $\ZZ_6$, $S_3$; ordin $8$: $\ZZ_8$, $\ZZ_4\times\ZZ_2$, $\ZZ_2^3$, $D_4$, $Q_8$; ordin $12$: $\ZZ_{12}$, $\ZZ_2\times\ZZ_6$, $D_6$, $A_4$ (și încă unul, diciclicul). Când cauți un contraexemplu, parcurge lista în această ordine --- dacă nu e aici, abia apoi urcă.
+\end{obs}
+
+\subsection{Catalogul de inele}
+
+Aceeași filozofie funcționează la inele și corpuri --- doar catalogul se schimbă:
+
+\begin{tehbox}{Piesele standard la inele}
+\begin{enumerate}[leftmargin=*, itemsep=1pt]
+\item $\ZZ_n$ cu $n$ \emph{compus} --- divizori ai lui zero ($\cl2\cdot\cl3=\cl0$ în $\ZZ_6$) și idempotenți nebanali ($\cl3^2=\cl3$, $\cl4^2=\cl4$ în $\ZZ_6$).
+\item $M_2(K)$ --- necomutativ, cu nilpotenți ($E_{12}^2=O$) și divizori ai lui zero; grupul unităților e $\GL_2(K)$.
+\item $\ZZ_2^{\,k}$ (sau $(\mathcal P(M),\Delta,\cap)$) --- inelele booleene.
+\item Produsul $A\times B$ --- mașina de idempotenți: $(1,0)^2=(1,0)$; tot el strică integritatea: $(1,0)(0,1)=(0,0)$.
+\item $\ZZ[i]$, $\ZZ[\sqrt d\,]$ --- inele integre cu unități controlate prin normă.
+\item $K[X]$ și $\ZZ_p[X]/(f)$ --- polinoamele și corpurile finite cu $p^{\deg f}$ elemente.
+\item Matricele superior triunghiulare --- exemplu-tip de inel necomutativ cu nilpotenți „vizibili''.
+\end{enumerate}
+\end{tehbox}
+
+Și aici busola rămâne subpunctul a): dacă a) a demonstrat, de pildă, că într-un inel \emph{fără nilpotenți} idempotenții sunt centrali, atunci b) („rămâne adevărat în general?'') te trimite exact la un inel \emph{cu} nilpotenți (adică, din catalog, la matrice).
+
+

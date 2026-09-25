@@ -1,0 +1,4046 @@
+\subsectiuneclasa{Clasa a XII-a}{Structuri algebrice --- soluții complete.}{Soluții · Clasa a XII-a}
+
+\nivel{olm}{Nivel OLM}{Faza locală --- o singură idee, bine aplicată.}
+\setcounter{cat}{1}\setcounter{problemaX}{0}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup în care $x^{2}=e$ pentru orice $x \in G$. Demonstrați
+că $G$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+Fie $x,y \in G$ arbitrare. Din ipoteză, orice element este egal cu
+propriul său invers: $x^{-1}=x$, $y^{-1}=y$, iar tot din ipoteză
+$(xy)^{2}=e$, deci $(xy)^{-1}=xy$. Pe de altă parte, în orice grup
+\[
+  (xy)^{-1} = y^{-1}x^{-1} = yx.
+\]
+Comparând cele două expresii ale lui $(xy)^{-1}$ obținem
+$xy=yx$. Cum $x,y$ au fost arbitrare, $G$ este comutativ.
+\end{solutie}
+
+\begin{problema}
+Determinați toate grupurile $G$ pentru care există numere naturale
+$m,n$ prime între ele astfel încât $x^{m}=x^{n}=e$ pentru orice
+$x \in G$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} doar grupul trivial $G=\{e\}$.
+
+\begin{solutie}
+Presupunem că $G$ satisface condiția, cu $\gcd(m,n)=1$. Din lema lui
+Bézout există numere întregi $a,b$ cu
+\[
+  am+bn = 1 .
+\]
+Atunci, pentru orice $x \in G$,
+\[
+  x = x^{1} = x^{\,am+bn} = \left(x^{m}\right)^{a}\left(x^{n}\right)^{b}
+    = e^{a}\,e^{b} = e .
+\]
+Așadar orice element al lui $G$ este egal cu $e$, deci $G=\{e\}$.
+Reciproc, grupul trivial satisface evident condiția (pentru orice
+alegere de $m,n$ prime între ele). Prin urmare singurul grup căutat
+este cel trivial.
+\end{solutie}
+
+\begin{obs}
+Se poate raționa și prin ordine: $x^{m}=e$ dă $\operatorname{ord}(x)\mid m$,
+iar $x^{n}=e$ dă $\operatorname{ord}(x)\mid n$, deci
+$\operatorname{ord}(x)\mid \gcd(m,n)=1$, adică $x=e$. Argumentul cu
+Bézout este însă mai direct și nu folosește noțiunea
+de ordin. Ipoteza de coprimalitate este esențială: fără ea
+(de exemplu $m=n=2$) condiția devine $x^{2}=e$ și este satisfăcută
+de multe grupuri netriviale.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit comutativ de ordin \emph{impar}. Demonstrați că
+produsul tuturor elementelor sale este $e$.
+\end{problema}
+
+\begin{solutie}
+Fie $P = \prod_{x \in G} x$ produsul tuturor elementelor; acesta are sens
+deoarece $G$ este comutativ, deci ordinea factorilor nu contează.
+
+Ideea este de a împerechea fiecare element cu inversul său. Un
+element coincide cu propriul invers exact când $x^{2}=e$; notăm
+$A=\{\, x \in G : x^{2}=e \,\}$.
+
+\smallskip
+\textit{Pasul 1: $A=\{e\}$.} Fie $x \in A$. Atunci $\operatorname{ord}(x) \mid 2$,
+iar din teorema lui Lagrange (ordinul oricărui subgrup al unui grup finit
+divide ordinul grupului; în particular, ordinul oricărui element
+divide $|G|$) avem $\operatorname{ord}(x) \mid |G|$; cum $|G|$
+este impar, rezultă $\operatorname{ord}(x) \mid \gcd(2,|G|)=1$, deci
+$\operatorname{ord}(x)=1$ și $x=e$.
+
+\smallskip
+\textit{Pasul 2: restul elementelor se anulează în perechi.}
+Elementele lui $G \setminus \{e\}$ satisfac $x \neq x^{-1}$, deci se
+grupează în perechi disjuncte $\{x, x^{-1}\}$. Fiecare astfel de
+pereche contribuie în produs cu $x \cdot x^{-1} = e$.
+
+\smallskip
+\textit{Concluzie.} Separând în produs contribuția lui $e$ de a
+perechilor,
+\[
+  P = e \cdot \prod_{\{x,\,x^{-1}\}} \bigl(x\,x^{-1}\bigr)
+    = e \cdot e \cdots e = e .
+\]
+\end{solutie}
+
+\begin{obs}
+Ipoteza de ordin impar este cea care garantează răspunsul curat.
+La un grup comutativ de ordin \emph{par}, produsul tuturor elementelor este
+egal cu produsul involutivelor și nu mai este neapărat $e$: de pildă
+în $\mathbb{Z}/4$ produsul este $0+1+2+3=2 \neq 0$, iar în
+$(\mathbb{Z}/p)^{\times}$ produsul tuturor elementelor este $-1$ --- exact
+teorema lui Wilson.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit care are exact un element de ordin $2$, notat $a$.
+Demonstrați că $a$ comută cu orice element al lui $G$ (adică
+$a$ aparține centrului lui $G$).
+\end{problema}
+
+\begin{solutie}
+Fie $g \in G$ oarecare și considerăm conjugatul $gag^{-1}$.
+Conjugarea păstrează ordinul: $\bigl(gag^{-1}\bigr)^{2}
+= ga^{2}g^{-1} = geg^{-1} = e$, iar $gag^{-1} \neq e$ (deoarece
+$a \neq e$). Așadar $gag^{-1}$ este și el un element de ordin $2$.
+Cum $a$ este \emph{unicul} element de ordin $2$, rezultă
+$gag^{-1} = a$, adică $ga = ag$. Prin urmare $a$ comută cu orice
+$g \in G$.
+\end{solutie}
+
+\begin{problema}
+Fie $G$ un grup și $a,b \in G$ cu $aba^{-1}=b^{-1}$. Demonstrați
+că $a^{2}b = ba^{2}$ (adică $a^{2}$ comută cu $b$).
+\end{problema}
+
+\begin{solutie}
+Conjugăm încă o dată cu $a$:
+\[
+  a^{2}\,b\,a^{-2}
+  = a\bigl(aba^{-1}\bigr)a^{-1}
+  = a\,b^{-1}a^{-1}
+  = \bigl(aba^{-1}\bigr)^{-1}
+  = \bigl(b^{-1}\bigr)^{-1}
+  = b .
+\]
+Așadar $a^{2}ba^{-2}=b$, adică $a^{2}b = ba^{2}$.
+\end{solutie}
+
+\begin{obs}
+Conjugarea cu $a$ inversează pe $b$; aplicată de două ori,
+readuce pe $b$, deci $a^{2}$ îi este ,,neutru''. Nu se folosește
+nicio ipoteză despre ordinul lui $a$: concluzia ține pentru orice
+$a,b$ cu $aba^{-1}=b^{-1}$.
+\end{obs}
+
+\begin{problema}
+Un număr natural $n$ se numește \emph{liber de pătrate} dacă
+nu este divizibil cu pătratul niciunui număr prim (echivalent, în
+descompunerea $n=p_{1}p_{2}\cdots p_{r}$ toți factorii primi sunt
+distincți). Fie $n$ liber de pătrate și $G$ un grup de ordin
+$n$. Găsiți cel mai mic număr natural $k$ cu proprietatea
+că $x^{k}=e$ pentru orice $x \in G$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} $k=n$.
+
+\begin{solutie}
+Fie $k$ cel mai mic număr cu $x^{k}=e$ pentru orice $x$ (exponentul
+grupului).
+
+\smallskip
+\textit{$k \mid n$.} Din teorema lui Lagrange $\operatorname{ord}(x) \mid n$
+pentru orice $x$, deci $x^{n}=e$ pentru orice $x$. Așadar $n$ este un
+exponent, iar cel mai mic exponent $k$ îl divide; în particular
+$k \le n$.
+
+\smallskip
+\textit{$n \mid k$.} Fie $p$ un divizor prim al lui $n$. Din teorema lui
+Cauchy (dacă un prim $p$ divide ordinul unui grup finit, atunci grupul
+are un element de ordin $p$), $G$ conține un element $a$ de ordin $p$.
+Cum $a^{k}=e$, rezultă $p=\operatorname{ord}(a) \mid k$. Prin urmare orice
+divizor prim al lui $n$ divide $k$.
+
+\smallskip
+\textit{Concluzie.} Scriem $n=p_{1}p_{2}\cdots p_{r}$ cu primii distincți
+(aici intervine ipoteza de a fi liber de pătrate). Fiecare $p_{i}$
+divide $k$, iar fiind distincți, produsul lor divide $k$:
+$n=p_{1}\cdots p_{r} \mid k$. Combinând cu $k \mid n$, obținem
+$k=n$.
+\end{solutie}
+
+\medskip
+\noindent\textbf{Soluție alternativă (exponentul ca cmmmc al ordinelor).}\enspace
+Condiția $x^{k}=e$ pentru orice $x$ revine la $\operatorname{ord}(x)\mid k$
+pentru orice $x$, adică la faptul că $k$ este un multiplu comun al
+tuturor ordinelor. Cel mai mic astfel de $k$ este deci
+\[
+  k = \operatorname{lcm}\{\,\operatorname{ord}(x) : x\in G\,\}.
+\]
+Fiecare $\operatorname{ord}(x)$ divide $n$ (Lagrange), deci $k\mid n$. Pe de
+altă parte, pentru fiecare prim $p\mid n$ teorema lui Cauchy dă un
+element de ordin $p$, deci $p$ apare în acest cmmmc: $p\mid k$. Cum $n$
+este liber de pătrate (produs de primi distincți), rezultă
+$n\mid k$, așadar $k=n$. De remarcat că niciun element nu are
+neapărat ordinul $n$ (de pildă în $S_{3}$, de ordin $6$, ordinele
+sunt doar $1,2,3$), însă cmmmc-ul lor este exact $n$.
+\hfill$\square$
+
+\begin{obs}
+Ipoteza de a fi liber de pătrate este esențială. Dacă $n$
+ar avea un factor $p^{2}$, din primii distincți care divid $k$ nu s-ar
+mai putea deduce $n \mid k$: de exemplu pentru $G=\mathbb{Z}/2\times\mathbb{Z}/2$
+(ordin $4$) orice element satisface $x^{2}=e$, deci $k=2 \neq 4$.
+\end{obs}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care există un grup
+$G$ de ordin $n$ cu proprietatea că, pentru orice divizor $d$ al lui
+$n$, grupul $G$ conține exact un element de ordin $d$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} $n \in \{1,2\}$.
+
+\begin{solutie}
+Deoarece $d=n$ divide $n$, ipoteza cere un element $g$ de ordin $n$. Atunci
+$\langle g\rangle$ are $n$ elemente, deci $\langle g\rangle=G$: grupul este
+\emph{ciclic}, $G\cong\mathbb{Z}/n$. Într-un grup ciclic de ordin $n$,
+elementele de ordin $n$ sunt exact generatorii, în număr de
+$\varphi(n)$. Unicitatea impune $\varphi(n)=1$, adică $n\in\{1,2\}$.
+Reciproc, grupul trivial ($n=1$) și $\mathbb{Z}/2$ ($n=2$) verifică
+evident condiția.
+\end{solutie}
+
+\medskip
+\noindent\textbf{Soluție alternativă (numărare).}\enspace
+Fie $N_{d}$ numărul elementelor de ordin $d$. Orice element are ordinul
+un divizor al lui $n$ (Lagrange), deci
+\[
+  n = |G| = \sum_{d \mid n} N_{d} .
+\]
+Ipoteza dă $N_{d}=1$ pentru fiecare $d\mid n$, așadar
+$n=\sum_{d\mid n}1=\tau(n)$, numărul divizorilor lui $n$. Însă
+$\tau(n)=n$ doar pentru $n\in\{1,2\}$: pentru $n\ge 3$, numărul $n-1$
+(care este $\ge 2$) nu divide $n$ (căci $n\equiv 1 \pmod{n-1}$), deci nu
+toate numerele din $\{1,\dots,n\}$ sunt divizori și $\tau(n)<n$.
+\hfill$\square$
+
+\begin{obs}
+Cerința forțează de la început existența unui element de
+ordin $n$, deci ciclicitatea; de aici încolo totul se reduce la
+$\varphi(n)=1$ (varianta întâi) sau la $\tau(n)=n$ (varianta a doua),
+două egalități care se întâmplă doar pentru
+$n\in\{1,2\}$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup care are un \emph{unic} subgrup ciclic netrivial (adică
+un singur subgrup ciclic diferit de $\{e\}$). Demonstrați că $G$
+este ciclic; mai precis, $G\cong\mathbb{Z}/p$ pentru un număr prim $p$.
+\end{problema}
+
+\begin{solutie}
+Fie $H$ unicul subgrup ciclic netrivial al lui $G$.
+
+\smallskip
+\textit{$G=H$, deci $G$ ciclic.} Pentru orice $x\in G$, $x\neq e$, subgrupul
+$\langle x\rangle$ este ciclic și netrivial, deci $\langle x\rangle=H$
+(prin unicitate); în particular $x\in H$. Cum și $e\in H$, rezultă
+$G=H$, așadar $G$ este ciclic.
+
+\smallskip
+\textit{$|G|$ este prim.} Dacă $G$ ar fi ciclic infinit
+($G\cong\mathbb{Z}$), ar avea subgrupurile ciclice netriviale
+$2\mathbb{Z},3\mathbb{Z},\dots$, distincte --- contrazicând unicitatea.
+Deci $G$ este finit, $|G|=n$. Pentru orice divizor $d$ al lui $n$, grupul
+ciclic $G$ are un subgrup de ordin $d$, ciclic. Dacă $n$ ar avea un
+divizor $d$ cu $1<d<n$, acel subgrup ar fi ciclic, netrivial și diferit
+de $H=G$ --- din nou o contradicție. Prin urmare singurii divizori ai
+lui $n$ sunt $1$ și $n$, deci $n$ este prim și $G\cong\mathbb{Z}/p$.
+\end{solutie}
+
+\begin{obs}
+Cuvântul ,,netrivial'' este esențial: subgrupul
+$\{e\}=\langle e\rangle$ este și el ciclic, deci dacă am număra
+și subgrupul trivial, singurul grup cu un \emph{unic} subgrup ciclic ar
+fi $G=\{e\}$ (orice $x\neq e$ ar produce $\langle x\rangle\neq\{e\}$, un al
+doilea subgrup ciclic). De aceea condiția cu conținut privește
+subgrupurile ciclice netriviale.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că pentru orice $x\in G$ există
+$y\in G$ astfel încât $x^{2}=yxy^{-1}$ (adică $x^{2}$ este un
+conjugat al lui $x$). Demonstrați că $G$ nu are elemente de ordin
+par (în particular, dacă $G$ e finit, $|G|$ este impar).
+\end{problema}
+
+\begin{solutie}
+Fie $x\in G$ un element de ordin finit $d=\operatorname{ord}(x)$. Din
+ipoteză, $x^{2}=yxy^{-1}$, deci $x$ și $x^{2}$ sunt conjugate. Dar
+conjugarea păstrează ordinul: $\operatorname{ord}\bigl(yxy^{-1}\bigr)=\operatorname{ord}(x)$,
+așadar
+\[
+  \operatorname{ord}(x^{2})=\operatorname{ord}(x)=d .
+\]
+Pe de altă parte, într-un grup $\operatorname{ord}(x^{2})=\dfrac{d}{\gcd(d,2)}$.
+Egalitatea $\dfrac{d}{\gcd(d,2)}=d$ forțează $\gcd(d,2)=1$, adică
+$d$ \emph{impar}. Prin urmare niciun element (de ordin finit) nu are ordin
+par; în particular, dacă $G$ este finit, prin teorema lui Lagrange
+un element de ordin par ar da $2\mid|G|$, deci $|G|$ este impar.
+\end{solutie}
+
+\begin{obs}
+Reciproca este falsă: ordinul impar \emph{nu} garantează că
+$x$ și $x^{2}$ sunt conjugate. De pildă în orice grup abelian
+netrivial conjugarea e trivială ($yxy^{-1}=x$), deci ipoteza ar cere
+$x^{2}=x$, imposibil pentru $x\neq e$; astfel $\mathbb{Z}/3$ are ordin impar,
+dar nu satisface proprietatea. Așadar condiția este strict mai tare
+decât ,,ordin impar'' --- ea implică ordinul impar, fără a fi
+echivalentă cu el.
+\end{obs}
+
+\begin{problema}
+Există un grup $G$ care are două subgrupuri $K,L$ (nu neapărat
+diferite) astfel încât produsul lor $KL=\{\,kl : k\in K,\ l\in L\,\}$
+să fie subgrupul trivial $\{e\}$, cu $K$ sau $L$ netrivial? Justificați.
+\end{problema}
+
+\noindent\textbf{Răspuns:} nu; singura posibilitate este $K=L=\{e\}$.
+
+\begin{solutie}
+Orice subgrup conține elementul neutru $e$. Prin urmare, luând
+$l=e\in L$, avem $k=k\cdot e\in KL$ pentru orice $k\in K$, deci
+$K\subseteq KL$; simetric, luând $k=e\in K$, obținem $L\subseteq KL$.
+Așadar
+\[
+  K\cup L\subseteq KL\qquad\text{întotdeauna.}
+\]
+Dacă $KL=\{e\}$, atunci $K\cup L\subseteq\{e\}$, deci $K=L=\{e\}$. Prin
+urmare produsul a două subgrupuri nu poate fi trivial decât dacă
+ambele sunt triviale.
+\end{solutie}
+
+\begin{obs}
+Cauza este că $KL$ e mereu ,,cel puțin cât cel mai mare dintre
+$K,L$'': mai precis, pentru grupuri finite
+$|KL|=\dfrac{|K|\,|L|}{|K\cap L|}\ge\max(|K|,|L|)$, deci $KL=\{e\}$ forțează
+$|K|=|L|=1$. O întrebare cu conținut privește nu \emph{produsul}, ci
+\emph{intersecția} a două subgrupuri netriviale. De pildă, în grupul lui
+Klein $\{e,a,b,ab\}$ subgrupurile $K=\{e,a\}$ și $L=\{e,b\}$ au
+$K\cap L=\{e\}$, iar produsul lor este tot grupul; în schimb, în
+$\mathbb{Z}/p^{k}$ ($p$ prim) oricare două subgrupuri netriviale au
+intersecția netrivială, căci subgrupurile formează un lanț
+(Teorema~\ref{teo:subgrupciclic}).
+\end{obs}
+
+\begin{problema}
+Determinați toate inelele $(A,+,\cdot)$ cu proprietatea că $0=1$
+(elementul neutru la adunare coincide cu elementul neutru la înmulțire).
+\end{problema}
+
+\noindent\textbf{Răspuns:} exact unul --- \emph{inelul nul} $A=\{0\}$.
+
+\begin{solutie}
+Arătăm mai întâi lema de calcul:
+\emph{în orice inel, $x\cdot 0=0$ pentru orice $x$.} Într-adevăr,
+din distributivitate,
+\[
+  x\cdot 0=x\cdot(0+0)=x\cdot 0+x\cdot 0 ,
+\]
+și scăzând $x\cdot 0$ (adică adunând opusul său în
+grupul aditiv $(A,+)$) obținem $x\cdot 0=0$.
+
+Fie acum $A$ un inel cu $0=1$. Pentru orice $x\in A$,
+\[
+  x=x\cdot 1=x\cdot 0=0 ,
+\]
+deci $A=\{0\}$: singurul element este $0$. Reciproc, mulțimea cu un
+singur element $\{0\}$, cu operațiile $0+0=0$ și $0\cdot 0=0$, este
+într-adevăr un inel (toate axiomele se verifică trivial, fiecare
+egalitate având ambii membri egali cu $0$), iar în el $0$ joacă
+simultan rolul lui $0$ și al lui $1$. Așadar există exact un
+asemenea inel: inelul nul.
+\end{solutie}
+
+\begin{obs}
+Răspunsul depinde de convenția din definiția inelului. Dacă
+definiția cere doar existența elementului neutru $1$ (fără
+condiția $1\neq 0$), răspunsul este cel de mai sus: inelul nul, unic.
+Dacă însă definiția include axioma $1\neq 0$ (convenție
+folosită în unele manuale, obligatorie la corpuri), atunci răspunsul
+devine ,,niciun inel'' --- un enunț de tip ,,demonstrați că nu
+există'', ca la problema cu $KL=\{e\}$ de mai sus. Morala e aceeași
+în ambele variante: o singură egalitate între constantele
+structurii prăbușește întreg inelul la un punct.
+\end{obs}
+
+\begin{problema}
+Un grup $G$ se numește \emph{rezolubil} (solubil) dacă există un
+lanț finit de subgrupuri
+\[
+  \{e\}=G_{0}\trianglelefteq G_{1}\trianglelefteq\cdots\trianglelefteq G_{m}=G
+\]
+în care, pentru fiecare $i$, $G_{i}$ este normal în $G_{i+1}$ și
+câtul $G_{i+1}/G_{i}$ este abelian. Arătați că grupul $S_{3}$
+al permutărilor mulțimii $\{1,2,3\}$ (de ordin $6$) este rezolubil,
+exhibând un astfel de lanț.
+\end{problema}
+
+\begin{solutie}
+Fie $A_{3}=\{e,(1\,2\,3),(1\,3\,2)\}$ subgrupul permutărilor pare
+(subgrupul altern). Propunem lanțul
+\[
+  \{e\}\ \trianglelefteq\ A_{3}\ \trianglelefteq\ S_{3},
+\]
+și verificăm cele trei cerințe din definiție.
+
+\smallskip
+\textit{(1) $A_{3}\trianglelefteq S_{3}$.} Indicele este
+$[S_{3}:A_{3}]=6/3=2$. Orice subgrup de indice $2$ este normal: pentru
+$g\notin A_{3}$, clasa la stânga $gA_{3}$ și clasa la dreapta
+$A_{3}g$ sunt ambele egale cu complementara $S_{3}\setminus A_{3}$ (cele
+două clase, la stânga sau la dreapta, partiționează $S_{3}$
+în $A_{3}$ și restul), deci $gA_{3}=A_{3}g$, adică
+$gA_{3}g^{-1}=A_{3}$. (Pentru $g\in A_{3}$ egalitatea e clară.)
+
+\smallskip
+\textit{(2) $S_{3}/A_{3}$ este abelian.} Are ordinul $[S_{3}:A_{3}]=2$, deci
+este ciclic ($\cong\mathbb{Z}/2$); orice grup de ordin $2$ e abelian.
+
+\smallskip
+\textit{(3) $A_{3}/\{e\}\cong A_{3}$ este abelian, și
+$\{e\}\trianglelefteq A_{3}$.} Subgrupul trivial e normal în orice grup.
+Iar $A_{3}$ are ordinul $3$, prim, deci este ciclic (generat de $(1\,2\,3)$,
+căci $(1\,2\,3)^{2}=(1\,3\,2)$ și $(1\,2\,3)^{3}=e$), în
+particular abelian.
+
+Toate cele trei condiții din definiție sunt îndeplinite, deci
+$S_{3}$ este rezolubil.
+\end{solutie}
+
+\begin{obs}
+$S_{3}$ este cel mai mic grup \emph{neabelian}, și totuși e
+rezolubil: rezolubilitatea nu cere comutativitate, ci doar ca structura
+să se ,,desfacă'' în trepte cu câturi abeliene. Contrastul
+apare la $S_{n}$ cu $n\ge 5$: acolo un asemenea lanț nu mai există,
+fiindcă $A_{n}$ este simplu și neabelian --- deci $S_{n}$ nu este
+rezolubil, fapt legat de imposibilitatea rezolvării prin radicali a
+ecuației generale de grad $\ge 5$.
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel și $x\in A$ un element pentru care există un
+întreg $\ell\ge 1$ cu
+\[
+  x^{\ell}=0\qquad\text{și}\qquad (x+1)^{\ell}=0 .
+\]
+Demonstrați că $1=0$ în $A$ (adică $A$ este inelul nul).
+\end{problema}
+
+\begin{solutie}
+Observăm întâi că din $x^{\ell}=0$ rezultă $x^{m}=0$
+pentru orice $m\ge\ell$ (căci $x^{m}=x^{\ell}\,x^{m-\ell}=0$).
+
+Elementul $1$ comută cu orice element al inelului (în particular
+$x\cdot 1=1\cdot x=x$), deci $x$ și $1$ comută între ele. Aceasta
+ne permite să aplicăm \emph{binomul lui Newton} --- care este valabil
+într-un inel oarecare doar pentru elemente care comută:
+\[
+  0=(x+1)^{\ell}=\sum_{i=0}^{\ell}\binom{\ell}{i}x^{i}
+   =x^{\ell}+\binom{\ell}{\ell-1}x^{\ell-1}+\cdots+\binom{\ell}{1}x+1 .
+\]
+Termenul $x^{\ell}$ este nul, deci
+\[
+  \binom{\ell}{\ell-1}x^{\ell-1}+\cdots+\binom{\ell}{1}x+1=0 . \tag{$\star$}
+\]
+
+\smallskip
+\textit{Coborâre: din $x^{k}=0$ rezultă $x^{k-1}=0$ (pentru $1\le k\le\ell$).}
+Înmulțim relația $(\star)$ cu $x^{k-1}$:
+\[
+  0=x^{k-1}\cdot 0=\binom{\ell}{\ell-1}x^{\ell-1+k-1}+\cdots+\binom{\ell}{1}x^{1+k-1}+x^{k-1}.
+\]
+Fiecare termen provenit dintr-un $x^{i}$ cu $i\ge 1$ devine $x^{i+k-1}$, cu
+exponentul $i+k-1\ge k$; cum $x^{k}=0$, toți acești termeni sunt nuli.
+Rămâne doar ultimul, deci
+\[
+  x^{k-1}=0 .
+\]
+
+\smallskip
+\textit{Concluzia.} Pornim de la $x^{\ell}=0$ (ipoteză) și
+aplicăm coborârea de $\ell$ ori:
+\[
+  x^{\ell}=0\ \Longrightarrow\ x^{\ell-1}=0\ \Longrightarrow\ \cdots
+  \ \Longrightarrow\ x^{1}=0\ \Longrightarrow\ x^{0}=0 .
+\]
+Dar $x^{0}=1$, deci $1=0$. (Echivalent: ultimul pas se poate citi direct ---
+odată ce $x=0$, ipoteza $(x+1)^{\ell}=0$ devine $1^{\ell}=1=0$.) Așadar
+$A$ este inelul nul.
+\end{solutie}
+
+\begin{obs}
+Ipoteza cere ca \emph{atât} $x$, cât și $x+1$ să fie
+nilpotente, iar asta e imposibil într-un inel netrivial. O explicație
+conceptuală: dacă $x$ e nilpotent, atunci $x+1$ este \emph{inversabil},
+cu inversul $1-x+x^{2}-\cdots+(-1)^{\ell-1}x^{\ell-1}$ (produsul telescopează
+la $1+(-1)^{\ell-1}x^{\ell}=1$). Un element nu poate fi însă
+simultan inversabil și nilpotent: din $y$ inversabil și $y^{\ell}=0$
+ar rezulta $1=(y^{-1})^{\ell}y^{\ell}=0$. Soluția de mai sus evită
+această discuție, folosind doar binomul și înmulțirea cu
+$x^{k-1}$.
+
+Aceeași concluzie se obține și din ipoteza aparent mult mai tare
+$(x+a)^{\ell}=0$ pentru \emph{orice} $a\in A$: e destul să luăm
+$a=0$ și $a=1$.
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel. Un element $x\in A$ se numește \emph{idempotent}
+dacă $x^{2}=x$, și \emph{nilpotent} dacă există un
+întreg $n\ge 1$ cu $x^{n}=0$. Demonstrați că singurul element
+care este simultan idempotent și nilpotent este $0$.
+\end{problema}
+
+\begin{solutie}
+Fie $x$ simultan idempotent și nilpotent: $x^{2}=x$ și $x^{n}=0$
+pentru un $n\ge 1$.
+
+\smallskip
+\textit{Pas 1: toate puterile lui $x$ sunt egale cu $x$.} Arătăm prin
+inducție că $x^{k}=x$ pentru orice $k\ge 1$. Pentru $k=1$ e evident.
+Presupunând $x^{k}=x$, avem
+\[
+  x^{k+1}=x^{k}\cdot x=x\cdot x=x^{2}=x ,
+\]
+folosind ipoteza de inducție și idempotența. Deci $x^{k}=x$
+pentru orice $k\ge 1$.
+
+\smallskip
+\textit{Pas 2: concluzia.} Aplicăm Pasul 1 pentru $k=n$:
+\[
+  x=x^{n}=0 ,
+\]
+ultima egalitate fiind chiar nilpotența. Așadar $x=0$.
+
+Reciproc, $0$ este într-adevăr idempotent ($0^{2}=0$) și nilpotent
+($0^{1}=0$), deci este singurul element cu ambele proprietăți.
+\end{solutie}
+
+\begin{obs}
+Idempotența ,,îngheață'' toate puterile lui $x$ la $x$
+însuși, iar nilpotența spune că una dintre acele puteri este
+$0$ --- de unde $x=0$. Cele două proprietăți sunt, în rest,
+foarte diferite: într-un inel pot exista idempotenți netriviali (de
+pildă $(1,0)$ în $\mathbb{Z}\times\mathbb{Z}$) și nilpotenți
+netriviali (de pildă $t$ în $\mathbb{Z}[t]/(t^{2})$), dar niciun
+element nenul nu poate fi de ambele feluri.
+\end{obs}
+
+\begin{problema}
+Fie $K$ un corp și $a\in K$, cu $a\neq 1$, având proprietatea
+că, pentru orice element idempotent $x$ (adică $x^{2}=x$), elementul
+$a-x$ este tot idempotent. Demonstrați că $\operatorname{char}K=2$.
+\end{problema}
+
+\begin{solutie}
+\textit{Pas 1: într-un corp, singurii idempotenți sunt $0$ și $1$.}
+Dacă $x^{2}=x$, atunci $x^{2}-x=0$, adică $x(x-1)=0$. Într-un corp
+nu există divizori ai lui zero, deci $x=0$ sau $x-1=0$. Așadar
+mulțimea idempotenților este exact $\{0,1\}$.
+
+\smallskip
+\textit{Pas 2: luăm $x=0$ și deducem $a=0$.} Elementul $0$ este
+idempotent ($0^{2}=0$), deci, prin ipoteză, $a-0=a$ este idempotent. Din
+Pasul 1, $a\in\{0,1\}$; cum $a\neq 1$ prin ipoteză, rămâne
+\[
+  a=0 .
+\]
+
+\smallskip
+\textit{Pas 3: luăm $x=1$ și deducem caracteristica.} Elementul $1$
+este idempotent ($1^{2}=1$), deci, prin ipoteză, $a-1$ este idempotent.
+Cu $a=0$ (Pasul 2), aceasta înseamnă că $-1$ este idempotent:
+\[
+  (-1)^{2}=-1 .
+\]
+Dar $(-1)^{2}=1$, deci $1=-1$. Adunând $1$ în ambii membri,
+\[
+  2=0 .
+\]
+Prin urmare caracteristica lui $K$ divide $2$; cum $K$ este corp, avem
+$1\neq 0$, deci caracteristica nu este $1$. Așadar
+$\operatorname{char}K=2$.
+\end{solutie}
+
+\begin{obs}
+Reciproc, în orice corp de caracteristică $2$ ipoteza chiar se
+realizează, cu $a=0$: idempotenții sunt $0$ și $1$, iar
+$a-0=0$ și $a-1=-1=1$ sunt într-adevăr idempotenți. Așadar
+condiția din enunț caracterizează exact corpurile de
+caracteristică $2$ (și forțează $a=0$).
+
+Esențială este lipsa divizorilor lui zero: într-un inel oarecare
+pot exista mulți idempotenți (de pildă toate cele patru elemente
+ale lui $\mathbb{Z}/2\times\mathbb{Z}/2$), iar concluzia nu se mai
+păstrează în aceeași formă.
+\end{obs}
+
+
+\begin{problema}
+Fie $P \in \mathbb{C}[X]$ un polinom neconstant astfel încât $P(X)$ divide $P(X^2)$ în $\mathbb{C}[X]$. Arătați că orice rădăcină nenulă a lui $P$ este o rădăcină a unității.
+\end{problema}
+
+\begin{solutie}
+Scriem $P(X^2) = P(X)\,Q(X)$, cu $Q \in \mathbb{C}[X]$. Dacă $r$ este o rădăcină a lui $P$, evaluăm în $X = r$:
+\[
+P(r^2) = P(r)\,Q(r) = 0,
+\]
+deci și $r^2$ este o rădăcină a lui $P$. Iterând, toate numerele
+\[
+r,\ r^2,\ r^4,\ r^8,\ \ldots,\ r^{2^k},\ \ldots
+\]
+sunt rădăcini ale lui $P$. Dar $P$ este nenul, deci are un număr finit de rădăcini: două dintre puterile de mai sus coincid, $r^{2^a} = r^{2^b}$ cu $a < b$. Pentru $r \neq 0$ putem simplifica prin $r^{2^a}$ și obținem
+\[
+r^{\,2^b - 2^a} = 1,
+\]
+cu exponentul $2^b - 2^a \geq 1$: așadar $r$ este o rădăcină a unității.
+
+\medskip
+\noindent\textbf{Observație.} Enunțul are conținut: $P(X) = X^2 - 1$ satisface ipoteza, deoarece $P(X^2) = X^4 - 1 = (X^2 - 1)(X^2 + 1)$, iar rădăcinile sale $\pm 1$ sunt într-adevăr rădăcini ale unității. În plus, excluderea rădăcinii nule este necesară: $P(X) = X^k$ divide $P(X^2) = X^{2k}$, dar rădăcina sa $0$ nu este o rădăcină a unității.
+\end{solutie}
+
+\begin{problema}
+Determinați toate polinoamele $P \in \RR[X]$ cu proprietatea
+\[
+  P\bigl(P(x)\bigr) = P(x)^2 \qquad \text{pentru orice } x \in \RR.
+\]
+\end{problema}
+
+\begin{solutie}
+\textbf{Răspuns:} $P \equiv 0$, $P \equiv 1$ și $P(X) = X^2$.
+
+Dacă $P \equiv c$ este constant, condiția devine $c = c^2$, deci $c \in \{0,1\}$: primele două soluții.
+
+Fie acum $P$ neconstant și fie $y$ un element arbitrar al imaginii lui $P$: există $x_0$ cu $y = P(x_0)$. Înlocuind $x = x_0$ în ecuație:
+\[
+  P(y) = P\bigl(P(x_0)\bigr) = P(x_0)^2 = y^2.
+\]
+Așadar polinomul $P(Y) - Y^2$ se anulează în fiecare punct al imaginii lui $P$. Dar imaginea unui polinom neconstant este infinită: fiecare valoare este atinsă de cel mult $\deg P$ ori, iar $\RR$ este o mulțime infinită. Un polinom care se anulează pe o mulțime infinită este identic nul, deci
+\[
+  P(Y) = Y^2.
+\]
+Verificare: $P(P(x)) = (x^2)^2 = P(x)^2$. $\checkmark$
+
+\medskip
+\noindent\textbf{Observație.}\quad Schema merită reținută: o ecuație funcțională cu polinoame se transformă, printr-o substituție, într-o identitate polinomială valabilă pe o mulțime infinită, iar acolo polinoamele sunt complet rigide. Pasul ,,imaginea este infinită'' este cel care înlocuiește orice calcul de coeficienți.
+\end{solutie}
+
+\begin{problema}[Clasică]
+Fie $K$ un corp finit cu cel puțin 3 elemente. Arătați că suma tuturor elementelor lui $K$ este 0. Ce se întâmplă pentru $K = \ZZ_2$?
+\end{problema}
+
+\begin{solutie}
+Cum $|K| \geq 3$, există un element $a \in K \setminus \{0,1\}$. Aplicația $x \mapsto ax$ este o bijecție a lui $K$ (inversa ei este $x \mapsto a^{-1}x$), deci parcurge toate elementele corpului, doar că într-o altă ordine. Notând cu $S$ suma tuturor elementelor,
+\[
+S = \sum_{x \in K} x = \sum_{x \in K} ax = a \sum_{x \in K} x = aS,
+\]
+adică $(a-1)S = 0$. Dar $a-1 \neq 0$, iar într-un corp nu există divizori ai lui zero: $S = 0$.
+
+Pentru $K = \ZZ_2$ suma este $0+1 = 1 \neq 0$: argumentul cade tocmai pentru că nu există niciun $a \in K \setminus \{0,1\}$.
+
+\medskip
+\noindent\textbf{Observație.} Trucul ,,înmulțirea cu un element fixat permută corpul'' merită reținut: el transformă o sumă fără nicio structură într-o ecuație pentru acea sumă. O idee înrudită (o aplicație injectivă a unei mulțimi finite în ea însăși este o permutare a ei) reapare în problema despre automorfismul lui Frobenius, de mai jos.
+\end{solutie}
+
+\begin{problema}
+Fie $K$ un corp cu 8 elemente. Arătați că polinomul $X^2+X+1$ nu are nicio rădăcină în $K$, dar că polinomul $X^3+X+1$ are trei rădăcini distincte în $K$.
+\end{problema}
+
+\begin{solutie}
+\emph{Pasul 1: caracteristica.} Subcorpul prim al lui $K$ este $\ZZ_p$ pentru un anumit număr prim $p$, iar $K$ este spațiu vectorial peste el, deci $8=|K|=p^m$: singura posibilitate este $p=2$. Așadar $1+1=0$ în $K$.
+
+\emph{Pasul 2: $X^2+X+1$ nu are rădăcini.} Presupunem că $x\in K$ satisface $x^2+x+1=0$. Atunci $x\neq 0$ (altfel $1=0$) și, înmulțind cu $x-1$, din identitatea $(x-1)(x^2+x+1)=x^3-1$ obținem $x^3=1$: ordinul lui $x$ în grupul $(K^*,\cdot)$ divide $3$. Dar, din teorema lui Lagrange, ordinul divide și $|K^*|=7$; cum $(3,7)=1$, rezultă că ordinul este $1$, adică $x=1$. Însă atunci $1^2+1+1=1\neq 0$ (caracteristica fiind $2$): contradicție.
+
+\emph{Pasul 3: $X^3+X+1$ are trei rădăcini.} Orice $x\in K^*$ satisface $x^7=1$ (consecință a teoremei lui Lagrange), deci cele $8$ elemente ale lui $K$ sunt toate rădăcini ale polinomului $X^8-X$, care are gradul $8$: elementele lui $K$ sunt \emph{exact} rădăcinile sale, fiecare dintre ele fiind simplă. Căutăm descompunerea lui $X^8-X$ în $\ZZ_2[X]$: efectuând direct înmulțirea, se verifică identitatea (în caracteristică $2$)
+\[
+(X^3+X+1)(X^3+X^2+1)=X^6+X^5+X^4+X^3+X^2+X+1,
+\]
+iar membrul drept este $\dfrac{X^7-1}{X-1}$, deci
+\[
+X^8-X=X\,(X-1)\,(X^3+X+1)\,(X^3+X^2+1).
+\]
+Cele $8$ rădăcini se repartizează între factori: $X$ are rădăcina $0$, $X-1$ are rădăcina $1$, iar celelalte $6$ elemente sunt rădăcini ale produsului celor două polinoame de gradul $3$. Fiecare factor de gradul trei are cel mult $3$ rădăcini, iar împreună trebuie să acopere $6$ elemente distincte: prin urmare fiecare dintre ei are \emph{exact} $3$. În particular $X^3+X+1$ are trei rădăcini distincte în $K$.
+
+\medskip
+\noindent\textbf{Observație.} Numărarea de la Pasul 3 este tipică pentru corpurile finite: identitatea $x^{|K|}=x$, valabilă pentru toate elementele, transformă întrebările despre rădăcini în problema repartizării celor $|K|$ rădăcini ale lui $X^{|K|}-X$ între factorii ireductibili. Observați și că Pasul 2 este în acord cu Pasul 3: polinomul $X^2+X+1$ nu apare în descompunere tocmai pentru că nu are rădăcini în $K$.
+\end{solutie}
+
+\begin{problema}[Clasică]
+Fie $K$ un corp finit de caracteristică $p$.
+\begin{parti}
+\item Arătați că aplicația $F : K \to K$, $F(x) = x^p$, este un automorfism al lui $K$.
+\item Arătați că $F(x) = x$ dacă și numai dacă $x$ aparține subcorpului prim $\{0,\, 1,\, 1+1,\, \dots\} \simeq \ZZ_p$.
+\end{parti}
+\end{problema}
+
+\begin{solutie}
+\emph{(a)} Multiplicativitatea este imediată: $F(xy) = (xy)^p = x^p y^p$ (elementele comută), iar $F(1) = 1$. Pentru aditivitate folosim binomul lui Newton, valabil pentru elemente care comută:
+\[
+(x+y)^p = \sum_{k=0}^{p} \binom{p}{k} x^k y^{p-k}.
+\]
+Pentru $1 \leq k \leq p-1$, numărul $\binom{p}{k} = \frac{p\,(p-1)\cdots(p-k+1)}{k!}$ este divizibil cu $p$: numărătorul conține factorul prim $p$, în timp ce $k!$ nu îl conține (toți factorii săi sunt $< p$). În caracteristică $p$ acești termeni se anulează, deci
+\[
+F(x+y) = (x+y)^p = x^p + y^p = F(x) + F(y).
+\]
+$F$ este injectivă: dacă $x^p = y^p$, atunci $(x-y)^p = x^p - y^p = 0$ (aditivitatea, aplicată lui $x-y$; pentru $p = 2$ semnele coincid oricum), iar într-un corp o putere nulă obligă baza să fie nulă: $x = y$. O aplicație injectivă a unei mulțimi finite în ea însăși este bijectivă. Așadar $F$ este un automorfism.
+
+\emph{(b)} Punctele fixe ale lui $F$ sunt rădăcinile polinomului $X^p - X$, care are cel mult $p$ rădăcini în corpul $K$. Pe de altă parte, subcorpul prim are exact $p$ elemente, iar fiecare dintre ele este punct fix: pentru clasa lui $a \in \{0, 1, \dots, p-1\}$, egalitatea $a^p \equiv a \pmod p$ este mica teoremă a lui Fermat. Am găsit deci $p$ puncte fixe într-o mulțime cu cel mult $p$ elemente: punctele fixe sunt \emph{exact} elementele subcorpului prim.
+
+\medskip
+\noindent\textbf{Observație.} \ Automorfismul lui Frobenius este instrumentul central al corpurilor finite: de pildă, într-un corp finit de caracteristică $2$ ridicarea la pătrat este chiar $F$, deci o bijecție, așa că orice element este un pătrat; tot el stă în spatele descompunerilor de felul celei din problema precedentă.
+\end{solutie}
+
+\nivel{ojm}{Nivel OJM}{Faza județeană --- combină două rezultate.}
+\setcounter{cat}{2}\setcounter{problemaX}{0}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup și fie
+\[
+  H = \{\, x \in G \ :\ x^{2}=e \,\}.
+\]
+Presupunem că $H$ este subgrup al lui $G$. Demonstrați că $H$
+este comutativ.
+\end{problema}
+
+\begin{solutie}
+Fie $x,y \in H$. Din definiția lui $H$ avem $x^{2}=e$ și $y^{2}=e$,
+adică $x^{-1}=x$ și $y^{-1}=y$.
+
+Cum $H$ este subgrup, este închis la operația grupului, deci
+$xy \in H$; prin urmare $(xy)^{2}=e$, ceea ce înseamnă
+$(xy)^{-1}=xy$. Dar, în orice grup,
+\[
+  (xy)^{-1} = y^{-1}x^{-1} = yx.
+\]
+Așadar $xy=yx$. Elementele $x,y \in H$ fiind arbitrare, $H$ este
+comutativ.
+\end{solutie}
+
+\begin{obs}
+Ipoteza ,,$H$ este subgrup'' este exact ceea ce garantează
+închiderea la produs, iar aceasta este esențială: în
+general mulțimea involuțiilor \emph{nu} este închisă. De
+exemplu, în grupul $S_{3}$ al permutărilor a trei elemente,
+transpozițiile $(1\,2)$ și $(1\,3)$ satisfac $x^{2}=e$, dar
+produsul lor $(1\,2)(1\,3)=(1\,3\,2)$ este un ciclu de lungime $3$, deci
+nu mai are pătratul egal cu $e$. Astfel
+$\{x : x^{2}=e\}=\{e,(1\,2),(1\,3),(2\,3)\}$ are $4$ elemente, număr
+care nu divide $6=|S_{3}|$, deci nici măcar nu poate fi subgrup.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit de ordin \emph{par}. Demonstrați că există
+un element $x \in G$, $x \neq e$, cu $x^{2}=e$ (adică $G$ conține
+un involutiv netrivial).
+\end{problema}
+
+\begin{solutie}
+Considerăm aplicația $\varphi : G \to G$, $\varphi(x)=x^{-1}$.
+Ea este o bijecție și satisface $\varphi(\varphi(x))=x$, deci este
+o involuție a mulțimii $G$.
+
+Punctele fixe ale lui $\varphi$ sunt exact elementele cu $x^{-1}=x$, adică
+\[
+  A = \{\, x \in G \ :\ x^{2}=e \,\}.
+\]
+Un element $x \notin A$ satisface $x \neq x^{-1}$, deci se grupează
+împreună cu $x^{-1}$ într-o pereche $\{x, x^{-1}\}$ cu două
+elemente distincte. Aceste perechi sunt disjuncte și acoperă
+întreaga mulțime $G \setminus A$, prin urmare $|G \setminus A|$
+este par. De aici
+\[
+  |A| = |G| - |G \setminus A|
+\]
+are aceeași paritate ca $|G|$. Cum $|G|$ este par, rezultă că
+$|A|$ este par.
+
+Dar $e \in A$ (căci $e^{2}=e$), deci $|A| \geq 1$; fiind par,
+obținem $|A| \geq 2$. Așadar există un element $x \in A$ cu
+$x \neq e$, adică $x^{2}=e$ și $x \neq e$.
+\end{solutie}
+
+\begin{obs}
+Rezultatul este cazul particular $p=2$ al teoremei lui Cauchy: orice grup
+finit al cărui ordin este divizibil cu un număr prim $p$ conține
+un element de ordin $p$. Argumentul de mai sus îl obține însă
+complet elementar, doar prin împărțirea lui $G$ în perechi.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup și $a,b \in G$ astfel încât $a^{4}=e$ și
+$aba^{-1}=b^{2}$. Demonstrați că $b^{15}=e$.
+\end{problema}
+
+\begin{solutie}
+Arătăm prin inducție după $k \geq 1$ că
+\[
+  a^{k}\,b\,a^{-k} = b^{\,2^{k}} .
+\]
+Pentru $k=1$ este chiar ipoteza. Presupunând egalitatea pentru $k$,
+folosim că $a\,b^{n}\,a^{-1}=\bigl(aba^{-1}\bigr)^{n}$:
+\[
+  a^{k+1}\,b\,a^{-(k+1)}
+  = a\bigl(a^{k}ba^{-k}\bigr)a^{-1}
+  = a\,b^{\,2^{k}}a^{-1}
+  = \bigl(aba^{-1}\bigr)^{2^{k}}
+  = \bigl(b^{2}\bigr)^{2^{k}}
+  = b^{\,2^{k+1}} .
+\]
+Pentru $k=4$, cum $a^{4}=e$, membrul stâng este $b$, deci
+$b = b^{\,2^{4}} = b^{16}$, adică $b^{15}=e$.
+\end{solutie}
+
+\begin{obs}
+Rezultă că $\operatorname{ord}(b) \mid 15$, deci ordinul lui $b$
+poate fi doar $1$, $3$, $5$ sau $15$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup de ordin $2n$ și $a \in G$ un element de ordin cel
+puțin $n$. Presupunem că există $x \in G$ cu $x \neq a^{k}$
+pentru orice $k$ (adică $x \notin \langle a\rangle$) astfel încât
+$ax=xa$. Demonstrați că $a$ comută cu orice element al lui $G$
+(adică $a$ aparține centrului lui $G$).
+\end{problema}
+
+\begin{solutie}
+Fie $H=\langle a\rangle$ subgrupul generat de $a$, deci $|H|=\operatorname{ord}(a)$.
+
+\smallskip
+\textit{Pasul 1: $\operatorname{ord}(a)=n$, iar $H$ are indice $2$.}
+Existența unui $x \notin H$ arată că $H \neq G$, deci
+$\operatorname{ord}(a) < 2n$. Pe de altă parte $\operatorname{ord}(a) \geq n$,
+iar din teorema lui Lagrange $\operatorname{ord}(a) \mid 2n$. Singurul
+divizor al lui $2n$ situat în intervalul $[\,n,\,2n\,)$ este însă
+$n$ (căci un divizor $d \geq n$ al lui $2n$ dă $2n/d \leq 2$, deci
+$d=n$ sau $d=2n$). Așadar $\operatorname{ord}(a)=n$, deci $|H|=n$ și
+$[G:H]=2$.
+
+\smallskip
+\textit{Pasul 2: descompunerea în două clase.} Cum $[G:H]=2$ și
+$x \notin H$, clasa $xH$ este diferită de $H$, iar
+\[
+  G = H \,\cup\, xH .
+\]
+Prin urmare orice element $g \in G$ este fie de forma $a^{k}$ (dacă
+$g \in H$), fie de forma $x\,a^{k}$ (dacă $g \in xH$).
+
+\smallskip
+\textit{Pasul 3: $a$ comută cu ambele tipuri.} Cu $a^{k}$ elementul $a$
+comută evident (puteri ale lui $a$). Pentru $x\,a^{k}$, folosind
+$ax=xa$,
+\[
+  a\,(x a^{k}) = (ax)\,a^{k} = (xa)\,a^{k} = x\,a^{k+1} = (x a^{k})\,a .
+\]
+Așadar $a$ comută cu orice element al lui $G$, deci aparține
+centrului.
+\end{solutie}
+
+\medskip
+\noindent\textbf{Soluție alternativă (centralizatorul lui $a$).}\enspace
+Fie
+\[
+  C = \{\, g \in G : ga=ag \,\}
+\]
+centralizatorul lui $a$; se verifică imediat că este subgrup al lui
+$G$. El conține toate puterile lui $a$, deci $\langle a\rangle \subseteq C$
+și $|C| \geq \operatorname{ord}(a) \geq n$. În plus $x \in C$
+(deoarece $ax=xa$) și $x \notin \langle a\rangle$, deci $C$ are cel
+puțin $n+1$ elemente. Dar $|C| \mid 2n$ (Lagrange), iar singurul divizor
+al lui $2n$ strict mai mare decât $n$ este $2n$ însuși; așadar
+$|C|=2n$, deci $C=G$. Prin urmare $a$ comută cu orice element al lui $G$.
+\hfill$\square$
+
+\begin{obs}
+Ipoteza $x \notin \langle a\rangle$ joacă un rol dublu: exclude cazul
+$\operatorname{ord}(a)=2n$ (în care $\langle a\rangle=G$ ar fi ciclic,
+dar nu ar exista niciun $x$ în afară) și, forțând astfel
+$\operatorname{ord}(a)=n$, furnizează totodată elementul din a doua
+clasă cu care $a$ comută.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup și $a,b \in G$ astfel încât orice element al
+lui $G$ comută cu $a$ sau cu $b$. Notând $C(x)=\{\,g\in G : gx=xg\,\}$
+centralizatorul lui $x$, ipoteza spune că $C(a)\cup C(b)=G$.
+Demonstrați că $a$ sau $b$ aparține centrului $Z(G)$ (cel
+puțin unul dintre ele este central).
+\end{problema}
+
+Motorul demonstrației este următoarea lemă, de sine
+stătătoare.
+
+\begin{lemat}
+Un grup nu poate fi reuniunea a două subgrupuri proprii ale sale: dacă
+$H,K \leq G$ și $H\cup K=G$, atunci $H=G$ sau $K=G$.
+\end{lemat}
+
+\begin{proof}
+Presupunem, prin absurd, că $H\neq G$ și $K\neq G$. Cum $H\cup K=G$
+dar $K\neq G$, există $h\in H\setminus K$; simetric, există
+$k\in K\setminus H$. Elementul $hk$ aparține lui $G=H\cup K$, deci
+$hk\in H$ sau $hk\in K$.
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item Dacă $hk\in H$, atunci $k=h^{-1}(hk)\in H$, contrazicând
+        $k\notin H$.
+  \item Dacă $hk\in K$, atunci $h=(hk)k^{-1}\in K$, contrazicând
+        $h\notin K$.
+\end{itemize}
+Ambele cazuri sunt imposibile, deci presupunerea a fost falsă: $H=G$ sau
+$K=G$.
+\end{proof}
+
+\begin{solutie}
+Pentru orice $x\in G$, centralizatorul $C(x)$ este subgrup al lui $G$:
+conține pe $e$; dacă $g,h$ comută cu $x$, atunci și $gh$
+comută cu $x$; iar din $gx=xg$ rezultă $xg^{-1}=g^{-1}x$, deci
+$g^{-1}\in C(x)$.
+
+Aplicăm lema subgrupurilor $H=C(a)$ și $K=C(b)$: din
+$C(a)\cup C(b)=G$ rezultă $C(a)=G$ sau $C(b)=G$. Dar $C(x)=G$ înseamnă
+exact că $x$ comută cu orice element al lui $G$, adică $x\in Z(G)$.
+Așadar $a\in Z(G)$ sau $b\in Z(G)$.
+\end{solutie}
+
+\begin{obs}
+Lema este specifică numărului \emph{doi}: un grup poate fi reuniunea
+a \emph{trei} subgrupuri proprii --- de pildă grupul lui Klein
+$\mathbb{Z}/2\times\mathbb{Z}/2$ este reuniunea celor trei subgrupuri ale
+sale de ordin $2$. Prin urmare, varianta cu trei condiții
+($C(a)\cup C(b)\cup C(c)=G$) nu mai forțează neapărat
+centralitatea vreunuia dintre $a,b,c$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că $xy \in Z(G)$ pentru orice
+$x,y\in G$ cu $x\neq e$ și $y\neq e$. Demonstrați că $G$ este
+comutativ.
+\end{problema}
+
+\begin{solutie}
+Fie $x,y\in G$ două elemente diferite de $e$. Din ipoteză
+$xy\in Z(G)$, deci $xy$ comută cu orice element al lui $G$, în
+particular cu $x$:
+\[
+  (xy)\,x = x\,(xy) \quad\Longrightarrow\quad xyx = x^{2}y .
+\]
+Scriind membrul stâng ca $x\,(yx)$ și pe cel drept ca $x\,(xy)$,
+simplificăm la stânga cu $x$ și obținem $yx = xy$. Așadar
+orice două elemente diferite de $e$ comută; cum $e$ comută
+oricum cu tot, $G$ este comutativ.
+\end{solutie}
+
+\medskip
+\noindent\textbf{Soluție alternativă (prin puteri, arătând $Z(G)=G$).}\enspace
+Pentru orice $x\neq e$, luând $y=x$ în ipoteză obținem
+$x^{2}\in Z(G)$; deci toate pătratele sunt centrale. Fie acum $x\neq e$.
+Dacă $x^{2}\neq e$, atunci $x^{3}=x^{2}\cdot x$ este produs de două
+elemente diferite de $e$, deci $x^{3}\in Z(G)$; cum și $x^{2}\in Z(G)$
+și $Z(G)$ este subgrup,
+\[
+  x = x^{3}\,\bigl(x^{2}\bigr)^{-1} \in Z(G).
+\]
+Rămân elementele cu $x^{2}=e$. Dacă există vreun $z$ cu
+$z^{2}\neq e$, atunci $z^{2}\in Z(G)\setminus\{e\}$, iar pentru un asemenea
+$x$ avem $x = (x\cdot z^{2})\,(z^{2})^{-1}\in Z(G)$ (produs de elemente
+centrale, folosind $x, z^{2}\neq e$). Dacă însă $z^{2}=e$ pentru
+orice $z$, atunci $G$ este comutativ prin rezultatul clasic al involuțiilor
+(problema OLM.1). În toate cazurile fiecare element este central, deci
+$Z(G)=G$. \hfill$\square$
+
+\begin{obs}
+Concluzia se poate întări: ipoteza dă de fapt $Z(G)=G$, adică
+un grup comutativ. Prima soluție o obține dintr-o singură
+observație (,,$xy$ comută cu $x$''), pe când a doua urmează
+ideea de a exprima $x$ prin puteri centrale, $x=x^{3}x^{-2}$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit și $f,g$ două endomorfisme ale lui $G$ cu
+proprietatea
+\[
+  f\bigl(x^{2}y^{4}\bigr) = g\bigl(x^{2}\bigr)\,g\bigl(y^{4}\bigr)
+  \qquad \text{pentru orice } x,y\in G.
+\]
+Determinați sub ce condiție asupra ordinului $|G|$ rezultă
+$f=g$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} dacă și numai dacă $|G|$ este
+impar.
+
+\begin{solutie}
+\textit{Reducerea la pătrate.} Cum $f$ este morfism,
+$f(x^{2}y^{4})=f(x^{2})f(y^{4})$, deci ipoteza devine
+\[
+  f(x^{2})\,f(y^{4}) = g(x^{2})\,g(y^{4}) \qquad \text{pentru orice } x,y.
+\]
+Luând $y=e$ obținem $f(x^{2})=g(x^{2})$ pentru orice $x$: așadar
+$f$ și $g$ coincid pe toate pătratele. (Condiția pe puterile a
+patra este redundantă, căci $f(x^{4})=f(x^{2})^{2}=g(x^{2})^{2}=g(x^{4})$.)
+
+\smallskip
+\textit{Suficiența ($|G|$ impar).} Dacă $|G|$ este impar, ridicarea
+la pătrat este surjectivă: pentru orice $a\in G$, fie
+$d=\operatorname{ord}(a)\mid|G|$, deci $d$ impar, și
+\[
+  a = a^{d+1} = \bigl(a^{(d+1)/2}\bigr)^{2},
+\]
+unde $(d+1)/2$ este întreg. Prin urmare orice element este un pătrat;
+cum $f$ și $g$ coincid pe pătrate, rezultă $f(a)=g(a)$ pentru
+orice $a$, adică $f=g$.
+
+\smallskip
+\textit{Necesitatea ($|G|$ par).} Dacă $|G|$ este par, concluzia poate
+cădea. De pildă, în $G=\mathbb{Z}/2$ orice pătrat este $0$,
+deci condiția ,,$f=g$ pe pătrate'' este vidă; endomorfismele
+lui $\mathbb{Z}/2$ fiind $\mathrm{id}$ și $0$, alegerea $f=\mathrm{id}$,
+$g=0$ satisface ipoteza, dar $f\neq g$.
+
+Același fenomen apare pentru \emph{orice} ordin par $2m$. Fie
+$G=(\mathbb{Z}/2m,+)$, $f(x)=mx$ și $g=0$. Aplicația $f$ este
+endomorfism ($m(x+y)=mx+my$), iar în notație aditivă ipoteza cere
+$f(2x+4y)=g(2x)+g(4y)$, adică $m(2x+4y)=0$; aceasta are loc, căci
+$m(2x+4y)=2m\,(x+2y)$ este multiplu de $2m$. Totuși
+$f(\widehat 1)=\widehat m\neq\widehat 0=g(\widehat 1)$, deci $f\neq g$.
+Așadar, pentru fiecare ordin par există un grup și două endomorfisme
+care satisfac ipoteza fără a fi egale.
+\end{solutie}
+
+\begin{obs}
+Totul depinde de faptul că exponenții $2$ și $4$ sunt
+amândoi pari, deci condiția se reduce la pătrate --- de aici
+nevoia unei ipoteze pe ordin. Dacă exponenții ar fi \emph{primi
+între ei} (de pildă $x^{2}$ și $x^{3}$), atunci din
+$f(x)=f(x^{3})\,f(x^{2})^{-1}=g(x^{3})\,g(x^{2})^{-1}=g(x)$ ar rezulta
+$f=g$ necondiționat.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup de ordin $2n$, cu $n$ \emph{impar}, astfel încât
+$x^{n+2}\in Z(G)$ pentru orice $x\in G$. Demonstrați că $G$ este
+comutativ.
+\end{problema}
+
+Demonstrația se sprijină pe următoarea lemă (Bézout pentru
+puteri centrale).
+
+\begin{lemat}[Bézout pentru puteri centrale]\label{lema:bezoutZ}
+Fie $x\in G$ și $a,b\in\mathbb{N}^{*}$. Dacă $x^{a}\in Z(G)$ și
+$x^{b}\in Z(G)$, atunci $x^{\gcd(a,b)}\in Z(G)$.
+\end{lemat}
+
+\begin{proof}
+Fie $d=\gcd(a,b)$. Din relația lui Bézout există $u,v\in\mathbb{Z}$
+cu $d=ua+vb$, deci
+\[
+  x^{d}=x^{ua+vb}=\bigl(x^{a}\bigr)^{u}\,\bigl(x^{b}\bigr)^{v}.
+\]
+Cum $Z(G)$ este subgrup (închis la puteri întregi --- inclusiv
+negative --- și la produse) și $x^{a},x^{b}\in Z(G)$, ambii factori
+aparțin lui $Z(G)$, deci și produsul lor $x^{d}$.
+\end{proof}
+
+\begin{solutie}
+Din teorema lui Lagrange $\operatorname{ord}(x)\mid 2n$, deci $x^{2n}=e\in Z(G)$
+pentru orice $x$. Astfel, pentru fiecare $x$, atât $x^{n+2}$ (din
+ipoteză) cât și $x^{2n}$ aparțin centrului; aplicând lema de mai sus cu $a=n+2$ și $b=2n$,
+\[
+  x^{\gcd(n+2,\,2n)}\in Z(G).
+\]
+Calculăm $\gcd(n+2,2n)$: din $2n=2(n+2)-4$ rezultă
+$\gcd(n+2,2n)=\gcd(n+2,4)$, iar $n$ impar face $n+2$ impar, deci
+$\gcd(n+2,4)=1$. Așadar $\gcd(n+2,2n)=1$ și
+\[
+  x=x^{1}\in Z(G)\qquad\text{pentru orice }x\in G.
+\]
+Prin urmare $Z(G)=G$, adică $G$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Paritatea impară a lui $n$ este esențială și ascuțită:
+ea dă $\gcd(n+2,2n)=1$. Pentru $n$ par concluzia poate cădea --- de
+exemplu $G=Q_{8}$ (ordin $8$, $n=4$, $n+2=6$): orice element satisface
+$x^{6}\in\{\pm1\}=Z(Q_{8})$ (căci $x^{6}=x^{2}=-1$ pentru $x$ de ordin
+$4$, și $x^{6}=1$ altfel), deci ipoteza e verificată, însă
+$Q_{8}$ nu e comutativ; acolo lema dă doar $x^{2}$ central. Lema
+însăși este unealta recurentă a ,,exponenților primi
+între ei'': cazul $\gcd(a,b)=1$ dă direct $x\in Z(G)$ (compară
+cu problema OLM.2, unde apare $H=\{e\}$ în locul lui $Z(G)$).
+\end{obs}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care există un grup
+$G$ de ordin $n$ astfel încât, pentru orice întreg $k$ cu
+$1\le k\le \tfrac{n}{3}$, aplicația $f_{k}:G\to G$, $f_{k}(x)=x^{k}$,
+este injectivă.
+\end{problema}
+
+\noindent\textbf{Răspuns:} $n\in\{1,4\}$ sau $n$ prim (echivalent:
+$n\le 5$ sau $n$ prim).
+
+Soluția aplică următorul rezultat (Corolarul~\ref{lema:puterep} din cartea
+de teorie, ,,ridicarea la puterea $p$''), pe care îl redemonstrăm.
+
+\begin{lemat}[ridicarea la puterea $p$; Corolarul~\ref{lema:puterep}]
+Fie $G$ un grup finit cu $n$ elemente, $p\ge 2$ un întreg, și
+$H=\{x^{p}\mid x\in G\}$ mulțimea puterilor de ordin $p$. Atunci
+\[
+  (p,n)=1 \iff H=G.
+\]
+(Aici $H=G$ înseamnă că aplicația $x\mapsto x^{p}$ este
+surjectivă; pe un grup finit aceasta echivalează cu injectivitatea.)
+\end{lemat}
+
+\begin{proof}
+$(\Rightarrow)$ Fie $(p,n)=1$; există $a,b\in\mathbb{Z}$ cu $ap+bn=1$
+(Bézout). Pentru orice $g\in G$, ordinul lui $g$ divide $n$ (Lagrange),
+deci $g^{n}=e$ și astfel $g^{bn}=e$. Atunci
+\[
+  g=g^{ap+bn}=\bigl(g^{a}\bigr)^{p}\,g^{bn}=\bigl(g^{a}\bigr)^{p}\in H,
+\]
+deci $H=G$.
+
+$(\Leftarrow)$ Prin contrapoziție: presupunem $(p,n)=d>1$ și fie $q$
+un divizor prim al lui $d$. Cum $q\mid n$, teorema lui Cauchy dă un
+element $x$ de ordin $q$. Cum $q\mid p$, avem $x^{p}=e=e^{p}$; deci
+$x\neq e$ și $e$ au aceeași imagine, aplicația $x\mapsto x^{p}$
+nu e injectivă, deci (pe mulțime finită) nici surjectivă:
+$H\neq G$.
+\end{proof}
+
+\begin{solutie}
+Din lemă, pentru orice grup de ordin $n$ și orice întreg
+$k\ge 2$: $f_{k}$ este injectivă dacă și numai dacă
+$(k,n)=1$; iar $f_{1}$ este identitatea, injectivă întotdeauna.
+Cum echivalența are loc în \emph{orice} grup de ordin $n$,
+proprietatea din enunț nu depinde de structura grupului, ci doar de $n$:
+ea revine la
+\[
+  (k,n)=1 \qquad\text{pentru orice întreg } 2\le k\le \tfrac{n}{3},
+\]
+adică la: \emph{niciun divizor prim $p$ al lui $n$ nu satisface
+$p\le \tfrac{n}{3}$}. (Dacă toți divizorii primi depășesc
+$\tfrac n3$, orice $k\le\tfrac n3$ e prim cu $n$; reciproc, un divizor prim
+$p\le\tfrac n3$ dă exponentul rău $k=p$.)
+
+\smallskip
+\textit{Cazul $n$ prim sau $n\le 5$.} Pentru $n$ prim, unicul divizor prim
+este $n>\tfrac{n}{3}$, deci condiția e îndeplinită. Pentru
+$n\le 5$ nu există întregi $k$ cu $2\le k\le\tfrac{n}{3}<2$, deci
+condiția e vidă și orice grup convine; dintre acestea, valorile
+neacoperite de primalitate sunt $n=1$ și $n=4$.
+
+\smallskip
+\textit{Cazul $n\ge 6$ compus.} Fie $p$ cel mai mic divizor prim al lui
+$n$; cum $n$ este compus, $p\le\sqrt{n}$. Condiția cere
+$p>\tfrac{n}{3}$, deci $\tfrac{n}{3}<\sqrt{n}$, adică $n<9$. Rămân
+de verificat $n=6$ și $n=8$: pentru $n=6$, divizorul prim $2\le 2=\tfrac63$
+eșuează (exponentul $k=2$ strică injectivitatea, prin lemă);
+pentru $n=8$, la fel $2\le\tfrac83$. Deci niciun $n\ge 6$ compus nu convine.
+
+\smallskip
+\textit{Concluzie.} Numerele căutate sunt $n\in\{1,4\}$ și $n$ prim
+--- echivalent, $n\le 5$ sau $n$ prim.
+\end{solutie}
+
+\begin{obs}
+Două remarci. Întâi, deoarece lema este valabilă în
+\emph{orice} grup de ordin $n$, formulările ,,există un grup'' și
+,,orice grup'' sunt aici echivalente: proprietatea depinde numai de $n$.
+Apoi, granița este ascuțită exact la $n=6$: exponentul care
+strică este $k=2=\tfrac{n}{3}$, chiar capătul intervalului --- cu
+inegalitatea strictă $k<\tfrac{n}{3}$, valorile $n=6$ și $n=9$ ar
+intra și ele în răspuns.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $a<b$ numere reale.
+\begin{enumerate}[label=(\alph*),nosep]
+  \item Înzestrați mulțimea $G=(a,b)$ (intervalul deschis) cu o
+        structură de grup comutativ.
+  \item Aceeași cerință pentru intervalul \emph{închis}
+        $G=[a,b]$.
+\end{enumerate}
+\end{problema}
+
+\begin{solutie}
+Instrumentul comun este \emph{transportul de structură}: dacă
+$(H,\cdot)$ este grup și $\varphi:G\to H$ este o \emph{bijecție}
+oarecare, atunci operația
+\[
+  x*y:=\varphi^{-1}\bigl(\varphi(x)\cdot\varphi(y)\bigr)
+\]
+face din $(G,*)$ un grup, iar $\varphi$ devine izomorfism: asociativitatea,
+comutativitatea, neutrul $\varphi^{-1}(e_{H})$ și inversele
+$\varphi^{-1}\bigl(\varphi(x)^{-1}\bigr)$ se moștenesc direct prin
+bijecție. Nu se cere nicăieri continuitate.
+
+\smallskip
+\textit{(a) Intervalul deschis.} Aplicația
+\[
+  \varphi:(a,b)\to\mathbb{R},\qquad
+  \varphi(x)=\tan\!\Bigl(\pi\,\frac{x-a}{b-a}-\frac{\pi}{2}\Bigr)
+\]
+este bijecție (strict crescătoare, cu limitele $\mp\infty$ la
+capete). Transportând $(\mathbb{R},+)$, obținem grupul comutativ
+$\bigl((a,b),*\bigr)$ cu $x*y=\varphi^{-1}(\varphi(x)+\varphi(y))$, izomorf
+cu $(\mathbb{R},+)$. Concret, elementul neutru este mijlocul
+$\tfrac{a+b}{2}$, iar inversul lui $x$ este simetricul $a+b-x$ (se
+verifică $\varphi(a+b-x)=-\varphi(x)$).
+
+\smallskip
+\textit{(b) Intervalul închis --- unde continuitatea moare.}
+Atenție: nu există nicio bijecție \emph{continuă}
+$[a,b]\to\mathbb{R}$ (imaginea continuă a unui compact este compactă),
+deci rețeta de la (a) nu se poate repeta cu o formulă continuă.
+Transportul însă cere doar o bijecție, pe care o construim
+,,cu mâna''.
+
+\textit{Pas 1: reducere la $[0,1]$.} Aplicația afină
+$x\mapsto a+(b-a)x$ este bijecție $[0,1]\to[a,b]$, deci e suficient
+să punem structura pe $[0,1]$ și s-o transportăm afin.
+
+\textit{Pas 2: o bijecție $\psi:[0,1]\to[0,1)$.} Problema e că
+$[0,1]$ are ,,un punct în plus'' față de $[0,1)$ --- capătul
+$1$ --- și vrem să-l eliminăm fără să pierdem sau
+să dublăm vreun punct. Aici intervine imaginea \emph{hotelului lui
+Hilbert}: un hotel cu o infinitate de camere $1,\tfrac12,\tfrac13,\dots$,
+toate ocupate; ca să eliberăm camera $1$ fără să dăm
+pe nimeni afară, rugăm fiecare oaspete să treacă în
+camera următoare din șir --- cel din $\tfrac1n$ se mută în
+$\tfrac{1}{n+1}$. Toți oaspeții rămân cazați, dar
+camera $1$ e acum liberă. Punctele care nu sunt de forma $\tfrac1n$ nu
+sunt ,,oaspeți'' și rămân neatinse. Formal:
+\[
+  \psi(x)=\begin{cases}\dfrac{1}{n+1}, & x=\dfrac{1}{n}\ (n\ge 1),\\[4pt]
+  x, & \text{altfel.}\end{cases}
+\]
+Ea mută $1\mapsto\tfrac12\mapsto\tfrac13\mapsto\cdots$ de-a lungul
+șirului și lasă restul pe loc. Verificăm că e
+bijecție: \emph{injectivă} --- puncte distincte au imagini
+distincte (pe șir, $\tfrac1n\mapsto\tfrac{1}{n+1}$ e strict
+descrescător în $n$, iar punctele fixate rămân distincte
+între ele și de imaginile șirului, care sunt tot de forma
+$\tfrac1m$); \emph{surjectivă pe $[0,1)$} --- capătul $1$ nu mai e
+atins (bine, e eliminat), iar orice $y\in[0,1)$ este atins: dacă
+$y=\tfrac1m$ cu $m\ge 2$, atunci $y=\psi\!\big(\tfrac{1}{m-1}\big)$, iar
+dacă $y$ nu e de forma $\tfrac1m$, atunci $y=\psi(y)$. Așadar
+$\psi:[0,1]\to[0,1)$ e bijecție.
+
+\textit{Pas 3: structura pe $[0,1)$ și transportul.} Pe $[0,1)$ avem
+grupul comutativ al adunării modulo $1$: $s\oplus t=\{s+t\}$ (partea
+fracționară) --- acesta este $\mathbb{R}/\mathbb{Z}$, grupul
+cercului, cu neutrul $0$ și inversul lui $t\neq 0$ egal cu $1-t$.
+Transportăm prin $\psi$:
+\[
+  x*y:=\psi^{-1}\bigl(\psi(x)\oplus\psi(y)\bigr),
+\]
+obținând un grup comutativ pe $[0,1]$ (izomorf cu
+$\mathbb{R}/\mathbb{Z}$), apoi conjugăm cu bijecția afină din
+Pasul 1 pentru a-l muta pe $[a,b]$.
+\end{solutie}
+
+\begin{obs}
+Cele două puncte au obstacole complet diferite. La (a) transportul este
+continuu și grupul obținut este ,,dreapta'' $(\mathbb{R},+)$; la (b)
+obstrucția este topologică --- niciun grup nu poate fi pus pe
+$[a,b]$ printr-o formulă continuă în ambele variabile cu inversare
+continuă (compactitatea interzice bijecția continuă cu
+$\mathbb{R}$, iar segmentul nu e cerc) --- așa că orice soluție
+este obligatoriu discontinuă, iar grupul natural obținut este
+,,cercul'' $\mathbb{R}/\mathbb{Z}$. Morala: transportul de structură
+funcționează prin \emph{orice} bijecție de mulțimi;
+continuitatea este un bonus, nu o cerință.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $2n$. Câte soluții poate avea
+ecuația $x^{n}=e$? (Determinați toate valorile posibile ale
+numărului de soluții și arătați că fiecare apare.)
+\end{problema}
+
+\noindent\textbf{Răspuns:} exact $n$ sau exact $2n$; ambele valori se
+realizează.
+
+\begin{solutie}
+Fie $N$ numărul de soluții ale ecuației $x^{n}=e$ în $G$.
+
+\smallskip
+\textit{Pas 1 (Frobenius).} Teorema lui Frobenius spune că, într-un
+grup finit $G$, dacă $d$ divide $|G|$, atunci numărul soluțiilor
+ecuației $x^{d}=e$ este multiplu de $d$. Aici $d=n$ divide $|G|=2n$, deci
+$n\mid N$. Cum $e$ este soluție ($N\ge 1$) și $N\le|G|=2n$, singurii
+multipli de $n$ din intervalul $[1,2n]$ sunt $n$ și $2n$. Așadar
+$N\in\{n,2n\}$.
+
+\smallskip
+\textit{Pas 2 (ambele valori apar).}
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item \emph{$N=n$:} luăm $G=\mathbb{Z}/2n$ (ciclic). Scris aditiv,
+        $x^{n}=e$ devine $nx\equiv 0\pmod{2n}$, adică $2\mid x$; soluțiile
+        sunt $\{0,2,4,\dots,2n-2\}$ --- exact $n$.
+  \item \emph{$N=2n$ (pentru $n$ par):} luăm
+        $G=\mathbb{Z}/2\times\mathbb{Z}/n$, de ordin $2n$. Exponentul său
+        este $\operatorname{lcm}(2,n)=n$ (căci $n$ e par), deci $x^{n}=e$
+        pentru \emph{orice} $x$: toate cele $2n$ elemente sunt soluții.
+\end{itemize}
+\end{solutie}
+
+\begin{obs}
+Valoarea $2n$ apare \emph{doar} pentru $n$ par. Într-adevăr, dacă
+$n$ este impar, cum $2\mid 2n=|G|$, teorema lui Cauchy dă un element $t$
+de ordin $2$; atunci $t^{n}=t$ ($n$ impar), deci $t\neq e$ nu este
+soluție, $N<2n$, și rămâne $N=n$. Prin urmare pentru $n$
+impar ecuația are \emph{întotdeauna} exact $n$ soluții, iar
+alternativa $n$ / $2n$ apare doar pentru $n$ par.
+\end{obs}
+
+\begin{problema}
+O \emph{relație de echivalență} pe o mulțime $M$ este o
+relație $\rho$ care este reflexivă ($x\,\rho\,x$ pentru orice $x$),
+simetrică ($x\,\rho\,y\Rightarrow y\,\rho\,x$) și tranzitivă
+($x\,\rho\,y$ și $y\,\rho\,z\Rightarrow x\,\rho\,z$). O relație de
+echivalență $\rho$ pe un grup $G$ se numește \emph{congruență}
+dacă este compatibilă cu operația: $x\,\rho\,y$ și
+$x'\,\rho\,y'$ implică $xx'\,\rho\,yy'$. Determinați toate
+congruențele pe grupul $(\mathbb{Z},+)$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} exact relațiile de congruență
+modulo $n$ ($x\,\rho\,y\iff n\mid x-y$), pentru $n\ge 0$ --- și niciuna
+în plus.
+
+\begin{solutie}
+Folosim teorema din cartea de teorie (Teorema~\ref{teo:congruenta}, ,,congruențele
+provin din subgrupuri normale''): \emph{o relație de echivalență
+$\rho$ pe un grup $G$ este congruență dacă și numai dacă
+există un subgrup normal $N\trianglelefteq G$ cu
+\[
+  x\,\rho\,y \iff x^{-1}y\in N ,
+\]
+iar atunci $N=\widehat e$ (clasa neutrului)}. Prin urmare congruențele pe
+$G$ sunt în corespondență bijectivă cu subgrupurile normale
+ale lui $G$.
+
+Aplicăm pentru $G=(\mathbb{Z},+)$. Cum $\mathbb{Z}$ este abelian, orice
+subgrup este normal, deci congruențele corespund \emph{tuturor}
+subgrupurilor lui $\mathbb{Z}$. Dar subgrupurile lui $(\mathbb{Z},+)$ sunt
+exact $n\mathbb{Z}=\{nk : k\in\mathbb{Z}\}$, pentru $n\ge 0$: dacă
+$H\le\mathbb{Z}$ este netrivial, fie $n$ cel mai mic element strict pozitiv
+al său; pentru orice $h\in H$, împărțirea cu rest dă
+$h=qn+r$ cu $0\le r<n$, iar $r=h-qn\in H$, deci $r=0$ prin minimalitate ---
+așadar $H=n\mathbb{Z}$ (iar $H=\{0\}=0\cdot\mathbb{Z}$ în cazul
+trivial).
+
+Subgrupului $n\mathbb{Z}$ îi corespunde congruența (scris aditiv)
+\[
+  x\,\rho_{n\mathbb{Z}}\,y \iff y-x\in n\mathbb{Z} \iff n\mid x-y \iff x\equiv y \pmod n .
+\]
+Deci congruențele pe $\mathbb{Z}$ sunt exact relațiile $\equiv\!\!\pmod n$,
+$n\ge 0$. Extremele: $n=0$ dă egalitatea ($x\equiv y\pmod 0\iff x=y$), iar
+$n=1$ dă relația totală (orice două numere sunt congruente).
+\end{solutie}
+
+\begin{obs}
+Aceasta luminează și \emph{terminologia}: ,,congruența modulo $n$''
+din aritmetică este chiar o congruență în sensul algebric (o
+echivalență compatibilă cu $+$), și teorema arată că
+pe $\mathbb{Z}$ \emph{nu există altele}. Frumusețea aplicației: nu
+verificăm ,,de mână'' compatibilitatea fiecărei relații
+candidat, ci reducem totul la clasificarea subgrupurilor lui $\mathbb{Z}$,
+via corespondența congruențe $\leftrightarrow$ subgrupuri normale.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $f:G\to H$ un morfism de grupuri finite, cu
+$\operatorname{Ker}f=\{x\in G:f(x)=e_{H}\}$ și $\operatorname{Im}f=f(G)$.
+Arătați că toate fibrele nevide ale lui $f$ (mulțimile
+$f^{-1}(h)$, $h\in\operatorname{Im}f$) au același număr de elemente
+și că
+\[
+  |G|=|\operatorname{Ker}f|\cdot|\operatorname{Im}f| .
+\]
+\end{problema}
+
+\begin{solutie}
+Considerăm pe $G$ relația $x\sim y\iff f(x)=f(y)$. Ea este
+reflexivă, simetrică și tranzitivă (fiind definită prin
+egalitate în $H$), și compatibilă cu operația: dacă
+$f(x)=f(y)$ și $f(x')=f(y')$, atunci
+\[
+  f(xx')=f(x)f(x')=f(y)f(y')=f(yy'),
+\]
+deci $xx'\sim yy'$. Așadar $\sim$ este o \emph{congruență}
+(Propoziția~\ref{prop:congmorf}, ,,congruența asociată unui morfism''), iar
+clasele ei sunt exact fibrele lui $f$. Clasa unui element:
+\[
+  f(x)=f(y)\iff f(x^{-1}y)=e_{H}\iff x^{-1}y\in\operatorname{Ker}f
+  \iff y\in x\operatorname{Ker}f,
+\]
+deci fibra care îl conține pe $x$ este exact clasa la stânga
+$x\operatorname{Ker}f$.
+
+Toate clasele la stânga ale unui subgrup au același cardinal ca
+subgrupul însuși (aplicația $k\mapsto xk$ este bijecție
+$\operatorname{Ker}f\to x\operatorname{Ker}f$), deci fiecare fibră nevidă
+are exact $|\operatorname{Ker}f|$ elemente. Cum $x\sim y\iff f(x)=f(y)$,
+clasele sunt în corespondență bijectivă cu valorile lui $f$,
+adică cu $\operatorname{Im}f$; numărul lor este $|\operatorname{Im}f|$.
+Clasele partajează $G$, deci
+\[
+  |G|=(\text{număr de clase})\cdot|\operatorname{Ker}f|
+     =|\operatorname{Im}f|\cdot|\operatorname{Ker}f| .
+\]
+\end{solutie}
+
+\begin{obs}
+Aceasta este forma cardinală a primei teoreme de izomorfism
+($G/\operatorname{Ker}f\cong\operatorname{Im}f$): numărând, ea devine
+$|G|=|\operatorname{Ker}f|\cdot|\operatorname{Im}f|$. Ideea-cheie e că
+,,a avea aceeași imagine'' este o \emph{congruență}, deci clasele
+ei sunt automat clasele unui subgrup (normal), fără vreun calcul
+direct de normalitate --- iar de aici numărarea e imediată. În
+particular, ordinul lui $\operatorname{Im}f$ divide $|G|$.
+\end{obs}
+
+\begin{problema}
+Fie $\pi=2+i\in\mathbb{Z}[i]$ și $\pi\mathbb{Z}[i]=\{\pi z : z\in\mathbb{Z}[i]\}$
+subgrupul multiplilor săi în grupul aditiv $(\mathbb{Z}[i],+)$.
+Arătați că grupul cât $\mathbb{Z}[i]/\pi\mathbb{Z}[i]$ este
+izomorf cu $(\mathbb{Z}/5,+)$.
+\end{problema}
+
+\begin{solutie}
+Definim
+\[
+  f:\mathbb{Z}[i]\to\mathbb{Z}/5,\qquad f(a+bi)=(a+3b)\bmod 5 .
+\]
+
+\textit{$f$ este morfism surjectiv.} Aditivitatea e imediată:
+$f\bigl((a+bi)+(c+di)\bigr)=(a+c)+3(b+d)\equiv(a+3b)+(c+3d)=f(a+bi)+f(c+di)$.
+Iar $f(1)=1$, deci $f$ e surjectiv și $\operatorname{Im}f=\mathbb{Z}/5$.
+
+\textit{Nucleul este $\pi\mathbb{Z}[i]$.} Pentru $z=(2+i)(c+di)=(2c-d)+(c+2d)i$,
+\[
+  f(z)=(2c-d)+3(c+2d)=5c+5d\equiv 0\pmod 5 ,
+\]
+deci $\pi\mathbb{Z}[i]\subseteq\operatorname{Ker}f$. Reciproc, ambele subgrupuri
+au indice $5$ în $\mathbb{Z}[i]$: pentru $\operatorname{Ker}f$ pentru
+că $f$ e surjectiv pe $\mathbb{Z}/5$; pentru $\pi\mathbb{Z}[i]$ pentru
+că $\{0,1,2,3,4\}$ este un sistem complet de reprezentanți --- orice
+$a+bi$ verifică $a+bi\equiv a+3b\pmod{\pi}$ (căci $i-3=(2+i)(i-1)\in\pi\mathbb{Z}[i]$),
+iar $a+3b$ e întreg, redus modulo $5$ deoarece $5=(2+i)(2-i)\in\pi\mathbb{Z}[i]$.
+Un subgrup conținut într-altul, ambele de același indice finit,
+coincid: $\operatorname{Ker}f=\pi\mathbb{Z}[i]$.
+
+\textit{Prima teoremă de izomorfism.} Așadar
+\[
+  \boxed{\;\mathbb{Z}[i]/\pi\mathbb{Z}[i]=\mathbb{Z}[i]/\operatorname{Ker}f\;\cong\;\operatorname{Im}f=\mathbb{Z}/5\;}
+\]
+(izomorfismul indus fiind $a+bi+\pi\mathbb{Z}[i]\mapsto(a+3b)\bmod 5$).
+\end{solutie}
+
+\begin{obs}
+Numărul $5=|2+i|^{2}$ e chiar norma lui $\pi=2+i$, iar $\pi$ este un
+\emph{prim} al lui $\mathbb{Z}[i]$ (normă primă); câtul
+$\mathbb{Z}[i]/\pi\cong\mathbb{Z}/5$ este de fapt corpul rezidual
+$\mathbb{F}_{5}$ la $\pi$. Reprezentantul cheie e $i\equiv 3\pmod{\pi}$
+(fiindcă $2+i\equiv 0$ dă $i\equiv-2\equiv 3$), de unde
+$a+bi\mapsto a+3b$. Este exact pasul care arată că primul $5$ se
+\emph{descompune} în $\mathbb{Z}[i]$ ($5=(2+i)(2-i)$, cei doi factori
+neasociați), spre deosebire de $2$ (ramificat) sau de un prim
+$\equiv 3\pmod 4$ (inert).
+\end{obs}
+
+\begin{problema}
+Fie $\sigma(z)=5/\bar z$ inversiunea planului față de cercul de
+rază $\sqrt5$ centrat în origine. Grupul simetriilor rețelei
+$\mathbb{Z}[i]$ (rotațiile $z\mapsto i^{k}z$ și conjugarea
+$z\mapsto\bar z$) permută mulțimea $X$ a punctelor din $\mathbb{Z}[i]$
+fixate de $\sigma$. Descrieți $X$ ca mulțime cu acțiune de grup.
+\end{problema}
+
+\begin{solutie}
+\textit{Punctele fixe.} Cum $5$ e real, $\sigma(z)=z\iff 5/\bar z=z\iff
+|z|^{2}=5$; punctele fixe formează cercul de rază $\sqrt5$ (iar
+$\sigma$ e involuție: $\sigma^{2}=\operatorname{id}$). Printre întregii
+Gauss, $|z|^{2}=5$ înseamnă $a^{2}+b^{2}=5$, cu soluțiile
+$(a,b)\in\{(\pm1,\pm2),(\pm2,\pm1)\}$; deci
+\[
+  X=\{\pm1\pm2i,\ \pm2\pm i\},\qquad |X|=8 .
+\]
+
+\textit{Grupul.} Simetriile rețelei --- rotațiile $z\mapsto i^{k}z$
+($k=0,1,2,3$) și conjugarea $z\mapsto\bar z$ --- formează grupul
+diedral $D_{4}$ de ordin $8$; ele păstrează norma, deci permută
+$X$.
+
+\textit{Orbită--stabilizator.} Aplicația orbită
+$\varphi:D_{4}\to X$, $\varphi(g)=g\cdot(2+i)$, evaluată pe cele opt
+simetrii,
+\[
+\begin{array}{llll}
+  \operatorname{id}:2+i, & i\cdot:-1+2i, & i^{2}\cdot:-2-i, & i^{3}\cdot:1-2i,\\[2pt]
+  \ \overline{\phantom{x}}:2-i, & i\,\overline{\phantom{x}}:1+2i,
+  & i^{2}\,\overline{\phantom{x}}:-2+i, & i^{3}\,\overline{\phantom{x}}:-1-2i,
+\end{array}
+\]
+ia opt valori distincte --- exact $X$. Deci $X$ este o singură orbită
+și $\operatorname{Stab}(2+i)=\{\operatorname{id}\}$. Reamintim
+\textbf{teorema orbită--stabilizator}: dacă un grup finit $H$
+acționează pe o mulțime $X$ și $x\in X$, atunci aplicația
+orbită $h\mapsto h\cdot x$ induce o bijecție
+$H/\!\operatorname{Stab}(x)\to\operatorname{Orb}(x)$ între clasele la
+stânga după stabilizator și orbită; în particular
+$|\!\operatorname{Orb}(x)|=[H:\operatorname{Stab}(x)]$. Aplicată aici,
+ea induce o bijecție de $D_{4}$-mulțimi
+\[
+  \boxed{\;X\;\cong\;D_{4}/\!\operatorname{Stab}(2+i)=D_{4}/\{\operatorname{id}\}\;\cong\;D_{4}\;}
+\]
+Așadar $X$ este un \emph{$D_{4}$-torsor}: cele opt puncte fixe ale
+involuției $\sigma$ sunt în bijecție canonică cu simetriile
+rețelei, fiecare obținându-se dintr-o unică simetrie
+aplicată lui $2+i$.
+\end{solutie}
+
+\begin{obs}
+Atenție: aceasta \emph{nu} este prima teoremă de izomorfism --- $X$
+nu e grup, iar $\operatorname{Stab}(2+i)$ nu e neapărat normal, deci
+$D_{4}/\!\operatorname{Stab}$ e doar o mulțime de clase (aici, tot
+$D_{4}$, fiindcă stabilizatorul e trivial). Rezultatul e \emph{teorema
+orbită--stabilizator}, ruda ei pentru acțiuni. Aritmetic, cele opt
+puncte sunt asociații lui $2+i$ și ai lui $2-i$ (factorii lui
+$5=(2+i)(2-i)$), câte patru, legați prin conjugare.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $\varphi\in\operatorname{Aut}(G)$
+un automorfism fixat. Arătați că, pentru orice $x\in G$ fixat,
+numărul soluțiilor $g\in G$ ale ecuației $gx=x\varphi(g)$ divide
+$n$.
+\end{problema}
+
+\begin{solutie}
+Cheia este că $g\cdot x:=g\,x\,\varphi(g)^{-1}$ definește o
+\emph{acțiune} a lui $G$ pe mulțimea $G$ (conjugarea răsucită
+prin $\varphi$; pentru $\varphi=\operatorname{id}$, conjugarea obișnuită).
+Într-adevăr, $e\cdot x=e\,x\,\varphi(e)^{-1}=x$, iar folosind că
+$\varphi$ e morfism ($\varphi(gh)^{-1}=\varphi(h)^{-1}\varphi(g)^{-1}$),
+\[
+  (gh)\cdot x=gh\,x\,\varphi(h)^{-1}\varphi(g)^{-1}
+  =g\bigl(h\,x\,\varphi(h)^{-1}\bigr)\varphi(g)^{-1}=g\cdot(h\cdot x).
+\]
+
+Ecuația $gx=x\varphi(g)$ se rescrie $g\,x\,\varphi(g)^{-1}=x$, adică
+$g\cdot x=x$: mulțimea soluțiilor în $g$ este exact
+\emph{stabilizatorul} lui $x$,
+\[
+  \operatorname{Stab}(x)=\{g\in G : g\cdot x=x\}.
+\]
+Stabilizatorul unui punct este întotdeauna subgrup al lui $G$, deci
+(Lagrange) numărul soluțiilor $|\!\operatorname{Stab}(x)|$ divide
+$|G|=n$.
+\end{solutie}
+
+\begin{obs}
+Prin orbită--stabilizator, și orbitele (numite \emph{clase de
+conjugare răsucită}) au mărimi $[G:\operatorname{Stab}(x)]$ care
+divid $n$ --- exact ca la clasele de conjugare obișnuite (cazul
+$\varphi=\operatorname{id}$). Atenție însă la varianta
+\emph{duală}: dacă fixăm $g$ și căutăm $x$-urile cu
+$g\cdot x=x$, obținem mulțimea punctelor fixe ale permutării
+$x\mapsto g\cdot x$, care \emph{nu} e subgrup și poate fi chiar vidă
+--- acolo nu mai există divizibilitate.
+\end{obs}
+
+\begin{problema}[Clasică]
+Arătați că nu există niciun corp $K$ pentru care grupul
+aditiv $(K,+)$ să fie izomorf cu grupul multiplicativ
+$(K^{*},\cdot)$, unde $K^{*}=K\setminus\{0\}$.
+\end{problema}
+
+\begin{solutie}
+Un \emph{izomorfism de grupuri} $f:(K,+)\to(K^{*},\cdot)$ este o
+\emph{bijecție} $f:K\to K^{*}$ care duce adunarea în înmulțire:
+\[
+  f(x+y)=f(x)\cdot f(y)\qquad\text{pentru orice }x,y\in K.
+\]
+Presupunem că un asemenea $f$ există și ajungem la o
+contradicție.
+
+\smallskip
+\textit{Pas 1: $f$ duce neutrul în neutru, $f(0)=1$.} Din
+$f(0)=f(0+0)=f(0)\cdot f(0)$ și din faptul că $f(0)\in K^{*}$ e
+inversabil, împărțind cu $f(0)$ obținem $f(0)=1$.
+
+\smallskip
+\textit{Pas 2: ce înseamnă ,,dublul e neutru'' de fiecare parte.}
+Aplicând regula lui $f$ la $y=x$:
+\[
+  f(x+x)=f(x)\cdot f(x)=f(x)^{2}.
+\]
+Deci, folosind și $f(0)=1$,
+\[
+  x+x=0\iff f(x+x)=f(0)\iff f(x)^{2}=1 .
+\]
+Cum $f$ e bijecție, ea pune în corespondență unu-la-unu
+mulțimile
+\[
+  S_{+}=\{x\in K : x+x=0\}\qquad\text{și}\qquad
+  S_{\times}=\{y\in K^{*} : y^{2}=1\},
+\]
+deci acestea au \emph{același număr de elemente}.
+
+\smallskip
+\textit{Pas 3: câte elemente are fiecare.} Într-un corp nu există
+divizori ai lui zero, deci
+\[
+  y^{2}=1\iff(y-1)(y+1)=0\iff y=1\ \text{sau}\ y=-1 ,
+\]
+adică $S_{\times}=\{1,-1\}$: are $2$ elemente dacă $-1\neq 1$
+(adică $\operatorname{char}K\neq 2$) și $1$ element dacă $-1=1$
+($\operatorname{char}K=2$).
+
+Pe de altă parte, $x+x=0$ înseamnă $2x=0$. Aici $2x$ înseamnă
+$x+x$; notând $2_{K}:=1+1\in K$ (elementul ,,doi'' al corpului), avem
+$x+x=(1+1)\cdot x=2_{K}\cdot x$. Într-un corp nu există divizori ai lui
+zero, deci egalitatea $2_{K}\cdot x=0$ implică $2_{K}=0$ sau $x=0$; iar
+$2_{K}=0$ înseamnă exact $1+1=0$, adică $\operatorname{char}K=2$.
+Prin urmare:
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item dacă $\operatorname{char}K\neq 2$, atunci $2_{K}\neq 0$, deci din
+        $2_{K}\cdot x=0$ rămâne $x=0$; așadar $S_{+}=\{0\}$ are
+        $1$ element;
+  \item dacă $\operatorname{char}K=2$, atunci $2_{K}=0$, deci
+        $2_{K}\cdot x=0$ pentru orice $x$, adică $S_{+}=K$.
+\end{itemize}
+
+\smallskip
+\textit{Pas 4: contradicția.} Din Pasul 2, $|S_{+}|=|S_{\times}|$.
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item Dacă $\operatorname{char}K\neq 2$: $|S_{+}|=1$ dar
+        $|S_{\times}|=2$ --- imposibil.
+  \item Dacă $\operatorname{char}K=2$: $|S_{\times}|=1$, deci ar trebui
+        $|S_{+}|=1$; dar $S_{+}=K$, deci $|K|=1$ --- imposibil, căci un
+        corp are cel puțin două elemente ($0\neq 1$).
+\end{itemize}
+În ambele cazuri ajungem la o contradicție, deci nu există niciun
+corp $K$ cu $(K,+)\cong(K^{*},\cdot)$.
+\end{solutie}
+
+\begin{obs}
+Ideea e că un izomorfism păstrează numărul de soluții ale
+oricărei ecuații scrise cu operația grupului; aici, ecuația
+,,dublul unui element e neutrul'' devine $x+x=0$ de partea aditivă și
+$y^{2}=1$ de partea multiplicativă, iar numărul lor diferă
+(obstrucția e mereu elementul $-1$). La \emph{inele} întrebarea
+analogă degenerează din alt motiv: $(A,\cdot)$ nici măcar nu e
+grup, fiindcă $0$ nu are invers; singura posibilitate
+$(A,+)\cong(A,\cdot)$ ar forța $0$ să fie inversabil, deci $0=1$,
+adică inelul nul $\{0\}$. La corpuri, $0$ e scos din discuție
+($K^{*}=K\setminus\{0\}$), așa că obstrucția se mută pe
+numărul de soluții ale lui $y^{2}=1$.
+
+Notăm și că discuția are exact două ramuri
+($\operatorname{char}K=2$ sau $\neq 2$), fără vreo caracteristică
+,,putere a lui $2$'' de tipul $4$ sau $8$: \emph{caracteristica unui corp
+este întotdeauna $0$ sau un număr prim}. Într-adevăr, dacă
+ea ar fi compusă, $c=ab$ cu $1<a,b<c$, atunci
+$0=\underbrace{1+\cdots+1}_{c}=\bigl(\underbrace{1+\cdots+1}_{a}\bigr)\cdot
+\bigl(\underbrace{1+\cdots+1}_{b}\bigr)$, iar într-un corp (fără
+divizori ai lui zero) unul dintre factori ar fi $0$, dând un ,,reset la
+$0$'' mai devreme decât $c$ --- contrazicând minimalitatea lui $c$.
+Deci singura putere a lui $2$ care apare drept caracteristică este $2$
+însuși. (În schimb, într-un \emph{inel} cu divizori ai lui
+zero, precum $\mathbb{Z}/4$, chiar avem $\operatorname{char}=4$ și
+$2\cdot 2=0$ cu $2\neq 0$ --- tocmai de aceea argumentul cere corp.)
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel finit al cărui grup aditiv $(A,+)$ este izomorf cu grupul
+multiplicativ $(K^{*},\cdot)$ al unui corp finit $K$. Demonstrați că
+$A$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+\textit{Pas 1: grupul aditiv al lui $A$ este ciclic.} Folosim următoarea
+lemă.
+
+\begin{lemat}
+Orice subgrup finit $G$ al grupului multiplicativ $(K^{*},\cdot)$ al unui
+corp $K$ este ciclic.
+\end{lemat}
+
+\begin{proof}
+Fie $m=|G|$. Pentru un divizor $d\mid m$, notăm cu $\psi(d)$ numărul
+elementelor din $G$ de ordin \emph{exact} $d$. Ne sprijinim pe două
+fapte:
+
+(i) \emph{Un polinom de grad $d$ peste un corp are cel mult $d$
+rădăcini} (Teorema~\ref{teo:numarradacini} din cartea de teorie). În particular,
+ecuația $x^{d}=1$ are cel mult $d$ soluții în $K$.
+
+(ii) \emph{Identitatea lui Gauss}: $\sum_{d\mid m}\varphi(d)=m$, unde
+$\varphi$ e indicatorul lui Euler (Lema~\ref{lema:sumaphi}).
+
+Arătăm că $\psi(d)\in\{0,\varphi(d)\}$ pentru fiecare $d\mid m$.
+Presupunem $\psi(d)>0$, deci există $a\in G$ de ordin $d$. Atunci
+subgrupul ciclic $\langle a\rangle$ are $d$ elemente, toate soluții ale
+lui $x^{d}=1$; cum această ecuație are cel mult $d$ soluții în
+$K$ (fapt (i)), rezultă că $\langle a\rangle$ le conține
+\emph{pe toate}. În particular, orice element din $G$ de ordin $d$
+verifică $x^{d}=1$, deci aparține lui $\langle a\rangle$; iar
+elementele de ordin exact $d$ dintr-un grup ciclic de ordin $d$ sunt cei
+$\varphi(d)$ generatori ai săi. Așadar $\psi(d)=\varphi(d)$.
+
+Fiecare element al lui $G$ are un ordin care divide $m$, deci
+$\sum_{d\mid m}\psi(d)=m$. Combinând cu $\psi(d)\le\varphi(d)$ și cu
+$\sum_{d\mid m}\varphi(d)=m$ (fapt (ii)):
+\[
+  m=\sum_{d\mid m}\psi(d)\le\sum_{d\mid m}\varphi(d)=m,
+\]
+deci egalitate peste tot, adică $\psi(d)=\varphi(d)$ pentru orice
+$d\mid m$. În special $\psi(m)=\varphi(m)\ge 1$: există un element de
+ordin $m$, deci $G=\langle\text{acel element}\rangle$ este ciclic.
+\end{proof}
+
+Aplicăm lema lui $G=K^{*}$ (subgrup finit al lui $K^{*}$, chiar el
+însuși), de ordin $|K|-1$: deci $(K^{*},\cdot)$ este ciclic. Cum
+$(A,+)\cong(K^{*},\cdot)$ și izomorfismele păstrează
+ciclicitatea, $(A,+)$ este ciclic: există $g\in A$ care generează
+grupul aditiv, adică orice element al lui $A$ este un multiplu
+întreg al lui $g$,
+\[
+  A=\{k\cdot g : k\in\mathbb{Z}\},
+\]
+unde $k\cdot g$ înseamnă $\underbrace{g+\cdots+g}_{k}$ (și
+$(-k)\cdot g=-(k\cdot g)$, $0\cdot g=0$).
+
+\smallskip
+\textit{Pas 2: înmulțirea se reduce la $g\cdot g$.} Folosim regulile
+de distributivitate, care dau, pentru multipli întregi,
+$(k\cdot g)\cdot(l\cdot g)=(kl)\cdot(g\cdot g)$ (înmulțirea distribuie
+peste sumele repetate). Atunci, pentru $a=k\cdot g$ și $b=l\cdot g$
+oarecare,
+\[
+  a\cdot b=(k\cdot g)(l\cdot g)=(kl)\cdot(g\cdot g),\qquad
+  b\cdot a=(l\cdot g)(k\cdot g)=(lk)\cdot(g\cdot g).
+\]
+
+\smallskip
+\textit{Pas 3: comutativitatea.} Coeficienții $k,l$ sunt întregi, deci
+$kl=lk$; prin urmare $a\cdot b=(kl)\cdot(g\cdot g)=(lk)\cdot(g\cdot g)=b\cdot a$.
+Cum $a,b$ au fost arbitrare, $A$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Toată forța stă în faptul că $(A,+)$ e \emph{ciclic}: un
+inel cu grup aditiv ciclic e automat comutativ, fiindcă înmulțirea
+e determinată de un singur produs $g\cdot g$, iar coeficienții
+întregi comută. Ipoteza $(A,+)\cong(K^{*},\cdot)$ nu e folosită
+prin structura multiplicativă a lui $K$, ci doar prin faptul că
+împrumută lui $(A,+)$ ciclicitatea lui $K^{*}$. De pildă, un inel
+necomutativ ca $M_{2}(\mathbb{F}_{2})$ (matrice $2\times 2$, grup aditiv
+$(\mathbb{Z}/2)^{4}$, \emph{neciclic}) nu poate satisface ipoteza --- exact
+pentru că $(\mathbb{Z}/2)^{4}$ nu e izomorf cu niciun $K^{*}$ ciclic.
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel comutativ de caracteristică $p$, unde $p$ este un
+număr prim \emph{impar}, cu proprietatea că $x^{p}=1$ pentru orice
+element inversabil $x\in A$. Demonstrați că suma a două elemente
+inversabile este tot un element inversabil.
+\end{problema}
+
+\begin{solutie}
+Fie $x,y\in A$ inversabile.
+
+\smallskip
+\textit{Pas 1: ,,visul bobocului'' (morfismul lui Frobenius).} Arătăm
+că într-un inel comutativ de caracteristică $p$ (prim) are loc
+\[
+  (x+y)^{p}=x^{p}+y^{p}.
+\]
+Într-adevăr, $A$ fiind comutativ, putem aplica binomul lui Newton:
+\[
+  (x+y)^{p}=\sum_{i=0}^{p}\binom{p}{i}x^{i}y^{p-i}.
+\]
+Pentru $0<i<p$, coeficientul $\binom{p}{i}=\dfrac{p!}{i!\,(p-i)!}$ este
+divizibil cu $p$: numărătorul $p!$ conține factorul prim $p$, pe
+când numitorul $i!\,(p-i)!$ nu îl conține (căci $i<p$ și
+$p-i<p$, iar $p$ e prim). Cum caracteristica lui $A$ este $p$, avem
+$p\cdot a=0$ pentru orice $a\in A$, deci toți termenii intermediari se
+anulează, rămânând doar $i=0$ și $i=p$.
+
+\smallskip
+\textit{Pas 2: calculul.} Aplicăm Pasul 1 și ipoteza $x^{p}=y^{p}=1$:
+\[
+  (x+y)^{p}=x^{p}+y^{p}=1+1=2 .
+\]
+
+\smallskip
+\textit{Pas 3: $2$ este inversabil.} Caracteristica fiind $p$ impar, avem
+$p\nmid 2$, deci $2\neq 0$ în $A$. Mai mult, multiplii lui $1$ formează
+în $A$ o copie a lui $\mathbb{Z}/p$, care este corp (căci $p$ e prim);
+elementul $2$ este nenul în această copie, deci este inversabil
+în ea (și, prin urmare, în $A$). Explicit, din $\gcd(2,p)=1$,
+relația lui Bézout dă întregi $u,v$ cu $2u+pv=1$, deci
+$2\cdot(u\cdot 1)=1-v\,(p\cdot 1)=1$: inversul lui $2$ este $u\cdot 1$.
+
+\smallskip
+\textit{Pas 4: concluzia.} Din Pașii 2 și 3,
+\[
+  (x+y)\cdot\Bigl(2^{-1}(x+y)^{p-1}\Bigr)=2^{-1}(x+y)^{p}=2^{-1}\cdot 2=1 ,
+\]
+și analog în cealaltă ordine ($A$ e comutativ). Așadar $x+y$
+este inversabil, având inversul explicit $2^{-1}(x+y)^{p-1}$.
+\end{solutie}
+
+\begin{obs}
+Ipoteza că $p$ este \emph{impar} este esențială: pentru $p=2$
+concluzia se inversează complet. Într-adevăr, în
+caracteristică $2$ avem $2=0$, deci calculul de la Pasul 2 dă
+$(x+y)^{2}=1+1=0$: suma a două elemente inversabile este \emph{nilpotentă},
+deci (dacă e nenulă) niciodată inversabilă. Contraexemplu
+concret: în $A=\mathbb{F}_{2}[t]/(t^{2})$ (caracteristică $2$),
+elementele inversabile sunt $1$ și $1+t$, iar amândouă verifică
+$x^{2}=1$; totuși $1+(1+t)=t$, care nu e inversabil, căci $t^{2}=0$.
+
+Comutativitatea lui $A$ e la fel de necesară: binomul lui Newton --- deci
+și identitatea $(x+y)^{p}=x^{p}+y^{p}$ --- este valabilă numai pentru
+elemente care comută.
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că orice element $x\in A$ se scrie ca
+sumă $x=e+f$ a două elemente idempotente ($e^{2}=e$, $f^{2}=f$) care
+\emph{anticomută}, adică $ef+fe=0$. Demonstrați că $A$ este
+comutativ.
+\end{problema}
+
+\begin{solutie}
+\textit{Pas 1: orice element este idempotent.} Fie $x\in A$ și fie
+$x=e+f$ o scriere ca în ipoteză: $e^{2}=e$, $f^{2}=f$ și
+$ef+fe=0$. Atunci
+\[
+  x^{2}=(e+f)^{2}=e^{2}+ef+fe+f^{2}
+       =e+\underbrace{(ef+fe)}_{=0}+f=e+f=x .
+\]
+(Atenție: nu am folosit comutativitatea --- dezvoltarea păstrează
+ordinea factorilor, iar cei doi termeni încrucișați se
+anulează tocmai prin anticomutare.) Așadar
+\[
+  x^{2}=x\qquad\text{pentru orice }x\in A .
+\]
+
+\smallskip
+Am obținut deci un \emph{inel Boolean}. Pașii următori
+demonstrează că orice inel Boolean e comutativ (acesta este exact
+conținutul Teoremei~\ref{teo:boole} din cartea de teorie: dacă $x^{2}=x$ pentru
+orice $x$, atunci $1+1=0$ și $A$ e comutativ); îl reluăm aici,
+pentru ca soluția să fie autonomă.
+
+\smallskip
+\textit{Pas 2: relația fundamentală.} Aplicăm Pasul 1 sumei
+$a+b$, cu $a,b\in A$ arbitrare:
+\[
+  (a+b)^{2}=a+b .
+\]
+Dezvoltând membrul stâng (fără a schimba ordinea factorilor)
+și folosind $a^{2}=a$, $b^{2}=b$:
+\[
+  a^{2}+ab+ba+b^{2}=a+ab+ba+b=a+b ,
+\]
+de unde
+\[
+  ab+ba=0 . \tag{$\star$}
+\]
+
+\smallskip
+\textit{Pas 3: caracteristica este $2$.} Punem $b=a$ în $(\star)$:
+\[
+  a\cdot a+a\cdot a=0\ \Longrightarrow\ a^{2}+a^{2}=0\ \Longrightarrow\ a+a=0 ,
+\]
+folosind $a^{2}=a$. Așadar $2a=0$ pentru orice $a\in A$, ceea ce
+înseamnă $-z=z$ pentru orice $z\in A$.
+
+\smallskip
+\textit{Pas 4: comutativitatea.} Din $(\star)$ avem $ab=-ba$; dar, prin Pasul
+3, $-ba=ba$. Prin urmare
+\[
+  ab=ba\qquad\text{pentru orice }a,b\in A ,
+\]
+adică $A$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Ipoteza este de fapt \emph{echivalentă} cu ,,$x^{2}=x$ pentru orice $x$''
+(inel Boolean). Un sens e Pasul 1; reciproc, dacă $x^{2}=x$ pentru orice
+$x$, atunci orice $x$ se scrie $x=e+f$ cu $e=x$ și $f=0$: ambele sunt
+idempotente și anticomută ($ef+fe=0+0=0$).
+
+Anticomutarea este esențială: suma a doi idempotenți oarecare nu e
+idempotentă. De pildă, în $\mathbb{Z}$ elementele $e=f=1$ sunt
+idempotente, dar $ef+fe=2\neq 0$, iar suma $e+f=2$ nu e idempotentă
+($2^{2}=4\neq 2$).
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel \emph{finit}, cu $1\neq 0$, având proprietatea că
+pentru orice $n\ge 1$ ecuația $x^{n+1}=x^{n}$ are ca singure soluții
+pe $0$ și pe $1$. Demonstrați că $A$ este corp.
+\end{problema}
+
+\begin{solutie}
+Vom folosi următorul criteriu (Propoziția~\ref{prop:finitcorp} din cartea de teorie,
+,,când un inel finit este corp''), pe care îl enunțăm
+și îl demonstrăm.
+
+\begin{lemat}[când un inel finit este corp; Propoziția~\ref{prop:finitcorp}]
+Un inel finit $A$ (cu $1\neq 0$) este corp dacă și numai dacă nu
+are elemente nilpotente nenule și ecuația $x^{2}=x$ are numai
+soluțiile $0$ și $1$.
+\end{lemat}
+
+\begin{proof}
+($\Rightarrow$) Într-un corp, dacă $a\neq 0$ și $a^{k}=0$, atunci
+$1=a^{-k}a^{k}=0$ --- exclus; deci nu există nilpotenți nenuli. Iar
+$x^{2}=x$ dă $x(x-1)=0$, deci $x\in\{0,1\}$ (un corp nu are divizori ai
+lui zero).
+
+($\Leftarrow$) Fie $a\neq 0$. Cum $A$ e finit, șirul $a,a^{2},a^{3},\dots$
+nu poate avea toate elementele distincte: există $1\le i<j$ cu
+$a^{i}=a^{j}$. Fie $d=j-i\ge 1$. Înmulțind cu $a^{k-i}$ obținem
+$a^{k+d}=a^{k}$ pentru orice $k\ge i$, deci relația se poate itera:
+$a^{k+ld}=a^{k}$ pentru orice $l\ge 0$ și $k\ge i$. Alegem $N=i\,d$
+(așadar $N\ge i$ și $d\mid N$); aplicând iterarea de $N/d$ ori,
+\[
+  a^{2N}=a^{N+N}=a^{N},
+\]
+deci $e:=a^{N}$ este idempotent ($e^{2}=e$). Prin ipoteză,
+$e\in\{0,1\}$. Dacă $e=0$, atunci $a^{N}=0$, adică $a$ ar fi nilpotent
+nenul --- exclus. Rămâne $e=1$, adică $a^{N}=1$, deci
+\[
+  a\cdot a^{N-1}=a^{N-1}\cdot a=1 :
+\]
+$a$ este inversabil. Orice element nenul fiind inversabil, $A$ este corp.
+\end{proof}
+
+Verificăm acum cele două condiții din lemă pentru inelul
+nostru.
+
+\smallskip
+\textit{(i) $A$ nu are nilpotenți nenuli.} Fie $t$ cu $t^{k}=0$,
+$k\ge 1$. Atunci și $t^{k+1}=0=t^{k}$, deci $t$ este soluție a
+ecuației $x^{k+1}=x^{k}$. Prin ipoteză, $t\in\{0,1\}$. Dar $t=1$ ar da
+$1=1^{k}=t^{k}=0$, contrazicând $1\neq 0$. Deci $t=0$.
+
+\smallskip
+\textit{(ii) $x^{2}=x$ are doar soluțiile $0$ și $1$.} Aceasta este
+exact ipoteza pentru $n=1$.
+
+\smallskip
+Prin lemă, $A$ este corp.
+\end{solutie}
+
+\begin{obs}
+Ipoteza de \emph{finitudine} este esențială, deși enunțul
+pare să nu aibă nevoie de ea. Într-adevăr, în inelul
+$\mathbb{Z}$ ecuația $x^{n+1}=x^{n}$ se scrie $x^{n}(x-1)=0$ și, cum nu
+există divizori ai lui zero, are exact soluțiile $0$ și $1$ ---
+deci ipoteza e satisfăcută, dar $\mathbb{Z}$ nu e corp. Mai general,
+\emph{orice} domeniu de integritate satisface ipoteza; fără
+finitudine, concluzia cade.
+
+În plus, $A$ fiind corp finit, el este chiar \emph{comutativ}, prin
+teorema lui Wedderburn (Teorema~\ref{teo:wedderburn} din carte: orice corp finit este
+comutativ).
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că $x^{3}+x^{2}\in Z(A)$ pentru orice
+$x\in A$ (unde $Z(A)=\{z\in A: zy=yz\ \forall y\in A\}$ este centrul
+inelului). Demonstrați că $A$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+Notăm $h(x)=x^{3}+x^{2}$, deci $h(x)\in Z(A)$ pentru orice $x$.
+Reamintim că centrul $Z(A)$ este un subinel care conține $1$: e
+închis la sume, diferențe și produse și conține toți multiplii
+întregi $k\cdot 1$. Toate calculele de mai jos implică doar puteri ale
+unui singur element și constante întregi, care comută între ele, deci
+putem dezvolta ca în $\mathbb{Z}[X]$.
+
+\smallskip
+\textit{Pasul 1: $2x^{2}$ este central.} Aplicând ipoteza lui $-x$:
+$h(-x)=-x^{3}+x^{2}\in Z(A)$. Adunând cu $h(x)$,
+\[
+  h(x)+h(-x)=2x^{2}\in Z(A).
+\]
+
+\smallskip
+\textit{Pasul 2: $x^{2}+5x$ este central.} Aplicând ipoteza lui $x+1$:
+\[
+  h(x+1)=(x+1)^{3}+(x+1)^{2}=x^{3}+4x^{2}+5x+2\in Z(A),
+\]
+deci $h(x+1)-h(x)-2=3x^{2}+5x\in Z(A)$. Scăzând $2x^{2}$ (Pasul 1),
+\[
+  u(x):=x^{2}+5x\in Z(A)\qquad\text{pentru orice }x\in A.
+\]
+
+\smallskip
+\textit{Pasul 3: $x^{2}+x$ este central.} Aplicând Pasul 2 lui $x+1$:
+\[
+  u(x+1)-u(x)=(x^{2}+7x+6)-(x^{2}+5x)=2x+6\in Z(A),
+\]
+deci $2x\in Z(A)$. Atunci $x^{2}+x=u(x)-2\cdot(2x)\in Z(A)$ pentru
+orice $x\in A$.
+
+\smallskip
+\textit{Pasul 4: anticomutatorii sunt centrali.} Aplicând Pasul 3
+elementelor $x$, $y$ și $x+y$ (dezvoltarea lui $(x+y)^{2}$ păstrează
+ordinea factorilor):
+\[
+  (x+y)^{2}+(x+y)-(x^{2}+x)-(y^{2}+y)=xy+yx\in Z(A).
+\]
+
+\smallskip
+\textit{Pasul 5: pătratele sunt centrale.} Elementul central $xy+yx$
+comută în particular cu $x$:
+\[
+  x(xy+yx)=(xy+yx)x\ \Longrightarrow\ x^{2}y+xyx=xyx+yx^{2}
+  \ \Longrightarrow\ x^{2}y=yx^{2}.
+\]
+Cum $y$ este arbitrar, $x^{2}\in Z(A)$ pentru orice $x$.
+
+\smallskip
+\textit{Concluzie.} Din Pașii 3 și 5,
+$x=(x^{2}+x)-x^{2}\in Z(A)$ pentru orice $x\in A$, deci $Z(A)=A$:
+inelul $A$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Pașii 4 și 5 sunt exact mecanismul din teorema lui MacHale
+(Teorema~\ref{teo:machalecomut}): odată ce $x^{2}+x$ este central,
+polarizarea face anticomutatorii centrali, apoi pătratele, apoi
+totul. Rolul Pașilor 1, 2 și 3 este să ,,coboare gradul'': substituțiile
+$x\mapsto -x$ și $x\mapsto x+1$ elimină pe rând termenii de grad $3$,
+apoi pe cei de grad $2$ cu coeficient nepotrivit. Rezultatul apare în
+partea de teorie ca Propoziția~\ref{prop:machalegen}.
+
+Ipoteza este echivalentă cu $x^{3}-x^{2}\in Z(A)$ pentru orice $x$:
+înlocuind $x$ cu $-x$, obținem $(-x)^{3}+(-x)^{2}=-(x^{3}-x^{2})$, iar
+$Z(A)$ este subgrup aditiv. Așadar și această variantă ,,cu semn
+schimbat'' implică comutativitatea.
+
+Atenție însă la generalizările ,,prea ambițioase'': dacă înlocuim
+$x^{3}$ și $x^{2}$ prin $f(x^{3})$ și $g(x^{2})$, cu $f,g$ bijecții
+aditive arbitrare ale lui $A$, concluzia devine falsă (vezi
+observația de după Propoziția~\ref{prop:machalegen}, cu un
+contraexemplu în inelul matricelor $2\times 2$ superior triunghiulare
+peste $\mathbb{Z}_{2}$).
+\end{obs}
+
+
+\begin{problema}[Clasică]
+Fie $K \subseteq L$ două corpuri finite, operațiile lui $K$ fiind cele induse de $L$. Arătați că există un întreg $m \geq 1$ cu
+\[
+  |L| = |K|^m.
+\]
+\end{problema}
+
+\begin{solutie}
+Să privim $L$ ca \emph{spațiu vectorial peste corpul $K$}: ,,vectorii'' sunt elementele lui $L$, adunarea este cea din $L$, iar înmulțirea cu ,,scalarii'' din $K$ este înmulțirea din $L$. Axiomele de spațiu vectorial sunt exact axiome ale corpului $L$ (distributivitate, asociativitate, $1 \cdot x = x$).
+
+Cum $L$ este finit, el este generat de o mulțime finită (de exemplu, de toate elementele sale), deci din orice sistem de generatori se poate extrage o bază: fie $e_1, \dots, e_m$ o bază a lui $L$ peste $K$. Orice element al lui $L$ se scrie atunci \emph{în mod unic}
+\[
+  x = \lambda_1 e_1 + \cdots + \lambda_m e_m, \qquad \lambda_1, \dots, \lambda_m \in K,
+\]
+iar corespondența $x \mapsto (\lambda_1, \dots, \lambda_m)$ este o bijecție între $L$ și $K^m$. Numărând: $|L| = |K|^m$.
+
+\medskip
+\noindent\textbf{Observație} \quad Două consecințe imediate. Luând drept $K$ subcorpul prim: orice corp finit are $p^m$ elemente, cu $p$ prim. Și o obstrucție concretă: un corp cu 8 elemente nu poate conține un subcorp cu 4 elemente, deoarece 8 nu este o putere a lui 4; subcorpurile lui $\mathbb{F}_8$ au 2 sau 8 elemente. Întreaga aritmetică a extinderilor de corpuri finite este, în fond, o numărare de dimensiuni: încă o dată, algebra liniară lucrează acolo unde enunțul nici nu o pomenește.
+\end{solutie}
+
+\begin{problema}
+Fie $A$ un inel comutativ și fie $I,J$ ideale ale sale astfel încât $I \cup J$ să fie un ideal al lui $A$. Arătați că $I \subseteq J$ sau $J \subseteq I$.
+\end{problema}
+
+\begin{solutie}
+Presupunem contrariul: există $u \in I \setminus J$ și $w \in J \setminus I$. Elementele $u$ și $w$ aparțin lui $I \cup J$, care este un ideal, deci este închis la adunare:
+\[
+u + w \in I \cup J.
+\]
+Dacă $u + w \in I$, atunci $w = (u + w) - u \in I$ (un ideal este un subgrup aditiv, deci este închis la diferențe): contradicție cu $w \notin I$. Dacă $u + w \in J$, atunci $u = (u + w) - w \in J$: contradicție cu $u \notin J$. Ambele cazuri sunt imposibile, deci unul dintre ideale îl conține pe celălalt.
+
+\medskip
+\noindent\textbf{Observație.} Aceasta este a treia parte a unei trilogii: exact aceeași demonstrație de trei rânduri arată că un grup nu este reuniunea a două subgrupuri proprii (Lema~\ref{lema:reuniune}) și că un spațiu vectorial nu este reuniunea a două subspații proprii (problema OJM.28 din volumul de algebră pentru clasa a XI-a). De fapt, singura structură folosită este cea de \emph{subgrup aditiv}: comutativitatea inelului și înmulțirea cu elemente din $A$ nu joacă nicăieri niciun rol.
+\end{solutie}
+
+\nivel{onm}{Nivel ONM}{Faza națională --- mai mulți pași și o idee-cheie.}
+\setcounter{cat}{3}\setcounter{problemaX}{0}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care \emph{orice} grup
+$G$ de ordin $n$ are proprietatea că orice endomorfism neconstant al
+său este automorfism. (Un endomorfism se numește \emph{constant}
+dacă este morfismul banal $g \mapsto e$.)
+\end{problema}
+
+\noindent\textbf{Răspuns:} $n=1$ sau $n$ prim.
+
+\begin{solutie}
+\textit{Reformulare.} Într-un grup finit, un endomorfism $f$ este
+automorfism dacă și numai dacă este injectiv, adică
+$\ker f=\{e\}$; iar $f$ este constant dacă și numai dacă
+$\ker f=G$. Condiția din enunț revine deci la: pentru orice
+endomorfism $f$ al lui $G$, $\ker f \in \{\{e\},\,G\}$.
+
+\smallskip
+\textit{Partea 1: $n=1$ și $n$ prim funcționează.}
+Pentru $n=1$, grupul trivial are ca unic endomorfism identitatea. Pentru
+$n=p$ prim, singurul grup de ordin $p$ este $\mathbb{Z}/p$ (din teorema lui
+Lagrange orice element $\neq e$ are ordinul $p$, deci grupul este ciclic).
+Endomorfismele lui $\mathbb{Z}/p$ sunt aplicațiile $x \mapsto kx$; pentru
+$k=0$ se obține morfismul banal, iar pentru $k \neq 0$ avem
+$\gcd(k,p)=1$, deci $x \mapsto kx$ este bijecție, adică automorfism.
+Așadar orice grup de ordin $1$ sau prim satisface condiția.
+
+\smallskip
+\textit{Partea 2: dacă $n$ este compus, condiția cade.}
+Fie $n$ compus și scriem $n=ab$ cu $1<a,b<n$. Considerăm grupul
+ciclic $G=\mathbb{Z}/n$ și aplicația
+\[
+  \varphi : \mathbb{Z}/n \to \mathbb{Z}/n, \qquad \varphi(x)=a\,x \pmod n.
+\]
+Ea este endomorfism, căci $\varphi(x+y)=a(x+y)=\varphi(x)+\varphi(y)$, și
+este neconstantă, deoarece $\varphi(1)=a \neq 0$ (avem $0<a<n$).
+Nucleul său este
+\[
+  \ker\varphi = \{\, x : n \mid ax \,\}
+              = \{\, x : b \mid x \,\}
+              = \{\, 0,\, b,\, 2b,\, \dots,\, (a-1)b \,\},
+\]
+mulțime cu exact $a$ elemente. Cum $a>1$, $\varphi$ nu este injectivă,
+deci nu este automorfism. Prin urmare grupul $\mathbb{Z}/n$ posedă un
+endomorfism neconstant care nu este automorfism, deci nu orice grup de
+ordin $n$ satisface condiția.
+
+\smallskip
+\textit{Concluzie.} Afirmația ,,orice grup de ordin $n$ satisface
+condiția'' este adevărată exact pentru $n=1$ și $n$ prim.
+\end{solutie}
+
+\begin{obs}
+Este esențial că enunțul cere ,,\emph{orice} grup de ordin
+$n$'', nu ,,\emph{există} un grup''. Cu ,,există'' răspunsul
+încetează să mai fie curat: intră în joc și ordine
+compuse (de pildă $60$, prin grupul simplu $A_{5}$), iar mulțimea
+valorilor $n$ nu mai are o formă închisă elementară.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit cu un număr \emph{impar} de elemente și fie
+$H \subseteq G$ o submulțime nevidă cu proprietatea
+\[
+  ghg \in H \qquad \text{pentru orice } g \in G,\ h \in H.
+\]
+Demonstrați că $H = G$.
+\end{problema}
+
+\begin{solutie}
+Notăm $e$ elementul neutru și $n=|G|$, cu $n$ impar.
+
+\smallskip
+\textit{Pasul 1: $e \in H$.} Cum $H \neq \varnothing$, fixăm
+$h \in H$ și fie $d=\operatorname{ord}(h)$. Din teorema lui Lagrange
+$d \mid n$, deci $d$ este impar și $\gcd(2,d)=1$. Pentru orice
+întreg $m \geq 0$ alegem în ipoteză $g=h^{m}$; puterile lui $h$
+comutând,
+\[
+  g\,h\,g = h^{m}\cdot h \cdot h^{m} = h^{\,2m+1} \in H.
+\]
+Cum $2$ este inversabil modulo $d$, exponenții $2m+1$ parcurg toate
+resturile modulo $d$; în particular există $m$ cu
+$2m+1 \equiv 0 \pmod d$, deci $h^{\,2m+1}=e \in H$.
+
+\smallskip
+\textit{Pasul 2: orice pătrat este în $H$.} Având $e \in H$,
+aplicăm ipoteza cu $h=e$: pentru orice $g \in G$,
+\[
+  g\,e\,g = g^{2} \in H .
+\]
+
+\smallskip
+\textit{Pasul 3: ridicarea la pătrat este surjectivă.} Pentru orice
+$x \in G$ avem $x^{n}=e$, deci
+\[
+  x = x^{\,n+1} = \left( x^{\frac{n+1}{2}} \right)^{\!2},
+\]
+unde $\frac{n+1}{2}$ este întreg tocmai pentru că $n$ este impar.
+Așadar orice $x \in G$ este un pătrat.
+
+\smallskip
+\textit{Concluzie.} Fie $x \in G$. Din Pasul 3 există $g$ cu $x=g^{2}$,
+iar din Pasul 2, $g^{2} \in H$; deci $x \in H$. Prin urmare $G \subseteq H$,
+și cum $H \subseteq G$, rezultă $H=G$.
+\end{solutie}
+
+\begin{obs}
+Concluzia este mai tare decât ar sugera enunțul: nu doar că $H$
+este subgrup, ci este chiar întregul grup. Paritatea impară a lui
+$|G|$ acționează în două locuri diferite --- forțează
+ordinele elementelor să fie impare și face ca ridicarea la pătrat
+să fie surjectivă pe $G$.
+
+Ipoteza de paritate este esențială: dacă $|G|$ este par,
+ridicarea la pătrat nu mai este neapărat surjectivă (în
+$\mathbb{Z}/2\mathbb{Z}$ singurul pătrat este $0$), iar argumentul din
+Pasul 3 cade.
+\end{obs}
+
+\begin{problema}
+Fie $K$ un corp infinit și $f : K \to K$ o funcție
+\emph{polinomială} cu proprietatea
+\[
+  f\bigl(x+f(y)\bigr) = f(x)\,f(y) \qquad \text{pentru orice } x,y \in K .
+\]
+Determinați toate funcțiile $f$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} $f \equiv 0$ sau $f \equiv 1$.
+
+\begin{solutie}
+Fie $d=\deg f$. Dacă $d=0$, atunci $f\equiv c$ constantă, iar
+relația devine $c=c^{2}$, deci $c(c-1)=0$; corpul neavând divizori
+ai lui zero, $c=0$ sau $c=1$. Ambele verifică enunțul.
+
+Presupunem acum $d\ge 1$ și ajungem la o contradicție. Fixăm
+$y$; deoarece $K$ este infinit, o egalitate între două funcții
+polinomiale care coincid în toate punctele lui $K$ înseamnă
+egalitatea polinoamelor înseși. Privim atunci
+\[
+  f\bigl(x+f(y)\bigr) = f(x)\,f(y)
+\]
+ca identitate în nedeterminata $x$, cu coeficienți în $K[y]$.
+Fie $\alpha \neq 0$ coeficientul dominant al lui $f$ (deci $f(x)=\alpha x^{d}+\cdots$).
+
+\smallskip
+\textit{Coeficientul lui $x^{d}$ în cei doi membri.} În membrul
+stâng, $f\bigl(x+f(y)\bigr)=\alpha\bigl(x+f(y)\bigr)^{d}+\cdots$, iar
+termenul de grad $d$ în $x$ are coeficientul $\alpha$ (translația nu
+schimbă coeficientul dominant). În membrul drept,
+$f(x)\,f(y)=\alpha f(y)\,x^{d}+\cdots$, deci coeficientul lui $x^{d}$ este
+$\alpha\,f(y)$. Egalând,
+\[
+  \alpha = \alpha\,f(y),
+\]
+adică $\alpha\bigl(f(y)-1\bigr)=0$ pentru orice $y$.
+
+\smallskip
+Cum $K$ nu are divizori ai lui zero și $\alpha\neq0$, rezultă
+$f(y)=1$ pentru orice $y$, deci $f$ ar fi constantă $1$ --- în
+contradicție cu $d\ge1$. Așadar cazul $d\ge1$ este imposibil,
+și singurele soluții sunt $f\equiv0$ și $f\equiv1$.
+\end{solutie}
+
+\begin{obs}
+Cele două ipoteze intervin în locuri diferite. \emph{Infinitatea}
+lui $K$ permite trecerea de la ,,egale în toate punctele'' la
+egalitatea coeficienților; peste un corp finit acest pas cade.
+\emph{Absența divizorilor lui zero} (proprietate a oricărui corp)
+permite simplificarea lui $\alpha$ și faptul că singurii
+idempotenți sunt $0$ și $1$. De aceea rezultatul rămâne
+valabil, cu aceeași demonstrație, pentru orice \emph{domeniu de
+integritate infinit}; însă peste un inel infinit cu divizori ai
+lui zero pot apărea soluții suplimentare (idempotenți
+netriviali), iar enunțul își pierde forma curată.
+\end{obs}
+
+\begin{problema}
+Fie $k \in \mathbb{N}^{*}$ fixat. Determinați toate polinoamele
+$P \in \mathbb{C}[X]$ cu proprietatea
+\[
+  P(z^{k}) = P(z)\,P(z+1)\cdots P(z+k-1) \qquad \text{pentru orice } z \in \mathbb{C}.
+\]
+\end{problema}
+
+\noindent\textbf{Răspuns:}
+\[
+\begin{cases}
+  \text{orice } P, & k=1;\\[2pt]
+  P\equiv 0 \ \text{ sau }\ P(z)=(z^{2}-z)^{m},\ m\ge 0, & k=2;\\[2pt]
+  P\equiv 0 \ \text{ sau }\ P\equiv c \ \text{ cu } c^{\,k-1}=1, & k\ge 3.
+\end{cases}
+\]
+
+\begin{solutie}
+Pentru $k=1$ relația devine $P(z)=P(z)$, deci orice polinom convine.
+Presupunem în continuare $k\ge 2$.
+
+\smallskip
+\textit{Soluțiile constante.} Dacă $P\equiv c$, relația dă
+$c=c^{k}$, deci $c=0$ sau $c^{\,k-1}=1$; toate acestea verifică.
+
+\smallskip
+\textit{Coeficientul dominant.} Fie $P$ neconstant, $\deg P=n\ge1$, cu
+coeficient dominant $a$. Termenul dominant în membrul stâng este
+$a\,z^{nk}$, iar în dreapta $a^{k}z^{nk}$, deci $a^{k}=a$, adică
+$a^{\,k-1}=1$.
+
+\smallskip
+\textit{Mărginirea rădăcinilor.} Cele două polinoame fiind
+egale, au aceleași rădăcini (cu multiplicități). Fie
+$r_{1},\dots,r_{n}$ rădăcinile lui $P$ și $M=\max_{i}|r_{i}|$.
+Rădăcinile lui $P(z^{k})$ sunt rădăcinile de ordin $k$ ale
+lui $r_{i}$, deci de modul maxim $M^{1/k}$. Rădăcinile membrului
+drept sunt numerele $r_{i}-j$ cu $0\le j\le k-1$, de modul maxim
+$M'=\max_{i,j}|r_{i}-j|$. Luând $j=0$ obținem $M'\ge M$, deci
+\[
+  M^{1/k}=M'\ge M .
+\]
+Dacă toate rădăcinile ar fi nule, atunci $P(z)=az^{n}$, iar
+membrul drept ar avea rădăcina $z=-1$ (din factorul cu $j=1$), pe
+care membrul stâng nu o are; contradicție. Deci $M>0$, iar din
+$M^{1/k}\ge M$ rezultă $M\le 1$. Atunci $M'=M^{1/k}\le 1$, deci
+\[
+  |r_{i}-j|\le 1 \qquad \text{pentru orice } i \text{ și orice } j\in\{0,1,\dots,k-1\}.
+\]
+
+\smallskip
+\textit{Mărginirea lui $k$.} Fie $r$ o rădăcină. Din
+$|r|\le 1$ și $|r-(k-1)|\le 1$ și inegalitatea triunghiului,
+\[
+  k-1 = |(k-1)-0| \le |r| + |r-(k-1)| \le 2,
+\]
+deci $k\le 3$. În particular, pentru $k\ge 4$ un polinom neconstant nu
+poate avea rădăcini: rămân doar constantele.
+
+\smallskip
+\textit{Cazul $k=3$.} Rădăcinile satisfac $|r|\le 1$ și
+$|r-2|\le 1$. Discurile închise de centre $0$ și $2$ și rază
+$1$ sunt tangente exterior în punctul $1$, deci singura rădăcină
+posibilă este $r=1$: $P(z)=a(z-1)^{n}$. Atunci
+\[
+  P(z^{3})=a(z^{3}-1)^{n}, \qquad
+  P(z)P(z{+}1)P(z{+}2)=a^{3}\bigl(z(z-1)(z+1)\bigr)^{n}=a^{3}(z^{3}-z)^{n}.
+\]
+Termenul liber al primului este $a(-1)^{n}\neq 0$, iar al celui de-al doilea
+este $0$ (factorul $z^{n}$); egalitatea e imposibilă pentru $n\ge1$.
+Rămân deci doar constantele.
+
+\smallskip
+\textit{Cazul $k=2$.} Aici discurile $|r|\le 1$, $|r-1|\le 1$ se
+intersectează după o întreagă regiune, deci e nevoie de un
+argument suplimentar. Punem $z=r$ (rădăcină) în
+$P(z^{2})=P(z)P(z+1)$: cum $P(r)=0$, obținem $P(r^{2})=0$, deci
+\emph{mulțimea rădăcinilor este închisă la $r\mapsto r^{2}$}.
+
+Fie $r\neq 0$ o rădăcină. Toate puterile $r^{2^{m}}$ sunt tot
+rădăcini, deci formează o mulțime finită; dacă
+$|r|\neq 1$, modulele $|r|^{2^{m}}$ ar fi însă distincte două
+câte două --- contradicție. Așadar $|r|=1$, deci
+$r=e^{i\varphi}$. Condiția $|r-1|\le 1$ revine la
+$2-2\cos\varphi\le 1$, adică $\cos\varphi\ge \tfrac12$, deci
+$|\varphi|\le \tfrac{\pi}{3}$.
+
+Rădăcinile $r^{2^{m}}=e^{i\,2^{m}\varphi}$ trebuie să
+satisfacă aceeași condiție, deci $2^{m}\varphi$ (redus în
+$(-\pi,\pi]$) are modul $\le \tfrac{\pi}{3}$ pentru orice $m$. Dar dublarea
+unui unghi din $[-\tfrac{\pi}{3},\tfrac{\pi}{3}]$ dă un unghi din
+$[-\tfrac{2\pi}{3},\tfrac{2\pi}{3}]\subset(-\pi,\pi]$, deci nu e nevoie de
+reducere: prin inducție unghiul redus este chiar $2^{m}\varphi$, iar
+$|2^{m}\varphi|\le\tfrac{\pi}{3}$ pentru orice $m$ forțează
+$\varphi=0$. Așadar singura rădăcină nenulă posibilă
+este $r=1$, deci rădăcinile lui $P$ sunt în $\{0,1\}$ și
+$P(z)=z^{p}(z-1)^{q}$ (cu $a=1$, căci $a^{\,k-1}=a$).
+
+Înlocuind,
+\[
+  z^{2p}(z-1)^{q}(z+1)^{q}=z^{p+q}(z-1)^{q}(z+1)^{p},
+\]
+de unde, comparând exponenții lui $z$ și ai lui $z+1$,
+$p=q$. Prin urmare $P(z)=\bigl(z(z-1)\bigr)^{m}=(z^{2}-z)^{m}$.
+\end{solutie}
+
+\begin{obs}
+Verificare pentru $k=2$, $m=1$: cu $P=z^{2}-z$ avem $P(z^{2})=z^{4}-z^{2}$,
+iar $P(z)P(z+1)=z(z-1)\cdot z(z+1)=z^{2}(z^{2}-1)=z^{4}-z^{2}$. Structura
+răspunsului arată cât de sensibilă este problema la valoarea
+lui $k$: pentru $k=2$ apare o familie infinită, iar de la $k=3$ în
+sus supraviețuiesc doar constantele.
+\end{obs}
+
+\begin{problema}
+Fie $R$ un inel cu unitate, $1\neq 0$, astfel încât $x^{3}=x^{2}$
+pentru orice $x\in R$. Demonstrați că $x^{2}=x$ pentru orice
+$x\in R$ (deci $R$ este inel Boolean) și deduceți că $R$ este
+comutativ.
+\end{problema}
+
+\begin{solutie}
+(Rezultatul apare în cartea de teorie ca Teorema~\ref{teo:kk1}, ,,condiția
+$x^{k+1}=x^{k}$ dă inel Boolean'', împreună cu Teorema~\ref{teo:boole},
+,,inele Booleene'': dacă $x^{2}=x$ pentru orice $x$, atunci $1+1=0$
+și inelul e comutativ. Îl redemonstrăm aici complet, pentru ca
+soluția să fie autonomă.)
+
+\smallskip
+\textit{Pasul 1: o relație liniarizată.} Aplicăm ipoteza
+elementului $x+1$ (care comută cu $1$):
+\[
+  (x+1)^{3}=(x+1)^{2}
+  \;\Longrightarrow\;
+  x^{3}+3x^{2}+3x+1 = x^{2}+2x+1 .
+\]
+Înlocuind $x^{3}=x^{2}$ în membrul stâng și reducând,
+\begin{equation*}
+  3x^{2}+x = 0 \qquad \text{pentru orice } x . \tag{A}
+\end{equation*}
+
+\textit{Pasul 2: caracteristica este $2$.} Aplicăm $(\mathrm{A})$
+elementului $x+1$:
+\begin{equation*}
+  3(x+1)^{2}+(x+1) = 3x^{2}+7x+4 = 0 . \tag{A$'$}
+\end{equation*}
+Scăzând $(\mathrm{A})$ din $(\mathrm{A}')$,
+\begin{equation*}
+  6x+4 = 0 \qquad \text{pentru orice } x . \tag{B}
+\end{equation*}
+Punând $x=0$ în $(\mathrm{B})$ obținem $4\cdot 1=0$, iar $x=1$
+dă $10\cdot 1=0$. Cum $2 = 10-2\cdot 4$, rezultă $2\cdot 1 = 0$,
+adică $x+x=0$ pentru orice $x$.
+
+\smallskip
+\textit{Pasul 3: idempotență.} În caracteristică $2$ avem
+$3\cdot 1 = 1$, deci $3x^{2}=x^{2}$, iar $(\mathrm{A})$ devine $x^{2}+x=0$,
+adică
+\[
+  x^{2} = -x = x \qquad \text{pentru orice } x .
+\]
+
+\textit{Pasul 4: comutativitate.} Pentru orice $x,y$, din Pasul 3,
+$(x+y)^{2}=x+y$. Dezvoltând,
+\[
+  (x+y)^{2} = x^{2}+xy+yx+y^{2} = x+xy+yx+y ,
+\]
+iar egalitatea cu $x+y$ dă $xy+yx=0$, deci $xy=-yx=yx$. Așadar $R$
+este comutativ.
+\end{solutie}
+
+\begin{obs}
+Reciproca este imediată: dacă $x^{2}=x$ atunci
+$x^{3}=x\cdot x^{2}=x^{2}$. Prin urmare inelele cu $x^{3}=x^{2}$ sunt
+\emph{exact} inelele Boolean, iar ipoteza aparent mai slabă
+,,$x^{3}=x^{2}$'' este echivalentă cu ,,$x^{2}=x$''. Caracteristica
+$2$, care nu apare în enunț, se naște singură din două
+substituții $x\mapsto x+1$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $k$ un număr întreg
+pozitiv astfel încât $f(x)=x^{k}$ este morfism al lui $G$.
+Presupunem că mulțimea
+\[
+  A = \{\, a \in G : a^{k}b = ba^{k} \ \text{pentru orice } b \in G \,\}
+\]
+are cel puțin $\tfrac{n}{2}+1$ elemente. Demonstrați că
+$(ab)^{k}=(ba)^{k}$ pentru orice $a,b \in G$.
+\end{problema}
+
+\begin{solutie}
+Observăm întâi că $A=\{\,a\in G : a^{k}\in Z(G)\,\}$, unde
+$Z(G)$ este centrul lui $G$ (elementele care comută cu tot grupul).
+
+\smallskip
+\textit{Pasul 1: reducerea prin morfism.} Cum $f$ este morfism,
+\[
+  (ab)^{k}=a^{k}b^{k}, \qquad (ba)^{k}=b^{k}a^{k}.
+\]
+Prin urmare concluzia $(ab)^{k}=(ba)^{k}$ este echivalentă cu
+$a^{k}b^{k}=b^{k}a^{k}$, adică ,,$a^{k}$ comută cu $b^{k}$''.
+
+\smallskip
+\textit{Pasul 2: $A$ este subgrup.} Folosim că $Z(G)$ este subgrup
+și că $f$ este morfism:
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item $e \in A$, căci $e^{k}=e\in Z(G)$;
+  \item dacă $a,b \in A$, atunci $(ab)^{k}=a^{k}b^{k}\in Z(G)$ (produs de
+        elemente centrale), deci $ab\in A$;
+  \item dacă $a \in A$, atunci $\bigl(a^{-1}\bigr)^{k}=\bigl(a^{k}\bigr)^{-1}\in Z(G)$
+        (inversul unui element central), deci $a^{-1}\in A$.
+\end{itemize}
+Așadar $A \leq G$.
+
+\smallskip
+\textit{Pasul 3: $A=G$.} Avem $|A|\ge \tfrac{n}{2}+1 > \tfrac{n}{2}$, iar
+$|A|\mid n$ (Lagrange). Singurul divizor al lui $n$ strict mai mare decât
+$\tfrac{n}{2}$ este $n$ însuși, deci $|A|=n$, adică $A=G$.
+
+\smallskip
+\textit{Pasul 4: concluzie.} Din $A=G$, pentru orice $a$ avem
+$a^{k}\in Z(G)$. În particular $a^{k}$ comută cu $b^{k}$, deci
+$a^{k}b^{k}=b^{k}a^{k}$; combinând cu Pasul 1,
+\[
+  (ab)^{k}=a^{k}b^{k}=b^{k}a^{k}=(ba)^{k}.
+\]
+\end{solutie}
+
+\begin{obs}
+Rolul ipotezei de morfism este dublu: pe de o parte transformă
+comparația $(ab)^{k}$ cu $(ba)^{k}$ în comparația lui $a^{k}$ cu
+$b^{k}$ (Pasul 1), pe de altă parte face ca $A$ să fie subgrup
+(închiderea la produs din Pasul 2 folosește $(ab)^{k}=a^{k}b^{k}$).
+Fără ea, $A$ nu ar fi neapărat subgrup, iar argumentul de
+divizor ar cădea.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ cu proprietatea că pentru orice
+$g\in G$, $g\neq e$, există un element $x\in G$ cu $gx\neq xg$ (altfel
+spus, niciun element diferit de $e$ nu comută cu toate elementele lui
+$G$). Demonstrați că $n$ divide $|\operatorname{Aut}(G)|$,
+numărul automorfismelor lui $G$.
+\end{problema}
+
+\begin{solutie}
+Pentru fiecare $g\in G$, conjugarea $\alpha_{g}:G\to G$,
+$\alpha_{g}(x)=gxg^{-1}$, este automorfism al lui $G$: e morfism, căci
+\[
+  \alpha_{g}(xy)=g\,xy\,g^{-1}=(gxg^{-1})(gyg^{-1})=\alpha_{g}(x)\,\alpha_{g}(y),
+\]
+și bijectiv, având inversul $\alpha_{g^{-1}}$.
+
+Considerăm aplicația $\Phi:G\to\operatorname{Aut}(G)$,
+$\Phi(g)=\alpha_{g}$. Ea este morfism de grupuri:
+\[
+  \alpha_{g}\circ\alpha_{h}(x)=g\,(hxh^{-1})\,g^{-1}=(gh)\,x\,(gh)^{-1}=\alpha_{gh}(x),
+\]
+deci $\Phi(gh)=\Phi(g)\,\Phi(h)$. Nucleul său este mulțimea
+elementelor care comută cu întreg $G$ (adică centrul $Z(G)$):
+\[
+  \ker\Phi=\{\,g\in G : gxg^{-1}=x \ \forall x\in G\,\}
+          =\{\,g\in G : gx=xg \ \forall x\in G\,\},
+\]
+care, conform ipotezei, este $\{e\}$. Deci $\Phi$ este injectiv. Prin urmare imaginea sa --- subgrupul
+automorfismelor interioare $\operatorname{Inn}(G)=\Phi(G)$ --- este
+izomorfă cu $G$, deci $|\operatorname{Inn}(G)|=|G|=n$.
+
+Cum $\operatorname{Inn}(G)$ este subgrup al lui $\operatorname{Aut}(G)$, din
+teorema lui Lagrange $|\operatorname{Inn}(G)|$ divide $|\operatorname{Aut}(G)|$.
+Așadar $n\mid|\operatorname{Aut}(G)|$.
+\end{solutie}
+
+\begin{obs}
+Ipoteza trebuie în forma ei tare: nu e suficient ca $G$ să fie doar
+neabelian (adică să \emph{existe} $x,y$ cu $xy\neq yx$); se cere ca
+\emph{fiecare} element $\neq e$ să nu comute cu tot grupul, ceea ce
+înseamnă exact centru trivial, $Z(G)=\{e\}$. Aceasta este exact ce
+face $\Phi$ injectiv, deci $\operatorname{Inn}(G)\cong G$. În general
+$\operatorname{Inn}(G)\cong G/Z(G)$, deci $|\operatorname{Inn}(G)|=[G:Z(G)]$
+divide întotdeauna $|\operatorname{Aut}(G)|$ --- însă este egal
+cu $n$ doar când centrul e trivial. De exemplu $S_{3}$ are
+$Z(S_{3})=\{e\}$, deci $6\mid|\operatorname{Aut}(S_{3})|$; de fapt
+$\operatorname{Aut}(S_{3})\cong S_{3}$, cu exact $6$ automorfisme.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit cu $|Z(G)|=2$ care nu admite niciun morfism surjectiv
+pe $\mathbb{Z}/2$ (echivalent: $G$ nu are subgrup de indice $2$, adică
+$\operatorname{Hom}(G,\mathbb{Z}/2)=\{0\}$). Demonstrați că
+$Z(\operatorname{Aut}G)=\{\operatorname{id}\}$.
+\end{problema}
+
+\begin{lemat}[conjugarea unui automorfism interior]\label{lema:conjinn}
+Pentru orice $\varphi\in\operatorname{Aut}(G)$ și $g\in G$, notând
+$\alpha_{g}(x)=gxg^{-1}$, are loc
+$\varphi\circ\alpha_{g}\circ\varphi^{-1}=\alpha_{\varphi(g)}$.
+\end{lemat}
+
+\begin{proof}
+$(\varphi\alpha_{g}\varphi^{-1})(x)=\varphi\bigl(g\,\varphi^{-1}(x)\,g^{-1}\bigr)
+=\varphi(g)\,x\,\varphi(g)^{-1}=\alpha_{\varphi(g)}(x)$.
+\end{proof}
+
+\begin{solutie}
+Fie $Z(G)=\{e,t\}$ (cu $t^{2}=e$). Folosim că
+\[
+  \alpha_{a}=\alpha_{b}\iff a^{-1}b\in Z(G),
+\]
+căci $\alpha_{a}=\alpha_{b}\iff (a^{-1}b)\,x\,(a^{-1}b)^{-1}=x\ \forall x
+\iff a^{-1}b\in Z(G)$.
+
+Fie $\varphi\in Z(\operatorname{Aut}G)$. Cum $\varphi$ comută cu orice
+automorfism, comută în particular cu fiecare $\alpha_{g}$, deci
+$\varphi\alpha_{g}\varphi^{-1}=\alpha_{g}$; din lema de mai sus,
+$\alpha_{\varphi(g)}=\alpha_{g}$, adică
+\[
+  g^{-1}\varphi(g)\in Z(G)=\{e,t\}\qquad\text{pentru orice }g\in G.
+\]
+Definim $\chi:G\to\{e,t\}$ prin $\chi(g)=g^{-1}\varphi(g)$, deci
+$\varphi(g)=g\,\chi(g)$. Cum $\varphi$ este morfism și $t$ este central,
+\[
+  gh\,\chi(gh)=\varphi(gh)=\varphi(g)\varphi(h)=g\chi(g)\,h\chi(h)=gh\,\chi(g)\chi(h),
+\]
+de unde $\chi(gh)=\chi(g)\chi(h)$: așadar $\chi$ este morfism
+$G\to\{e,t\}\cong\mathbb{Z}/2$.
+
+Prin ipoteză nu există morfisme nenule $G\to\mathbb{Z}/2$, deci
+$\chi\equiv e$; atunci $\varphi(g)=g$ pentru orice $g$, adică
+$\varphi=\operatorname{id}$. Prin urmare $Z(\operatorname{Aut}G)=\{\operatorname{id}\}$.
+\end{solutie}
+
+\begin{obs}
+Comparație cu cazul centrului trivial (Lema~\ref{lema:centrutrivial}
+din partea de teorie): dacă $Z(G)=\{e\}$, atunci
+$Z(\operatorname{Aut}G)=\{\operatorname{id}\}$ \emph{necondiționat},
+fiindcă $g\mapsto\alpha_{g}$ e injectivă (exact argumentul din
+problema ONM.7), deci $\alpha_{\varphi(g)}=\alpha_{g}$ forțează direct
+$\varphi(g)=g$. La
+$|Z(G)|=2$ apare libertatea $\varphi(g)\in\{g,\,tg\}$, codificată de un
+morfism $\chi:G\to\mathbb{Z}/2$; ipoteza ,,fără subgrup de indice
+$2$'' îl omoară pe $\chi$. De exemplu $\operatorname{SL}(2,3)$ are
+$|Z|=2$, iar abelianizatul său este $\cong\mathbb{Z}/3$ (deci
+$\operatorname{Hom}(\cdot,\mathbb{Z}/2)=\{0\}$), așadar
+$Z(\operatorname{Aut}\operatorname{SL}(2,3))=\{\operatorname{id}\}$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup și $a,b,c\in\mathbb{N}^{*}$ numere prime între ele
+două câte două. Presupunem că
+\[
+  (xy)^{n}=x^{n}y^{n}\qquad\text{pentru toți } x,y\in G,
+\]
+ori de câte ori $n$ este multiplu al lui $a$, al lui $b$ sau al lui $c$.
+Demonstrați că $G$ este comutativ.
+\end{problema}
+
+Numim un exponent $m$ \emph{bun} dacă $(xy)^{m}=x^{m}y^{m}$ pentru orice
+$x,y\in G$. Ipoteza spune că toți multiplii lui $a$, ai lui $b$
+și ai lui $c$ sunt buni.
+
+\begin{lemat}[trei exponenți consecutivi]\label{lema:treiexp}
+Dacă trei valori consecutive $n,\ n+1,\ n+2$ sunt exponenți buni,
+atunci $G$ este comutativ.
+\end{lemat}
+
+\begin{proof}
+\textit{Pas 1: dacă $m$ și $m+1$ sunt buni, atunci $y^{m}\in Z(G)$
+pentru orice $y$.} Folosind bunătatea lui $m+1$ și apoi a lui $m$,
+\[
+  x^{m}\,x\,y^{m}\,y = x^{m+1}y^{m+1}=(xy)^{m+1}=(xy)^{m}(xy)=x^{m}y^{m}\,x\,y.
+\]
+Simplificăm la stânga cu $x^{m}$ și la dreapta cu $y$:
+$x\,y^{m}=y^{m}\,x$. Cum $x$ e arbitrar, $y^{m}\in Z(G)$.
+
+\textit{Pas 2.} Aplicând Pasul 1 perechilor $(n,n+1)$ și $(n+1,n+2)$,
+obținem $y^{n}\in Z(G)$ și $y^{n+1}\in Z(G)$ pentru orice $y$. Atunci
+\[
+  y = y^{n+1}\bigl(y^{n}\bigr)^{-1}\in Z(G)
+\]
+(produs de două elemente centrale), deci orice $y$ este central și
+$G$ este comutativ.
+\end{proof}
+
+\begin{solutie}
+Deoarece $a,b,c$ sunt prime între ele două câte două,
+sistemul
+\[
+  m\equiv 0\pmod a,\qquad m\equiv -1\pmod b,\qquad m\equiv -2\pmod c
+\]
+are soluție prin teorema chineză a resturilor; alegem pentru $m$ o
+soluție întreagă pozitivă. Atunci $m$ este multiplu al lui
+$a$, $m+1$ este multiplu al lui $b$, iar $m+2$ este multiplu al lui $c$;
+prin ipoteză, exponenții consecutivi $m,\ m+1,\ m+2$ sunt toți
+buni. Din lema celor trei exponenți consecutivi, $G$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Sunt necesari \emph{trei} exponenți consecutivi: doi nu ajung. De pildă,
+în $S_{3}$ exponenții $6$ și $7$ sunt buni (căci $x^{6}=e$
+și $x^{7}=x$ pentru orice $x$, deci $(xy)^{6}=e=x^{6}y^{6}$ și
+$(xy)^{7}=xy=x^{7}y^{7}$), însă $S_{3}$ nu este comutativ; cu doi
+exponenți consecutivi se obține doar că $n$-puterile sunt
+centrale. Rolul numerelor prime între ele este ca, prin CRT, să
+garanteze existența a trei exponenți buni \emph{consecutivi}
+în reuniunea multiplilor lor.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $p^{\alpha}q^{\beta}$, cu $p\neq q$ numere
+prime și $\alpha,\beta\ge 1$. Demonstrați că există
+subgrupuri \emph{proprii} $H,K$ ale lui $G$ (adică $H\neq G$, $K\neq G$) astfel încât $HK=G$ (unde
+$HK=\{\,hk : h\in H,\ k\in K\,\}$).
+\end{problema}
+
+\begin{lemat}[cardinalul unui produs de subgrupuri]
+Pentru orice subgrupuri $H,K$ ale unui grup finit,
+\[
+  |HK|=\frac{|H|\,|K|}{|H\cap K|}.
+\]
+\end{lemat}
+
+\begin{proof}
+Considerăm aplicația surjectivă $H\times K\to HK$,
+$(h,k)\mapsto hk$. Fixăm $g=hk\in HK$; căutăm toate perechile
+$(h',k')$ cu $h'k'=hk$. Egalitatea revine la $h^{-1}h'=k(k')^{-1}$; membrul
+stâng e în $H$, cel drept în $K$, deci valoarea comună
+$d:=h^{-1}h'=k(k')^{-1}$ aparține lui $H\cap K$. Reciproc, orice
+$d\in H\cap K$ dă o pereche $(h',k')=(hd,\,d^{-1}k)$ cu $h'k'=hk$. Prin
+urmare fibra deasupra lui $g$ are exact $|H\cap K|$ elemente, iar cum toate
+fibrele au aceeași mărime,
+$|H|\,|K|=|HK|\cdot|H\cap K|$.
+\end{proof}
+
+\begin{solutie}
+Reamintim \emph{teoremele lui Sylow} pentru un grup finit $G$ de ordin
+$p^{a}m$ cu $p$ prim și $p\nmid m$: (I) $G$ are un subgrup de ordin
+$p^{a}$ (un \emph{$p$-subgrup Sylow}); (II) oricare două $p$-subgrupuri
+Sylow sunt conjugate; (III) numărul $n_{p}$ al $p$-subgrupurilor Sylow
+satisface $n_{p}\equiv 1\pmod p$ și $n_{p}\mid m$; în particular
+$n_{p}=1$ dacă și numai dacă $p$-subgrupul Sylow e normal.
+
+Prin Sylow (I), $G$ are un $p$-subgrup Sylow $P$ (de ordin
+$p^{\alpha}$) și un $q$-subgrup Sylow $Q$ (de ordin $q^{\beta}$). Luăm
+$H=P$ și $K=Q$. Ambele sunt proprii: $|P|=p^{\alpha}<p^{\alpha}q^{\beta}=|G|$,
+căci $\beta\ge1$, și analog $|Q|<|G|$, căci $\alpha\ge1$.
+
+Intersecția $P\cap Q$ este subgrup atât al lui $P$ cât și al
+lui $Q$, deci (Lagrange) $|P\cap Q|$ divide atât $p^{\alpha}$ cât
+și $q^{\beta}$; cum $p\neq q$, acești doi divizori sunt primi
+între ei, deci $|P\cap Q|=1$, adică $P\cap Q=\{e\}$.
+
+Din lemă,
+\[
+  |PQ|=\frac{|P|\,|Q|}{|P\cap Q|}=\frac{p^{\alpha}q^{\beta}}{1}=p^{\alpha}q^{\beta}=|G|.
+\]
+Cum $PQ\subseteq G$ și $|PQ|=|G|$, rezultă $PQ=G$. Așadar
+$HK=PQ=G$.
+\end{solutie}
+
+\begin{obs}
+Nu se afirmă că $HK$ este subgrup --- în general $PQ$ e subgrup
+doar dacă unul dintre $P,Q$ îl normalizează pe celălalt; aici
+se cere doar egalitatea de \emph{mulțimi} $HK=G$, care rezultă
+pur din numărare (ordinele se înmulțesc, intersecția e
+trivială). Esențial este pasul de la Cauchy la Sylow: Cauchy ar da
+doar elemente de ordin $p$ și $q$, pe când aici avem nevoie de
+subgrupuri \emph{întregi} de ordin $p^{\alpha}$ și $q^{\beta}$, adică
+de existența subgrupurilor Sylow.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup abelian finit cu $|G|$ care are cel puțin doi factori
+primi distincți. Demonstrați că există două subgrupuri
+\emph{proprii și netriviale} $K,L\le G$ (adică diferite de $\{e\}$ și de $G$) cu $KL=G$.
+\end{problema}
+
+\begin{solutie}
+Fie $|G|=p_{1}^{\alpha_{1}}\cdots p_{r}^{\alpha_{r}}$, cu $r\ge2$ prime
+distincte și $\alpha_{i}\ge1$. Prin \emph{teorema lui Sylow} (un grup
+finit al cărui ordin e divizibil cu $p^{\alpha}$, dar nu cu $p^{\alpha+1}$,
+are un subgrup de ordin $p^{\alpha}$), pentru fiecare $i$ există un
+subgrup $P_{i}\le G$ cu $|P_{i}|=p_{i}^{\alpha_{i}}$. Folosim două fapte:
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item într-un grup abelian, produsul $AB$ a două subgrupuri este
+        subgrup (din $ab\,(a'b')^{-1}=(aa'^{-1})(bb'^{-1})$ și criteriul
+        de subgrup);
+  \item formula pentru \emph{două} subgrupuri, demonstrată la problema
+        ONM.10: $|AB|=|A|\,|B|/|A\cap B|$.
+\end{itemize}
+
+\smallskip
+\textit{Afirmație.} Pentru $j=1,\dots,r$, mulțimea
+$A_{j}=P_{1}P_{2}\cdots P_{j}$ este subgrup de ordin
+$p_{1}^{\alpha_{1}}\cdots p_{j}^{\alpha_{j}}$.
+
+Demonstrăm prin inducție după $j$. Pentru $j=1$, $A_{1}=P_{1}$. Fie
+$2\le j\le r$ și presupunem afirmația adevărată pentru $j-1$. Atunci
+$A_{j}=A_{j-1}P_{j}$ este subgrup (primul fapt). Ordinele
+$|A_{j-1}|=p_{1}^{\alpha_{1}}\cdots p_{j-1}^{\alpha_{j-1}}$ și
+$|P_{j}|=p_{j}^{\alpha_{j}}$ sunt prime între ele, iar $|A_{j-1}\cap P_{j}|$
+le divide pe amândouă (Lagrange), deci $A_{j-1}\cap P_{j}=\{e\}$. Din al
+doilea fapt,
+\[
+  |A_{j}|=\frac{|A_{j-1}|\,|P_{j}|}{|A_{j-1}\cap P_{j}|}
+  =p_{1}^{\alpha_{1}}\cdots p_{j}^{\alpha_{j}} .
+\]
+
+Pentru $j=r$ obținem $|A_{r}|=|G|$, deci $P_{1}P_{2}\cdots P_{r}=G$.
+
+\smallskip
+\textit{Cele două subgrupuri.} Luăm $K=P_{1}$ și
+$L=P_{2}\cdots P_{r}$; exact ca mai sus (inducția aplicată
+subgrupurilor $P_{2},\dots,P_{r}$), $L$ este subgrup de ordin
+$p_{2}^{\alpha_{2}}\cdots p_{r}^{\alpha_{r}}$. Ambele sunt netriviale
+($|K|=p_{1}^{\alpha_{1}}>1$ și $|L|>1$, căci $r\ge2$) și proprii
+($|K|<|G|$ și $|L|<|G|$, căci fiecăruia îi lipsește cel puțin un factor
+prim al lui $|G|$). În fine, $KL=P_{1}(P_{2}\cdots P_{r})=G$, prin
+afirmația de mai sus.
+\end{solutie}
+
+\begin{obs}
+Inducția folosește la fiecare pas doar formula pentru două
+subgrupuri. Ea se generalizează la un \emph{lanț} de $k$ subgrupuri:
+dacă $\bigl(H_{1}\cdots H_{i}\bigr)\cap H_{i+1}=\{e\}$ pentru orice $i$,
+atunci
+\[
+  |H_{1}H_{2}\cdots H_{k}|=|H_{1}|\,|H_{2}|\cdots|H_{k}| ,
+\]
+prin aceeași inducție ($\,|A\,H_{i+1}|=|A|\,|H_{i+1}|$ când
+$A\cap H_{i+1}=\{e\}$). Atenție însă: pentru \emph{trei sau mai
+multe} subgrupuri nu există o formulă generală în funcție
+doar de ordinele intersecțiilor perechi --- ipoteza ,,în lanț''
+este esențială. Aici, comutativitatea o asigură: se obține
+chiar $G\cong P_{1}\times\cdots\times P_{r}$ (descompunerea în
+$p$-componente), iar problema ONM.10 este cazul $r=2$.
+\end{obs}
+
+\begin{problema}
+Fie $n\ge 5$. Determinați toate relațiile de congruență pe
+grupul simetric $S_{n}$. (O congruență este o relație de
+echivalență compatibilă cu compunerea permutărilor.)
+\end{problema}
+
+\noindent\textbf{Răspuns:} exact \emph{trei} congruențe --- egalitatea,
+,,același semn'' (congruența modulo $A_{n}$) și relația
+totală.
+
+\begin{solutie}
+Prin Teorema~\ref{teo:congruenta}, congruențele pe $S_{n}$ sunt în corespondență
+bijectivă cu subgrupurile normale ale lui $S_{n}$: fiecărui
+$N\trianglelefteq S_{n}$ îi corespunde $\sigma\,\rho\,\tau\iff\sigma^{-1}\tau\in N$.
+Rămâne să determinăm subgrupurile normale ale lui $S_{n}$.
+
+\smallskip
+\textit{Subgrupurile normale ale lui $S_{n}$ ($n\ge 5$) sunt $\{e\}$,
+$A_{n}$, $S_{n}$.} Fie $N\trianglelefteq S_{n}$, $N\neq\{e\}$. Atunci
+$N\cap A_{n}\trianglelefteq A_{n}$; cum $A_{n}$ este \emph{simplu} pentru
+$n\ge 5$ (teoremă clasică: pentru $n\ge 5$, singurele subgrupuri
+normale ale lui $A_{n}$ sunt $\{e\}$ și $A_{n}$), avem
+$N\cap A_{n}=\{e\}$ sau $N\cap A_{n}=A_{n}$.
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item Dacă $N\cap A_{n}=A_{n}$, atunci $A_{n}\subseteq N$; cum
+        $[S_{n}:A_{n}]=2$, rezultă $N=A_{n}$ sau $N=S_{n}$.
+  \item Dacă $N\cap A_{n}=\{e\}$, atunci $N$ se scufundă în
+        $S_{n}/A_{n}\cong\mathbb{Z}/2$, deci $|N|\le 2$. Un subgrup normal de
+        ordin $2$, $N=\{e,\tau\}$, ar fi central (pentru orice $g$,
+        $g\tau g^{-1}\in N\setminus\{e\}=\{\tau\}$), dar $Z(S_{n})=\{e\}$
+        pentru $n\ge 3$; deci $|N|=1$, contradicție.
+\end{itemize}
+
+\smallskip
+Celor trei subgrupuri normale le corespund trei congruențe:
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item $N=\{e\}$: $\sigma\,\rho\,\tau\iff\sigma=\tau$ --- \emph{egalitatea};
+  \item $N=A_{n}$: $\sigma\,\rho\,\tau\iff\sigma^{-1}\tau\in A_{n}\iff
+        \operatorname{sgn}(\sigma)=\operatorname{sgn}(\tau)$ --- două
+        permutări sunt în relație exact când au \emph{același
+        semn} (ambele pare sau ambele impare);
+  \item $N=S_{n}$: orice două permutări sunt în relație ---
+        \emph{relația totală}.
+\end{itemize}
+Acestea sunt toate. $\blacksquare$
+\end{solutie}
+
+\begin{obs}
+Cazurile mici se abat exact acolo unde $A_{n}$ nu mai e simplu: pentru
+$n=4$, $S_{4}$ are în plus subgrupul normal $V_{4}$ (grupul lui Klein),
+deci \emph{patru} congruențe; pentru $n=3$, $A_{3}$ e simplu (ordin
+prim), deci tot trei; pentru $n=2$, $S_{2}\cong\mathbb{Z}/2$ are două.
+Frumusețea: o întrebare despre \emph{relații de echivalență}
+pe $S_{n}$ se reduce, prin Teorema~\ref{teo:congruenta}, la o întrebare despre
+\emph{subgrupuri normale}, rezolvată de simplitatea lui $A_{n}$.
+\end{obs}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit \emph{neabelian} de ordin $n$. Demonstrați că
+numărul perechilor ordonate $(a,b)\in G\times G$ cu $ab=ba$ este cel mult
+$\dfrac{5}{8}\,n^{2}$.
+\end{problema}
+
+\begin{lemat}
+Dacă $G$ este un grup finit neabelian de ordin $n$, atunci
+$|Z(G)|\le n/4$.
+\end{lemat}
+
+\begin{proof}
+Fie $Z=Z(G)$. Dacă $G/Z$ ar fi ciclic, generat de $gZ$, orice element ar
+fi de forma $g^{k}z$ cu $z\in Z$, iar două astfel de elemente comută
+--- deci $G$ ar fi abelian, contradicție. Prin urmare $G/Z$ nu e ciclic,
+deci $|G/Z|\ge 4$ (grupurile de ordin $1,2,3$ sunt ciclice), adică
+$|Z|\le n/4$.
+\end{proof}
+
+\begin{solutie}
+Fie $C=\{(a,b)\in G\times G:ab=ba\}$; vrem $|C|\le\tfrac58 n^{2}$. Pentru
+$a\in G$ notăm $C_{G}(a)=\{b:ab=ba\}$ centralizatorul, $\operatorname{cl}(a)$
+clasa de conjugare, și $k$ numărul claselor de conjugare ale lui $G$.
+
+\smallskip
+\textit{Pas 1: $|C|=k\,n$.} Numărăm perechile din $C$ ,,felicând''
+după prima coordonată. Pentru un $a\in G$ fixat, perechile din $C$ cu
+prima componentă $a$ sunt exact cele $(a,b)$ cu $b\in C_{G}(a)$, deci felia
+lui $a$ are $|C_{G}(a)|$ elemente. Feliile corespunzătoare la $a$ diferiți
+sunt disjuncte (au prime coordonate diferite) și acoperă tot $C$, deci
+\[
+  |C|=\sum_{a\in G}|C_{G}(a)|
+\]
+--- deocamdată o simplă numărare (împărțim o mulțime
+în felii disjuncte), fără vreo teoremă de grup.
+
+Acum evaluăm fiecare $|C_{G}(a)|$: grupul $G$ acționează pe sine
+prin conjugare, cu orbita lui $a$ egală cu $\operatorname{cl}(a)$ și
+stabilizatorul egal cu $C_{G}(a)$. Prin teorema orbită--stabilizator
+(pentru o acțiune a unui grup finit, $|\!\operatorname{Orb}(a)|\cdot
+|\!\operatorname{Stab}(a)|=|G|$), rezultă
+$|C_{G}(a)|=\dfrac{n}{|\operatorname{cl}(a)|}$. Așadar
+\[
+  |C|=\sum_{a\in G}\frac{n}{|\operatorname{cl}(a)|}
+     =n\sum_{a\in G}\frac{1}{|\operatorname{cl}(a)|}.
+\]
+În ultima sumă grupăm termenii după clasele de conjugare
+(exact partiția lui $G$ care stă la baza \emph{ecuației claselor}):
+o clasă $\mathcal K$ are $|\mathcal K|$ elemente, iar fiecare $a\in\mathcal K$
+dă $\dfrac{1}{|\operatorname{cl}(a)|}=\dfrac{1}{|\mathcal K|}$, deci
+contribuția totală a clasei este $|\mathcal K|\cdot\dfrac{1}{|\mathcal K|}=1$.
+Cum sunt $k$ clase, $\sum_{a\in G}\dfrac{1}{|\operatorname{cl}(a)|}=k$, deci
+$|C|=k\,n$. (Atenție: prima egalitate $|C|=\sum_a|C_G(a)|$ este numărare,
+nu ecuația claselor; aceasta din urmă intervine abia la gruparea pe
+clase, unde se folosește partiția lui $G$ în clasele de conjugare.)
+
+\smallskip
+\textit{Pas 2: majorarea lui $k$.} Un element are clasa de mărime $1$
+exact când e central. Deci cele $|Z|$ elemente centrale dau $|Z|$ clase de
+mărime $1$, iar celelalte $n-|Z|$ elemente stau în clase de mărime
+$\ge 2$, adică în cel mult $\dfrac{n-|Z|}{2}$ clase. Folosind
+și lema ($|Z|\le n/4$),
+\[
+  k\le |Z|+\frac{n-|Z|}{2}=\frac{n}{2}+\frac{|Z|}{2}
+   \le \frac{n}{2}+\frac{n}{8}=\frac{5n}{8}.
+\]
+Împreună cu Pasul 1, $|C|=k\,n\le\dfrac{5n}{8}\cdot n=\dfrac{5}{8}\,n^{2}$.
+\end{solutie}
+
+\begin{obs}
+Împărțind la $n^{2}$: probabilitatea ca două elemente alese la
+întâmplare să comute este $k/n\le 5/8$ pentru \emph{orice} grup
+neabelian --- nu există grupuri ,,aproape comutative'' cu probabilitate
+între $5/8$ și $1$. Marginea e atinsă: la $D_{4}$ și la $Q_{8}$
+(ordin $8$, $|Z|=2$) avem $k=5$ și $|C|=5\cdot 8=40=\tfrac58\cdot 64$.
+
+Identitatea $|C|=k\,n$ este și \emph{lema lui Burnside} pentru
+conjugare, deghizată: punctele fixe ale conjugării cu $g$ sunt
+$\operatorname{Fix}(g)=\{a:gag^{-1}=a\}=C_{G}(g)$, deci numărul de orbite
+(clase) este $\dfrac{1}{n}\sum_{g\in G}|\operatorname{Fix}(g)|
+=\dfrac{1}{n}\sum_{g}|C_{G}(g)|=\dfrac{|C|}{n}=k$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $k$ un întreg astfel încât
+aplicația $x\mapsto x^{k}$ este morfism de grupuri (adică
+$(xy)^{k}=x^{k}y^{k}$ pentru orice $x,y\in G$). Arătați că, pentru
+orice $x\in G$ fixat, numărul soluțiilor $a\in G$ ale ecuației
+$xa^{k}=a^{k}x$ divide $n$.
+\end{problema}
+
+\begin{solutie}
+Fie $f:G\to G$, $f(a)=a^{k}$; din ipoteză $f$ este morfism, iar
+$G^{k}:=f(G)=\{a^{k}:a\in G\}$ este subgrup (imaginea unui morfism).
+
+Fixăm $x$ și notăm cu $T$ mulțimea soluțiilor:
+\[
+  T=\{a\in G : x a^{k}=a^{k}x\}=\{a\in G : a^{k}\in C_{G}(x)\}=f^{-1}\bigl(C_{G}(x)\bigr),
+\]
+căci $xa^{k}=a^{k}x$ înseamnă exact că $a^{k}$ comută cu
+$x$, adică $a^{k}\in C_{G}(x)$. Centralizatorul $C_{G}(x)$ este subgrup,
+iar preimaginea unui subgrup printr-un morfism este subgrup; deci $T$ este
+subgrup al lui $G$. Prin teorema lui Lagrange, $|T|$ divide $|G|=n$.
+
+\smallskip
+\textit{Soluția a doua (prin acțiune).} Definim o \emph{acțiune}
+a lui $G$ pe mulțimea $G$ prin
+\[
+  a\cdot y:=a^{k}\,y\,a^{-k}.
+\]
+Este într-adevăr o acțiune: $e\cdot y=y$, iar folosind ipoteza
+că $a\mapsto a^{k}$ e morfism (deci $(ab)^{k}=a^{k}b^{k}$),
+\[
+  a\cdot(b\cdot y)=a^{k}\bigl(b^{k}y\,b^{-k}\bigr)a^{-k}
+  =(a^{k}b^{k})\,y\,(a^{k}b^{k})^{-1}=(ab)^{k}\,y\,(ab)^{-k}=(ab)\cdot y .
+\]
+(Tocmai ipoteza de morfism face ca această acțiune să existe ---
+fără ea, $(ab)^{k}\neq a^{k}b^{k}$ și compunerea s-ar rupe.)
+
+Pentru $x$ fixat, ecuația $xa^{k}=a^{k}x$ se rescrie
+$a^{k}xa^{-k}=x$, adică $a\cdot x=x$: mulțimea soluțiilor în
+$a$ este exact \emph{stabilizatorul} lui $x$ pentru această acțiune,
+$T=\operatorname{Stab}(x)$. Stabilizatorul unui punct este întotdeauna
+subgrup, iar prin teorema \emph{orbită--stabilizator} (pentru o
+acțiune a unui grup finit, $|\!\operatorname{Orb}(x)|\cdot
+|\!\operatorname{Stab}(x)|=|G|$)
+\[
+  |T|=|\!\operatorname{Stab}(x)|=\frac{|G|}{|\!\operatorname{Orb}(x)|}
+     =\frac{n}{|\{a^{k}xa^{-k}:a\in G\}|},
+\]
+deci $|T|$ divide $n$. (Orbita lui $x$ este clasa sa de conjugare sub
+subgrupul puterilor $G^{k}=\{a^{k}\}$.)
+\end{solutie}
+
+\begin{obs}
+Ipoteza că $x\mapsto x^{k}$ e morfism este \emph{esențială}:
+ea garantează închiderea lui $T$ la produs (dacă
+$a^{k},b^{k}\in C_{G}(x)$, atunci $(ab)^{k}=a^{k}b^{k}\in C_{G}(x)$). Fără
+ea, $T$ poate să nu fie subgrup: în $S_{3}$ cu $k=2$ (unde
+$x\mapsto x^{2}$ nu e morfism), pentru $x=(1\,2)$ mulțimea $T=\{a:a^{2}\in
+C_{G}(x)\}=\{e,(1\,2),(1\,3),(2\,3)\}$ are $4$ elemente, iar $4\nmid 6$.
+
+Interpretare prin acțiune: $a\cdot y:=a^{k}ya^{-k}$ este o acțiune a
+lui $G$ pe $G$ (tocmai fiindcă $f$ e morfism, deci $(ab)^{k}=a^{k}b^{k}$),
+iar $T$ este stabilizatorul lui $x$; concluzia e orbită--stabilizator.
+Când $\gcd(k,n)=1$, $f$ este bijecție (,,ridicarea la puterea $p$'',
+Corolarul~\ref{lema:puterep}), deci $G^{k}=G$ și $|T|=|C_{G}(x)|$.
+\end{obs}
+
+\begin{problema}
+Fie $p\neq q$ numere prime, $\alpha\ge 1$, și $G$ un grup de ordin
+$p\,q^{\alpha}$ cu proprietatea că
+\[
+  p\not\equiv 1\pmod q\qquad\text{și}\qquad q^{j}\not\equiv 1\pmod p
+  \ \ \text{pentru }1\le j\le\alpha .
+\]
+Arătați că $G\cong P\times Q$ (produsul subgrupurilor sale Sylow)
+și că $pq\mid|Z(G)|$.
+\end{problema}
+
+\begin{solutie}
+Din Sylow III, $n_{q}\equiv 1\pmod q$ și $n_{q}\mid p$, deci
+$n_{q}\in\{1,p\}$; cum $p\not\equiv 1\pmod q$, rămâne $n_{q}=1$, adică
+$q$-subgrupul Sylow $Q$ este normal. La fel, $n_{p}\equiv 1\pmod p$ și
+$n_{p}\mid q^{\alpha}$, deci $n_{p}=q^{j}$ cu $q^{j}\equiv 1\pmod p$; ipoteza
+exclude $1\le j\le\alpha$, deci $n_{p}=q^{0}=1$ și $P$ e normal.
+
+Ambele Sylow fiind normale, cu $P\cap Q=\{e\}$ (ordine coprime) și
+$|PQ|=|P||Q|=|G|$, rezultă $G=P\times Q$. Atunci
+\[
+  Z(G)=Z(P)\times Z(Q)=P\times Z(Q),
+\]
+căci $P$ (ordin $p$) e ciclic, deci abelian. Iar $Z(Q)\neq\{e\}$: un
+$q$-grup are centru netrivial (ecuația claselor pentru $Q$ --- toți
+termenii necentrali sunt multipli de $q$, la fel și $|Q|$, deci
+$q\mid|Z(Q)|$). Prin urmare $p\mid|Z(G)|$ și $q\mid|Z(G)|$, adică
+$pq\mid|Z(G)|$.
+\end{solutie}
+
+\begin{obs}
+Congruențele interzic orice număr nenormal de Sylow-uri, deci
+,,rup'' grupul în produsul direct $P\times Q$ (nilpotent). Ecuația
+claselor intervine exact la $Z(Q)\neq\{e\}$.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup de ordin $p\,q^{\alpha}$ ($p\neq q$ prime) al cărui
+$q$-subgrup Sylow $Q$ este normal \emph{și abelian}, iar $P$ un
+$p$-subgrup Sylow. Arătați că
+\[
+  |Z(G)\cap Q|\equiv q^{\alpha}\pmod p,
+\]
+și deduceți că dacă $q^{\alpha}\not\equiv 1\pmod p$, atunci
+$q\mid|Z(G)|$.
+\end{problema}
+
+\begin{solutie}
+Cum $Q\trianglelefteq G$, conjugarea definește o acțiune a lui $P$ pe
+$Q$ prin automorfisme ($a\cdot z=aza^{-1}$). Aplicăm \emph{ecuația
+claselor a unei acțiuni}: pentru un grup $H$ ce acționează pe o
+mulțime finită $X$, orbitele partiționează $X$, deci, alegând
+câte un reprezentant din fiecare orbită și folosind
+orbită--stabilizator $|\!\operatorname{Orb}(x)|=[H:\operatorname{Stab}(x)]$,
+\[
+  |X|=|X^{H}|+\sum_{|\operatorname{Orb}(x_i)|>1}[H:\operatorname{Stab}(x_i)],
+\]
+unde $X^{H}$ e mulțimea punctelor fixe (orbitele de mărime $1$).
+(Pentru $H=G$ acționând pe $X=G$ prin conjugare, $X^{H}=Z(G)$,
+$\operatorname{Stab}=C_G$, și se regăsește ecuația claselor
+uzuală $|G|=|Z(G)|+\sum_i[G:C_G(x_i)]$.)
+
+Aici $H=P$ acționează pe $X=Q$. Fiecare orbită are mărime
+$[P:\operatorname{Stab}(z)]$, divizor al lui $|P|=p$ (prim), deci $1$ sau $p$;
+punctele fixe sunt $Q^{P}=\{z\in Q: aza^{-1}=z\ \forall a\in P\}=C_{Q}(P)$.
+Ecuația claselor a acestei acțiuni devine
+\[
+  q^{\alpha}=|Q|=|C_{Q}(P)|+p\cdot\#\{\text{orbite de mărime }p\},
+\]
+și, reducând modulo $p$ (termenii de mărime $p$ dispar),
+\[
+  q^{\alpha}\equiv|C_{Q}(P)|\pmod p .
+\]
+
+Deoarece $Q$ e abelian, un element $z\in Q$ e central în $G$ dacă
+și numai dacă comută cu $P$ (cu $Q$ comută automat), deci
+$Z(G)\cap Q=C_{Q}(P)$. Așadar
+$|Z(G)\cap Q|\equiv q^{\alpha}\pmod p$.
+
+Dacă $q^{\alpha}\not\equiv 1\pmod p$: $|Z(G)\cap Q|$ este o putere a lui
+$q$ (subgrup al $q$-grupului $Q$); dacă ar fi $1$, am avea
+$1\equiv q^{\alpha}\pmod p$, fals. Deci $|Z(G)\cap Q|\ge q$, adică
+$q\mid|Z(G)|$.
+\end{solutie}
+
+\begin{obs}
+Aici se folosește \emph{doar} normalitatea lui $Q$ (nu și a lui $P$),
+prin ecuația claselor a acțiunii $P\curvearrowright Q$; congruența
+$q^{\alpha}\bmod p$ (adică ordinul lui $q$ modulo $p$) decide dacă
+partea $q$ a centrului e forțată netrivială.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup finit și $M\subseteq G$ o submulțime cu $m$ elemente,
+cu proprietatea că $gMg^{-1}=M$ pentru orice $g\in G$ (adică $M$ are
+un singur conjugat, pe el însuși). Arătați că
+$C_{G}(M)=\{g:gx=xg\ \forall x\in M\}$ este subgrup normal și că
+$[G:C_{G}(M)]$ divide $m!$. Deduceți că dacă
+$\gcd\bigl(|G|,m!\bigr)=1$, atunci $M\subseteq Z(G)$.
+\end{problema}
+
+\begin{solutie}
+Deoarece $gMg^{-1}=M$, pentru orice $x\in M$ și $g\in G$ avem
+$gxg^{-1}\in gMg^{-1}=M$: conjugarea permută elementele lui $M$
+între ele, deci definește o \emph{acțiune} a lui $G$ pe
+mulțimea finită $M$ (prin $g\cdot x=gxg^{-1}$).
+
+Prin Propoziția~\ref{prop:actmorf} (,,acțiuni $=$ morfisme în grupul de
+permutări''), acestei acțiuni îi corespunde un morfism
+\[
+  \varphi:G\to S(M)\cong S_{m},\qquad \varphi(g)(x)=gxg^{-1}.
+\]
+Nucleul său este
+\[
+  \operatorname{Ker}\varphi=\{g:\varphi(g)=\operatorname{id}\}
+  =\{g:gxg^{-1}=x\ \forall x\in M\}=C_{G}(M),
+\]
+deci $C_{G}(M)$, fiind nucleu de morfism, este subgrup \emph{normal} al lui
+$G$. (Aici invarianța lui $M$ la conjugare e esențială: pentru o
+submulțime oarecare, $C_{G}(M)$ nu e neapărat normal.) Prin prima
+teoremă de izomorfism,
+\[
+  G/C_{G}(M)\cong\operatorname{Im}\varphi\hookrightarrow S_{m},
+\]
+deci $[G:C_{G}(M)]=|\operatorname{Im}\varphi|$ divide $|S_{m}|=m!$.
+
+În fine, $[G:C_{G}(M)]$ divide atât $|G|$ (Lagrange) cât și
+$m!$; dacă $\gcd(|G|,m!)=1$, atunci $[G:C_{G}(M)]=1$, adică
+$C_{G}(M)=G$. Aceasta înseamnă că orice $g\in G$ comută cu
+orice $x\in M$, deci $M\subseteq Z(G)$.
+\end{solutie}
+
+\begin{obs}
+Este generalizarea la \emph{submulțimi} a scufundărilor clasice
+$G/Z(G)\hookrightarrow S_{|G|}$ (Cayley $+$ conjugare) și
+$G/C_{G}(a)\hookrightarrow S_{|\operatorname{cl}(a)|}$. Cazuri particulare
+de submulțimi invariante la conjugare: orice clasă de conjugare și
+orice subgrup normal; pentru un subgrup normal $N$, morfismul se rafinează
+la $G/C_{G}(N)\hookrightarrow\operatorname{Aut}(N)$, căci conjugarea
+păstrează și structura de grup a lui $N$.
+\end{obs}
+
+\begin{problema}
+Fie $p_{1}<p_{2}<\dots<p_{n}<\dots$ șirul numerelor prime. Demonstrați
+că, pentru orice $n\ge 2$, orice grup de ordin $p_{n}\,p_{n+1}$ este
+ciclic.
+\end{problema}
+
+\begin{solutie}
+Notăm $p=p_{n}$, $q=p_{n+1}$ ($p<q$ prime consecutive, iar $p\ge 3$
+căci $n\ge 2$). Folosim două rezultate, pe care le enunțăm
+explicit.
+
+\emph{Postulatul lui Bertrand:} pentru orice întreg $m\ge 1$ există
+un număr prim $r$ cu $m<r<2m$.
+
+\emph{Criteriul numerelor ciclice:} un întreg $N\ge 1$ se numește
+\emph{număr ciclic} dacă orice grup de ordin $N$ este ciclic; are loc
+echivalența
+\[
+  N\ \text{număr ciclic}\iff \gcd\bigl(N,\varphi(N)\bigr)=1 ,
+\]
+unde $\varphi$ este indicatorul lui Euler.
+
+\smallskip
+\textit{Pas 1: $pq$ este număr ciclic $\iff p\nmid q-1$.} Avem
+$\varphi(pq)=(p-1)(q-1)$. Cum $p,q$ sunt prime, $q>p>p-1$ și $q>q-1$,
+deci $q\nmid(p-1)(q-1)$; iar $p\mid(p-1)(q-1)\iff p\mid q-1$ (fiindcă
+$p\nmid p-1$). Așadar
+\[
+  \gcd\bigl(pq,(p-1)(q-1)\bigr)=1\iff p\nmid q-1 ,
+\]
+și, prin criteriul numerelor ciclice, $pq$ e număr ciclic $\iff
+p\nmid q-1$. (Direcția netrivială ,,$p\nmid q-1\Rightarrow$ ciclic''
+se poate obține și direct din Sylow: $n_{q}\equiv 1\pmod q$,
+$n_{q}\mid p$, $p<q$ dau $n_{q}=1$; iar $p\nmid q-1$ dă $n_{p}=1$, deci
+$G=P\times Q\cong\mathbb{Z}/pq$.)
+
+\smallskip
+\textit{Pas 2: $p\nmid q-1$, via postulatul lui Bertrand.} Aplicăm
+Bertrand cu $m=p$: există un prim în intervalul $(p,2p)$. Cel mai mic
+prim mai mare decât $p$ este chiar $q=p_{n+1}$, deci $q<2p$. Dacă am
+avea $p\mid q-1$, atunci $q-1=kp$ cu $k\ge 1$ întreg, iar $kp=q-1<2p$
+forțează $k=1$, adică $q=p+1$. Dar două numere prime
+consecutive care diferă prin $1$ sunt \emph{doar} $2$ și $3$; cum
+$p\ge 3$, contradicție. Așadar $p\nmid q-1$, deci (Pas 1) $pq$ este
+număr ciclic: orice grup de ordin $p_{n}p_{n+1}$ este ciclic.
+\end{solutie}
+
+\begin{obs}
+Ipoteza $n\ge 2$ e necesară: pentru $n=1$, $p_{1}p_{2}=6$ și
+$2\mid 3-1$, deci $6$ nu e număr ciclic --- grupul $S_{3}$ de ordin $6$ nu
+e ciclic. Rolul postulatului lui Bertrand este exact să garanteze
+$q<2p$, ceea ce exclude singurul caz problematic $q=p+1$ (posibil doar la
+$2,3$).
+\end{obs}
+
+\begin{problema}
+Determinați toate numerele naturale $m$ pentru care există un grup
+abelian finit având exact $m$ elemente de ordin $4$.
+\end{problema}
+
+\noindent\textbf{Răspuns:} $m=0$ sau $m=2^{k}\,(2^{v}-1)$ cu întregi
+$1\le v\le k$. Echivalent: scriind $m=2^{k}t$ cu $t$ impar, $m\neq 0$ este
+realizabil dacă și numai dacă $t+1$ este o putere $2^{v}$ a lui
+$2$, cu $v\le k$.
+
+\begin{solutie}
+Folosim clasificarea grupurilor abeliene finite (Corolarul~\ref{cor:abelianfinit} din cartea
+de teorie, consecință a Teoremei~\ref{teo:structura} de structură a grupurilor
+abeliene finit generate): \emph{orice grup abelian finit este produs direct
+de grupuri ciclice}; combinând cu lema chineză a resturilor
+(dacă $\gcd(m_1,m_2)=1$, atunci
+$\mathbb{Z}/m_1m_2\cong\mathbb{Z}/m_1\times\mathbb{Z}/m_2$), este
+produs direct de grupuri ciclice de ordin \emph{putere de prim}
+(descompunerea primară). În particular,
+\[
+  A\cong A_{2}\times A_{\text{impar}},\qquad
+  A_{2}\cong \mathbb{Z}/2^{a_{1}}\times\cdots\times\mathbb{Z}/2^{a_{k}}
+  \quad(a_{i}\ge 1),
+\]
+unde $A_{2}$ adună factorii de ordin putere a lui $2$, iar
+$A_{\text{impar}}$ pe cei de ordin impar.
+
+\smallskip
+\textit{Pas 1: contează doar partea 2-primară.} Un element
+$(x,y)\in A_{2}\times A_{\text{impar}}$ are ordinul
+$\operatorname{lcm}\bigl(\operatorname{ord}x,\operatorname{ord}y\bigr)$;
+acesta este $4$ dacă și numai dacă $\operatorname{ord}(y)=1$
+(ordinul lui $y$ e impar și divide $4$) și $\operatorname{ord}(x)=4$.
+Așadar numărul căutat se calculează în $A_{2}$.
+
+\smallskip
+\textit{Pas 2: numărarea în $A_{2}$.} În factorul
+$\mathbb{Z}/2^{a_{i}}$, soluțiile ecuației $2^{j}x=0$ sunt în
+număr de $\min(2^{j},2^{a_{i}})$. Notând
+$v=\#\{i:a_{i}\ge 2\}$, obținem
+\[
+  \bigl|A[2]\bigr|=\prod_{i=1}^{k}\min(2,2^{a_{i}})=2^{k},\qquad
+  \bigl|A[4]\bigr|=\prod_{i=1}^{k}\min(4,2^{a_{i}})=2^{k-v}\,4^{v}=2^{k+v},
+\]
+deci numărul elementelor de ordin \emph{exact} $4$ este
+\[
+  \bigl|A[4]\bigr|-\bigl|A[2]\bigr|=2^{k+v}-2^{k}=2^{k}\,(2^{v}-1),
+  \qquad 0\le v\le k
+\]
+(valoarea $v=0$ dă $0$).
+
+\smallskip
+\textit{Pas 3: realizabilitate și unicitatea formei.} Pentru orice
+$1\le v\le k$, grupul $(\mathbb{Z}/4)^{v}\times(\mathbb{Z}/2)^{k-v}$ atinge
+exact $2^{k}(2^{v}-1)$ elemente de ordin $4$; iar $m=0$ se atinge prin orice
+grup de ordin impar. Reciproc, dintr-un $m\neq 0$ realizabil, partea impară
+$t=2^{v}-1$ determină $v$, iar puterea lui $2$ determină $k$; deci
+$m=2^{k}t$ este realizabil exact când $t+1$ e putere a lui $2$, $t+1=2^{v}$,
+cu $v\le k$.
+\end{solutie}
+
+\begin{obs}
+Trei remarci. Întâi, valoarea $m=6$ este \emph{imposibilă} în
+abelian ($t=3$ dă $v=2$, dar $k=1<v$) --- însă grupul
+cuaternionilor $Q_{8}$ are \emph{exact} $6$ elemente de ordin $4$
+($\pm i,\pm j,\pm k$): comutativitatea este esențială. Apoi,
+$m=2026$ este imposibil ($2026=2\cdot 1013$, iar $1014$ nu e putere a lui
+$2$). În fine, contrastul cu ordinul $2$: numărul elementelor de
+ordin $2$ este $2^{k}-1$ --- un fapt de spațiu vectorial ($A[2]$ peste
+$\mathbb{F}_{2}$), care nu cere clasificarea; ordinul $4$ este primul care
+distinge factorii $\mathbb{Z}/2$ de cei $\mathbb{Z}/2^{a}$, $a\ge 2$, deci
+primul invariant de numărare care are nevoie de descompunerea ciclică.
+(Verificare de consistență: numărul e mereu par când e nenul,
+căci elementele de ordin $4$ vin în perechi $\{x,x^{-1}\}$ cu
+$x\neq x^{-1}$.)
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup abelian finit. Arătați că există un grup $H$
+cu $G\cong H\times H$ dacă și numai dacă, pentru orice $n\ge 1$,
+numărul soluțiilor ecuației $x^{n}=e$ în $G$ este pătrat
+perfect.
+\end{problema}
+
+\begin{solutie}
+Notăm $G[n]=\{x\in G:x^{n}=e\}$ (mulțimea soluțiilor lui
+$x^{n}=e$; e subgrup, $G$ fiind
+abelian).
+
+\smallskip
+\textit{($\Rightarrow$).} Dacă $G=H\times H$, atunci $(x,y)^{n}=e\iff
+x^{n}=e$ și $y^{n}=e$, deci $G[n]=H[n]\times H[n]$ și
+$|G[n]|=|H[n]|^{2}$ --- pătrat perfect pentru orice $n$.
+
+\smallskip
+\textit{($\Leftarrow$).} Presupunem $|G[n]|$ pătrat perfect pentru orice
+$n$. Folosim clasificarea grupurilor abeliene finite (Corolarul~\ref{cor:abelianfinit}, cu
+Teorema~\ref{teo:structura} în spate): \emph{orice grup abelian finit este produs
+direct de grupuri ciclice}, iar împreună cu lema chineză (pentru
+$\gcd(m_1,m_2)=1$, $\mathbb{Z}/m_1m_2\cong\mathbb{Z}/m_1\times\mathbb{Z}/m_2$)
+--- produs direct de grupuri ciclice de ordin \emph{putere de prim}, cu
+familia acestor puteri unic determinată. Grupând factorii după
+primul $p$: $G\cong\prod_{p}G_{p}$ (descompunerea primară), iar fiecare
+componentă se scrie
+\[
+  G_{p}\cong\prod_{i\ge 1}\bigl(\mathbb{Z}/p^{i}\bigr)^{c_{i}},
+\]
+cu multiplicitățile $c_{i}\ge 0$ \emph{bine definite} --- aici este
+esențială partea de \emph{unicitate} a teoremei de structură,
+fără de care $c_{i}$ nici n-ar fi invarianți ai lui $G$.
+
+\textit{Pas 1: reducere la componente.} Pentru $n=p^{j}$, componentele
+$G_{q}$ cu $q\neq p$ contribuie trivial la $G[p^{j}]$ (un element de ordin
+putere a lui $q$ cu $x^{p^{j}}=e$ e neutru), deci
+$|G[p^{j}]|=|G_{p}[p^{j}]|$: fiecare $|G_{p}[p^{j}]|$ e pătrat perfect.
+
+\textit{Pas 2: numărarea.} În $\mathbb{Z}/p^{i}$, ecuația
+$p^{j}x=0$ are $\min(p^{j},p^{i})=p^{\min(i,j)}$ soluții. Prin urmare
+\[
+  |G_{p}[p^{j}]|=p^{e_{j}},\qquad e_{j}=\sum_{i\ge 1}\min(i,j)\,c_{i},
+\]
+iar ipoteza spune că toți exponenții $e_{j}$ sunt \emph{pari}.
+
+\textit{Pas 3: extragerea parității multiplicităților.} Fie
+$T_{j}=\sum_{i\ge j}c_{i}$. Deoarece $\min(i,j)-\min(i,j-1)=1$ exact când
+$i\ge j$ (și $0$ altfel),
+\[
+  e_{1}=T_{1},\qquad e_{j}-e_{j-1}=T_{j}\quad(j\ge 2).
+\]
+Toți $e_{j}$ pari $\Rightarrow$ toți $T_{j}$ pari $\Rightarrow$
+fiecare $c_{i}=T_{i}-T_{i+1}$ este \emph{par}.
+
+\textit{Pas 4: construcția rădăcinii.} Scriem $c_{i}=2b_{i}$
+(pentru fiecare prim $p$) și punem
+\[
+  H=\prod_{p}\prod_{i\ge 1}\bigl(\mathbb{Z}/p^{i}\bigr)^{b_{i}} .
+\]
+Atunci $H\times H$ are, în fiecare componentă primară, exact
+multiplicitățile $2b_{i}=c_{i}$ ale lui $G$; prin unicitatea
+descompunerii, $G\cong H\times H$.
+\end{solutie}
+
+\begin{obs}
+Comutativitatea este esențială. Pentru $p$ impar, fie
+$G=\operatorname{Heis}(p)\times\mathbb{Z}/p$, unde $\operatorname{Heis}(p)$
+este grupul Heisenberg modulo $p$ (matricele $3\times 3$ superior
+unitriunghiulare peste $\mathbb{Z}/p$) --- neabelian, de ordin $p^{3}$ și
+\emph{exponent} $p$. Atunci $|G|=p^{4}$ și orice element satisface
+$x^{p}=e$, deci numărul soluțiilor lui $x^{n}=e$ este $p^{4}$ dacă
+$p\mid n$ și $1$ altfel --- \emph{toate pătrate perfecte}. Totuși
+$G$ nu este pătratul niciunui grup: dacă $K\times K\cong G$, atunci
+$|K|=p^{2}$, deci $K$ este abelian. (Într-adevăr, orice grup $K$ de
+ordin $p^{2}$ e abelian: prin ecuația claselor un $p$-grup are centru
+netrivial, deci $|Z(K)|\in\{p,p^{2}\}$; dacă $|Z(K)|=p$, atunci $K/Z(K)$
+ar fi ciclic de ordin $p$, iar dacă $K/Z(K)$ e ciclic atunci $K$ e
+abelian --- contradicție cu $|Z(K)|=p$; deci $|Z(K)|=p^{2}$, adică
+$K$ abelian.) Prin urmare $K\times K$ ar fi abelian --- contradicție.
+Echivalența este
+așadar un fenomen strict abelian. De remarcat și că nu ajunge un
+singur $n$: pentru $n=|G|$ numărul soluțiilor e $|G|$, pătrat
+pentru orice grup de ordin pătrat perfect; e nevoie de toate valorile
+$n=p^{j}$ cu $p^{j}\mid\exp(G)$.
+\end{obs}
+
+\begin{problema}
+Arătați că orice inel comutativ $R$ este izomorf cu centrul unui
+inel --- mai precis, există un inel $S$ (necomutativ dacă $R\neq\{0\}$)
+al cărui centru $Z(S)=\{s\in S : sx=xs\ \forall x\in S\}$ este izomorf cu
+$R$.
+\end{problema}
+
+\begin{solutie}
+Luăm $S=M_{2}(R)$, inelul matricelor $2\times 2$ cu intrări în
+$R$ (adunare și înmulțire de matrice uzuale). Vom arăta
+că centrul său este format din matricele scalare, deci
+$Z(S)\cong R$.
+
+\smallskip
+\textit{Matricele scalare sunt centrale.} Pentru $a\in R$, matricea
+$aI=\begin{psmallmatrix}a&0\\0&a\end{psmallmatrix}$ comută cu orice
+$N\in M_{2}(R)$: cum $a$ e central în $R$ (chiar comutativ),
+$(aI)N=aN=N(aI)$.
+
+\smallskip
+\textit{Doar ele sunt centrale.} Fie
+$M=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}\in Z(S)$. E de ajuns ca
+$M$ să comute cu matricele elementare $E_{ij}$ (cu $1$ pe poziția
+$(i,j)$ și $0$ în rest), fiindcă acestea generează aditiv tot
+$M_{2}(R)$. Din $ME_{12}=E_{12}M$:
+\[
+  ME_{12}=\begin{psmallmatrix}0&a\\0&c\end{psmallmatrix},\qquad
+  E_{12}M=\begin{psmallmatrix}c&d\\0&0\end{psmallmatrix},
+\]
+deci, egalând intrările, $c=0$ și $a=d$. Analog, din
+$ME_{21}=E_{21}M$:
+\[
+  ME_{21}=\begin{psmallmatrix}b&0\\d&0\end{psmallmatrix},\qquad
+  E_{21}M=\begin{psmallmatrix}0&0\\a&b\end{psmallmatrix},
+\]
+de unde $b=0$. Așadar
+$M=\begin{psmallmatrix}a&0\\0&a\end{psmallmatrix}=aI$. Prin urmare
+\[
+  Z(M_{2}(R))=\{aI : a\in R\}.
+\]
+
+\smallskip
+\textit{Izomorfismul cu $R$.} Aplicația $\iota:R\to Z(M_{2}(R))$,
+$\iota(a)=aI$, este bijectivă și morfism de inele:
+$\iota(a+b)=(a+b)I=aI+bI$, $\iota(1)=I$, iar
+$\iota(a)\iota(b)=(aI)(bI)=(ab)I=\iota(ab)$ --- unde s-a folosit
+comutativitatea lui $R$, ca produsul celor două matrice scalare
+să fie tot scalar, egal cu $(ab)I$. Deci $Z(M_{2}(R))\cong R$.
+
+Pentru $R\neq\{0\}$, $M_{2}(R)$ este necomutativ (de pildă
+$E_{12}E_{21}=E_{11}\neq E_{22}=E_{21}E_{12}$), deci $R$ apare drept centrul
+unui inel \emph{strict} mai mare.
+\end{solutie}
+
+\begin{obs}
+Construcția arată că centrul nu determină inelul: orice inel
+comutativ $R$ este centrul lui $M_{2}(R)$ (și, la fel, al lui
+$M_{n}(R)$ pentru orice $n\ge 2$), deși $|M_{2}(R)|=|R|^{4}$ când $R$
+e finit. Este ,,umflătorul de centru'' din spatele faptului că
+$Z(A)\cong Z(B)$ nu implică $A\cong B$: $R$ și $M_{2}(R)$ au același
+centru, dar sunt foarte diferite. Singurul caz degenerat este $R=\{0\}$, unde
+$M_{2}(R)=\{0\}$ e tot nul.
+\end{obs}
+
+\begin{problema}
+Fie $D$ un inel de diviziune (orice element nenul este inversabil) de
+caracteristică $n$, fie $a,c$ numere întregi și $b,d\ge 1$
+exponenți, astfel încât, pentru orice $x\in D$,
+\[
+  a\,x^{b}\in Z(D)\qquad\text{și}\qquad c\,x^{d}\in Z(D),
+\]
+unde $m\,y$ notează multiplul aditiv $\underbrace{y+\cdots+y}_{m}$.
+Demonstrați că dacă
+\[
+  \gcd(a,n)=\gcd(c,n)=1\quad\text{și}\quad \gcd(b,d)=1,
+\]
+atunci $D$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+Reamintim că centrul $Z(D)=\{z : zy=yz\ \forall y\in D\}$ este
+\emph{subinel}: e închis la sume, la opuse (deci e subgrup aditiv) și
+la produse. Folosim de două ori \emph{relația lui Bézout}: pentru
+întregi $p,q$ există întregi $u,v$ cu $up+vq=\gcd(p,q)$.
+
+\begin{lemat}[Bézout aditiv: elimină coeficienții]
+În condițiile problemei, $x^{b}\in Z(D)$ și $x^{d}\in Z(D)$
+pentru orice $x\in D$.
+\end{lemat}
+
+\begin{proof}
+Cum $\gcd(a,n)=1$, Bézout dă întregi $u,v$ cu $ua+vn=1$. Pe de
+altă parte, caracteristica fiind $n$, avem $n\,y=0$ pentru orice $y\in D$,
+deci pentru orice $y$
+\[
+  y=1\cdot y=(ua+vn)\,y=u\,(a\,y)+v\,(n\,y)=u\,(a\,y).
+\]
+Aplicăm aceasta lui $y=x^{b}$: elementul $a\,x^{b}$ este central prin
+ipoteză, iar $Z(D)$ e subgrup aditiv, deci și multiplul întreg
+$u\,(a\,x^{b})$ este central. Dar tocmai am văzut că
+$u\,(a\,x^{b})=x^{b}$. Așadar $x^{b}\in Z(D)$. Identic, folosind
+$\gcd(c,n)=1$, se obține $x^{d}\in Z(D)$.
+\end{proof}
+
+\begin{lemat}[Bézout multiplicativ: elimină exponenții]
+Dacă $x^{b}\in Z(D)$ și $x^{d}\in Z(D)$ pentru orice $x$, iar
+$\gcd(b,d)=1$, atunci orice element inversabil al lui $D$ este central.
+\end{lemat}
+
+\begin{proof}
+Mai întâi, \emph{inversul unui element central inversabil este
+central}: dacă $z\in Z(D)$ e inversabil și $y\in D$, atunci din
+$zy=yz$, înmulțind la stânga și la dreapta cu $z^{-1}$,
+obținem $yz^{-1}=z^{-1}y$; deci $z^{-1}\in Z(D)$. Prin urmare, pentru
+$z$ central inversabil, \emph{toate} puterile întregi $z^{k}$
+($k\in\mathbb{Z}$) sunt centrale.
+
+Fie acum $x$ inversabil. Din $\gcd(b,d)=1$, Bézout dă întregi
+$s,t$ cu $sb+td=1$. Elementele $x^{b}$ și $x^{d}$ sunt centrale (ipoteză)
+și inversabile ($x$ fiind inversabil), deci $(x^{b})^{s}$ și
+$(x^{d})^{t}$ sunt centrale; cum $Z(D)$ e închis la produs,
+\[
+  x=x^{1}=x^{sb+td}=(x^{b})^{s}\,(x^{d})^{t}\in Z(D). \qedhere
+\]
+\end{proof}
+
+\smallskip
+\textit{Combinarea celor două leme.} Prin lema aditivă, ipoteza cu
+coeficienți se curăță: $x^{b},x^{d}\in Z(D)$ pentru orice $x$.
+Prin lema multiplicativă, orice element inversabil este central. Dar $D$
+este inel de diviziune, deci \emph{orice} element nenul este inversabil;
+așadar $D\setminus\{0\}\subseteq Z(D)$. Cum și $0\in Z(D)$, rezultă
+$Z(D)=D$, adică $xy=yx$ pentru orice $x,y$: inelul $D$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Ipotezele de coprimalitate sunt cele care fac demonstrația
+\emph{elementară}; ele nu sunt însă toate necesare.
+
+Condiția $\gcd(b,d)=1$ (exponenți) nu este necesară: din lema aditivă,
+$x^{b}\in Z(D)$ pentru orice $x$, iar teorema lui Kaplansky
+(Teorema~\ref{teo:kaplansky}(i) din partea de teorie: dacă pentru orice
+$x$ o putere $x^{n(x)}$, $n(x)\ge1$, este centrală, atunci $D$ este
+comutativ) dă deja concluzia. Coprimalitatea exponenților înlocuiește
+această teoremă adâncă printr-un simplu calcul de tip Bézout. (Atenție:
+în corpul cuaternionilor $\mathbb{H}$, cu $Z(\mathbb{H})=\mathbb{R}$,
+pătratul unui cuaternion $x=t+v$, cu $t$ real și $v$ pur, este
+$x^{2}=t^{2}-|v|^{2}+2tv$, care \emph{nu} este real pentru $t\neq0$ și
+$v\neq0$; deci $\mathbb{H}$ nu satisface ipoteza pentru $b=2$.)
+
+Din același motiv ajunge ca \emph{una} dintre condițiile
+$\gcd(a,n)=1$, $\gcd(c,n)=1$ să aibă loc. Nu pot lipsi însă amândouă:
+pentru $a=c=0$ ipoteza devine vidă ($0\cdot x^{b}=0\in Z(D)$), iar
+corpul cuaternionilor (de caracteristică $n=0$, deci cu
+$\gcd(0,0)=0\neq1$) nu este comutativ.
+\end{obs}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că, pentru oricare trei elemente
+distincte ale sale, există cel puțin o pereche dintre ele care
+comută. Demonstrați că $G$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+Presupunem prin absurd că $G$ nu e comutativ: există $x,y\in G$ cu
+$xy\neq yx$. Considerăm tripletul
+\[
+  \{\,x,\ y,\ xy\,\}
+\]
+și arătăm că el contrazice ipoteza.
+
+\smallskip
+\textit{Pas 1: cele trei elemente sunt distincte.}
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item $x\neq y$: dacă $x=y$, atunci $xy=x\cdot x=yx$, contrazicând
+        $xy\neq yx$.
+  \item $xy\neq x$: dacă $xy=x$, înmulțind la stânga cu
+        $x^{-1}$ obținem $y=e$; dar $e$ comută cu orice element, deci
+        $xy=yx$ --- contradicție.
+  \item $xy\neq y$: dacă $xy=y$, înmulțind la dreapta cu $y^{-1}$
+        obținem $x=e$, și la fel $xy=yx$ --- contradicție.
+\end{itemize}
+Deci ipoteza problemei se aplică tripletului $\{x,y,xy\}$.
+
+\smallskip
+\textit{Pas 2: niciuna dintre cele trei perechi nu comută.}
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item \emph{$x$ și $y$}: nu comută, prin presupunere.
+  \item \emph{$x$ și $xy$}: dacă ar comuta, atunci $x(xy)=(xy)x$,
+        adică $x^{2}y=xyx$; înmulțind la stânga cu $x^{-1}$
+        rezultă $xy=yx$ --- contradicție. Deci nu comută.
+  \item \emph{$y$ și $xy$}: dacă ar comuta, atunci $y(xy)=(xy)y$,
+        adică $yxy=xy^{2}$; înmulțind la dreapta cu $y^{-1}$
+        rezultă $yx=xy$ --- contradicție. Deci nu comută.
+\end{itemize}
+
+\smallskip
+\textit{Pas 3: contradicția.} Tripletul $\{x,y,xy\}$ este format din trei
+elemente distincte între care \emph{nicio} pereche nu comută, ceea ce
+contrazice ipoteza (care cerea cel puțin o pereche comutantă).
+Așadar presupunerea e falsă: $xy=yx$ pentru orice $x,y\in G$, deci $G$
+este comutativ.
+\end{solutie}
+
+\begin{obs}
+Soluția directă arată mai mult decât cere enunțul: în
+orice grup neabelian există trei elemente distincte între care
+\emph{nicio} pereche nu comută (anume $x$, $y$, $xy$ cu $xy\neq yx$).
+Altfel spus, ipoteza ,,cel puțin o pereche comută'' este deja
+suficientă, deși pare mult mai slabă decât ,,cel puțin
+două perechi comută''. Cheia este alegerea celui de-al treilea element:
+produsul $xy$ nu comută nici cu $x$, nici cu $y$ --- necomutarea ,,se
+propagă'' la produs.
+
+Soluția funcționează și pentru grupuri infinite. O abordare prin
+numărare, pentru $G$ finit de ordin $n$, nu ajunge aici: ipoteza spune
+doar că ,,graful necomutării'' (vârfurile sunt elementele lui $G$,
+muchiile unesc elementele care nu comută) nu are triunghiuri, deci, prin
+teorema lui Mantel, are cel mult $n^{2}/4$ muchii. Rezultă cel puțin
+$n^{2}/2$ perechi ordonate care comută, ceea ce este compatibil cu
+marginea $\tfrac58 n^{2}$ valabilă în orice grup neabelian (problema
+ONM.13); nu se obține nicio contradicție. Argumentul algebric direct
+este cel care decide.
+\end{obs}
+
+\begin{problema}
+Fie $A$ un inel finit de ordin impar cu proprietatea că orice element
+neinversabil se scrie ca sumă a doi idempotenți care comută.
+Arătați că $A$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+\textit{Pas 1: $2$ este inversabil, cu invers central.} Grupul aditiv
+$(A,+)$ are ordin impar, deci aplicația $\varphi(x)=2x=x+x$ este
+injectivă: dacă $2x=0$, ordinul aditiv al lui $x$ divide $2$ și,
+prin teorema lui Lagrange (ordinul unui element divide ordinul grupului),
+divide și $|A|$, care e impar; deci acel ordin este $1$, adică $x=0$.
+Fiind injectivă pe o mulțime finită, $\varphi$ e bijectivă,
+deci există $u\in A$ cu $2u=1$. Acest $u$ e central: pentru orice $a$,
+\[
+  2(ua)=(2u)a=a=a(2u)=2(au),
+\]
+iar din injectivitatea lui $\varphi$ rezultă $ua=au$. Notăm
+$u=2^{-1}$.
+
+\smallskip
+\textit{Pas 2: orice element neinversabil $x$ satisface $x(x-1)(x-2)=0$.}
+Fie $x=e+f$ cu $e^{2}=e$, $f^{2}=f$ și $ef=fe$. Punem $g=ef$; atunci
+$g^{2}=(ef)(ef)=e^{2}f^{2}=ef=g$ (am folosit comutarea), iar
+$eg=e(ef)=e^{2}f=ef=g$ și, analog, $ge=fg=gf=g$. Calculăm:
+\[
+  x^{2}=(e+f)^{2}=e^{2}+ef+fe+f^{2}=e+2g+f=x+2g ,
+\]
+\[
+  x^{3}=x\cdot x^{2}=(e+f)(x+2g)=x^{2}+2(eg+fg)=(x+2g)+2(g+g)=x+6g .
+\]
+Cum $1$ și $2$ sunt centrale, $x$ comută cu $x-1$ și $x-2$, deci
+\[
+  x(x-1)(x-2)=x^{3}-3x^{2}+2x=(x+6g)-3(x+2g)+2x=0 .
+\]
+
+\smallskip
+\textit{Pas 3: $A$ este redus} (adică nu are elemente nilpotente nenule).
+Fie $t$ nilpotent, $t^{k}=0$ cu $k\ge 1$. Atunci $t$ nu e inversabil (altfel,
+înmulțind $t^{k}=0$ cu $(t^{-1})^{k}$, ar rezulta $1=0$), deci Pasul 2
+dă $t(t-1)(t-2)=0$. Arătăm că $t-1$ și $t-2$ sunt
+inversabile:
+\begin{itemize}[nosep,leftmargin=1.4em]
+  \item $1-t$ e inversabil, cu inversul $1+t+\cdots+t^{k-1}$ (produsul
+        telescopează: $(1-t)(1+t+\cdots+t^{k-1})=1-t^{k}=1$); deci
+        $t-1=-(1-t)$ e inversabil;
+  \item $t-2=-2\bigl(1-2^{-1}t\bigr)$; elementul $2^{-1}t$ e nilpotent
+        ($2^{-1}$ fiind central, $(2^{-1}t)^{k}=(2^{-1})^{k}t^{k}=0$), deci
+        $1-2^{-1}t$ e inversabil prin același argument, iar $2$ e
+        inversabil prin Pasul 1; produsul lor e inversabil.
+\end{itemize}
+Elementele $t$, $t-1$, $t-2$ sunt polinoame în $t$ cu coeficienți
+centrali, deci comută între ele. Înmulțind relația
+$t(t-1)(t-2)=0$ cu $\bigl[(t-1)(t-2)\bigr]^{-1}$ obținem $t=0$. Așadar
+$A$ e redus. (Aici s-a folosit \emph{esențial} ipoteza de ordin impar,
+prin inversabilitatea lui $2$.)
+
+\smallskip
+\textit{Pas 4: orice element satisface o relație $x^{s}=x$ cu $s\ge 2$.}
+$A$ fiind finit, șirul puterilor $x,x^{2},x^{3},\dots$ nu poate avea toate
+elementele distincte: există $n\ge 1$ și $t\ge 1$ cu
+$x^{n+t}=x^{n}$. Cum $A$ e redus (Pasul 3), Propoziția~\ref{prop:redus} din cartea de
+teorie (,,inele reduse: coborârea exponentului'': dacă $A$ e redus
+și $x^{n+t}=x^{n}$ pentru un $n\ge 1$, atunci $x^{t+1}=x$) dă
+\[
+  x^{t+1}=x,\qquad\text{cu } t+1\ge 2 .
+\]
+
+\smallskip
+\textit{Pas 5: concluzia.} Am arătat că pentru orice $x\in A$
+există un întreg $n(x)>1$ cu $x^{n(x)}=x$. Prin Teorema~\ref{teo:jacobson}
+(Jacobson) din cartea de teorie --- \emph{dacă pentru orice $x\in A$
+există $n(x)>1$ cu $x^{n(x)}=x$, atunci $A$ este comutativ} --- rezultă
+că $A$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Problema conține, ca un caz particular, \emph{teorema lui Wedderburn}
+(Teorema~\ref{teo:wedderburn} din carte: orice corp finit este comutativ). Într-adevăr,
+într-un corp finit singurul element neinversabil este $0$, iar
+$0=0+0$ este sumă a doi idempotenți care comută; așadar orice
+corp finit de ordin impar satisface ipoteza \emph{în mod automat}, iar
+concluzia problemei revine acolo exact la comutativitatea lui. Prin urmare
+nicio soluție nu poate evita o unealtă de forța lui Wedderburn ---
+aici, teorema lui Jacobson, care o generalizează.
+
+Ipoteza de ordin impar intervine o singură dată: ca $2$ să fie
+inversabil, deci ca $t-2$ să fie inversabil în Pasul 3. Fără
+ea, relația $x(x-1)(x-2)=0$ nu mai forțează anularea
+nilpotenților.
+\end{obs}
+
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că $x^{4}=x$ pentru orice $x\in A$.
+Demonstrați că $A$ este comutativ.
+\end{problema}
+
+\begin{solutie}
+\textit{Pasul 1: $x+x=0$ pentru orice $x$.} Aplicând ipoteza lui $-1$:
+$-1=(-1)^{4}=1$, deci $1+1=0$ și, înmulțind cu $x$, $x+x=0$ pentru
+orice $x\in A$. În particular $-y=y$ pentru orice $y$.
+
+\smallskip
+\textit{Pasul 2: $A$ este redus.} Dacă $x^{2}=0$, atunci
+$x=x^{4}=x^{2}\cdot x^{2}=0$. Așadar singurul element cu pătratul nul
+este $0$ (și, prin inducție, singurul nilpotent este $0$).
+
+\smallskip
+\textit{Pasul 3: idempotenții sunt centrali.} Fie $e^{2}=e$ și
+$x\in A$. Elementul $u=ex-exe$ satisface
+\[
+  u^{2}=(ex-exe)(ex-exe)=exex-exexe-exeex+exeexe=exex-exexe-exex+exexe=0
+\]
+(am folosit $e^{2}=e$), deci $u=0$ prin Pasul 2, adică $ex=exe$. Analog,
+$v=xe-exe$ satisface $v^{2}=xexe-xexe-exexe+exexe=0$, deci $xe=exe$.
+Prin urmare $ex=xe$: orice idempotent este central (este Lema~\ref{teo:machale}
+din partea de teorie).
+
+\smallskip
+\textit{Pasul 4: $x^{2}+x$ este idempotent, deci central.} Puterile lui
+$x$ comută între ele, deci
+\[
+  (x^{2}+x)^{2}=x^{4}+x^{3}+x^{3}+x^{2}=x^{4}+2x^{3}+x^{2}=x+x^{2},
+\]
+unde am folosit $x^{4}=x$ și $2x^{3}=0$ (Pasul 1). Din Pasul 3,
+\[
+  x^{2}+x\in Z(A)\qquad\text{pentru orice }x\in A.
+\]
+
+\smallskip
+\textit{Pasul 5: mecanismul lui MacHale.} Aplicând Pasul 4 lui $x$, $y$
+și $x+y$ (dezvoltarea lui $(x+y)^{2}$ păstrează ordinea factorilor):
+\[
+  (x+y)^{2}+(x+y)-(x^{2}+x)-(y^{2}+y)=xy+yx\in Z(A).
+\]
+Elementul central $xy+yx$ comută cu $x$:
+$x^{2}y+xyx=xyx+yx^{2}$, deci $x^{2}y=yx^{2}$ pentru orice $y$, adică
+$x^{2}\in Z(A)$. În fine,
+\[
+  x=(x^{2}+x)-x^{2}\in Z(A)
+\]
+pentru orice $x\in A$, deci $A$ este comutativ.
+\end{solutie}
+
+\begin{obs}
+Pasul-cheie este Pasul 4: identitatea $x^{4}=x$ face ca $x^{2}+x$ să fie
+idempotent, iar într-un inel redus idempotenții sunt centrali; de aici
+încolo lucrează mecanismul din teorema lui MacHale
+(Teorema~\ref{teo:machalecomut}), exact ca la problema OJM.22.
+
+Problema este un caz particular al teoremei lui Jacobson
+(Teorema~\ref{teo:jacobson}), cu $n(x)=4$ pentru toți $x$; aici însă
+demonstrația este complet elementară. Exemple de inele cu $x^{4}=x$:
+$\mathbb{Z}/2$, corpul cu $4$ elemente $\mathbb{F}_{4}$ (în care
+$x^{3}=1$ pentru $x\neq0$, prin Lagrange în grupul $\mathbb{F}_{4}^{*}$ de
+ordin $3$) și produsele directe ale acestora. Un inel necomutativ precum
+$M_{2}(\mathbb{Z}/2)$ nu satisface ipoteza: pentru
+$x=\begin{psmallmatrix}0&1\\0&0\end{psmallmatrix}$ avem $x^{2}=0$, deci
+$x^{4}=0\neq x$.
+
+Pasul 1 folosește esențial faptul că exponentul $4$ este par (el dă
+$(-1)^{4}=1$). Pentru exponentul impar $3$, inelul $\mathbb{Z}/3$
+satisface $x^{3}=x$ fără ca $1+1$ să fie $0$; concluzia de
+comutativitate rămâne adevărată, dar se obține prin alt calcul (vezi demonstrația de după
+Teorema~\ref{teo:jacobson} din partea de teorie).
+\end{obs}
+
+\begin{problema}
+Fie $K$ un corp al cărui grup multiplicativ $(K^*,\cdot)$ este ciclic. Arătați că $K$ este finit.
+\end{problema}
+
+\begin{solutie}
+Fie $K^* = \langle g \rangle$. Dacă grupul $\langle g \rangle$ este finit, atunci $K = K^* \cup \{0\}$ este finit și am terminat. Presupunem deci, prin reducere la absurd, că $K^*$ este ciclic și \emph{infinit}, și căutăm o contradicție.
+
+\emph{Pasul 1: caracteristica este} $2$. Într-un grup ciclic infinit, singurul element de ordin finit este elementul neutru (puterile unui generator sunt toate distincte). Dar $(-1)^2 = 1$, deci $-1$ are ordinul cel mult $2$: rezultă că $-1 = 1$, adică $1 + 1 = 0$.
+
+\emph{Pasul 2: o relație polinomială pentru $g$.} Considerăm elementul $1+g$. Dacă $1+g = 0$, atunci $g = 1$ (caracteristică $2$), deci $K^* = \{1\}$ ar fi finit: exclus. Așadar $1 + g \in K^* = \langle g \rangle$, adică
+\[
+  1 + g = g^m \qquad \text{pentru un anumit } m \in \mathbb{Z}.
+\]
+Cazurile $m = 0$ și $m = 1$ dau $g = 0$, respectiv $1 = 0$: imposibil. Dacă $m \geq 2$, relația se rescrie (în caracteristică $2$) sub forma
+\[
+  g^m + g + 1 = 0;
+\]
+dacă $m \leq -1$, înmulțim cu $g^{-m}$ și obținem $g^{-m} + g^{1-m} = 1$, adică
+\[
+  g^{\,|m|+1} + g^{\,|m|} + 1 = 0.
+\]
+În ambele cazuri, $g$ este rădăcină a unui polinom \emph{monic nenul} cu coeficienți în subcorpul prim $\mathbb{Z}_2$; fie $d \geq 2$ gradul său.
+
+\emph{Pasul 3: puterile lui $g$ încap într-o mulțime finită.} Fie
+\[
+  E = \bigl\{ a_0 + a_1 g + \cdots + a_{d-1} g^{\,d-1} :\ a_i \in \mathbb{Z}_2 \bigr\},
+\]
+o mulțime cu cel mult $2^d$ elemente. Relația de la Pasul 2 exprimă $g^d$ ca o combinație a puterilor mai mici, deci $E$ este stabilă la înmulțirea cu $g$: prin inducție, \emph{toate} puterile $g^k$ cu $k \geq 0$ aparțin lui $E$.
+
+Dar în grupul ciclic infinit $\langle g \rangle$ puterile $g^0, g^1, g^2, \ldots$ sunt distincte două câte două: o infinitate de elemente distincte într-o mulțime cu cel mult $2^d$ elemente. Contradicția încheie demonstrația: $K^*$ nu poate fi ciclic infinit, deci $K$ este finit.
+
+\medskip
+\noindent\textbf{Observație} Rezultatul se citește ca o reciprocă: se știe că grupul multiplicativ al oricărui corp finit este ciclic; problema arată că ciclicitatea lui $K^*$ \emph{caracterizează} corpurile finite. De remarcat economia de mijloace: singurele ingrediente sunt ,,ordinul finit într-un grup ciclic infinit'' și un argument de numărare.
+\end{solutie}
+
+\begin{problema}[Clasică]
+Căsuțele unui caroiaj $N \times N$ se colorează cu $n \ge 1$ culori (nu neapărat distincte). Două colorări sunt considerate echivalente dacă una se obține din cealaltă printr-o rotație a caroiajului.
+\begin{parti}
+\item Determinați numărul colorărilor neechivalente.
+\item Deduceți că numărătorul expresiei obținute este divizibil cu 4 pentru orice $n \ge 1$ și orice $N \ge 1$.
+\end{parti}
+\end{problema}
+
+\begin{solutie}
+Fie $X$ mulțimea celor $n^{N^2}$ colorări ale celor $N^2$ căsuțe și fie $G = \{\mathrm{id}, \rho, \rho^2, \rho^3\}$ grupul rotațiilor caroiajului ($\rho$ = rotația de $90^\circ$), care acționează pe $X$ permutând căsuțele. Colorările neechivalente sunt exact \emph{orbitele} acestei acțiuni.
+
+\emph{Lema lui Burnside.} Numărul orbitelor unei acțiuni a unui grup finit $G$ pe o mulțime finită $X$ este
+\[
+\#\text{orbite} = \frac{1}{|G|} \sum_{\sigma \in G} \bigl|\operatorname{Fix}(\sigma)\bigr|,
+\qquad
+\operatorname{Fix}(\sigma) = \{x \in X :\ \sigma \cdot x = x\}.
+\]
+
+\emph{Demonstrație.} Numărăm în două moduri perechile $(\sigma, x)$ cu $\sigma \cdot x = x$. Pe de o parte, numărul lor este $\sum_{\sigma} |\operatorname{Fix}(\sigma)|$. Pe de altă parte, el este $\sum_{x \in X} |\operatorname{Stab}(x)|$, unde $\operatorname{Stab}(x)$ este stabilizatorul lui $x$. Prin teorema orbită-stabilizator (aplicația $\sigma \mapsto \sigma \cdot x$ induce o bijecție între clasele la stânga din $G$ după $\operatorname{Stab}(x)$ și orbita lui $x$), avem $|\operatorname{Stab}(x)| = |G|/|\operatorname{Orb}(x)|$. Grupând elementele $x$ pe orbite, fiecare orbită $\mathcal{O}$ contribuie cu $\sum_{x \in \mathcal{O}} |G|/|\mathcal{O}| = |G|$. Suma totală este deci $|G| \cdot \#\text{orbite}$, de unde formula.
+
+\emph{(a) Numărăm ciclurile fiecărei rotații pe cele $N^2$ căsuțe.} O colorare este fixată de $\sigma$ dacă și numai dacă este constantă pe fiecare ciclu al lui $\sigma$, deci $|\operatorname{Fix}(\sigma)| = n^{\,c(\sigma)}$, unde $c(\sigma)$ este numărul de cicluri.
+
+\begin{itemize}
+\item[---] $\mathrm{id}$: fiecare căsuță formează singură un ciclu, $c = N^2$.
+\item[---] $\rho^2$ ($180^\circ$): căsuțele se grupează în perechi $\{x, \rho^2 x\}$, iar dacă $N$ este impar, căsuța centrală este fixă; $c = \frac{N^2}{2}$ ($N$ par), respectiv $\frac{N^2+1}{2}$ ($N$ impar).
+\item[---] $\rho, \rho^3$ ($90^\circ$): orbite de câte 4 căsuțe, plus centrul fix când $N$ este impar; $c = \frac{N^2}{4}$ ($N$ par), respectiv $\frac{N^2-1}{4} + 1 = \frac{N^2+3}{4}$ ($N$ impar).
+\end{itemize}
+
+Conform lemei lui Burnside, numărul colorărilor neechivalente este
+\[
+\begin{cases}
+\dfrac{n^{N^2} + n^{N^2/2} + 2\,n^{N^2/4}}{4}, & N \text{ par},\\[3ex]
+\dfrac{n^{N^2} + n^{(N^2+1)/2} + 2\,n^{(N^2+3)/4}}{4}, & N \text{ impar}.
+\end{cases}
+\]
+
+\emph{(b)} Membrul stâng numără orbite, deci este un număr întreg: numărătorul de mai sus este divizibil cu 4 pentru orice $n \ge 1$ și orice $N \ge 1$.
+
+\medskip
+\noindent\textbf{Observație.} Pentru caroiajul $2 \times 2$ ($N = 2$, par) formula dă $\frac{n^4+n^2+2n}{4}$, iar pentru $n = 2$ dă $\frac{16+4+4}{4} = 6$ colorări neechivalente, lucru ușor de confirmat prin enumerare directă. Poanta punctului (b) merită savurată: un enunț de \emph{teoria numerelor} este demonstrat printr-o \emph{numărare de orbite}, fără nicio congruență. Pe de altă parte, se poate, desigur, proceda și pe cale aritmetică; dar pentru enunțuri mai complicate (coliere cu multe mărgele), calea combinatorie rămâne singura rezonabilă.
+\end{solutie}
+
+\begin{problema}
+Fie $p$ un număr prim, $b \ge 2$ o bază cu $\gcd(b,p) = 1$ și $f = \ord_p(b)$.
+Scrierea lui $\frac{1}{p}$ în baza $b$ este periodică simplă, cu perioada de lungime
+exact $f$; fie $N = \frac{b^f-1}{p}$ numărul format din cele $f$ cifre ale unei
+perioade (pentru $b = 10$, $p = 7$: $N = 142857$).
+\begin{parti}
+  \item Arătați că, pentru $1 \le k \le p-1$, numărul $kN$ (scris cu $f$ cifre
+    în baza $b$) este o permutare circulară a lui $N$ dacă și numai dacă
+    $k \in \langle b \rangle = \{1, b, \dots, b^{f-1}\}$ în $(\ZZ_p^*, \cdot)$;
+    deduceți că numerele $N, 2N, \dots, (p-1)N$ se împart în exact $(p-1)/f$
+    familii, fiecare formată din cele $f$ rotații ale unui ,,număr ciclic''.
+  \item (Midy) Dacă $f = 2g$ este par, cele două jumătăți ale unei perioade, de
+    câte $g$ cifre fiecare, au suma $b^g - 1$.
+\end{parti}
+\end{problema}
+
+\begin{solutie}
+\textit{Pasul 0: perioada are lungimea $f$ și $N = \frac{b^f-1}{p}$.}
+Din $b^f \equiv 1 \pmod p$ ($f = \ord_p(b)$), numărul $N = \frac{b^f-1}{p}$ este
+întreg și (în baza $b$)
+\[
+  \frac{1}{p} = \frac{N}{b^f-1}
+  = N\Bigl(\frac{1}{b^f} + \frac{1}{b^{2f}} + \cdots\Bigr)
+  = 0,\overline{a_1 a_2 \dots a_f},
+\]
+unde $a_1 \dots a_f$ este scrierea cu $f$ cifre a lui $N$ (eventual cu
+zerouri la început). Perioada nu poate fi mai scurtă: o perioadă $L$ ar da
+$b^L \equiv 1 \pmod p$, iar $\ord_p(b) = f$ dă $f \mid L$.
+
+\smallskip
+\textit{Pasul 1: înmulțirea cu $b^j$ rotește perioada.} Fie $r_j$
+restul împărțirii lui $b^j$ la $p$, adică $b^j = pC_j + r_j$. Împărțind la $p$,
+$b^j \cdot \frac{1}{p} = C_j + \frac{r_j}{p}$; membrul stâng este perioada
+cu virgula mutată cu $j$ poziții, deci partea sa fracționară este
+perioada rotită cu $j$ poziții:
+\[
+  \frac{r_j}{p} = 0,\overline{a_{j+1} \dots a_f a_1 \dots a_j}.
+\]
+Cum $0 < r_j N < p \cdot N = b^f - 1$, scrierea cu $f$ cifre a lui $r_j N$ este
+exact rotația lui $N$ cu $j$ poziții.
+
+\smallskip
+\textit{(a) Pasul 2: $kN$ este o rotație $\iff k \in \langle b \rangle$.}
+Resturile $r_j = b^j \bmod p$ ($j = 0, \dots, f-1$) parcurg exact
+subgrupul $\langle b \rangle = \{1, b, \dots, b^{f-1}\}$, iar Pasul 1 arată că
+fiecare $r_j N$ este o rotație a lui $N$. Reciproc, dacă $kN$ (cu $f$ cifre)
+este o rotație a lui $N$, atunci $\frac{k}{p}$ are aceeași perioadă ca $\frac{1}{p}$,
+deplasată cu un anumit $j$, deci $k \equiv b^j \pmod p$. Așadar $kN$ este o rotație
+a lui $N$ dacă și numai dacă $k \in \langle b \rangle$.
+
+\smallskip
+\textit{Pasul 3: familiile.} Subgrupul $\langle b \rangle$ are $f$ elemente, care dau cele $f$
+rotații distincte ale lui $N$; cele $(p-1)/f$ clase la stânga ale lui $\langle b \rangle$
+în $(\ZZ_p^*, \cdot)$ dau tot atâtea familii, fiecare cu propriul său
+,,număr ciclic''. Când $b$ este rădăcină primitivă ($f = p-1$), toți
+multiplii $N, \dots, (p-1)N$ sunt rotații ale lui $N$.
+
+\smallskip
+\textit{(b) Midy.} Fie $f = 2g$. Elementul $b^g$ are ordinul $2$ (căci
+$(b^g)^2 = b^f \equiv 1$, dar $b^g \not\equiv 1$, deoarece $\ord_p(b) = 2g$), deci
+$b^g \equiv -1 \pmod p$, adică $r_g = p - 1$. Conform Pasului 1, $(p-1)N$ scris cu $2g$
+cifre este rotația lui $N$ cu $g$ poziții: dacă $N = A\,b^g + B$ (jumătatea superioară $A$ și
+jumătatea inferioară $B$, de câte $g$ cifre), această rotație este $B\,b^g + A$. Dar
+$(p-1)N = pN - N = (b^{2g} - 1) - N$, deci
+\[
+  B\,b^g + A = (b^{2g}-1) - (A\,b^g + B)
+  \implies (A+B)(b^g+1) = b^{2g} - 1 = (b^g-1)(b^g+1),
+\]
+de unde $A + B = b^g - 1$.
+
+\medskip
+\noindent\textbf{Observație} Pentru $p = 7$: $2N = 285714$, $3N = 428571$,
+$4N = 571428$, $5N = 714285$, $6N = 857142$, toate rotații ale lui $142857$; în schimb
+$7N = 999999 = 10^6 - 1$, în acord cu $N = \frac{10^6-1}{7}$. Numerele
+care au proprietatea (a) în forma ei \textit{completă} (când $b$ este rădăcină primitivă,
+$f = p-1$) se numesc \textbf{numere ciclice}, iar numerele prime corespunzătoare se numesc
+\textbf{numere prime cu perioadă maximă} (în engleză, full reptend primes); în baza $10$:
+$p = 7, 17, 19, 23, 29, 47, \dots$ Este o problemă \textit{deschisă} (legată de
+conjectura lui Artin) dacă există o infinitate de astfel de numere prime. Punctul (b) este
+\textbf{teorema lui Midy} (E. Midy, 1836); pentru $f = 2g$ oarecare se vorbește de
+teorema lui Midy extinsă. Toată ,,magia'' lui $142857$ este așadar un enunț despre
+un generator al unui grup ciclic.
+\end{solutie}
+
+\begin{problema}
+Fie $p$ un număr prim, $D \mid p-1$ și $m \ge 1$ un întreg. Arătați că suma puterilor a $m$-a ale elementelor de ordin $D$ din $(\ZZ_p^*,\cdot)$ este congruentă modulo $p$ cu \emph{suma lui Ramanujan}
+\[
+  \sum_{\ord(x)=D} x^m \equiv c_D(m) = \mu\!\left(\tfrac{D}{g}\right)\frac{\varphi(D)}{\varphi(D/g)},
+  \qquad g = \gcd(D,m),
+\]
+unde $\mu$ este funcția lui Möbius, iar $\varphi$ este indicatorul lui Euler. (În particular, ori de câte ori $\gcd(m,D)=1$, deci și pentru $m=1$, suma este egală cu $\mu(D)$.)
+\end{problema}
+
+\begin{solutie}
+Pentru fiecare $d \mid p-1$, notăm cu $S_d(m)$ suma puterilor a $m$-a ale elementelor de ordin exact $d$ din $\ZZ_p^*$; vrem să arătăm că $S_D(m) = c_D(m)$ (toate egalitățile sunt în $\ZZ_p$).
+
+\emph{Pasul 1: suma puterilor pe soluțiile ecuației $x^d = 1$.} Grupul $\ZZ_p^*$ este ciclic de ordin $p-1$ (rezultat din capitolul despre corpuri); pentru $d \mid p-1$, soluțiile ecuației $x^d = 1$ formează unicul subgrup ciclic $C_d$ de ordin $d$ (polinomul $X^d - 1$ are cel mult $d$ rădăcini, iar $C_d$ le furnizează pe toate). Atunci
+\[
+  T(d) := \sum_{x^d = 1} x^m = \sum_{y \in C_d} y^m =
+  \begin{cases}
+    d, & d \mid m,\\
+    0, & d \nmid m,
+  \end{cases}
+\]
+căci, dacă $\zeta$ generează $C_d$, suma devine suma geometrică $\sum_{j=0}^{d-1} \zeta^{jm}$, egală cu $d$ când $\zeta^m = 1$ (adică $d \mid m$) și cu $0$ în caz contrar.
+
+\emph{Pasul 2: clasificarea după ordin.} Orice soluție a ecuației $x^D = 1$ are ca ordin un divizor al lui $D$, și reciproc; grupând după ordin,
+\[
+  T(D) = \sum_{d \mid D} S_d(m). \tag{1}
+\]
+
+\emph{Pasul 3: inversiunea Möbius.} Relația (1) are loc pentru orice divizor $D$ al lui $p-1$, deci și pentru orice divizor al lui $D$. Prin inversiunea Möbius (Propoziția~\ref{prop:mobius}(ii) din partea de teorie, aplicată în grupul abelian $(\ZZ_p,+)$) și Pasul 1,
+\[
+  S_D(m) = \sum_{d \mid D} \mu\!\left(\tfrac{D}{d}\right) T(d)
+  = \sum_{\substack{d \mid D\\ d \mid m}} \mu\!\left(\tfrac{D}{d}\right) d
+  = \sum_{d \mid g} d\,\mu\!\left(\tfrac{D}{d}\right),
+  \qquad g=\gcd(D,m).
+\]
+
+\emph{Pasul 4: forma închisă.} Arătăm identitatea între numere întregi
+\[
+  \Sigma:=\sum_{d \mid g} d\,\mu\!\left(\tfrac{D}{d}\right)=\mu(k)\,\frac{\varphi(D)}{\varphi(k)},\qquad k=\frac{D}{g}.
+\]
+Scriem $d=g/e$, cu $e$ parcurgând divizorii lui $g$; atunci $D/d=ke$ și $\Sigma=\sum_{e\mid g}\frac{g}{e}\,\mu(ke)$. Dacă $k$ și $e$ au un factor prim comun $q$, atunci $q^2\mid ke$ și $\mu(ke)=0$; dacă $(k,e)=1$, atunci $\mu(ke)=\mu(k)\mu(e)$ (factorii primi ai lui $ke$ sunt cei ai lui $k$ reuniți disjunct cu cei ai lui $e$). Deci
+\[
+  \Sigma=\mu(k)\sum_{\substack{e\mid g\\ (e,k)=1}}\frac{g}{e}\,\mu(e)
+  =\mu(k)\,g\prod_{\substack{q\mid g\\ q\nmid k}}\Bigl(1-\frac1q\Bigr),
+\]
+produsul fiind după numerele prime $q$ (dezvoltând produsul obținem exact termenii $\mu(e)/e$, cu $e$ produs de prime distincte care divid $g$ și nu divid $k$; ceilalți $e$ au $\mu(e)=0$). Dacă $\mu(k)=0$, ambii membri sunt $0$. Altfel, din formula lui Euler $\varphi(N)=N\prod_{q\mid N}(1-\frac1q)$ și $D=gk$,
+\[
+  \frac{\varphi(D)}{\varphi(k)}=\frac{D}{k}\prod_{\substack{q\mid D\\ q\nmid k}}\Bigl(1-\frac1q\Bigr)=g\prod_{\substack{q\mid g\\ q\nmid k}}\Bigl(1-\frac1q\Bigr),
+\]
+căci un prim care divide $D=gk$ fără să dividă $k$ divide $g$, iar reciproc orice prim care divide $g$ divide $D$. Așadar $\Sigma=\mu(k)\varphi(D)/\varphi(k)=c_D(m)$, deci $S_D(m)=c_D(m)$. Pentru $m = 1$ avem $g = 1$, $k=D$ și $S_D(1) = \mu(D)$. $\blacksquare$
+
+\medskip
+\noindent\textbf{Observație}\quad Verificare pentru $p = 7$, $m = 1$: elementele de ordin $3$ sunt $2$ și $4$, cu suma $6 \equiv -1 = \mu(3)$; cele de ordin $6$ sunt $3$ și $5$, cu suma $8 \equiv 1 = \mu(6)$. $\checkmark$\quad Cazul $m = 1$ este un rezultat clasic al lui \textbf{Gauss}: suma rădăcinilor primitive de ordin $D$ ale unității este $\mu(D)$ (pentru $D = p-1$: suma rădăcinilor primitive modulo $p$). Pentru $m$ oarecare se obțin \textbf{sumele lui Ramanujan} $c_D(m)$, obiect central al analizei Fourier a funcțiilor aritmetice; aici ele sunt transpuse în corpul $\ZZ_p$. Schema: ciclicitatea dă inventarul, suma geometrică adună puterile, iar Möbius separă ordinele.
+\end{solutie}
+
+\begin{problema}
+Fie $p$ un număr prim impar și $a \in \ZZ$ cu $p \nmid a$. Determinați restul împărțirii numărului
+\[
+  \prod_{k=1}^{p-1}\bigl(k^2 + a^2\bigr)
+\]
+la $p$.
+\end{problema}
+
+\begin{solutie}
+\textbf{Răspuns:} produsul este congruent cu $0$ modulo $p$ dacă $p \equiv 1 \pmod 4$ și cu $4$ modulo $p$ dacă $p \equiv 3 \pmod 4$, \emph{independent} de $a$ (cu $p \nmid a$). Lucrăm în corpul $\ZZ_p$.
+
+\emph{Pasul 0: reducerea la $a = 1$.} Cum $p \nmid a$, elementul $a$ este inversabil în $\ZZ_p$, deci $k \mapsto ak$ permută mulțimea $\{1,\dots,p-1\}$; astfel, prin mica teoremă a lui Fermat ($a^{\,p-1} \equiv 1$),
+\[
+  \prod_{k=1}^{p-1}(k^2 + a^2)
+  = \prod_{k=1}^{p-1}\bigl((ak)^2 + a^2\bigr)
+  = a^{\,2(p-1)} \prod_{k=1}^{p-1}(k^2 + 1)
+  \equiv \prod_{k=1}^{p-1}(k^2 + 1) \pmod p .
+\]
+Rămâne deci să calculăm $\prod_{k=1}^{p-1}(k^2+1)$.
+
+\emph{Pasul 1: reducerea la pătrate.} Când $k$ parcurge valorile $1,\dots,p-1$, pătratul $k^2$ parcurge mulțimea $Q$ a pătratelor nenule, fiecare element fiind atins \emph{exact de două ori} ($k$ și $-k$ dau același pătrat, iar $x^2 = y^2$ implică $y = \pm x$). Prin urmare $|Q| = \frac{p-1}{2}$ și
+\[
+  \prod_{k=1}^{p-1}(k^2+1) = \Bigl( \prod_{r \in Q} (r+1) \Bigr)^{\!2} .
+\]
+
+\emph{Pasul 2: pătratele sunt rădăcinile lui $X^{(p-1)/2}-1$.} Pentru $r = s^2 \in Q$, prin mica teoremă a lui Fermat, $r^{(p-1)/2} = s^{\,p-1} = 1$: cele $\frac{p-1}{2}$ elemente ale lui $Q$ sunt rădăcini ale polinomului $X^{(p-1)/2}-1$, care are cel mult $\frac{p-1}{2}$ rădăcini. Așadar $Q$ este exact mulțimea rădăcinilor și
+\[
+  \prod_{r \in Q} (X - r) = X^{\frac{p-1}{2}} - 1 . \tag{$*$}
+\]
+
+\emph{Pasul 3: evaluarea.} Punem $X = -1$ în $(*)$:
+\[
+  \prod_{r \in Q} (-1 - r) = (-1)^{\frac{p-1}{2}} - 1
+  \Longrightarrow
+  \prod_{r \in Q} (r + 1) = (-1)^{\frac{p-1}{2}} \Bigl( (-1)^{\frac{p-1}{2}} - 1 \Bigr) .
+\]
+Dacă $p \equiv 1 \pmod 4$, exponentul $\frac{p-1}{2}$ este par și membrul drept este $1\cdot(1-1) = 0$; produsul cerut este $0^2 = 0$. Dacă $p \equiv 3 \pmod 4$, exponentul este impar și membrul drept este $(-1) \cdot (-1-1) = 2$; produsul cerut este $2^2 = 4$. $\blacksquare$
+
+\emph{Soluție alternativă (numere complexe / Frobenius), direct pentru $a$ oarecare.} Factorizăm $k^2 + a^2 = (k - ai)(k + ai)$, unde $i^2 = -1$. Pornim de la identitatea polinomială $\prod_{k=1}^{p-1}(X-k) = X^{\,p-1}-1$ în $\ZZ_p[X]$ (ambii membri sunt polinoame monice de grad $p-1$, cu aceleași rădăcini $1,\dots,p-1$). Evaluând-o în $X = ai$ și în $X = -ai$ (în $\ZZ_p$ dacă $-a^2$ este pătrat, altfel în corpul $\mathbb{F}_{p^2}$), cum $p-1$ este par și $a^{\,p-1} \equiv 1$ (Fermat), obținem:
+\[
+  \begin{aligned}
+    \prod_{k=1}^{p-1}(k^2+a^2)
+    &= \Bigl( \prod_{k=1}^{p-1} (k - ai) \Bigr) \Bigl( \prod_{k=1}^{p-1} (k + ai) \Bigr) \\
+    &= \bigl( (ai)^{\,p-1} - 1 \bigr) \bigl( (-ai)^{\,p-1} - 1 \bigr)
+     = \bigl( i^{\,p-1} - 1 \bigr) \bigl( (-i)^{\,p-1} - 1 \bigr) .
+  \end{aligned}
+\]
+Factorul $a^{\,p-1}$ s-a simplificat, deci răspunsul nu depinde de $a$. Dacă $p \equiv 1 \pmod 4$, atunci $i \in \ZZ_p$ și $i^{\,p-1} = 1$ (Fermat), deci produsul este $(1-1)(1-1) = 0$. Dacă $p \equiv 3 \pmod 4$, atunci $i \notin \ZZ_p$, iar automorfismul Frobenius $x \mapsto x^p$ al lui $\mathbb{F}_{p^2}$ schimbă între ele cele două rădăcini ale lui $X^2+1$, deci $i^p = -i$; prin urmare $i^{\,p-1} = i^p/i = -1$ și, analog, $(-i)^{\,p-1} = -1$, iar produsul este $(-1-1)(-1-1) = 4$.
+
+\medskip
+\noindent\textbf{Observație} Verificare pentru $p = 7$: modulo $7$, factorii $k^2+1$ sunt $2,5,3,3,5,2$, cu produsul $\equiv 4$. $\checkmark$ \quad Anularea în cazul $p \equiv 1 \pmod 4$ are o interpretare directă: identitatea $(*)$, evaluată în $-1$, dă zero exact când $-1$ este pătrat, adică atunci când ecuația $k^2+1 \equiv 0$ are soluții, iar atunci un factor al produsului este nul. Întreaga soluție se sprijină pe o singură identitate: rădăcinile unui polinom monic, numărate toate, îl \emph{determină}, iar după aceea orice evaluare nu mai costă nimic. Este același procedeu ca în $X^p - X = \prod_{k \in \ZZ_p}(X - k)$, din care se deduce, de exemplu, teorema lui Wilson.
+\end{solutie}
+

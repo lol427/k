@@ -1,0 +1,557 @@
+\subsectiuneclasa{Clasa a XII-a}{Structuri algebrice: grupuri, inele și corpuri --- comutativitate, idempotenți, involuții.}{Enunțuri · Clasa a XII-a}
+
+\nivel{olm}{Nivel OLM}{Faza locală --- o singură idee, bine aplicată.}
+\setcounter{cat}{1}\setcounter{problemaX}{0}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup în care $x^{2}=e$ pentru orice $x \in G$. Demonstrați
+că $G$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Determinați toate grupurile $G$ pentru care există numere naturale
+$m,n$ prime între ele astfel încât $x^{m}=x^{n}=e$ pentru orice
+$x \in G$.
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit comutativ de ordin \emph{impar}. Demonstrați că
+produsul tuturor elementelor sale este $e$.
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit care are exact un element de ordin $2$, notat $a$.
+Demonstrați că $a$ comută cu orice element al lui $G$ (adică
+$a$ aparține centrului lui $G$).
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup și $a,b \in G$ cu $aba^{-1}=b^{-1}$. Demonstrați
+că $a^{2}b = ba^{2}$ (adică $a^{2}$ comută cu $b$).
+\end{problema}
+
+\begin{problema}
+Un număr natural $n$ se numește \emph{liber de pătrate} dacă
+nu este divizibil cu pătratul niciunui număr prim (echivalent, în
+descompunerea $n=p_{1}p_{2}\cdots p_{r}$ toți factorii primi sunt
+distincți). Fie $n$ liber de pătrate și $G$ un grup de ordin
+$n$. Găsiți cel mai mic număr natural $k$ cu proprietatea
+că $x^{k}=e$ pentru orice $x \in G$.
+\end{problema}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care există un grup
+$G$ de ordin $n$ cu proprietatea că, pentru orice divizor $d$ al lui
+$n$, grupul $G$ conține exact un element de ordin $d$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup care are un \emph{unic} subgrup ciclic netrivial (adică
+un singur subgrup ciclic diferit de $\{e\}$). Demonstrați că $G$
+este ciclic; mai precis, $G\cong\mathbb{Z}/p$ pentru un număr prim $p$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că pentru orice $x\in G$ există
+$y\in G$ astfel încât $x^{2}=yxy^{-1}$ (adică $x^{2}$ este un
+conjugat al lui $x$). Demonstrați că $G$ nu are elemente de ordin
+par (în particular, dacă $G$ e finit, $|G|$ este impar).
+\end{problema}
+
+\begin{problema}
+Există un grup $G$ care are două subgrupuri $K,L$ (nu neapărat
+diferite) astfel încât produsul lor $KL=\{\,kl : k\in K,\ l\in L\,\}$
+să fie subgrupul trivial $\{e\}$, cu $K$ sau $L$ netrivial? Justificați.
+\end{problema}
+
+\begin{problema}
+Determinați toate inelele $(A,+,\cdot)$ cu proprietatea că $0=1$
+(elementul neutru la adunare coincide cu elementul neutru la înmulțire).
+\end{problema}
+
+\begin{problema}
+Un grup $G$ se numește \emph{rezolubil} (solubil) dacă există un
+lanț finit de subgrupuri
+\[
+  \{e\}=G_{0}\trianglelefteq G_{1}\trianglelefteq\cdots\trianglelefteq G_{m}=G
+\]
+în care, pentru fiecare $i$, $G_{i}$ este normal în $G_{i+1}$ și
+câtul $G_{i+1}/G_{i}$ este abelian. Arătați că grupul $S_{3}$
+al permutărilor mulțimii $\{1,2,3\}$ (de ordin $6$) este rezolubil,
+exhibând un astfel de lanț.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel și $x\in A$ un element pentru care există un
+întreg $\ell\ge 1$ cu
+\[
+  x^{\ell}=0\qquad\text{și}\qquad (x+1)^{\ell}=0 .
+\]
+Demonstrați că $1=0$ în $A$ (adică $A$ este inelul nul).
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel. Un element $x\in A$ se numește \emph{idempotent}
+dacă $x^{2}=x$, și \emph{nilpotent} dacă există un
+întreg $n\ge 1$ cu $x^{n}=0$. Demonstrați că singurul element
+care este simultan idempotent și nilpotent este $0$.
+\end{problema}
+
+\begin{problema}
+Fie $K$ un corp și $a\in K$, cu $a\neq 1$, având proprietatea
+că, pentru orice element idempotent $x$ (adică $x^{2}=x$), elementul
+$a-x$ este tot idempotent. Demonstrați că $\operatorname{char}K=2$.
+\end{problema}
+
+
+\begin{problema}
+Fie $P \in \mathbb{C}[X]$ un polinom neconstant astfel încât $P(X)$ divide $P(X^2)$ în $\mathbb{C}[X]$. Arătați că orice rădăcină nenulă a lui $P$ este o rădăcină a unității.
+\end{problema}
+
+\begin{problema}
+Determinați toate polinoamele $P \in \RR[X]$ cu proprietatea
+\[
+  P\bigl(P(x)\bigr) = P(x)^2 \qquad \text{pentru orice } x \in \RR.
+\]
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $K$ un corp finit cu cel puțin 3 elemente. Arătați că suma tuturor elementelor lui $K$ este 0. Ce se întâmplă pentru $K = \ZZ_2$?
+\end{problema}
+
+\begin{problema}
+Fie $K$ un corp cu 8 elemente. Arătați că polinomul $X^2+X+1$ nu are nicio rădăcină în $K$, dar că polinomul $X^3+X+1$ are trei rădăcini distincte în $K$.
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $K$ un corp finit de caracteristică $p$.
+\begin{parti}
+\item Arătați că aplicația $F : K \to K$, $F(x) = x^p$, este un automorfism al lui $K$.
+\item Arătați că $F(x) = x$ dacă și numai dacă $x$ aparține subcorpului prim $\{0,\, 1,\, 1+1,\, \dots\} \simeq \ZZ_p$.
+\end{parti}
+\end{problema}
+
+\nivel{ojm}{Nivel OJM}{Faza județeană --- combină două rezultate.}
+\setcounter{cat}{2}\setcounter{problemaX}{0}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup și fie
+\[
+  H = \{\, x \in G \ :\ x^{2}=e \,\}.
+\]
+Presupunem că $H$ este subgrup al lui $G$. Demonstrați că $H$
+este comutativ.
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit de ordin \emph{par}. Demonstrați că există
+un element $x \in G$, $x \neq e$, cu $x^{2}=e$ (adică $G$ conține
+un involutiv netrivial).
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup și $a,b \in G$ astfel încât $a^{4}=e$ și
+$aba^{-1}=b^{2}$. Demonstrați că $b^{15}=e$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup de ordin $2n$ și $a \in G$ un element de ordin cel
+puțin $n$. Presupunem că există $x \in G$ cu $x \neq a^{k}$
+pentru orice $k$ (adică $x \notin \langle a\rangle$) astfel încât
+$ax=xa$. Demonstrați că $a$ comută cu orice element al lui $G$
+(adică $a$ aparține centrului lui $G$).
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup și $a,b \in G$ astfel încât orice element al
+lui $G$ comută cu $a$ sau cu $b$. Notând $C(x)=\{\,g\in G : gx=xg\,\}$
+centralizatorul lui $x$, ipoteza spune că $C(a)\cup C(b)=G$.
+Demonstrați că $a$ sau $b$ aparține centrului $Z(G)$ (cel
+puțin unul dintre ele este central).
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că $xy \in Z(G)$ pentru orice
+$x,y\in G$ cu $x\neq e$ și $y\neq e$. Demonstrați că $G$ este
+comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit și $f,g$ două endomorfisme ale lui $G$ cu
+proprietatea
+\[
+  f\bigl(x^{2}y^{4}\bigr) = g\bigl(x^{2}\bigr)\,g\bigl(y^{4}\bigr)
+  \qquad \text{pentru orice } x,y\in G.
+\]
+Determinați sub ce condiție asupra ordinului $|G|$ rezultă
+$f=g$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup de ordin $2n$, cu $n$ \emph{impar}, astfel încât
+$x^{n+2}\in Z(G)$ pentru orice $x\in G$. Demonstrați că $G$ este
+comutativ.
+\end{problema}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care există un grup
+$G$ de ordin $n$ astfel încât, pentru orice întreg $k$ cu
+$1\le k\le \tfrac{n}{3}$, aplicația $f_{k}:G\to G$, $f_{k}(x)=x^{k}$,
+este injectivă.
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $a<b$ numere reale.
+\begin{enumerate}[label=(\alph*),nosep]
+  \item Înzestrați mulțimea $G=(a,b)$ (intervalul deschis) cu o
+        structură de grup comutativ.
+  \item Aceeași cerință pentru intervalul \emph{închis}
+        $G=[a,b]$.
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $2n$. Câte soluții poate avea
+ecuația $x^{n}=e$? (Determinați toate valorile posibile ale
+numărului de soluții și arătați că fiecare apare.)
+\end{problema}
+
+\begin{problema}
+O \emph{relație de echivalență} pe o mulțime $M$ este o
+relație $\rho$ care este reflexivă ($x\,\rho\,x$ pentru orice $x$),
+simetrică ($x\,\rho\,y\Rightarrow y\,\rho\,x$) și tranzitivă
+($x\,\rho\,y$ și $y\,\rho\,z\Rightarrow x\,\rho\,z$). O relație de
+echivalență $\rho$ pe un grup $G$ se numește \emph{congruență}
+dacă este compatibilă cu operația: $x\,\rho\,y$ și
+$x'\,\rho\,y'$ implică $xx'\,\rho\,yy'$. Determinați toate
+congruențele pe grupul $(\mathbb{Z},+)$.
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $f:G\to H$ un morfism de grupuri finite, cu
+$\operatorname{Ker}f=\{x\in G:f(x)=e_{H}\}$ și $\operatorname{Im}f=f(G)$.
+Arătați că toate fibrele nevide ale lui $f$ (mulțimile
+$f^{-1}(h)$, $h\in\operatorname{Im}f$) au același număr de elemente
+și că
+\[
+  |G|=|\operatorname{Ker}f|\cdot|\operatorname{Im}f| .
+\]
+\end{problema}
+
+\begin{problema}
+Fie $\pi=2+i\in\mathbb{Z}[i]$ și $\pi\mathbb{Z}[i]=\{\pi z : z\in\mathbb{Z}[i]\}$
+subgrupul multiplilor săi în grupul aditiv $(\mathbb{Z}[i],+)$.
+Arătați că grupul cât $\mathbb{Z}[i]/\pi\mathbb{Z}[i]$ este
+izomorf cu $(\mathbb{Z}/5,+)$.
+\end{problema}
+
+\begin{problema}
+Fie $\sigma(z)=5/\bar z$ inversiunea planului față de cercul de
+rază $\sqrt5$ centrat în origine. Grupul simetriilor rețelei
+$\mathbb{Z}[i]$ (rotațiile $z\mapsto i^{k}z$ și conjugarea
+$z\mapsto\bar z$) permută mulțimea $X$ a punctelor din $\mathbb{Z}[i]$
+fixate de $\sigma$. Descrieți $X$ ca mulțime cu acțiune de grup.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $\varphi\in\operatorname{Aut}(G)$
+un automorfism fixat. Arătați că, pentru orice $x\in G$ fixat,
+numărul soluțiilor $g\in G$ ale ecuației $gx=x\varphi(g)$ divide
+$n$.
+\end{problema}
+
+\begin{problema}[Clasică]
+Arătați că nu există niciun corp $K$ pentru care grupul
+aditiv $(K,+)$ să fie izomorf cu grupul multiplicativ
+$(K^{*},\cdot)$, unde $K^{*}=K\setminus\{0\}$.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel finit al cărui grup aditiv $(A,+)$ este izomorf cu grupul
+multiplicativ $(K^{*},\cdot)$ al unui corp finit $K$. Demonstrați că
+$A$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel comutativ de caracteristică $p$, unde $p$ este un
+număr prim \emph{impar}, cu proprietatea că $x^{p}=1$ pentru orice
+element inversabil $x\in A$. Demonstrați că suma a două elemente
+inversabile este tot un element inversabil.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că orice element $x\in A$ se scrie ca
+sumă $x=e+f$ a două elemente idempotente ($e^{2}=e$, $f^{2}=f$) care
+\emph{anticomută}, adică $ef+fe=0$. Demonstrați că $A$ este
+comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel \emph{finit}, cu $1\neq 0$, având proprietatea că
+pentru orice $n\ge 1$ ecuația $x^{n+1}=x^{n}$ are ca singure soluții
+pe $0$ și pe $1$. Demonstrați că $A$ este corp.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că $x^{3}+x^{2}\in Z(A)$ pentru orice
+$x\in A$ (unde $Z(A)=\{z\in A: zy=yz\ \forall y\in A\}$ este centrul
+inelului). Demonstrați că $A$ este comutativ.
+\end{problema}
+
+
+\begin{problema}[Clasică]
+Fie $K \subseteq L$ două corpuri finite, operațiile lui $K$ fiind cele induse de $L$. Arătați că există un întreg $m \geq 1$ cu
+\[
+  |L| = |K|^m.
+\]
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel comutativ și fie $I,J$ ideale ale sale astfel încât $I \cup J$ să fie un ideal al lui $A$. Arătați că $I \subseteq J$ sau $J \subseteq I$.
+\end{problema}
+
+\nivel{onm}{Nivel ONM}{Faza națională --- mai mulți pași și o idee-cheie.}
+\setcounter{cat}{3}\setcounter{problemaX}{0}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care \emph{orice} grup
+$G$ de ordin $n$ are proprietatea că orice endomorfism neconstant al
+său este automorfism. (Un endomorfism se numește \emph{constant}
+dacă este morfismul banal $g \mapsto e$.)
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit cu un număr \emph{impar} de elemente și fie
+$H \subseteq G$ o submulțime nevidă cu proprietatea
+\[
+  ghg \in H \qquad \text{pentru orice } g \in G,\ h \in H.
+\]
+Demonstrați că $H = G$.
+\end{problema}
+
+\begin{problema}
+Fie $K$ un corp infinit și $f : K \to K$ o funcție
+\emph{polinomială} cu proprietatea
+\[
+  f\bigl(x+f(y)\bigr) = f(x)\,f(y) \qquad \text{pentru orice } x,y \in K .
+\]
+Determinați toate funcțiile $f$.
+\end{problema}
+
+\begin{problema}
+Fie $k \in \mathbb{N}^{*}$ fixat. Determinați toate polinoamele
+$P \in \mathbb{C}[X]$ cu proprietatea
+\[
+  P(z^{k}) = P(z)\,P(z+1)\cdots P(z+k-1) \qquad \text{pentru orice } z \in \mathbb{C}.
+\]
+\end{problema}
+
+\begin{problema}
+Fie $R$ un inel cu unitate, $1\neq 0$, astfel încât $x^{3}=x^{2}$
+pentru orice $x\in R$. Demonstrați că $x^{2}=x$ pentru orice
+$x\in R$ (deci $R$ este inel Boolean) și deduceți că $R$ este
+comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $k$ un număr întreg
+pozitiv astfel încât $f(x)=x^{k}$ este morfism al lui $G$.
+Presupunem că mulțimea
+\[
+  A = \{\, a \in G : a^{k}b = ba^{k} \ \text{pentru orice } b \in G \,\}
+\]
+are cel puțin $\tfrac{n}{2}+1$ elemente. Demonstrați că
+$(ab)^{k}=(ba)^{k}$ pentru orice $a,b \in G$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ cu proprietatea că pentru orice
+$g\in G$, $g\neq e$, există un element $x\in G$ cu $gx\neq xg$ (altfel
+spus, niciun element diferit de $e$ nu comută cu toate elementele lui
+$G$). Demonstrați că $n$ divide $|\operatorname{Aut}(G)|$,
+numărul automorfismelor lui $G$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit cu $|Z(G)|=2$ care nu admite niciun morfism surjectiv
+pe $\mathbb{Z}/2$ (echivalent: $G$ nu are subgrup de indice $2$, adică
+$\operatorname{Hom}(G,\mathbb{Z}/2)=\{0\}$). Demonstrați că
+$Z(\operatorname{Aut}G)=\{\operatorname{id}\}$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup și $a,b,c\in\mathbb{N}^{*}$ numere prime între ele
+două câte două. Presupunem că
+\[
+  (xy)^{n}=x^{n}y^{n}\qquad\text{pentru toți } x,y\in G,
+\]
+ori de câte ori $n$ este multiplu al lui $a$, al lui $b$ sau al lui $c$.
+Demonstrați că $G$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $p^{\alpha}q^{\beta}$, cu $p\neq q$ numere
+prime și $\alpha,\beta\ge 1$. Demonstrați că există
+subgrupuri \emph{proprii} $H,K$ ale lui $G$ (adică $H\neq G$, $K\neq G$) astfel încât $HK=G$ (unde
+$HK=\{\,hk : h\in H,\ k\in K\,\}$).
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup abelian finit cu $|G|$ care are cel puțin doi factori
+primi distincți. Demonstrați că există două subgrupuri
+\emph{proprii și netriviale} $K,L\le G$ (adică diferite de $\{e\}$ și de $G$) cu $KL=G$.
+\end{problema}
+
+\begin{problema}
+Fie $n\ge 5$. Determinați toate relațiile de congruență pe
+grupul simetric $S_{n}$. (O congruență este o relație de
+echivalență compatibilă cu compunerea permutărilor.)
+\end{problema}
+
+\begin{problema}[Clasică]
+Fie $G$ un grup finit \emph{neabelian} de ordin $n$. Demonstrați că
+numărul perechilor ordonate $(a,b)\in G\times G$ cu $ab=ba$ este cel mult
+$\dfrac{5}{8}\,n^{2}$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $k$ un întreg astfel încât
+aplicația $x\mapsto x^{k}$ este morfism de grupuri (adică
+$(xy)^{k}=x^{k}y^{k}$ pentru orice $x,y\in G$). Arătați că, pentru
+orice $x\in G$ fixat, numărul soluțiilor $a\in G$ ale ecuației
+$xa^{k}=a^{k}x$ divide $n$.
+\end{problema}
+
+\begin{problema}
+Fie $p\neq q$ numere prime, $\alpha\ge 1$, și $G$ un grup de ordin
+$p\,q^{\alpha}$ cu proprietatea că
+\[
+  p\not\equiv 1\pmod q\qquad\text{și}\qquad q^{j}\not\equiv 1\pmod p
+  \ \ \text{pentru }1\le j\le\alpha .
+\]
+Arătați că $G\cong P\times Q$ (produsul subgrupurilor sale Sylow)
+și că $pq\mid|Z(G)|$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup de ordin $p\,q^{\alpha}$ ($p\neq q$ prime) al cărui
+$q$-subgrup Sylow $Q$ este normal \emph{și abelian}, iar $P$ un
+$p$-subgrup Sylow. Arătați că
+\[
+  |Z(G)\cap Q|\equiv q^{\alpha}\pmod p,
+\]
+și deduceți că dacă $q^{\alpha}\not\equiv 1\pmod p$, atunci
+$q\mid|Z(G)|$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit și $M\subseteq G$ o submulțime cu $m$ elemente,
+cu proprietatea că $gMg^{-1}=M$ pentru orice $g\in G$ (adică $M$ are
+un singur conjugat, pe el însuși). Arătați că
+$C_{G}(M)=\{g:gx=xg\ \forall x\in M\}$ este subgrup normal și că
+$[G:C_{G}(M)]$ divide $m!$. Deduceți că dacă
+$\gcd\bigl(|G|,m!\bigr)=1$, atunci $M\subseteq Z(G)$.
+\end{problema}
+
+\begin{problema}
+Fie $p_{1}<p_{2}<\dots<p_{n}<\dots$ șirul numerelor prime. Demonstrați
+că, pentru orice $n\ge 2$, orice grup de ordin $p_{n}\,p_{n+1}$ este
+ciclic.
+\end{problema}
+
+\begin{problema}
+Determinați toate numerele naturale $m$ pentru care există un grup
+abelian finit având exact $m$ elemente de ordin $4$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup abelian finit. Arătați că există un grup $H$
+cu $G\cong H\times H$ dacă și numai dacă, pentru orice $n\ge 1$,
+numărul soluțiilor ecuației $x^{n}=e$ în $G$ este pătrat
+perfect.
+\end{problema}
+
+\begin{problema}
+Arătați că orice inel comutativ $R$ este izomorf cu centrul unui
+inel --- mai precis, există un inel $S$ (necomutativ dacă $R\neq\{0\}$)
+al cărui centru $Z(S)=\{s\in S : sx=xs\ \forall x\in S\}$ este izomorf cu
+$R$.
+\end{problema}
+
+\begin{problema}
+Fie $D$ un inel de diviziune (orice element nenul este inversabil) de
+caracteristică $n$, fie $a,c$ numere întregi și $b,d\ge 1$
+exponenți, astfel încât, pentru orice $x\in D$,
+\[
+  a\,x^{b}\in Z(D)\qquad\text{și}\qquad c\,x^{d}\in Z(D),
+\]
+unde $m\,y$ notează multiplul aditiv $\underbrace{y+\cdots+y}_{m}$.
+Demonstrați că dacă
+\[
+  \gcd(a,n)=\gcd(c,n)=1\quad\text{și}\quad \gcd(b,d)=1,
+\]
+atunci $D$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că, pentru oricare trei elemente
+distincte ale sale, există cel puțin o pereche dintre ele care
+comută. Demonstrați că $G$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel finit de ordin impar cu proprietatea că orice element
+neinversabil se scrie ca sumă a doi idempotenți care comută.
+Arătați că $A$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că $x^{4}=x$ pentru orice $x\in A$.
+Demonstrați că $A$ este comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $K$ un corp al cărui grup multiplicativ $(K^*,\cdot)$ este ciclic. Arătați că $K$ este finit.
+\end{problema}
+
+\begin{problema}[Clasică]
+Căsuțele unui caroiaj $N \times N$ se colorează cu $n \ge 1$ culori (nu neapărat distincte). Două colorări sunt considerate echivalente dacă una se obține din cealaltă printr-o rotație a caroiajului.
+\begin{parti}
+\item Determinați numărul colorărilor neechivalente.
+\item Deduceți că numărătorul expresiei obținute este divizibil cu 4 pentru orice $n \ge 1$ și orice $N \ge 1$.
+\end{parti}
+\end{problema}
+
+\begin{problema}
+Fie $p$ un număr prim, $b \ge 2$ o bază cu $\gcd(b,p) = 1$ și $f = \ord_p(b)$.
+Scrierea lui $\frac{1}{p}$ în baza $b$ este periodică simplă, cu perioada de lungime
+exact $f$; fie $N = \frac{b^f-1}{p}$ numărul format din cele $f$ cifre ale unei
+perioade (pentru $b = 10$, $p = 7$: $N = 142857$).
+\begin{parti}
+  \item Arătați că, pentru $1 \le k \le p-1$, numărul $kN$ (scris cu $f$ cifre
+    în baza $b$) este o permutare circulară a lui $N$ dacă și numai dacă
+    $k \in \langle b \rangle = \{1, b, \dots, b^{f-1}\}$ în $(\ZZ_p^*, \cdot)$;
+    deduceți că numerele $N, 2N, \dots, (p-1)N$ se împart în exact $(p-1)/f$
+    familii, fiecare formată din cele $f$ rotații ale unui „număr ciclic''.
+  \item (Midy) Dacă $f = 2g$ este par, cele două jumătăți ale unei perioade, de câte $g$ cifre fiecare,
+    au suma $b^g - 1$.
+\end{parti}
+\end{problema}
+
+\begin{problema}
+Fie $p$ un număr prim, $D \mid p-1$ și $m \ge 1$ un întreg. Arătați că suma puterilor a $m$-a ale elementelor de ordin $D$ din $(\ZZ_p^*,\cdot)$ este congruentă modulo $p$ cu \emph{suma lui Ramanujan}
+\[
+  \sum_{\ord(x)=D} x^m \equiv c_D(m) = \mu\!\left(\tfrac{D}{g}\right)\frac{\varphi(D)}{\varphi(D/g)},
+  \qquad g = \gcd(D,m),
+\]
+unde $\mu$ este funcția lui Möbius, iar $\varphi$ este indicatorul lui Euler. (În particular, ori de câte ori $\gcd(m,D)=1$, deci și pentru $m=1$, suma este egală cu $\mu(D)$.)
+\end{problema}
+
+\begin{problema}
+Fie $p$ un număr prim impar și $a \in \ZZ$ cu $p \nmid a$. Determinați restul împărțirii numărului
+\[
+  \prod_{k=1}^{p-1}\bigl(k^2 + a^2\bigr)
+\]
+la $p$.
+\end{problema}
+
