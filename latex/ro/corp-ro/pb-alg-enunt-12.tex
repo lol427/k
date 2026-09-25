@@ -103,7 +103,6 @@ că, pentru orice element idempotent $x$ (adică $x^{2}=x$), elementul
 $a-x$ este tot idempotent. Demonstrați că $\operatorname{char}K=2$.
 \end{problema}
 
-
 \begin{problema}
 Fie $P \in \mathbb{C}[X]$ un polinom neconstant astfel încât $P(X)$ divide $P(X^2)$ în $\mathbb{C}[X]$. Arătați că orice rădăcină nenulă a lui $P$ este o rădăcină a unității.
 \end{problema}
@@ -119,10 +118,6 @@ Determinați toate polinoamele $P \in \RR[X]$ cu proprietatea
 Fie $K$ un corp finit cu cel puțin 3 elemente. Arătați că suma tuturor elementelor lui $K$ este 0. Ce se întâmplă pentru $K = \ZZ_2$?
 \end{problema}
 
-\begin{problema}
-Fie $K$ un corp cu 8 elemente. Arătați că polinomul $X^2+X+1$ nu are nicio rădăcină în $K$, dar că polinomul $X^3+X+1$ are trei rădăcini distincte în $K$.
-\end{problema}
-
 \begin{problema}[Clasică]
 Fie $K$ un corp finit de caracteristică $p$.
 \begin{parti}
@@ -131,16 +126,87 @@ Fie $K$ un corp finit de caracteristică $p$.
 \end{parti}
 \end{problema}
 
+\begin{problema}
+Fie $G$ un grup cu proprietatea că $xy \in Z(G)$ pentru orice
+$x,y\in G$ cu $x\neq e$ și $y\neq e$. Demonstrați că $G$ este
+comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit și $f,g$ două endomorfisme ale lui $G$ cu
+proprietatea
+\[
+  f\bigl(x^{2}y^{4}\bigr) = g\bigl(x^{2}\bigr)\,g\bigl(y^{4}\bigr)
+  \qquad \text{pentru orice } x,y\in G.
+\]
+Determinați sub ce condiție asupra ordinului $|G|$ rezultă
+$f=g$.
+\end{problema}
+
+\begin{problema}
+O \emph{relație de echivalență} pe o mulțime $M$ este o
+relație $\rho$ care este reflexivă ($x\,\rho\,x$ pentru orice $x$),
+simetrică ($x\,\rho\,y\Rightarrow y\,\rho\,x$) și tranzitivă
+($x\,\rho\,y$ și $y\,\rho\,z\Rightarrow x\,\rho\,z$). O relație de
+echivalență $\rho$ pe un grup $G$ se numește \emph{congruență}
+dacă este compatibilă cu operația: $x\,\rho\,y$ și
+$x'\,\rho\,y'$ implică $xx'\,\rho\,yy'$. Determinați toate
+congruențele pe grupul $(\mathbb{Z},+)$.
+\end{problema}
+
+\begin{problema}
+Fie $\sigma(z)=5/\bar z$ inversiunea planului față de cercul de
+rază $\sqrt5$ centrat în origine. Grupul simetriilor rețelei
+$\mathbb{Z}[i]$ (rotațiile $z\mapsto i^{k}z$ și conjugarea
+$z\mapsto\bar z$) permută mulțimea $X$ a punctelor din $\mathbb{Z}[i]$
+fixate de $\sigma$. Descrieți $X$ ca mulțime cu acțiune de grup.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $\varphi\in\operatorname{Aut}(G)$
+un automorfism fixat. Arătați că, pentru orice $x\in G$ fixat,
+numărul soluțiilor $g\in G$ ale ecuației $gx=x\varphi(g)$ divide
+$n$.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel cu proprietatea că orice element $x\in A$ se scrie ca
+sumă $x=e+f$ a două elemente idempotente ($e^{2}=e$, $f^{2}=f$) care
+\emph{anticomută}, adică $ef+fe=0$. Demonstrați că $A$ este
+comutativ.
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel comutativ și fie $I,J$ ideale ale sale astfel încât $I \cup J$ să fie un ideal al lui $A$. Arătați că $I \subseteq J$ sau $J \subseteq I$.
+\end{problema}
+
+\begin{problema}
+Determinați toate numerele naturale $n$ pentru care \emph{orice} grup
+$G$ de ordin $n$ are proprietatea că orice endomorfism neconstant al
+său este automorfism. (Un endomorfism se numește \emph{constant}
+dacă este morfismul banal $g \mapsto e$.)
+\end{problema}
+
+\begin{problema}
+Fie $K$ un corp infinit și $f : K \to K$ o funcție
+\emph{polinomială} cu proprietatea
+\[
+  f\bigl(x+f(y)\bigr) = f(x)\,f(y) \qquad \text{pentru orice } x,y \in K .
+\]
+Determinați toate funcțiile $f$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup cu proprietatea că, pentru oricare trei elemente
+distincte ale sale, există cel puțin o pereche dintre ele care
+comută. Demonstrați că $G$ este comutativ.
+\end{problema}
+
 \nivel{ojm}{Nivel OJM}{Faza județeană --- combină două rezultate.}
 \setcounter{cat}{2}\setcounter{problemaX}{0}
 
-\begin{problema}[Clasică]
-Fie $G$ un grup și fie
-\[
-  H = \{\, x \in G \ :\ x^{2}=e \,\}.
-\]
-Presupunem că $H$ este subgrup al lui $G$. Demonstrați că $H$
-este comutativ.
+\begin{problema}
+Fie $K$ un corp cu 8 elemente. Arătați că polinomul $X^2+X+1$ nu are nicio rădăcină în $K$, dar că polinomul $X^3+X+1$ are trei rădăcini distincte în $K$.
 \end{problema}
 
 \begin{problema}[Clasică]
@@ -171,23 +237,6 @@ puțin unul dintre ele este central).
 \end{problema}
 
 \begin{problema}
-Fie $G$ un grup cu proprietatea că $xy \in Z(G)$ pentru orice
-$x,y\in G$ cu $x\neq e$ și $y\neq e$. Demonstrați că $G$ este
-comutativ.
-\end{problema}
-
-\begin{problema}
-Fie $G$ un grup finit și $f,g$ două endomorfisme ale lui $G$ cu
-proprietatea
-\[
-  f\bigl(x^{2}y^{4}\bigr) = g\bigl(x^{2}\bigr)\,g\bigl(y^{4}\bigr)
-  \qquad \text{pentru orice } x,y\in G.
-\]
-Determinați sub ce condiție asupra ordinului $|G|$ rezultă
-$f=g$.
-\end{problema}
-
-\begin{problema}
 Fie $G$ un grup de ordin $2n$, cu $n$ \emph{impar}, astfel încât
 $x^{n+2}\in Z(G)$ pentru orice $x\in G$. Demonstrați că $G$ este
 comutativ.
@@ -210,23 +259,6 @@ Fie $a<b$ numere reale.
 \end{enumerate}
 \end{problema}
 
-\begin{problema}
-Fie $G$ un grup finit de ordin $2n$. Câte soluții poate avea
-ecuația $x^{n}=e$? (Determinați toate valorile posibile ale
-numărului de soluții și arătați că fiecare apare.)
-\end{problema}
-
-\begin{problema}
-O \emph{relație de echivalență} pe o mulțime $M$ este o
-relație $\rho$ care este reflexivă ($x\,\rho\,x$ pentru orice $x$),
-simetrică ($x\,\rho\,y\Rightarrow y\,\rho\,x$) și tranzitivă
-($x\,\rho\,y$ și $y\,\rho\,z\Rightarrow x\,\rho\,z$). O relație de
-echivalență $\rho$ pe un grup $G$ se numește \emph{congruență}
-dacă este compatibilă cu operația: $x\,\rho\,y$ și
-$x'\,\rho\,y'$ implică $xx'\,\rho\,yy'$. Determinați toate
-congruențele pe grupul $(\mathbb{Z},+)$.
-\end{problema}
-
 \begin{problema}[Clasică]
 Fie $f:G\to H$ un morfism de grupuri finite, cu
 $\operatorname{Ker}f=\{x\in G:f(x)=e_{H}\}$ și $\operatorname{Im}f=f(G)$.
@@ -243,21 +275,6 @@ Fie $\pi=2+i\in\mathbb{Z}[i]$ și $\pi\mathbb{Z}[i]=\{\pi z : z\in\mathbb{Z}[i]\
 subgrupul multiplilor săi în grupul aditiv $(\mathbb{Z}[i],+)$.
 Arătați că grupul cât $\mathbb{Z}[i]/\pi\mathbb{Z}[i]$ este
 izomorf cu $(\mathbb{Z}/5,+)$.
-\end{problema}
-
-\begin{problema}
-Fie $\sigma(z)=5/\bar z$ inversiunea planului față de cercul de
-rază $\sqrt5$ centrat în origine. Grupul simetriilor rețelei
-$\mathbb{Z}[i]$ (rotațiile $z\mapsto i^{k}z$ și conjugarea
-$z\mapsto\bar z$) permută mulțimea $X$ a punctelor din $\mathbb{Z}[i]$
-fixate de $\sigma$. Descrieți $X$ ca mulțime cu acțiune de grup.
-\end{problema}
-
-\begin{problema}
-Fie $G$ un grup finit de ordin $n$ și $\varphi\in\operatorname{Aut}(G)$
-un automorfism fixat. Arătați că, pentru orice $x\in G$ fixat,
-numărul soluțiilor $g\in G$ ale ecuației $gx=x\varphi(g)$ divide
-$n$.
 \end{problema}
 
 \begin{problema}[Clasică]
@@ -277,13 +294,6 @@ Fie $A$ un inel comutativ de caracteristică $p$, unde $p$ este un
 număr prim \emph{impar}, cu proprietatea că $x^{p}=1$ pentru orice
 element inversabil $x\in A$. Demonstrați că suma a două elemente
 inversabile este tot un element inversabil.
-\end{problema}
-
-\begin{problema}
-Fie $A$ un inel cu proprietatea că orice element $x\in A$ se scrie ca
-sumă $x=e+f$ a două elemente idempotente ($e^{2}=e$, $f^{2}=f$) care
-\emph{anticomută}, adică $ef+fe=0$. Demonstrați că $A$ este
-comutativ.
 \end{problema}
 
 \begin{problema}
@@ -307,17 +317,52 @@ Fie $K \subseteq L$ două corpuri finite, operațiile lui $K$ fiind cele induse 
 \end{problema}
 
 \begin{problema}
-Fie $A$ un inel comutativ și fie $I,J$ ideale ale sale astfel încât $I \cup J$ să fie un ideal al lui $A$. Arătați că $I \subseteq J$ sau $J \subseteq I$.
+Fie $G$ un grup finit de ordin $n$ și $k$ un număr întreg
+pozitiv astfel încât $f(x)=x^{k}$ este morfism al lui $G$.
+Presupunem că mulțimea
+\[
+  A = \{\, a \in G : a^{k}b = ba^{k} \ \text{pentru orice } b \in G \,\}
+\]
+are cel puțin $\tfrac{n}{2}+1$ elemente. Demonstrați că
+$(ab)^{k}=(ba)^{k}$ pentru orice $a,b \in G$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup abelian finit cu $|G|$ care are cel puțin doi factori
+primi distincți. Demonstrați că există două subgrupuri
+\emph{proprii și netriviale} $K,L\le G$ (adică diferite de $\{e\}$ și de $G$) cu $KL=G$.
+\end{problema}
+
+\begin{problema}
+Fie $G$ un grup finit de ordin $n$ și $k$ un întreg astfel încât
+aplicația $x\mapsto x^{k}$ este morfism de grupuri (adică
+$(xy)^{k}=x^{k}y^{k}$ pentru orice $x,y\in G$). Arătați că, pentru
+orice $x\in G$ fixat, numărul soluțiilor $a\in G$ ale ecuației
+$xa^{k}=a^{k}x$ divide $n$.
+\end{problema}
+
+\begin{problema}
+Fie $D$ un inel de diviziune (orice element nenul este inversabil) de
+caracteristică $n$, fie $a,c$ numere întregi și $b,d\ge 1$
+exponenți, astfel încât, pentru orice $x\in D$,
+\[
+  a\,x^{b}\in Z(D)\qquad\text{și}\qquad c\,x^{d}\in Z(D),
+\]
+unde $m\,y$ notează multiplul aditiv $\underbrace{y+\cdots+y}_{m}$.
+Demonstrați că dacă
+\[
+  \gcd(a,n)=\gcd(c,n)=1\quad\text{și}\quad \gcd(b,d)=1,
+\]
+atunci $D$ este comutativ.
 \end{problema}
 
 \nivel{onm}{Nivel ONM}{Faza națională --- mai mulți pași și o idee-cheie.}
 \setcounter{cat}{3}\setcounter{problemaX}{0}
 
 \begin{problema}
-Determinați toate numerele naturale $n$ pentru care \emph{orice} grup
-$G$ de ordin $n$ are proprietatea că orice endomorfism neconstant al
-său este automorfism. (Un endomorfism se numește \emph{constant}
-dacă este morfismul banal $g \mapsto e$.)
+Fie $G$ un grup finit de ordin $2n$. Câte soluții poate avea
+ecuația $x^{n}=e$? (Determinați toate valorile posibile ale
+numărului de soluții și arătați că fiecare apare.)
 \end{problema}
 
 \begin{problema}
@@ -327,15 +372,6 @@ $H \subseteq G$ o submulțime nevidă cu proprietatea
   ghg \in H \qquad \text{pentru orice } g \in G,\ h \in H.
 \]
 Demonstrați că $H = G$.
-\end{problema}
-
-\begin{problema}
-Fie $K$ un corp infinit și $f : K \to K$ o funcție
-\emph{polinomială} cu proprietatea
-\[
-  f\bigl(x+f(y)\bigr) = f(x)\,f(y) \qquad \text{pentru orice } x,y \in K .
-\]
-Determinați toate funcțiile $f$.
 \end{problema}
 
 \begin{problema}
@@ -351,17 +387,6 @@ Fie $R$ un inel cu unitate, $1\neq 0$, astfel încât $x^{3}=x^{2}$
 pentru orice $x\in R$. Demonstrați că $x^{2}=x$ pentru orice
 $x\in R$ (deci $R$ este inel Boolean) și deduceți că $R$ este
 comutativ.
-\end{problema}
-
-\begin{problema}
-Fie $G$ un grup finit de ordin $n$ și $k$ un număr întreg
-pozitiv astfel încât $f(x)=x^{k}$ este morfism al lui $G$.
-Presupunem că mulțimea
-\[
-  A = \{\, a \in G : a^{k}b = ba^{k} \ \text{pentru orice } b \in G \,\}
-\]
-are cel puțin $\tfrac{n}{2}+1$ elemente. Demonstrați că
-$(ab)^{k}=(ba)^{k}$ pentru orice $a,b \in G$.
 \end{problema}
 
 \begin{problema}
@@ -397,12 +422,6 @@ $HK=\{\,hk : h\in H,\ k\in K\,\}$).
 \end{problema}
 
 \begin{problema}
-Fie $G$ un grup abelian finit cu $|G|$ care are cel puțin doi factori
-primi distincți. Demonstrați că există două subgrupuri
-\emph{proprii și netriviale} $K,L\le G$ (adică diferite de $\{e\}$ și de $G$) cu $KL=G$.
-\end{problema}
-
-\begin{problema}
 Fie $n\ge 5$. Determinați toate relațiile de congruență pe
 grupul simetric $S_{n}$. (O congruență este o relație de
 echivalență compatibilă cu compunerea permutărilor.)
@@ -412,14 +431,6 @@ echivalență compatibilă cu compunerea permutărilor.)
 Fie $G$ un grup finit \emph{neabelian} de ordin $n$. Demonstrați că
 numărul perechilor ordonate $(a,b)\in G\times G$ cu $ab=ba$ este cel mult
 $\dfrac{5}{8}\,n^{2}$.
-\end{problema}
-
-\begin{problema}
-Fie $G$ un grup finit de ordin $n$ și $k$ un întreg astfel încât
-aplicația $x\mapsto x^{k}$ este morfism de grupuri (adică
-$(xy)^{k}=x^{k}y^{k}$ pentru orice $x,y\in G$). Arătați că, pentru
-orice $x\in G$ fixat, numărul soluțiilor $a\in G$ ale ecuației
-$xa^{k}=a^{k}x$ divide $n$.
 \end{problema}
 
 \begin{problema}
@@ -479,30 +490,10 @@ $R$.
 \end{problema}
 
 \begin{problema}
-Fie $D$ un inel de diviziune (orice element nenul este inversabil) de
-caracteristică $n$, fie $a,c$ numere întregi și $b,d\ge 1$
-exponenți, astfel încât, pentru orice $x\in D$,
-\[
-  a\,x^{b}\in Z(D)\qquad\text{și}\qquad c\,x^{d}\in Z(D),
-\]
-unde $m\,y$ notează multiplul aditiv $\underbrace{y+\cdots+y}_{m}$.
-Demonstrați că dacă
-\[
-  \gcd(a,n)=\gcd(c,n)=1\quad\text{și}\quad \gcd(b,d)=1,
-\]
-atunci $D$ este comutativ.
-\end{problema}
-
-\begin{problema}
-Fie $G$ un grup cu proprietatea că, pentru oricare trei elemente
-distincte ale sale, există cel puțin o pereche dintre ele care
-comută. Demonstrați că $G$ este comutativ.
-\end{problema}
-
-\begin{problema}
-Fie $A$ un inel finit de ordin impar cu proprietatea că orice element
-neinversabil se scrie ca sumă a doi idempotenți care comută.
-Arătați că $A$ este comutativ.
+Fie $A$ un inel finit de ordin impar, care nu este corp, cu proprietatea
+că orice element neinversabil se scrie ca sumă a doi idempotenți care
+comută. Arătați că $A$ este comutativ și că $x^{3}=x$ pentru orice
+$x\in A$.
 \end{problema}
 
 \begin{problema}
@@ -532,9 +523,9 @@ perioade (pentru $b = 10$, $p = 7$: $N = 142857$).
     în baza $b$) este o permutare circulară a lui $N$ dacă și numai dacă
     $k \in \langle b \rangle = \{1, b, \dots, b^{f-1}\}$ în $(\ZZ_p^*, \cdot)$;
     deduceți că numerele $N, 2N, \dots, (p-1)N$ se împart în exact $(p-1)/f$
-    familii, fiecare formată din cele $f$ rotații ale unui „număr ciclic''.
-  \item (Midy) Dacă $f = 2g$ este par, cele două jumătăți ale unei perioade, de câte $g$ cifre fiecare,
-    au suma $b^g - 1$.
+    familii, fiecare formată din cele $f$ rotații ale unui ,,număr ciclic''.
+  \item (Midy) Dacă $f = 2g$ este par, cele două jumătăți ale unei perioade, de
+    câte $g$ cifre fiecare, au suma $b^g - 1$.
 \end{parti}
 \end{problema}
 
@@ -555,3 +546,67 @@ Fie $p$ un număr prim impar și $a \in \ZZ$ cu $p \nmid a$. Determinați restul
 la $p$.
 \end{problema}
 
+\begin{problema}
+Fie $A$ un inel finit, cu $1\neq 0$, cu proprietatea că
+\[
+  (1+u)^{9}=1+u\qquad\text{pentru orice element inversabil } u\in A .
+\]
+\begin{parti}
+\item Arătați că $x^{9}=x$ pentru orice $x\in A$.
+\item Arătați că $A$ este comutativ.
+\item Pentru fiecare număr natural $N\ge 2$, determinați numărul inelelor cu $N$ elemente, neizomorfe două câte două, care au proprietatea din enunț.
+\end{parti}
+\end{problema}
+
+\begin{problema}
+Fie $A$ un inel comutativ finit și
+\[
+  E(A)=\{\,e\in A : e^{2}=e\,\}
+\]
+mulțimea idempotenților săi. (Pentru $y\in A$ scriem $2y=y+y$ și $4y=y+y+y+y$.)
+\begin{parti}
+\item Fie $a\in A$ astfel încât elementul $1+4a$ este inversabil. Arătați că
+  ecuația $x^{2}-x=a$ fie nu are nicio soluție în $A$, fie are exact $|E(A)|$
+  soluții în $A$.
+\item Presupunem că $A$ are $2^{m}$ elemente, unde $m\ge1$. Arătați că mulțimea
+  \[
+    M=\{\,x^{2}-x : x\in A\,\}
+  \]
+  este un subgrup al grupului $(A,+)$ și că $|M|\cdot|E(A)|=2^{m}$.
+\end{parti}
+\end{problema}
+
+\begin{problema}
+Fie $p$ un număr prim impar. Determinați numărul polinoamelor $f\in\ZZ_p[X]$ unitare, ireductibile peste $\ZZ_p$, de grad $2p$, care verifică egalitatea de polinoame
+\[
+  f(X+\cl 1)=f(X).
+\]
+\end{problema}
+
+\begin{problema}
+Fie $p$ un număr prim impar.
+\begin{parti}
+\item Determinați numărul soluțiilor $(x,y,z,t) \in \ZZ_p^4$ ale sistemului
+\[
+  xy = z + t, \qquad zt = x + y .
+\]
+\item Presupunem, în plus, că $3 \nmid p-1$. Determinați numărul perechilor $(a,b) \in \ZZ_p \times \ZZ_p$ pentru care fiecare dintre polinoamele $X^2 + aX + b$ și $X^2 + bX + a$ are cel puțin o rădăcină în $\ZZ_p$.
+\end{parti}
+\end{problema}
+
+\begin{problema}
+Fie $p$ un număr prim și $f,g\in\ZZ_p[X]$ două polinoame, de grade $d$, respectiv $e$, unde $2\le d\le p-1$, astfel încât
+\[
+  g\bigl(f(x)\bigr)=x\qquad\text{pentru orice } x\in\ZZ_p
+\]
+(așadar $f$ induce o bijecție a lui $\ZZ_p$, iar $g$ induce bijecția inversă). Notăm cu $q$ și $r$ câtul și restul împărțirii lui $p-1$ la $d$, adică $p-1=qd+r$, cu $0\le r\le d-1$.
+\begin{parti}
+\item Arătați că
+\[
+  r\,(e-1)\ \ge\ q\,(d-1).
+\]
+În particular, $d$ nu divide $p-1$.
+\item Arătați că, dacă $r\ge 1$ și $r$ divide $d-1$, inegalitatea de la punctul (a) nu poate fi îmbunătățită: există polinoame $f,g$ ca mai sus, cu $\deg f=d$, pentru care $r(e-1)=q(d-1)$.
+\item Determinați numerele prime $p\ge 5$ pentru care există un polinom $f\in\ZZ_p[X]$ de grad $3$ cu $f\bigl(f(x)\bigr)=x$ pentru orice $x\in\ZZ_p$.
+\end{parti}
+\end{problema}
