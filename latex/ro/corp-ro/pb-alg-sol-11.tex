@@ -1229,7 +1229,7 @@ Relația de la (a), scrisă $A^kB=BA^k+kA^k$, are loc și pentru $k=0$. Atunci
 \[ SB=\sum_{k=0}^{n-1}\frac{z^k}{k!}\bigl(BA^k+kA^k\bigr)=BS+\sum_{k=1}^{n-1}\frac{z^k}{(k-1)!}A^k=BS+zA\sum_{j=0}^{n-2}\frac{z^j}{j!}A^j . \]
 Ultima sumă este $S-\frac{z^{n-1}}{(n-1)!}A^{n-1}$, iar $A\cdot A^{n-1}=A^n=\On$; deci
 \[ SB=BS+zAS=(B+zA)\,S. \]
-Matricea $S$ este inversabilă: $S=I_n+N$, unde $N=zA\bigl(I_n+\frac{z}{2!}A+\cdots\bigr)$ este produsul lui $A$ cu un polinom în $A$, deci $N^n=A^n\bigl(I_n+\frac{z}{2!}A+\cdots\bigr)^n=\On$, iar
+Matricea $S$ este inversabilă: $S=I_n+N$, unde $N=zA\bigl(I_n+\frac{z}{2!}A+\cdots\bigr)$ este produsul lui $A$ cu un polinom în $A$, deci $N^n=z^nA^n\bigl(I_n+\frac{z}{2!}A+\cdots\bigr)^n=\On$, iar
 \[ (I_n+N)\bigl(I_n-N+N^2-\cdots+(-1)^{n-1}N^{n-1}\bigr)=I_n+(-1)^{n-1}N^n=I_n. \]
 Prin urmare $B+zA=SBS^{-1}$: matricele $B+zA$ și $B$ sunt asemenea, deci au același polinom caracteristic și, în particular, același determinant.\\[2pt]
 \emph{Observație.} Matricea $S$ este „exponențiala'' $e^{zA}$, o sumă finită deoarece $A$ este nilpotentă; identitatea obținută se scrie $e^{zA}Be^{-zA}=B+zA$. Ipoteza poate fi îndeplinită pentru orice $n\ge2$: pentru $B=\diag(0,1,\dots,n-1)$ și $A=E_{12}+E_{23}+\cdots+E_{n-1,n}$ avem $AB-BA=A$. Pentru $n=2$, $A=E_{12}$ și $B=\diag(0,1)$ dau $B+zA=\begin{psmallmatrix}0&z\\0&1\end{psmallmatrix}$, cu polinomul caracteristic $X(X-1)$, același ca al lui $B$. Punctul (a) este un rezultat clasic; în schimb, fără (b), faptul că $\det(B+zA)$ nu depinde de $z$ nu se vede din enunț.
@@ -1304,6 +1304,6 @@ Atunci
 \[ A^2+B^2=A^2+2N^2=\begin{pmatrix}0&0&4&0\\0&0&0&-2\\0&0&0&0\\0&2&0&0\end{pmatrix}=-2AN=\sqrt2\,AB, \]
 iar
 \[ AB-BA=\sqrt2\,(NA-AN)=\sqrt2\begin{pmatrix}0&0&1&0\\0&0&0&-1\\1&0&0&0\\0&1&0&0\end{pmatrix}. \]
-Ultima matrice are pe fiecare linie și pe fiecare coloană exact un element nenul, egal cu $\pm1$, deci determinantul ei este $\pm1$; mai precis, $\det(AB-BA)=-4\neq0$. Ipotezele de la (b) sunt îndeplinite.\\[2pt]
+Ultima matrice are pe fiecare linie și pe fiecare coloană exact un element nenul, egal cu $\pm1$, deci determinantul ei este $\pm1$, iar $\det(AB-BA)=(\sqrt2)^4\cdot(\pm1)$; mai precis, $\det(AB-BA)=-4\neq0$. Ipotezele de la (b) sunt îndeplinite.\\[2pt]
 \emph{Observație.} Pentru (a), exemplul $A=E_{12}$, $B=E_{21}$ din $M_2(\mathbb{R})$ arată că $n=2$ este posibil: $A^2+B^2=O_2$ și $AB-BA=\diag(1,-1)$. Metoda funcționează pentru orice relație $A^2+B^2=t\,AB$ cu $t=-2\cos\theta$, $\theta\in(0,\pi)$: cu $z=\cos\theta+i\sin\theta$ se obține $(A+zB)(A+\overline{z}B)=z(BA-AB)$, deci $z^n$ trebuie să fie real. Pentru $t=1$ (adică $\theta=\frac{2\pi}{3}$) rezultă condiția cunoscută $3\mid n$. Exemplul de la (c) s-a obținut căutând $M=A+zB$ de forma „permutare ciclică înmulțită cu o matrice diagonală''.
 \vspace{1mm}\hrule
