@@ -259,6 +259,62 @@ Notăm $P_{n}=x_{1}x_{2}\cdots x_{n}$.
 \end{parti}
 \vspace{1mm}\hrule
 
+\providecommand{\figpetaleext}{%
+\begin{center}
+\begin{tikzpicture}[scale=1.05]
+\pgfmathsetmacro{\rr}{2*sin(18)}\pgfmathsetmacro{\dd}{2*cos(18)}
+\fill[gray!20] (0,0) circle (\rr);
+\draw[gray,dashed] (0,0) circle (2);
+\foreach \k in {0,...,9}{%
+  \pgfmathsetmacro{\ph}{36*\k+18}%
+  \draw[thick] (\ph:\dd) ++({\ph-90}:\rr) arc[start angle={\ph-90},end angle={\ph+90},radius=\rr];
+  \fill ({36*\k}:2) circle (0.9pt);}
+\draw[gray] (0,0) -- (\rr,0) node[midway,above]{\small $r$};
+\fill (0,0) circle (1pt) node[below]{$O$};
+\node[gray] at (128:1.6) {$\mathcal C$};
+\pgfmathsetmacro{\ps}{-9}
+\coordinate (M) at (-54:\dd);
+\coordinate (P) at ([shift={(\ps:\rr)}]M);
+\draw[red,thick] ([shift={({\ps+90}:1.3)}]P) -- ([shift={({\ps-90}:1.6)}]P);
+\fill[blue] (P) circle (1.6pt) node[right,blue]{$P$};
+\fill[red] ([shift={({\ps-90}:0.8)}]P) circle (1.6pt) node[right,red]{$X$};
+\end{tikzpicture}\\[1mm]
+{\small Zona gri: discul de rază $r=R\sin\frac{\pi}{n}$ în jurul lui $O$, prin care nu trece nicio tangentă.}
+\end{center}}
+\providecommand{\figpetaleint}{%
+\begin{center}
+\begin{tikzpicture}[scale=1.05]
+\pgfmathsetmacro{\rr}{2*sin(18)}\pgfmathsetmacro{\dd}{2*cos(18)}
+\draw[gray,dashed] (0,0) circle (2);
+\foreach \k in {0,...,9}{%
+  \pgfmathsetmacro{\ph}{36*\k+18}%
+  \draw[thick] (\ph:\dd) ++({\ph+90}:\rr) arc[start angle={\ph+90},end angle={\ph+270},radius=\rr];
+  \fill ({36*\k}:2) circle (0.9pt);}
+\fill (0,0) circle (1pt) node[below left]{$O$};
+\node[gray] at (160:2.35) {$\mathcal C$};
+\pgfmathsetmacro{\ps}{200}
+\coordinate (M) at (90:\dd);
+\coordinate (P) at ([shift={(\ps:\rr)}]M);
+\draw[red,thick] ([shift={({\ps-90}:0.8)}]P) -- ([shift={({\ps+90}:3.2)}]P);
+\fill[blue] (P) circle (1.6pt) node[left,blue]{$P$};
+\fill[red] ([shift={({\ps+90}:2.4)}]P) circle (1.6pt) node[right,red]{$X$};
+\end{tikzpicture}
+\end{center}}
+
+\prob{ojm}{OJM.17}{Planeta cu petale}
+Fie $n\ge4$ și $A_1A_2\ldots A_n$ un poligon regulat înscris în cercul $\mathcal C$ de centru $O$ și rază $R$ (planeta). Pe fiecare latură $A_iA_{i+1}$ (cu $A_{n+1}=A_1$) construim, spre exteriorul lui $\mathcal C$, semicercul de diametru $A_iA_{i+1}$. Numim \emph{tangentă} orice dreaptă tangentă la unul dintre aceste semicercuri, inclusiv în capetele lui (în capete, tangenta este perpendiculara pe latură).
+\begin{parti}
+  \item Demonstrați că prin orice punct $X$ cu $OX\ge R$ trece o tangentă.
+  \item Demonstrați că prin niciun punct $X$ cu $OX<R\sin\frac{\pi}{n}$ nu trece vreo tangentă. În particular, există puncte ale planetei prin care nu trece nicio tangentă.
+\end{parti}
+\figpetaleext
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.18}{Planeta cu petale întoarse}
+Fie $n\ge4$ și $A_1A_2\ldots A_n$ un poligon regulat înscris în cercul $\mathcal C$ de centru $O$ (planeta). Pe fiecare latură $A_iA_{i+1}$ (cu $A_{n+1}=A_1$) construim, spre \emph{interiorul} lui $\mathcal C$, semicercul de diametru $A_iA_{i+1}$. Un om se deplasează pe aceste semicercuri, în oricare sens, iar la un moment dat le părăsește și merge în linie dreaptă, pe tangenta la semicercul pe care se află. Demonstrați că omul poate ajunge în orice punct al planului, adică: prin orice punct $X$ al planului trece o dreaptă tangentă la unul dintre semicercuri (inclusiv în capetele lui).
+\figpetaleint
+\vspace{1mm}\hrule
+
 \nivelE{onm}{Nivelul ONM}
 \prob{onm}{ONM.1}{Clasică}
 Arătați că numărul $\cos1$ este irațional.

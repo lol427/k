@@ -1108,6 +1108,67 @@ căci $\left(z+\frac1z\right)^{2}-2=z^{2}+\frac{1}{z^{2}}$. Iar $\operatorname{c
 \emph{Observație 3 (marginea este, în general, optimă).} Atenție: iraționalitatea lui $\frac{\theta}{\pi}$ \emph{nu} ajunge pentru ca valorile $2^{\,n}\theta$ modulo $2\pi$ să fie dense (există $\theta$ cu $\frac\theta\pi$ irațional pentru care cifrele binare ale lui $\frac{\theta}{2\pi}$ nu conțin niciodată doi de $1$ consecutivi, iar atunci orbita evită un întreg arc). Este însă adevărat, printr-un rezultat de teoria ergodică depășind nivelul cărții, că pentru \emph{aproape toate} valorile lui $\theta$ orbita $2^{\,n}\theta$ modulo $2\pi$ este densă; pentru acestea $\bigl|\sin(2^{n}\theta)\bigr|$ se apropie oricât de mult de $1$, iar $|P_{n}|$ se apropie de $\frac{2}{\sqrt{4-x_{1}^{2}}}$, deci marginea nu poate fi îmbunătățită. Numeric, pentru $x_{1}=1{,}3$ marginea este $1{,}31590$, iar maximul observat pe primii termeni este $1{,}31563$.
 \vspace{1mm}\hrule
 
+\prob{ojm}{OJM.17}{Planeta cu petale}
+Fie $n\ge4$ și $A_1A_2\ldots A_n$ un poligon regulat înscris în cercul $\mathcal C$ de centru $O$ și rază $R$ (planeta). Pe fiecare latură $A_iA_{i+1}$ (cu $A_{n+1}=A_1$) construim, spre exteriorul lui $\mathcal C$, semicercul de diametru $A_iA_{i+1}$. Numim \emph{tangentă} orice dreaptă tangentă la unul dintre aceste semicercuri, inclusiv în capetele lui (în capete, tangenta este perpendiculara pe latură).
+\begin{parti}
+  \item Demonstrați că prin orice punct $X$ cu $OX\ge R$ trece o tangentă.
+  \item Demonstrați că prin niciun punct $X$ cu $OX<R\sin\frac{\pi}{n}$ nu trece vreo tangentă. În particular, există puncte ale planetei prin care nu trece nicio tangentă.
+\end{parti}
+\figpetaleext
+\sol Geometria se traduce într-o funcție continuă de o variabilă, iar existența tangentei o dă proprietatea lui Darboux.
+
+\emph{Notații.} Fie $\rho=R\sin\frac{\pi}{n}$ și $d=R\cos\frac{\pi}{n}$. Fixăm o latură $A_iA_{i+1}$, cu mijlocul $M$; notăm cu $\nu$ versorul lui $\overrightarrow{OM}$ (normala exterioară a laturii) și cu $\tau$ un versor paralel cu $A_iA_{i+1}$. Atunci $OM=d$, $MA_i=MA_{i+1}=\rho$, iar punctele semicercului exterior sunt
+\[ P(t)=M+\rho\,u(t),\qquad u(t)=\cos t\,\nu+\sin t\,\tau,\qquad t\in\Bigl[-\frac\pi2,\frac\pi2\Bigr] ; \]
+capetele $P(\pm\frac\pi2)=M\pm\rho\tau$ sunt $A_i$ și $A_{i+1}$. Tangenta în $P(t)$ este perpendiculara în $P(t)$ pe raza $MP(t)$, adică dreapta
+\[ \ell(t)=\bigl\{Y:\ u(t)\cdot\overrightarrow{MY}=\rho\bigr\} \]
+(„$\cdot$'' este produsul scalar). Pentru $t=\pm\frac\pi2$ se obțin tangentele din capete.
+
+\emph{Ideea: Darboux pe un semicerc.} Pentru un punct fix $X$ considerăm funcția
+\[ g(t)=u(t)\cdot\overrightarrow{MX}-\rho=\cos t\,\bigl(\nu\cdot\overrightarrow{MX}\bigr)+\sin t\,\bigl(\tau\cdot\overrightarrow{MX}\bigr)-\rho , \]
+continuă pe $[-\frac\pi2,\frac\pi2]$, cu $X\in\ell(t)\iff g(t)=0$. Cum $\tau\perp\overrightarrow{OM}$, avem $\tau\cdot\overrightarrow{MX}=\tau\cdot\overrightarrow{OX}$, deci în capete
+\[ g\Bigl(\pm\frac\pi2\Bigr)=\pm\,\tau\cdot\overrightarrow{OX}-\rho . \]
+Prin urmare:
+\begin{center}
+$(*)$\quad \emph{dacă $|\tau\cdot\overrightarrow{OX}|\ge\rho$, atunci prin $X$ trece o tangentă la semicercul laturii $A_iA_{i+1}$.}
+\end{center}
+Într-adevăr, alegem sensul lui $\tau$ astfel încât $\tau\cdot\overrightarrow{OX}\ge\rho$. Atunci $g(\frac\pi2)\ge0$ și $g(-\frac\pi2)=-\tau\cdot\overrightarrow{OX}-\rho<0$. Funcția continuă $g$ are proprietatea lui Darboux, deci există $t_0\in(-\frac\pi2,\frac\pi2]$ cu $g(t_0)=0$: tangenta în $P(t_0)$ trece prin $X$.
+
+\textbf{(a)} Fie $X$ cu $OX=s\ge R$. Normalele exterioare ale celor $n$ laturi au direcțiile $\frac{(2k+1)\pi}{n}$, $k=0,1,\dots,n-1$: sunt egal distanțate, cu pasul $\frac{2\pi}{n}$. Prin urmare, oricare ar fi o direcție, există o normală care face cu ea un unghi de cel mult $\frac\pi n$. Aplicăm aceasta direcției perpendiculare pe $OX$: există o latură a cărei normală $\nu$ face cu $\overrightarrow{OX}$ un unghi $\theta$ cu $\bigl|\theta-\frac\pi2\bigr|\le\frac\pi n$. Pentru această latură,
+\[ |\tau\cdot\overrightarrow{OX}|=s\,|\sin\theta|\ \ge\ s\cos\frac{\pi}{n}\ \ge\ R\cos\frac{\pi}{n}\ \ge\ R\sin\frac{\pi}{n}=\rho , \]
+unde ultima inegalitate folosește $\frac\pi n\le\frac\pi4$, adică $n\ge4$. Din $(*)$, prin $X$ trece o tangentă.
+
+\textbf{(b)} Calculăm distanța de la $O$ la tangenta $\ell(t)$. Cum $u(t)\cdot\overrightarrow{OM}=d\cos t$, ecuația lui $\ell(t)$ se scrie
+\[ u(t)\cdot\overrightarrow{OY}=d\cos t+\rho , \]
+iar $|u(t)|=1$, deci distanța de la $O$ la $\ell(t)$ este $d\cos t+\rho\ge\rho$, pentru că $\cos t\ge0$ pe $[-\frac\pi2,\frac\pi2]$. Așadar toate tangentele sunt la distanță cel puțin $\rho$ de $O$, iar niciun punct $X$ cu $OX<\rho$ nu se află pe vreo tangentă. Cum $\rho<R$, discul deschis de centru $O$ și rază $\rho=R\sin\frac\pi n$ face parte din planetă.
+
+\emph{Observație 1.} Demonstrația de la (a) dă mai mult: prin orice punct $X$ cu $OX\ge R\operatorname{tg}\frac{\pi}{n}$ trece o tangentă (am folosit doar $s\cos\frac\pi n\ge R\sin\frac\pi n$). Între razele $R\sin\frac\pi n$ și $R\operatorname{tg}\frac\pi n$ situația depinde de direcția lui $X$.
+
+\emph{Observație 2.} Un punct $X$ din interiorul unei petale (în afara lui $\mathcal C$, dar în interiorul cercului de diametru $A_iA_{i+1}$) nu se află pe nicio tangentă la semicercul \emph{propriu}: un punct interior unui cerc nu stă pe nicio tangentă la el. De aceea, la (a), latura nu se alege după „petala în care e $X$'', ci după direcția perpendiculară pe $OX$.
+\vspace{1mm}\hrule
+
+\prob{ojm}{OJM.18}{Planeta cu petale întoarse}
+Fie $n\ge4$ și $A_1A_2\ldots A_n$ un poligon regulat înscris în cercul $\mathcal C$ de centru $O$ (planeta). Pe fiecare latură $A_iA_{i+1}$ (cu $A_{n+1}=A_1$) construim, spre \emph{interiorul} lui $\mathcal C$, semicercul de diametru $A_iA_{i+1}$. Un om se deplasează pe aceste semicercuri, în oricare sens, iar la un moment dat le părăsește și merge în linie dreaptă, pe tangenta la semicercul pe care se află. Demonstrați că omul poate ajunge în orice punct al planului, adică: prin orice punct $X$ al planului trece o dreaptă tangentă la unul dintre semicercuri (inclusiv în capetele lui).
+\figpetaleint
+\sol Folosim notațiile din soluția problemei OJM.17: $R$ este raza lui $\mathcal C$, $\rho=R\sin\frac\pi n$, $d=R\cos\frac\pi n$, iar pentru o latură cu mijlocul $M$, $\nu$ este versorul lui $\overrightarrow{OM}$ și $\tau$ un versor paralel cu latura. Semicercul este acum cel interior, deci punctele lui sunt
+\[ P(t)=M+\rho\,u(t),\qquad u(t)=-\cos t\,\nu+\sin t\,\tau,\qquad t\in\Bigl[-\frac\pi2,\frac\pi2\Bigr] , \]
+cu aceleași capete $A_i,A_{i+1}$ pentru $t=\pm\frac\pi2$. Tangenta în $P(t)$ este $\ell(t)=\{Y:\ u(t)\cdot\overrightarrow{MY}=\rho\}$.
+
+Fie $X$ un punct oarecare și
+\[ g(t)=u(t)\cdot\overrightarrow{MX}-\rho , \]
+funcție continuă pe $[-\frac\pi2,\frac\pi2]$, cu $X\in\ell(t)\iff g(t)=0$. Ca în problema precedentă, $g(\pm\frac\pi2)=\pm\,\tau\cdot\overrightarrow{OX}-\rho$, iar cel puțin unul dintre numerele $\pm\,\tau\cdot\overrightarrow{OX}$ este $\le0$, deci
+\[ g\Bigl(\frac\pi2\Bigr)<0\quad\text{sau}\quad g\Bigl(-\frac\pi2\Bigr)<0 . \]
+În mijlocul semicercului, cum $\nu\cdot\overrightarrow{MX}=\nu\cdot\overrightarrow{OX}-d$,
+\[ g(0)=-\nu\cdot\overrightarrow{MX}-\rho=d-\rho-\nu\cdot\overrightarrow{OX} . \]
+
+\emph{Alegerea laturii.} Alegem o latură pentru care $\nu\cdot\overrightarrow{OX}\le0$. Dacă $X=O$, orice latură convine. Altfel, normalele exterioare sunt egal distanțate, cu pasul $\frac{2\pi}n$, deci una dintre ele face cu $\overrightarrow{XO}$ un unghi de cel mult $\frac\pi n<\frac\pi2$; pentru ea $\nu\cdot\overrightarrow{OX}<0$. Atunci
+\[ g(0)\ \ge\ d-\rho=R\Bigl(\cos\frac\pi n-\sin\frac\pi n\Bigr)\ \ge\ 0 , \]
+pentru că $\frac\pi n\le\frac\pi4$.
+
+\emph{Concluzia.} Pe intervalul dintre $0$ și capătul în care $g$ este negativă, funcția continuă $g$ trece de la o valoare $\ge0$ la una $<0$; din proprietatea lui Darboux există $t_0$ cu $g(t_0)=0$ (dacă $g(0)=0$, luăm $t_0=0$). Tangenta în $P(t_0)$ trece prin $X$: omul merge pe semicercul acestei laturi până în $P(t_0)$, în sensul potrivit, și îl părăsește pe tangentă, spre $X$.
+
+\emph{Observație (de ce $n\ge4$).} Cum $u(t)\cdot\overrightarrow{OM}=-d\cos t$, ecuația tangentei este $u(t)\cdot\overrightarrow{OY}=\rho-d\cos t$, deci distanța de la $O$ la $\ell(t)$ este $|\rho-d\cos t|$. Pentru $n=3$ avem $\rho=\frac{R\sqrt3}{2}>d=\frac R2$, deci toate tangentele sunt la distanță cel puțin $\rho-d=\frac{R(\sqrt3-1)}{2}>0$ de $O$, iar punctele din jurul lui $O$ nu pot fi atinse: afirmația este falsă. Pentru $n=4$ avem $d=\rho$: mijlocul fiecărui semicerc este chiar $O$, iar $O$ se află doar pe tangentele din aceste puncte ($g(0)=0$ în soluție). Aceasta este situația-limită.
+\vspace{1mm}\hrule
+
 \nivel{onm}{Nivelul ONM}{Faza națională --- mai mulți pași și o idee-cheie.}
 \prob{onm}{ONM.1}{Clasică}
 Arătați că numărul $\cos1$ este irațional.
