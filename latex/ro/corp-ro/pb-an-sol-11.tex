@@ -1284,6 +1284,220 @@ ambele cu $A=\{0\}$ --- singura diferență este semnul derivatei în jurul orig
 \emph{Observație 4 (extremele).} Tot din Fermat: \emph{orice} extrem local al unei asemenea funcții are valoarea $1$. Nivelul $1$ este singurul la care graficul se poate „întoarce'' --- ipoteza controlează exclusiv structura acestui nivel, și nimic altceva.
 \vspace{1mm}\hrule
 
+\prob{onm}{ONM.6}{Clasică}
+Considerăm funcțiile derivabile $f:(0,\infty)\to\mathbb{R}$ cu proprietatea
+\[ f'(x)=f\!\left(\frac1x\right)\qquad\text{pentru orice }x>0 . \]
+\begin{parti}
+  \item Arătați că o asemenea funcție este de două ori derivabilă și că $x^{2}f''(x)+f(x)=0$ pentru orice $x>0$.
+  \item Determinați toate aceste funcții.
+\end{parti}
+\sol Răspuns: $\displaystyle f(x)=C\sqrt{x}\,\sin\!\Bigl(\frac{\sqrt3}{2}\ln x+\frac{\pi}{3}\Bigr)$, cu $C\in\mathbb{R}$ arbitrar.
+
+(a) Funcția $x\mapsto f\bigl(\frac1x\bigr)$ este o compunere de funcții derivabile, deci este derivabilă; cum ea coincide cu $f'$, derivata $f'$ este derivabilă, adică $f$ este de două ori derivabilă. Derivând relația din enunț:
+\[ f''(x)=f'\!\left(\frac1x\right)\cdot\left(-\frac1{x^2}\right)=-\frac1{x^2}\,f\!\left(\frac{1}{1/x}\right)=-\frac{f(x)}{x^2}, \]
+unde am aplicat din nou ipoteza, în punctul $\frac1x$. Deci $x^2f''(x)+f(x)=0$ pentru orice $x>0$.
+
+(b) \emph{Pasul 1: schimbarea de variabilă $x=e^{t}$.} Fie $g(t)=f(e^{t})$, $t\in\mathbb{R}$, de două ori derivabilă. Avem
+\[ g'(t)=e^{t}f'(e^{t}),\qquad g''(t)=e^{t}f'(e^{t})+e^{2t}f''(e^{t}), \]
+deci $g''(t)-g'(t)=x^2f''(x)\big|_{x=e^t}=-f(e^t)=-g(t)$, adică
+\[ g''-g'+g=0 . \]
+Punem acum $g(t)=e^{t/2}h(t)$. Atunci $g'=e^{t/2}\bigl(h'+\tfrac12h\bigr)$, $g''=e^{t/2}\bigl(h''+h'+\tfrac14h\bigr)$ și
+\[ g''-g'+g=e^{t/2}\Bigl(h''+\frac34\,h\Bigr)=0 \Longrightarrow h''+\omega^2h=0,\qquad \omega=\frac{\sqrt3}{2} . \]
+
+\emph{Pasul 2: soluțiile ecuației $h''+\omega^2h=0$.} Fie $A=h(0)$, $B=\frac{h'(0)}{\omega}$ și $p(t)=h(t)-A\cos\omega t-B\sin\omega t$. Funcția $p$ verifică $p''+\omega^2p=0$, $p(0)=0$, $p'(0)=0$. Atunci „energia''
+\[ E(t)=p'(t)^2+\omega^2p(t)^2 \]
+are derivata $E'=2p'\bigl(p''+\omega^2p\bigr)=0$, deci (consecința teoremei lui Lagrange) $E$ este constantă, $E\equiv E(0)=0$. O sumă de pătrate nulă impune $p\equiv0$. Așadar $h(t)=A\cos\omega t+B\sin\omega t$ și, revenind ($t=\ln x$, $e^{t/2}=\sqrt x$),
+\[ f(x)=\sqrt{x}\,\bigl(A\cos\theta+B\sin\theta\bigr),\qquad \theta=\omega\ln x=\frac{\sqrt3}{2}\ln x . \]
+
+\emph{Pasul 3: impunem ecuația inițială.} Ecuația $x^2f''+f=0$ este doar o consecință a ipotezei; trebuie să revenim la $f'(x)=f\bigl(\frac1x\bigr)$. Pentru $x=1$ ea dă $f'(1)=f(1)$. Or $f(1)=A$, iar
+\[ f'(x)=\frac{1}{2\sqrt x}\bigl(A\cos\theta+B\sin\theta\bigr)+\sqrt x\cdot\frac{\omega}{x}\bigl(-A\sin\theta+B\cos\theta\bigr) \]
+dă $f'(1)=\frac A2+\omega B$. Deci $\omega B=\frac A2$, adică $A=\sqrt3\,B$, și
+\[ \begin{aligned} f(x)&=B\sqrt x\bigl(\sqrt3\cos\theta+\sin\theta\bigr)=2B\sqrt x\Bigl(\sin\frac\pi3\cos\theta+\cos\frac\pi3\sin\theta\Bigr)\\ &=2B\sqrt x\,\sin\Bigl(\theta+\frac\pi3\Bigr). \end{aligned} \]
+Cu $C=2B$ obținem forma din răspuns.
+
+\emph{Pasul 4: verificarea.} Fie $f(x)=C\sqrt x\sin\bigl(\theta+\frac\pi3\bigr)$, $\theta=\omega\ln x$. Atunci
+\[ \begin{aligned} f'(x)&=\frac{C}{\sqrt x}\Bigl[\frac12\sin\Bigl(\theta+\frac\pi3\Bigr)+\frac{\sqrt3}{2}\cos\Bigl(\theta+\frac\pi3\Bigr)\Bigr]\\
+&=\frac{C}{\sqrt x}\Bigl[\sin\frac\pi6\sin\Bigl(\theta+\frac\pi3\Bigr)+\cos\frac\pi6\cos\Bigl(\theta+\frac\pi3\Bigr)\Bigr]\\ &=\frac{C}{\sqrt x}\cos\Bigl(\theta+\frac\pi6\Bigr). \end{aligned} \]
+Pe de altă parte, $\ln\frac1x=-\ln x$, deci
+\[ f\!\left(\frac1x\right)=\frac{C}{\sqrt x}\sin\Bigl(\frac\pi3-\theta\Bigr)=\frac{C}{\sqrt x}\cos\Bigl(\frac\pi2-\frac\pi3+\theta\Bigr)=\frac{C}{\sqrt x}\cos\Bigl(\theta+\frac\pi6\Bigr)=f'(x) . \]
+Toate funcțiile din răspuns verifică deci ecuația, și numai ele.\\[2pt]
+\emph{Observație.} Pasul 3 nu este o formalitate: ecuația $x^2f''+f=0$ are o familie de soluții cu \emph{doi} parametri, în timp ce ecuația funcțională inițială păstrează doar una cu \emph{un} parametru. De exemplu, $f(x)=\sqrt x\cos\theta$ verifică $x^2f''+f=0$, dar $f'(1)=\frac12\neq1=f(1)$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.7}{}
+Determinați toate funcțiile derivabile $f:\mathbb{R}\to\mathbb{R}$ cu proprietatea
+\[ f(x-y)=f(x)\,f'(y)-f'(x)\,f(y)\qquad\text{pentru orice }x,y\in\mathbb{R} . \]
+\sol Răspuns: $f\equiv0$, $f(x)=x$, $f(x)=\dfrac{\sin bx}{b}$ și $f(x)=\dfrac{e^{bx}-e^{-bx}}{2b}$, unde $b>0$ este un parametru arbitrar.
+
+\emph{Pasul 1: valori particulare.} Pentru $x=y$: $f(0)=f(x)f'(x)-f'(x)f(x)=0$. Pentru $y=0$: $f(x)=f(x)f'(0)-f'(x)f(0)=f(x)f'(0)$, adică $f(x)\bigl(1-f'(0)\bigr)=0$ pentru orice $x$.
+
+Funcția $f\equiv0$ este evident soluție. Presupunem de acum că există $y_0$ cu $f(y_0)\neq0$; atunci $f'(0)=1$.
+
+\emph{Pasul 2: $f$ este de două ori derivabilă.} Luând $y=y_0$ în ecuație și izolând $f'(x)$:
+\[ f'(x)=\frac{f(x)\,f'(y_0)-f(x-y_0)}{f(y_0)} . \]
+Membrul drept este o funcție derivabilă de $x$, deci $f'$ este derivabilă.
+
+\emph{Pasul 3: $f''=cf$.} Derivăm ecuația din enunț în raport cu $x$ (cu $y$ fixat), apoi în raport cu $y$ (cu $x$ fixat):
+\[ f'(x-y)=f'(x)f'(y)-f''(x)f(y),\qquad -f'(x-y)=f(x)f''(y)-f'(x)f'(y) . \]
+Adunând, $f(x)f''(y)=f''(x)f(y)$ pentru orice $x,y$. Cu $y=y_0$ obținem
+\[ f''(x)=c\,f(x)\quad\text{pentru orice }x,\qquad c=\frac{f''(y_0)}{f(y_0)} , \]
+iar, din Pasul 1, $f(0)=0$ și $f'(0)=1$.
+
+\emph{Pasul 4: unicitatea.} \emph{Lemă:} dacă $p:\mathbb{R}\to\mathbb{R}$ este de două ori derivabilă, $p''=cp$ și $p(0)=p'(0)=0$, atunci $p\equiv0$.
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+  \item Dacă $c=-b^2\le0$: funcția $E=p'^2+b^2p^2$ are $E'=2p'(p''+b^2p)=0$, deci $E\equiv E(0)=0$; rezultă $p'\equiv0$, deci $p$ este constantă, $p\equiv p(0)=0$.
+  \item Dacă $c=b^2>0$: fie $q=p'-bp$. Atunci $q'=p''-bp'=b^2p-bp'=-bq$, deci $\bigl(e^{bt}q\bigr)'=e^{bt}(q'+bq)=0$ și $e^{bt}q(t)=q(0)=0$. Așadar $p'=bp$, deci $\bigl(e^{-bt}p\bigr)'=e^{-bt}(p'-bp)=0$, de unde $e^{-bt}p(t)=p(0)=0$.
+\end{itemize}
+(În ambele cazuri am folosit consecința teoremei lui Lagrange: o funcție cu derivata nulă pe un interval este constantă.)
+
+Pentru fiecare valoare a lui $c$ avem un candidat care verifică $\varphi''=c\varphi$, $\varphi(0)=0$, $\varphi'(0)=1$:
+\[ \begin{gathered} c=0:\ \varphi(x)=x;\qquad c=-b^2<0:\ \varphi(x)=\frac{\sin bx}{b};\\ c=b^2>0:\ \varphi(x)=\frac{e^{bx}-e^{-bx}}{2b} \end{gathered} \]
+(cu $b>0$). Diferența $p=f-\varphi$ satisface ipotezele lemei, deci $f=\varphi$.
+
+\emph{Pasul 5: verificarea.} Pentru $f(x)=x$: $x\cdot1-1\cdot y=x-y$. Pentru $f(x)=\frac{\sin bx}{b}$, cu $f'(x)=\cos bx$:
+\[ \frac{\sin bx\cos by-\cos bx\sin by}{b}=\frac{\sin b(x-y)}{b} . \]
+Pentru $f(x)=\frac{e^{bx}-e^{-bx}}{2b}$, cu $f'(x)=\frac{e^{bx}+e^{-bx}}{2}$:
+\[ \begin{aligned} f(x)f'(y)-f'(x)f(y)&=\tfrac{1}{4b}\Bigl[(e^{bx}-e^{-bx})(e^{by}+e^{-by})\\ &\qquad\ -(e^{bx}+e^{-bx})(e^{by}-e^{-by})\Bigr]\\ &=\frac{2e^{b(x-y)}-2e^{-b(x-y)}}{4b}=f(x-y) , \end{aligned} \]
+căci termenii în $e^{\pm b(x+y)}$ se reduc. Toate cele patru tipuri de funcții sunt deci soluții.\\[2pt]
+\emph{Observație.} Din ecuație rezultă imediat (schimbând $x$ cu $y$) că orice soluție este impară: $f(y-x)=-f(x-y)$. Cele trei familii nenule corespund semnului lui $c=f''(y_0)/f(y_0)$; soluția $f(x)=x$ este „limita'' celorlalte două când $b\to0$.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.8}{}
+Determinați toate funcțiile $f:\mathbb{R}\to\mathbb{R}$ cu proprietatea lui Darboux pentru care
+\[ f\bigl(f(x)\bigr)+f(x)=2x\qquad\text{pentru orice }x\in\mathbb{R} . \]
+\sol Răspuns: $f(x)=x$ și $f(x)=c-2x$, cu $c\in\mathbb{R}$ arbitrar.
+
+\emph{Verificare.} Pentru $f(x)=x$ este evident. Pentru $f(x)=c-2x$: $f(f(x))=c-2(c-2x)=4x-c$, iar $f(f(x))+f(x)=4x-c+c-2x=2x$. Ambele funcții sunt continue, deci au proprietatea lui Darboux.
+
+\emph{Pasul 1: $f$ este continuă și strict monotonă.} Dacă $f(a)=f(b)$, atunci $2a=f(f(a))+f(a)=f(f(b))+f(b)=2b$: $f$ este injectivă. O funcție injectivă cu proprietatea lui Darboux pe un interval este strict monotonă (teorema „Injectivitate + Darboux''), iar o funcție strict monotonă cu proprietatea lui Darboux este continuă (rezultatele de structură din teorie).
+
+\emph{Pasul 2: $f$ este bijectivă.} Fiind monotonă, $f$ are limite (eventual infinite) la $\pm\infty$. Dacă $\lim_{x\to+\infty}f(x)=\ell\in\mathbb{R}$, atunci, prin continuitate, $f(f(x))\to f(\ell)$, deci $2x=f(f(x))+f(x)\to f(\ell)+\ell$ --- absurd, căci $2x\to+\infty$. Analog la $-\infty$. Așadar ambele limite sunt infinite și, $f$ fiind strict monotonă, de semne opuse (de exemplu, dacă $f$ este crescătoare, limita la $-\infty$ este $<f(0)<$ limita la $+\infty$, deci ele sunt $-\infty$, respectiv $+\infty$). Prin proprietatea lui Darboux, $f(\mathbb{R})=\mathbb{R}$; împreună cu injectivitatea, $f$ este bijectivă.
+
+\emph{Pasul 3: orbitele sunt explicite.} Fixăm $x_0\in\mathbb{R}$ și definim $x_n$ pentru \emph{orice} $n\in\mathbb{Z}$: $x_{n+1}=f(x_n)$ pentru $n\ge0$ și $x_{n-1}=f^{-1}(x_n)$ pentru $n\le0$. Atunci $x_{n+1}=f(x_n)$ pentru orice $n\in\mathbb{Z}$, iar ecuația aplicată în $x_n$ dă
+\[ x_{n+2}+x_{n+1}-2x_n=0\qquad\text{pentru orice }n\in\mathbb{Z} . \]
+Ecuația caracteristică $r^2+r-2=0$ are rădăcinile $1$ și $-2$. Fie
+\[ \alpha=\frac{2x_0+x_1}{3},\qquad \beta=\frac{x_0-x_1}{3} ; \]
+șirul $\alpha+\beta(-2)^n$ verifică aceeași recurență și coincide cu $(x_n)$ pentru $n=0$ și $n=1$. Recurența determină termenii atât înainte ($x_{n+2}=2x_n-x_{n+1}$), cât și înapoi ($x_n=\frac{x_{n+2}+x_{n+1}}{2}$), deci prin inducție în ambele sensuri
+\[ x_n=\alpha+\beta(-2)^n\qquad\text{pentru orice }n\in\mathbb{Z} . \]
+
+\emph{Pasul 4: $\alpha$ este punct fix.} Fie $z_m=x_{-m}$, $m\ge0$. Atunci $z_m=\alpha+\beta\bigl(-\tfrac12\bigr)^m\to\alpha$ și $f(z_{m+1})=z_m$. Trecând la limită și folosind continuitatea lui $f$, obținem $f(\alpha)=\alpha$. Cum $x_0$ a fost arbitrar și $x_1=f(x_0)$, am arătat:
+\[ \text{pentru orice }x\in\mathbb{R},\ \text{numărul}\ \ h(x)=\frac{2x+f(x)}{3}\ \ \text{este punct fix al lui }f . \tag{$\ast$} \]
+
+\emph{Pasul 5: cazul $f$ strict crescătoare.} Atunci $h$ este continuă și strict crescătoare, iar pentru $x\ge0$ avem $h(x)\ge\frac{2x+f(0)}{3}\to+\infty$, analog $h(x)\le\frac{2x+f(0)}{3}\to-\infty$ pentru $x\to-\infty$. Prin teorema valorilor intermediare, $h(\mathbb{R})=\mathbb{R}$, deci, prin $(\ast)$, \emph{orice} număr real este punct fix: $f(x)=x$.
+
+\emph{Pasul 6: cazul $f$ strict descrescătoare.} Funcția $x\mapsto f(x)-x$ este strict descrescătoare, deci $f$ are cel mult un punct fix; prin $(\ast)$ are măcar unul, $p=h(0)$. Atunci $(\ast)$ spune că $h(x)=p$ pentru orice $x$, adică
+\[ f(x)=3p-2x=c-2x,\qquad c=3p . \]
+Împreună cu verificarea de la început, răspunsul este complet.\\[2pt]
+\emph{Observație 1 (capcana).} Este tentant să se răspundă doar $f(x)=x$ și $f(x)=-2x$, căutând soluții liniare $f(x)=ax$. Translația nu se poate elimina: o funcție afină $f(x)=ax+c$ verifică ecuația dacă și numai dacă $a^2+a=2$ și $(a+2)c=0$, adică $a=1,\ c=0$ sau $a=-2$, $c$ arbitrar.
+
+\emph{Observație 2 (rolul lui Darboux).} Fără nicio ipoteză de regularitate există soluții „patologice'', construite cu o bază Hamel; proprietatea lui Darboux, prin injectivitate, aduce continuitatea --- singurul ingredient analitic al soluției (folosit în Pașii 2, 4 și 5).
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.9}{}
+Arătați că pentru orice $x>0$ are loc inegalitatea
+\[ x^{1/x}+\left(\frac1x\right)^{x}\ \le\ 2 \]
+și determinați cazul de egalitate.
+\sol Răspuns: egalitate dacă și numai dacă $x=1$.
+
+\emph{Reducerea.} Fie $E(x)=x^{1/x}+\bigl(\frac1x\bigr)^x$. Înlocuind $x$ cu $\frac1x$:
+\[ E\!\left(\frac1x\right)=\left(\frac1x\right)^{x}+x^{1/x}=E(x) . \]
+Deci este suficient să tratăm cazul $x\ge1$; pentru $x=1$ avem $E(1)=2$. Fie deci $x>1$.
+
+\emph{Lemă (Bernoulli cu exponent subunitar).} Pentru $a>0$ și $r\in(0,1)$ are loc $(1+a)^r<1+ra$. Într-adevăr, $\varphi(a)=1+ra-(1+a)^r$ are $\varphi(0)=0$ și $\varphi'(a)=r\bigl(1-(1+a)^{r-1}\bigr)>0$ pentru $a>0$ (căci $1+a>1$ și $r-1<0$), deci $\varphi$ este strict crescătoare pe $[0,\infty)$ și $\varphi(a)>0$ pentru $a>0$.
+
+\emph{Primul termen.} Aplicăm lema cu $a=x-1>0$ și $r=\frac1x\in(0,1)$:
+\[ x^{1/x}=\bigl(1+(x-1)\bigr)^{1/x}<1+\frac{x-1}{x}=2-\frac1x . \]
+
+\emph{Al doilea termen.} Pentru $x>1$ avem $x^{x-1}>1$, adică $x^x>x$, deci
+\[ \left(\frac1x\right)^{x}=\frac{1}{x^x}<\frac1x . \]
+
+Adunând, $E(x)<2-\frac1x+\frac1x=2$ pentru orice $x>1$. Prin simetrie, $E(x)<2$ și pentru $0<x<1$. Așadar $E(x)\le2$ pentru orice $x>0$, cu egalitate numai pentru $x=1$.\\[2pt]
+\emph{Observație.} Inegalitatea este strânsă în jurul lui $x=1$: cu $x=1+t$, dezvoltările limitate dau $x^{1/x}=1+t-t^2+O(t^3)$ și $x^{-x}=1-t+O(t^3)$, deci $E(1+t)=2-t^2+O(t^3)$. De aceea o abordare „brută'', prin studiul semnului lui $E'$, este incomodă; separarea celor doi termeni prin marginea comună $\frac1x$ ocolește complet această dificultate.
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.10}{}
+Fie $x_1=1$ și
+\[ x_{n+1}=x_n+\frac{1}{x_1+x_2+\cdots+x_n}\ ,\qquad n\ge1 . \]
+\begin{parti}
+  \item Arătați că $x_n\to\infty$ și că $\displaystyle\lim_{n\to\infty}\frac{x_n^{2}}{\ln n}=2$.
+  \item Arătați că șirul $\bigl(x_n^{2}-2\ln n-\ln\ln n\bigr)_{n\ge2}$ este convergent.
+\end{parti}
+\sol Notăm $S_n=x_1+\cdots+x_n$ și $t_n=\dfrac{x_n}{S_n}$. Șirul $(x_n)$ este strict crescător, cu $x_n\ge1$; deci $S_n\ge n$, $S_n\le nx_n$ și $x_{n+1}-x_n=\frac1{S_n}\le1$.
+
+\emph{Ideea.} Ridicând recurența la pătrat,
+\[ x_{n+1}^2-x_n^2=\frac{2x_n}{S_n}+\frac{1}{S_n^2}=2t_n+\frac1{S_n^2}, \]
+iar $\ln S_n-\ln S_{n-1}=-\ln\bigl(1-t_n\bigr)\approx t_n$. Așadar $x_{n+1}^2$ se comportă ca $2\ln S_n$. Studiem deci șirul
+\[ D_n=x_{n+1}^2-2\ln S_n,\qquad n\ge1 . \]
+Pentru $n\ge2$, din $S_{n-1}=S_n(1-t_n)$,
+\[ d_n:=D_n-D_{n-1}=2t_n+2\ln(1-t_n)+\frac{1}{S_n^2} . \tag{1} \]
+
+\emph{Pasul 1: $D_n$ este majorat și $x_n^2\le4\ln n+10$.} Din $\ln(1-t)\le-t$ rezultă $d_n\le\frac1{S_n^2}\le\frac1{n^2}\le\frac1{n-1}-\frac1n$, deci, telescopând, $D_n\le D_1+1=x_2^2+1=5$ pentru orice $n$. Folosind $S_n\le nx_n\le nx_{n+1}$:
+\[ x_{n+1}^2\le5+2\ln S_n\le5+2\ln n+\ln\bigl(x_{n+1}^2\bigr)\le5+2\ln n+\frac{x_{n+1}^2}{e}, \]
+unde am folosit $\ln u\le\frac ue$ pentru $u>0$ (maximul lui $\ln u-\frac ue$ este $0$, atins în $u=e$). Cum $\frac{1}{1-1/e}<2$, obținem $x_{n+1}^2\le 4\ln n+10$, deci $x_n^2\le4\ln n+10$ pentru orice $n\ge1$.
+
+\emph{Pasul 2: $(D_n)$ este convergent.} Mai întâi, $t_n\le\frac{x_n}{n}$, deci, cu $\ln n\le\sqrt n$ (din nou din $\ln u\le\frac ue$, cu $u=\sqrt n$),
+\[ t_n^2\le\frac{4\ln n+10}{n^2}\le\frac{14}{n^{3/2}}\le28\Bigl(\frac1{\sqrt{n-1}}-\frac1{\sqrt n}\Bigr)\qquad(n\ge2), \]
+unde ultima inegalitate rezultă din $\frac1{\sqrt{n-1}}-\frac1{\sqrt n}=\frac{1}{\sqrt n\sqrt{n-1}\,(\sqrt n+\sqrt{n-1})}\ge\frac{1}{2n^{3/2}}$. Prin telescopare, șirul crescător $T_n=\sum_{k=3}^{n}t_k^2$ este majorat (de $28$), deci convergent. În particular $t_n\to0$.
+
+Apoi, pentru $n\ge3$ avem $t_n\le\frac12$: într-adevăr $x_n\le x_{n-1}+1\le x_{n-1}+x_{n-2}\le S_{n-1}$, deci $x_n\le S_n-x_n$. Pentru $t\in\bigl[0,\frac12\bigr]$ are loc $\ln(1-t)\ge-t-t^2$ (funcția $\psi(t)=\ln(1-t)+t+t^2$ are $\psi(0)=0$ și $\psi'(t)=\frac{t(1-2t)}{1-t}\ge0$). Din (1): $d_n\ge-2t_n^2$ pentru $n\ge3$.
+
+Așadar șirul $D_n+2T_n$ ($n\ge3$) este crescător (creșterea lui este $d_n+2t_n^2\ge0$) și majorat (de $5+56$), deci convergent. Cum și $(T_n)$ converge, rezultă că $(D_n)$ converge; notăm $L=\lim D_n$.
+
+\emph{Pasul 3: punctul (a).} Avem $x_{n+1}^2=D_n+2\ln S_n$ și $\ln n\le\ln S_n\le\ln n+\ln x_n\le\ln n+\frac12\ln(4\ln n+10)$. Cum $(D_n)$ este mărginit și $\frac{\ln(4\ln n+10)}{\ln n}\to0$, obținem $\frac{\ln S_n}{\ln n}\to1$ și
+\[ \frac{x_{n+1}^2}{\ln n}\to2 ,\qquad\text{deci}\qquad \frac{x_n^2}{\ln n}=\frac{x_n^2}{\ln(n-1)}\cdot\frac{\ln(n-1)}{\ln n}\to2 . \]
+În particular $x_n\to\infty$.
+
+\emph{Pasul 4: $\dfrac{S_n}{nx_n}\to1$.} Aplicăm Cesàro--Stolz (cazul $\frac{\cdot}{\infty}$): șirul $b_n=nx_n$ este strict crescător și nemărginit, iar
+\[ \begin{aligned} \frac{S_{n+1}-S_n}{b_{n+1}-b_n}&=\frac{x_{n+1}}{(n+1)x_{n+1}-nx_n}=\frac{x_{n+1}}{x_{n+1}+n(x_{n+1}-x_n)}\\ &=\frac{x_{n+1}}{x_{n+1}+\frac{n}{S_n}}\ \longrightarrow\ 1, \end{aligned} \]
+căci $0<\frac n{S_n}\le1$ și $x_{n+1}\to\infty$.
+
+\emph{Pasul 5: punctul (b).} Scriem $\ln S_n=\ln n+\ln x_n+\ln\frac{S_n}{nx_n}$ și $2\ln x_n=\ln\ln n+\ln\frac{x_n^2}{\ln n}$. Atunci
+\[ x_{n+1}^2-2\ln n-\ln\ln n=D_n+\ln\frac{x_n^2}{\ln n}+2\ln\frac{S_n}{nx_n}\ \longrightarrow\ L+\ln2+0 , \]
+prin Pașii 2, 3 și 4. În fine, notând $a_n=x_n^2-2\ln n-\ln\ln n$,
+\[ a_{n+1}=\bigl(x_{n+1}^2-2\ln n-\ln\ln n\bigr)-2\ln\frac{n+1}{n}-\ln\frac{\ln(n+1)}{\ln n}, \]
+iar ultimii doi termeni tind la $0$. Deci $(a_n)$ este convergent, cu limita $L+\ln2$.\\[2pt]
+\emph{Observație.} Numeric, limita este aproximativ $3{,}3$--$3{,}4$, dar convergența este foarte lentă: termenul $\ln\frac{x_n^2}{2\ln n}$ se comportă ca $\frac{\ln\ln n}{2\ln n}$. Tot de aici se vede de ce la punctul (a) raportul $\frac{x_n^2}{\ln n}$ se apropie de $2$ extrem de încet (pentru $n=10^7$ el valorează încă circa $2{,}38$).
+\vspace{1mm}\hrule
+
+\prob{onm}{ONM.11}{}
+Fie $x_1>0$ și
+\[ x_{n+1}=x_n+\frac{2n}{x_n}\ ,\qquad n\ge1 . \]
+\begin{parti}
+  \item Arătați că $\displaystyle\lim_{n\to\infty}\bigl(x_n-n\sqrt2\bigr)=0$.
+  \item Arătați că șirul $\bigl(n\,(x_n-n\sqrt2)\bigr)_{n\ge1}$ este convergent și că limita sa este nulă dacă și numai dacă $x_1=\sqrt2$.
+\end{parti}
+\sol Prin inducție, $x_n>0$ pentru orice $n$. Notăm $y_n=x_n-n\sqrt2$.
+
+\emph{Pasul 1: recurența pentru $y_n$.} Calculăm
+\[ y_{n+1}=x_n+\frac{2n}{x_n}-(n+1)\sqrt2=y_n+\frac{2n-\sqrt2\,x_n}{x_n}=y_n-\frac{\sqrt2\,y_n}{x_n}, \]
+adică
+\[ y_{n+1}=y_n\Bigl(1-\frac{\sqrt2}{x_n}\Bigr) . \tag{1} \]
+În particular $y_2=\dfrac{(x_1-\sqrt2)^2}{x_1}\ge0$, cu egalitate dacă și numai dacă $x_1=\sqrt2$ (echivalent, $x_2=x_1+\frac2{x_1}\ge2\sqrt2$ prin inegalitatea mediilor).
+
+\emph{Pasul 2: $0\le y_n\le y_2$ pentru $n\ge2$.} Inductiv: dacă $0\le y_n\le y_2$, atunci $x_n=n\sqrt2+y_n\ge n\sqrt2\ge\sqrt2$, deci factorul din (1) este în $[0,1)$ și $0\le y_{n+1}\le y_n\le y_2$. Reținem și $n\sqrt2\le x_n\le n\sqrt2+y_2$ pentru $n\ge2$.
+
+Dacă $x_1=\sqrt2$, atunci $y_n=0$, adică $x_n=n\sqrt2$, pentru orice $n$, și ambele afirmații sunt evidente (cu limita $0$ la (b)). Presupunem în continuare $x_1\neq\sqrt2$, deci $y_2>0$ și, din (1), $y_n>0$ pentru $n\ge2$.
+
+\emph{Pasul 3: punctul (a).} Fie $c=\frac{y_2}{\sqrt2}$. Pentru $k\ge2$, din $x_k\le\sqrt2(k+c)$ rezultă $1-\frac{\sqrt2}{x_k}\le1-\frac1{k+c}=\frac{k+c-1}{k+c}$. Iterând (1), pentru $n\ge3$,
+\[ 0<y_n=y_2\prod_{k=2}^{n-1}\Bigl(1-\frac{\sqrt2}{x_k}\Bigr)\le y_2\prod_{k=2}^{n-1}\frac{k-1+c}{k+c}=y_2\,\frac{1+c}{n-1+c}\ \longrightarrow\ 0 . \]
+Deci $x_n-n\sqrt2\to0$.
+
+\emph{Pasul 4: punctul (b).} Comparăm factorii din (1) cu $1-\frac1k$, al căror produs telescopează: $\prod_{k=2}^{n-1}\bigl(1-\frac1k\bigr)=\frac1{n-1}$. Notăm
+\[ r_k=\frac{1-\frac{\sqrt2}{x_k}}{1-\frac1k}=\frac{k\,(x_k-\sqrt2)}{(k-1)\,x_k}=1+\frac{x_k-k\sqrt2}{(k-1)\,x_k}=1+\frac{y_k}{(k-1)\,x_k} . \]
+Atunci
+\[ n\,y_n=y_2\cdot\frac{n}{n-1}\cdot R_n,\qquad R_n=\prod_{k=2}^{n-1}r_k . \tag{2} \]
+Pentru $k\ge2$, din Pasul 2, $y_k>0$ și $x_k\ge k\sqrt2$, deci
+\[ 1<r_k\le1+\frac{y_2}{\sqrt2\,k(k-1)} . \]
+Prin urmare $(R_n)$ este strict crescător și, folosind $1+u\le e^u$,
+\[ R_n\le\exp\Bigl(\frac{y_2}{\sqrt2}\sum_{k=2}^{n-1}\Bigl(\frac1{k-1}-\frac1k\Bigr)\Bigr)\le e^{y_2/\sqrt2} . \]
+Fiind monoton și mărginit, $(R_n)$ converge (teorema lui Weierstrass pentru șiruri) către un număr $R\in\bigl[1,e^{y_2/\sqrt2}\bigr]$. Din (2),
+\[ \lim_{n\to\infty}n\bigl(x_n-n\sqrt2\bigr)=y_2\,R=\frac{(x_1-\sqrt2)^2}{x_1}\,R . \]
+Cum $R\ge1>0$, limita este nulă dacă și numai dacă $y_2=0$, adică $x_1=\sqrt2$; iar în acest caz șirul este identic nul. Ambele afirmații sunt demonstrate.\\[2pt]
+\emph{Observație 1.} Punctul (a) rezultă și direct din (b), dar Pasul 3 dă în plus o margine explicită: $0\le x_n-n\sqrt2\le\frac{y_2(1+c)}{n-1+c}$ pentru $n\ge3$. În particular, pentru $x_1\neq\sqrt2$, șirul $x_n$ rămâne \emph{deasupra} dreptei $n\sqrt2$ începând cu $n=2$, oricât de mic ar fi $x_1$.
+
+\emph{Observație 2.} Limita $y_2R$ nu are, în general, o formă închisă; de exemplu, pentru $x_1=1$ se obține numeric $n(x_n-n\sqrt2)\to0{,}1847\dots$, iar $y_2=3-2\sqrt2=0{,}1715\dots$.
+\vspace{1mm}\hrule
+
 \subsectiuneclasa{Puntea între a XI-a și a XII-a}{Șiruri rezolvate cu integrale: sume Riemann, comparare cu integrala, asimptotică, ecuații diferențiale elementare --- soluții complete.}{Soluții · Puntea XI--XII}
 \nivel{olm}{Nivelul OLM}{Faza locală --- o singură idee, bine aplicată.}
 \prob{olm}{OLM.1}{Clasică}
